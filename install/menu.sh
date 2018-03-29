@@ -22,29 +22,35 @@ pause(){
 
 # Option 1
 apps(){
-	bash /opt/GooPlex/install/apps/menu.sh
-    pause
+  clear
+  bash /opt/GooPlex/install/apps/menu.sh
+  clear
+  pause
 }
 
 # Option 2
 server(){
-	bash /opt/GooPlex/install/server/menu.sh
-    pause
+  clear
+  bash /opt/GooPlex/install/server/menu.sh
+  clear
+  pause
 }
 
 # Option 3
 misc(){
+  clear
   bash /opt/GooPlex/install/server/menu.sh
+  clear
   pause
 }
 
 # Option 4
 quit(){
   echo ""
-	echo "---------------------------------------------"
-	echo " Visit the menu any time by typing 'gooplex' "
-	echo "---------------------------------------------"
-	echo ""
+  echo "---------------------------------------------"
+  echo " Visit the menu any time by typing 'gooplex' "
+  echo "---------------------------------------------"
+  echo ""
   exit
 }
 
@@ -64,15 +70,15 @@ show_menus() {
 
 # Read input from the keyboard and take a action
 read_options(){
-	local choice
-	read -p "Enter choice [ 1 - 3] " choice
-	case $choice in
-		1) apps ;;
-		2) server ;;
-		3) misc ;;
-		4) quit ;;
-		*) echo -e "${RED}Please select a valid option${STD}" && sleep 2
-	esac
+  local choice
+    read -p "Enter choice [ 1 - 3] " choice
+    case $choice in
+      1) apps ;;
+      2) server ;;
+      3) misc ;;
+      4) quit ;;
+      *) echo -e "${RED}Please select a valid option${STD}" && sleep 2
+    esac
 }
  
 # ----------------------------------------------
@@ -86,6 +92,6 @@ trap '' SIGINT SIGQUIT SIGTSTP
 while true
 do
  
-	show_menus
-	read_options
+  show_menus
+  read_options
 done
