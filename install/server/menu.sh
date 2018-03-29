@@ -47,7 +47,7 @@ misc(){
 }
 
 # Return to main menu
-misc(){
+main(){
   clear
   bash /opt/GooPlex/install/menu.sh
   pause
@@ -88,7 +88,7 @@ read_options(){
       1) updatesvr ;;
       2) installapps ;;
       3) misc ;;
-      4) return to main menu ;;
+      4) main ;;
       5) quit ;;
       *) echo -e "${RED}Please select a valid option${STD}" && sleep 2
     esac
