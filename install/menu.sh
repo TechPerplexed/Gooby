@@ -4,7 +4,7 @@
 # Define variables
 # ----------------
 
-function="GooPlex Menu"
+function="GooPlex Main Menu"
 
 STD='\033[0m'
 RED='\033[00;31m'
@@ -62,7 +62,7 @@ show_menus() {
   clear
   echo ""
   echo "-------------------------"
-  echo " G O O P L E X - M E N U "
+  echo " $function "
   echo "-------------------------"
   echo ""
   echo -e "${GRN}1.${STD} Install and maintain Apps"
