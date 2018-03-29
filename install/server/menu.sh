@@ -61,7 +61,7 @@ quit(){
   echo " Visit the menu any time by typing 'gooplex' "
   echo "---------------------------------------------"
   echo ""
-  exit
+  exit 1
 }
 
 # Function to display menus
