@@ -69,7 +69,7 @@ show_menus() {
 # Read input from the keyboard and take a action
 read_options(){
   local choice
-    read -p "Enter choice [ 1 - 3] " choice
+    read -p "Choose option [ 1 - 4 ] " choice
     case $choice in
       1) apps ;;
       2) server ;;
