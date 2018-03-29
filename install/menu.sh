@@ -61,9 +61,9 @@ quit(){
 show_menus() {
   clear
   echo ""
-  echo "-------------------------"
+  echo "---------------------------------------------"
   echo " $function "
-  echo "-------------------------"
+  echo "---------------------------------------------"
   echo ""
   echo -e "${GRN}1.${STD} Install and maintain Apps"
   echo -e "${GRN}2.${STD} Server maintenance"
