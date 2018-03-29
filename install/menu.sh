@@ -34,22 +34,28 @@ server(){
 
 # Option 3
 misc(){
-	bash /opt/GooPlex/install/server/menu.sh
-    pause
+  bash /opt/GooPlex/install/server/menu.sh
+  pause
 }
 
 # Option 4
 quit(){
-	clear
-    exit
+  echo ""
+	echo "---------------------------------------------"
+	echo " Visit the menu any time by typing 'gooplex' "
+	echo "---------------------------------------------"
+	echo ""
+  exit
 }
 
 # Function to display menus
 show_menus() {
 	clear
-	echo "~~~~~~~~~~~~~~~~~~~~~"	
-	echo " M A I N - M E N U"
-	echo "~~~~~~~~~~~~~~~~~~~~~"
+	echo ""
+	echo "-------------------------"
+	echo " G O O P L E X - M E N U "
+	echo "-------------------------"
+	echo ""
 	echo -e "${GRN}1.${STD} Install and maintain Apps"
 	echo -e "${GRN}2.${STD} Server maintenance"
 	echo -e "${GRN}3.${STD} Additional options"
