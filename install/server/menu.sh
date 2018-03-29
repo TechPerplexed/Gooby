@@ -86,7 +86,7 @@ read_options(){
     read -p "Choose option [ 1 - 4 ] " choice
     case $choice in
       1) updatesvr ;;
-      2) installapps ;;
+      2) rootpw ;;
       3) misc ;;
       4) main ;;
       5) quit ;;
