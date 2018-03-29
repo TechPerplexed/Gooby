@@ -1,24 +1,29 @@
 #!/bin/bash
-# GooPlex Menu
 
-# --------------------------
-# Step #1: Define variables
-# --------------------------
+# ----------------
+# Define variables
+# ----------------
 
-EDITOR=nano
-PASSWD=/etc/passwd
+function="GooPlex Menu"
+
 STD='\033[0m'
 RED='\033[00;31m'
 GRN='\033[00;32m'
 YLW='\033[00;33m'
 
-# -------------------------------
-# Step #2: User defined function
-# -------------------------------
-
 pause(){
   read -p "Press [Enter] key to return to the menu..." fackEnterKey
 }
+
+# --------------------
+# Main script function
+# --------------------
+
+# Dependencies
+
+# Open port
+
+# Installing
 
 # Option 1
 apps(){
@@ -63,7 +68,7 @@ show_menus() {
   echo -e "${GRN}1.${STD} Install and maintain Apps"
   echo -e "${GRN}2.${STD} Server maintenance"
   echo -e "${GRN}3.${STD} Additional options"
-  echo -e "${YLW}4.${STD} Exit menu"
+  echo -e "${YLW}4.${STD} Exit $function"
   echo ""
 }
 
@@ -80,17 +85,14 @@ read_options(){
     esac
 }
  
-# ----------------------------------------------
-# Step #3: Trap CTRL+C, CTRL+Z and quit singles
-# ----------------------------------------------
+# ----------
+# Finalizing
+# ----------
+
 trap '' SIGINT SIGQUIT SIGTSTP
- 
-# ------------------------------------
-# Step #4: Main logic - infinite loop
-# ------------------------------------
+
 while true
-do
- 
+do 
   show_menus
   read_options
 done
