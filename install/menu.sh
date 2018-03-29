@@ -64,6 +64,7 @@ show_menus() {
   echo -e "${GRN}2.${STD} Server maintenance"
   echo -e "${GRN}3.${STD} Additional options"
   echo -e "${YLW}4.${STD} Exit menu"
+  echo ""
 }
 
 # Read input from the keyboard and take a action
