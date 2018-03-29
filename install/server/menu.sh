@@ -46,6 +46,13 @@ misc(){
   pause
 }
 
+# Return to main menu
+misc(){
+  clear
+  bash /opt/GooPlex/install/menu.sh
+  pause
+}
+
 # Exit menu
 quit(){
   clear
@@ -68,7 +75,8 @@ show_menus() {
   echo -e "${GRN}1.${STD} Install and maintain Apps"
   echo -e "${GRN}2.${STD} Server maintenance"
   echo -e "${GRN}3.${STD} Additional options"
-  echo -e "${YLW}4.${STD} Exit $function"
+  echo -e "${YLW}4.${STD} Return to main menu"
+  echo -e "${YLW}5.${STD} Exit $function"
   echo ""
 }
 
@@ -81,7 +89,7 @@ read_options(){
       2) installapps ;;
       3) misc ;;
       4) return to main menu ;;
-      4) quit ;;
+      5) quit ;;
       *) echo -e "${RED}Please select a valid option${STD}" && sleep 2
     esac
 }
