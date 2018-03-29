@@ -1,0 +1,20 @@
+[Unit]
+Description=Mount and cache Google drive to /media/Plex
+After=syslog.target local-fs.target network.target
+
+[Service]
+Type=simple
+User=root
+ExecStartPre=-/bin/mkdir /media/Plex
+ExecStart=/usr/bin/rclone mount \
+  --config /home/plexuser/.config/rclone/rclone.conf \
+  --allow-other \
+  --cache-info-age 8h \
+  --cache-writes \
+  GdriveCache: /media/Plex
+ExecStop=/bin/fusermount -u -z /media/Plex
+ExecStop=/bin/rmdir /media/Plex
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
