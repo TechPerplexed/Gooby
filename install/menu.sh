@@ -32,7 +32,6 @@ apps(){
 server(){
   clear
   bash /opt/GooPlex/install/server/menu.sh
-  clear
   pause
 }
 
@@ -40,12 +39,12 @@ server(){
 misc(){
   clear
   bash /opt/GooPlex/install/server/menu.sh
-  clear
   pause
 }
 
 # Option 4
 quit(){
+  clear
   echo ""
   echo "---------------------------------------------"
   echo " Visit the menu any time by typing 'gooplex' "
