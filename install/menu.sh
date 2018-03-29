@@ -24,7 +24,6 @@ pause(){
 apps(){
   clear
   bash /opt/GooPlex/install/apps/menu.sh
-  clear
   pause
 }
 
@@ -55,16 +54,16 @@ quit(){
 
 # Function to display menus
 show_menus() {
-	clear
-	echo ""
-	echo "-------------------------"
-	echo " G O O P L E X - M E N U "
-	echo "-------------------------"
-	echo ""
-	echo -e "${GRN}1.${STD} Install and maintain Apps"
-	echo -e "${GRN}2.${STD} Server maintenance"
-	echo -e "${GRN}3.${STD} Additional options"
-	echo -e "${YLW}4.${STD} Exit menu"
+  clear
+  echo ""
+  echo "-------------------------"
+  echo " G O O P L E X - M E N U "
+  echo "-------------------------"
+  echo ""
+  echo -e "${GRN}1.${STD} Install and maintain Apps"
+  echo -e "${GRN}2.${STD} Server maintenance"
+  echo -e "${GRN}3.${STD} Additional options"
+  echo -e "${YLW}4.${STD} Exit menu"
 }
 
 # Read input from the keyboard and take a action
