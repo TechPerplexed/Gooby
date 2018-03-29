@@ -57,9 +57,9 @@ main(){
 quit(){
   clear
   echo ""
-  echo "---------------------------------------------"
-  echo " Visit the menu any time by typing 'gooplex' "
-  echo "---------------------------------------------"
+  echo "-------------------------------"
+  echo " Returning to the main menu... "
+  echo "-------------------------------"
   echo ""
   exit 1
 }
