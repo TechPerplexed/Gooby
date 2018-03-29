@@ -26,23 +26,23 @@ pause(){
 # Installing
 
 # Install and maintain Apps
-apps(){
+updatesvr (){
   clear
-  bash /opt/GooPlex/install/apps/menu.sh
+  bash /opt/GooPlex/install/server/choices/updatesvr.sh
   pause
 }
 
-# Server maintenance
-server(){
+# Update Ubuntu
+rootpw(){
   clear
-  bash /opt/GooPlex/install/server/menu.sh
+  bash /opt/GooPlex/install/server/choices/rootpw.sh
   pause
 }
 
-# Additional options
+# Install vital apps
 misc(){
   clear
-  bash /opt/GooPlex/install/server/menu.sh
+  bash /opt/GooPlex/install/server/vitalapps.sh
   pause
 }
 
@@ -77,9 +77,10 @@ read_options(){
   local choice
     read -p "Choose option [ 1 - 4 ] " choice
     case $choice in
-      1) apps ;;
-      2) server ;;
+      1) updatesvr ;;
+      2) installapps ;;
       3) misc ;;
+      4) return to main menu ;;
       4) quit ;;
       *) echo -e "${RED}Please select a valid option${STD}" && sleep 2
     esac
