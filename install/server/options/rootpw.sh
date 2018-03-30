@@ -2,7 +2,7 @@
 
 function="change the root password"
 
-/install/meta/instbeg.sh
+bash /install/meta/instbeg.sh
 
 # Begin code
 
@@ -13,4 +13,4 @@ function="change the root password"
 
 # End code
 
-/install/meta/instend.sh
+bash /install/meta/instend.sh
