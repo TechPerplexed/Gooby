@@ -2,5 +2,4 @@
 
 mv /opt/GooPlex/install/gooplex /bin
 chmod 755 /bin/gooplex
-clear
 gooplex
