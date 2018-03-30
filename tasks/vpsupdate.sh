@@ -84,7 +84,7 @@ sudo dpkg-reconfigure tzdata
 # Change root password
 
 clear
-read -p "Change root password? " -n 1 -r
+read -p "Change root password (y/N)? " -n 1 -r
 echo ""
 
   if [[ $REPLY =~ ^[Yy]$ ]]
