@@ -1,6 +1,6 @@
 #!/bin/bash
 
-FUNCTION="install or update Rclone"
+FUNCTION="install or update Plex"
 
 # ---------
 # Variables
