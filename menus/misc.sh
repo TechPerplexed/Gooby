@@ -44,9 +44,9 @@ show_menus() {
   echo -e " $FUNCTION "
   echo -e "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
   echo -e " ${STD}"
-  echo -e " ${GREN}A${STD} - Update GooPlex"
-  echo -e " ${GREN}B${STD} - Coming Soon"
-  echo -e " ${GREN}C${STD} - Coming Soon"
+  echo -e " ${GREEN}A${STD} - Update GooPlex"
+  echo -e " ${GREEN}B${STD} - Coming Soon"
+  echo -e " ${GREEN}C${STD} - Coming Soon"
   echo -e " ${YELLOW}Z${STD} - Exit $FUNCTION"
   echo -e ""
 }
