@@ -33,6 +33,16 @@ then
   echo ""
   sudo -s passwd
 
-# End code
+#!/bin/bash
 
-/opt/GooPlex/install/meta/instend.sh
+# ----------
+# Finalizing
+# ----------
+
+# Clean up
+
+else
+
+  echo "You chose not to $function"
+
+fi
