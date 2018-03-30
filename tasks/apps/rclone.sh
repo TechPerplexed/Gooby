@@ -24,7 +24,7 @@ then
 # Explanation
 
 clear
-echo -e "Creating the user to do all ${CYAN}daily tasks${STD}"
+echo -e "This will " $FUNCTION
 echo ""
 
 # Execution
