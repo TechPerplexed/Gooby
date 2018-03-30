@@ -87,16 +87,21 @@ clear
 read -p "Change root password? " -n 1 -r
 echo ""
 
-if [[ $REPLY =~ ^[Yy]$ ]]
-then
+  if [[ $REPLY =~ ^[Yy]$ ]]
+  then
 
-  clear
-  echo -e "Create a ${CYAN}very strong${STD} root password"
-  echo -e "The best way is to use a ${CYAN}password generator${STD}"
-  echo -e "Then make sure to store your password in a ${CYAN}safe place${STD}"
-  echo ""
+    clear
+    echo -e "Create a ${CYAN}very strong${STD} root password"
+    echo -e "The best way is to use a ${CYAN}password generator${STD}"
+    echo -e "Then make sure to store your password in a ${CYAN}safe place${STD}"
+    echo ""
 
-  sudo -s passwd
+    sudo -s passwd
+  
+  else
+
+    echo -e "You chose ${YELLOW}not${STD} to change the root password."
+  
   fi
 
 else
