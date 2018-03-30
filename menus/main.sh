@@ -51,8 +51,8 @@ show_menus() {
   echo -e "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
   echo -e " ${STD}"
   echo -e " ${GREEN}A${STD} - Maintain Server"
-  echo -e " ${GREEN}B${STD} - Install Apps"
-  echo -e " ${GREEN}C${STD} - Additional Options"
+  echo -e " ${GREEN}B${STD} - Install/Update Applications"
+  echo -e " ${GREEN}C${STD} - Additional Tasks"
   echo -e " ${LRED}Q${STD} - Quit $FUNCTION"
   echo -e ""
 }
