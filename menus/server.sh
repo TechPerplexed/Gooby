@@ -50,10 +50,10 @@ show_menus() {
   echo -e " $FUNCTION "
   echo -e "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
   echo -e " ${STD}"
-  echo -e " ${GREEN}A${STD} - Prepare Server"
-  echo -e " ${GREEN}B${STD} - Create New User"
-  echo -e " ${GREEN}C${STD} - Additional Options"
-  echo -e " ${YELLOW}Z${STD} - Exit $FUNCTION"
+  echo -e " ${YELLOW}A${STD} - Prepare Server"
+  echo -e " ${YELLOW}B${STD} - Create New User"
+  echo -e " ${YELLOW}C${STD} - Additional Options"
+  echo -e " ${LRED}Z${STD} - Exit $FUNCTION"
   echo -e ""
 }
 
