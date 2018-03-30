@@ -70,7 +70,7 @@ QUIT(){
 
 show_menus() {
   clear
-  echo -e " ${GREEN}"
+  echo -e " ${LPURPLE}"
   echo -e "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
   echo -e " $FUNCTION "
   echo -e "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
