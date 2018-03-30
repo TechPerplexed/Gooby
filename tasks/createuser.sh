@@ -1,6 +1,6 @@
 #!/bin/bash
 
-FUNCTION="change a new user"
+FUNCTION="create a new user"
 
 # ---------
 # Variables
