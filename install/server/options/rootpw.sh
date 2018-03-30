@@ -2,7 +2,7 @@
 
 function="change the root password"
 
-bash /opt/GoopPex/install/meta/instbeg.sh
+/opt/GooPlex/install/meta/instbeg.sh
 
 # Begin code
 
