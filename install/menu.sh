@@ -46,9 +46,9 @@ quit(){
 show_menus() {
   clear
   echo ""
-  echo "---------------------------------------------"
-  echo " $function "
-  echo "---------------------------------------------"
+  echo "----------------------------------------"
+  echo " $FUNCTION"
+  echo "----------------------------------------"
   echo ""
   echo -e "${GRN}1.${STD} Prepare Server"
   echo -e "${GRN}2.${STD} Install Apps"
