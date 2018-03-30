@@ -6,7 +6,7 @@ FUNCTION="Error Page"
 # Variables
 # ---------
 
-source /opt/GooPlex/install/variables.sh
+source /opt/GooPlex/menus/variables.sh
 clear
 
 echo -e "${RED}"
