@@ -11,8 +11,10 @@ clear
 
 # Explanation
 
-echo -e "This will update the server with the latest patches, set the time zone and"
-echo -e "${WHITE}Optionally${STD} change the root password."
+echo -e "----------------------------------------------------------------------------"
+echo -e " This will update the server with the latest patches, set the time zone and "
+echo -e "          ${WHITE}Optionally${STD} change the root password. "
+echo -e "----------------------------------------------------------------------------"
 echo ""
 
 # Confirmation
