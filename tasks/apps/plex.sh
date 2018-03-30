@@ -7,7 +7,6 @@ FUNCTION="install or update Plex"
 # ---------
 
 source /opt/GooPlex/menus/variables.sh
-source /opt/GooPlex/tasks/variables.sh
 
 # Confirmation
 
@@ -30,7 +29,7 @@ echo ""
 
 # Execution
 
-  REBOOT
+source /opt/GooPlex/tasks/reboot.sh
 
 # ----------
 # Finalizing
