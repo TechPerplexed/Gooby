@@ -1,6 +1,6 @@
 #!/bin/bash
 
-FUNCTION="Maintain Server"
+FUNCTION="Install/Update Applications"
 
 # ---------
 # Variables
