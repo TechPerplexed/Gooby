@@ -23,19 +23,8 @@ USER(){
   bash /opt/GooPlex/tasks/createuser.sh
 }
 
-# Additional Options
-MISC(){
-  bash /opt/GooPlex/menus/errorpage.sh
-}
-
 # Exit
 QUIT(){
-  clear
-  echo ""
-  echo "---------------------------------------------"
-  echo " Visit the menu any time by typing 'gooplex' "
-  echo "---------------------------------------------"
-  echo ""
   exit
 }
 
@@ -52,7 +41,6 @@ show_menus() {
   echo -e " ${STD}"
   echo -e " ${YELLOW}A${STD} - Prepare Server"
   echo -e " ${YELLOW}B${STD} - Create New User"
-  echo -e " ${YELLOW}C${STD} - Additional Options"
   echo -e " ${LRED}Z${STD} - Exit $FUNCTION"
   echo -e ""
 }
