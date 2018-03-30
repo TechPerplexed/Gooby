@@ -63,7 +63,7 @@ else
   sudo rsync -a /opt/GooPlex/scripts/etc/systemd/system/rclone.service /etc/systemd/system/rclone.service
   sudo systemctl enable rclone.service
   sudo systemctl daemon-reload
-  source /opt/GooPlex/tasks/reboot.sh
+  REBOOT
 fi
 
 # ----------
