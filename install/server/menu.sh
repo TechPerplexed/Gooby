@@ -1,95 +1,74 @@
 #!/bin/bash
 
-# ----------------
-# Define variables
-# ----------------
+FUNCTION="Maintain Server"
 
-function="Prepare Server"
+# ---------
+# Variables
+# ---------
 
-STD='\033[0m'
-RED='\033[00;31m'
-GRN='\033[00;32m'
-YLW='\033[00;33m'
+source /opt/GooPlex/install/variables.sh
+clear
 
-pause(){
-  read -p "Press [Enter] key to return to the menu..." fackEnterKey
-}
+# ------------
+# Menu Options
+# ------------
 
-# --------------------
-# Main script function
-# --------------------
-
-# Dependencies
-
-# Open port
-
-# Installing
-
-# Update Ubuntu and Install Vital Services
-vpsupdate (){
-  clear
+# Prepare Server
+SERVER(){
   bash /opt/GooPlex/install/server/options/vpsupdate.sh
-  pause
 }
 
-# Change Root Password
-rootpw(){
-  clear
-  bash /opt/GooPlex/install/server/options/rootpw.sh
-  pause
+# Create New User
+USER(){
+  bash /opt/GooPlex/install/server/options/createuser.sh
 }
 
-# Create Plexuser
-usercreate(){
-  clear
-  bash /opt/GooPlex/install/server/options/usercreate.sh
-  pause
+# Additional Options
+MISC(){
+  bash /opt/GooPlex/install/misc/menu.sh
 }
 
-# Future use
-future(){
-  clear
-  echo "For future use"
-  pause
-}
-
-# Exit menu
-main(){
+# Exit
+QUIT(){
   clear
   echo ""
-  echo "-------------------------------"
-  echo " Returning to the main menu... "
-  echo "-------------------------------"
+  echo "---------------------------------------------"
+  echo " Visit the menu any time by typing 'gooplex' "
+  echo "---------------------------------------------"
   echo ""
   exit
 }
 
-# Function to display menus
+# ------------
+# Display menu
+# ------------
+
 show_menus() {
   clear
   echo ""
-  echo "---------------------------------------------"
-  echo " $function "
-  echo "---------------------------------------------"
+  echo "----------------------------------------"
+  echo " $FUNCTION"
+  echo "----------------------------------------"
   echo ""
-  echo -e "${GRN}1.${STD} Update Ubuntu and Install Vital Services"
-  echo -e "${GRN}2.${STD} Change Root Password"
-  echo -e "${GRN}3.${STD} Create Plexuser"
-  echo -e "${GRN}4.${STD} Future"
-  echo -e "${YLW}5.${STD} Exit $function"
+  echo -e "${GRN}A${STD} - Prepare Server"
+  echo -e "${GRN}B${STD} - Create New User"
+  echo -e "${GRN}C${STD} - Additional Options"
+  echo -e "${YLW}Q${STD} - Quit/exit $FUNCTION"
   echo ""
 }
 
-# Read input from the keyboard and take a action
+# ------------
+# Read Choices
+# ------------
+
 read_options(){
   local choice
     read -p "Choose option: " choice
     case $choice in
-      1) vpsupdate ;;
-      2) rootpw ;;
-      3) usercreate ;;
-      4) future ;;
-      5) main ;;
+      [Aa]) SERVER ;;
+      [Bb]) USER ;;
+      [Cc]) MSIC ;;
+      [Qq]) QUIT ;;
       *) echo -e "${RED}Please select a valid option${STD}" && sleep 2
     esac
 }
