@@ -11,38 +11,27 @@ RED='\033[00;31m'
 GRN='\033[00;32m'
 YLW='\033[00;33m'
 
-pause(){
-  read -p "Press [Enter] key to continue..." fackEnterKey
-}
-
 # --------------------
 # Main script function
 # --------------------
 
-# Dependencies
-
-# Open port
+clear
 
 # Installing
 
 # Option 1
 apps(){
-  clear
   bash /opt/GooPlex/install/apps/menu.sh
-  pause
 }
 
 # Option 2
 server(){
-  clear
   bash /opt/GooPlex/install/server/menu.sh
 }
 
 # Option 3
 misc(){
-  clear
   bash /opt/GooPlex/install/misc/menu.sh
-  pause
 }
 
 # Option 4
