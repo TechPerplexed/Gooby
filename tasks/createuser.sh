@@ -6,7 +6,7 @@ FUNCTION="create a new user"
 # Variables
 # ---------
 
-source /opt/GooPlex/install/variables.sh
+source /opt/GooPlex/menu/variables.sh
 
 # Confirmation
 
