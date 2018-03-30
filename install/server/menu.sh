@@ -28,21 +28,21 @@ pause(){
 # Update Ubuntu and Install Vital Services
 vpsupdate (){
   clear
-  bash /opt/GooPlex/install/server/choices/vpsupdate.sh
+  bash /opt/GooPlex/install/server/options/vpsupdate.sh
   pause
 }
 
 # Change Root Password
 rootpw(){
   clear
-  bash /opt/GooPlex/install/server/choices/rootpw.sh
+  bash /opt/GooPlex/install/server/options/rootpw.sh
   pause
 }
 
 # Create Plexuser
 usercreate(){
   clear
-  bash /opt/GooPlex/install/server/usercreate.sh
+  bash /opt/GooPlex/install/server/options/usercreate.sh
   pause
 }
 
