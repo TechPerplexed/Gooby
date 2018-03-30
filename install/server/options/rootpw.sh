@@ -2,11 +2,9 @@
 
 function="change the root password"
 
-#!/bin/bash
-
-# ----------------
-# Define variables
-# ----------------
+# ------------
+# Begin script
+# ------------
 
 STD='\033[0m'
 RED='\033[00;31m'
@@ -22,9 +20,9 @@ echo ""
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
 
-# --------------------
-# Main script function
-# --------------------
+# -----------
+# Main script
+# -----------
 
 # Change password
 
