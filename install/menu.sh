@@ -13,7 +13,7 @@ clear
 # Menu Options
 # ------------
 
-# Prepare Server
+# Maintain Server
 server(){
   bash /opt/GooPlex/install/server/menu.sh
 }
@@ -50,10 +50,10 @@ show_menus() {
   echo " $FUNCTION"
   echo "----------------------------------------"
   echo ""
-  echo -e "${GRN}1.${STD} Prepare Server"
-  echo -e "${GRN}2.${STD} Install Apps"
-  echo -e "${GRN}3.${STD} Additional Options"
-  echo -e "${YLW}4.${STD} Exit $function"
+  echo -e "${GRN}A${STD} - Maintain Server"
+  echo -e "${GRN}B${STD} - Install Apps"
+  echo -e "${GRN}C${STD} - Additional Options"
+  echo -e "${YLW}Q${STD} - Quit/exit $FUNCTION"
   echo ""
 }
 
@@ -65,10 +65,10 @@ read_options(){
   local choice
     read -p "Choose option: " choice
     case $choice in
-      1) server ;;
-      2) apps ;;
-      3) misc ;;
-      4) quit ;;
+      [Aa]) server ;;
+      [Bb]) apps ;;
+      [Cc]) misc ;;
+      [Qq]) quit ;;
       *) echo -e "${RED}Please select a valid option${STD}" && sleep 2
     esac
 }
