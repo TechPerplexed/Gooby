@@ -46,8 +46,8 @@ misc(){
   pause
 }
 
-# Return to main menu
-main(){
+# Future use
+test(){
   clear
   bash /opt/GooPlex/install/menu.sh
   pause
@@ -61,7 +61,7 @@ quit(){
   echo " Returning to the main menu... "
   echo "-------------------------------"
   echo ""
-  exit 1
+  exit 0
 }
 
 # Function to display menus
