@@ -11,7 +11,7 @@ clear
 
 # Explanation
 
-echo -e "This update only needs to be performed ${CYAN}once${STD}"
+echo -e "This update only needs to be performed ${WHITE}once${STD}!"
 echo ""
 
 # Confirmation
@@ -27,7 +27,6 @@ then
 # -----------
 
 echo "Soon"
-PAUSE
 
 # ----------
 # Finalizing
@@ -38,3 +37,5 @@ else
   echo -e "You chose ${YELLOW}not${STD} to $FUNCTION"
 
 fi
+
+PAUSE
