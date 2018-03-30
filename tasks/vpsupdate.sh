@@ -6,7 +6,7 @@ FUNCTION="update VPS and prepare server"
 # Variables
 # ---------
 
-source /opt/GooPlex/install/variables.sh
+source /opt/GooPlex/menus/variables.sh
 clear
 
 # Explanation
