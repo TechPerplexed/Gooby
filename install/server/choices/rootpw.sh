@@ -11,10 +11,6 @@ RED='\033[00;31m'
 GRN='\033[00;32m'
 YLW='\033[00;33m'
 
-pause(){
-  read -p "Press [Enter] key to return to the menu..." fackEnterKey
-}
-
 # Confirm
 
 clear
