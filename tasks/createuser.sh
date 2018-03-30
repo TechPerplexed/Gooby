@@ -33,7 +33,7 @@ echo ""
 
 read -e -p "Your preferred username: " -i "plexuser" plexuser
 
-adduser $plexuser
+adduser -s $plexuser
 
 usermod -a -G sudo $plexuser
 echo -e "$plexuser\tALL=(ALL)\tNOPASSWD:ALL" > /etc/sudoers.d/$plexuser
@@ -48,3 +48,5 @@ else
   echo -e "You chose ${YELLOW}not${STD} to $FUNCTION"
 
 fi
+
+PAUSE
