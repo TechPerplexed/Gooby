@@ -15,7 +15,7 @@ clear
 
 # Rclone
 RCLONE(){
-  bash /opt/GooPlex/menus/errorpage.sh
+  bash /opt/GooPlex/tasks/apps/rclone.sh
 }
 
 # Plex
