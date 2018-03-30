@@ -12,14 +12,10 @@ source /opt/GooPlex/menus/variables.sh
 
 clear
 
-REBOOT(){
-  echo " This installation requires you to reboot before proceeding! "
-  echo ""
-
-  read -e -p "Reboot now? (Y/n) " -i "Y" choice
-
+echo " This installation requires you to reboot before proceeding! "
+echo ""
+read -e -p "Reboot now? (Y/n) " -i "Y" choice
   case "$choice" in 
     y|Y ) sudo reboot;;
     * ) echo "You will need to reboot manually!";;
-esac
-}
+  esac
