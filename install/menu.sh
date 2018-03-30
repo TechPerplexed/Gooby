@@ -1,23 +1,17 @@
 #!/bin/bash
 
-# ----------------
-# Define variables
-# ----------------
+FUNCTION="GooPlex Main Menu"
 
-function="GooPlex Main Menu"
+# ---------
+# Variables
+# ---------
 
-STD='\033[0m'
-RED='\033[00;31m'
-GRN='\033[00;32m'
-YLW='\033[00;33m'
-
-# --------------------
-# Main script function
-# --------------------
-
+source /opt/GooPlex/install/variables.sh
 clear
 
-# Installing
+# ------------
+# Menu Options
+# ------------
 
 # Prepare Server
 server(){
@@ -45,7 +39,10 @@ quit(){
   exit
 }
 
-# Function to display menus
+# ------------
+# Display menu
+# ------------
+
 show_menus() {
   clear
   echo ""
@@ -60,7 +57,10 @@ show_menus() {
   echo ""
 }
 
-# Read input from the keyboard and take a action
+# ------------
+# Read Choices
+# ------------
+
 read_options(){
   local choice
     read -p "Choose option: " choice
