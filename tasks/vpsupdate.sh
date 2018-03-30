@@ -11,7 +11,8 @@ clear
 
 # Explanation
 
-echo -e "This update only needs to be performed ${WHITE}once${STD}!"
+echo -e "This will update the server with the latest patches, set the time zone and
+echo -e "${WHITE}Optional:${STD} change the root password."
 echo ""
 
 # Confirmation
