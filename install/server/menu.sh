@@ -83,7 +83,7 @@ show_menus() {
 # Read input from the keyboard and take a action
 read_options(){
   local choice
-    read -p "Choose option [ 1 - 4 ] " choice
+    read -p "Choose option: " choice
     case $choice in
       1) updatesvr ;;
       2) rootpw ;;
