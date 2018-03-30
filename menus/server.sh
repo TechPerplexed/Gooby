@@ -15,12 +15,12 @@ clear
 
 # Prepare Server
 SERVER(){
-  bash /opt/GooPlex/install/vpsupdate.sh
+  bash /opt/GooPlex/tasks/vpsupdate.sh
 }
 
 # Create New User
 USER(){
-  bash /opt/GooPlex/install/createuser.sh
+  bash /opt/GooPlex/tasks/createuser.sh
 }
 
 # Additional Options
