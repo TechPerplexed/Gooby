@@ -45,16 +45,16 @@ QUIT(){
 
 show_menus() {
   clear
-  echo ""
-  echo "----------------------------------------"
-  echo " $FUNCTION"
-  echo "----------------------------------------"
-  echo ""
-  echo -e "${GRN}A${STD} - Prepare Server"
-  echo -e "${GRN}B${STD} - Create New User"
-  echo -e "${GRN}C${STD} - Additional Options"
-  echo -e "${YLW}Q${STD} - Exit $FUNCTION"
-  echo ""
+  echo -e "${YELLOW}"
+  echo -e "-------------------------------"
+  echo -e " $FUNCTION "
+  echo -e "-------------------------------"
+  echo -e " ${STD}"
+  echo -e " ${GRN}A${STD} - Prepare Server"
+  echo -e " ${GRN}B${STD} - Create New User"
+  echo -e " ${GRN}C${STD} - Additional Options"
+  echo -e " ${YLW}Q${STD} - Exit $FUNCTION"
+  echo -e ""
 }
 
 # ------------
