@@ -24,6 +24,6 @@ WHITE=$(echo -en '\033[01;37m')
 
 PAUSE(){
   echo ""
-  read -p "Press [Enter] key to return to the menu..." fackEnterKey
+  read -p "All done! Press [Enter] key to return to the menu..." fackEnterKey
   echo ""
 }
