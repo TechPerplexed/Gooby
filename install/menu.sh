@@ -19,22 +19,22 @@ clear
 
 # Installing
 
-# Option 1
-apps(){
-  bash /opt/GooPlex/install/apps/menu.sh
-}
-
-# Option 2
+# Prepare Server
 server(){
   bash /opt/GooPlex/install/server/menu.sh
 }
 
-# Option 3
+# Install Apps
+apps(){
+  bash /opt/GooPlex/install/apps/menu.sh
+}
+
+# Additional Options
 misc(){
   bash /opt/GooPlex/install/misc/menu.sh
 }
 
-# Option 4
+# Exit
 quit(){
   clear
   echo ""
@@ -53,9 +53,9 @@ show_menus() {
   echo " $function "
   echo "---------------------------------------------"
   echo ""
-  echo -e "${GRN}1.${STD} Install and maintain Apps"
-  echo -e "${GRN}2.${STD} Server maintenance"
-  echo -e "${GRN}3.${STD} Additional options"
+  echo -e "${GRN}1.${STD} Prepare Server"
+  echo -e "${GRN}2.${STD} Install Apps"
+  echo -e "${GRN}3.${STD} Additional Options"
   echo -e "${YLW}4.${STD} Exit $function"
   echo ""
 }
@@ -65,8 +65,8 @@ read_options(){
   local choice
     read -p "Choose option: " choice
     case $choice in
-      1) apps ;;
-      2) server ;;
+      1) server ;;
+      2) apps ;;
       3) misc ;;
       4) quit ;;
       *) echo -e "${RED}Please select a valid option${STD}" && sleep 2
