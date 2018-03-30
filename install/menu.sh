@@ -53,7 +53,7 @@ show_menus() {
   echo -e "${GRN}A${STD} - Maintain Server"
   echo -e "${GRN}B${STD} - Install Apps"
   echo -e "${GRN}C${STD} - Additional Options"
-  echo -e "${YLW}Q${STD} - Quit/exit $FUNCTION"
+  echo -e "${YLW}Q${STD} - Quit/Exit $FUNCTION"
   echo ""
 }
 
