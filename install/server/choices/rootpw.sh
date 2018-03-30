@@ -48,8 +48,7 @@ then
 else
 
   echo "You chose not to $function"
-  pause
 
 fi
 
-bash /opt/GooPlex/install/server/menu.sh
+pause
