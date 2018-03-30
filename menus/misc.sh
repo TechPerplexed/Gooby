@@ -18,16 +18,6 @@ SERVER(){
   bash /opt/GooPlex/install/update.sh
 }
 
-# Coming soon
-MISC1(){
-  bash /opt/GooPlex/menus/errorpage.sh
-}
-
-# Additional Options
-MISC2(){
-  bash /opt/GooPlex/menus/errorpage.sh
-}
-
 # Exit
 QUIT(){
   exit
@@ -44,9 +34,7 @@ show_menus() {
   echo -e " $FUNCTION "
   echo -e "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
   echo -e " ${STD}"
-  echo -e " ${CYAN}A${STD} - Update GooPlex"
-  echo -e " ${CYAN}B${STD} - Coming Soon"
-  echo -e " ${CYAN}C${STD} - Coming Soon"
+  echo -e " ${CYAN}A${STD} - Update GooPlex to the latest version"
   echo -e " ${LRED}Z${STD} - Exit $FUNCTION"
   echo -e ""
 }
