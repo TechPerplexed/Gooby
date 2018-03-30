@@ -1,6 +1,6 @@
 #!/bin/bash
 
-FUNCTION="change the root password"
+FUNCTION="change a new user"
 
 # ---------
 # Variables
@@ -24,14 +24,20 @@ then
 # Explanation
 
 clear
-echo -e "Create a ${CYAN}very strong${STD} root password"
-echo -e "The best way is to use a ${CYAN}password generator${STD}"
-echo -e "Then make sure to store your password in a ${CYAN}safe place${STD}"
+echo -e "Creating the user to do all ${CYAN}daily tasks${STD}"
 echo ""
 
 # Execution
 
-sudo -s passwd
+# Create user
+
+read -e -p "Your preferred username: " -i "plexuser" plexuser
+
+adduser $plexuser
+
+usermod -a -G sudo $plexuser
+echo -e "$plexuser\tALL=(ALL)\tNOPASSWD:ALL" > /etc/sudoers.d/$plexuser
+chmod 0440 /etc/sudoers.d/$plexuser
 
 # ----------
 # Finalizing
