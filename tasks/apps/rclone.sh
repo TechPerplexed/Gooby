@@ -31,7 +31,7 @@ echo ""
 
 cd /tmp
 
-read -e -p "Choose "B" if you want to install the beta version: " -i "" choice
+read -e -p "Release (R) or Beta installation (B)? " -i "R" choice
 
 case "$choice" in 
   b|B ) curl https://rclone.org/install.sh | sudo bash -s beta ;;
