@@ -1,19 +1,17 @@
 #!/bin/bash
 
-function="change the root password"
+FUNCTION="change the root password"
 
-#!/bin/bash
+# ---------
+# Variables
+# ---------
 
-# ----------------
-# Define variables
-# ----------------
-
-source /opt/GooPlex/install/meta/colors.sh
+source /opt/GooPlex/install/variables.sh
 
 # Confirmation
 
 clear
-read -p "Are you sure you want to $function (y/N)? " -n 1 -r
+read -p "Are you sure you want to $FUNCTION (y/N)? " -n 1 -r
 echo ""
 
 if [[ $REPLY =~ ^[Yy]$ ]]
@@ -26,9 +24,9 @@ then
 # Explanation
 
 clear
-echo -e "Create a ${GREEN}very strong${STD} root password"
+echo -e "Create a ${CYAN}very strong${STD} root password"
 echo -e "The best way is to use a ${CYAN}password generator${STD}"
-echo -e "Then make sure to store your password in a ${RED}safe place${STD}"
+echo -e "Then make sure to store your password in a ${CYAN}safe place${STD}"
 echo ""
 
 # Execution
@@ -41,6 +39,6 @@ sudo -s passwd
 
 else
 
-  echo -e "You chose ${YELLOW}not${STD} to $function"
+  echo -e "You chose ${YELLOW}not${STD} to $FUNCTION"
 
 fi
