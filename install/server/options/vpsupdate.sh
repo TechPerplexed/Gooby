@@ -27,6 +27,7 @@ then
 # -----------
 
 echo "Soon"
+PAUSE
 
 # ----------
 # Finalizing
