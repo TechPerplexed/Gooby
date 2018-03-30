@@ -44,10 +44,10 @@ show_menus() {
   echo -e " $FUNCTION "
   echo -e "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
   echo -e " ${STD}"
-  echo -e " ${GRN}A${STD} - Update GooPlex"
-  echo -e " ${GRN}B${STD} - Coming Soon"
-  echo -e " ${GRN}C${STD} - Coming Soon"
-  echo -e " ${YLW}Z${STD} - Exit $FUNCTION"
+  echo -e " ${GREN}A${STD} - Update GooPlex"
+  echo -e " ${GREN}B${STD} - Coming Soon"
+  echo -e " ${GREN}C${STD} - Coming Soon"
+  echo -e " ${YELLOW}Z${STD} - Exit $FUNCTION"
   echo -e ""
 }
 
