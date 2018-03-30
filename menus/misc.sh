@@ -47,7 +47,7 @@ show_menus() {
   echo -e " ${GRN}A${STD} - Update GooPlex"
   echo -e " ${GRN}B${STD} - Coming Soon"
   echo -e " ${GRN}C${STD} - Coming Soon"
-  echo -e " ${YLW}Q${STD} - Exit $FUNCTION"
+  echo -e " ${YLW}Z${STD} - Exit $FUNCTION"
   echo -e ""
 }
 
@@ -62,7 +62,7 @@ read_options(){
       [Aa]) SERVER ;;
       [Bb]) MISC1 ;;
       [Cc]) MISC2 ;;
-      [Qq]) QUIT ;;
+      [Zz]) QUIT ;;
       *) echo -e "${RED}Please select a valid option${STD}" && sleep 2
     esac
 }
