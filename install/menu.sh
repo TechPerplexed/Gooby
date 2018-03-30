@@ -45,16 +45,16 @@ quit(){
 
 show_menus() {
   clear
-  echo -e "${GREEN}"
-  echo -e "-------------------------------"
+  echo -e " ${GREEN}"
+  echo -e "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
   echo -e " $FUNCTION "
-  echo -e "-------------------------------"
-  echo -e "${STD}"
-  echo -e "${GRN}A${STD} - Maintain Server"
-  echo -e "${GRN}B${STD} - Install Apps"
-  echo -e "${GRN}C${STD} - Additional Options"
-  echo -e "${YLW}Q${STD} - Quit $FUNCTION"
-  echo ""
+  echo -e "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+  echo -e " ${STD}"
+  echo -e " ${GRN}A${STD} - Maintain Server"
+  echo -e " ${GRN}B${STD} - Install Apps"
+  echo -e " ${GRN}C${STD} - Additional Options"
+  echo -e " ${YLW}Q${STD} - Quit $FUNCTION"
+  echo -e ""
 }
 
 # ------------
