@@ -4,7 +4,7 @@
 # Define variables
 # ----------------
 
-function="Server Maintenance"
+function="Prepare Server"
 
 STD='\033[0m'
 RED='\033[00;31m'
@@ -25,24 +25,24 @@ pause(){
 
 # Installing
 
-# Install and maintain Apps
-updatesvr (){
+# Update Ubuntu and Install Vital Services
+vpsupdate (){
   clear
-  bash /opt/GooPlex/install/server/choices/updatesvr.sh
+  bash /opt/GooPlex/install/server/choices/vpsupdate.sh
   pause
 }
 
-# Update Ubuntu
+# Change Root Password
 rootpw(){
   clear
   bash /opt/GooPlex/install/server/choices/rootpw.sh
   pause
 }
 
-# Install vital apps
-misc(){
+# Create Plexuser
+usercreate(){
   clear
-  bash /opt/GooPlex/install/server/vitalapps.sh
+  bash /opt/GooPlex/install/server/usercreate.sh
   pause
 }
 
@@ -72,9 +72,9 @@ show_menus() {
   echo " $function "
   echo "---------------------------------------------"
   echo ""
-  echo -e "${GRN}1.${STD} Install and maintain Apps"
-  echo -e "${GRN}2.${STD} Server maintenance"
-  echo -e "${GRN}3.${STD} Additional options"
+  echo -e "${GRN}1.${STD} Update Ubuntu and Install Vital Services"
+  echo -e "${GRN}2.${STD} Change Root Password"
+  echo -e "${GRN}3.${STD} Create Plexuser"
   echo -e "${GRN}4.${STD} Future"
   echo -e "${YLW}5.${STD} Exit $function"
   echo ""
@@ -85,9 +85,9 @@ read_options(){
   local choice
     read -p "Choose option: " choice
     case $choice in
-      1) updatesvr ;;
+      1) vpsupdate ;;
       2) rootpw ;;
-      3) misc ;;
+      3) usercreate ;;
       4) future ;;
       5) main ;;
       *) echo -e "${RED}Please select a valid option${STD}" && sleep 2
