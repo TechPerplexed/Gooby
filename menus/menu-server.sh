@@ -15,17 +15,17 @@ clear
 
 # Prepare Server
 SERVER(){
-  bash /opt/GooPlex/install/server/options/vpsupdate.sh
+  bash /opt/GooPlex/install/vpsupdate.sh
 }
 
 # Create New User
 USER(){
-  bash /opt/GooPlex/install/server/options/createuser.sh
+  bash /opt/GooPlex/install/createuser.sh
 }
 
 # Additional Options
 MISC(){
-  bash /opt/GooPlex/install/errorpage.sh
+  bash /opt/GooPlex/menus/errorpage.sh
 }
 
 # Exit
