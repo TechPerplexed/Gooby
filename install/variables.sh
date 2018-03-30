@@ -23,5 +23,7 @@ WHITE=$(echo -en '\033[01;37m')
 # Define pause button
 
 PAUSE(){
+  echo ""
   read -p "Press [Enter] key to return to the menu..." fackEnterKey
+  echo ""
 }
