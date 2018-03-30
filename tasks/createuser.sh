@@ -31,15 +31,13 @@ echo ""
 
 # Create user
 
-sudo -s
-
 read -e -p "Your preferred username: " -i "plexuser" plexuser
 
-adduser $plexuser
+sudo -s adduser $plexuser
 
-usermod -a -G sudo $plexuser
-echo -e "$plexuser\tALL=(ALL)\tNOPASSWD:ALL" > /etc/sudoers.d/$plexuser
-chmod 0440 /etc/sudoers.d/$plexuser
+sudo -s usermod -a -G sudo $plexuser
+sudo -s echo -e "$plexuser\tALL=(ALL)\tNOPASSWD:ALL" > /etc/sudoers.d/$plexuser
+sudo -s chmod 0440 /etc/sudoers.d/$plexuser
 
 # ----------
 # Finalizing
