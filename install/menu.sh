@@ -36,7 +36,6 @@ apps(){
 server(){
   clear
   bash /opt/GooPlex/install/server/menu.sh
-  pause
 }
 
 # Option 3
