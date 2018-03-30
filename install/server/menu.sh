@@ -49,7 +49,7 @@ misc(){
 # Future use
 test(){
   clear
-  bash /opt/GooPlex/install/menu.sh
+  bash /opt/GooPlex/install/server/menu.sh
   pause
 }
 
@@ -75,7 +75,7 @@ show_menus() {
   echo -e "${GRN}1.${STD} Install and maintain Apps"
   echo -e "${GRN}2.${STD} Server maintenance"
   echo -e "${GRN}3.${STD} Additional options"
-  echo -e "${YLW}4.${STD} Return to main menu"
+  echo -e "${GRN}4.${STD} Future"
   echo -e "${YLW}5.${STD} Exit $function"
   echo ""
 }
@@ -88,7 +88,7 @@ read_options(){
       1) updatesvr ;;
       2) rootpw ;;
       3) misc ;;
-      4) main ;;
+      4) test ;;
       5) quit ;;
       *) echo -e "${RED}Please select a valid option${STD}" && sleep 2
     esac
