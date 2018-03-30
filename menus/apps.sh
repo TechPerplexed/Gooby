@@ -20,7 +20,7 @@ RCLONE(){
 
 # Plex
 PLEX(){
-  bash /opt/GooPlex/menus/errorpage.sh
+  bash /opt/GooPlex/tasks/apps/plex.sh
 }
 
 # Tautulli
