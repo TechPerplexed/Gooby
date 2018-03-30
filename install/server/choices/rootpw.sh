@@ -52,4 +52,4 @@ else
 
 fi
 
-bash /opt/GooPlex/server/menu.sh
+bash /opt/GooPlex/install/server/menu.sh
