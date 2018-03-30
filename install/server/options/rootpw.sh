@@ -2,11 +2,22 @@
 
 function="change the root password"
 
-# ------------
-# Begin script
-# ------------
+#!/bin/bash
 
-source /opt/GooPlex/install/meta/instbeg.sh
+# ----------------
+# Define variables
+# ----------------
+
+source /opt/GooPlex/install/meta/colors.sh
+
+# Confirmation
+
+clear
+read -p "Are you sure you want to $function (y/N)? " -n 1 -r
+echo ""
+
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
 
 # -----------
 # Main script
@@ -15,8 +26,8 @@ source /opt/GooPlex/install/meta/instbeg.sh
 # Explanation
 
 clear
-echo -e "Create a ${GRN}very strong${STD} root password"
-echo -e "The best way is to use a ${BLU}password generator${STD}"
+echo -e "Create a ${GREEN}very strong${STD} root password"
+echo -e "The best way is to use a ${CYAN}password generator${STD}"
 echo -e "Then make sure to store your password in a ${RED}safe place${STD}"
 echo ""
 
@@ -30,6 +41,6 @@ sudo -s passwd
 
 else
 
-  echo -e "You chose ${YLW}1not${STD} to $function"
+  echo -e "You chose ${YELLOW}not${STD} to $function"
 
 fi
