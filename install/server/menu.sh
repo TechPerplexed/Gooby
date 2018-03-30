@@ -25,7 +25,7 @@ USER(){
 
 # Additional Options
 MISC(){
-  bash /opt/GooPlex/install/misc/menu.sh
+  bash /opt/GooPlex/install/errorpage.sh
 }
 
 # Exit
@@ -53,7 +53,7 @@ show_menus() {
   echo -e "${GRN}A${STD} - Prepare Server"
   echo -e "${GRN}B${STD} - Create New User"
   echo -e "${GRN}C${STD} - Additional Options"
-  echo -e "${YLW}Q${STD} - Quit/exit $FUNCTION"
+  echo -e "${YLW}Q${STD} - Quit/Exit $FUNCTION"
   echo ""
 }
 
