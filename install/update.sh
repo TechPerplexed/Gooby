@@ -2,11 +2,6 @@
 
 FUNCTION="Update GooPlex"
 
-
-#!/bin/bash
-
-FUNCTION="update VPS and prepare server"
-
 # ---------
 # Variables
 # ---------
