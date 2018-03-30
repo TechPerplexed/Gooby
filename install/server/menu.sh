@@ -54,14 +54,14 @@ future(){
 }
 
 # Exit menu
-quit(){
+main(){
   clear
   echo ""
   echo "-------------------------------"
   echo " Returning to the main menu... "
   echo "-------------------------------"
   echo ""
-  exit 0
+  exit
 }
 
 # Function to display menus
@@ -89,7 +89,7 @@ read_options(){
       2) rootpw ;;
       3) misc ;;
       4) future ;;
-      5) quit ;;
+      5) main ;;
       *) echo -e "${RED}Please select a valid option${STD}" && sleep 2
     esac
 }
