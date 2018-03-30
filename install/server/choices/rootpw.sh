@@ -50,5 +50,3 @@ else
   echo "You chose not to $function"
 
 fi
-
-pause
