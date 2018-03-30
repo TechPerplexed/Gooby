@@ -47,9 +47,9 @@ misc(){
 }
 
 # Future use
-test(){
+future(){
   clear
-  bash /opt/GooPlex/install/server/menu.sh
+  echo "For future use"
   pause
 }
 
@@ -88,7 +88,7 @@ read_options(){
       1) updatesvr ;;
       2) rootpw ;;
       3) misc ;;
-      4) test ;;
+      4) future ;;
       5) quit ;;
       *) echo -e "${RED}Please select a valid option${STD}" && sleep 2
     esac
