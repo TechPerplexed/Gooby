@@ -42,7 +42,7 @@ server(){
 # Option 3
 misc(){
   clear
-  bash /opt/GooPlex/install/server/menu.sh
+  bash /opt/GooPlex/install/misc/menu.sh
   pause
 }
 
@@ -54,7 +54,7 @@ quit(){
   echo " Visit the menu any time by typing 'gooplex' "
   echo "---------------------------------------------"
   echo ""
-  exit 0
+  exit
 }
 
 # Function to display menus
@@ -75,7 +75,7 @@ show_menus() {
 # Read input from the keyboard and take a action
 read_options(){
   local choice
-    read -p "Choose option [ 1 - 4 ] " choice
+    read -p "Choose option: " choice
     case $choice in
       1) apps ;;
       2) server ;;
