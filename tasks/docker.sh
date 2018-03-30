@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sudo apt-get install \
+sudo apt-get -y install \
     apt-transport-https \
     acl \
     ca-certificates \
