@@ -110,6 +110,7 @@ echo ""
 
 else
 
+  echo ""
   echo -e "You chose ${YELLOW}not${STD} to $FUNCTION"
 
 fi
