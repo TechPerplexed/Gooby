@@ -1,7 +1,7 @@
 #!/bin/bash
 #
-# ---------
-# Open Menu
-# ---------
+# --------------
+# Open Main Menu
+# --------------
 
-sudo bash /opt/GooPlex/menus/menu-main.sh
+sudo bash /opt/GooPlex/menus/main.sh
