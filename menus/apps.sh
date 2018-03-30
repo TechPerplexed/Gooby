@@ -55,12 +55,6 @@ ORGANIZR(){
 
 # Exit
 QUIT(){
-  clear
-  echo ""
-  echo "---------------------------------------------"
-  echo " Visit the menu any time by typing 'gooplex' "
-  echo "---------------------------------------------"
-  echo ""
   exit
 }
 
