@@ -1,12 +1,12 @@
 #!/bin/bash
 
-FUNCTION="GooPlex Main Menu"
+FUNCTION="Main Menu"
 
 # ---------
 # Variables
 # ---------
 
-source /opt/GooPlex/install/variables.sh
+source /opt/GooPlex/menus/variables.sh
 clear
 
 # ------------
@@ -15,26 +15,26 @@ clear
 
 # Maintain Server
 server(){
-  bash /opt/GooPlex/install/server/menu.sh
+  bash /opt/GooPlex/menus/server.sh
 }
 
 # Install Apps
 apps(){
-  bash /opt/GooPlex/install/apps/menu.sh
+  bash /opt/GooPlex/menus/apps.sh
 }
 
 # Additional Options
 misc(){
-  bash /opt/GooPlex/install/misc/menu.sh
+  bash /opt/GooPlex/menus/misc.sh
 }
 
 # Exit
 quit(){
   clear
   echo ""
-  echo "---------------------------------------------"
-  echo " Visit the menu any time by typing 'gooplex' "
-  echo "---------------------------------------------"
+  echo "----------------------------------------------"
+  echo " Visit this menu any time by typing 'gooplex' "
+  echo "----------------------------------------------"
   echo ""
   exit
 }
