@@ -50,6 +50,8 @@ su $PU
 else
 
   echo -e "You chose ${YELLOW}not${STD} to $FUNCTION"
+  echo -e "Exiting..."
+  exit
 
 fi
 
