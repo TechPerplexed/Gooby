@@ -16,6 +16,7 @@ clear
 cd ~
 sudo rm -r /opt/GooPlex
 sudo git clone https://github.com/TechPerplexed/GooPlex /opt/GooPlex
+sudo chmod +x /opt/GooPlex/install/*
 sudo rsync -a /opt/GooPlex/install/gooplex /bin
 sudo chmod 755 /bin/gooplex
 
