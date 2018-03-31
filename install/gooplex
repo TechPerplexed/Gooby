@@ -12,6 +12,6 @@ then
 
 else
 
-  echo "test"
+  sudo bash /opt/GooPlex/menus/main.sh
 
 fi
