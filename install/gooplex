@@ -4,7 +4,7 @@
 # Create user or open menu
 # ------------------------
 
-if [ $(whoami) = “plexuser” ]
+if [ $(whoami) = plexuser ]
 
 then
 
