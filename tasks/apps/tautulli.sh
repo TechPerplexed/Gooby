@@ -27,7 +27,7 @@ sudo ufw allow 8181
 # Dependencies
 # ------------
 
-# None
+sudo apt-get upgrade -y && sudo apt-get upgrade -y
 
 # -----------
 # Main script
