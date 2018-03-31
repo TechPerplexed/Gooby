@@ -34,8 +34,8 @@ show_menus() {
   echo -e " $FUNCTION "
   echo -e "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
   echo -e " ${STD}"
-  echo -e " ${CYAN}A${STD} - Update GooPlex to the latest version"
-  echo -e " ${LRED}Z${STD} - Exit $FUNCTION"
+  echo -e " ${CYAN}A${STD} - Update GooPlex"
+  echo -e " ${WHITE}Z${STD} - EXIT to Main Menu"
   echo -e ""
 }
 
