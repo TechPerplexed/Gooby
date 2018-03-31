@@ -41,6 +41,7 @@ sudo -s apt-get -y install \
 
 cd /opt/
 sudo git clone https://github.com/Tautulli/Tautulli.git
+sudo chown plexuser:plexuser -R /opt/Tautulli
 
 # -------------------
 # Installing Services
