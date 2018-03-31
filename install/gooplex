@@ -4,14 +4,15 @@
 # Open menu or create user
 # ------------------------
 
-if [ $(whoami) = plexuser ]
 
+if [ "$(whoami)" != "plexuser" ];
 then
 
-  bash /opt/GooPlex/menus/main.sh
+  bash /opt/GooPlex/install/createuser.sh
+  exit
 
 else
 
-  bash /opt/GooPlex/install/createuser.sh
+  bash /opt/GooPlex/menus/main.sh
 
 fi
