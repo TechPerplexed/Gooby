@@ -15,17 +15,17 @@ clear
 
 # Maintain Server
 server(){
-  bash /opt/GooPlex/menus/server.sh
+  /opt/GooPlex/menus/server.sh
 }
 
 # Install Apps
 apps(){
-  bash /opt/GooPlex/menus/apps.sh
+  /opt/GooPlex/menus/apps.sh
 }
 
 # Additional Options
 misc(){
-  bash /opt/GooPlex/menus/misc.sh
+  /opt/GooPlex/menus/misc.sh
 }
 
 # Exit
