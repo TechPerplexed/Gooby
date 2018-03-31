@@ -49,6 +49,28 @@ sudo apt-get -y update
 clear
 sudo apt-get -y install nzbdrone
 
+# -------------------
+# Installing Services
+# -------------------
+
+if [ -e "/etc/systemd/system/sonarr.service" ]
+
+then
+
+echo "Service already configured, skipping"
+
+else
+
+sudo rsync -a /opt/GooPlex/scripts/etc/systemd/system/rclone.service /etc/systemd/system/sonarr.service
+
+sudo systemctl enable sonarr.service
+
+sudo systemctl daemon-reload
+
+sudo systemctl start sonarr.service
+
+fi
+
 # ----------
 # Finalizing
 # ----------
