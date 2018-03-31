@@ -15,7 +15,7 @@ clear
 
 # Update GooPlex
 SERVER(){
-  bash /opt/GooPlex/install/update.sh
+  /opt/GooPlex/install/update.sh
 }
 
 # Exit
