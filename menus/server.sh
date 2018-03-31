@@ -35,7 +35,7 @@ show_menus() {
   echo -e "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
   echo -e " ${STD}"
   echo -e " ${YELLOW}A${STD} - Update Server With Latest Patches"
-  echo -e " ${LRED}Z${STD} - Exit $FUNCTION"
+  echo -e " ${WHITE}Z${STD} - EXIT to Main Menu"
   echo -e ""
 }
 
