@@ -53,6 +53,28 @@ wget $radarr
 
 sudo tar -xf Radarr* -C /opt/
 
+# -------------------
+# Installing Services
+# -------------------
+
+if [ -e "/etc/systemd/system/radarr.service" ]
+
+then
+
+echo "Service already configured, skipping"
+
+else
+
+sudo rsync -a /opt/GooPlex/scripts/etc/systemd/system/rclone.service /etc/systemd/system/radarr.service
+
+sudo systemctl enable radarr.service
+
+sudo systemctl daemon-reload
+
+sudo systemctl start radarr.service
+
+fi
+
 # ----------
 # Finalizing
 # ----------
