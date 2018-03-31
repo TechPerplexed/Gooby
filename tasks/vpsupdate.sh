@@ -32,8 +32,7 @@ then
 
 # Initial update
 
-sudo apt-get -y --force-yes update
-sudo apt-get -y --force-yes upgrade
+sudo apt-get upgrade -y && sudo apt-get upgrade -y
 
 # Set language
 
