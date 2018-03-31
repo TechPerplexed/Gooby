@@ -29,6 +29,11 @@ sudo ufw allow 80
 
 sudo apt-get upgrade -y && sudo apt-get upgrade -y
 
+sudo apt-get -y install \
+  python-pip \
+  denyhosts at sudo software-properties-common
+
+
 # None
 
 # -----------
