@@ -15,42 +15,42 @@ clear
 
 # Rclone
 RCLONE(){
-  /opt/GooPlex/tasks/apps/rclone.sh
+  /opt/GooPlex/install/apps/rclone.sh
 }
 
 # Plex
 PLEX(){
-  /opt/GooPlex/tasks/apps/plex.sh
+  /opt/GooPlex/install/apps/plex.sh
 }
 
 # Tautulli
 TAUTULLI(){
-  /opt/GooPlex/tasks/apps/tautulli.sh
+  /opt/GooPlex/install/apps/tautulli.sh
 }
 
 # Sonarr
 SONARR(){
-  /opt/GooPlex/tasks/apps/sonarr.sh
+  /opt/GooPlex/install/apps/sonarr.sh
 }
 
 # Radarr
 RADARR(){
-  /opt/GooPlex/tasks/apps/radarr.sh
+  /opt/GooPlex/install/apps/radarr.sh
 }
 
 # Deluge
 DELUGE(){
-  /opt/GooPlex/tasks/apps/deluge.sh
+  /opt/GooPlex/install/apps/deluge.sh
 }
 
 # Netdata
 NETDATA(){
-  /opt/GooPlex/tasks/apps/netdata.sh
+  /opt/GooPlex/install/apps/netdata.sh
 }
 
 # Organizr
 ORGANIZR(){
-  /opt/GooPlex/tasks/apps/organizr.sh
+  /opt/GooPlex/install/apps/organizr.sh
 }
 
 # Exit
