@@ -9,7 +9,6 @@ if [ "$(whoami)" != "plexuser" ];
 then
 
   bash /opt/GooPlex/install/createuser.sh
-  exit
 
 else
 
