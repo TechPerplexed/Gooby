@@ -33,9 +33,6 @@ sudo apt-get -y install \
   sqlite3 \
   denyhosts at sudo software-properties-common
 
-
-# None
-
 # -----------
 # Main script
 # -----------
@@ -70,6 +67,24 @@ sudo systemctl daemon-reload
 
 sudo systemctl start deluged.service
 sudo systemctl start deluge-web.service
+
+fi
+
+# ----------------
+# Creating Folders
+# ----------------
+
+if [ -d "/home/plexuser/downloads" ];
+
+then
+
+echo "Download folders already created, skipping"
+
+else
+
+sudo mkdir -p /home/plexuser/downloads/incomplete
+sudo mkdir -p /home/plexuser/downloads/import
+sudo chown -R plexuser:plexuser /home/plexuser
 
 fi
 
