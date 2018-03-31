@@ -53,7 +53,7 @@ show_menus() {
   echo -e " ${GREEN}A${STD} - Maintain Server"
   echo -e " ${GREEN}B${STD} - Install/Update Applications"
   echo -e " ${GREEN}C${STD} - Additional Tasks"
-  echo -e " ${WHITE}Z${STD} - QUIT Main Menu"
+  echo -e " ${LRED}Q${STD} - QUIT Main Menu"
   echo -e ""
 }
 
