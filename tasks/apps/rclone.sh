@@ -23,7 +23,7 @@ then
 
 #!/bin/bash
 
-FUNCTION="install or update Plex"
+FUNCTION="install or update Rclone"
 
 # ---------
 # Variables
@@ -73,6 +73,7 @@ then
 else
 
   cd /tmp
+  sudo apt-get upgrade -y && sudo apt-get upgrade -y
   bash -c "$(wget -qO - https://raw.githubusercontent.com/mrworf/plexupdate/master/extras/installer.sh)"
   cd ~
 
