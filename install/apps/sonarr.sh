@@ -49,6 +49,8 @@ sudo apt-get -y update
 clear
 sudo apt-get -y install nzbdrone
 
+sudo chown -R plexuser:plexuser /opt/NzbDrone
+
 # -------------------
 # Installing Services
 # -------------------
