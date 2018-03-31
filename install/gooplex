@@ -12,6 +12,6 @@ then
 
 else
 
-  sudo bash /opt/GooPlex/menus/main.sh
+  sudo bash /opt/GooPlex/tasks/createuser.sh
 
 fi
