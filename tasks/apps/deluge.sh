@@ -57,8 +57,8 @@ echo "Service already configured, skipping"
 
 else
 
-sudo rsync -a /opt/GooPlex/scripts/etc/systemd/system/rclone.service /etc/systemd/system/deluged.service
-sudo rsync -a /opt/GooPlex/scripts/etc/systemd/system/rclone.service /etc/systemd/system/deluge-web.service
+sudo rsync -a /opt/GooPlex/scripts/services/rclone.service /etc/systemd/system/deluged.service
+sudo rsync -a /opt/GooPlex/scripts/services/rclone.service /etc/systemd/system/deluge-web.service
 
 sudo systemctl enable deluged.service
 sudo systemctl enable deluge-web.service
