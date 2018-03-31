@@ -21,7 +21,7 @@ then
 # Open ports
 # ----------
 
-sudo ufw allow 8181  # Tautulli
+sudo ufw allow 8181
 
 # ------------
 # Dependencies
