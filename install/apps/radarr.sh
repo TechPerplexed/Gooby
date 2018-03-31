@@ -34,6 +34,7 @@ sudo -s apt-get -y install \
   libmono-cil-dev \
   mono-devel \
   mediainfo \
+  sqlite3 \
   denyhosts at sudo software-properties-common
 
 # -----------
