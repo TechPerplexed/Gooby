@@ -48,6 +48,18 @@ sudo apt-get -y install \
   deluge-console \
   denyhosts at sudo software-properties-common
 
+
+sudo rsync -a /opt/GooPlex/scripts/etc/systemd/system/rclone.service /etc/systemd/system/deluged.service
+sudo rsync -a /opt/GooPlex/scripts/etc/systemd/system/rclone.service /etc/systemd/system/deluge-web.service
+
+sudo systemctl enable deluged.service
+sudo systemctl enable deluge-web.service
+
+sudo systemctl daemon-reload
+
+sudo systemctl starr deluged.service
+sudo systemctl start deluge-web.service
+
 # ----------
 # Finalizing
 # ----------
