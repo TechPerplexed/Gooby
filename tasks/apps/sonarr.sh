@@ -61,12 +61,9 @@ echo "Service already configured, skipping"
 
 else
 
-sudo rsync -a /opt/GooPlex/scripts/etc/systemd/system/rclone.service /etc/systemd/system/sonarr.service
-
+sudo rsync -a /opt/GooPlex/scripts/services/sonarr.service /etc/systemd/system/sonarr.service
 sudo systemctl enable sonarr.service
-
 sudo systemctl daemon-reload
-
 sudo systemctl start sonarr.service
 
 fi
