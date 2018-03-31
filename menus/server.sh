@@ -13,7 +13,7 @@ clear
 # Menu Options
 # ------------
 
-# Prepare Server
+# Update Server
 SERVER(){
   bash /opt/GooPlex/tasks/vpsupdate.sh
 }
@@ -34,7 +34,7 @@ show_menus() {
   echo -e " $FUNCTION "
   echo -e "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
   echo -e " ${STD}"
-  echo -e " ${YELLOW}A${STD} - Prepare Server"
+  echo -e " ${YELLOW}A${STD} - Update Server With Latest Patches"
   echo -e " ${LRED}Z${STD} - Exit $FUNCTION"
   echo -e ""
 }
