@@ -38,6 +38,26 @@ sudo apt-get upgrade -y && sudo apt-get upgrade -y
 sudo apt-get upgrade -y && sudo apt-get upgrade -y
 sudo git clone https://github.com/Tautulli/Tautulli.git /opt/Tautulli
 
+# -------------------
+# Installing Services
+# -------------------
+
+if [ -e "/etc/systemd/system/tautulli.service" ]
+
+then
+
+echo "Service already configured, skipping"
+
+else
+
+sudo rsync -a /opt/GooPlex/scripts/etc/systemd/system/rclone.service /etc/systemd/system/tautulli.service
+
+sudo systemctl enable tautulli.service
+
+sudo systemctl daemon-reload
+
+fi
+
 # ----------
 # Finalizing
 # ----------
