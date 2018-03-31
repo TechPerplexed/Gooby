@@ -8,10 +8,10 @@ if [ $(whoami) = plexuser ]
 
 then
 
-  bash /opt/GooPlex/menus/main.sh
+  sudo bash /opt/GooPlex/menus/main.sh
 
 else
 
-  bash /opt/GooPlex/install/createuser.sh
+  sudo bash /opt/GooPlex/install/createuser.sh
 
 fi
