@@ -12,7 +12,6 @@ then
 
 else
 
-  # sudo bash /opt/GooPlex/tasks/createuser.sh
   echo "test"
 
 fi
