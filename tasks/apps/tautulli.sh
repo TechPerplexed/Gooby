@@ -35,10 +35,8 @@ sudo ufw allow 8181  # Tautulli
 
 # Execution
 
-cd /opt/
-clear
-sudo git clone https://github.com/Tautulli/Tautulli.git
-cd ~
+sudo apt-get upgrade -y && sudo apt-get upgrade -y
+sudo git clone https://github.com/Tautulli/Tautulli.git /opt/Tautulli
 
 # ----------
 # Finalizing
