@@ -17,6 +17,18 @@ echo ""
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
 
+# ----------
+# Open ports
+# ----------
+
+sudo ufw allow 32400 # Plex
+
+# ------------
+# Dependencies
+# ------------
+
+# None
+
 # -----------
 # Main script
 # -----------
