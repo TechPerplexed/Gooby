@@ -18,11 +18,6 @@ SERVER(){
   bash /opt/GooPlex/tasks/vpsupdate.sh
 }
 
-# Create New User
-USER(){
-  bash /opt/GooPlex/tasks/createuser.sh
-}
-
 # Exit
 QUIT(){
   exit
@@ -40,7 +35,6 @@ show_menus() {
   echo -e "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
   echo -e " ${STD}"
   echo -e " ${YELLOW}A${STD} - Prepare Server"
-  echo -e " ${YELLOW}B${STD} - Create New User"
   echo -e " ${LRED}Z${STD} - Exit $FUNCTION"
   echo -e ""
 }
@@ -54,8 +48,6 @@ read_options(){
     read -p "Choose option: " choice
     case $choice in
       [Aa]) SERVER ;;
-      [Bb]) USER ;;
-      [Cc]) MISC ;;
       [Zz]) QUIT ;;
       *) echo -e "${RED}Please select a valid option${STD}" && sleep 2
     esac
