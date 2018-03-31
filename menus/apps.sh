@@ -13,11 +13,6 @@ clear
 # Menu Options
 # ------------
 
-# Rclone
-RCLONE(){
-  /opt/GooPlex/install/apps/rclone.sh
-}
-
 # Plex
 PLEX(){
   /opt/GooPlex/install/apps/plex.sh
@@ -53,6 +48,11 @@ ORGANIZR(){
   /opt/GooPlex/install/apps/organizr.sh
 }
 
+# Rclone
+RCLONE(){
+  /opt/GooPlex/install/apps/rclone.sh
+}
+
 # Exit
 QUIT(){
   exit
@@ -69,14 +69,14 @@ show_menus() {
   echo -e " $FUNCTION "
   echo -e "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
   echo -e " ${STD}"
-  echo -e " ${LPURPLE}A${STD} - Rclone"
-  echo -e " ${LPURPLE}B${STD} - Plex"
-  echo -e " ${LPURPLE}C${STD} - Tautulli"
-  echo -e " ${LPURPLE}D${STD} - Sonarr"
-  echo -e " ${LPURPLE}E${STD} - Radarr"
-  echo -e " ${LPURPLE}F${STD} - Deluge"
-  echo -e " ${LPURPLE}G${STD} - Netdata"
-  echo -e " ${LPURPLE}H${STD} - Organizr"
+  echo -e " ${LPURPLE}A${STD} - Plex"
+  echo -e " ${LPURPLE}B${STD} - Tautulli"
+  echo -e " ${LPURPLE}C${STD} - Sonarr"
+  echo -e " ${LPURPLE}D${STD} - Radarr"
+  echo -e " ${LPURPLE}E${STD} - Deluge"
+  echo -e " ${LPURPLE}F${STD} - Netdata"
+  echo -e " ${LPURPLE}G${STD} - Organizr"
+  echo -e " ${LPURPLE}H${STD} - Rclone"
   echo -e " ${LRED}Z${STD} - Exit $FUNCTION"
   echo -e ""
 }
@@ -88,15 +88,15 @@ show_menus() {
 read_options(){
   local choice
     read -p "Choose option: " choice
-    case $choice in
-      [Aa]) RCLONE ;;
-      [Bb]) PLEX ;;
-      [Cc]) TAUTULLI ;;
-      [Dd]) SONARR ;;
-      [Ee]) RADARR ;;
-      [Ff]) DELUGE ;;
-      [Gg]) NETDATA ;;
-      [Hh]) ORGANIZR ;;
+    case $choice in      
+      [Aa]) PLEX ;;
+      [Bb]) TAUTULLI ;;
+      [Cc]) SONARR ;;
+      [Dd]) RADARR ;;
+      [Ee]) DELUGE ;;
+      [Ff]) NETDATA ;;
+      [Gg]) ORGANIZR ;;
+      [Hh]) RCLONE ;;
       [Zz]) QUIT ;;
       *) echo -e "${RED}Please select a valid option${STD}" && sleep 2
     esac
