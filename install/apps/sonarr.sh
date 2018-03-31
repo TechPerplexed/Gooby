@@ -29,7 +29,7 @@ sudo ufw allow 8989
 
 sudo apt-get upgrade -y && sudo apt-get upgrade -y
 
-sudo apt-get -y install \
+sudo -s apt-get -y install \
   libcurl3 \
   libmono-cil-dev \
   mono-devel \
