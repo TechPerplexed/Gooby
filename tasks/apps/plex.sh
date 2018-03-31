@@ -24,12 +24,15 @@ then
 # Explanation
 
 clear
-echo -e "Coming soon"
+echo -e "Please read the options carefully and follow the instructions"
 echo ""
 
 # Execution
 
-source /opt/GooPlex/tasks/reboot.sh
+cd /tmp
+clear
+bash -c "$(wget -qO - https://raw.githubusercontent.com/mrworf/plexupdate/master/extras/installer.sh)"
+cd ~
 
 # ----------
 # Finalizing
