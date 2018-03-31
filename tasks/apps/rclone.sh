@@ -50,7 +50,7 @@ then
 # Dependencies
 # ------------
 
-# None
+sudo apt-get upgrade -y && sudo apt-get upgrade -y
 
 # -----------
 # Main script
@@ -129,12 +129,16 @@ fi
 if [ -e "/etc/systemd/system/rclone.service" ]
 
 then
+
   echo "Service already configured, skipping"
+
 else
-  sudo rsync -a /opt/GooPlex/scripts/etc/systemd/system/rclone.service /etc/systemd/system/rclone.service
+
+  sudo rsync -a /opt/GooPlex/scripts/services/rclone.service /etc/systemd/system/rclone.service
   sudo systemctl enable rclone.service
   sudo systemctl daemon-reload
   source /opt/GooPlex/tasks/reboot.sh
+
 fi
 
 # ----------
