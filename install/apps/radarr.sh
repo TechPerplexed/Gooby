@@ -52,6 +52,7 @@ read -e -p "Paste link to Radarr.verson.linux.tar.gz: " -i "https://github.com/R
 wget $radarr
 
 sudo tar -xf Radarr* -C /opt/
+sudo chown -R plexuser:plexuser /opt/Radarr
 
 # -------------------
 # Installing Services
