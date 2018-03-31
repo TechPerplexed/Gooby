@@ -1,7 +1,20 @@
 #!/bin/bash
 #
 # --------------
-# Open Main Menu
+# Check user and open menu
 # --------------
 
-sudo bash /opt/GooPlex/menus/main.sh
+if [ $(whoami) = “plexuser” ]
+
+then
+
+  sudo bash /opt/GooPlex/menus/main.sh
+
+else
+
+  sudo bash /opt/GooPlex/tasks/createuser.sh
+
+fi
+
+
+
