@@ -77,7 +77,7 @@ show_menus() {
   echo -e " ${LPURPLE}F${STD} - Netdata"
   echo -e " ${LPURPLE}G${STD} - Organizr"
   echo -e " ${LPURPLE}H${STD} - Rclone"
-  echo -e " ${LRED}Z${STD} - Exit $FUNCTION"
+  echo -e " ${WHITE}Z$ - EXIT{STD}"
   echo -e ""
 }
 
