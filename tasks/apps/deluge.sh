@@ -52,7 +52,7 @@ sudo apt-get -y install \
 # Installing Services
 # -------------------
 
-if [ -e "/etc/systemd/system/rclone.service" ]
+if [ -e "/etc/systemd/system/deluged.service" ]
 
 then
 
@@ -60,13 +60,16 @@ echo "Service already configured, skipping"
 
 else
 
-sudo rsync -a /opt/GooPlex/scripts/etc/systemd/system/rclone.service /etc/systemd/system/rclone.service
+sudo rsync -a /opt/GooPlex/scripts/etc/systemd/system/rclone.service /etc/systemd/system/deluged.service
+sudo rsync -a /opt/GooPlex/scripts/etc/systemd/system/rclone.service /etc/systemd/system/deluge-web.service
 
-sudo systemctl enable rclone.service
+sudo systemctl enable deluged.service
+sudo systemctl enable deluge-web.service
 
 sudo systemctl daemon-reload
 
-source /opt/GooPlex/tasks/reboot.sh
+sudo systemctl start deluged.service
+sudo systemctl start deluge-web.service
 
 fi
 
