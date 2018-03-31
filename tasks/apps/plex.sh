@@ -29,7 +29,7 @@ echo ""
 
 # Execution
 
-if [ -d "/var/lib/plexmediaserverx" ]
+if [ -d "/var/lib/plexmediaserver" ];
 
 then
 
