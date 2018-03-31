@@ -56,7 +56,7 @@ fi
 
 # Install apps
 
-sudo apt-get -y install \
+sudo -s apt-get -y install \
   git \
   fail2ban \
   nano \
