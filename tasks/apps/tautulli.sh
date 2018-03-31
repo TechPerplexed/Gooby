@@ -1,6 +1,6 @@
 #!/bin/bash
 
-FUNCTION="install or update Plex"
+FUNCTION="install or update Tautulli"
 
 # ---------
 # Variables
@@ -33,27 +33,12 @@ sudo ufw allow 8181  # Tautulli
 # Main script
 # -----------
 
-# Explanation
-
-clear
-echo -e "Please read the options carefully and follow the instructions"
-echo ""
-
 # Execution
 
-if [ -d "/var/lib/plexmediaserver" ];
-
-then
-
-  /opt/plexupdate/extras/installer.sh
-
-else
-
-  cd /tmp
-  bash -c "$(wget -qO - https://raw.githubusercontent.com/mrworf/plexupdate/master/extras/installer.sh)"
-  cd ~
-
-fi
+cd /opt/
+clear
+sudo git clone https://github.com/Tautulli/Tautulli.git
+cd ~
 
 # ----------
 # Finalizing
