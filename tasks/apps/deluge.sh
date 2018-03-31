@@ -1,6 +1,6 @@
 #!/bin/bash
 
-FUNCTION="install or update Deluger"
+FUNCTION="install or update Deluge"
 
 # ---------
 # Variables
