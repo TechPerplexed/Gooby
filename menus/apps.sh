@@ -25,32 +25,32 @@ PLEX(){
 
 # Tautulli
 TAUTULLI(){
-  bash /opt/GooPlex/menus/errorpage.sh
+  bash /opt/GooPlex/tasks/apps/tautulli.sh
 }
 
 # Sonarr
 SONARR(){
-  bash /opt/GooPlex/menus/errorpage.sh
+  bash /opt/GooPlex/tasks/apps/sonarr.sh
 }
 
 # Radarr
 RADARR(){
-  bash /opt/GooPlex/menus/errorpage.sh
+  bash /opt/GooPlex/tasks/apps/radarr.sh
 }
 
 # Deluge
 DELUGE(){
-  bash /opt/GooPlex/menus/errorpage.sh
+  bash /opt/GooPlex/tasks/apps/deluge.sh
 }
 
 # Netdata
 NETDATA(){
-  bash /opt/GooPlex/menus/errorpage.sh
+  bash /opt/GooPlex/tasks/apps/netdata.sh
 }
 
 # Organizr
 ORGANIZR(){
-  bash /opt/GooPlex/menus/errorpage.sh
+  bash /opt/GooPlex/tasks/apps/organizr.sh
 }
 
 # Exit
