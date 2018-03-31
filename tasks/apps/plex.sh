@@ -29,10 +29,19 @@ echo ""
 
 # Execution
 
-cd /tmp
-clear
-bash -c "$(wget -qO - https://raw.githubusercontent.com/mrworf/plexupdate/master/extras/installer.sh)"
-cd ~
+if [ -d "/var/lib/plexmediaserverx" ]
+
+then
+
+  /opt/plexupdate/extras/installer.sh
+
+else
+
+  cd /tmp
+  bash -c "$(wget -qO - https://raw.githubusercontent.com/mrworf/plexupdate/master/extras/installer.sh)"
+  cd ~
+
+fi
 
 # ----------
 # Finalizing
