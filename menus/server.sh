@@ -15,7 +15,7 @@ clear
 
 # Update Server
 SERVER(){
-  /opt/GooPlex/tasks/vpsupdate.sh
+  /opt/GooPlex/install/server/vpsupdate.sh
 }
 
 # Exit
