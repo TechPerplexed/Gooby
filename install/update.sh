@@ -13,6 +13,7 @@ clear
 # Main script
 # -----------
 
+cd ~
 sudo rm -r /opt/GooPlex
 sudo git clone https://github.com/TechPerplexed/GooPlex /opt/GooPlex
 sudo chown -R plexuser:plexuser /opt/GooPlex
