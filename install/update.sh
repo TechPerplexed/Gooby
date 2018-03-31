@@ -16,7 +16,7 @@ clear
 cd ~
 sudo rm -r /opt/GooPlex
 git clone https://github.com/TechPerplexed/GooPlex /opt/GooPlex
-source /opt/GooPlex/install/setup.sh
+sudo bash /opt/GooPlex/install/setup.sh
 
 clear
 
