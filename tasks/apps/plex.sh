@@ -21,7 +21,7 @@ then
 # Open ports
 # ----------
 
-sudo ufw allow 32400 # Plex
+sudo ufw allow 32400
 
 # ------------
 # Dependencies
