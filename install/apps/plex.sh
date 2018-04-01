@@ -36,7 +36,7 @@ sudo apt-get upgrade -y && sudo apt-get upgrade -y
 # Explanation
 
 clear
-echo -e "Please read the options carefully and follow the instructions"
+echo -e "Please read the options carefully"
 echo ""
 
 # Execution
