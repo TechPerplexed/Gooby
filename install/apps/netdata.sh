@@ -17,30 +17,30 @@ echo ""
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
 
-# ----------
-# Open ports
-# ----------
+  # ----------
+  # Open ports
+  # ----------
 
-sudo ufw allow 19999
+  sudo ufw allow 19999
 
-# ------------
-# Dependencies
-# ------------
+  # ------------
+  # Dependencies
+  # ------------
 
-sudo apt-get upgrade -y && sudo apt-get upgrade -y
+  sudo apt-get upgrade -y && sudo apt-get upgrade -y
 
-# -----------
-# Main script
-# -----------
+  # -----------
+  # Main script
+  # -----------
 
-# Execution
+  # Execution
 
-clear
-bash <(curl -Ss https://my-netdata.io/kickstart.sh)
+  clear
+  bash <(curl -Ss https://my-netdata.io/kickstart.sh)
 
-# ----------
-# Finalizing
-# ----------
+  # ----------
+  # Finalizing
+  # ----------
 
 else
 
