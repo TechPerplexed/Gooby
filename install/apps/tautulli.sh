@@ -17,53 +17,52 @@ echo ""
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
 
-# ----------
-# Open ports
-# ----------
+  # ----------
+  # Open ports
+  # ----------
 
-sudo ufw allow 8181
+  sudo ufw allow 8181
 
-# ------------
-# Dependencies
-# ------------
+  # ------------
+  # Dependencies
+  # ------------
 
-sudo apt-get upgrade -y && sudo apt-get upgrade -y
+  sudo apt-get upgrade -y && sudo apt-get upgrade -y
 
-sudo -s apt-get -y install \
-  git-core \
-  denyhosts at sudo software-properties-common
+  sudo -s apt-get -y install \
+    git-core \
+    denyhosts at sudo software-properties-common
 
-# -----------
-# Main script
-# -----------
+  # -----------
+  # Main script
+  # -----------
 
-# Execution
+  # Execution
 
-cd /opt/
-sudo git clone https://github.com/Tautulli/Tautulli.git
-sudo chown plexuser:plexuser -R /opt/Tautulli
+  cd /opt/
+  sudo git clone https://github.com/Tautulli/Tautulli.git
+  sudo chown plexuser:plexuser -R /opt/Tautulli
 
-# -------------------
-# Installing Services
-# -------------------
+  # -------------------
+  # Installing Services
+  # -------------------
 
-if [ -e "/etc/systemd/system/tautulli.service" ]
+  if [ -e "/etc/systemd/system/tautulli.service" ]
+  then
 
-then
+    echo "Service already configured, skipping"
 
-echo "Service already configured, skipping"
+  else
 
-else
+    sudo rsync -a /opt/GooPlex/scripts/services/tautulli.service /etc/systemd/system/tautulli.service
+    sudo systemctl enable tautulli.service
+    sudo systemctl daemon-reload
 
-sudo rsync -a /opt/GooPlex/scripts/services/tautulli.service /etc/systemd/system/tautulli.service
-sudo systemctl enable tautulli.service
-sudo systemctl daemon-reload
+  fi
 
-fi
-
-# ----------
-# Finalizing
-# ----------
+  # ----------
+  # Finalizing
+  # ----------
 
 else
 
