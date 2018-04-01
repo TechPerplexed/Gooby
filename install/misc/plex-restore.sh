@@ -37,13 +37,13 @@ then
 
   sudo rclone copy Gdrive:/Backup/$filetype.$filedate.tar.gz /tmp --checksum --drive-chunk-size=64M
 
-  if [ -e "/tmp/$filetype.$filedate.tar.gz" ]
+  if [ -e "/tmp/$filename.$filedate.tar.gz" ]
 
   then
     echo "Proceeding..."
   else
     clear
-    echo "$filetype.$filedate.tar.gz not found on Google!"
+    echo "$filename.$filedate.tar.gz not found on Google!"
     echo "Please try again"
     echo "Exiting script..."
     PAUSE
@@ -55,7 +55,7 @@ then
   # Replacing Plex vanilla with Plex backup
 
   sudo mv /var/lib/plexmediaserver /var/lib/plexmediaserver-vanilla
-  sudo tar -xvf /tmp/$filetype.$filedate.tar.gz -C /
+  sudo tar -xvf /tmp/$filename.$filedate.tar.gz -C /
 
   # Starting services
 
@@ -75,7 +75,7 @@ then
     * ) echo "Your old installation is available at /var/lib/plexmediaserver-vanilla";;
   esac
 
-  sudo rm /tmp/$filetype.*
+  sudo rm /tmp/$filename.*
   cd ~
 
   # ----------
