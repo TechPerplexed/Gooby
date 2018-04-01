@@ -35,7 +35,7 @@ then
   read -e -p "Host name to restore: " -i "$(hostname)" filename
   read -e -p "File date to restore: " -i "$(date +%F)" filedate
 
-  sudo rclone copy Gdrive:/Backup/$filetype.$filedate.tar.gz /tmp --checksum --drive-chunk-size=64M
+  sudo rclone copy Gdrive:/Backup/$filename.$filedate.tar.gz /tmp --checksum --drive-chunk-size=64M
 
   if [ -e "/tmp/$filename.$filedate.tar.gz" ]
 
