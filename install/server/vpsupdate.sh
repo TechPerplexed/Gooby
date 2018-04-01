@@ -66,7 +66,6 @@ sudo -s apt-get -y install \
   socat \
   fuse \
   denyhosts at sudo software-properties-common
-
   
 # Configure firewall
 
