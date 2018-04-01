@@ -51,6 +51,7 @@ else
 
   echo -e "You chose ${YELLOW}not${STD} to $FUNCTION"
   echo -e "Exiting..."
+  echo ""
   exit 0
 
 fi
