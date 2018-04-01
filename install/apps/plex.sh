@@ -17,47 +17,47 @@ echo ""
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
 
-# ----------
-# Open ports
-# ----------
+  # ----------
+  # Open ports
+  # ----------
 
-sudo ufw allow 32400
+  sudo ufw allow 32400
 
-# ------------
-# Dependencies
-# ------------
+  # ------------
+  # Dependencies
+  # ------------
 
-sudo apt-get upgrade -y && sudo apt-get upgrade -y
+  sudo apt-get upgrade -y && sudo apt-get upgrade -y
 
-# -----------
-# Main script
-# -----------
+  # -----------
+  # Main script
+  # -----------
 
-# Explanation
+  # Explanation
 
-clear
-echo -e "Please read the options carefully"
-echo ""
+  clear
+  echo -e "Please read the options carefully"
+  echo ""
 
-# Execution
+  # Execution
 
-if [ -d "/var/lib/plexmediaserver" ];
+  if [ -d "/var/lib/plexmediaserver" ];
 
-then
+  then
 
-  /opt/plexupdate/extras/installer.sh
+    /opt/plexupdate/extras/installer.sh
 
-else
+  else
 
-  cd /tmp
-  bash -c "$(wget -qO - https://raw.githubusercontent.com/mrworf/plexupdate/master/extras/installer.sh)"
-  cd ~
+    cd /tmp
+    bash -c "$(wget -qO - https://raw.githubusercontent.com/mrworf/plexupdate/master/extras/installer.sh)"
+    cd ~
 
-fi
+  fi
 
-# ----------
-# Finalizing
-# ----------
+  # ----------
+  # Finalizing
+  # ----------
 
 else
 
