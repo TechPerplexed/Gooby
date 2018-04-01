@@ -22,7 +22,7 @@ then
   # Confirmation
 
   clear
-  echo -e "you are running version ${LRED}$VERSION{STD}"
+  echo -e "you are running version ${LRED}$VERSION${STD}"
   echo -e "GooPlex has only been tested on ${CYAN}Ubuntu 16.04${STD} - proceed at your own risk"
   echo ""
   read -p "Are you sure you want to $FUNCTION (y/N)? " -n 1 -r
