@@ -69,7 +69,7 @@ read_options(){
       [Bb]) apps ;;
       [Cc]) misc ;;
       [Qq]) quit ;;
-      *) echo -e "${RED}Please select a valid option${STD}" && sleep 2
+      *) echo -e "${LRED}Please select a valid option${STD}" && sleep 2
     esac
 }
  
