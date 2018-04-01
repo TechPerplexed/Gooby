@@ -35,10 +35,10 @@ sudo -s chmod 0440 /etc/sudoers.d/$PU
 
 clear
 echo -e "${GREEN}"
-echo -e "==========================================="
+echo -e "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 echo -e " You should now be switched to ${YELLOW}plexuser${GREEN} "
 echo -e " Type ${WHITE}gooplex${GREEN} to access the menu."
-echo -e "==========================================="
+echo -e "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 echo -e "${STD}"
 
 su $PU
