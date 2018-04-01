@@ -9,7 +9,6 @@ ExecStartPre=-/bin/mkdir /media/Plex
 ExecStart=/usr/bin/rclone mount \
   --config /home/plexuser/.config/rclone/rclone.conf \
   --allow-other \
-  --cache-info-age 8h \
   --cache-writes \
   GdriveCache: /media/Plex
 ExecStop=/bin/fusermount -u -z /media/Plex
