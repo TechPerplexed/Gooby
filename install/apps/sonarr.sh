@@ -17,63 +17,62 @@ echo ""
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
 
-# ----------
-# Open ports
-# ----------
+  # ----------
+  # Open ports
+  # ----------
 
-sudo ufw allow 8989
+  sudo ufw allow 8989
 
-# ------------
-# Dependencies
-# ------------
+  # ------------
+  # Dependencies
+  # ------------
 
-sudo apt-get upgrade -y && sudo apt-get upgrade -y
+  sudo apt-get upgrade -y && sudo apt-get upgrade -y
 
-sudo -s apt-get -y install \
-  libcurl3 \
-  libmono-cil-dev \
-  mono-devel \
-  mediainfo \
-  sqlite3 \
-  denyhosts at sudo software-properties-common
+  sudo -s apt-get -y install \
+    libcurl3 \
+    libmono-cil-dev \
+    mono-devel \
+    mediainfo \
+    sqlite3 \
+    denyhosts at sudo software-properties-common
 
-# -----------
-# Main script
-# -----------
+  # -----------
+  # Main script
+  # -----------
 
-# Execution
+  # Execution
 
-sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys FDA5DFFC
-sudo echo "deb http://apt.sonarr.tv/ master main" | sudo tee /etc/apt/sources.list.d/sonarr.list
+  sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys FDA5DFFC
+  sudo echo "deb http://apt.sonarr.tv/ master main" | sudo tee /etc/apt/sources.list.d/sonarr.list
 
-sudo apt-get -y update
-clear
-sudo apt-get -y install nzbdrone
+  sudo apt-get -y update
+  clear
+  sudo apt-get -y install nzbdrone
 
-sudo chown -R plexuser:plexuser /opt/NzbDrone
+  sudo chown -R plexuser:plexuser /opt/NzbDrone
 
-# -------------------
-# Installing Services
-# -------------------
+  # -------------------
+  # Installing Services
+  # -------------------
 
-if [ -e "/etc/systemd/system/sonarr.service" ]
+  if [ -e "/etc/systemd/system/sonarr.service" ]
+  then
 
-then
+    echo "Service already configured, skipping"
 
-echo "Service already configured, skipping"
+  else
 
-else
+    sudo rsync -a /opt/GooPlex/scripts/services/sonarr.service /etc/systemd/system/sonarr.service
+    sudo systemctl enable sonarr.service
+    sudo systemctl daemon-reload
+    sudo systemctl start sonarr.service
 
-sudo rsync -a /opt/GooPlex/scripts/services/sonarr.service /etc/systemd/system/sonarr.service
-sudo systemctl enable sonarr.service
-sudo systemctl daemon-reload
-sudo systemctl start sonarr.service
+  fi
 
-fi
-
-# ----------
-# Finalizing
-# ----------
+  # ----------
+  # Finalizing
+  # ----------
 
 else
 
