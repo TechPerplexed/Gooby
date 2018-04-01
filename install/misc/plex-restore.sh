@@ -50,7 +50,8 @@ then
     exit
   fi
 
-  cd ~
+  sudo service plexmediaserver stop
+  sudo systemctl stop tautulli.service
 
   # Replacing Plex vanilla with Plex backup
 
@@ -61,7 +62,7 @@ then
 
   sudo chown -R plex:plex /var/lib/plexmediaserver
   sudo service plexmediaserver start
-  sudo systemctl start plexpy.service
+  sudo systemctl start tautulli.service
 
   # Cleaning up
 
