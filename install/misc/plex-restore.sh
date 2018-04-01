@@ -37,12 +37,13 @@ then
 
   sudo rclone copy Gdrive:/Backup/$filetype.$filedate.tar.gz /tmp --checksum --drive-chunk-size=64M
 
-  if [ -e "/tmp/$filetyoe.$filedate.tar.gz" ]
+  if [ -e "/tmp/$filetype.$filedate.tar.gz" ]
 
   then
     echo "Proceeding..."
   else
-    echo "$filetype.$filedate.tar.gz not found on Google"
+    clear
+    echo "$filetype.$filedate.tar.gz not found on Google!"
     echo "Please try again"
     echo "Exiting script..."
     PAUSE
