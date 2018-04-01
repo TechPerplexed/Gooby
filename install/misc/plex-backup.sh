@@ -31,21 +31,24 @@ then
 
   # Execution
 
-  # Stopping services
+  echo -e "${YELLOW}Stopping services...${STD}"
   sudo systemctl stop tautulli.service
   sudo service plexmediaserver stop
 
   # Creating backup
+  echo -e "${LMAGENTA}Creating backup file...${STD}"
   sudo tar -cf /tmp/$(hostname).$(date +%F).tar.gz \
     /opt/Tautulli/config.ini \
     /opt/Tautulli/tautulli.db \
     /var/lib/plexmediaserver
 
   # Starting services
+  echo -e "${CYAN}Starting services...${STD}"
   sudo service plexmediaserver start
   sudo systemctl start tautulli.service
 
   # Copying to Gdrive
+  echo -e "${GREEN}Copying to Google drive...${STD}"
   sudo rclone copy /tmp/$(hostname).* Gdrive:/Backup -v --checksum --drive-chunk-size=64M
   sudo rm /tmp/$(hostname).*
   echo -e "Done!"
