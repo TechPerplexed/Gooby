@@ -17,76 +17,74 @@ echo ""
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
 
-# ----------
-# Open ports
-# ----------
+  # ----------
+  # Open ports
+  # ----------
 
-sudo ufw allow 8112
+  sudo ufw allow 8112
 
-# ------------
-# Dependencies
-# ------------
+  # ------------
+  # Dependencies
+  # ------------
 
-sudo apt-get upgrade -y && sudo apt-get upgrade -y
+  sudo apt-get upgrade -y && sudo apt-get upgrade -y
 
-# -----------
-# Main script
-# -----------
+  # -----------
+  # Main script
+  # -----------
 
-# Execution
+  # Execution
 
-sudo apt-get -y install \
-  deluged \
-  deluge-webui \
-  deluge-console \
-  denyhosts at sudo software-properties-common
+  sudo apt-get -y install \
+    deluged \
+    deluge-webui \
+    deluge-console \
+    denyhosts at sudo software-properties-common
 
-# -------------------
-# Installing Services
-# -------------------
+  # -------------------
+  # Installing Services
+  # -------------------
 
-if [ -e "/etc/systemd/system/deluged.service" ]
+  if [ -e "/etc/systemd/system/deluged.service" ]
+  then
 
-then
+    echo "Service already configured, skipping"
 
-echo "Service already configured, skipping"
+  else
 
-else
+    sudo rsync -a /opt/GooPlex/scripts/services/deluged.service /etc/systemd/system/deluged.service
+    sudo rsync -a /opt/GooPlex/scripts/services/deluge-web.service /etc/systemd/system/deluge-web.service
 
-sudo rsync -a /opt/GooPlex/scripts/services/deluged.service /etc/systemd/system/deluged.service
-sudo rsync -a /opt/GooPlex/scripts/services/deluge-web.service /etc/systemd/system/deluge-web.service
+    sudo systemctl enable deluged.service
+    sudo systemctl enable deluge-web.service
 
-sudo systemctl enable deluged.service
-sudo systemctl enable deluge-web.service
+    sudo systemctl daemon-reload
 
-sudo systemctl daemon-reload
+    sudo systemctl start deluged.service
+    sudo systemctl start deluge-web.service
 
-sudo systemctl start deluged.service
-sudo systemctl start deluge-web.service
+  fi
 
-fi
+  # ----------------
+  # Creating Folders
+  # ----------------
 
-# ----------------
-# Creating Folders
-# ----------------
+  if [ -d "/home/plexuser/downloads" ];
+  then
 
-if [ -d "/home/plexuser/downloads" ];
+    echo "Download folders already created, skipping"
 
-then
+  else
 
-echo "Download folders already created, skipping"
+    sudo mkdir -p /home/plexuser/downloads/incomplete
+    sudo mkdir -p /home/plexuser/downloads/import
+    sudo chown -R plexuser:plexuser /home/plexuser
 
-else
+  fi
 
-sudo mkdir -p /home/plexuser/downloads/incomplete
-sudo mkdir -p /home/plexuser/downloads/import
-sudo chown -R plexuser:plexuser /home/plexuser
-
-fi
-
-# ----------
-# Finalizing
-# ----------
+  # ----------
+  # Finalizing
+  # ----------
 
 else
 
