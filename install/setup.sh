@@ -8,6 +8,11 @@ FUNCTION="install GooPlex"
 
 source /opt/GooPlex/menus/variables.sh
 
+sudo chmod +x -R /opt/GooPlex/install
+sudo chmod +x -R /opt/GooPlex/menus
+sudo rsync -a /opt/GooPlex/install/gooplex /bin
+sudo chmod 755 /bin/gooplex
+
 lsb_release -r -s > /tmp/version
 VERSION=$( cat /tmp/version )
 
@@ -38,10 +43,5 @@ then
   fi
 
 fi
-
-sudo chmod +x -R /opt/GooPlex/install
-sudo chmod +x -R /opt/GooPlex/menus
-sudo rsync -a /opt/GooPlex/install/gooplex /bin
-sudo chmod 755 /bin/gooplex
 
 gooplex
