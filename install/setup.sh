@@ -8,15 +8,18 @@ FUNCTION="install GooPlex"
 
 source /opt/GooPlex/menus/variables.sh
 
-lsb_release -r -s > /tmp/version
-VERSION=$( cat /tmp/version )
+lsb_release -r -s > /tmp/uvnr
+UVNR=$( cat /tmp/vnr )
+lsb_release -d > /tmp/uvnm
+UVNM=$( cat /tmp/uvnm )
 
-if [ "$VERSION" != "16.04" ];
+if [ "$UVNR" != "16.04" ];
 then
 
   # Confirmation
 
   clear
+  echo -e "you are running ${LRED}$UVNM${STD}"
   echo -e "GooPlex has only been tested on ${CYAN}Ubuntu 16.04${STD} - proceed at your own risk"
   echo ""
   read -p "Are you sure you want to $FUNCTION (y/N)? " -n 1 -r
