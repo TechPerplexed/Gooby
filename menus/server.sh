@@ -49,7 +49,7 @@ read_options(){
     case $choice in
       [Aa]) SERVER ;;
       [Zz]) QUIT ;;
-      *) echo -e "${RED}Please select a valid option${STD}" && sleep 2
+      *) echo -e "${LRED}Please select a valid option${STD}" && sleep 2
     esac
 }
  
