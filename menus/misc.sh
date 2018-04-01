@@ -51,7 +51,7 @@ read_options(){
       [Bb]) MISC1 ;;
       [Cc]) MISC2 ;;
       [Zz]) QUIT ;;
-      *) echo -e "${RED}Please select a valid option${STD}" && sleep 2
+      *) echo -e "${LRED}Please select a valid option${STD}" && sleep 2
     esac
 }
  
