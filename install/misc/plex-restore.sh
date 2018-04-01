@@ -1,6 +1,6 @@
 #!/bin/bash
 
-FUNCTION="backup Plex and Tautulli to Google"
+FUNCTION="restore Plex and Tautulli database"
 
 # ---------
 # Variables
@@ -24,26 +24,57 @@ then
   # Explanation
 
   clear
-  echo -e "Plex will be unavailable during the backup"
-  echo -e "The backup can take several hours, depending on the size"
+  echo -e "Plex will be unavailable during the restoring process"
+  echo -e "This can take several hours, depending on the size"
   echo -e "Please don't exit PuTTY until it's done!"
   echo ""
 
   # Execution
 
-  echo -e "${YELLOW}Stopping services...${STD}"
-  sudo systemctl stop tautulli.service
-  sudo service plexmediaserver stop
+  cd /tmp
+  read -e -p "Host name to restore: " -i "$(hostname)" filename
+  read -e -p "File date to restore: " -i "$(date +%F)" filedate
 
-  # Restoring backup
-  echo -e "${LMAGENTA}Coming soon...${STD}"
-  
+  sudo rclone copy Gdrive:/Backup/$filetype.$filedate.tar.gz /tmp --checksum --drive-chunk-size=64M
+
+  if [ -e "/tmp/$filetyoe.$filedate.tar.gz" ]
+
+  then
+    echo "Proceeding..."
+  else
+    echo "$filetype.$filedate.tar.gz not found on Google"
+    echo "Please try again"
+    echo "Exiting script..."
+    exit
+  fi
+
+  cd ~
+
+  # Replacing Plex vanilla with Plex backup
+
+  sudo mv /var/lib/plexmediaserver /var/lib/plexmediaserver-vanilla
+  sudo tar -xvf /tmp/$filetype.$filedate.tar.gz -C /
+
   # Starting services
-  echo -e "${CYAN}Starting services...${STD}"
-  sudo service plexmediaserver start
-  sudo systemctl start tautulli.service
 
-  # Finalizing
+  sudo chown -R plex:plex /var/lib/plexmediaserver
+  sudo service plexmediaserver start
+  sudo systemctl start plexpy.service
+
+  # Cleaning up
+
+  echo -e "Make sure you check Plex is running before you remove the old files!"
+  echo ""
+  read -e -p "Remove old Plex installation (Y/n)? " -i "n" choice
+  echo ""
+
+  case "$choice" in
+    y|Y ) sudo rm -r /var/lib/plexmediaserver-vanilla;;
+    * ) echo "Your old installation is available at /var/lib/plexmediaserver-vanilla";;
+  esac
+
+  sudo rm /tmp/$filetype.*
+  cd ~
 
   # ----------
   # Finalizing
