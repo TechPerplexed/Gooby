@@ -56,8 +56,6 @@ then
   # ----------
   # Finalizing
   # ----------
-  
-  sudo rm /tmp/$hostname.*
 
 else
 
