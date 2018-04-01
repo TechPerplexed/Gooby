@@ -49,7 +49,7 @@ then
 
   # Copying to Gdrive
   echo -e "${GREEN}Copying to Google drive...${STD}"
-  sudo rclone copy /tmp/$(hostname).* Gdrive:/Backup -v --checksum --drive-chunk-size=64M
+  sudo rclone copy /tmp/$(hostname).* Gdrive:/Backup --checksum --drive-chunk-size=64M
   sudo rm /tmp/$(hostname).*
   echo -e "Done!"
 
