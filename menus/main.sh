@@ -33,7 +33,7 @@ quit(){
   clear
   echo ""
   echo "----------------------------------------------"
-  echo " Visit this menu any time by typing 'gooplex' "
+  echo -e " Visit this menu any time by typing '${WHITE}gooplex${STD}' "
   echo "----------------------------------------------"
   echo ""
   exit
