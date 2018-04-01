@@ -11,7 +11,7 @@ source /opt/GooPlex/menus/variables.sh
 # Confirmation
 
 clear
-echo -e "In order to access and install GooPlex you need to create a new user ${CYAN}plexuser${STD}"
+echo -e "New user ${CYAN}plexuser${STD} needs to be created now."
 echo ""
 read -p "Are you sure you want to $FUNCTION (y/N)? " -n 1 -r
 echo ""
@@ -36,8 +36,8 @@ sudo -s chmod 0440 /etc/sudoers.d/$PU
 clear
 echo -e "${GREEN}"
 echo -e "==========================================="
-echo -e " You will now be switched to the new user "
-echo -e "   Then type ${WHITE}gooplex${GREEN} to access the menu."
+echo -e " You should now be switched to ${CYAN}plexuser${STD} "
+echo -e " Type ${WHITE}gooplex${GREEN} to access the menu."
 echo -e "==========================================="
 echo -e "${STD}"
 
