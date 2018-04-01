@@ -24,6 +24,6 @@ WHITE=$(echo -en '\033[01;37m')
 
 PAUSE(){
   echo ""
-  read -t 10 -n 1 -s -r -p "All done! Press [Enter] key to return to the menu or wait 10 seconds..."
+  read -t 10 -n 1 -s -r -p "All done! Press Enter to return to the menu..."
   echo ""
 }
