@@ -29,10 +29,6 @@ sudo ufw allow 8112
 
 sudo apt-get upgrade -y && sudo apt-get upgrade -y
 
-sudo apt-get -y install \
-  sqlite3 \
-  denyhosts at sudo software-properties-common
-
 # -----------
 # Main script
 # -----------
