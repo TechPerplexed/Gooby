@@ -17,33 +17,33 @@ echo ""
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
 
-# ----------
-# Open ports
-# ----------
+  # ----------
+  # Open ports
+  # ----------
 
-sudo ufw allow 80
+  sudo ufw allow 80
 
-# ------------
-# Dependencies
-# ------------
+  # ------------
+  # Dependencies
+  # ------------
 
-sudo apt-get upgrade -y && sudo apt-get upgrade -y
+  sudo apt-get upgrade -y && sudo apt-get upgrade -y
 
-# -----------
-# Main script
-# -----------
+  # -----------
+  # Main script
+  # -----------
 
-# Execution
+  # Execution
 
-sudo git clone https://github.com/elmerfdz/OrganizrInstaller /opt/OrganizrInstaller
-cd /opt/OrganizrInstaller/ubuntu/oui
-clear
-sudo bash ou_installer.sh
-cd ~
+  sudo git clone https://github.com/elmerfdz/OrganizrInstaller /opt/OrganizrInstaller
+  cd /opt/OrganizrInstaller/ubuntu/oui
+  clear
+  sudo bash ou_installer.sh
+  cd ~
 
-# ----------
-# Finalizing
-# ----------
+  # ----------
+  # Finalizing
+  # ----------
 
 else
 
