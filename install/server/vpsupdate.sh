@@ -1,6 +1,6 @@
 #!/bin/bash
 
-FUNCTION="update VPS and prepare server"
+FUNCTION="update VPS with latest patches and apps"
 
 # ---------
 # Variables
