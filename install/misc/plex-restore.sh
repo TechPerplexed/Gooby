@@ -45,6 +45,7 @@ then
     echo "$filetype.$filedate.tar.gz not found on Google"
     echo "Please try again"
     echo "Exiting script..."
+    PAUSE
     exit
   fi
 
