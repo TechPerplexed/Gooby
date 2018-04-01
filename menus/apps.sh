@@ -98,7 +98,7 @@ read_options(){
       [Gg]) ORGANIZR ;;
       [Hh]) RCLONE ;;
       [Zz]) QUIT ;;
-      *) echo -e "${RED}Please select a valid option${STD}" && sleep 2
+      *) echo -e "${LRED}Please select a valid option${STD}" && sleep 2
     esac
 }
  
