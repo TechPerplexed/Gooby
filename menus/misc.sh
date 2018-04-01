@@ -15,7 +15,18 @@ clear
 
 # Update GooPlex
 SERVER(){
-  /opt/GooPlex/install/update.sh
+  /opt/GooPlex/install/misc/update.sh
+}
+
+# Plex Backup
+PBACKUP(){
+  /opt/GooPlex/install/misc/plex-backup.sh
+}
+
+
+# Plex Restore
+PRESTORE(){
+  /opt/GooPlex/install/misc/plex-restore.sh
 }
 
 # Exit
@@ -35,6 +46,8 @@ show_menus() {
   echo -e "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
   echo -e " ${STD}"
   echo -e " ${CYAN}A${STD} - Update GooPlex"
+  echo -e " ${CYAN}A${STD} - Plex database backup"
+  echo -e " ${CYAN}A${STD} - Plex database restore"
   echo -e " ${WHITE}Z${STD} - EXIT to Main Menu"
   echo -e ""
 }
@@ -48,8 +61,8 @@ read_options(){
     read -p "Choose option: " choice
     case $choice in
       [Aa]) SERVER ;;
-      [Bb]) MISC1 ;;
-      [Cc]) MISC2 ;;
+      [Bb]) PBACKUP ;;
+      [Cc]) PRESTORE ;;
       [Zz]) QUIT ;;
       *) echo -e "${LRED}Please select a valid option${STD}" && sleep 2
     esac
