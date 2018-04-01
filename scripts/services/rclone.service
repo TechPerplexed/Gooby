@@ -9,7 +9,15 @@ ExecStartPre=-/bin/mkdir /media/Plex
 ExecStart=/usr/bin/rclone mount \
   --config /home/plexuser/.config/rclone/rclone.conf \
   --allow-other \
-  --cache-writes \
+  --dir-cache-time=160h \
+  --cache-chunk-size=10M \
+  --cache-info-age=168h \
+  --cache-workers=8 \
+  --buffer-size=500M \
+  --attr-timeout=1s \
+  --cache-total-chunk-size=20G \
+  --cache-chunk-clean-interval=1m \
+  --cache-tmp-wait-time=1m \
   GdriveCache: /media/Plex
 ExecStop=/bin/fusermount -u -z /media/Plex
 ExecStop=/bin/rmdir /media/Plex
