@@ -10,9 +10,8 @@ source /opt/GooPlex/menus/variables.sh
 
 # Confirmation
 
-clear
-
-echo " This installation requires you to reboot before proceeding! "
+echo ""
+echo " This installation requires you to reboot before proceeding. "
 echo ""
 read -e -p "Reboot now? (Y/n) " -i "Y" choice
   case "$choice" in 
