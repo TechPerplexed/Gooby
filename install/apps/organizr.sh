@@ -15,7 +15,6 @@ read -p "Are you sure you want to $FUNCTION (y/N)? " -n 1 -r
 echo ""
 
 if [[ $REPLY =~ ^[Yy]$ ]]
-
 then
 
 # ----------
