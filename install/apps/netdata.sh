@@ -29,8 +29,6 @@ sudo ufw allow 19999
 
 sudo apt-get upgrade -y && sudo apt-get upgrade -y
 
-# None
-
 # -----------
 # Main script
 # -----------
