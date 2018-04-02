@@ -1,6 +1,6 @@
 #!/bin/bash
 
-FUNCTION="install or update Tautulli"
+FUNCTION="install Tautulli"
 
 # ---------
 # Variables
