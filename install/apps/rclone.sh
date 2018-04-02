@@ -45,12 +45,8 @@ then
   cd ~
   clear
 
-  if [ -e "/home/plexuser/.config/rclone/rclone.conf" ]
+  if [ ! -e "/home/plexuser/.config/rclone/rclone.conf" ]
   then
-
-    echo "Rclone already configured, skipping"
-
-  else
 
     echo "Please follow the instructions to setup Rclone"
     echo ""
@@ -62,12 +58,8 @@ then
   # Installing Services
   # -------------------
 
-  if [ -e "/etc/systemd/system/rclone.service" ]
+  if [ ! -e "/etc/systemd/system/rclone.service" ]
   then
-
-    echo "Service already configured, skipping"
-
-  else
 
     sudo rsync -a /opt/GooPlex/scripts/rclone.service /etc/systemd/system/rclone.service
     sudo systemctl enable rclone.service
