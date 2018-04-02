@@ -45,12 +45,8 @@ then
   # Installing Services
   # -------------------
 
-  if [ -e "/etc/systemd/system/deluged.service" ]
+  if [ ! -e "/etc/systemd/system/deluged.service" ]
   then
-
-    echo "Service already configured, skipping"
-
-  else
 
     sudo rsync -a /opt/GooPlex/scripts/deluged.service /etc/systemd/system/deluged.service
     sudo rsync -a /opt/GooPlex/scripts/deluge-web.service /etc/systemd/system/deluge-web.service
@@ -69,12 +65,8 @@ then
   # Creating Folders
   # ----------------
 
-  if [ -d "/home/plexuser/downloads" ];
+  if [ ! -d "/home/plexuser/downloads" ];
   then
-
-    echo "Download folders already created, skipping"
-
-  else
 
     sudo mkdir -p /home/plexuser/downloads/incomplete
     sudo mkdir -p /home/plexuser/downloads/import
