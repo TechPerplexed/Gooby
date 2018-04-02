@@ -48,6 +48,7 @@ show_menus() {
   echo -e " ${GREEN}"
   echo -e "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
   echo -e " G O O P L E X - Visit techperplexed.ga "
+  echo -e ""
   echo -e " $FUNCTION "
   echo -e "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
   echo -e " ${STD}"
