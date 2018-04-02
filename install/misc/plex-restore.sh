@@ -35,7 +35,7 @@ then
   read -e -p "Host name to restore: " -i "$(hostname)" filename
   read -e -p "File date to restore: " -i "$(date +%F)" filedate
   
-  echo -e "${GREEN}Copying to Google drive...${STD}"
+  echo -e "${GREEN}Copying from Google drive...${STD}"
   sudo rclone copy Gdrive:/Backup/$filename.$filedate.tar.gz /tmp --checksum --drive-chunk-size=64M
 
   if [ -e "/tmp/$filename.$filedate.tar.gz" ]
@@ -61,7 +61,7 @@ then
   
   echo -e "${LMAGENTA}Restoring file...${STD}"
   sudo mv /var/lib/plexmediaserver /tmp/plexmediaserver
-  sudo tar -cf /tmp/$filename.$filedate.tar.gz -C /
+  sudo tar -xf /tmp/$filename.$filedate.tar.gz -C /
 
   # Starting services
   
