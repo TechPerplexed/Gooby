@@ -47,6 +47,7 @@ show_menus() {
   clear
   echo -e " ${GREEN}"
   echo -e "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+  echo -e " G O O P L E X - Visit techperplexed.ga "
   echo -e " $FUNCTION "
   echo -e "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
   echo -e " ${STD}"
@@ -54,7 +55,9 @@ show_menus() {
   echo -e " ${GREEN}B${STD} - Install/Update Applications"
   echo -e " ${GREEN}C${STD} - Additional Tasks"
   echo -e " ${LRED}Q${STD} - QUIT Main Menu"
-  echo -e ""
+  echo -e "${GREEN}"
+  echo -e "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+  echo -e " ${STD}"
 }
 
 # ------------
