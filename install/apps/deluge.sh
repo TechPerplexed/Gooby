@@ -17,7 +17,7 @@ echo ""
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
 
-  if [ ! -e "/usr/bin/deluge*" ]
+  if [ ! -e "/usr/bin/deluged ]
   then
 
     # ----------
