@@ -1,6 +1,6 @@
 #!/bin/bash
 
-FUNCTION="install or update Radarr"
+FUNCTION="install Radarr"
 
 # ---------
 # Variables
