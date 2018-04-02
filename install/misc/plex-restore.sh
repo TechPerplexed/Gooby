@@ -65,7 +65,7 @@ then
 
   # Starting services
   
-echo -e "${CYAN}Starting services...${STD}"
+echo -e "${YELLOW}Starting services...${STD}"
   sudo chown -R plex:plex /var/lib/plexmediaserver
   sudo service plexmediaserver start
   sudo systemctl start tautulli.service
@@ -73,7 +73,7 @@ echo -e "${CYAN}Starting services...${STD}"
   # Cleaning up
 
   echo ""
-  echo -e "${YELLOW}Finished restoring${STD}"
+  echo -e "${CYAN}Finished restoring${STD}"
   echo -e "${WHITE}Make sure${STD} you check if Plex is running properly before you remove the old files!"
   echo ""
   read -e -p "Remove old Plex installation (Y/n)? " -i "n" choice
