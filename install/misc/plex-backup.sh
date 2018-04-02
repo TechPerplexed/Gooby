@@ -37,7 +37,7 @@ then
 
   # Creating backup
   echo -e "${LMAGENTA}Creating backup file...${STD}"
-  sudo tar -cf /tmp/$(hostname).$(date +%F).tar.gz \
+  sudo tar -cf /tmp/$(hostname)/$(date +%F).tar.gz \
     /opt/Tautulli/config.ini \
     /opt/Tautulli/tautulli.db \
     /var/lib/plexmediaserver
