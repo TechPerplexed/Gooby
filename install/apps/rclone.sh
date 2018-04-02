@@ -69,7 +69,7 @@ then
 
   else
 
-    sudo rsync -a /opt/GooPlex/scripts/services/rclone.service /etc/systemd/system/rclone.service
+    sudo rsync -a /opt/GooPlex/scripts/rclone.service /etc/systemd/system/rclone.service
     sudo systemctl enable rclone.service
     sudo systemctl daemon-reload
     sudo systemctl start rclone.service
