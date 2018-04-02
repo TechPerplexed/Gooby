@@ -64,6 +64,7 @@ then
     sudo rsync -a /opt/GooPlex/scripts/tautulli.service /etc/systemd/system/tautulli.service
     sudo systemctl enable tautulli.service
     sudo systemctl daemon-reload
+    sudo systemctl start tautulli.service
 
   fi
 
