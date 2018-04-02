@@ -66,8 +66,9 @@ show_menus() {
   clear
   echo -e " ${LPURPLE}"
   echo -e "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-  echo -e " $FUNCTION "
+  echo -e " G O O P L E X - Visit techperplexed.ga "
   echo -e "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+  echo -e " $FUNCTION "
   echo -e " ${STD}"
   echo -e " ${LPURPLE}A${STD} - Plex"
   echo -e " ${LPURPLE}B${STD} - Tautulli"
@@ -78,7 +79,9 @@ show_menus() {
   echo -e " ${LPURPLE}G${STD} - Organizr"
   echo -e " ${LPURPLE}H${STD} - Rclone"
   echo -e " ${WHITE}Z${STD} - EXIT to Main Menu"
-  echo -e ""
+  echo -e " ${LPURPLE}"
+  echo -e "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+  echo -e " ${STD}"
 }
 
 # ------------
