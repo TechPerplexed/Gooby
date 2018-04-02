@@ -37,7 +37,7 @@ then
 
   # Creating backup
   echo -e "${LMAGENTA}Creating backup file...${STD}"
-  sudo tar -cf /tmp/$(hostname)/$(date +%F).tar.gz \
+  sudo tar -cf /tmp/$(date +%F).tar.gz \
     /opt/Tautulli/config.ini \
     /opt/Tautulli/tautulli.db \
     /var/lib/plexmediaserver
@@ -49,8 +49,8 @@ then
 
   # Copying to Gdrive
   echo -e "${GREEN}Copying to Google drive...${STD}"
-  sudo rclone copy /tmp/$(hostname).* Gdrive:/Backup --checksum --drive-chunk-size=64M
-  sudo rm /tmp/$(hostname).*
+  sudo rclone copy /tmp/$(date +%F).* Gdrive:/Backup/$(hostname) -checksum --drive-chunk-size=64M
+  sudo rm /tmp/$(date +%F).*
   echo -e "Done!"
 
   # ----------
