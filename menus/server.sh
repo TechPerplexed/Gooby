@@ -31,12 +31,15 @@ show_menus() {
   clear
   echo -e " ${YELLOW}"
   echo -e "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-  echo -e " $FUNCTION "
+  echo -e " G O O P L E X - Visit techperplexed.ga "
   echo -e "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+  echo -e " $FUNCTION "
   echo -e " ${STD}"
   echo -e " ${YELLOW}A${STD} - Update Server With Latest Patches"
   echo -e " ${WHITE}Z${STD} - EXIT to Main Menu"
-  echo -e ""
+  echo -e " ${YELLOW}"
+  echo -e "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+  echo -e " ${STD}"
 }
 
 # ------------
