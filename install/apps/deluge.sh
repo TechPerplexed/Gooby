@@ -52,8 +52,8 @@ then
 
   else
 
-    sudo rsync -a /opt/GooPlex/scripts/services/deluged.service /etc/systemd/system/deluged.service
-    sudo rsync -a /opt/GooPlex/scripts/services/deluge-web.service /etc/systemd/system/deluge-web.service
+    sudo rsync -a /opt/GooPlex/scripts/deluged.service /etc/systemd/system/deluged.service
+    sudo rsync -a /opt/GooPlex/scripts/deluge-web.service /etc/systemd/system/deluge-web.service
 
     sudo systemctl enable deluged.service
     sudo systemctl enable deluge-web.service
