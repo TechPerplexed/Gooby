@@ -54,7 +54,7 @@ show_menus() {
   echo -e " ${GREEN}A${STD} - Maintain Server"
   echo -e " ${GREEN}B${STD} - Manage Applications"
   echo -e " ${GREEN}C${STD} - Additional Tasks"
-  echo -e " ${LRED}Q${STD} - QUIT @FUNCTION"
+  echo -e " ${LRED}Q${STD} - QUIT $FUNCTION"
   echo -e "${GREEN}"
   echo -e "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
   echo -e " ${STD}"
