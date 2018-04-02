@@ -76,7 +76,7 @@ echo -e "${YELLOW}Starting services...${STD}"
   echo -e "${CYAN}Finished restoring${STD}"
   echo -e "${WHITE}Make sure${STD} you check if Plex is running properly before you remove the old files!"
   echo ""
-  read -e -p "Remove old Plex installation (Y/n)? " -i "" choice
+  read -e -p "Remove old Plex installation (y/N)? "  -n 1 -r
   echo ""
 
   case "$choice" in
