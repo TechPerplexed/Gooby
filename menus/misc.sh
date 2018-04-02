@@ -42,14 +42,17 @@ show_menus() {
   clear
   echo -e " ${CYAN}"
   echo -e "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-  echo -e " $FUNCTION "
+  echo -e " G O O P L E X - Visit techperplexed.ga "
   echo -e "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+  echo -e " $FUNCTION "
   echo -e " ${STD}"
   echo -e " ${CYAN}A${STD} - Update GooPlex"
   echo -e " ${CYAN}B${STD} - Backup Plex and Tautulli"
   echo -e " ${CYAN}C${STD} - Restore Plex and Tautulli"
   echo -e " ${WHITE}Z${STD} - EXIT to Main Menu"
-  echo -e ""
+  echo -e " ${CYAN}"
+  echo -e "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+  echo -e " ${STD}"
 }
 
 # ------------
