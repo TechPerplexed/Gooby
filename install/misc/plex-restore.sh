@@ -41,7 +41,7 @@ then
   if [ -e "/tmp/$filename.$filedate.tar.gz" ]
 
   then
-    echo "File downloaded, proceeding..."
+    echo -e "${LBLUE}File downloaded, proceeding...${STD}"
   else
     clear
     echo "$filename.$filedate.tar.gz not found on Google!"
