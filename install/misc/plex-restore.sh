@@ -49,23 +49,30 @@ then
     PAUSE
     exit
   fi
+  
+   # Execution
 
+  echo -e "${YELLOW}Stopping services...${STD}"
   sudo service plexmediaserver stop
   sudo systemctl stop tautulli.service
 
   # Replacing Plex vanilla with Plex backup
-
+  
+  echo -e "${LMAGENTA}Restoring file...${STD}"
   sudo mv /var/lib/plexmediaserver /var/lib/plexmediaserver-vanilla
-  sudo tar -xvf /tmp/$filename.$filedate.tar.gz -C /
+  sudo tar -cf /tmp/$filename.$filedate.tar.gz -C /
 
   # Starting services
-
+  
+echo -e "${CYAN}Starting services...${STD}"
   sudo chown -R plex:plex /var/lib/plexmediaserver
   sudo service plexmediaserver start
   sudo systemctl start tautulli.service
 
   # Cleaning up
 
+  echo ""
+  echo -e "${YELLOW}Finished restoring${STD}"
   echo -e "Make sure you check Plex is running before you remove the old files!"
   echo ""
   read -e -p "Remove old Plex installation (Y/n)? " -i "n" choice
