@@ -53,7 +53,7 @@ then
   
    # Execution
 
-  echo -e "${YELLOW}Stopping services...${STD}"
+  echo -e "${LPURPLE}Stopping services...${STD}"
   sudo service plexmediaserver stop
   sudo systemctl stop tautulli.service
 
