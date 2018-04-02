@@ -34,13 +34,14 @@ then
   cd /tmp
   read -e -p "Host name to restore: " -i "$(hostname)" filename
   read -e -p "File date to restore: " -i "$(date +%F)" filedate
-
+  
+  echo -e "${GREEN}Copying to Google drive...${STD}"
   sudo rclone copy Gdrive:/Backup/$filename.$filedate.tar.gz /tmp --checksum --drive-chunk-size=64M
 
   if [ -e "/tmp/$filename.$filedate.tar.gz" ]
 
   then
-    echo "Proceeding..."
+    echo "File downloaded, proceeding..."
   else
     clear
     echo "$filename.$filedate.tar.gz not found on Google!"
@@ -79,7 +80,7 @@ echo -e "${CYAN}Starting services...${STD}"
   echo ""
 
   case "$choice" in
-    y|Y ) sudo rm -r /var/lib/plexmediaserver-vanilla;;
+    y|Y ) sudo rm -r /tmp/plexmediaserver;;
     * ) echo "Your old installation is available at /tmp/plexmediaserver until you reboot";;
   esac
 
