@@ -13,6 +13,7 @@ clear
 
 echo -e "-----------------------------------------------------"
 echo -e " This will update the server with the latest patches "
+echo -e "        You can run this as often as you like!       "
 echo -e "-----------------------------------------------------"
 echo ""
 
