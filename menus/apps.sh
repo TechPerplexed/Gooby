@@ -1,6 +1,6 @@
 #!/bin/bash
 
-FUNCTION="Install/Update Applications"
+FUNCTION="Manage Applications"
 
 # ---------
 # Variables
