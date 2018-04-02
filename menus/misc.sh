@@ -46,8 +46,8 @@ show_menus() {
   echo -e "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
   echo -e " ${STD}"
   echo -e " ${CYAN}A${STD} - Update GooPlex"
-  echo -e " ${CYAN}B${STD} - Create Plex database backup"
-  echo -e " ${CYAN}C${STD} - Restore Plex database"
+  echo -e " ${CYAN}B${STD} - Backup Plex and Tautulli"
+  echo -e " ${CYAN}C${STD} - Restore Plex and Tautulli"
   echo -e " ${WHITE}Z${STD} - EXIT to Main Menu"
   echo -e ""
 }
