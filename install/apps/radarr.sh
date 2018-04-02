@@ -48,7 +48,9 @@ then
 
   cd /tmp
   clear
-  echo "Copy Linux version from https://github.com/Radarr/Radarr/releases/"
+  echo  -e "Copy latest Linux version from ${YELLOW}https://github.com/Radarr/Radarr/releases/${STD}"
+  echo -e "Or you can press Enter to install ${CYAN}v0.2.0.995${STD}"
+echo ""
   read -e -p "Paste link to Radarr.verson.linux.tar.gz: " -i "https://github.com/Radarr/Radarr/releases/download/v0.2.0.995/Radarr.develop.0.2.0.995.linux.tar.gz" radarr
   wget $radarr
 
