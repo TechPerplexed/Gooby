@@ -59,7 +59,7 @@ then
   # Replacing Plex vanilla with Plex backup
   
   echo -e "${LMAGENTA}Restoring file...${STD}"
-  sudo mv /var/lib/plexmediaserver /var/lib/plexmediaserver-vanilla
+  sudo mv /var/lib/plexmediaserver /tmp/plexmediaserver
   sudo tar -cf /tmp/$filename.$filedate.tar.gz -C /
 
   # Starting services
@@ -80,7 +80,7 @@ echo -e "${CYAN}Starting services...${STD}"
 
   case "$choice" in
     y|Y ) sudo rm -r /var/lib/plexmediaserver-vanilla;;
-    * ) echo "Your old installation is available at /var/lib/plexmediaserver-vanilla";;
+    * ) echo "Your old installation is available at /tmp/plexmediaserver until you reboot";;
   esac
 
   sudo rm /tmp/$filename.*
