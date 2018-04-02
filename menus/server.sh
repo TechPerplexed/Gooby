@@ -18,6 +18,11 @@ SERVER(){
   /opt/GooPlex/install/server/vpsupdate.sh
 }
 
+# Update Server
+PATCHES(){
+  /opt/GooPlex/install/server/vpspatches.sh
+}
+
 # Exit
 QUIT(){
   exit
@@ -35,7 +40,8 @@ show_menus() {
   echo -e "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
   echo -e " $FUNCTION "
   echo -e " ${STD}"
-  echo -e " ${YELLOW}A${STD} - Update Server With Latest Patches"
+  echo -e " ${YELLOW}A${STD} - Initialize Server"
+  echo -e " ${YELLOW}B${STD} - Run Server Update"
   echo -e " ${WHITE}Z${STD} - EXIT to Main Menu"
   echo -e " ${YELLOW}"
   echo -e "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
@@ -51,6 +57,7 @@ read_options(){
     read -p "Choose option: " choice
     case $choice in
       [Aa]) SERVER ;;
+      [Bb]) PATCHES ;;
       [Zz]) QUIT ;;
       *) echo -e "${LRED}Please select a valid option${STD}" && sleep 2
     esac
