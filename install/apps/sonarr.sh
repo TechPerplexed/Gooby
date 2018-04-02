@@ -1,6 +1,6 @@
 #!/bin/bash
 
-FUNCTION="install or update Sonarr"
+FUNCTION="install Sonarr"
 
 # ---------
 # Variables
