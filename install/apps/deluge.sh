@@ -1,6 +1,6 @@
 #!/bin/bash
 
-FUNCTION="install or update Deluge"
+FUNCTION="install Deluge"
 
 # ---------
 # Variables
