@@ -15,7 +15,7 @@ echo -e "------------------------------------------------------"
 echo -e " This will initalize the server with vital apps, "
 echo -e "             Set the time zone and"
 echo -e "       ${WHITE}Optionally${STD} change the root password. "
-echo -e "    You probably only need to run this once"
+echo -e "    You probably only need to run this ${WHITE}once${STD}!"
 echo -e "------------------------------------------------------"
 echo ""
 
