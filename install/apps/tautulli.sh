@@ -17,42 +17,49 @@ echo ""
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
 
-  # ----------
-  # Open ports
-  # ----------
-
-  sudo ufw allow 8181
-
-  # ------------
-  # Dependencies
-  # ------------
-
-  sudo apt-get upgrade -y && sudo apt-get upgrade -y
-
-  sudo -s apt-get -y install \
-    git-core \
-    denyhosts at sudo software-properties-common
-
-  # -----------
-  # Main script
-  # -----------
-
-  # Execution
-
-  cd /opt/
-  sudo git clone https://github.com/Tautulli/Tautulli.git
-  sudo chown plexuser:plexuser -R /opt/Tautulli
-
-  # -------------------
-  # Installing Services
-  # -------------------
-
-  if [ -e "/etc/systemd/system/tautulli.service" ]
+  if [ ! -d "/opt/Tautulli" ]
   then
 
-    echo "Service already configured, skipping"
+    # ----------
+    # Open ports
+    # ----------
 
+    sudo ufw allow 8181
+
+    # ------------
+    # Dependencies
+    # ------------
+
+    sudo apt-get upgrade -y && sudo apt-get upgrade -y
+
+    sudo -s apt-get -y install \
+      git-core \
+      denyhosts at sudo software-properties-common
+
+    # -----------
+    # Main script
+    # -----------
+
+    # Execution
+
+    cd /opt/
+    sudo git clone https://github.com/Tautulli/Tautulli.git
+    sudo chown plexuser:plexuser -R /opt/Tautulli
+  
   else
+  
+    clear
+    echo -e "Tautulli is already installed!"
+    echo -e "You can update it from within the application itself."
+ 
+  fi
+
+  if [ ! -e "/etc/systemd/system/tautulli.service" ]
+  then
+
+    # -------------------
+    # Installing Services
+    # -------------------
 
     sudo rsync -a /opt/GooPlex/scripts/tautulli.service /etc/systemd/system/tautulli.service
     sudo systemctl enable tautulli.service
