@@ -1,6 +1,6 @@
 #!/bin/bash
 
-FUNCTION="Main Menu"
+FUNCTION="GooPlex Menu"
 
 # ---------
 # Variables
@@ -52,9 +52,9 @@ show_menus() {
   echo -e " $FUNCTION "
   echo -e " ${STD}"
   echo -e " ${GREEN}A${STD} - Maintain Server"
-  echo -e " ${GREEN}B${STD} - Install/Update Applications"
+  echo -e " ${GREEN}B${STD} - Manage Applications"
   echo -e " ${GREEN}C${STD} - Additional Tasks"
-  echo -e " ${LRED}Q${STD} - QUIT Main Menu"
+  echo -e " ${LRED}Q${STD} - QUIT @FUNCTION"
   echo -e "${GREEN}"
   echo -e "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
   echo -e " ${STD}"
