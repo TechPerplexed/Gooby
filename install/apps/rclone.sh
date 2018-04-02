@@ -65,7 +65,6 @@ then
     sudo systemctl enable rclone.service
     sudo systemctl daemon-reload
     sudo systemctl start rclone.service
-    source /opt/GooPlex/install/reboot.sh
 
   fi
 
