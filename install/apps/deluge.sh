@@ -17,36 +17,47 @@ echo ""
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
 
-  # ----------
-  # Open ports
-  # ----------
+  if [ ! -d "/opt/Radarr" ]
+  then
 
-  sudo ufw allow 8112
+    # ----------
+    # Open ports
+    # ----------
 
-  # ------------
-  # Dependencies
-  # ------------
+    sudo ufw allow 8112
 
-  sudo apt-get upgrade -y && sudo apt-get upgrade -y
+    # ------------
+    # Dependencies
+    # ------------
 
-  # -----------
-  # Main script
-  # -----------
+    sudo apt-get upgrade -y && sudo apt-get upgrade -y
 
-  # Execution
+    # -----------
+    # Main script
+    # -----------
 
-  sudo apt-get -y install \
-    deluged \
-    deluge-webui \
-    deluge-console \
-    denyhosts at sudo software-properties-common
+    # Execution
 
-  # -------------------
-  # Installing Services
-  # -------------------
+    sudo apt-get -y install \
+      deluged \
+      deluge-webui \
+      deluge-console \
+      denyhosts at sudo software-properties-common
+
+   else
+  
+    clear
+    echo -e "Deluge is already installed!"
+    echo -e "It will be updated automatically."
+ 
+  fi
 
   if [ ! -e "/etc/systemd/system/deluged.service" ]
   then
+
+    # -------------------
+    # Installing Services
+    # -------------------
 
     sudo rsync -a /opt/GooPlex/scripts/deluged.service /etc/systemd/system/deluged.service
     sudo rsync -a /opt/GooPlex/scripts/deluge-web.service /etc/systemd/system/deluge-web.service
