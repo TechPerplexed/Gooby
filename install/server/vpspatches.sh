@@ -31,7 +31,9 @@ then
 
   # Initial update
 
-  sudo apt-get upgrade -y && sudo apt-get upgrade -y
+  sudo apt-get upgrade -y
+  sudo apt-get upgrade -y
+  sudo apt-get full-upgrade -y
 
 else
 
