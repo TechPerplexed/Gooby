@@ -8,6 +8,7 @@ User=root
 ExecStartPre=-/bin/mkdir /media/Plex
 ExecStart=/usr/bin/rclone mount \
   --config /home/plexuser/.config/rclone/rclone.conf \
+  --allow-non-empty \
   --allow-other \
   --dir-cache-time=160h \
   --cache-chunk-size=10M \
