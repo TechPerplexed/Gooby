@@ -3,25 +3,40 @@ Description=Mount and cache Google drive to /media/Plex
 After=syslog.target local-fs.target network.target
 
 [Service]
+Environment=RCLONEHOME=/home/plexuser/.config/rclone
+Environment=MOUNTTO=/media/Plex
+Environment=LOGS=/home/plexuser/logs
+
 Type=simple
 User=root
-ExecStartPre=/bin/mkdir -p /media/Plex
+ExecStartPre=/bin/mkdir -p ${MOUNTTO}
+ExecStartPre=/bin/mkdir -p ${LOGS}
 ExecStart=/usr/bin/rclone mount \
-  --config /home/plexuser/.config/rclone/rclone.conf \
-  --allow-non-empty \
+  --rc \
+  --log-file ${LOGS}/rclone.log \
+  --log-level INFO \
+  --umask 022 \
   --allow-other \
+  --fuse-flag sync_read \
+  --tpslimit 10 \
+  --tpslimit-burst 10 \
   --dir-cache-time=160h \
-  --cache-chunk-size=10M \
+  --cache-chunk-size=5M \
   --cache-info-age=168h \
   --cache-workers=8 \
-  --buffer-size=500M \
+  --buffer-size=0M \
   --attr-timeout=1s \
-  --cache-total-chunk-size=20G \
+  --cache-dir=${RCLONEHOME} \
+  --cache-chunk-path=${RCLONEHOME} \
+  --cache-db-path=${RCLONEHOME} \
+  --cache-total-chunk-size=10G \
   --cache-chunk-clean-interval=1m \
-  --cache-tmp-wait-time=1m \
-  GdriveCache: /media/Plex
-ExecStop=/bin/fusermount -u -z /media/Plex
-ExecStop=/bin/rmdir /media/Plex
+  --cache-tmp-upload-path=${RCLONEHOME}/upload \
+  --cache-tmp-wait-time=5m \
+  --config ${RCLONEHOME}/rclone.conf \
+  GdriveCache: ${MOUNTTO}
+ExecStop=/bin/fusermount -u -z ${MOUNTTO}
+ExecStop=/bin/rmdir ${MOUNTTO}
 Restart=always
 
 [Install]
