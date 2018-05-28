@@ -3,14 +3,17 @@ Description=Mount and cache Google drive to /media/Plex
 After=syslog.target local-fs.target network.target
 
 [Service]
+Environment=RCLONECACHE=/home/plexuser/.cache/rclone
 Environment=RCLONEHOME=/home/plexuser/.config/rclone
 Environment=MOUNTTO=/media/Plex
 Environment=LOGS=/home/plexuser/logs
+Environment=UPLOADS=/home/plexuser/.cache/rclone/uploads
 
 Type=simple
 User=root
 ExecStartPre=/bin/mkdir -p ${MOUNTTO}
 ExecStartPre=/bin/mkdir -p ${LOGS}
+ExecStartPre=/bin/mkdir -p ${UPLOADS}
 ExecStart=/usr/bin/rclone mount \
   --rc \
   --log-file ${LOGS}/rclone.log \
@@ -26,12 +29,12 @@ ExecStart=/usr/bin/rclone mount \
   --cache-workers=8 \
   --buffer-size=0M \
   --attr-timeout=1s \
-  --cache-dir=${RCLONEHOME} \
-  --cache-chunk-path=${RCLONEHOME} \
-  --cache-db-path=${RCLONEHOME} \
+  --cache-dir=${RCLONECACHE} \
+  --cache-chunk-path=${RCLONECACHE} \
+  --cache-db-path=${RCLONECACHE} \
   --cache-total-chunk-size=10G \
   --cache-chunk-clean-interval=1m \
-  --cache-tmp-upload-path=${RCLONEHOME}/upload \
+  --cache-tmp-upload-path=${UPLOAD} \
   --cache-tmp-wait-time=5m \
   --config ${RCLONEHOME}/rclone.conf \
   GdriveCache: ${MOUNTTO}
