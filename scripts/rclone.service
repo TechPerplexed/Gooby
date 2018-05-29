@@ -19,6 +19,7 @@ ExecStart=/usr/bin/rclone mount \
   --log-file ${LOGS}/rclone.log \
   --log-level INFO \
   --umask 022 \
+  --allow-non-empty \
   --allow-other \
   --fuse-flag sync_read \
   --tpslimit 10 \
