@@ -1,3 +1,4 @@
+
 [Unit]
 Description=Mount and cache Google drive to /media/Plex
 After=syslog.target local-fs.target network.target
@@ -25,18 +26,9 @@ ExecStart=/usr/bin/rclone mount \
   --tpslimit 10 \
   --tpslimit-burst 10 \
   --dir-cache-time=160h \
-  --cache-chunk-size=5M \
-  --cache-info-age=168h \
-  --cache-workers=8 \
-  --buffer-size=0M \
+  --buffer-size=64M \
   --attr-timeout=1s \
-  --cache-dir=${RCLONECACHE} \
-  --cache-chunk-path=${RCLONECACHE} \
-  --cache-db-path=${RCLONECACHE} \
-  --cache-total-chunk-size=10G \
-  --cache-chunk-clean-interval=1m \
-  --cache-tmp-upload-path=${UPLOAD} \
-  --cache-tmp-wait-time=5m \
+  --cache-dir ${UPLOADS} \
   --config ${RCLONEHOME}/rclone.conf \
   GdriveCache: ${MOUNTTO}
 ExecStop=/bin/fusermount -u -z ${MOUNTTO}
