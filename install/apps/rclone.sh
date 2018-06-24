@@ -28,6 +28,13 @@ then
   # ------------
 
   sudo apt-get upgrade -y && sudo apt-get upgrade -y
+  
+  # ------------------
+  # Create directories
+  # ------------------
+  
+  mkdir -p /home/plexuser/logs
+  mkdir -p /home/plexuser/uploads
 
   # -----------
   # Main script
