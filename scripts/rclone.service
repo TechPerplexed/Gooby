@@ -4,11 +4,10 @@ Description=Mount and cache Google drive to /media/Plex
 After=syslog.target local-fs.target network.target
 
 [Service]
-Environment=RCLONECACHE=/home/plexuser/.cache/rclone
 Environment=RCLONEHOME=/home/plexuser/.config/rclone
 Environment=MOUNTTO=/media/Plex
 Environment=LOGS=/home/plexuser/logs
-Environment=UPLOADS=/home/plexuser/.cache/rclone/uploads
+Environment=UPLOADS=/home/plexuser/uploads
 
 Type=simple
 User=root
@@ -28,9 +27,13 @@ ExecStart=/usr/bin/rclone mount \
   --dir-cache-time=160h \
   --buffer-size=64M \
   --attr-timeout=1s \
+  --vfs-read-chunk-size=2M \
+  --vfs-read-chunk-size-limit=2G \
+  --vfs-cache-max-age=5m \
+  --vfs-cache-mode=writes \
   --cache-dir ${UPLOADS} \
   --config ${RCLONEHOME}/rclone.conf \
-  GdriveCache: ${MOUNTTO}
+  Gdrive: ${MOUNTTO}
 ExecStop=/bin/fusermount -u -z ${MOUNTTO}
 ExecStop=/bin/rmdir ${MOUNTTO}
 Restart=always
