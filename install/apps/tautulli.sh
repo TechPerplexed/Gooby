@@ -32,7 +32,10 @@ then
 
     sudo apt-get upgrade -y && sudo apt-get upgrade -y
 
-    sudo -s apt-get -y install git-core
+    sudo -s apt-get -y install \
+      git-core \
+      python3-setuptools-git \
+      denyhosts at sudo software-properties-common
 
     # -----------
     # Main script
@@ -42,8 +45,6 @@ then
 
     cd /opt/
     sudo git clone https://github.com/Tautulli/Tautulli.git
-    cd Tautulli
-    python Tautulli.py
     sudo chown plexuser:plexuser -R /opt/Tautulli
   
   else
