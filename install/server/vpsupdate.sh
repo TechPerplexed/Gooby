@@ -65,6 +65,7 @@ then
       curl \
       ufw \
       socat \
+      acl \
       fuse \
       denyhosts at sudo software-properties-common
 
