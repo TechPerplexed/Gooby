@@ -55,7 +55,7 @@ then
     echo -e "Remove link below and paste link to Radarr.verson.linux.tar.gz"
     echo -e "Or you can press Enter to install ${CYAN}v0.2.0.995${STD}:"
     echo ""
-    read -e -p "Link: " -i "https://github.com/Radarr/Radarr/releases/download/v0.2.0.995/Radarr.develop.0.2.0.995.linux.tar.gz" radarr
+    read -e -p "Link: " -i "https://github.com/Radarr/Radarr/releases/download/v0.2.0.1120/Radarr.develop.0.2.0.1120.linux.tar.gz" radarr
     wget $radarr
 
     sudo tar -xf Radarr* -C /opt/
