@@ -1,6 +1,6 @@
 #!/bin/bash
 
-FUNCTION="upgrade server"
+FUNCTION="upgrade the server"
 
 # ---------
 # Variables
@@ -12,6 +12,7 @@ clear
 # Explanation
 
 echo -e "-----------------------------------------------------"
+echo -e "                   ${RED}DANGER ZONE!!!${STD}                    "
 echo -e " This will upgrade your server to the latest version "
 echo -e "       ${YELLOW}CAUTION!!!${STD} Make SURE you have a backup!       "
 echo -e "-----------------------------------------------------"
@@ -19,7 +20,7 @@ echo ""
 
 # Confirmation
 
-read -p "Are you ${RED}REALLY${STD} sure you want to $FUNCTION (y/N)? " -n 1 -r
+read -p "Are you ${WHITE}REALLY${STD} sure you want to $FUNCTION (y/N)? " -n 1 -r
 echo ""
 
 if [[ $REPLY =~ ^[Yy]$ ]]
