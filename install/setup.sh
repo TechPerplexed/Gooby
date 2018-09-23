@@ -16,14 +16,14 @@ sudo chmod 755 /bin/gooplex
 lsb_release -r -s > /tmp/version
 VERSION=$( cat /tmp/version )
 
-if [ "$VERSION" != "16.04" ];
+if [ "$VERSION" != "18.04" ];
 then
 
   # Confirmation
 
   clear
   echo -e "You are running version ${LRED}$VERSION${STD} of Linux"
-  echo -e "GooPlex has only been tested on ${CYAN}Ubuntu 16.04${STD}"
+  echo -e "GooPlex has only been tested on ${CYAN}$VERSION${STD}"
   echo -e "Proceed at your own risk!"
   echo ""
   read -p "Are you sure you want to $FUNCTION (y/N)? " -n 1 -r
