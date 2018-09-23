@@ -13,7 +13,7 @@ clear
 
 echo -e "-----------------------------------------------------"
 echo -e " This will upgrade your server to the latest version "
-echo -e "       ${yellow}CAUTION!!!{STD} Make SURE you have a backup!       "
+echo -e "       ${yellow}CAUTION!!!${STD} Make SURE you have a backup!       "
 echo -e "-----------------------------------------------------"
 echo ""
 
