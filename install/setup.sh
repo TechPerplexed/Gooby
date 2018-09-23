@@ -23,7 +23,7 @@ then
 
   clear
   echo -e "You are running version ${LRED}$VERSION${STD} of Linux"
-  echo -e "GooPlex has only been tested on ${CYAN}$VERSION${STD}"
+  echo -e "GooPlex has been tested on ${CYAN}16.04${STD} and ${CYAN}18.04${STD}"
   echo -e "Proceed at your own risk!"
   echo ""
   read -p "Are you sure you want to $FUNCTION (y/N)? " -n 1 -r
