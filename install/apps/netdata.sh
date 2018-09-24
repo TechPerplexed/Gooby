@@ -28,6 +28,10 @@ then
   # ------------
 
   sudo apt-get upgrade -y && sudo apt-get upgrade -y
+  sudo -s apt-get -y install \
+    unzip \
+    curl \
+    denyhosts at sudo software-properties-common
 
   # -----------
   # Main script
