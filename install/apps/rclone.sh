@@ -28,6 +28,11 @@ then
   # ------------
 
   sudo apt-get upgrade -y && sudo apt-get upgrade -y
+  sudo -s apt-get -y install \
+      unzip \
+      curl \
+      fuse \
+  denyhosts at sudo software-properties-common
   
   # ------------------
   # Create directories
