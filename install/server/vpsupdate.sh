@@ -36,14 +36,12 @@ then
     sudo apt-get upgrade -y && sudo apt-get upgrade -y
 
     # Set language
-
-    test "$LANG" = "en_US.UTF-8" \
-        || echo "en_US.UTF-8 UTF-8" >>/etc/locale.gen \
-        && locale-gen --lang en_US.UTF-8
+    
+    sudo update-locale LANG="en_US.UTF-8"
 
     # Install unattended upgrades
 
-    sudo apt-get -y --force-yes install unattended-upgrades
+    sudo apt-get -y install unattended-upgrades
 
     if [[ ! -f /etc/apt/apt.conf.d/20auto-upgrades.bak ]]; then
         sudo cp /etc/apt/apt.conf.d/20auto-upgrades /etc/apt/apt.conf.d/20auto-upgrades.bak
