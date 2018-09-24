@@ -4,9 +4,7 @@
 
 sudo apt-get install \
     apt-transport-https \
-
     acl \
-
     ca-certificates \
     curl \
     software-properties-common
