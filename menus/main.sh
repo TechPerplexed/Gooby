@@ -20,12 +20,17 @@ server(){
 
 # Install Media
 media(){
-  /opt/GooPlex/menus/media.sh
+  /opt/GooPlex/menus/appsmedia.sh
 }
 
-# Install Apps
-apps(){
-  /opt/GooPlex/menus/apps.sh
+# Install Media
+download(){
+  /opt/GooPlex/menus/appsdownload.sh
+}
+
+# Install Other
+other(){
+  /opt/GooPlex/menus/appsother.sh
 }
 
 # Additional Options
@@ -58,8 +63,9 @@ show_menus() {
   echo -e " ${STD}"
   echo -e " ${GREEN}A${STD} - Maintain Server"
   echo -e " ${GREEN}B${STD} - Media Applications"
-  echo -e " ${GREEN}C${STD} - Other Applications"
-  echo -e " ${GREEN}D${STD} - Additional Tasks"
+  echo -e " ${GREEN}C${STD} - Download Applications"
+  echo -e " ${GREEN}D${STD} - Other Applications"
+  echo -e " ${GREEN}E${STD} - Additional Tasks"
   echo -e " ${LRED}Q${STD} - QUIT $FUNCTION"
   echo -e "${GREEN}"
   echo -e "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
@@ -76,8 +82,9 @@ read_options(){
     case $choice in
       [Aa]) server ;;
       [Bb]) media ;;
-      [Cc]) apps ;;
-      [Dd]) misc ;;
+      [Cc]) download ;;
+      [Dd]) other ;;
+      [Ee]) misc ;;
       [Qq]) quit ;;
       *) echo -e "${LRED}Please select a valid option${STD}" && sleep 2
     esac
