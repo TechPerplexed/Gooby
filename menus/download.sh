@@ -13,16 +13,6 @@ clear
 # Menu Options
 # ------------
 
-# Plex
-PLEX(){
-  /opt/GooPlex/install/apps/plex.sh
-}
-
-# Tautulli
-TAUTULLI(){
-  /opt/GooPlex/install/apps/tautulli.sh
-}
-
 # Sonarr
 SONARR(){
   /opt/GooPlex/install/apps/sonarr.sh
@@ -48,11 +38,6 @@ ORGANIZR(){
   /opt/GooPlex/install/apps/organizr.sh
 }
 
-# Rclone
-RCLONE(){
-  /opt/GooPlex/install/apps/rclone.sh
-}
-
 # Exit
 QUIT(){
   exit
@@ -70,14 +55,11 @@ show_menus() {
   echo -e "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
   echo -e " $FUNCTION "
   echo -e " ${STD}"
-  echo -e " ${LPURPLE}A${STD} - Plex"
-  echo -e " ${LPURPLE}B${STD} - Tautulli"
-  echo -e " ${LPURPLE}C${STD} - Sonarr"
-  echo -e " ${LPURPLE}D${STD} - Radarr"
-  echo -e " ${LPURPLE}E${STD} - Deluge"
-  echo -e " ${LPURPLE}F${STD} - Netdata"
-  echo -e " ${LPURPLE}G${STD} - Organizr"
-  echo -e " ${LPURPLE}H${STD} - Rclone"
+  echo -e " ${LPURPLE}A${STD} - Sonarr"
+  echo -e " ${LPURPLE}B${STD} - Radarr"
+  echo -e " ${LPURPLE}C${STD} - Deluge"
+  echo -e " ${LPURPLE}D${STD} - Netdata"
+  echo -e " ${LPURPLE}E${STD} - Organizr"
   echo -e " ${WHITE}Z${STD} - EXIT to Main Menu"
   echo -e " ${LPURPLE}"
   echo -e "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
@@ -92,14 +74,11 @@ read_options(){
   local choice
     read -p "Choose option: " choice
     case $choice in      
-      [Aa]) PLEX ;;
-      [Bb]) TAUTULLI ;;
-      [Cc]) SONARR ;;
-      [Dd]) RADARR ;;
-      [Ee]) DELUGE ;;
+      [Aa]) SONARR ;;
+      [Bb]) RADARR ;;
+      [Cc]) DELUGE ;;
       [Ff]) NETDATA ;;
       [Gg]) ORGANIZR ;;
-      [Hh]) RCLONE ;;
       [Zz]) QUIT ;;
       *) echo -e "${LRED}Please select a valid option${STD}" && sleep 2
     esac
