@@ -28,14 +28,9 @@ DELUGE(){
   /opt/GooPlex/install/apps/deluge.sh
 }
 
-# Netdata
-NETDATA(){
-  /opt/GooPlex/install/apps/netdata.sh
-}
-
-# Organizr
-ORGANIZR(){
-  /opt/GooPlex/install/apps/organizr.sh
+# NZBGet
+NZBGET(){
+  /opt/GooPlex/install/apps/nzbget.sh
 }
 
 # Exit
@@ -58,8 +53,7 @@ show_menus() {
   echo -e " ${LPURPLE}A${STD} - Sonarr"
   echo -e " ${LPURPLE}B${STD} - Radarr"
   echo -e " ${LPURPLE}C${STD} - Deluge"
-  echo -e " ${LPURPLE}D${STD} - Netdata"
-  echo -e " ${LPURPLE}E${STD} - Organizr"
+  echo -e " ${LPURPLE}D${STD} - NZBGet"
   echo -e " ${WHITE}Z${STD} - EXIT to Main Menu"
   echo -e " ${LPURPLE}"
   echo -e "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
@@ -77,7 +71,7 @@ read_options(){
       [Aa]) SONARR ;;
       [Bb]) RADARR ;;
       [Cc]) DELUGE ;;
-      [Ff]) NETDATA ;;
+      [Dd]) NZBGET ;;
       [Gg]) ORGANIZR ;;
       [Zz]) QUIT ;;
       *) echo -e "${LRED}Please select a valid option${STD}" && sleep 2
