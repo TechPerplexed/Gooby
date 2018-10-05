@@ -23,6 +23,11 @@ ORGANIZR(){
   /opt/GooPlex/install/apps/organizr.sh
 }
 
+# Omni
+OMNI(){
+  /opt/GooPlex/install/apps/omni.sh
+}
+
 # Exit
 QUIT(){
   exit
@@ -42,6 +47,7 @@ show_menus() {
   echo -e " ${STD}"
   echo -e " ${LPURPLE}A${STD} - Netdata"
   echo -e " ${LPURPLE}B${STD} - Organizr"
+  echo -e " ${LPURPLE}C${STD} - Omni"
   echo -e " ${WHITE}Z${STD} - EXIT to Main Menu"
   echo -e " ${LPURPLE}"
   echo -e "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
@@ -58,6 +64,7 @@ read_options(){
     case $choice in      
       [Aa]) NETDATA ;;
       [Bb]) ORGANIZR ;;
+      [Cc]) OMNI ;;
       [Zz]) QUIT ;;
       *) echo -e "${LRED}Please select a valid option${STD}" && sleep 2
     esac
