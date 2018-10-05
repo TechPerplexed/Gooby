@@ -18,6 +18,11 @@ server(){
   /opt/GooPlex/menus/server.sh
 }
 
+# Install Media
+media(){
+  /opt/GooPlex/menus/media.sh
+}
+
 # Install Apps
 apps(){
   /opt/GooPlex/menus/apps.sh
@@ -52,8 +57,9 @@ show_menus() {
   echo -e " $FUNCTION "
   echo -e " ${STD}"
   echo -e " ${GREEN}A${STD} - Maintain Server"
-  echo -e " ${GREEN}B${STD} - Manage Applications"
-  echo -e " ${GREEN}C${STD} - Additional Tasks"
+  echo -e " ${GREEN}B${STD} - Media Applications"
+  echo -e " ${GREEN}C${STD} - Other Applications"
+  echo -e " ${GREEN}D${STD} - Additional Tasks"
   echo -e " ${LRED}Q${STD} - QUIT $FUNCTION"
   echo -e "${GREEN}"
   echo -e "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
@@ -69,13 +75,14 @@ read_options(){
     read -p "Choose option: " choice
     case $choice in
       [Aa]) server ;;
-      [Bb]) apps ;;
-      [Cc]) misc ;;
+      [Bb]) media ;;
+      [Cc]) apps ;;
+      [Dd]) misc ;;
       [Qq]) quit ;;
       *) echo -e "${LRED}Please select a valid option${STD}" && sleep 2
     esac
 }
- 
+
 # ----------
 # Finalizing
 # ----------
@@ -83,7 +90,7 @@ read_options(){
 trap '' SIGINT SIGQUIT SIGTSTP
 
 while true
-do 
+do
   show_menus
   read_options
 done
