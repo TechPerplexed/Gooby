@@ -69,7 +69,7 @@ read_options(){
       *) echo -e "${LRED}Please select a valid option${STD}" && sleep 2
     esac
 }
- 
+
 # ----------
 # Finalizing
 # ----------
@@ -77,7 +77,7 @@ read_options(){
 trap '' SIGINT SIGQUIT SIGTSTP
 
 while true
-do 
+do
   show_menus
   read_options
 done
