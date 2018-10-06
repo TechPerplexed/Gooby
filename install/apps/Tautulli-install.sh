@@ -1,14 +1,12 @@
 #!/bin/bash
 
 clear
-read -p "Are you sure you want to $PERFROM $FUNCTION (y/N)? " -n 1 -r
+read -p "Are you sure you want to ${PERFORM} ${FUNCTION} (y/N)? " -n 1 -r
 echo ""
 
-if [[ $REPLY =~ ^[Yy]$ ]]
-then
+if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 
-  if [ ! -d "/opt/Tautulli" ]
-  then
+  if [ ! -d "/opt/Tautulli" ]; then
 
     # ----------
     # Open ports
@@ -45,8 +43,7 @@ then
  
   fi
 
-  if [ ! -e "/etc/systemd/system/tautulli.service" ]
-  then
+  if [ ! -e "/etc/systemd/system/tautulli.service" ]; then
 
     # -------------------
     # Installing Services
@@ -65,7 +62,7 @@ then
 
 else
 
-  echo -e "You chose ${YELLOW}not${STD} to $PERFORM $FUNCTION"
+  echo -e "You chose ${YELLOW}not${STD} to ${PERFORM} ${FUNCTION}"
 
 fi
 
