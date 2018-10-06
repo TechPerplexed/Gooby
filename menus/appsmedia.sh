@@ -15,7 +15,7 @@ clear
 
 # Rclone
 RCLONE(){
-  /opt/GooPlex/install/apps/rclone.sh
+  /opt/GooPlex/menus/appsmedia/rclone.sh
 }
 
 # Plex
