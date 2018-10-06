@@ -27,6 +27,8 @@ if [[ ${REPLY} =~ ^[Yy]$ ]]; then
   sudo apt autoclean
   sudo apt-get autoremove
   
+  # Task Completed
+
   echo -e "${LMAGENTA}"
   echo -e "--------------------------------------------------"
   echo -e " ${PERFORM} $TASK completed"
