@@ -6,8 +6,10 @@ echo ""
 
 if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 
+  clear
   echo ""
-  echo -e "Coming soon!"
+  echo -e "${FUNCTION} can't be updated through this menu"
+  echo -e "You can update it from the app itself."
 
 else
 
