@@ -6,6 +6,7 @@ echo ""
 
 if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 
+  echo ""
   echo -e "Coming soon!"
 
 else
