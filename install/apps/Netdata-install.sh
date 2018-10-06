@@ -1,7 +1,18 @@
 #!/bin/bash
 
 clear
-read -p "Are you sure you want to ${PERFORM} ${FUNCTION} (y/N)? " -n 1 -r
+
+# Explanation
+
+echo -e "--------------------------------------------------"
+echo -e " This will ${PERFORM} $TASK}"
+echo -e " You probably only need to run this once..."
+echo -e "--------------------------------------------------"
+echo ""
+
+# Confirmation
+
+read -p " Are you sure you want to ${PERFORM} ${TASK} (y/N)? " -n 1 -r
 echo ""
 
 if [[ ${REPLY} =~ ^[Yy]$ ]]; then
@@ -31,14 +42,21 @@ if [[ ${REPLY} =~ ^[Yy]$ ]]; then
   clear
   bash <(curl -Ss https://my-netdata.io/kickstart.sh)
 
-  # ----------
-  # Finalizing
-  # ----------
+  # Task Completed
+
+  echo -e "${LMAGENTA}"
+  echo -e "--------------------------------------------------"
+  echo -e " ${PERFORM} $TASK completed"
+  echo -e "--------------------------------------------------"
+  echo -e "${STD}"
 
 else
 
-  echo -e "You chose ${YELLOW}not${STD} to ${PERFORM} ${FUNCTION}"
+  echo ""
+  echo -e "--------------------------------------------------"
+  echo -e " You chose ${YELLOW}not${STD} to ${PERFORM} ${TASK}"
+  echo -e "--------------------------------------------------"
+  echo ""
 
 fi
 
-PAUSE
