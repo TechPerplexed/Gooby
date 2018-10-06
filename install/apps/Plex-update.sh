@@ -6,8 +6,7 @@ echo ""
 
 if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 
-  echo ""
-  echo -e "Coming soon!"
+  /opt/plexupdate/extras/installer.sh
 
 else
 
