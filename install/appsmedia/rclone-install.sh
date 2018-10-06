@@ -1,6 +1,6 @@
 #!/bin/bash
 
-FUNCTION="install or update Rclone"
+FUNCTION="install Rclone"
 
 # ---------
 # Variables
@@ -58,14 +58,9 @@ then
   cd ~
   clear
 
-  if [ ! -e "/home/plexuser/.config/rclone/rclone.conf" ]
-  then
-
-    echo "Please follow the instructions to setup Rclone"
-    echo ""
-    sudo rclone config
-
-  fi
+  echo "Please follow the instructions to setup Rclone"
+  echo ""
+  sudo rclone config
 
   # -------------------
   # Installing Services
