@@ -6,36 +6,44 @@ echo ""
 
 if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 
-  # ----------
-  # Open ports
-  # ----------
-
-  sudo ufw allow 32400
-
-  # ------------
-  # Dependencies
-  # ------------
-
-  sudo apt-get upgrade -y && sudo apt-get upgrade -y
-
-  # -----------
-  # Main script
-  # -----------
-
-  # Execution
-
   if [ -d "/var/lib/plexmediaserver" ]; then
 
     echo -e "${FUNCTION} is already installed!"
 
   else
 
-    cd /tmp
-    clear
-    echo -e "Please read the options carefully"
-    echo ""
-    bash -c "$(wget -qO - https://raw.githubusercontent.com/mrworf/plexupdate/master/extras/installer.sh)"
-    cd ~
+    # ----------
+    # Open ports
+    # ----------
+
+    sudo ufw allow 32400
+
+    # ------------
+    # Dependencies
+    # ------------
+
+    sudo apt-get upgrade -y && sudo apt-get upgrade -y
+
+    # -----------
+    # Main script
+    # -----------
+
+      cd /tmp
+      clear
+      echo -e "Please read the options carefully"
+      echo ""
+      bash -c "$(wget -qO - https://raw.githubusercontent.com/mrworf/plexupdate/master/extras/installer.sh)"
+      cd ~
+      
+    # -----------
+    # Explanation
+    # -----------
+
+    echo -e "${LMAGENTA}"
+    echo -e "--------------------------------------------------"
+    echo -e " ${PERFORM} $FUNCTION completed"
+    echo -e "--------------------------------------------------"
+    echo -e "${STD}"
 
   fi
 
