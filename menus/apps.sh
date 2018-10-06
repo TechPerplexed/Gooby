@@ -16,19 +16,19 @@ clear
 # Install
 INSTALL(){
   PERFORM="install"
-  /opt/GooPlex/install/apps/$FUNCTION-$PERFORM.sh
+  source /opt/GooPlex/install/apps/$FUNCTION-$PERFORM.sh
 }
 
 # Update
 UPDATE(){
   PERFORM="update"
-  /opt/GooPlex/install/apps/$FUNCTION-$PERFORM.sh
+  source /opt/GooPlex/install/apps/$FUNCTION-$PERFORM.sh
 }
 
 # Remove
 REMOVE(){
   PERFORM="remove"
-  /opt/GooPlex/install/apps/$FUNCTION-$PERFORM.sh
+  source /opt/GooPlex/install/apps/$FUNCTION-$PERFORM.sh
 }
 
 # Exit
