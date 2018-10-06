@@ -13,17 +13,17 @@ clear
 # Menu Options
 # ------------
 
-# Install Deluge
+# Install
 INSTALL(){
   /opt/GooPlex/install/appsdownload/nzbget-install.sh
 }
 
-# Update Deluge
+# Update
 UPDATE(){
   /opt/GooPlex/install/appsdownload/nzbget-update.sh
 }
 
-# Remove Deluge
+# Remove
 REMOVE(){
   /opt/GooPlex/install/appsdownload/nzbget-remove.sh
 }
