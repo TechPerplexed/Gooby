@@ -1,17 +1,7 @@
 #!/bin/bash
 
-FUNCTION="install Deluge"
-
-# ---------
-# Variables
-# ---------
-
-source /opt/GooPlex/menus/variables.sh
-
-# Confirmation
-
 clear
-read -p "Are you sure you want to $FUNCTION (y/N)? " -n 1 -r
+read -p "Are you sure you want to $PERFORM $FUNCTION (y/N)? " -n 1 -r
 echo ""
 
 if [[ $REPLY =~ ^[Yy]$ ]]
@@ -47,8 +37,7 @@ then
    else
   
     clear
-    echo -e "Deluge is already installed!"
-    echo -e "It will be updated automatically."
+    echo -e "$FUNCTION is already installed!"
  
   fi
 
@@ -91,7 +80,7 @@ then
 
 else
 
-  echo -e "You chose ${YELLOW}not${STD} to $FUNCTION"
+  echo -e "You chose ${YELLOW}not${STD} to $PERFORM $FUNCTION"
 
 fi
 
