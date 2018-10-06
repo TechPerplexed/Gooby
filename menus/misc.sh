@@ -15,7 +15,8 @@ clear
 
 # Update GooPlex
 SERVER(){
-  /opt/GooPlex/install/misc/update.sh
+  FUNCTION="Update GooPlex"
+  source /opt/GooPlex/install/misc/update.sh
 }
 
 # Plex Backup
