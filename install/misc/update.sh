@@ -1,7 +1,18 @@
 #!/bin/bash
 
 clear
-read -p "Are you sure you want to ${PERFORM} ${FUNCTION} (y/N)? " -n 1 -r
+
+# Explanation
+
+echo -e "--------------------------------------------------"
+echo -e " This will update GooPlex to the latest version"
+echo -e " You can run this as often as you like!"
+echo -e "--------------------------------------------------"
+echo ""
+
+# Confirmation
+
+read -p " Are you sure you want to ${PERFORM} ${TASK} (y/N)? " -n 1 -r
 echo ""
 
 if [[ ${REPLY} =~ ^[Yy]$ ]]; then
@@ -20,19 +31,21 @@ if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 
   clear
 
-  # -----------
-  # Explanation
-  # -----------
+  # Task Completed
 
   echo -e "${LMAGENTA}"
-  echo -e "------------------------------------------------------"
-  echo -e " Task: ${PERFORM} $FUNCTION completed "
-  echo -e "------------------------------------------------------"
+  echo -e "--------------------------------------------------"
+  echo -e " ${PERFORM} $TASK completed"
+  echo -e "--------------------------------------------------"
   echo -e "${STD}"
 
 else
 
-  echo -e "You chose ${YELLOW}not${STD} to ${PERFORM} ${FUNCTION}"
+  echo ""
+  echo -e "--------------------------------------------------"
+  echo -e " You chose ${YELLOW}not${STD} to ${PERFORM} ${TASK}"
+  echo -e "--------------------------------------------------"
+  echo ""
 
 fi
 
