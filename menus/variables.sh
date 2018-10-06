@@ -49,8 +49,8 @@ CONFIRMATION(){
   echo ""
 }
 
-FORSURE(){
-  echo -e "OK, proceeding with ${PERFORM} ${TASK}"
+GOAHEAD(){
+  echo -e "You chose to ${PERFORM} ${TASK}"
 }
 
 CANCELTHIS(){
