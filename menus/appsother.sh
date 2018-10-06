@@ -15,17 +15,20 @@ clear
 
 # Netdata
 NETDATA(){
-  /opt/GooPlex/install/apps/netdata.sh
+  FUNCTION="Netdata"
+  source /opt/GooPlex/menus/apps.sh
 }
 
 # Organizr
 ORGANIZR(){
-  /opt/GooPlex/install/apps/organizr.sh
+  FUNCTION="Organizr"
+  source /opt/GooPlex/menus/apps.sh
 }
 
 # Omni
 OMNI(){
-  /opt/GooPlex/install/apps/omni.sh
+  FUNCTION="Omni"
+  source /opt/GooPlex/menus/apps.sh
 }
 
 # Exit
