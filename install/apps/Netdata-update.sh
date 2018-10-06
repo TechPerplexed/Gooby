@@ -4,8 +4,9 @@ clear
 read -p "Are you sure you want to ${PERFORM} ${FUNCTION} (y/N)? " -n 1 -r
 echo ""
 
-if [[ $REPLY =~ ^[Yy]$ ]]; then
+if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 
+  echo ""
   echo -e "Coming soon!"
 
 else
