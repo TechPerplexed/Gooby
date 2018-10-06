@@ -15,19 +15,19 @@ clear
 
 # Netdata
 NETDATA(){
-  FUNCTION="Netdata"
+  TASK="Netdata"
   source /opt/GooPlex/menus/apps.sh
 }
 
 # Organizr
 ORGANIZR(){
-  FUNCTION="Organizr"
+  TASK="Organizr"
   source /opt/GooPlex/menus/apps.sh
 }
 
 # Omni
 OMNI(){
-  FUNCTION="Omni"
+  TASK="Omni"
   source /opt/GooPlex/menus/apps.sh
 }
 
