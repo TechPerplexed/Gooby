@@ -15,20 +15,23 @@ clear
 
 # Update GooPlex
 SERVER(){
-  FUNCTION="Update GooPlex"
+  PERFORM="install"
+  FUNCTION="GooPlex"
   source /opt/GooPlex/install/misc/update.sh
 }
 
 # Plex Backup
 PBACKUP(){
-  FUNCTION="backup Plex and Tautulli to Google"
+  PERFORM="backup"
+  FUNCTION="Plex and Tautulli to Google"
   source /opt/GooPlex/install/misc/plex-backup.sh
 }
 
 
 # Plex Restore
 PRESTORE(){
-  FUNCTION="restore Plex and Tautulli database"
+  PERFORM="restore"
+  FUNCTION="Plex and Tautulli database"
   source /opt/GooPlex/install/misc/plex-restore.sh
 }
 
