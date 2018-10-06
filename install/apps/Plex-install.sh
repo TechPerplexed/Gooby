@@ -22,11 +22,9 @@ if [[ ${REPLY} =~ ^[Yy]$ ]]; then
   # Main script
   # -----------
 
-    # Execution
+  # Execution
 
-  if [ -d "/var/lib/plexmediaserver" ];
-
-  then
+  if [ -d "/var/lib/plexmediaserver" ]; then
 
     echo -e "${FUNCTION} is already installed!"
 
