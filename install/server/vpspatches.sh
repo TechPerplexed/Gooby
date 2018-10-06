@@ -4,10 +4,11 @@ clear
 
 # Explanation
 
-echo -e "-----------------------------------------------------"
-echo -e " This will ${PERFORM} ${FUNCTION}"
-echo -e "        You can run this as often as you like!       "
-echo -e "-----------------------------------------------------"
+echo -e "--------------------------------------------------"
+echo -e " This will update your server"
+echo -e " with all the latest patches"
+echo -e " You can run this as often as you like!"
+echo -e "--------------------------------------------------"
 echo ""
 
 # Confirmation
