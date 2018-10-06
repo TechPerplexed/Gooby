@@ -15,25 +15,25 @@ clear
 
 # Sonarr
 SONARR(){
-  FUNCTION="Sonarr"
+  TASK="Sonarr"
   source /opt/GooPlex/menus/apps.sh
 }
 
 # Radarr
 RADARR(){
-  FUNCTION="Radarr"
+  TASK="Radarr"
   source /opt/GooPlex/menus/apps.sh
 }
 
 # Deluge
 DELUGE(){
-  FUNCTION="Deluge"
+  TASK="Deluge"
   source /opt/GooPlex/menus/apps.sh
 }
 
 # NZBGet
 NZBGET(){
-  FUNCTION="NZBGet"
+  TASK="NZBGet"
   source /opt/GooPlex/menus/apps.sh
 }
 
