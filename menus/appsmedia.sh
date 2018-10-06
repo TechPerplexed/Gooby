@@ -15,25 +15,25 @@ clear
 
 # Rclone
 RCLONE(){
-  FUNCTION="Rclone"
+  TASK="Rclone"
   source /opt/GooPlex/menus/apps.sh
 }
 
 # Plex
 PLEX(){
-  FUNCTION="Plex"
+  TASK="Plex"
   source /opt/GooPlex/menus/apps.sh
 }
 
 # Tautulli
 TAUTULLI(){
-  FUNCTION="Tautulli"
+  TASK="Tautulli"
   source /opt/GooPlex/menus/apps.sh
 }
 
 # Emby
 EMBY(){
-  FUNCTION="Emby"
+  TASK="Emby"
   source /opt/GooPlex/menus/apps.sh
 }
 
