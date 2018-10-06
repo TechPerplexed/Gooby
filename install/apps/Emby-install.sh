@@ -29,9 +29,9 @@ if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 
 	  # Execution
 	  
-	  echo ""
-    echo -e "Coming soon!"
-    echo ""
+        echo ""
+          echo -e "Coming soon!"
+          echo ""
 	  
 	  # Task Completed
 
@@ -40,6 +40,8 @@ if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 	  echo -e " ${PERFORM} ${TASK} completed"
 	  echo -e "--------------------------------------------------"
 	  echo -e "${STD}"
+	  
+  fi
 
 else
 
