@@ -21,13 +21,15 @@ SERVER(){
 
 # Plex Backup
 PBACKUP(){
-  /opt/GooPlex/install/misc/plex-backup.sh
+  FUNCTION="backup Plex and Tautulli to Google"
+  source /opt/GooPlex/install/misc/plex-backup.sh
 }
 
 
 # Plex Restore
 PRESTORE(){
-  /opt/GooPlex/install/misc/plex-restore.sh
+  FUNCTION="restore Plex and Tautulli database"
+  source /opt/GooPlex/install/misc/plex-restore.sh
 }
 
 # Exit
