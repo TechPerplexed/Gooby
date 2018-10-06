@@ -1,11 +1,10 @@
 #!/bin/bash
 
 clear
-read -p "Are you sure you want to $PERFORM $FUNCTION (y/N)? " -n 1 -r
+read -p "Are you sure you want to ${PERFORM} ${FUNCTION} (y/N)? " -n 1 -r
 echo ""
 
-if [[ $REPLY =~ ^[Yy]$ ]]
-then
+if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 
   # ----------
   # Open ports
@@ -23,13 +22,23 @@ then
   # Main script
   # -----------
 
-  # Execution
+  if [ -d "/opt/OrganizrInstaller" ];
 
-  sudo git clone https://github.com/elmerfdz/OrganizrInstaller /opt/OrganizrInstaller
-  cd /opt/OrganizrInstaller/ubuntu/oui
-  clear
-  sudo bash ou_installer.sh
-  cd ~
+  then
+
+    echo -e "${FUNCTION} is already installed!"
+
+  else
+
+    # Execution
+
+    sudo git clone https://github.com/elmerfdz/OrganizrInstaller /opt/OrganizrInstaller
+    cd /opt/OrganizrInstaller/ubuntu/oui
+    clear
+    sudo bash ou_installer.sh
+    cd ~
+  
+  fi
 
   # ----------
   # Finalizing
@@ -37,7 +46,7 @@ then
 
 else
 
-  echo -e "You chose ${YELLOW}not${STD} to $PERFORM $FUNCTION"
+  echo -e "You chose ${YELLOW}not${STD} to ${PERFORM} ${FUNCTION}"
 
 fi
 
