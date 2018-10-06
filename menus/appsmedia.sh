@@ -21,17 +21,20 @@ RCLONE(){
 
 # Plex
 PLEX(){
-  /opt/GooPlex/install/apps/plex.sh
+  FUNCTION="Plex"
+  source /opt/GooPlex/menus/apps.sh
 }
 
 # Tautulli
 TAUTULLI(){
-  /opt/GooPlex/install/apps/tautulli.sh
+  FUNCTION="Tautulli"
+  source /opt/GooPlex/menus/apps.sh
 }
 
 # Emby
 EMBY(){
-  /opt/GooPlex/install/apps/emby.sh
+  FUNCTION="Emby"
+  source /opt/GooPlex/menus/apps.sh
 }
 
 # Exit
