@@ -1,17 +1,7 @@
 #!/bin/bash
 
-FUNCTION="install Radarr"
-
-# ---------
-# Variables
-# ---------
-
-source /opt/GooPlex/menus/variables.sh
-
-# Confirmation
-
 clear
-read -p "Are you sure you want to $FUNCTION (y/N)? " -n 1 -r
+read -p "Are you sure you want to $PERFORM $FUNCTION (y/N)? " -n 1 -r
 echo ""
 
 if [[ $REPLY =~ ^[Yy]$ ]]
@@ -89,7 +79,7 @@ then
 
 else
 
-  echo -e "You chose ${YELLOW}not${STD} to $FUNCTION"
+  echo -e "You chose ${YELLOW}not${STD} to $PERFORM $FUNCTION"
 
 fi
 
