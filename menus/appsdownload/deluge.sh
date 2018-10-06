@@ -13,17 +13,17 @@ clear
 # Menu Options
 # ------------
 
-# Install Deluge
+# Install
 INSTALL(){
   /opt/GooPlex/install/apps/deluge-install.sh
 }
 
-# Update Deluge
+# Update
 UPDATE(){
   /opt/GooPlex/install/apps/deluge-update.sh
 }
 
-# Remove Deluge
+# Remove
 REMOVE(){
   /opt/GooPlex/install/misc/deluge-remove.sh
 }
