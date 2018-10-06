@@ -1,31 +1,23 @@
 #!/bin/bash
 
-FUNCTION="initialize server"
-
-# ---------
-# Variables
-# ---------
-
-source /opt/GooPlex/menus/variables.sh
 clear
 
 # Explanation
 
-echo -e "------------------------------------------------------"
+echo -e "--------------------------------------------------"
 echo -e " This will initalize the server with vital apps, "
-echo -e "             Set the time zone and"
-echo -e "       ${WHITE}Optionally${STD} change the root password. "
-echo -e "    You probably only need to run this ${WHITE}once${STD}!"
-echo -e "------------------------------------------------------"
+echo -e " Set the time zone and"
+echo -e " ${WHITE}Optionally${STD} change the root password. "
+echo -e " You probably only need to run this ${WHITE}once${STD}!"
+echo -e "--------------------------------------------------"
 echo ""
 
 # Confirmation
 
-read -p "Are you sure you want to $FUNCTION (y/N)? " -n 1 -r
+read -p "Are you sure you want to ${PERFORM} ${TASK} (y/N)? " -n 1 -r
 echo ""
 
-if [[ $REPLY =~ ^[Yy]$ ]]
-then
+if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 
     # -----------
     # Main script
@@ -106,10 +98,21 @@ then
 
       fi
 
+  # Task Completed
+
+  echo -e "${LMAGENTA}"
+  echo -e "--------------------------------------------------"
+  echo -e " ${PERFORM} $TASK completed"
+  echo -e "--------------------------------------------------"
+  echo -e "${STD}"
+
 else
 
   echo ""
-  echo -e "You chose ${YELLOW}not${STD} to $FUNCTION"
+  echo -e "--------------------------------------------------"
+  echo -e "You chose ${YELLOW}not${STD} to ${PERFORM} ${TASK}"
+  echo -e "--------------------------------------------------"
+  echo ""
 
 fi
 
