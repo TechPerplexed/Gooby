@@ -1,12 +1,5 @@
 #!/bin/bash
 
-FUNCTION="Update GooPlex"
-
-# ---------
-# Variables
-# ---------
-
-source /opt/GooPlex/menus/variables.sh
 clear
 
 # -----------
