@@ -1,21 +1,21 @@
 #!/bin/bash
 
-FUNCTION="backup Plex and Tautulli to Google"
+clear
 
-# ---------
-# Variables
-# ---------
+# Explanation
 
-source /opt/GooPlex/menus/variables.sh
+echo -e "--------------------------------------------------"
+echo -e " This will create a backup of Plex and Tautulli"
+echo -e " The backup can be found in Google (Backup folder)"
+echo -e "--------------------------------------------------"
+echo ""
 
 # Confirmation
 
-clear
-read -p "Are you sure you want to $FUNCTION (y/N)? " -n 1 -r
+read -p " Are you sure you want to ${PERFORM} ${TASK} (y/N)? " -n 1 -r
 echo ""
 
-if [[ $REPLY =~ ^[Yy]$ ]]
-then
+if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 
   # -----------
   # Main script
@@ -36,6 +36,7 @@ then
   sudo service plexmediaserver stop
 
   # Creating backup
+
   echo -e "${LMAGENTA}Creating backup file...${STD}"
   sudo tar -cf /tmp/$(date +%F).tar.gz \
     /opt/Tautulli/config.ini \
@@ -43,23 +44,33 @@ then
     /var/lib/plexmediaserver
 
   # Starting services
+
   echo -e "${CYAN}Starting services...${STD}"
   sudo service plexmediaserver start
   sudo systemctl start tautulli.service
 
   # Copying to Gdrive
+
   echo -e "${GREEN}Copying to Google drive...${STD}"
   sudo rclone copy /tmp/$(date +%F).* Gdrive:/Backup/$(hostname) --checksum --drive-chunk-size=64M
   sudo rm /tmp/$(date +%F).*
   echo -e "${WHITE}Done!${STD}"
 
-  # ----------
-  # Finalizing
-  # ----------
+  # Task Completed
+
+  echo -e "${LMAGENTA}"
+  echo -e "--------------------------------------------------"
+  echo -e " ${PERFORM} $TASK completed"
+  echo -e "--------------------------------------------------"
+  echo -e "${STD}"
 
 else
 
-  echo -e "You chose ${YELLOW}not${STD} to $FUNCTION"
+  echo ""
+  echo -e "--------------------------------------------------"
+  echo -e " You chose ${YELLOW}not${STD} to ${PERFORM} ${TASK}"
+  echo -e "--------------------------------------------------"
+  echo ""
 
 fi
 
