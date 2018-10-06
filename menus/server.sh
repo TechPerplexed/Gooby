@@ -16,21 +16,21 @@ clear
 # Update Server
 UPDATE(){
   PERFORM="initialize"
-  FUNCTION="server"
+  TASK="server"
   source /opt/GooPlex/install/server/vpsupdate.sh
 }
 
 # Update Server
 PATCHES(){
   PERFORM="update"
-  FUNCTION="server patches"
+  TASK="server patches"
   source /opt/GooPlex/install/server/vpspatches.sh
 }
 
 # Update Server
 UPGRADE(){
   PERFORM="upgrade"
-  FUNCTION="Ubuntu"
+  TASK="Ubuntu"
  source /opt/GooPlex/install/server/vpsupgrade.sh
 }
 
