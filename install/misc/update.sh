@@ -26,7 +26,7 @@ if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 
   echo -e "${LMAGENTA}"
   echo -e "------------------------------------------------"
-  echo -e " $FUNCTION has been updated to the latest version "
+  echo -e " ${PERFORM} $FUNCTION completed "
   echo -e "------------------------------------------------"
   echo -e "${STD}"
 
