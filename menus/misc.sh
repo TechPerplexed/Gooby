@@ -15,8 +15,8 @@ clear
 
 # Update GooPlex
 SERVER(){
-  PERFORM="install"
-  FUNCTION="GooPlex"
+  PERFORM="update"
+  FUNCTION="GooPlex to the latest version"
   source /opt/GooPlex/install/misc/update.sh
 }
 
