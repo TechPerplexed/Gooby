@@ -13,7 +13,7 @@ echo ""
 
 # Confirmation
 
-read -p "Are you sure you want to ${PERFORM} ${TASK} (y/N)? " -n 1 -r
+read -p " Are you sure you want to ${PERFORM} ${TASK} (y/N)? " -n 1 -r
 echo ""
 
 if [[ ${REPLY} =~ ^[Yy]$ ]]; then
@@ -41,7 +41,7 @@ else
 
   echo ""
   echo -e "--------------------------------------------------"
-  echo -e "You chose ${YELLOW}not${STD} to ${PERFORM} ${TASK}"
+  echo -e " You chose ${YELLOW}not${STD} to ${PERFORM} ${TASK}"
   echo -e "--------------------------------------------------"
   echo ""
 
