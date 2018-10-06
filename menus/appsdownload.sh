@@ -15,17 +15,20 @@ clear
 
 # Sonarr
 SONARR(){
-  /opt/GooPlex/install/apps/sonarr.sh
+  FUNCTION="Sonarr"
+  source /opt/GooPlex/menus/apps.sh
 }
 
 # Radarr
 RADARR(){
-  /opt/GooPlex/install/apps/radarr.sh
+  FUNCTION="Radarr"
+  source /opt/GooPlex/menus/apps.sh
 }
 
 # Deluge
 DELUGE(){
-  /opt/GooPlex/install/apps/deluge.sh
+  FUNCTION="Deluge"
+  source /opt/GooPlex/menus/apps.sh
 }
 
 # NZBGet
