@@ -17,16 +17,29 @@ echo ""
 
 if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 
-  echo ""
-  echo -e "Coming soon!"
+  if [ -d "/folder" ]; then
 
-  # Task Completed
+    echo ""
+	echo -e "--------------------------------------------------"
+    echo -e " ${TASK} seems to be installed already"
+	echo -e "--------------------------------------------------"
+	echo ""
 
-  echo -e "${LMAGENTA}"
-  echo -e "--------------------------------------------------"
-  echo -e " ${PERFORM} $TASK completed"
-  echo -e "--------------------------------------------------"
-  echo -e "${STD}"
+  else
+
+	  # Execution
+	  
+	  echo ""
+    echo -e "Coming soon!"
+    echo ""
+	  
+	  # Task Completed
+
+	  echo -e "${LMAGENTA}"
+	  echo -e "--------------------------------------------------"
+	  echo -e " ${PERFORM} ${TASK} completed"
+	  echo -e "--------------------------------------------------"
+	  echo -e "${STD}"
 
 else
 
