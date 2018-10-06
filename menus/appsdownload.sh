@@ -30,7 +30,7 @@ DELUGE(){
 
 # NZBGet
 NZBGET(){
-  /opt/GooPlex/install/apps/nzbget.sh
+  /opt/GooPlex/menus/appsdownload/nzbget.sh
 }
 
 # Exit
