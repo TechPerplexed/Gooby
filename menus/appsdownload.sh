@@ -30,7 +30,8 @@ DELUGE(){
 
 # NZBGet
 NZBGET(){
-  /opt/GooPlex/menus/appsdownload/nzbget.sh
+  FUNCTION="NZBGet"
+  source /opt/GooPlex/menus/apps.sh
 }
 
 # Exit
@@ -67,7 +68,7 @@ show_menus() {
 read_options(){
   local choice
     read -p "Choose option: " choice
-    case $choice in      
+    case $choice in
       [Aa]) SONARR ;;
       [Bb]) RADARR ;;
       [Cc]) DELUGE ;;
@@ -77,7 +78,7 @@ read_options(){
       *) echo -e "${LRED}Please select a valid option${STD}" && sleep 2
     esac
 }
- 
+
 # ----------
 # Finalizing
 # ----------
@@ -85,7 +86,7 @@ read_options(){
 trap '' SIGINT SIGQUIT SIGTSTP
 
 while true
-do 
+do
   show_menus
   read_options
 done
