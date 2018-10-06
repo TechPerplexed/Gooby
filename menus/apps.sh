@@ -9,19 +9,19 @@ clear
 # Install
 INSTALL(){
   PERFORM="install"
-  source /opt/GooPlex/install/apps/$FUNCTION-$PERFORM.sh
+  source /opt/GooPlex/install/apps/${TASK}-${PERFORM}.sh
 }
 
 # Update
 UPDATE(){
   PERFORM="update"
-  source /opt/GooPlex/install/apps/$FUNCTION-$PERFORM.sh
+  source /opt/GooPlex/install/apps/${TASK}-${PERFORM}.sh
 }
 
 # Remove
 REMOVE(){
   PERFORM="remove"
-  source /opt/GooPlex/install/apps/$FUNCTION-$PERFORM.sh
+  source /opt/GooPlex/install/apps/${TASK}-${PERFORM}.sh
 }
 
 # Exit
@@ -39,11 +39,11 @@ show_menus() {
   echo -e "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
   echo -e " G O O P L E X - Visit techperplexed.ga "
   echo -e "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-  echo -e " $FUNCTION "
+  echo -e " $TASK"
   echo -e " ${STD}"
-  echo -e " ${LPURPLE}A${STD} - Install $FUNCTION"
-  echo -e " ${LPURPLE}B${STD} - Update $FUNCTION"
-  echo -e " ${LPURPLE}C${STD} - Remove $FUNCTION"
+  echo -e " ${LPURPLE}A${STD} - Install $TASK"
+  echo -e " ${LPURPLE}B${STD} - Update $TASK"
+  echo -e " ${LPURPLE}C${STD} - Remove $TASK"
   echo -e " ${WHITE}Z${STD} - EXIT to Main Menu"
   echo -e " ${LPURPLE}"
   echo -e "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
