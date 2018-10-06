@@ -52,6 +52,16 @@ if [[ ${REPLY} =~ ^[Yy]$ ]]; then
   sudo mkdir -p /home/plexuser/downloads/incomplete
   sudo mkdir -p /home/plexuser/downloads/import
   sudo chown -R plexuser:plexuser /home/plexuser
+  
+  # -----------
+  # Explanation
+  # -----------
+
+  echo -e "${LMAGENTA}"
+  echo -e "--------------------------------------------------"
+  echo -e " ${PERFORM} $FUNCTION completed"
+  echo -e "--------------------------------------------------"
+  echo -e "${STD}"
 
   # ----------
   # Finalizing
