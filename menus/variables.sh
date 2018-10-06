@@ -20,10 +20,39 @@ LPURPLE=$(echo -en '\033[01;35m')
 LCYAN=$(echo -en '\033[01;36m')
 WHITE=$(echo -en '\033[01;37m')
 
-# Define pause button
+# Define choices
 
 PAUSE(){
   echo ""
   read -t 10 -n 1 -s -r -p "All done! Press Enter to return to the menu..."
   echo ""
+}
+
+ALREADYINSTALLED(){
+  echo ""
+  echo -e "--------------------------------------------------"
+  echo -e " ${TASK} appears to be installed already"
+  echo -e " Returning to menu..."
+  echo -e "--------------------------------------------------"
+  echo ""
+}
+
+EXPLAINTASK(){
+  echo -e "--------------------------------------------------"
+  echo -e " This will ${PERFORM} $TASK}"
+  echo -e "--------------------------------------------------"
+  echo ""
+}
+
+CONFIRMATION(){
+  read -p "Are you sure you want to ${PERFORM} ${TASK} (y/N)? " -n 1 -r
+  echo ""
+}
+
+FORSURE(){
+  echo -e "OK, proceeding with ${PERFORM} ${TASK}"
+}
+
+CANCELTHIS(){
+  echo -e "You chose ${YELLOW}not${STD} to ${PERFORM} ${TASK}"
 }
