@@ -1,12 +1,5 @@
 #!/bin/bash
 
-# FUNCTION="Generic"
-
-# ---------
-# Variables
-# ---------
-
-source /opt/GooPlex/menus/variables.sh
 clear
 
 # ------------
