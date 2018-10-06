@@ -15,48 +15,55 @@ if [[ ${REPLY} =~ ^[Yy]$ ]]; then
   # ------------
   # Dependencies
   # ------------
-
-  sudo apt-get upgrade -y && sudo apt-get upgrade -y
-  sudo -s apt-get -y install \
-      unzip \
-      curl \
-      fuse \
-  denyhosts at sudo software-properties-common
   
-  # ------------------
-  # Create directories
-  # ------------------
+  if [ -d "/usr/bin/rclone" ]; then
+
+    echo -e "${FUNCTION} is already installed!"
+
+  else
   
-  mkdir -p /home/plexuser/logs
-  mkdir -p /home/plexuser/uploads
-  sudo chown plexuser:plexuser -R /home/plexuser
+    sudo apt-get upgrade -y && sudo apt-get upgrade -y  
+    sudo -s apt-get -y install \
+        unzip \
+        curl \
+        fuse \
+    denyhosts at sudo software-properties-common
 
-  # -----------
-  # Main script
-  # -----------
+    # ------------------
+    # Create directories
+    # ------------------
 
-  cd /tmp
+    mkdir -p /home/plexuser/logs
+    mkdir -p /home/plexuser/uploads
+    sudo chown plexuser:plexuser -R /home/plexuser
 
-  read -e -p "Release (R) or Beta installation (B)? " -i "R" choice
+    # -----------
+    # Main script
+    # -----------
 
-  case "$choice" in 
-    b|B ) curl https://rclone.org/install.sh | sudo bash -s beta ;;
-    * ) curl https://rclone.org/install.sh | sudo bash ;;
-  esac
+    cd /tmp
 
-  cd ~
-  clear
+    read -e -p "Release (R) or Beta installation (B)? " -i "R" choice
 
-  echo "Please follow the instructions to setup Rclone"
-  echo ""
-  sudo rclone config
+    case "$choice" in 
+      b|B ) curl https://rclone.org/install.sh | sudo bash -s beta ;;
+      * ) curl https://rclone.org/install.sh | sudo bash ;;
+    esac
+
+    cd ~
+    clear
+
+    echo "Please follow the instructions to setup Rclone"
+    echo ""
+    sudo rclone config
+
+  fi
 
   # -------------------
   # Installing Services
   # -------------------
 
-  if [ ! -e "/etc/systemd/system/rclone.service" ]
-  then
+  if [ ! -e "/etc/systemd/system/rclone.service" ]; then
 
     sudo rsync -a /opt/GooPlex/scripts/rclone.service /etc/systemd/system/rclone.service
     sudo systemctl enable rclone.service
