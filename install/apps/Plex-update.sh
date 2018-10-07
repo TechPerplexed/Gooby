@@ -1,31 +1,31 @@
 #!/bin/bash
 
-which plex > /tmp/checkapp.txt
+ls /var/lib/plexmediaserver > /tmp/checkapp.txt
 clear
 
 if [ ! -s /tmp/checkapp.txt ]; then
 
-  NOTINSTALLED
+	NOTINSTALLED
 
 else
 
-  EXPLAINTASK
+	EXPLAINTASK
 
-  CONFIRMATION
+	CONFIRMATION
 
-  if [[ ${REPLY} =~ ^[Yy]$ ]]; then
+	if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 
-    GOAHEAD
+		GOAHEAD
 
-    /opt/plexupdate/extras/installer.sh
+		/opt/plexupdate/extras/installer.sh
 
-    TASKCOMPLETE
+		TASKCOMPLETE
 
-  else
+	else
 
-    CANCELTHIS
+		CANCELTHIS
 
-  fi
+	fi
 
 fi
 
