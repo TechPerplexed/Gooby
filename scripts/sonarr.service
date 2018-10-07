@@ -3,8 +3,8 @@ Description=Sonarr Daemon
 After=network.target
 
 [Service]
-User=sonarr
-Group=sonarr
+User=plexuser
+Group=plexuser
 
 Type=simple
 ExecStart=/usr/bin/mono --debug /opt/sonarr/Sonarr.exe -nobrowser
