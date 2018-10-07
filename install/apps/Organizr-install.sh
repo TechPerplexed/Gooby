@@ -1,51 +1,45 @@
 #!/bin/bash
 
-which organizr > /tmp/checkapp.txt
+cd /opt/OrganizrInstaller > /tmp/checkapp.txt
 clear
 
 if [ -s /tmp/checkapp.txt ]; then
 
-  ALREADYINSTALLED
+	ALREADYINSTALLED
 
 else
 
-  EXPLAINTASK
-  
-  CONFIRMATION
+	EXPLAINTASK
 
-  if [[ ${REPLY} =~ ^[Yy]$ ]]; then
+	CONFIRMATION
 
-    GOAHEAD
+	if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 
-    # ----------
-    # Open ports
-    # ----------
+		GOAHEAD
 
-    sudo ufw allow 80
+		# Open ports
 
-    # ------------
-    # Dependencies
-    # ------------
+		sudo ufw allow 80
 
-    sudo apt-get upgrade -y && sudo apt-get upgrade -y
+		# Dependencies
 
-    # -----------
-    # Main script
-    # -----------
+		sudo apt-get upgrade -y && sudo apt-get upgrade -y
 
-    sudo git clone https://github.com/elmerfdz/OrganizrInstaller /opt/OrganizrInstaller
-    cd /opt/OrganizrInstaller/ubuntu/oui
-    clear
-    sudo bash ou_installer.sh
-    cd ~
-	
-	TASKCOMPLETE
+		# Main script
 
-  else
+		sudo git clone https://github.com/elmerfdz/OrganizrInstaller /opt/OrganizrInstaller
+		cd /opt/OrganizrInstaller/ubuntu/oui
+		clear
+		sudo bash ou_installer.sh
+		cd ~
 
-    CANCELTHIS
+		TASKCOMPLETE
 
-  fi
+	else
+
+		CANCELTHIS
+
+	fi
 
 fi
 
