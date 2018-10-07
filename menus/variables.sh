@@ -66,7 +66,7 @@ CONFIRMATION(){
 }
 
 CONFIRMDELETE(){
-	echo -e "${YELLOW}"
+	echo -e "${LRED}"
 	echo -e "--------------------------------------------------"
 	echo -e " EXTREME CAUTION!!!"
 	echo -e " Do you want to clean up the user folders?"
