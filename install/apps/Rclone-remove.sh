@@ -17,13 +17,13 @@ else
 
 		GOAHEAD
 
+		# Dependencies
+		
+		RUNPATCHES
+
 		# Close ports
 
 		#na
-
-		# Dependencies
-		
-		sudo apt-get upgrade -y && sudo apt-get upgrade -y
 
 		# Main script
 
