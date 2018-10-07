@@ -41,9 +41,9 @@ show_menus() {
   echo -e "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
   echo -e " $TASK"
   echo -e " ${STD}"
-  echo -e " ${LPURPLE}A${STD} - Install $TASK"
-  echo -e " ${LPURPLE}B${STD} - Update $TASK"
-  echo -e " ${LPURPLE}C${STD} - Remove $TASK"
+  echo -e " ${LPURPLE}I${STD} - Install $TASK"
+  echo -e " ${LPURPLE}U${STD} - Update $TASK"
+  echo -e " ${LPURPLE}R${STD} - Remove $TASK"
   echo -e " ${WHITE}Z${STD} - EXIT to Main Menu"
   echo -e " ${LPURPLE}"
   echo -e "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
@@ -58,9 +58,9 @@ read_options(){
   local choice
     read -p "Choose option: " choice
     case $choice in
-      [Aa]) INSTALL ;;
-      [Bb]) UPDATE ;;
-      [Cc]) REMOVE ;;
+      [Ii]) INSTALL ;;
+      [Uu]) UPDATE ;;
+      [Rr]) REMOVE ;;
       [Zz]) QUIT ;;
       *) echo -e "${LRED}Please select a valid option${STD}" && sleep 2
     esac
