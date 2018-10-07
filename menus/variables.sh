@@ -22,37 +22,62 @@ WHITE=$(echo -en '\033[01;37m')
 
 # Define choices
 
-PAUSE(){
-  echo ""
-  read -t 10 -n 1 -s -r -p "All done! Press Enter to return to the menu..."
-  echo ""
-}
-
 ALREADYINSTALLED(){
-  echo ""
+  echo -e "${LBLUE}"
   echo -e "--------------------------------------------------"
   echo -e " ${TASK} appears to be installed already"
   echo -e " Returning to menu..."
   echo -e "--------------------------------------------------"
-  echo ""
+  echo -e "${STD}"
 }
 
 EXPLAINTASK(){
+  echo -e "${CYAN}"
   echo -e "--------------------------------------------------"
   echo -e " This will ${PERFORM} $TASK}"
   echo -e "--------------------------------------------------"
-  echo ""
+  echo -e "${STD}"
 }
 
 CONFIRMATION(){
-  read -p "Are you sure you want to ${PERFORM} ${TASK} (y/N)? " -n 1 -r
-  echo ""
+  echo -e "${YELLOW}"
+  echo -e "--------------------------------------------------"
+  echo -e "Are you sure you want to ${PERFORM} ${TASK} (y/N)? "
+  echo -e "--------------------------------------------------"
+  echo -e "${STD}"
+  read -p " " -n 1 -r
 }
 
 GOAHEAD(){
-  echo -e "You chose to ${PERFORM} ${TASK}"
+  echo -e "${LMAGENTA}"
+  echo -e "--------------------------------------------------"
+  echo -e " You chose to ${PERFORM} $TASK}"
+  echo -e "--------------------------------------------------"
+  echo -e "${STD}"
+}
+
+TASKCOMPLETE(){
+  echo -e "${GREEN}"
+  echo -e "--------------------------------------------------"
+  echo -e " ${PERFORM} $TASK completed"
+  echo -e "--------------------------------------------------"
+  echo -e "${STD}"
 }
 
 CANCELTHIS(){
-  echo -e "You chose ${YELLOW}not${STD} to ${PERFORM} ${TASK}"
+  echo -e "${YELLOW}"
+  echo -e "--------------------------------------------------"
+  echo -e "You chose not to ${PERFORM} ${TASK}"
+  echo -e "--------------------------------------------------"
+  echo -e "${STD}"
+}
+
+PAUSE(){
+  echo -e "${LGREEN}"
+  echo -e "--------------------------------------------------"
+  echo -e "All done! Press Enter to return to the menu... "
+  echo -e "--------------------------------------------------"
+  echo -e "${STD}"
+  read -t 10 -n 1 -s -r -p " "
+  echo ""
 }
