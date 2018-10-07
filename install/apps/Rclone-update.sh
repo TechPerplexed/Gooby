@@ -5,36 +5,36 @@ clear
 
 if [ ! -s /tmp/checkapp.txt ]; then
 
-  NOTINSTALLED
+	NOTINSTALLED
 
 else
 
-  EXPLAINTASK
+	EXPLAINTASK
 
-  CONFIRMATION
+	CONFIRMATION
 
-  if [[ ${REPLY} =~ ^[Yy]$ ]]; then
+	if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 
-    GOAHEAD
+		GOAHEAD
 
-    cd /tmp
+		cd /tmp
 
-    read -e -p "Release ${YELLOW}(R)${STD} or Beta installation ${YELLOW}(B)?${STD} " -i "R" choice
+		read -e -p "Release ${YELLOW}(R)${STD} or Beta installation ${YELLOW}(B)?${STD} " -i "R" choice
 
-    case "$choice" in 
-      b|B ) curl https://rclone.org/install.sh | sudo bash -s beta ;;
-      * ) curl https://rclone.org/install.sh | sudo bash ;;
-    esac
+		case "$choice" in
+			b|B ) curl https://rclone.org/install.sh | sudo bash -s beta ;;
+			* ) curl https://rclone.org/install.sh | sudo bash ;;
+		esac
 
-    cd ~
+		cd ~
 
-    TASKCOMPLETE
+		TASKCOMPLETE
 
-  else
+	else
 
-    CANCELTHIS
+		CANCELTHIS
 
-  fi
+	fi
 
 fi
 
