@@ -23,68 +23,78 @@ WHITE=$(echo -en '\033[01;37m')
 # Define choices
 
 ALREADYINSTALLED(){
-  echo -e "${YELLOW}"
-  echo -e "--------------------------------------------------"
-  echo -e " ${TASK} appears to be installed"
-  echo -e "--------------------------------------------------"
-  echo -e "${STD}"
+	echo -e "${YELLOW}"
+	echo -e "--------------------------------------------------"
+	echo -e " ${TASK} appears to be installed"
+	echo -e "--------------------------------------------------"
+	echo -e "${STD}"
 }
 
 NOTINSTALLED(){
-  echo -e "${YELLOW}"
-  echo -e "--------------------------------------------------"
-  echo -e " ${TASK} is not installed yet"
-  echo -e "--------------------------------------------------"
-  echo -e "${STD}"
+	echo -e "${YELLOW}"
+	echo -e "--------------------------------------------------"
+	echo -e " ${TASK} is not installed yet"
+	echo -e "--------------------------------------------------"
+	echo -e "${STD}"
+}
+
+APPUPDATE(){
+	echo -e "${YELLOW}"
+	echo -e "--------------------------------------------------"
+	echo -e " ${TASK} cannot be updated through this menu"
+	echo -e " You can update it from within the app itself"
+	echo -e "--------------------------------------------------"
+	echo -e "${STD}"
 }
 
 EXPLAINTASK(){
-  echo -e "${CYAN}"
-  echo -e "--------------------------------------------------"
-  echo -e " This will ${PERFORM} ${TASK}"
-  echo -e "--------------------------------------------------"
-  echo -e "${STD}"
+	echo -e "${CYAN}"
+	echo -e "--------------------------------------------------"
+	echo -e " This will ${PERFORM} ${TASK}"
+	echo -e "--------------------------------------------------"
+	echo -e "${STD}"
 }
 
 CONFIRMATION(){
-  echo -e "${YELLOW}"
-  echo -e "--------------------------------------------------"
-  echo -e " Are you sure you want to ${PERFORM} ${TASK} (y/N)? "
-  echo -e "--------------------------------------------------"
-  echo -e "${STD}"
-  read -p " ---> " -n 1 -r
+	echo -e "${YELLOW}"
+	echo -e "--------------------------------------------------"
+	echo -e " Are you sure you want to ${PERFORM} ${TASK} (y/N)? "
+	echo -e "--------------------------------------------------"
+	echo -e "${STD}"
+	read -t 10 -n 1 -s -r -p " ---> "
+	echo ""
 }
 
 GOAHEAD(){
-  echo -e "${LMAGENTA}"
-  echo -e "--------------------------------------------------"
-  echo -e " You chose to ${PERFORM} $TASK}"
-  echo -e "--------------------------------------------------"
-  echo -e "${STD}"
+	echo -e "${LMAGENTA}"
+	echo -e "--------------------------------------------------"
+	echo -e " You chose to ${PERFORM} $TASK}"
+	echo -e "--------------------------------------------------"
+	echo -e "${STD}"
 }
 
 TASKCOMPLETE(){
-  echo -e "${LMAGENTA}"
-  echo -e "--------------------------------------------------"
-  echo -e " ${PERFORM} $TASK completed"
-  echo -e "--------------------------------------------------"
-  echo -e "${STD}"
+	echo -e "${LMAGENTA}"
+	echo -e "--------------------------------------------------"
+	echo -e " ${PERFORM} $TASK completed"
+	echo -e "--------------------------------------------------"
+	echo -e "${STD}"
 }
 
 CANCELTHIS(){
-  echo -e "${YELLOW}"
-  echo -e "--------------------------------------------------"
-  echo -e " You chose not to ${PERFORM} ${TASK}"
-  echo -e "--------------------------------------------------"
-  echo -e "${STD}"
+	echo -e "${YELLOW}"
+	echo -e "--------------------------------------------------"
+	echo -e " Cancelling ${PERFORM} ${TASK}"
+	echo -e "--------------------------------------------------"
+	echo -e "${STD}"
 }
 
 PAUSE(){
-  echo -e "${GREEN}"
-  echo -e "--------------------------------------------------"
-  echo -e " All done! Press Enter to return to the menu"
-  echo -e "--------------------------------------------------"
-  echo -e "${STD}"
-  read -t 10 -n 1 -s -r -p " ---> "
-  echo ""
+	echo -e "${GREEN}"
+	echo -e "--------------------------------------------------"
+	echo -e " All done! Press Enter to return to the menu"
+	echo -e "--------------------------------------------------"
+	echo -e "${STD}"
+	read -t 10 -n 1 -s -r -p " ---> "
+	echo ""
 }
