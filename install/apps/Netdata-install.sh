@@ -5,48 +5,43 @@ clear
 
 if [ -s /tmp/checkapp.txt ]; then
 
-  ALREADYINSTALLED
+	ALREADYINSTALLED
 
 else
 
-  EXPLAINTASK
-  
-  CONFIRMATION
+	EXPLAINTASK
 
-  if [[ ${REPLY} =~ ^[Yy]$ ]]; then
+	CONFIRMATION
 
-    GOAHEAD
+	if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 
-    # ----------
-    # Open ports
-    # ----------
+		GOAHEAD
 
-    sudo ufw allow 19999
+		# Open ports
 
-    # ------------
-    # Dependencies
-    # ------------
+		sudo ufw allow 19999
 
-    sudo apt-get upgrade -y && sudo apt-get upgrade -y
-    sudo -s apt-get -y install \
-      unzip \
-      curl \
-      denyhosts at sudo software-properties-common
+		# Dependencies
 
-    # -----------
-    # Main script
-    # -----------
+		sudo apt-get upgrade -y && sudo apt-get upgrade -y
+		
+		sudo -s apt-get -y install \
+			unzip \
+			curl \
+		denyhosts at sudo software-properties-common
 
-    clear
-    bash <(curl -Ss https://my-netdata.io/kickstart.sh)
-	
-	  TASKCOMPLETE
+		# Main script
 
-  else
+		clear
+		bash <(curl -Ss https://my-netdata.io/kickstart.sh)
 
-    CANCELTHIS
+		TASKCOMPLETE
 
-  fi
+	else
+
+		CANCELTHIS
+
+	fi
 
 fi
 
