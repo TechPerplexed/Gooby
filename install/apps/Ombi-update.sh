@@ -24,6 +24,9 @@ else
 		# Main script
 		
 		clear
+		
+		NOAPPUPDATE
+		echo ""
 
 		read -e -p "Switch to Stable ${YELLOW}(S)${STD} or Development installation ${YELLOW}(D)?${STD} " -i "" choice
 
