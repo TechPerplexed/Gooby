@@ -16,19 +16,20 @@ else
 	if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 
 		GOAHEAD
-		
-		# Open ports
-
-		#na
 
 		# Dependencies
 
-		sudo apt-get upgrade -y && sudo apt-get upgrade -y
+		RUNPATCHES
+
 		sudo -s apt-get -y install \
 			unzip \
 			curl \
 			fuse \
 		denyhosts at sudo software-properties-common
+
+		# Open ports
+
+		#na
 
 		# Create directories
 
