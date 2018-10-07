@@ -25,7 +25,7 @@ ORGANIZR(){
   source /opt/GooPlex/menus/apps.sh
 }
 
-# Omni
+# Ombi
 OMBI(){
   TASK="Ombi"
   source /opt/GooPlex/menus/apps.sh
@@ -67,7 +67,7 @@ read_options(){
     case $choice in      
       [Aa]) NETDATA ;;
       [Bb]) ORGANIZR ;;
-      [Cc]) OMNI ;;
+      [Cc]) OMBI ;;
       [Zz]) QUIT ;;
       *) echo -e "${LRED}Please select a valid option${STD}" && sleep 2
     esac
