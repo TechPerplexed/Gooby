@@ -29,6 +29,7 @@ RUNPATCHES(){
 	sudo apt autoremove -y
 	sudo apt autoclean
 	sudo apt-get autoremove
+	clear
 }
 
 ALREADYINSTALLED(){
