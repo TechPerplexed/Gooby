@@ -5,70 +5,60 @@ clear
 
 if [ -s /tmp/checkapp.txt ]; then
 
-  ALREADYINSTALLED
+	ALREADYINSTALLED
 
 else
 
-  EXPLAINTASK
-  
-  CONFIRMATION
+	EXPLAINTASK
 
-  if [[ ${REPLY} =~ ^[Yy]$ ]]; then
+	CONFIRMATION
 
-    GOAHEAD
+	if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 
-    # ----------
-    # Open ports
-    # ----------
+		GOAHEAD
 
-    sudo ufw allow 8112
+		# Open ports
 
-    # ------------
-    # Dependencies
-    # ------------
+		sudo ufw allow 8112
 
-    sudo apt-get upgrade -y && sudo apt-get upgrade -y
+		# Dependencies
 
-    # -----------
-    # Main script
-    # -----------
+		sudo apt-get upgrade -y && sudo apt-get upgrade -y
 
-    sudo apt-get -y install \
-      deluged \
-      deluge-webui \
-      deluge-console \
-      denyhosts at sudo software-properties-common
+		# Main script
 
-    # -------------------
-    # Installing Services
-    # -------------------
+		sudo apt-get -y install \
+			deluged \
+			deluge-webui \
+			deluge-console \
+		denyhosts at sudo software-properties-common
 
-    sudo rsync -a /opt/GooPlex/scripts/deluged.service /etc/systemd/system/deluged.service
-    sudo rsync -a /opt/GooPlex/scripts/deluge-web.service /etc/systemd/system/deluge-web.service
+		# Installing Services
 
-    sudo systemctl enable deluged.service
-    sudo systemctl enable deluge-web.service
+		sudo rsync -a /opt/GooPlex/scripts/deluged.service /etc/systemd/system/deluged.service
+		sudo rsync -a /opt/GooPlex/scripts/deluge-web.service /etc/systemd/system/deluge-web.service
 
-    sudo systemctl daemon-reload
+		sudo systemctl enable deluged.service
+		sudo systemctl enable deluge-web.service
 
-    sudo systemctl start deluged.service
-    sudo systemctl start deluge-web.service
+		sudo systemctl daemon-reload
 
-    # ----------------
-    # Creating Folders
-    # ----------------
+		sudo systemctl start deluged.service
+		sudo systemctl start deluge-web.service
 
-    sudo mkdir -p /home/plexuser/downloads/incomplete
-    sudo mkdir -p /home/plexuser/downloads/import
-    sudo chown -R plexuser:plexuser /home/plexuser
-	
-  	TASKCOMPLETE
+		# Creating Folders
 
-  else
+		sudo mkdir -p /home/plexuser/downloads/incomplete
+		sudo mkdir -p /home/plexuser/downloads/import
+		sudo chown -R plexuser:plexuser /home/plexuser
 
-    CANCELTHIS
+		TASKCOMPLETE
 
-  fi
+	else
+
+		CANCELTHIS
+
+	fi
 
 fi
 
