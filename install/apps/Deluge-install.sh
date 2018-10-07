@@ -17,13 +17,13 @@ else
 
 		GOAHEAD
 
-		# Open ports
-
-		sudo ufw allow 8112
-
 		# Dependencies
 
 		RUNPATCHES
+
+		# Open ports
+
+		sudo ufw allow 8112
 
 		# Main script
 
