@@ -25,8 +25,12 @@ else
 		
 		clear
 		
-		NOAPPUPDATE
-		echo ""
+		echo -e "${CYAN}"
+		echo -e "--------------------------------------------------"
+		echo -e " ${TASK} is updated through the web interface"
+		echo -e " You can only switch to Stable or Development here"
+		echo -e "--------------------------------------------------"
+		echo -e "${STD}"
 
 		read -e -p "Switch to Stable ${YELLOW}(S)${STD} or Development installation ${YELLOW}(D)?${STD} " -i "" choice
 
