@@ -4,16 +4,14 @@ clear
 
 # Explanation
 
+echo -e "${CYAN}"
 echo -e "--------------------------------------------------"
-echo -e " This will update GooPlex to the latest version"
+echo -e " This will ${PERFORM} ${TASK}"
 echo -e " You can run this as often as you like!"
 echo -e "--------------------------------------------------"
-echo ""
+echo -e "${STD}"
 
-# Confirmation
-
-read -p " Are you sure you want to ${PERFORM} ${TASK} (y/N)? " -n 1 -r
-echo ""
+CONFIRMATION
 
 if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 
@@ -31,21 +29,11 @@ if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 
   clear
 
-  # Task Completed
-
-  echo -e "${LMAGENTA}"
-  echo -e "--------------------------------------------------"
-  echo -e " ${PERFORM} $TASK completed"
-  echo -e "--------------------------------------------------"
-  echo -e "${STD}"
+  TASKCOMPLETE
 
 else
 
-  echo ""
-  echo -e "--------------------------------------------------"
-  echo -e " You chose ${YELLOW}not${STD} to ${PERFORM} ${TASK}"
-  echo -e "--------------------------------------------------"
-  echo ""
+  CANCELTHIS
 
 fi
 
