@@ -23,7 +23,7 @@ else
 
 		# Dependencies
 
-		sudo apt-get upgrade -y && sudo apt-get upgrade -y
+		RUNPATCHES
 
 		# Main script
 
