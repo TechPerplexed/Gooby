@@ -17,18 +17,18 @@ else
 
 		GOAHEAD
 
-		# Open ports
-
-		sudo ufw allow 8181
-
 		# Dependencies
 
-		sudo apt-get upgrade -y && sudo apt-get upgrade -y
+		RUNPATCHES
 
 		sudo -s apt-get -y install \
 			git-core \
 			python3-setuptools-git \
 		denyhosts at sudo software-properties-common
+
+		# Open ports
+
+		sudo ufw allow 8181
 
 		# Main script
 
