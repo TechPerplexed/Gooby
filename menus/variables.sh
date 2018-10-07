@@ -41,7 +41,7 @@ NOTINSTALLED(){
 EXPLAINTASK(){
   echo -e "${CYAN}"
   echo -e "--------------------------------------------------"
-  echo -e " This will ${PERFORM} $TASK}"
+  echo -e " This will ${PERFORM} ${TASK}"
   echo -e "--------------------------------------------------"
   echo -e "${STD}"
 }
@@ -52,7 +52,7 @@ CONFIRMATION(){
   echo -e " Are you sure you want to ${PERFORM} ${TASK} (y/N)? "
   echo -e "--------------------------------------------------"
   echo -e "${STD}"
-  read -p " (y/N)" -n 1 -r
+  read -p "--->" -n 1 -r
 }
 
 GOAHEAD(){
@@ -85,6 +85,6 @@ PAUSE(){
   echo -e " All done! Press Enter to return to the menu... "
   echo -e "--------------------------------------------------"
   echo -e "${STD}"
-  read -t 10 -n 1 -s -r -p " (Press Enter)"
+  read -t 10 -n 1 -s -r -p "-->"
   echo ""
 }
