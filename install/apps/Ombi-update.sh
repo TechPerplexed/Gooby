@@ -22,8 +22,10 @@ else
 		sudo apt-get upgrade -y && sudo apt-get upgrade -y
 
 		# Main script
+		
+		clear
 
-		read -e -p "Switch to Stable ${YELLOW}(S)${STD} or Development installation ${YELLOW}(D)?${STD} " -i "S" choice
+		read -e -p "Switch to Stable ${YELLOW}(S)${STD} or Development installation ${YELLOW}(D)?${STD} " -i "" choice
 
 		case "$choice" in 
 			s|S ) echo "deb [arch=amd64,armhf] http://repo.ombi.turd.me/stable/ jessie main" | sudo tee "/etc/apt/sources.list.d/ombi.list" ;;
