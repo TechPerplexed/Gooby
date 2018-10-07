@@ -48,14 +48,14 @@ else
 		clear
 		sudo apt-get -y install sonarr
 
-		sudo chown -R plexuser:plexuser /opt/sonarr
+		# sudo chown -R plexuser:plexuser /opt/sonarr
 
 		# sudo rsync -a /opt/GooPlex/scripts/sonarr.service /etc/systemd/system/sonarr.service
 		# sudo systemctl enable sonarr.service
 		# sudo systemctl daemon-reload
 		# sudo systemctl start sonarr.service
 		
-		sudo chown -R plexuser:plexuser $HOME
+		# sudo chown -R plexuser:plexuser $HOME
 
 		TASKCOMPLETE
 
