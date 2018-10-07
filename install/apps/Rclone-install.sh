@@ -5,69 +5,63 @@ clear
 
 if [ -s /tmp/checkapp.txt ]; then
 
-  ALREADYINSTALLED
+	ALREADYINSTALLED
 
 else
 
-  EXPLAINTASK
-  
-  CONFIRMATION
+	EXPLAINTASK
 
-  if [[ ${REPLY} =~ ^[Yy]$ ]]; then
+	CONFIRMATION
 
-    GOAHEAD
+	if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 
-    sudo apt-get upgrade -y && sudo apt-get upgrade -y  
-    sudo -s apt-get -y install \
-        unzip \
-        curl \
-        fuse \
-    denyhosts at sudo software-properties-common
+		GOAHEAD
 
-    # ------------------
-    # Create directories
-    # ------------------
+		sudo apt-get upgrade -y && sudo apt-get upgrade -y
+		sudo -s apt-get -y install \
+			unzip \
+			curl \
+			fuse \
+		denyhosts at sudo software-properties-common
 
-    mkdir -p /home/plexuser/logs
-    mkdir -p /home/plexuser/uploads
-    sudo chown plexuser:plexuser -R /home/plexuser
+		# Create directories
 
-    # -----------
-    # Main script
-    # -----------
+		mkdir -p /home/plexuser/logs
+		mkdir -p /home/plexuser/uploads
+		sudo chown plexuser:plexuser -R /home/plexuser
 
-    cd /tmp
+		# Main script
 
-    read -e -p "Release ${YELLOW}(R)${STD} or Beta installation ${YELLOW}(B)?${STD} " -i "R" choice
+		cd /tmp
 
-    case "$choice" in 
-      b|B ) curl https://rclone.org/install.sh | sudo bash -s beta ;;
-      * ) curl https://rclone.org/install.sh | sudo bash ;;
-    esac
+		read -e -p "Release ${YELLOW}(R)${STD} or Beta installation ${YELLOW}(B)?${STD} " -i "R" choice
 
-    cd ~
-    clear
+		case "$choice" in 
+			b|B ) curl https://rclone.org/install.sh | sudo bash -s beta ;;
+			* ) curl https://rclone.org/install.sh | sudo bash ;;
+		esac
 
-    echo "Please follow the instructions to setup Rclone"
-    echo ""
-    sudo rclone config
+		cd ~
+		clear
 
-    # -------------------
-    # Installing Services
-    # -------------------
+		echo "${YELLOW}Please follow the instructions to setup Rclone${STD}"
+		echo ""
+		sudo rclone config
 
-    sudo rsync -a /opt/GooPlex/scripts/rclone.service /etc/systemd/system/rclone.service
-    sudo systemctl enable rclone.service
-    sudo systemctl daemon-reload
-    sudo systemctl start rclone.service
-	
-    TASKCOMPLETE
+		# Installing Services
 
-  else
+		sudo rsync -a /opt/GooPlex/scripts/rclone.service /etc/systemd/system/rclone.service
+		sudo systemctl enable rclone.service
+		sudo systemctl daemon-reload
+		sudo systemctl start rclone.service
 
-    CANCELTHIS
+		TASKCOMPLETE
 
-  fi
+	else
+
+		CANCELTHIS
+
+	fi
 
 fi
 
