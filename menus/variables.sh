@@ -79,7 +79,7 @@ CONFIRMDELETE(){
 GOAHEAD(){
 	echo -e "${LMAGENTA}"
 	echo -e "--------------------------------------------------"
-	echo -e " Starting ${PERFORM} $TASK}"
+	echo -e " Starting ${PERFORM} ${TASK}"
 	echo -e "--------------------------------------------------"
 	echo -e "${STD}"
 }
@@ -87,7 +87,7 @@ GOAHEAD(){
 TASKCOMPLETE(){
 	echo -e "${LMAGENTA}"
 	echo -e "--------------------------------------------------"
-	echo -e " ${PERFORM} $TASK completed"
+	echo -e " ${PERFORM} ${TASK} completed"
 	echo -e "--------------------------------------------------"
 	echo -e "${STD}"
 }
