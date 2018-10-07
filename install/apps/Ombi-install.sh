@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd /opt/Ombi > /tmp/checkapp.txt
+ls /opt/Ombi > /tmp/checkapp.txt
 clear
 
 if [ -s /tmp/checkapp.txt ]; then
