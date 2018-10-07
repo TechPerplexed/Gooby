@@ -1,6 +1,6 @@
 #!/bin/bash
 
-which emby > /tmp/checkapp.txt
+which plex > /tmp/checkapp.txt
 clear
 
 if [ -s /tmp/checkapp.txt ]; then
