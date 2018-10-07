@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd /opt/OrganizrInstaller > /tmp/checkapp.txt
+ls /opt/OrganizrInstaller > /tmp/checkapp.txt
 clear
 
 if [ -s /tmp/checkapp.txt ]; then
