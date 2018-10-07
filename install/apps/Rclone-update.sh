@@ -1,26 +1,42 @@
 #!/bin/bash
 
+which rclone > /tmp/checkapp.txt
 clear
-read -p "Are you sure you want to ${PERFORM} ${FUNCTION} (y/N)? " -n 1 -r
-echo ""
 
-if [[ ${REPLY} =~ ^[Yy]$ ]]; then
+if [ ! -s /tmp/checkapp.txt ]; then
 
-  cd /tmp
-
-  read -e -p "Release (R) or Beta installation (B)? " -i "R" choice
-
-  case "$choice" in 
-    b|B ) curl https://rclone.org/install.sh | sudo bash -s beta ;;
-    * ) curl https://rclone.org/install.sh | sudo bash ;;
-  esac
-
-  cd ~
+  NOTINSTALLED
 
 else
 
-  echo -e "You chose ${YELLOW}not${STD} to ${PERFORM} ${FUNCTION}"
+  EXPLAINTASK
+
+  CONFIRMATION
+
+  if [[ ${REPLY} =~ ^[Yy]$ ]]; then
+
+    GOAHEAD
+
+    cd /tmp
+
+    read -e -p "Release (R) or Beta installation (B)? " -i "R" choice
+
+    case "$choice" in 
+      b|B ) curl https://rclone.org/install.sh | sudo bash -s beta ;;
+      * ) curl https://rclone.org/install.sh | sudo bash ;;
+    esac
+
+    cd ~
+
+    TASKCOMPLETE
+
+  else
+
+    CANCELTHIS
+
+  fi
 
 fi
 
+rm /tmp/checkapp.txt
 PAUSE
