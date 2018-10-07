@@ -1,13 +1,21 @@
 #!/bin/bash
 
+which radarr > /tmp/checkapp.txt
 clear
-read -p "Are you sure you want to ${PERFORM} ${FUNCTION} (y/N)? " -n 1 -r
-echo ""
 
-if [[ ${REPLY} =~ ^[Yy]$ ]]; then
+if [ -s /tmp/checkapp.txt ]; then
 
-  if [ ! -d "/opt/Radarr" ]
-  then
+  ALREADYINSTALLED
+
+else
+
+  EXPLAINTASK
+  
+  CONFIRMATION
+
+  if [[ ${REPLY} =~ ^[Yy]$ ]]; then
+
+    GOAHEAD
 
     # ----------
     # Open ports
@@ -33,8 +41,6 @@ if [[ ${REPLY} =~ ^[Yy]$ ]]; then
     # Main script
     # -----------
 
-    # Execution
-
     sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
     echo "deb http://download.mono-project.com/repo/debian jessie main" | sudo tee /etc/apt/sources.list.d/mono-xamarin.list
 
@@ -50,16 +56,6 @@ if [[ ${REPLY} =~ ^[Yy]$ ]]; then
     sudo tar -xf Radarr* -C /opt/
     sudo chown -R plexuser:plexuser /opt/Radarr
   
-  else
-  
-    clear
-    echo -e "$FUNCTION is already installed!"
- 
-  fi
-
-  if [ ! -e "/etc/systemd/system/radarr.service" ]
-  then
-
     # -------------------
     # Installing Services
     # -------------------
@@ -68,17 +64,16 @@ if [[ ${REPLY} =~ ^[Yy]$ ]]; then
     sudo systemctl enable radarr.service
     sudo systemctl daemon-reload
     sudo systemctl start radarr.service
+	
+	TASKCOMPLETE
+
+  else
+
+    CANCELTHIS
 
   fi
 
-  # ----------
-  # Finalizing
-  # ----------
-
-else
-
-  echo -e "You chose ${YELLOW}not${STD} to ${PERFORM} ${FUNCTION}"
-
 fi
 
+rm /tmp/checkapp.txt
 PAUSE
