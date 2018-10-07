@@ -1,12 +1,21 @@
 #!/bin/bash
 
+which sonarr > /tmp/checkapp.txt
 clear
-read -p "Are you sure you want to ${PERFORM} ${FUNCTION} (y/N)? " -n 1 -r
-echo ""
 
-if [[ ${REPLY} =~ ^[Yy]$ ]]; then
+if [ -s /tmp/checkapp.txt ]; then
 
-  if [ ! -d "/opt/NzbDrone" ];   then
+  ALREADYINSTALLED
+
+else
+
+  EXPLAINTASK
+  
+  CONFIRMATION
+
+  if [[ ${REPLY} =~ ^[Yy]$ ]]; then
+
+    GOAHEAD
 
     # ----------
     # Open ports
@@ -43,31 +52,20 @@ if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 
     sudo chown -R plexuser:plexuser /opt/NzbDrone
 
-  else
-
-    clear
-    echo -e "Sonarr is already installed!"
-    echo -e "You can update it from within the application itself."
- 
-  fi
-
-  if [ ! -e "/etc/systemd/system/sonarr.service" ]; then
-
     sudo rsync -a /opt/GooPlex/scripts/sonarr.service /etc/systemd/system/sonarr.service
     sudo systemctl enable sonarr.service
     sudo systemctl daemon-reload
     sudo systemctl start sonarr.service
+	
+    TASKCOMPLETE
+
+  else
+
+    CANCELTHIS
 
   fi
 
-  # ----------
-  # Finalizing
-  # ----------
-
-else
-
-  echo -e "You chose ${YELLOW}not${STD} to ${PERFORM} ${FUNCTION}"
-
 fi
 
+rm /tmp/checkapp.txt
 PAUSE
