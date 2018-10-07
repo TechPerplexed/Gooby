@@ -22,6 +22,15 @@ WHITE=$(echo -en '\033[01;37m')
 
 # Define choices
 
+RUNPATCHES(){
+	sudo apt-get update
+	sudo apt-get upgrade -y
+	sudo apt-get dist-upgrade -y
+	sudo apt autoremove -y
+	sudo apt autoclean
+	sudo apt-get autoremove
+}
+
 ALREADYINSTALLED(){
 	echo -e "${YELLOW}"
 	echo -e "--------------------------------------------------"
