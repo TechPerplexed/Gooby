@@ -39,7 +39,7 @@ NOTINSTALLED(){
 }
 
 NOAPPUPDATE(){
-	echo -e "${YELLOW}"
+	echo -e "${LRED}"
 	echo -e "--------------------------------------------------"
 	echo -e " ${TASK} cannot be updated through this menu"
 	echo -e " You can update it from within the app itself"
