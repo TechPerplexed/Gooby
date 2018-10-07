@@ -2,7 +2,6 @@
 
 ls /opt/sonarr > /tmp/checkapp.txt; 
 ls /opt/nzbdrone >> /tmp/checkapp.txt
-
 clear
 
 if [ ! -s /tmp/checkapp.txt ]; then
