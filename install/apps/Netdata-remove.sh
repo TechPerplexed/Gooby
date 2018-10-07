@@ -5,28 +5,28 @@ clear
 
 if [ ! -s /tmp/checkapp.txt ]; then
 
-  NOTINSTALLED
+	NOTINSTALLED
 
 else
 
-  EXPLAINTASK
+	EXPLAINTASK
 
-  CONFIRMATION
+	CONFIRMATION
 
-  if [[ ${REPLY} =~ ^[Yy]$ ]]; then
+	if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 
-    GOAHEAD
+		GOAHEAD
 
-    echo ""
-    echo -e "Coming soon!"
+		echo ""
+		echo -e "Coming soon!"
 
-	TASKCOMPLETE
+		TASKCOMPLETE
 
-  else
+	else
 
-    CANCELTHIS
+		CANCELTHIS
 
-  fi
+	fi
 
 fi
 
