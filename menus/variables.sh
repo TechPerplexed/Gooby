@@ -42,7 +42,7 @@ NOAPPUPDATE(){
 	echo -e "${LRED}"
 	echo -e "--------------------------------------------------"
 	echo -e " ${TASK} cannot be updated through this menu"
-	echo -e " You can update it from within the app itself"
+	echo -e " You can update it from the web interface itself"
 	echo -e "--------------------------------------------------"
 	echo -e "${STD}"
 }
