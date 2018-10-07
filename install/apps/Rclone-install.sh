@@ -16,6 +16,12 @@ else
 	if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 
 		GOAHEAD
+		
+		# Open ports
+
+		#na
+
+		# Dependencies
 
 		sudo apt-get upgrade -y && sudo apt-get upgrade -y
 		sudo -s apt-get -y install \
