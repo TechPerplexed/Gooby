@@ -1,52 +1,46 @@
 #!/bin/bash
 
-which plex > /tmp/checkapp.txt
+ls /var/lib/plexmediaserver > /tmp/checkapp.txt
 clear
 
 if [ -s /tmp/checkapp.txt ]; then
 
-  ALREADYINSTALLED
+	ALREADYINSTALLED
 
 else
 
-  EXPLAINTASK
-  
-  CONFIRMATION
+	EXPLAINTASK
 
-  if [[ ${REPLY} =~ ^[Yy]$ ]]; then
+	CONFIRMATION
 
-    GOAHEAD
+	if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 
-    # ----------
-    # Open ports
-    # ----------
+		GOAHEAD
 
-    sudo ufw allow 32400
+		# Open ports
 
-    # ------------
-    # Dependencies
-    # ------------
+		sudo ufw allow 32400
 
-    sudo apt-get upgrade -y && sudo apt-get upgrade -y
+		# Dependencies
 
-    # -----------
-    # Main script
-    # -----------
+		sudo apt-get upgrade -y && sudo apt-get upgrade -y
 
-    cd /tmp
-    clear
-    echo -e "Please read the options carefully"
-    echo ""
-    bash -c "$(wget -qO - https://raw.githubusercontent.com/mrworf/plexupdate/master/extras/installer.sh)"
-    cd ~
+		# Main script
 
-	TASKCOMPLETE
+		cd /tmp
+		clear
+		echo -e "${YELLOW}Please read the options carefully${STD}"
+		echo ""
+		bash -c "$(wget -qO - https://raw.githubusercontent.com/mrworf/plexupdate/master/extras/installer.sh)"
+		cd ~
 
-  else
+		TASKCOMPLETE
 
-    CANCELTHIS
+	else
 
-  fi
+		CANCELTHIS
+
+	fi
 
 fi
 
