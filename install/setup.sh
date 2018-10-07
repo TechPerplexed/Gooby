@@ -36,8 +36,16 @@ then
 
   else
 
-    echo -e "You chose ${YELLOW}not${STD} to $FUNCTION"
-    echo -e "Exiting..."
+clear
+  echo ""
+  echo "----------------------------------------------"
+  echo -e " You chose ${YELLOW}not${STD} to $FUNCTION"
+  echo -e " Continue any time by typing '${WHITE}gooplex${STD}' "
+  echo -e " Exiting..."
+  echo "----------------------------------------------"
+  echo ""
+  exit
+
     echo ""
     exit 0
 
