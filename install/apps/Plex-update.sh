@@ -16,6 +16,12 @@ else
 	if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 
 		GOAHEAD
+		
+		# Dependencies
+
+		RUNPATCHES
+
+		# Main script
 
 		/opt/plexupdate/extras/installer.sh
 
