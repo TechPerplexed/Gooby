@@ -30,8 +30,8 @@ else
 		read -e -p "Stable ${YELLOW}(S)${STD} or Development installation ${YELLOW}(D)?${STD} " -i "S" choice
 
 		case "$choice" in 
-			d|D ) echo "deb [arch=amd64,armhf] http://repo.ombi.turd.me/stable/ jessie main" | sudo tee "/etc/apt/sources.list.d/ombi.list" ;;
-			* ) echo "deb [arch=amd64,armhf] http://repo.ombi.turd.me/develop/ jessie main" | sudo tee "/etc/apt/sources.list.d/ombi.list" ;;
+			d|D ) echo "deb [arch=amd64,armhf] http://repo.ombi.turd.me/develop/ jessie main" | sudo tee "/etc/apt/sources.list.d/ombi.list" ;;
+			* ) echo "deb [arch=amd64,armhf] http://repo.ombi.turd.me/stable/ jessie main" | sudo tee "/etc/apt/sources.list.d/ombi.list" ;;
 		esac
 		
 		cd /tmp
