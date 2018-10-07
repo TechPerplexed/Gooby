@@ -26,8 +26,8 @@ ORGANIZR(){
 }
 
 # Omni
-OMNI(){
-  TASK="Omni"
+OMBI(){
+  TASK="Ombi"
   source /opt/GooPlex/menus/apps.sh
 }
 
@@ -50,7 +50,7 @@ show_menus() {
   echo -e " ${STD}"
   echo -e " ${LPURPLE}A${STD} - Netdata"
   echo -e " ${LPURPLE}B${STD} - Organizr"
-  echo -e " ${LPURPLE}C${STD} - Omni"
+  echo -e " ${LPURPLE}C${STD} - Ombi"
   echo -e " ${WHITE}Z${STD} - EXIT to Main Menu"
   echo -e " ${LPURPLE}"
   echo -e "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
