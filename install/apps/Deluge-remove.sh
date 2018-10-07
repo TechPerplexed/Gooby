@@ -62,7 +62,7 @@ else
 		
 		
 		case "$choice" in
-			y|Y ) rm -r /home/plexuser/download ;;
+			y|Y ) sudo rm -r /home/plexuser/download ;;
 			* ) echo "Folder not deleted" ;;
 		esac
 
