@@ -1,16 +1,21 @@
 #!/bin/bash
 
+which emby > /tmp/checkapp.txt
 clear
-read -p "Are you sure you want to ${PERFORM} ${FUNCTION} (y/N)? " -n 1 -r
-echo ""
 
-if [[ ${REPLY} =~ ^[Yy]$ ]]; then
+if [ -s /tmp/checkapp.txt ]; then
 
-  if [ -d "/var/lib/plexmediaserver" ]; then
+  ALREADYINSTALLED
 
-    echo -e "${FUNCTION} is already installed!"
+else
 
-  else
+  EXPLAINTASK
+  
+  CONFIRMATION
+
+  if [[ ${REPLY} =~ ^[Yy]$ ]]; then
+
+    GOAHEAD
 
     # ----------
     # Open ports
@@ -28,33 +33,22 @@ if [[ ${REPLY} =~ ^[Yy]$ ]]; then
     # Main script
     # -----------
 
-      cd /tmp
-      clear
-      echo -e "Please read the options carefully"
-      echo ""
-      bash -c "$(wget -qO - https://raw.githubusercontent.com/mrworf/plexupdate/master/extras/installer.sh)"
-      cd ~
-      
-    # -----------
-    # Explanation
-    # -----------
+    cd /tmp
+    clear
+    echo -e "Please read the options carefully"
+    echo ""
+    bash -c "$(wget -qO - https://raw.githubusercontent.com/mrworf/plexupdate/master/extras/installer.sh)"
+    cd ~
 
-    echo -e "${LMAGENTA}"
-    echo -e "--------------------------------------------------"
-    echo -e " ${PERFORM} $FUNCTION completed"
-    echo -e "--------------------------------------------------"
-    echo -e "${STD}"
+	TASKCOMPLETE
+
+  else
+
+    CANCELTHIS
 
   fi
 
-  # ----------
-  # Finalizing
-  # ----------
-
-else
-
-  echo -e "You chose ${YELLOW}not${STD} to ${PERFORM} ${FUNCTION}"
-
 fi
 
+rm /tmp/checkapp.txt
 PAUSE
