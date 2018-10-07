@@ -11,8 +11,6 @@ else
 
   EXPLAINTASK
 
-  # Confirmation
-  
   CONFIRMATION
 
   if [[ ${REPLY} =~ ^[Yy]$ ]]; then
@@ -22,7 +20,7 @@ else
     echo ""
     echo -e "Coming soon!"
 	
-	TASKCOMPLETE
+    TASKCOMPLETE
 
   else
 
