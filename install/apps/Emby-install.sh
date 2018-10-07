@@ -1,32 +1,53 @@
 #!/bin/bash
 
-which emby > /tmp/checkapp.txt
+ls /var/lib/emby > /tmp/checkapp.txt
+
 clear
 
-if [ -s /tmp/checkapp.txt ]; then
+if [ ! -s /tmp/checkapp.txt ]; then
 
-  ALREADYINSTALLED
+	NOTINSTALLED
 
 else
 
-  EXPLAINTASK
+	EXPLAINTASK
 
-  CONFIRMATION
+	CONFIRMATION
 
-  if [[ ${REPLY} =~ ^[Yy]$ ]]; then
+	if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 
-    GOAHEAD
+		GOAHEAD
 
-    echo ""
-    echo -e "Coming soon!"
-	
-    TASKCOMPLETE
+		# Open ports
 
-  else
+		sudo ufw allow 8096
 
-    CANCELTHIS
+		# Dependencies
 
-  fi
+		sudo apt-get upgrade -y && sudo apt-get upgrade -y
+
+		# Main script
+		
+		cd /tmp
+		clear
+		echo -e "Copy latest Ubuntu X64 version from ${YELLOW}https://emby.media/linux-server.html${STD}"
+		echo -e "Remove link below and paste link to emby-server-deb_verson.amd64.deb"
+		echo -e "Or you can press Enter to install ${CYAN}v3.5.3.0{STD}:"
+		echo ""
+		read -e -p "Link: " -i "https://github.com/MediaBrowser/Emby.Releases/releases/download/3.5.3.0/emby-server-deb_3.5.3.0_amd64.deb" emby
+		wget $emby
+
+		sudo dpkg -i emby-server-deb*
+		sudo rm /tmp/emby-server-deb*
+		cd ~
+
+		TASKCOMPLETE
+
+	else
+
+		CANCELTHIS
+
+	fi
 
 fi
 
