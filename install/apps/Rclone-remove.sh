@@ -55,7 +55,7 @@ else
 		
 		case "$choice" in
 			y|Y ) rm -r /home/plexuser/uploads; rm -r /home/plexuser/.config/rclone ;;
-			* ) echo "Folder not deleted" ;;
+			* ) echo "Folders not deleted" ;;
 		esac
 
 		TASKCOMPLETE
