@@ -40,6 +40,8 @@ else
 		# Main script
 
 		cd /tmp
+		
+		clear
 
 		read -e -p "Release ${YELLOW}(R)${STD} or Beta installation ${YELLOW}(B)?${STD} " -i "R" choice
 
