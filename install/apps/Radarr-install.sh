@@ -48,6 +48,7 @@ else
 		wget $radarr
 
 		sudo tar -xf Radarr* -C /opt/
+		rm /tmp/Radarr*
 		sudo chown -R plexuser:plexuser /opt/Radarr
   
 		# Installing Services
