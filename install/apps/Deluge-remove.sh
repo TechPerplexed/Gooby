@@ -53,12 +53,13 @@ else
 		
 		echo -e "${YELLOW}"
 		echo -e "--------------------------------------------------"
-		echo -e " Delete the following folder?"
+		echo -e " Delete the following folder (y/N)?"
 		echo -e " /home/plexuser/downloads"
 		echo -e "--------------------------------------------------"
 		echo -e "${STD}"
-		read -t 10 -n 1 -s -r -p " ---> "
-		echo ""
+		
+		read -e -p "Yes or No? " -i "N" choice
+		
 		
 		case "$choice" in
 			y|Y ) rm -r /home/plexuser/download ;;
