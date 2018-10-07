@@ -17,6 +17,12 @@ else
 
 		GOAHEAD
 
+		# Dependencies
+
+		RUNPATCHES
+
+		# Main script
+
 		cd /tmp
 
 		read -e -p "Release ${YELLOW}(R)${STD} or Beta installation ${YELLOW}(B)?${STD} " -i "R" choice
