@@ -54,7 +54,7 @@ else
 		read -e -p "Yes or No? " -i "N" choice
 		
 		case "$choice" in
-			y|Y ) rm -r /home/plexuser/uploads; rm -r /home/plexuser/.config/rclone ;;
+			y|Y ) sudo rm -r /home/plexuser/uploads; sudo rm -r /home/plexuser/.config/rclone ;;
 			* ) echo "Folders not deleted" ;;
 		esac
 
