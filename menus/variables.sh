@@ -23,10 +23,17 @@ WHITE=$(echo -en '\033[01;37m')
 # Define choices
 
 ALREADYINSTALLED(){
-  echo -e "${LBLUE}"
+  echo -e "${YELLOW}"
   echo -e "--------------------------------------------------"
-  echo -e " ${TASK} appears to be installed already"
-  echo -e " Returning to menu..."
+  echo -e " ${TASK} appears to be installed"
+  echo -e "--------------------------------------------------"
+  echo -e "${STD}"
+}
+
+NOTINSTALLED(){
+  echo -e "${YELLOW}"
+  echo -e "--------------------------------------------------"
+  echo -e " ${TASK} is not installed yet"
   echo -e "--------------------------------------------------"
   echo -e "${STD}"
 }
@@ -42,10 +49,10 @@ EXPLAINTASK(){
 CONFIRMATION(){
   echo -e "${YELLOW}"
   echo -e "--------------------------------------------------"
-  echo -e "Are you sure you want to ${PERFORM} ${TASK} (y/N)? "
+  echo -e " Are you sure you want to ${PERFORM} ${TASK} (y/N)? "
   echo -e "--------------------------------------------------"
   echo -e "${STD}"
-  read -p " " -n 1 -r
+  read -p " (y/N)" -n 1 -r
 }
 
 GOAHEAD(){
@@ -57,7 +64,7 @@ GOAHEAD(){
 }
 
 TASKCOMPLETE(){
-  echo -e "${GREEN}"
+  echo -e "${LMAGENTA}"
   echo -e "--------------------------------------------------"
   echo -e " ${PERFORM} $TASK completed"
   echo -e "--------------------------------------------------"
@@ -67,17 +74,17 @@ TASKCOMPLETE(){
 CANCELTHIS(){
   echo -e "${YELLOW}"
   echo -e "--------------------------------------------------"
-  echo -e "You chose not to ${PERFORM} ${TASK}"
+  echo -e " You chose not to ${PERFORM} ${TASK}"
   echo -e "--------------------------------------------------"
   echo -e "${STD}"
 }
 
 PAUSE(){
-  echo -e "${LGREEN}"
+  echo -e "${GREEN}"
   echo -e "--------------------------------------------------"
-  echo -e "All done! Press Enter to return to the menu... "
+  echo -e " All done! Press Enter to return to the menu... "
   echo -e "--------------------------------------------------"
   echo -e "${STD}"
-  read -t 10 -n 1 -s -r -p " "
+  read -t 10 -n 1 -s -r -p " (Press Enter)"
   echo ""
 }
