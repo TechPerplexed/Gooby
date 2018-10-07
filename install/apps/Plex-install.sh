@@ -32,6 +32,7 @@ else
 		echo -e "${YELLOW}Please read the options carefully${STD}"
 		echo ""
 		bash -c "$(wget -qO - https://raw.githubusercontent.com/mrworf/plexupdate/master/extras/installer.sh)"
+		sudo rm /tmp/plexmediaserver*
 		cd ~
 
 		TASKCOMPLETE
