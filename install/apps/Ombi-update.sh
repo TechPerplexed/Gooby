@@ -3,9 +3,9 @@
 ls /opt/Ombi > /tmp/checkapp.txt
 clear
 
-if [ -s /tmp/checkapp.txt ]; then
+if [ ! -s /tmp/checkapp.txt ]; then
 
-	ALREADYINSTALLED
+	NOTINSTALLED
 
 else
 
