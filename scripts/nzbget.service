@@ -7,9 +7,9 @@ After=network.target
 User=plexuser
 Group=plexuser
 Type=forking
-ExecStart=</opt/nzbget/nzbget> -D
-ExecStop=</opt/nzbget/nzbget> -Q
-ExecReload=</opt/nzbget/nzbget> -O
+ExecStart=/opt/nzbget/nzbget -D
+ExecStop=/opt/nzbget/nzbget -Q
+ExecReload=/opt/nzbget/nzbget -O
 KillMode=process
 Restart=on-failure
 
