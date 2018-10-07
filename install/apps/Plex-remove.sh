@@ -17,13 +17,13 @@ else
 
 		GOAHEAD
 
+		# Dependencies
+
+		RUNPATCHES
+
 		# Close ports
 
 		sudo ufw delete allow 32400
-
-		# Dependencies
-
-		sudo apt-get upgrade -y && sudo apt-get upgrade -y
 
 		# Main script
 
