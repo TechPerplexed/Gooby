@@ -1,27 +1,22 @@
 #!/bin/bash
 
+which rclone > /tmp/checkapp.txt
 clear
-read -p "Are you sure you want to ${PERFORM} ${FUNCTION} (y/N)? " -n 1 -r
-echo ""
 
-if [[ ${REPLY} =~ ^[Yy]$ ]]; then
+if [ -s /tmp/checkapp.txt ]; then
 
-  # ----------
-  # Open ports
-  # ----------
+  ALREADYINSTALLED
 
-  # None
+else
 
-  # ------------
-  # Dependencies
-  # ------------
+  EXPLAINTASK
   
-  if [ -d "/usr/bin/rclone" ]; then
+  CONFIRMATION
 
-    echo -e "${FUNCTION} is already installed!"
+  if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 
-  else
-  
+    GOAHEAD
+
     sudo apt-get upgrade -y && sudo apt-get upgrade -y  
     sudo -s apt-get -y install \
         unzip \
@@ -57,29 +52,24 @@ if [[ ${REPLY} =~ ^[Yy]$ ]]; then
     echo ""
     sudo rclone config
 
-  fi
-
-  # -------------------
-  # Installing Services
-  # -------------------
-
-  if [ ! -e "/etc/systemd/system/rclone.service" ]; then
+    # -------------------
+    # Installing Services
+    # -------------------
 
     sudo rsync -a /opt/GooPlex/scripts/rclone.service /etc/systemd/system/rclone.service
     sudo systemctl enable rclone.service
     sudo systemctl daemon-reload
     sudo systemctl start rclone.service
+	
+    TASKCOMPLETE
+
+  else
+
+    CANCELTHIS
 
   fi
 
-  # ----------
-  # Finalizing
-  # ----------
-
-else
-
-  echo -e "You chose ${YELLOW}not${STD} to ${PERFORM} ${FUNCTION}"
-
 fi
 
+rm /tmp/checkapp.txt
 PAUSE
