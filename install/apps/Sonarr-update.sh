@@ -10,24 +10,7 @@ if [ ! -s /tmp/checkapp.txt ]; then
 
 else
 
-	EXPLAINTASK
-
-	CONFIRMATION
-
-	if [[ ${REPLY} =~ ^[Yy]$ ]]; then
-
-		GOAHEAD
-
-		echo ""
-		echo -e "Coming soon!"
-
-		TASKCOMPLETE
-
-	else
-
-		CANCELTHIS
-
-	fi
+	NOAPPUPDATE
 
 fi
 
