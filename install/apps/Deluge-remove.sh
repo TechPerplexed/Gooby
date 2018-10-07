@@ -16,14 +16,14 @@ else
 	if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 
 		GOAHEAD
+		
+		# Dependencies
+
+		RUNPATCHES
 
 		# Close ports
 
 		sudo ufw delete allow 8112
-
-		# Dependencies
-
-		sudo apt-get upgrade -y && sudo apt-get upgrade -y
 
 		# Main script
 
