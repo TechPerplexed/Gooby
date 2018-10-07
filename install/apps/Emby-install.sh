@@ -4,9 +4,9 @@ ls /var/lib/emby > /tmp/checkapp.txt
 
 clear
 
-if [ ! -s /tmp/checkapp.txt ]; then
+if [ -s /tmp/checkapp.txt ]; then
 
-	NOTINSTALLED
+	ALREADYINSTALLED
 
 else
 
