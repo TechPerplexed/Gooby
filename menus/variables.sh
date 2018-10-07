@@ -38,7 +38,7 @@ NOTINSTALLED(){
 	echo -e "${STD}"
 }
 
-APPUPDATE(){
+NOAPPUPDATE(){
 	echo -e "${YELLOW}"
 	echo -e "--------------------------------------------------"
 	echo -e " ${TASK} cannot be updated through this menu"
