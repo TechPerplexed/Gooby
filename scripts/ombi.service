@@ -1,0 +1,16 @@
+[Unit]
+Description=Ombi - PMS Requests System
+After=network-online.target
+
+[Service]
+User=plexuser
+Group=plexuser
+WorkingDirectory=/opt/Ombi/
+ExecStart=/opt/Ombi/Ombi
+Type=simple
+TimeoutStopSec=30
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
