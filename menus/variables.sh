@@ -68,7 +68,7 @@ CONFIRMATION(){
 GOAHEAD(){
 	echo -e "${LMAGENTA}"
 	echo -e "--------------------------------------------------"
-	echo -e " You chose to ${PERFORM} $TASK}"
+	echo -e " Starting ${PERFORM} $TASK}"
 	echo -e "--------------------------------------------------"
 	echo -e "${STD}"
 }
