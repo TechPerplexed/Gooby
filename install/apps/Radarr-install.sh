@@ -49,7 +49,9 @@ else
 
 		sudo tar -xf Radarr* -C /opt/
 		rm /tmp/Radarr*
+		
 		sudo chown -R plexuser:plexuser /opt/Radarr
+		sudo chown -R plexuser:plexuser $HOME
   
 		# Installing Services
 
