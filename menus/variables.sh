@@ -65,6 +65,17 @@ CONFIRMATION(){
 	echo ""
 }
 
+CONFIRMDELETE(){
+	echo -e "${YELLOW}"
+	echo -e "--------------------------------------------------"
+	echo -e " EXTREME CAUTION!!!"
+	echo -e " Do you want to clean up the user folders?"
+	echo -e " Warning: this can't be undone!"
+	echo -e "--------------------------------------------------"
+	echo -e "${STD}"
+	echo ""
+}
+
 GOAHEAD(){
 	echo -e "${LMAGENTA}"
 	echo -e "--------------------------------------------------"
