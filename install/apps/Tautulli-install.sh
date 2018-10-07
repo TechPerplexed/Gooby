@@ -1,65 +1,55 @@
 #!/bin/bash
 
-which tautulli > /tmp/checkapp.txt
+ls /opt/Tautulli > /tmp/checkapp.txt
 clear
 
 if [ -s /tmp/checkapp.txt ]; then
 
-  ALREADYINSTALLED
+	ALREADYINSTALLED
 
 else
 
-  EXPLAINTASK
-  
-  CONFIRMATION
+	EXPLAINTASK
 
-  if [[ ${REPLY} =~ ^[Yy]$ ]]; then
+	CONFIRMATION
 
-    GOAHEAD
+	if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 
-    # ----------
-    # Open ports
-    # ----------
+		GOAHEAD
 
-    sudo ufw allow 8181
+		# Open ports
 
-    # ------------
-    # Dependencies
-    # ------------
+		sudo ufw allow 8181
 
-    sudo apt-get upgrade -y && sudo apt-get upgrade -y
+		# Dependencies
 
-    sudo -s apt-get -y install \
-      git-core \
-      python3-setuptools-git \
-      denyhosts at sudo software-properties-common
+		sudo apt-get upgrade -y && sudo apt-get upgrade -y
 
-    # -----------
-    # Main script
-    # -----------
+		sudo -s apt-get -y install \
+			git-core \
+			python3-setuptools-git \
+		denyhosts at sudo software-properties-common
 
-    # Execution
+		# Main script
 
-    cd /opt/
-    sudo git clone https://github.com/Tautulli/Tautulli.git
-    sudo chown plexuser:plexuser -R /opt/Tautulli
-  
-    # -------------------
-    # Installing Services
-    # -------------------
+		cd /opt/
+		sudo git clone https://github.com/Tautulli/Tautulli.git
+		sudo chown plexuser:plexuser -R /opt/Tautulli
 
-    sudo rsync -a /opt/GooPlex/scripts/tautulli.service /etc/systemd/system/tautulli.service
-    sudo systemctl enable tautulli.service
-    sudo systemctl daemon-reload
-    sudo systemctl start tautulli.service
-	
-    TASKCOMPLETE
+		# Installing Services
 
-  else
+		sudo rsync -a /opt/GooPlex/scripts/tautulli.service /etc/systemd/system/tautulli.service
+		sudo systemctl enable tautulli.service
+		sudo systemctl daemon-reload
+		sudo systemctl start tautulli.service
 
-    CANCELTHIS
+		TASKCOMPLETE
 
-  fi
+	else
+
+		CANCELTHIS
+
+	fi
 
 fi
 
