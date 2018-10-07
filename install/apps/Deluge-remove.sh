@@ -1,18 +1,34 @@
 #!/bin/bash
 
+which deluge > /tmp/checkapp.txt
 clear
-read -p "Are you sure you want to ${PERFORM} ${FUNCTION} (y/N)? " -n 1 -r
-echo ""
 
-if [[ ${REPLY} =~ ^[Yy]$ ]]; then
+if [ ! -s /tmp/checkapp.txt ]; then
 
-  echo ""
-  echo -e "Coming soon!"
+  NOTINSTALLED
 
 else
 
-  echo -e "You chose ${YELLOW}not${STD} to ${PERFORM} ${FUNCTION}"
+  EXPLAINTASK
+
+  CONFIRMATION
+
+  if [[ ${REPLY} =~ ^[Yy]$ ]]; then
+
+    GOAHEAD
+
+    echo ""
+    echo -e "Coming soon!"
+
+	TASKCOMPLETE
+
+  else
+
+    CANCELTHIS
+
+  fi
 
 fi
 
+rm /tmp/checkapp.txt
 PAUSE
