@@ -1,5 +1,6 @@
 #!/bin/bash
 
+clear
 EXPLAINTASK
 
 CONFIRMATION
@@ -32,5 +33,7 @@ if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 else
 
 	CANCELTHIS
+
+fi
 
 PAUSE
