@@ -16,14 +16,11 @@ else
 	if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 
 		GOAHEAD
+		RUNPATCHES
 
 		# Open ports
 
 		sudo ufw allow 80
-
-		# Dependencies
-
-		sudo apt-get upgrade -y && sudo apt-get upgrade -y
 
 		# Main script
 
