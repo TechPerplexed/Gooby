@@ -1,6 +1,6 @@
 #!/bin/bash
 
-ls /opt/OrganizrInstaller > /tmp/checkapp.txt
+docker ps -q -f name=organizr > /tmp/checkapp.txt
 clear
 
 if [ ! -s /tmp/checkapp.txt ]; then
@@ -17,8 +17,8 @@ else
 
 		GOAHEAD
 
-		echo ""
-		echo -e "Coming soon!"
+		docker container stop organizr
+		docker container rm organizr
 
 		TASKCOMPLETE
 
