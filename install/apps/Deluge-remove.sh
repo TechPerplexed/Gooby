@@ -27,7 +27,7 @@ else
 
 		# Main script
 
-		sudo apt-get -y remove --purge \
+		sudo apt-get -y purge --auto-remove \
 			deluged \
 			deluge-webui \
 			deluge-console
