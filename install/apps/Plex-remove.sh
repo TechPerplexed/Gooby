@@ -17,10 +17,6 @@ else
 
 		GOAHEAD
 
-		# Dependencies
-
-		RUNPATCHES
-
 		# Close ports
 
 		sudo ufw delete allow 32400
@@ -39,7 +35,7 @@ else
 		echo -e " Delete the Plex database and libraries (y/N)?"
 		echo -e "--------------------------------------------------"
 		echo -e "${STD}"
-		
+
 		read -e -p "Yes or No? " -i "N" choice
 
 		case "$choice" in
