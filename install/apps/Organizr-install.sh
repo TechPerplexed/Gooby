@@ -18,17 +18,18 @@ else
 		GOAHEAD
 		RUNPATCHES
 
-		# Open ports
-
-		sudo ufw allow 80
-
 		# Main script
 
-		sudo git clone https://github.com/elmerfdz/OrganizrInstaller /opt/OrganizrInstaller
-		cd /opt/OrganizrInstaller/ubuntu/oui
-		clear
-		sudo bash ou_installer.sh
-		cd ~
+		docker create --name=organizr \
+		--name=organizr \
+		--restart=always \
+		-v /home/docker/organizr/config:/config \
+		-p 80:80 \
+		lsiocommunity/organizr
+
+		docker start organizr
+
+		sudo chown plexuser:plexuser -R /home/plexuser
 
 		TASKCOMPLETE
 
