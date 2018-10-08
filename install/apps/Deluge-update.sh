@@ -9,29 +9,7 @@ if [ ! -s /tmp/checkapp.txt ]; then
 
 else
 
-	EXPLAINTASK
-
-	CONFIRMATION
-
-	if [[ ${REPLY} =~ ^[Yy]$ ]]; then
-
-		GOAHEAD
-
-		# Dependencies
-
-		RUNPATCHES
-		
-		# Main script
-		
-		#na
-
-		TASKCOMPLETE
-
-	else
-
-		CANCELTHIS
-
-	fi
+	NOAPPUPDATE
 
 fi
 
