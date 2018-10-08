@@ -31,7 +31,7 @@ else
 		clear
 		echo -e "Copy latest Ubuntu X64 version from ${YELLOW}https://emby.media/linux-server.html${STD}"
 		echo -e "Remove link below and paste link to emby-server-deb_verson.amd64.deb"
-		echo -e "Or you can press Enter to install ${CYAN}v3.5.3.0{STD}:"
+		echo -e "Or you can press Enter to install ${CYAN}v3.5.3.0${STD}:"
 		echo ""
 		read -e -p "Link: " -i "https://github.com/MediaBrowser/Emby.Releases/releases/download/3.5.3.0/emby-server-deb_3.5.3.0_amd64.deb" emby
 		wget $emby
