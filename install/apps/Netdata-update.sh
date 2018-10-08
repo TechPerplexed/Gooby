@@ -1,9 +1,9 @@
 #!/bin/bash
 
-docker ps -a -f "name=netdata" > /tmp/checkapp.txt
+docker ps -q -f name=netdata > /tmp/checkapp.txt
 clear
 
-if ! read -r && read -r; then
+if [ -s /tmp/checkapp.txt ]; then
 
 	NOTINSTALLED
 
@@ -31,7 +31,7 @@ else
 
 	fi
 
-fi < /tmp/checkapp.txt
+fi
 
 rm /tmp/checkapp.txt
 PAUSE
