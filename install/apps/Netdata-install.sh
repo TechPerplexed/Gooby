@@ -44,7 +44,7 @@ else
 
 	fi
 
-fi /tmp/checkapp.txt
+fi < /tmp/checkapp.txt
 
 rm /tmp/checkapp.txt
 PAUSE
