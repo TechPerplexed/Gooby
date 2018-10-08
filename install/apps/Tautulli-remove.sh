@@ -27,7 +27,7 @@ else
 
 		# Main script
 
-		# na
+		sudo mv /opt/Tautulli /opt/Tautulli_old
 
 		# Removing Services
 
@@ -45,7 +45,7 @@ else
 		echo -e "${YELLOW}"
 		echo -e "--------------------------------------------------"
 		echo -e " Delete the user stats folder (y/N)?"
-		echo -e " /opt/Tautulli"
+		echo -e " The location is /opt/Tautulli_old"
 		echo -e "--------------------------------------------------"
 		echo -e "${STD}"
 		
@@ -53,7 +53,7 @@ else
 		
 		
 		case "$choice" in
-			y|Y ) sudo rm -r /opt/Tautulli ;;
+			y|Y ) sudo rm -r /opt/Tautulli_old ;;
 			* ) echo "Folder not deleted" ;;
 		esac
 
