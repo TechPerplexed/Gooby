@@ -1,6 +1,6 @@
 #!/bin/bash
 
-which netdata > /tmp/checkapp.txt
+which nzbget > /tmp/checkapp.txt
 clear
 
 if [ ! -s /tmp/checkapp.txt ]; then
@@ -9,25 +9,7 @@ if [ ! -s /tmp/checkapp.txt ]; then
 
 else
 
-	EXPLAINTASK
-
-	CONFIRMATION
-
-	if [[ ${REPLY} =~ ^[Yy]$ ]]; then
-
-		GOAHEAD
-		
-		# Main script
-
-		sudo /usr/src/netdata.git/netdata-updater.sh
-
-		TASKCOMPLETE
-
-	else
-
-		CANCELTHIS
-
-	fi
+	NOAPPUPDATE
 
 fi
 
