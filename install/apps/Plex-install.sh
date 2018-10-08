@@ -16,9 +16,6 @@ else
 	if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 
 		GOAHEAD
-
-		# Dependencies
-
 		RUNPATCHES
 
 		# Open ports
