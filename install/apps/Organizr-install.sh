@@ -1,6 +1,6 @@
 #!/bin/bash
 
-ls /opt/OrganizrInstaller > /tmp/checkapp.txt
+docker ps -q -f name=organizr > /tmp/checkapp.txt
 clear
 
 if [ -s /tmp/checkapp.txt ]; then
@@ -23,7 +23,7 @@ else
 		docker create --name=organizr \
 		--name=organizr \
 		--restart=always \
-		-v /home/docker/organizr/config:/config \
+		-v $HOME/Configs/Organizr/config:/config \
 		-p 80:80 \
 		lsiocommunity/organizr
 
