@@ -16,14 +16,13 @@ else
 	if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 
 		GOAHEAD
+		RUNPATCHES
 
 		# Open ports
 
 		sudo ufw allow 7878
 
 		# Dependencies
-
-		sudo apt-get upgrade -y && sudo apt-get upgrade -y
 
 		sudo -s apt-get -y install \
 			libcurl3 \
