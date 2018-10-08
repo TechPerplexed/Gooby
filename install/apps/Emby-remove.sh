@@ -29,6 +29,7 @@ else
 		
 		clear
 		sudo apt-get remove --auto-remove emby-server -y
+		sudo rm -r /opt/emby-server
 
 		# Cleaning up folders
 
