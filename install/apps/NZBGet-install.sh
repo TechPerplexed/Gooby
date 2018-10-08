@@ -17,13 +17,13 @@ else
 
 		GOAHEAD
 
+		# Dependencies
+
+		RUNPATCHES
+
 		# Open ports
 
 		sudo ufw allow 6789
-
-		# Dependencies
-
-		sudo apt-get upgrade -y && sudo apt-get upgrade -y
 
 		# Main script
 
@@ -38,12 +38,6 @@ else
 		sudo systemctl enable nzbget.service
 		sudo systemctl daemon-reload
 		sudo systemctl start nzbget.service
-
-		# Creating Folders
-
-		sudo mkdir -p /home/plexuser/downloads/incomplete
-		sudo mkdir -p /home/plexuser/downloads/import
-		sudo chown -R plexuser:plexuser /home/plexuser
 
 		TASKCOMPLETE
 
