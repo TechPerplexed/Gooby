@@ -17,10 +17,6 @@ else
 
 		GOAHEAD
 
-		# Dependencies
-
-		sudo apt-get upgrade -y && sudo apt-get upgrade -y
-
 		# Main script
 		
 		clear
