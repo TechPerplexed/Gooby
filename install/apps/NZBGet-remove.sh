@@ -23,7 +23,7 @@ else
 
 		# Main script
 
-		sudo apt-get purge --auto-remove nzbget
+		sudo apt-get -y purge --auto-remove nzbget
 
 		# Removing Services
 
