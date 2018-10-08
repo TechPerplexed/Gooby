@@ -1,6 +1,6 @@
 #!/bin/bash
 
-which netdata > /tmp/checkapp.txt
+docker ps -q -f name=netdata > /tmp/checkapp.txt
 clear
 
 if [ ! -s /tmp/checkapp.txt ]; then
