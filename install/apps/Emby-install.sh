@@ -1,6 +1,6 @@
 #!/bin/bash
 
-ls /var/lib/emby > /tmp/checkapp.txt
+ls /opt/emby-server > /tmp/checkapp.txt
 clear
 
 if [ -s /tmp/checkapp.txt ]; then
