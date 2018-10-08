@@ -1,6 +1,6 @@
 #!/bin/bash
 
-ls /opt/OrganizrInstaller > /tmp/checkapp.txt
+docker ps -q -f name=organizr > /tmp/checkapp.txt
 clear
 
 if [ ! -s /tmp/checkapp.txt ]; then
@@ -9,24 +9,7 @@ if [ ! -s /tmp/checkapp.txt ]; then
 
 else
 
-	EXPLAINTASK
-
-	CONFIRMATION
-
-	if [[ ${REPLY} =~ ^[Yy]$ ]]; then
-
-		GOAHEAD
-
-		echo ""
-		echo -e "Coming soon!"
-
-		TASKCOMPLETE
-
-	else
-
-		CANCELTHIS
-
-	fi
+	NOAPPUPDATE
 
 fi
 
