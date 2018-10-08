@@ -17,13 +17,13 @@ else
 
 		GOAHEAD
 
+		# Dependencies
+
+		RUNPATCHES
+
 		# Open ports
 
 		sudo ufw allow 8096
-
-		# Dependencies
-
-		sudo apt-get upgrade -y && sudo apt-get upgrade -y
 
 		# Main script
 		
