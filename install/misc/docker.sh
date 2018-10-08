@@ -1,8 +1,8 @@
 #!/bin/bash
 
-docker -v > /tmp/checkapp.txt
+docker -v > /tmp/checkdocker.txt
 
-	if [ ! -s /tmp/checkapp.txt ]; then
+if [ ! -s /tmp/checkapp.txt ]; then
 
 	sudo apt-get install \
 		apt-transport-https \
@@ -28,4 +28,4 @@ docker -v > /tmp/checkapp.txt
 
 fi
 
-rm /tmp/checkapp.txt
+rm /tmp/checkdocker.txt
