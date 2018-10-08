@@ -11,14 +11,20 @@ else
 
 	EXPLAINTASK
 
-	CONFIRMATION
+	CONFIRMDELETE
 
 	if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 
 		GOAHEAD
 
-		echo ""
-		echo -e "Coming soon!"
+		sudo systemctl stop netdata
+		sudo systemctl disable netdata
+		clear
+		echo "Enter through each line!"
+		cd /path/to/netdata.git
+		sudo ./netdata-uninstaller.sh --force
+		sudo rm /usr/sbin/netdata
+		cd ~
 
 		TASKCOMPLETE
 
