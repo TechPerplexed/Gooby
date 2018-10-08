@@ -24,7 +24,8 @@ else
 
 		# Main script
 
-		docker run -d --name=netdata \
+		sudo docker run -d --name=netdata \
+		--restart=always \
 		-p 19999:19999 \
 		-v /proc:/host/proc:ro \
 		-v /sys:/host/sys:ro \
