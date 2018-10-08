@@ -18,9 +18,11 @@ else
 		GOAHEAD
 		RUNPATCHES
 
-		# Install docker
+		# Dependencies
 
 		source /opt/GooPlex/install/misc/docker.sh
+		docker container stop netdata
+		docker container rm netdata
 
 		# Main script
 
