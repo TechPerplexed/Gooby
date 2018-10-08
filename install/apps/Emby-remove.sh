@@ -28,7 +28,7 @@ else
 		# Main script
 		
 		clear
-		sudo apt-get remove emby-server -y
+		sudo apt-get remove --auto-remove emby-server -y
 
 		# Cleaning up folders
 
