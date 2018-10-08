@@ -25,10 +25,10 @@ WHITE=$(echo -en '\033[01;37m')
 RUNPATCHES(){
 	sudo apt-get update
 	sudo apt-get upgrade -y
-	sudo apt-get dist-upgrade -y
-	sudo apt autoremove -y
-	sudo apt autoclean
-	sudo apt-get autoremove
+	# sudo apt-get dist-upgrade -y
+	# sudo apt autoremove -y
+	# sudo apt autoclean
+	# sudo apt-get autoremove
 	clear
 }
 
