@@ -16,16 +16,7 @@ else
 	if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 
 		GOAHEAD
-
-		# Dependencies
-
 		RUNPATCHES
-
-		sudo -s apt-get -y install \
-			unzip \
-			curl \
-			fuse \
-		denyhosts at sudo software-properties-common
 
 		# Open ports
 
