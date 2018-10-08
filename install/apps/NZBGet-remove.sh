@@ -1,6 +1,6 @@
 #!/bin/bash
 
-ls /opt/nzbget > /tmp/checkapp.txt
+which nzbget > /tmp/checkapp.txt
 clear
 
 if [ ! -s /tmp/checkapp.txt ]; then
