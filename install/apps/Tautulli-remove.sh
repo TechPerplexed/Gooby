@@ -27,6 +27,7 @@ else
 
 		# Main script
 
+		sudo rm -r /opt/Tautulli_old
 		sudo mv /opt/Tautulli /opt/Tautulli_old
 
 		# Removing Services
