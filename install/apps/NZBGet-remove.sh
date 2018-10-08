@@ -11,15 +11,11 @@ else
 
 	EXPLAINTASK
 
-	CONFIRMATION
+	CONFIRMDELETE
 
 	if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 
 		GOAHEAD
-
-		# Dependencies
-
-		RUNPATCHES
 
 		# Close ports
 
@@ -27,36 +23,16 @@ else
 
 		# Main script
 
-		sudo apt-get remove --auto-remove nzbget
+		sudo apt-get purge --auto-remove nzbget
 
 		# Removing Services
 
 		sudo systemctl stop nzbget.service
 		sudo systemctl disable nzbget.service
-		sudo rm /etc/systemd/system/nzbget.service
 		sudo systemctl daemon-reload
-
-		# Cleaning up folders
-
-		clear
-
-		CONFIRMDELETE
-
-		echo -e "${YELLOW}"
-		echo -e "--------------------------------------------------"
-		echo -e " Delete the user configurations (y/N)?"
-		echo -e "--------------------------------------------------"
-		echo -e "${STD}"
-
-		read -e -p "Yes or No? " -i "N" choice
-
-		case "$choice" in
-			y|Y ) sudo apt-get -y purge --auto-remove nzbget ;;
-			* ) echo "Configurations not deleted" ;;
-		esac
+		sudo rm /etc/systemd/system/nzbget.service
 
 		TASKCOMPLETE
-
 	else
 
 		CANCELTHIS
