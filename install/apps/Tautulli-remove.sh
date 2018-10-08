@@ -11,15 +11,11 @@ else
 
 	EXPLAINTASK
 
-	CONFIRMATION
+	CONFIRMDELETE
 
 	if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 
 		GOAHEAD
-
-		# Dependencies
-
-		RUNPATCHES
 
 		# Close ports
 
@@ -27,8 +23,7 @@ else
 
 		# Main script
 
-		sudo rm -r /opt/Tautulli_old
-		sudo mv /opt/Tautulli /opt/Tautulli_old
+		sudo rm -r /opt/Tautulli
 
 		# Removing Services
 
@@ -36,27 +31,6 @@ else
 		sudo systemctl disable tautulli.service
 		sudo rm /etc/systemd/system/tautulli.service
 		sudo systemctl daemon-reload
-
-		# Cleaning up folders
-
-		clear
-		
-		CONFIRMDELETE
-		
-		echo -e "${YELLOW}"
-		echo -e "--------------------------------------------------"
-		echo -e " Delete the user stats folder (y/N)?"
-		echo -e " The location is /opt/Tautulli_old"
-		echo -e "--------------------------------------------------"
-		echo -e "${STD}"
-		
-		read -e -p "Yes or No? " -i "N" choice
-		
-		
-		case "$choice" in
-			y|Y ) sudo rm -r /opt/Tautulli_old ;;
-			* ) echo "Folder not deleted" ;;
-		esac
 
 		TASKCOMPLETE
 
