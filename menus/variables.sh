@@ -78,11 +78,15 @@ CONFIRMATION(){
 CONFIRMDELETE(){
 	echo -e "${LRED}"
 	echo -e "--------------------------------------------------"
-	echo -e " EXTREME CAUTION!!!"
-	echo -e " Do you want to clean up the user folders?"
-	echo -e " Warning: this can't be undone!"
+	echo -e " DANGER ZONE - EXTREME CAUTION!!!"
+	echo -e " Are you really really sure?"
+	echo -e " You are about to ${PERFORM} ${TASK}"
+	echo -e " Including user settings and databases"
+	echo -e " Make sure you have a backup first!"
+	echo -e " Proceed? (y/N)?"
 	echo -e "--------------------------------------------------"
 	echo -e "${STD}"
+	read -t 10 -n 1 -s -r -p " ---> "
 	echo ""
 }
 
