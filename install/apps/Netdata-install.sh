@@ -26,7 +26,7 @@ else
 
 		# Main script
 
-		sudo docker run -d --name=netdata \
+		docker run -d --name=netdata \
 		--restart=always \
 		-p 19999:19999 \
 		-v /proc:/host/proc:ro \
@@ -35,6 +35,8 @@ else
 		--cap-add SYS_PTRACE \
 		--security-opt apparmor=unconfined \
 		netdata/netdata
+
+		sudo chown plexuser:plexuser -R /home/plexuser
 
 		TASKCOMPLETE
 
