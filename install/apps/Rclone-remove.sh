@@ -11,15 +11,11 @@ else
 
 	EXPLAINTASK
 
-	CONFIRMATION
+	CONFIRMDELETE
 
 	if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 
 		GOAHEAD
-
-		# Dependencies
-		
-		RUNPATCHES
 
 		# Close ports
 
@@ -36,27 +32,6 @@ else
 		sudo systemctl disable rclone.service
 		sudo rm /etc/systemd/system/rclone.service
 		sudo systemctl daemon-reload
-
-		# Cleaning up folders
-
-		clear
-		
-		CONFIRMDELETE
-
-		echo -e "${YELLOW}"
-		echo -e "--------------------------------------------------"
-		echo -e " Delete the following folders?"
-		echo -e " /home/plexuser/uploads"
-		echo -e " /home/plexuser/.config/rclone"
-		echo -e "--------------------------------------------------"
-		echo -e "${STD}"
-
-		read -e -p "Yes or No? " -i "N" choice
-		
-		case "$choice" in
-			y|Y ) sudo rm -r /home/plexuser/uploads; sudo rm -r /home/plexuser/.config/rclone ;;
-			* ) echo "Folders not deleted" ;;
-		esac
 
 		TASKCOMPLETE
 
