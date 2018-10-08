@@ -17,8 +17,9 @@ else
 
 		GOAHEAD
 
-		echo ""
-		echo -e "Coming soon!"
+		# Dependencies
+
+		RUNPATCHES
 
 		TASKCOMPLETE
 
