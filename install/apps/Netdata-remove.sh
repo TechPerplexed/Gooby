@@ -16,6 +16,12 @@ else
 	if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 
 		GOAHEAD
+		
+		# Close ports
+
+		sudo ufw delete allow 19999
+
+		# Main script
 
 		sudo systemctl stop netdata
 		sudo systemctl disable netdata
