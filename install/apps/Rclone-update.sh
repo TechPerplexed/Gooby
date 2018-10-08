@@ -25,7 +25,7 @@ else
 
 		cd /tmp
 
-		read -e -p "Release ${YELLOW}(R)${STD} or Beta installation ${YELLOW}(B)?${STD} " -i "R" choice
+		read -e -p "Release ${YELLOW}(R)${STD} or Beta installation ${YELLOW}(B)?${STD} " -i "" choice
 
 		case "$choice" in
 			b|B ) curl https://rclone.org/install.sh | sudo bash -s beta ;;
