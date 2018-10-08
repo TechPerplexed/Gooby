@@ -29,7 +29,8 @@ else
 
 		case "$choice" in
 			b|B ) curl https://rclone.org/install.sh | sudo bash -s beta ;;
-			* ) curl https://rclone.org/install.sh | sudo bash ;;
+			r|R ) curl https://rclone.org/install.sh | sudo bash ;;
+			* ) echo "No changes made" ;;
 		esac
 
 		cd ~
