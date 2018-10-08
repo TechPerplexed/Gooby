@@ -11,15 +11,11 @@ else
 
 	EXPLAINTASK
 
-	CONFIRMATION
+	CONFIRMDELETE
 
 	if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 
 		GOAHEAD
-		
-		# Dependencies
-
-		RUNPATCHES
 
 		# Close ports
 
@@ -44,27 +40,6 @@ else
 		sudo rm /etc/systemd/system/deluge-web.service
 
 		sudo systemctl daemon-reload
-
-		# Cleaning up folders
-
-		clear
-		
-		CONFIRMDELETE
-		
-		echo -e "${YELLOW}"
-		echo -e "--------------------------------------------------"
-		echo -e " Delete the following folder (y/N)?"
-		echo -e " /home/plexuser/downloads"
-		echo -e "--------------------------------------------------"
-		echo -e "${STD}"
-		
-		read -e -p "Yes or No? " -i "N" choice
-		
-		
-		case "$choice" in
-			y|Y ) sudo rm -r /home/plexuser/download ;;
-			* ) echo "Folder not deleted" ;;
-		esac
 
 		TASKCOMPLETE
 
