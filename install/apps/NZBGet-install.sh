@@ -1,6 +1,6 @@
 #!/bin/bash
 
-ls /opt/nzbget > /tmp/checkapp.txt
+which nzbget > /tmp/checkapp.txt
 clear
 
 if [ -s /tmp/checkapp.txt ]; then
@@ -25,8 +25,7 @@ else
 		# Main script
 
 		cd /tmp
-		sudo wget https://nzbget.net/download/nzbget-latest-bin-linux.run
-		sudo sh nzbget-latest-bin-linux.run --destdir /opt/nzbget
+		sudo apt-get -y install nzbget
 		sudo chown -R plexuser:plexuser /opt/nzbget
 
 		# Installing Services
