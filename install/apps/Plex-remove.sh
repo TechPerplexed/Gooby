@@ -1,6 +1,7 @@
 #!/bin/bash
 
 ls /var/lib/plexmediaserver > /tmp/checkapp.txt
+ls /opt/plexupdate >> /tmp/checkapp.txt
 clear
 
 if [ ! -s /tmp/checkapp.txt ]; then
@@ -27,7 +28,7 @@ else
 
 		# Main script
 
-		sudo dpkg -r plexmediaserver
+		sudo dpkg --purge plexmediaserver
 		
 		# Cleaning up folders
 
