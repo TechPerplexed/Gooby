@@ -16,14 +16,12 @@ else
 	if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 
 		GOAHEAD
-
-		# Dependencies
-
 		RUNPATCHES
 
 		# Main script
 
-		sudo /usr/src/netdata.git/netdata-updater.sh
+		docker container stop netdata
+		docker container start netdata
 
 		TASKCOMPLETE
 
