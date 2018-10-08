@@ -27,14 +27,14 @@ else
 
 		# Main script
 
-		sudo apt-get -y remove --auto-remove nzbget
+		sudo apt-get remove --auto-remove nzbget
 
 		# Removing Services
 
-		sudo rsync -a /opt/GooPlex/scripts/nzbget.service /etc/systemd/system/nzbget.service
-		sudo systemctl enable nzbget.service
+		sudo systemctl stop nzbget.service
+		sudo systemctl disable nzbget.service
+		sudo rm /etc/systemd/system/nzbget.service
 		sudo systemctl daemon-reload
-		sudo systemctl start nzbget.service
 
 		# Cleaning up folders
 
