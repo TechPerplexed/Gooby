@@ -33,6 +33,7 @@ else
 		# Main script
 
 		cd /opt/
+		sudo rm -r Tautulli
 		sudo git clone https://github.com/Tautulli/Tautulli.git
 		sudo chown plexuser:plexuser -R /opt/Tautulli
 
