@@ -16,10 +16,9 @@ else
 	if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 
 		GOAHEAD
+		RUNPATCHES
 
 		# Dependencies
-
-		RUNPATCHES
 
 		sudo -s apt-get -y install \
 			git-core \
