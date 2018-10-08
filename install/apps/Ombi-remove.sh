@@ -17,8 +17,20 @@ else
 
 		GOAHEAD
 
-		echo ""
-		echo -e "Coming soon!"
+		# Close ports
+
+		sudo ufw delete allow 5000
+
+		# Main script
+
+		sudo rm -r /opt/Ombi
+
+		# Removing Services
+
+		sudo systemctl stop ombi.service
+		sudo systemctl disable ombi.service
+		sudo systemctl daemon-reload
+		sudo rm /etc/systemd/system/ombi.service
 
 		TASKCOMPLETE
 
