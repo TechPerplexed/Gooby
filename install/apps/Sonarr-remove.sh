@@ -13,14 +13,13 @@ else
 
 	EXPLAINTASK
 
-	CONFIRMATION
+	CONFIRMDELETE
 
 	if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 
 		GOAHEAD
 
-		echo ""
-		echo -e "Coming soon!"
+		sudo apt-get purge --auto-remove sonarr -y
 
 		TASKCOMPLETE
 
