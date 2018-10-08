@@ -1,7 +1,6 @@
 #!/bin/bash
 
-ls /var/lib/plexmediaserver > /tmp/checkapp.txt
-ls /opt/plexupdate >> /tmp/checkapp.txt
+ls /opt/plexupdate > /tmp/checkapp.txt
 clear
 
 if [ -s /tmp/checkapp.txt ]; then
