@@ -17,6 +17,7 @@ else
 
 		GOAHEAD
 
+		docker container stop netdata
 		docker container rm netdata
 
 		TASKCOMPLETE
