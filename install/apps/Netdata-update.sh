@@ -5,28 +5,33 @@ clear
 
 if [ ! -s /tmp/checkapp.txt ]; then
 
-  NOTINSTALLED
+	NOTINSTALLED
 
 else
 
-  EXPLAINTASK
+	EXPLAINTASK
 
-  CONFIRMATION
+	CONFIRMATION
 
-  if [[ ${REPLY} =~ ^[Yy]$ ]]; then
+	if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 
-    GOAHEAD
+		GOAHEAD
 
-    echo ""
-    echo -e "Coming soon!"
+		# Dependencies
 
-	TASKCOMPLETE
+		RUNPATCHES
 
-  else
+		# Main script
 
-    CANCELTHIS
+		sudo /usr/src/netdata.git/netdata-updater.sh
 
-  fi
+		TASKCOMPLETE
+
+	else
+
+		CANCELTHIS
+
+	fi
 
 fi
 
