@@ -53,7 +53,7 @@ else
 		
 		
 		case "$choice" in
-			y|Y ) rm -r /opt/Tautulli ;;
+			y|Y ) sudo rm -r /opt/Tautulli ;;
 			* ) echo "Folder not deleted" ;;
 		esac
 
