@@ -29,6 +29,7 @@ else
 		# Main script
 
 		sudo dpkg --purge plexmediaserver
+		sudo rm -r /opt/plexupdate
 		
 		# Cleaning up folders
 
