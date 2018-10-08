@@ -11,7 +11,7 @@ else
 
 	EXPLAINTASK
 
-	CONFIRMATION
+	CONFIRMDELETE
 
 	if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 
@@ -29,23 +29,19 @@ else
 
 		sudo dpkg --purge plexmediaserver
 		sudo rm -r /opt/plexupdate
-		
+
 		# Cleaning up folders
 
 		clear
-		
-		CONFIRMDELETE
-		
+
 		echo -e "${YELLOW}"
 		echo -e "--------------------------------------------------"
 		echo -e " Delete the Plex database and libraries (y/N)?"
-		echo -e " /var/lib/plexmediaserver/"
 		echo -e "--------------------------------------------------"
 		echo -e "${STD}"
 		
 		read -e -p "Yes or No? " -i "N" choice
-		
-		
+
 		case "$choice" in
 			y|Y ) sudo rm -r /var/lib/plexmediaserver ;;
 			* ) echo "Folder not deleted" ;;
