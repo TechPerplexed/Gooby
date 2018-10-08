@@ -2,7 +2,7 @@
 
 docker -v > /tmp/checkdocker.txt
 
-if [ ! -s /tmp/checkapp.txt ]; then
+if [ ! -s /tmp/checkdocker.txt ]; then
 
 	sudo apt-get install \
 		apt-transport-https \
