@@ -66,7 +66,7 @@ show_menus() {
 
 read_options(){
   local choice
-    read -p "Choose option: " choice
+    read -n 1 -s -r -p "Choose option: " choice
     case $choice in
       [Aa]) UPDATE ;;
       [Bb]) PATCHES ;;
