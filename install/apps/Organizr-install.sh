@@ -17,6 +17,10 @@ else
 
 		GOAHEAD
 		RUNPATCHES
+	
+		# Dependencies
+
+		source /opt/GooPlex/install/misc/docker.sh
 
 		# Main script
 
