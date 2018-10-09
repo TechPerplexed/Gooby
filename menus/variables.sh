@@ -32,6 +32,19 @@ RUNPATCHES(){
 	clear
 }
 
+MENUSTART(){
+	echo -e "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+	echo -e " G O O P L E X - Visit techperplexed.ga "
+	echo -e "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+	echo -e " $MENU"
+	echo -e " ${STD}"
+}
+
+MENUEND(){
+	echo -e "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+	echo -e " ${STD}"
+}
+
 ALREADYINSTALLED(){
 	echo -e "${YELLOW}"
 	echo -e "--------------------------------------------------"
