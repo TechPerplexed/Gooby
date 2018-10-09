@@ -5,7 +5,7 @@
 # ------------------------
 
 
-if [ "$(whoami)" != "plexuser" ];
+if [ "$(whoami)" = "root" ];
 then
 
   /opt/GooPlex/install/createuser.sh
