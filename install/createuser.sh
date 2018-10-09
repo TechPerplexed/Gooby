@@ -1,58 +1,62 @@
 #!/bin/bash
 
-FUNCTION="create a new user"
-
-# ---------
-# Variables
-# ---------
+PERFORM="create"
+TASK="a new user"
 
 source /opt/GooPlex/menus/variables.sh
 
 # Confirmation
 
 clear
-echo -e "New user ${CYAN}plexuser${STD} needs to be created now."
-echo ""
-read -p "Are you sure you want to $FUNCTION (y/N)? " -n 1 -r
-echo ""
+echo "${CYAN}"
+echo "----------------------------------------------"
+echo -e " You are logged in as root"
+echo -e " You'd want to create a user!"
+echo -e " What name do you want?"
+echo "----------------------------------------------"
+echo "${STD}"
 
-if [[ $REPLY =~ ^[Yy]$ ]]
-then
+CONFIRMATION
 
-  # -----------
-  # Main script
-  # -----------
+if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 
-  # Create user
+	# Create user
 
-  PU=plexuser
+	read -e -p "${YELLOW}Your username${STD} (Enter to accept): " -i "plexuser" PU
 
-  sudo -s adduser $PU
+	if [ "$PU" != "plexuser" ]; then
+		echo ""
+		echo "I'm in the process of creating a new GooPlex."
+		echo "For now, it's only possible to create the user 'plexuser'"
+		echo "Stay tuned for a future update that makes it possible"
+		echo "to choose $PU as your user name!"
+		echo ""
+		PU=plexuser
+	fi
 
-  sudo -s usermod -a -G sudo $PU
-  sudo -s echo -e "$PU\tALL=(ALL)\tNOPASSWD:ALL" > /etc/sudoers.d/$PU
-  sudo -s chmod 0440 /etc/sudoers.d/$PU
+	sudo -s adduser $PU
 
-  clear
-  echo -e "${GREEN}"
-  echo -e "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-  echo -e " You should now be switched to ${YELLOW}plexuser${GREEN} "
-  echo -e "    Type ${WHITE}gooplex${GREEN} to access the menu."
-  echo -e "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-  echo -e "${STD}"
+	sudo -s usermod -a -G sudo $PU
+	sudo -s echo -e "$PU\tALL=(ALL)\tNOPASSWD:ALL" > /etc/sudoers.d/$PU
+	sudo -s chmod 0440 /etc/sudoers.d/$PU
 
-  su $PU
+	clear
+	echo -e "${GREEN}"
+	echo -e "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+	echo -e " You should now be switched to ${YELLOW}${PU}{GREEN} "
+	echo -e "    Type ${WHITE}gooplex${GREEN} to access the menu."
+	echo -e "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+	echo -e "${STD}"
 
-  # ----------
-  # Finalizing
-  # ----------
+	su $PU
+
+	# Finalizing
 
 else
 
-  echo -e "You chose ${YELLOW}not${STD} to $FUNCTION"
-  echo -e "Exiting..."
-  echo ""
-  exit 0
+	CANCELTHIS
+	MENUVISIT
+	exit 0
 
 fi
 
