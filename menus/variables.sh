@@ -33,16 +33,25 @@ RUNPATCHES(){
 }
 
 MENUSTART(){
-	echo -e "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-	echo -e " G O O P L E X - Visit techperplexed.ga "
-	echo -e "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+	echo -e "--------------------------------------------------"
+	echo -e " G O O P L E X - Visit techperplexed.ga"
+	echo -e --------------------------------------------------"
 	echo -e " $MENU"
 	echo -e " ${STD}"
 }
 
 MENUEND(){
-	echo -e "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+	echo -e "--------------------------------------------------"
 	echo -e " ${STD}"
+}
+
+MENUVISIT(){
+	clear
+	echo ""
+	echo "--------------------------------------------------"
+	echo -e " Visit the menu any time by typing '${WHITE}gooplex${STD}'"
+	echo "--------------------------------------------------"
+	echo ""
 }
 
 ALREADYINSTALLED(){
