@@ -1,6 +1,6 @@
 #!/bin/bash
 
-FUNCTION="GooPlex Menu"
+MENU="GooPlex Menu"
 
 # ---------
 # Variables
@@ -15,38 +15,33 @@ clear
 
 # Maintain Server
 server(){
-  /opt/GooPlex/menus/server.sh
+	/opt/GooPlex/menus/server.sh
 }
 
 # Install Media
 media(){
-  /opt/GooPlex/menus/appsmedia.sh
+	/opt/GooPlex/menus/appsmedia.sh
 }
 
 # Install Media
 download(){
-  /opt/GooPlex/menus/appsdownload.sh
+	/opt/GooPlex/menus/appsdownload.sh
 }
 
 # Install Other
 other(){
-  /opt/GooPlex/menus/appsother.sh
+	/opt/GooPlex/menus/appsother.sh
 }
 
 # Additional Options
 misc(){
-  /opt/GooPlex/menus/misc.sh
+	/opt/GooPlex/menus/misc.sh
 }
 
 # Exit
 quit(){
-  clear
-  echo ""
-  echo "----------------------------------------------"
-  echo -e " Visit this menu any time by typing '${WHITE}gooplex${STD}' "
-  echo "----------------------------------------------"
-  echo ""
-  exit
+	MENUVISIT
+	exit
 }
 
 # ------------
@@ -54,22 +49,17 @@ quit(){
 # ------------
 
 show_menus() {
-  clear
-  echo -e " ${GREEN}"
-  echo -e "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-  echo -e " G O O P L E X - Visit techperplexed.ga "
-  echo -e "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-  echo -e " $FUNCTION "
-  echo -e " ${STD}"
-  echo -e " ${GREEN}A${STD} - Maintain Server"
-  echo -e " ${GREEN}B${STD} - Media Applications"
-  echo -e " ${GREEN}C${STD} - Download Applications"
-  echo -e " ${GREEN}D${STD} - Other Applications"
-  echo -e " ${GREEN}E${STD} - Additional Tasks"
-  echo -e " ${LRED}Q${STD} - QUIT $FUNCTION"
-  echo -e "${GREEN}"
-  echo -e "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-  echo -e " ${STD}"
+	clear
+	echo -e " ${GREEN}"
+	MENUSTART
+	echo -e " ${GREEN}A${STD} - Maintain Server"
+	echo -e " ${GREEN}B${STD} - Media Applications"
+	echo -e " ${GREEN}C${STD} - Download Applications"
+	echo -e " ${GREEN}D${STD} - Other Applications"
+	echo -e " ${GREEN}E${STD} - Additional Tasks"
+	echo -e " ${LRED}Q${STD} - QUIT $FUNCTION"
+	echo -e "${GREEN}"
+	MENUEND
 }
 
 # ------------
@@ -77,27 +67,21 @@ show_menus() {
 # ------------
 
 read_options(){
-  local choice
-    read -n 1 -s -r -p "Choose option: " choice
-    case $choice in
-      [Aa]) server ;;
-      [Bb]) media ;;
-      [Cc]) download ;;
-      [Dd]) other ;;
-      [Ee]) misc ;;
-      [Qq]) quit ;;
-      *) echo -e "${LRED}Please select a valid option${STD}" && sleep 2
-    esac
+	local choice
+	read -n 1 -s -r -p "Choose option: " choice
+	case $choice in
+		[Aa]) server ;;
+		[Bb]) media ;;
+		[Cc]) download ;;
+		[Dd]) other ;;
+		[Ee]) misc ;;
+		[Qq]) quit ;;
+		*) echo -e "${LRED}Please select a valid option${STD}" && sleep 2
+	esac
 }
 
 # ----------
 # Finalizing
 # ----------
 
-trap '' SIGINT SIGQUIT SIGTSTP
-
-while true
-do
-  show_menus
-  read_options
-done
+MENUFINALIZE
