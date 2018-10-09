@@ -34,6 +34,13 @@ else
 		esac
 
 		cd ~
+		
+		read -e -p "Make any changes to your mount? ${YELLOW}(y/N)${STD}? " -i "" choice
+		
+		case "$choice" in 
+			y|Y ) sudo config rclone ;;
+			* ) echo "All done!" ;;
+		esac
 
 		TASKCOMPLETE
 
