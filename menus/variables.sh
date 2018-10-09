@@ -45,6 +45,15 @@ MENUEND(){
 	echo -e " ${STD}"
 }
 
+MENUFINALIZE(){
+	trap '' SIGINT SIGQUIT SIGTSTP
+	while true
+	do
+		show_menus
+		read_options
+	done
+}
+
 MENUVISIT(){
 	clear
 	echo ""
