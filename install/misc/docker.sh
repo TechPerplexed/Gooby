@@ -6,7 +6,7 @@ if [ ! -s /tmp/checkdocker.txt ]; then
 
 	# install docker
 
-	sudo apt-get install \
+	sudo apt-get -y install \
 		apt-transport-https \
 		acl \
 		ca-certificates \
@@ -27,6 +27,12 @@ if [ ! -s /tmp/checkdocker.txt ]; then
 	sudo usermod -a -G docker $USER
 	sudo gpasswd -a $USER docker
 	sudo setfacl -m user:$USER:rw /var/run/docker.sock
+
+fi
+
+docker-compose -v  > /tmp/checkcompose.txt
+
+if [ ! -s /tmp/checkcompose.txt ]; then
 	
 	# get latest docker compose released tag
 
@@ -41,3 +47,4 @@ if [ ! -s /tmp/checkdocker.txt ]; then
 fi
 
 rm /tmp/checkdocker.txt
+rm /tmp/checkcompose.txt
