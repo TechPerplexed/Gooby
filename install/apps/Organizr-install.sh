@@ -34,7 +34,7 @@ else
 
 		docker start organizr
 		
-		sudo chown -R $USER:$USER /home/GooPlex
+		sudo chown -R $USER:$USER ${CONFIGS}
 
 		TASKCOMPLETE
 
