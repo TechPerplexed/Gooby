@@ -4,6 +4,8 @@ docker -v > /tmp/checkdocker.txt
 
 if [ ! -s /tmp/checkdocker.txt ]; then
 
+	# install docker
+
 	sudo apt-get install \
 		apt-transport-https \
 		acl \
@@ -25,6 +27,16 @@ if [ ! -s /tmp/checkdocker.txt ]; then
 	sudo usermod -a -G docker $USER
 	sudo gpasswd -a $USER docker
 	sudo setfacl -m user:$USER:rw /var/run/docker.sock
+	
+	# get latest docker compose released tag
+
+	COMPOSE_VERSION=$(curl -s https://api.github.com/repos/docker/compose/releases/latest | grep 'tag_name' | cut -d\" -f4)
+
+	# Install docker-compose
+
+	sh -c "curl -L https://github.com/docker/compose/releases/download/${COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose"
+	chmod +x /usr/local/bin/docker-compose
+	sh -c "curl -L https://raw.githubusercontent.com/docker/compose/${COMPOSE_VERSION}/contrib/completion/bash/docker-compose > /etc/bash_completion.d/docker-compose"
 
 fi
 
