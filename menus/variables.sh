@@ -1,5 +1,12 @@
 #!/bin/bash
 
+# Define environment variables
+
+USERID="id -u $USER"
+GROUPID="id -g $USER"
+TIMEZONE="cat /etc/timezone"
+CONFIGS=/home/GooPlex
+
 # Define colors
 
 STD=$(echo -en '\033[0m')
