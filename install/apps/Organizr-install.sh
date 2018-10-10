@@ -28,6 +28,7 @@ else
 		--name=organizr \
 		--restart=always \
 		-v /usr/local/GooPlex/Organizr/config:/config \
+		-e PGID=1000 -e PUID=1000  \
 		-p 80:80 \
 		lsiocommunity/organizr
 
