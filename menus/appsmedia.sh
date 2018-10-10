@@ -15,31 +15,31 @@ clear
 
 # Rclone
 RCLONE(){
-  TASK="Rclone"
-  source /opt/GooPlex/menus/apps.sh
+	TASK="Rclone"
+	source /opt/GooPlex/menus/apps.sh
 }
 
 # Plex
 PLEX(){
-  TASK="Plex"
-  source /opt/GooPlex/menus/apps.sh
+	TASK="Plex"
+	source /opt/GooPlex/menus/apps.sh
 }
 
 # Tautulli
 TAUTULLI(){
-  TASK="Tautulli"
-  source /opt/GooPlex/menus/apps.sh
+	TASK="Tautulli"
+	source /opt/GooPlex/menus/apps.sh
 }
 
 # Emby
 EMBY(){
-  TASK="Emby"
-  source /opt/GooPlex/menus/apps.sh
+	TASK="Emby"
+	source /opt/GooPlex/menus/apps.sh
 }
 
 # Exit
 QUIT(){
-  exit
+	exit
 }
 
 # ------------
@@ -47,21 +47,16 @@ QUIT(){
 # ------------
 
 show_menus() {
-  clear
-  echo -e " ${LPURPLE}"
-  echo -e "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-  echo -e " G O O P L E X - Visit techperplexed.ga "
-  echo -e "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-  echo -e " $FUNCTION "
-  echo -e " ${STD}"
-  echo -e " ${LPURPLE}A${STD} - Rclone"
-  echo -e " ${LPURPLE}B${STD} - Plex"
-  echo -e " ${LPURPLE}C${STD} - Tautulli"
-  echo -e " ${LPURPLE}D${STD} - Emby"
-  echo -e " ${WHITE}Z${STD} - EXIT to Main Menu"
-  echo -e " ${LPURPLE}"
-  echo -e "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-  echo -e " ${STD}"
+	clear
+	echo -e " ${LPURPLE}"
+	MENUSTART
+	echo -e " ${LPURPLE}A${STD} - Rclone"
+	echo -e " ${LPURPLE}B${STD} - Plex"
+	echo -e " ${LPURPLE}C${STD} - Tautulli"
+	echo -e " ${LPURPLE}D${STD} - Emby"
+	echo -e " ${WHITE}Z${STD} - EXIT to Main Menu"
+	echo -e " ${LPURPLE}"
+	MENUEND
 }
 
 # ------------
@@ -69,26 +64,20 @@ show_menus() {
 # ------------
 
 read_options(){
-  local choice
-    read -n 1 -s -r -p "Choose option: " choice
-    case $choice in
-      [Aa]) RCLONE ;;
-      [Bb]) PLEX ;;
-      [Cc]) TAUTULLI ;;
-      [Dd]) EMBY ;;      
-      [Zz]) QUIT ;;
-      *) echo -e "${LRED}Please select a valid option${STD}" && sleep 2
-    esac
+	local choice
+	read -n 1 -s -r -p "Choose option: " choice
+	case $choice in
+		[Aa]) RCLONE ;;
+		[Bb]) PLEX ;;
+		[Cc]) TAUTULLI ;;
+		[Dd]) EMBY ;;      
+		[Zz]) QUIT ;;
+		*) echo -e "${LRED}Please select a valid option${STD}" && sleep 2
+	esac
 }
  
 # ----------
 # Finalizing
 # ----------
 
-trap '' SIGINT SIGQUIT SIGTSTP
-
-while true
-do 
-  show_menus
-  read_options
-done
+MENUFINALIZE
