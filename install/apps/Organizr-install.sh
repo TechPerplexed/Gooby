@@ -31,7 +31,7 @@ else
 		-p 80:80 \
 		lsiocommunity/organizr
 
-		sudo chown $USER:$USER -R /usr/local/GooPlex
+		sudo chown -R $USER:$USER /usr/local/GooPlex
 
 		docker start organizr
 
