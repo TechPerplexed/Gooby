@@ -13,8 +13,10 @@ sudo -s apt-get -y install \
 	curl \
 	ufw \
 	socat \
-	acl \
 	fuse \
+	apt-transport-https \
+	acl \
+	ca-certificates \
 denyhosts at sudo software-properties-common
 
 sudo rm -r /opt/GooPlex
