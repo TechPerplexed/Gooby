@@ -27,11 +27,11 @@ else
 		docker create --name=organizr \
 		--name=organizr \
 		--restart=always \
-		-v /gooplex/Configs/Organizr/config:/config \
+		-v /usr/local/gooplex/Organizr/config:/config \
 		-p 80:80 \
 		lsiocommunity/organizr
 
-		sudo chown $USER:$USER -R /home/gooplex
+		sudo chown $USER:$USER -R /usr/local/gooplex
 
 		docker start organizr
 
