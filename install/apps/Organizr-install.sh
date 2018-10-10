@@ -27,8 +27,8 @@ else
 		docker create --name=organizr \
 		--name=organizr \
 		--restart=always \
-		-v /home/GooPlex/Organizr/config:/config \
-		-e PGID=1000 -e PUID=1000  \
+		-v ${CONFIGS}/Organizr/config:/config \
+		-e PGID=${GROUPID} -e PUID=${USERID}  \
 		-p 80:80 \
 		lsiocommunity/organizr
 
