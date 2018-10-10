@@ -1,17 +1,17 @@
 #!/bin/bash
-#
-# ------------------------
-# Open menu or create user
-# ------------------------
 
+source /opt/GooPlex/menus/variables.sh
 
-if [ "$(whoami)" = "root" ];
-then
+if [ "$(whoami)" = "root" ]; then
 
-  /opt/GooPlex/install/createuser.sh
+	/opt/GooPlex/install/createuser.sh
 
 else
 
-  /opt/GooPlex/menus/main.sh
+	sudo chmod +x -R /opt/GooPlex/install
+	sudo chmod +x -R /opt/GooPlex/menus
+	sudo rsync -a /opt/GooPlex/install/gooplex /bin
+	sudo chmod 755 /bin/gooplex
+	/opt/GooPlex/menus/main.sh
 
 fi
