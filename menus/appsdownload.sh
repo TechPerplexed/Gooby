@@ -1,6 +1,6 @@
 #!/bin/bash
 
-FUNCTION="Download Applications"
+MENU="Download Applications"
 
 # ---------
 # Variables
