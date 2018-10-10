@@ -23,7 +23,7 @@ media(){
 	/opt/GooPlex/menus/appsmedia.sh
 }
 
-# Install Media
+# Install Downloads
 download(){
 	/opt/GooPlex/menus/appsdownload.sh
 }
