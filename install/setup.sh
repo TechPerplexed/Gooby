@@ -12,8 +12,10 @@ source /opt/GooPlex/menus/variables.sh
 sudo chmod +x -R /opt/GooPlex/install
 sudo chmod +x -R /opt/GooPlex/menus
 sudo rsync -a /opt/GooPlex/install/gooplex /bin
+sudo mkdir usr/local/GooPlex
 sudo chmod 755 /bin/gooplex
 sudo chown -R $USER:$USER /opt/GooPlex
+sudo chown -R $USER:$USER /usr/local/GooPlex
 
 lsb_release -r -s > /tmp/version
 VERSION=$( cat /tmp/version )
