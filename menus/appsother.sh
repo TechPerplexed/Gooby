@@ -1,6 +1,6 @@
 #!/bin/bash
 
-FUNCTION="Other Applications"
+MENU="Other Applications"
 
 # ---------
 # Variables
