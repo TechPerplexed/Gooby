@@ -1,6 +1,6 @@
 #!/bin/bash
 
-FUNCTION="Media Applications"
+MENU="Media Applications"
 
 # ---------
 # Variables
