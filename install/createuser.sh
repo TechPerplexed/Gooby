@@ -12,7 +12,6 @@ echo "${CYAN}"
 echo "----------------------------------------------"
 echo -e " You are logged in as root"
 echo -e " You'd want to create a user!"
-echo -e " What name do you want?"
 echo "----------------------------------------------"
 echo "${STD}"
 
@@ -22,7 +21,7 @@ if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 
 	# Create user
 
-	read -e -p "${YELLOW}Your username${STD} (Enter to accept): " -i "plexuser" PU
+	read -e -p "${YELLOW}Desired username${STD} (Enter to accept): " -i "plexuser" PU
 
 	if [ "$PU" != "plexuser" ]; then
 		echo ""
@@ -43,7 +42,7 @@ if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 	clear
 	echo -e "${GREEN}"
 	echo -e "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-	echo -e " You should now be switched to ${YELLOW}${PU}${GREEN "
+	echo -e " You should now be switched to ${YELLOW}${PU}${GREEN}"
 	echo -e "    Type ${WHITE}gooplex${GREEN} to access the menu."
 	echo -e "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 	echo -e "${STD}"
