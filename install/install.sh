@@ -21,4 +21,4 @@ denyhosts at sudo software-properties-common
 
 sudo rm -r /opt/GooPlex
 sudo git clone https://github.com/TechPerplexed/GooPlex.git /opt/GooPlex
-sudo bash /opt/GooPlex/install/setup.sh
+sudo bash /opt/GooPlex/install/gooplex
