@@ -2,9 +2,9 @@
 
 # Define environment variables
 
-USERID=$(echo id -u $USER)
-GROUPID=$(echo id -g $USER)
-GROUPID=$(echo cat /etc/timezone)
+USERID=$(id -u $USER)
+GROUPID=$(id -g $USER)
+TIMEZONE=$(cat /etc/timezone)
 CONFIGS=/home/GooPlex
 
 # Define colors
