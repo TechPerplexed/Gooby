@@ -25,11 +25,22 @@ TIMEZONE(){
 	source /opt/GooPlex/install/server/${TASK}-${PERFORM}.sh
 }
 
+SETURL(){
+	PERFORM="set"
+	TASK="url"
+	source /opt/GooPlex/install/server/${TASK}-${PERFORM}.sh
+}
+
+SETEMAIL(){
+	PERFORM="set"
+	TASK="email"
+	source /opt/GooPlex/install/server/${TASK}-${PERFORM}.sh
+}
 
 UPGRADE(){
 	PERFORM="upgrade"
-	TASK="Ubuntu"
-	source /opt/GooPlex/install/server/vpsupgrade.sh
+	TASK="version"
+	source /opt/GooPlex/install/server/${TASK}-${PERFORM}.sh
 }
 
 # Exit
@@ -65,8 +76,8 @@ read_options(){
 	case $choice in
 		[Aa]) PATCHES ;;
 		[Bb]) TIMEZONE ;;
-		[Cc]) TIMEZONE ;;
-		[Dd]) TIMEZONE ;;
+		[Cc]) SETURL ;;
+		[Dd]) SETEMAIL ;;
 		[Ee]) UPGRADE ;;
 		[Zz]) QUIT ;;
 		*) echo -e "${LRED}Please select a valid option${STD}" && sleep 2
