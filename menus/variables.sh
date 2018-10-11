@@ -5,7 +5,7 @@
 USERID=$(id -u $USER)
 GROUPID=$(id -g $USER)
 TIMEZONE=$(cat /etc/timezone)
-CONFIGS=/home/GooPlex/Configs
+CONFIGS=/home/GooPlex
 
 # Define colors
 
