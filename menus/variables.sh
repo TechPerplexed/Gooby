@@ -94,8 +94,8 @@ APPINSTALLED(){
 	echo -e "--------------------------------------------------"
 	echo -e " ${TASK} is now installed"
 	echo -e " You can reach it through this URL:"
-	echo -e " $PUBLICIP/$PORT"
-	# echo -e " This will son be $URL/$APP"
+	echo -e " $PUBLICIP:$PORT"
+	# echo -e " This will soon be $URL/$APP"
 	echo -e "--------------------------------------------------"
 	echo -e "${STD}"
 }
