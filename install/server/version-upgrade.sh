@@ -4,7 +4,7 @@ clear
 
 echo -e "--------------------------------------------------"
 echo -e " ${RED}DANGER ZONE!!!${STD}"
-echo -e " This will upgrade your server to the latest version"
+echo -e " This will upgrade your OS software"
 echo -e " ${YELLOW}CAUTION!!!${STD} Make SURE you have a backup!"
 echo -e "--------------------------------------------------"
 echo ""
