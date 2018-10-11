@@ -15,9 +15,9 @@ clear
 
 # Update Server
 UPDATE(){
-	PERFORM="initialize"
-	TASK="server"
-	source /opt/GooPlex/install/server/vpsupdate.sh
+	PERFORM="set"
+	TASK="timezone"
+	source /opt/GooPlex/install/server/${TASK}-${PERFORM}.sh
 }
 
 # Update Server
@@ -47,7 +47,7 @@ show_menus() {
 	clear
 	echo -e " ${YELLOW}"
 	MENUSTART
-	echo -e " ${YELLOW}A${STD} - Initialize Server"
+	echo -e " ${YELLOW}A${STD} - Set server timezone"
 	echo -e " ${YELLOW}B${STD} - Run Server Update"
 	echo -e " ${YELLOW}C${STD} - Server Upgrade - Danger zone!"
 	echo -e " ${WHITE}Z${STD} - EXIT to Main Menu"
