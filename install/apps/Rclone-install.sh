@@ -40,7 +40,7 @@ else
 
 		# Installing Services
 
-		sudo mkdir -p /var/local/GooPlex
+		sudo mkdir -p /var/local/GooPlex/.config
 		sudo rsync -a $HOME/.config/rclone/rclone.conf $CONFIGS/.config
 		sudo rsync -a /opt/GooPlex/scripts/rclone.service /etc/systemd/system/rclone.service
 		sudo systemctl enable rclone.service
