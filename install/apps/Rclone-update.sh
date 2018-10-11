@@ -17,11 +17,7 @@ else
 
 		GOAHEAD
 
-		# Dependencies
-
 		RUNPATCHES
-
-		# Main script
 
 		cd /tmp
 
