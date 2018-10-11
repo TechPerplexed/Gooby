@@ -13,15 +13,7 @@ if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 	sudo mkdir -p $CONFIGS/.config
 	sudo chown -R $USER:$USER $CONFIGS
 
-	if [ ! -f $CONFIGS/.config/seturl ]; then
-
-		echo "You have not set an URL yet"
-
-	else
-
-		echo "Your URL is currently set to $URL"
-
-	fi
+	echo "Your URL is currently set to $URL"
 
 	read -p "New url: " SETURL
 
