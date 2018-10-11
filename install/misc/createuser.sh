@@ -19,8 +19,6 @@ CONFIRMATION
 
 if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 
-	# Create user
-
 	read -e -p "${YELLOW}Desired username${STD} (Enter to accept): " -i "plexuser" PU
 
 	if [ "$PU" != "plexuser" ]; then
@@ -48,8 +46,6 @@ if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 	echo -e "${STD}"
 
 	su $PU
-
-	# Finalizing
 
 else
 
