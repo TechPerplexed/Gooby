@@ -2,8 +2,6 @@
 
 clear
 
-# Explanation
-
 echo -e "--------------------------------------------------"
 echo -e " ${RED}DANGER ZONE!!!${STD}"
 echo -e " This will upgrade your server to the latest version"
@@ -11,39 +9,28 @@ echo -e " ${YELLOW}CAUTION!!!${STD} Make SURE you have a backup!"
 echo -e "--------------------------------------------------"
 echo ""
 
-# Confirmation
+EXPLAINTASK
 
-read -p " Are you sure you want to ${PERFORM} ${TASK} (y/N)? " -n 1 -r
-echo ""
+CONFIRMATION
 
 if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 
-  # Upgrade
+	GOAHEAD
 
-  sudo apt-get update
-  sudo apt-get upgrade -y
-  sudo apt-get dist-upgrade -y
-  sudo apt autoremove -y
-  sudo apt autoclean
-  sudo apt-get autoremove
-  sudo apt install update-manager-core -y
-  sudo do-release-upgrade
+	sudo apt-get update
+	sudo apt-get upgrade -y
+	sudo apt-get dist-upgrade -y
+	sudo apt autoremove -y
+	sudo apt autoclean
+	sudo apt-get autoremove
+	sudo apt install update-manager-core -y
+	sudo do-release-upgrade
 
-  # Task Completed
-
-  echo -e "${LMAGENTA}"
-  echo -e "--------------------------------------------------"
-  echo -e " ${PERFORM} $TASK completed"
-  echo -e "--------------------------------------------------"
-  echo -e "${STD}"
+	TASKCOMPLETE
 
 else
 
-  echo ""
-  echo -e "--------------------------------------------------"
-  echo -e " You chose ${YELLOW}not${STD} to ${PERFORM} ${TASK}"
-  echo -e "--------------------------------------------------"
-  echo ""
+	CANCELTHIS
 
 fi
 
