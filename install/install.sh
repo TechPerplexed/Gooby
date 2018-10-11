@@ -30,7 +30,6 @@ sudo git clone https://github.com/TechPerplexed/GooPlex.git /opt/GooPlex
 sudo chmod +x -R /opt/GooPlex/install
 sudo chmod +x -R /opt/GooPlex/menus
 sudo rsync -a /opt/GooPlex/install/gooplex /bin
-sudo mkdir -p /var/local/GooPlex
 sudo chmod 755 /bin/gooplex
 sudo mkdir -p /home/GooPlex
 
