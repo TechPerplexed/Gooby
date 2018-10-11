@@ -88,6 +88,16 @@ NOTINSTALLED(){
 	echo -e "${STD}"
 }
 
+APPINSTALLED(){
+	echo -e "${YELLOW}"
+	echo -e "--------------------------------------------------"
+	echo -e " ${TASK} is now installed"
+	echo -e " You can reach it through this URL:"
+	echo -e " $URL/$APP"
+	echo -e "--------------------------------------------------"
+	echo -e "${STD}"
+}
+
 NOAPPUPDATE(){
 	echo -e "${LRED}"
 	echo -e "--------------------------------------------------"
