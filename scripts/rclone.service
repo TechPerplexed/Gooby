@@ -4,7 +4,7 @@ Description=Mount and cache Google drive
 After=syslog.target local-fs.target network.target
 
 [Service]
-Environment=RCLONEHOME=/home/plexuser/.config/rclone
+Environment=RCLONEHOME=/var/local/GooPlex/.config
 Environment=MOUNTTO=/media/Google
 
 Type=simple
