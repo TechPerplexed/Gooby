@@ -2,6 +2,11 @@
 
 source /opt/GooPlex/menus/variables.sh
 
+if [ ! -f $CONFIGS/.config/publicip ]; then
+	curl ifconfig.me >  $CONFIGS/.config/publicip
+fi
+
+
 if [ "$(whoami)" = "root" ]; then
 
 	/opt/GooPlex/install/misc/createuser.sh
