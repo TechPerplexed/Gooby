@@ -2,12 +2,13 @@
 
 # Define environment variables
 
-USERID=$(id -u $USER)
-GROUPID=$(id -g $USER)
-TIMEZONE=$(cat /etc/timezone)
+USERID=$( id -u $USER )
+GROUPID=$( id -g $USER )
+TIMEZONE=$( cat /etc/timezone )
 CONFIGS=/var/local/GooPlex
 EMAIL=$( cat $CONFIGS/.config/setemail )
 URL=$( cat $CONFIGS/.config/seturl )
+PUBLICIP=$( curl ifconfig.me )
 
 # Define colors
 
@@ -93,7 +94,8 @@ APPINSTALLED(){
 	echo -e "--------------------------------------------------"
 	echo -e " ${TASK} is now installed"
 	echo -e " You can reach it through this URL:"
-	echo -e " $URL/$APP"
+	echo -e " $PUBLICIP/$PORT "
+	# echo -e " This will son be $URL/$APP"
 	echo -e "--------------------------------------------------"
 	echo -e "${STD}"
 }
