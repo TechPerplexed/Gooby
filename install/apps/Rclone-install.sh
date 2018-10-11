@@ -18,16 +18,6 @@ else
 		GOAHEAD
 		RUNPATCHES
 
-		# Open ports
-
-		#na
-
-		# Create directories
-
-		mkdir -p /home/plexuser/logs
-		mkdir -p /home/plexuser/uploads
-		sudo chown plexuser:plexuser -R /home/plexuser
-
 		# Main script
 
 		cd /tmp
