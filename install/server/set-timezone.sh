@@ -10,7 +10,7 @@ if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 
 	GOAHEAD
     
-    sudo dpkg-reconfigure tzdata
+	sudo dpkg-reconfigure tzdata
 
 	TASKCOMPLETE
 
