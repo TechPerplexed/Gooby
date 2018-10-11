@@ -1,7 +1,7 @@
 #!/bin/bash
 
 APP="organizr"
-PORT="80:80"
+PORT=" "
 
 docker ps -q -f name=$APP > /tmp/checkapp.txt
 clear
@@ -36,6 +36,8 @@ else
 		lsiocommunity/organizr
 
 		sudo chown -R $USER:$USER $CONFIGS/$APP
+		
+		APPINSTALLED
 
 		TASKCOMPLETE
 
