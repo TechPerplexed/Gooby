@@ -38,6 +38,8 @@ else
 		netdata/netdata
 
 		sudo chown -R $USER:$USER $CONFIGS
+		
+		APPINSTALLED
 
 		TASKCOMPLETE
 
