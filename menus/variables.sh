@@ -6,8 +6,8 @@ USERID=$(id -u $USER)
 GROUPID=$(id -g $USER)
 TIMEZONE=$(cat /etc/timezone)
 CONFIGS=/var/local/GooPlex
-EMAIL= $( cat /var/local/GooPlex/.config/setemail.txt )
-URL= $( cat /var/local/GooPlex/.config/seturl.txt )
+EMAIL=$( cat $CONFIGS/.config/setemail.txt )
+URL=$( cat $CONFIGS/.config/seturl.txt )
 
 # Define colors
 
