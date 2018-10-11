@@ -13,21 +13,19 @@ clear
 # Menu Options
 # ------------
 
-# Update Server
-UPDATE(){
+PATCHES(){
+	PERFORM="apply"
+	TASK="patches"
+	source /opt/GooPlex/install/server/${TASK}-${PERFORM}.sh
+}
+
+TIMEZONE(){
 	PERFORM="set"
 	TASK="timezone"
 	source /opt/GooPlex/install/server/${TASK}-${PERFORM}.sh
 }
 
-# Update Server
-PATCHES(){
-	PERFORM="update"
-	TASK="server patches"
-	source /opt/GooPlex/install/server/vpspatches.sh
-}
 
-# Update Server
 UPGRADE(){
 	PERFORM="upgrade"
 	TASK="Ubuntu"
@@ -47,9 +45,11 @@ show_menus() {
 	clear
 	echo -e " ${YELLOW}"
 	MENUSTART
-	echo -e " ${YELLOW}A${STD} - Set server timezone"
-	echo -e " ${YELLOW}B${STD} - Run Server Update"
-	echo -e " ${YELLOW}C${STD} - Server Upgrade - Danger zone!"
+	echo -e " ${YELLOW}A${STD} - Update server with latest patches"
+	echo -e " ${YELLOW}B${STD} - Set server timezone"
+	echo -e " ${YELLOW}C${STD} - -"
+	echo -e " ${YELLOW}D${STD} - -"
+	echo -e " ${YELLOW}E${STD} - Server Upgrade - Danger zone!"
 	echo -e " ${WHITE}Z${STD} - EXIT to Main Menu"
 	echo -e " ${YELLOW}"
 	MENUEND
@@ -63,9 +63,11 @@ read_options(){
 	local choice
 	read -n 1 -s -r -p "Choose option: " choice
 	case $choice in
-		[Aa]) UPDATE ;;
-		[Bb]) PATCHES ;;
-		[Cc]) UPGRADE ;;
+		[Aa]) PATCHES ;;
+		[Bb]) TIMEZONE ;;
+		[Cc]) TIMEZONE ;;
+		[Dd]) TIMEZONE ;;
+		[Ee]) UPGRADE ;;
 		[Zz]) QUIT ;;
 		*) echo -e "${LRED}Please select a valid option${STD}" && sleep 2
 	esac
