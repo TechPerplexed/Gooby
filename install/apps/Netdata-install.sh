@@ -1,6 +1,9 @@
 #!/bin/bash
 
-docker ps -q -f name=netdata > /tmp/checkapp.txt
+APP="organizr"
+PORT="19999:19999"
+
+docker ps -q -f name=$APP > /tmp/checkapp.txt
 clear
 
 if [ -s /tmp/checkapp.txt ]; then
@@ -24,9 +27,9 @@ else
 
 		# Main script
 
-		docker run -d --name=netdata \
+		docker run -d --name=$APP \
 		--restart=always \
-		-p 19999:19999 \
+		-p $PORT \
 		-v /proc:/host/proc:ro \
 		-v /sys:/host/sys:ro \
 		-v /var/run/docker.sock:/var/run/docker.sock:ro \
@@ -34,7 +37,7 @@ else
 		--security-opt apparmor=unconfined \
 		netdata/netdata
 
-		sudo chown plexuser:plexuser -R /home/plexuser
+		sudo chown -R $USER:$USER $CONFIGS
 
 		TASKCOMPLETE
 
