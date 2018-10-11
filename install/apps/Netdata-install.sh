@@ -1,6 +1,6 @@
 #!/bin/bash
 
-APP="organizr"
+APP="netdata"
 PORT="19999:19999"
 
 docker ps -q -f name=$APP > /tmp/checkapp.txt
