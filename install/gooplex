@@ -3,9 +3,22 @@
 source /opt/GooPlex/menus/variables.sh
 
 if [ ! -f $CONFIGS/.config/publicip ]; then
+
 	curl ifconfig.me >  $CONFIGS/.config/publicip
+
 fi
 
+if [ ! -f $CONFIGS/.config/seturl ]; then
+
+	echo " " >  $CONFIGS/.config/seturl
+
+fi
+
+if [ ! -f $CONFIGS/.config/setemail ]; then
+
+	echo " " >  $CONFIGS/.config/setemail
+
+fi
 
 if [ "$(whoami)" = "root" ]; then
 
