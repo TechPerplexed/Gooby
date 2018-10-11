@@ -58,8 +58,8 @@ show_menus() {
 	MENUSTART
 	echo -e " ${YELLOW}A${STD} - Update server with latest patches"
 	echo -e " ${YELLOW}B${STD} - Set server timezone"
-	echo -e " ${YELLOW}C${STD} - -"
-	echo -e " ${YELLOW}D${STD} - -"
+	echo -e " ${YELLOW}C${STD} - Set server URL (web address)"
+	echo -e " ${YELLOW}D${STD} - Set email address for certificats"
 	echo -e " ${YELLOW}E${STD} - Server Upgrade - Danger zone!"
 	echo -e " ${WHITE}Z${STD} - EXIT to Main Menu"
 	echo -e " ${YELLOW}"
