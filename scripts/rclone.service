@@ -4,10 +4,10 @@ Description=Mount and cache Google drive to /media/Plex
 After=syslog.target local-fs.target network.target
 
 [Service]
-Environment=RCLONEHOME=$HOME/.config/rclone
+Environment=RCLONEHOME=/home/plexuser/.config/rclone
 Environment=MOUNTTO=/media/Plex
-Environment=LOGS=$HOME/logs/rclone.log
-Environment=UPLOADS=$HOME/uploads
+Environment=LOGS=/home/plexuser/logs
+Environment=UPLOADS=/home/plexuser/uploads
 
 Type=simple
 User=root
@@ -15,20 +15,25 @@ ExecStartPre=/bin/mkdir -p ${MOUNTTO}
 ExecStartPre=/bin/mkdir -p ${LOGS}
 ExecStartPre=/bin/mkdir -p ${UPLOADS}
 ExecStart=/usr/bin/rclone mount \
-	--rc \
-	--allow-non-empty \
-	--allow-other \
-	--buffer-size=1G \
-	--dir-cache-time 72h \
-	--drive-chunk-size 32M \
-	--fast-list \
-	--log-level INFO \
-	--log-file ${LOGS} \
-	--umask 022 \
-	--vfs-read-chunk-size 128M \
-	--vfs-read-chunk-size-limit off \
-	--config ${RCLONEHOME}/rclone.conf \
-	Gdrive: ${MOUNTTO}
+  --rc \
+  --log-file ${LOGS}/rclone.log \
+  --log-level INFO \
+  --umask 022 \
+  --allow-non-empty \
+  --allow-other \
+  --fuse-flag sync_read \
+  --tpslimit 10 \
+  --tpslimit-burst 10 \
+  --dir-cache-time=160h \
+  --buffer-size=64M \
+  --attr-timeout=1s \
+  --vfs-read-chunk-size=2M \
+  --vfs-read-chunk-size-limit=2G \
+  --vfs-cache-max-age=5m \
+  --vfs-cache-mode=writes \
+  --cache-dir ${UPLOADS} \
+  --config ${RCLONEHOME}/rclone.conf \
+  Gdrive: ${MOUNTTO}
 ExecStop=/bin/fusermount -u -z ${MOUNTTO}
 ExecStop=/bin/rmdir ${MOUNTTO}
 Restart=always
