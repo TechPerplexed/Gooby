@@ -37,7 +37,7 @@ else
 		--security-opt apparmor=unconfined \
 		netdata/netdata
 
-		sudo chown -R $USER:$USER $CONFIGS
+		sudo chown -R $USER:$USER $CONFIGS/$APP
 		
 		APPINSTALLED
 
