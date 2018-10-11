@@ -1,6 +1,9 @@
 #!/bin/bash
 
-docker ps -q -f name=organizr > /tmp/checkapp.txt
+APP="organizr"
+PORT="80:80"
+
+docker ps -q -f name=$APP > /tmp/checkapp.txt
 clear
 
 if [ -s /tmp/checkapp.txt ]; then
@@ -17,7 +20,7 @@ else
 
 		GOAHEAD
 		RUNPATCHES
-	
+
 		# Dependencies
 
 		source /opt/GooPlex/install/misc/docker.sh
@@ -25,14 +28,14 @@ else
 		# Main script
 
 		docker run -d \
-		--name=organizr \
+		--name=$APP \
 		--restart=always \
-		-v $CONFIGS/Organizr:/config \
+		-v $CONFIGS/$APP:/config \
 		-e PGID=$GROUPID -e PUID=$USERID \
-		-p 80:80 \
+		-p "80:80" \
 		lsiocommunity/organizr
-		
-		sudo chown -R $USER:$USER $CONFIGS
+
+		sudo chown -R $USER:$USER $CONFIGS/$APP
 
 		TASKCOMPLETE
 
