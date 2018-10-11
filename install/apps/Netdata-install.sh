@@ -1,7 +1,7 @@
 #!/bin/bash
 
 APP="netdata"
-PORT="19999:19999"
+PORT="19999"
 
 docker ps -q -f name=$APP > /tmp/checkapp.txt
 clear
@@ -29,7 +29,7 @@ else
 
 		docker run -d --name=$APP \
 		--restart=always \
-		-p $PORT \
+		-p $PORT:$PORT \
 		-v /proc:/host/proc:ro \
 		-v /sys:/host/sys:ro \
 		-v /var/run/docker.sock:/var/run/docker.sock:ro \
