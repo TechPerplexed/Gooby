@@ -34,7 +34,7 @@ else
 		read -e -p "Make any changes to your config? ${YELLOW}(y/N)${STD}? " -i "" choice
 		
 		case "$choice" in 
-			y|Y ) sudo rclone rclone ;;
+			y|Y ) sudo rclone config; sudo rsync -a $HOME/.config/rclone/rclone.conf $CONFIGS/.config ;;
 			* ) echo "All done!" ;;
 		esac
 
