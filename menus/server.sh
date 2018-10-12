@@ -33,8 +33,8 @@ show_menus() {
 	clear
 	echo " ${YELLOW}"
 	MENUSTART
-	echo " ${YELLOW}A${STD} - Set various parameters (url, email, timezone)"
-	echo " ${YELLOW}B${STD} - Update server with latest patches"
+	echo " ${YELLOW}A${STD} - Set Parameters (URL, Email, Timezone)"
+	echo " ${YELLOW}B${STD} - Update Server with Latest Patches"
 	echo " ${YELLOW}C${STD} - Server Upgrade - Danger zone!"
 	echo " ${WHITE}Z${STD} - EXIT to Main Menu"
 	echo " ${YELLOW}"
