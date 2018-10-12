@@ -33,14 +33,14 @@ QUIT(){
 
 show_menus() {
 	clear
-	echo -e " ${LPURPLE}"
+	echo " ${LPURPLE}"
 	MENUSTART
-	echo -e " ${LPURPLE}A${STD} - Rclone"
-	echo -e " ${LPURPLE}B${STD} - Plex"
-	echo -e " ${LPURPLE}C${STD} - Tautulli"
-	echo -e " ${LPURPLE}D${STD} - Emby"
-	echo -e " ${WHITE}Z${STD} - EXIT to Main Menu"
-	echo -e " ${LPURPLE}"
+	echo " ${LPURPLE}A${STD} - Rclone"
+	echo " ${LPURPLE}B${STD} - Plex"
+	echo " ${LPURPLE}C${STD} - Tautulli"
+	echo " ${LPURPLE}D${STD} - Emby"
+	echo " ${WHITE}Z${STD} - EXIT to Main Menu"
+	echo " ${LPURPLE}"
 	MENUEND
 }
 
@@ -55,7 +55,7 @@ read_options(){
 		[Cc]) TAUTULLI ;;
 		[Dd]) EMBY ;;      
 		[Zz]) QUIT ;;
-		*) echo -e "${LRED}Please select a valid option${STD}" && sleep 2
+		*) echo "${LRED}Please select a valid option${STD}" && sleep 2
 	esac
 }
 
