@@ -1,6 +1,6 @@
 #!/bin/bash
 
-MENU="Set and review parameters"
+MENU="Set and review environment"
 source /opt/GooPlex/menus/variables.sh
 
 # Menu Options
