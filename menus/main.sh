@@ -1,13 +1,7 @@
 #!/bin/bash
 
 MENU="GooPlex Menu"
-
-# ---------
-# Variables
-# ---------
-
 source /opt/GooPlex/menus/variables.sh
-clear
 
 # ------------
 # Menu Options
