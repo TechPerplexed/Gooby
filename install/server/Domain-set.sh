@@ -10,9 +10,9 @@ if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 
 	GOAHEAD
 
-	[[ -s $CONFIGS/.config/seturl ]] && echo "Your URL is currently set to $URL" || echo "You have not set an URL yet"
+	[[ -s $CONFIGS/.config/seturl ]] && echo "Your domain is currently set to $URL" || echo "You have not set a domain yet"
 
-	read -p "New url: " SETURL
+	read -p "New URL (domain address): " SETURL
 
 	if [[ -z "$SETURL" ]]; then
 
@@ -24,7 +24,7 @@ if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 
 		URL=$( cat $CONFIGS/.config/seturl )
 
-		echo "Your new URL is set to $URL"
+		echo "Your new domain is set to $URL"
 		echo "Remember to point it to IP address $PUBLICIP"
 
 		TASKCOMPLETE
