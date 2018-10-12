@@ -12,14 +12,14 @@ fi
 if [ ! -f $CONFIGS/.config/seturl ]; then
 
 	sudo mkdir -p /var/local/GooPlex/.config
-	echo " " >  $CONFIGS/.config/seturl
+	sudo touch $CONFIGS/.config/seturl
 
 fi
 
 if [ ! -f $CONFIGS/.config/setemail ]; then
 
 	sudo mkdir -p /var/local/GooPlex/.config
-	echo " " >  $CONFIGS/.config/setemail
+	sudo touch $CONFIGS/.config/setemail
 
 fi
 
