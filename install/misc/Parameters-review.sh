@@ -1,11 +1,11 @@
 #!/bin/bash
 
+MENU="These are your current parameters"
+source /opt/GooPlex/menus/variables.sh
+
 clear
 echo " ${CYAN}"
 MENUSTART
-
-echo " ${CYAN}These are your current settings:${STD}"
-echo ""
 echo " You are currently logged in as ${CYAN}$USER${STD}"
 echo " Your timezone is set to ${CYAN}$TIMEZONE${STD}"
 [[ -s $CONFIGS/.config/setemail ]] && echo " Your email address is currently set to ${CYAN}$EMAIL${STD}" || echo " You have not set an email address yet."
@@ -14,7 +14,6 @@ echo " Your VPS IP address is ${CYAN}$PUBLICIP${STD}"
 echo ""
 echo " You can change these settings"
 echo " under menu option A - Server settings"
-
 MENUEND
 
 PAUSE
