@@ -25,13 +25,13 @@ QUIT(){
 
 show_menus() {
 	clear
-	echo -e " ${LPURPLE}"
+	echo " ${LPURPLE}"
 	MENUSTART
-	echo -e " ${LPURPLE}I${STD} - Install $TASK"
-	echo -e " ${LPURPLE}U${STD} - Update $TASK"
-	echo -e " ${LPURPLE}R${STD} - Remove $TASK"
-	echo -e " ${WHITE}Z${STD} - EXIT to Main Menu"
-	echo -e " ${LPURPLE}"
+	echo " ${LPURPLE}I${STD} - Install $TASK"
+	echo " ${LPURPLE}U${STD} - Update $TASK"
+	echo " ${LPURPLE}R${STD} - Remove $TASK"
+	echo " ${WHITE}Z${STD} - EXIT to Main Menu"
+	echo " ${LPURPLE}"
 	MENUEND
 }
 
