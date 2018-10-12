@@ -23,7 +23,7 @@ if [ ! -f $CONFIGS/.config/setemail ]; then
 
 fi
 
-if [ "$EUID" -ne 0 ]
+if [ "$EUID" -ne 0 ]; then
 
 	/opt/GooPlex/menus/main.sh
 
