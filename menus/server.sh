@@ -5,16 +5,22 @@ source /opt/GooPlex/menus/variables.sh
 
 # Menu Options
 
-ENVIRONMENT(){
-	PERFORM="set"
-	TASK="environment"
+DOMAIN(){
+	PERFORM="manage"
+	TASK="URL"
+	source /opt/GooPlex/install/server/${TASK}-${PERFORM}.sh
+}
+
+EMAILADDR(){
+	PERFORM="manage"
+	TASK="Email"
 	source /opt/GooPlex/install/server/${TASK}-${PERFORM}.sh
 }
 
 PATCHES(){
 	PERFORM="apply"
 	TASK="patches"
-	source /opt/GooPlex/install/server/${TASK}-${PERFORM}.sh
+	
 }
 
 UPGRADE(){
@@ -33,9 +39,10 @@ show_menus() {
 	clear
 	echo " ${YELLOW}"
 	MENUSTART
-	echo " ${YELLOW}A${STD} - Set Environment (URL, Email, Timezone)"
-	echo " ${YELLOW}B${STD} - Update Server with Latest Patches"
-	echo " ${YELLOW}C${STD} - Server Upgrade - Danger zone!"
+	echo " ${YELLOW}A${STD} - Manage Domain Name"
+	echo " ${YELLOW}B${STD} - Manage Email Address"
+	echo " ${YELLOW}C${STD} - Update Server with Latest Patches"
+	echo " ${YELLOW}D${STD} - Server Upgrade - Danger zone!"
 	echo " ${WHITE}Z${STD} - EXIT to Main Menu"
 	echo " ${YELLOW}"
 	MENUEND
@@ -47,7 +54,8 @@ read_options(){
 	local choice
 	read -n 1 -s -r -p "Choose option: " choice
 	case $choice in
-		[Aa]) ENVIRONMENT ;;
+		[Aa]) DOMAIN ;;
+		[Aa]) EMAILADDR ;;
 		[Bb]) PATCHES ;;
 		[Cc]) UPGRADE ;;
 		[Zz]) QUIT ;;
