@@ -43,15 +43,15 @@ QUIT(){
 
 show_menus() {
 	clear
-	echo -e " ${YELLOW}"
+	echo " ${YELLOW}"
 	MENUSTART
-	echo -e " ${YELLOW}A${STD} - Update server with latest patches"
-	echo -e " ${YELLOW}B${STD} - Set server timezone"
-	echo -e " ${YELLOW}C${STD} - Set server URL (web address)"
-	echo -e " ${YELLOW}D${STD} - Set email address for certificats"
-	echo -e " ${YELLOW}E${STD} - Server Upgrade - Danger zone!"
-	echo -e " ${WHITE}Z${STD} - EXIT to Main Menu"
-	echo -e " ${YELLOW}"
+	echo " ${YELLOW}A${STD} - Update server with latest patches"
+	echo " ${YELLOW}B${STD} - Set server timezone"
+	echo " ${YELLOW}C${STD} - Set server URL (web address)"
+	echo " ${YELLOW}D${STD} - Set email address for certificats"
+	echo " ${YELLOW}E${STD} - Server Upgrade - Danger zone!"
+	echo " ${WHITE}Z${STD} - EXIT to Main Menu"
+	echo " ${YELLOW}"
 	MENUEND
 }
 
@@ -67,7 +67,7 @@ read_options(){
 		[Dd]) SETEMAIL ;;
 		[Ee]) UPGRADE ;;
 		[Zz]) QUIT ;;
-		*) echo -e "${LRED}Please select a valid option${STD}" && sleep 2
+		*) echo "${LRED}Please select a valid option${STD}" && sleep 2
 	esac
 }
 
