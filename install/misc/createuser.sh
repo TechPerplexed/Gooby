@@ -5,6 +5,8 @@ TASK="a new user"
 
 source /opt/GooPlex/menus/variables.sh
 
+EXPLAINTASK
+
 CONFIRMATION
 
 if [[ ${REPLY} =~ ^[Yy]$ ]]; then
