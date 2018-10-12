@@ -13,7 +13,7 @@ if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 	sudo mkdir -p $CONFIGS/.config
 	sudo chown -R $USER:$USER $CONFIGS
 
-	echo "Your URL is currently set to $URL"
+	[[ -s $CONFIGS/.config/seturl ]] && echo "Your URL is currently set to $URL" || echo "Your URL is currently set to $PUBLICIP"
 
 	read -p "New url: " SETURL
 
