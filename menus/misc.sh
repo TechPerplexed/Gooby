@@ -16,26 +16,26 @@ clear
 GOOPLEX(){
 	PERFORM="update"
 	TASK="GooPlex"
-	source /opt/GooPlex/install/apps/${TASK}-${PERFORM}.sh
+	source /opt/GooPlex/install/misc/${TASK}-${PERFORM}.sh
 }
 
 USERSETTINGS(){
 	PERFORM="review"
 	TASK="Parameters"
-	source /opt/GooPlex/install/apps/${TASK}-${PERFORM}.sh
+	source /opt/GooPlex/install/misc/${TASK}-${PERFORM}.sh
 }
 
 PBACKUP(){
 	PERFORM="backup"
 	TASK="GooPlex"
-	source /opt/GooPlex/install/apps/${TASK}-${PERFORM}.sh
+	source /opt/GooPlex/install/misc/${TASK}-${PERFORM}.sh
 }
 
 
 PRESTORE(){
 	PERFORM="restore"
 	TASK="GooPlex"
-	source /opt/GooPlex/install/apps/${TASK}-${PERFORM}.sh
+	source /opt/GooPlex/install/misc/${TASK}-${PERFORM}.sh
 }
 
 QUIT(){
