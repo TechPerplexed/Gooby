@@ -8,12 +8,14 @@ source /opt/GooPlex/menus/variables.sh
 # Confirmation
 
 clear
-echo "${CYAN}"
-echo "----------------------------------------------"
-echo -e " You are logged in as root"
-echo -e " You'd want to create a user!"
-echo "----------------------------------------------"
-echo "${STD}"
+echo -e "${CYAN}"
+echo -e "----------------------------------------------"
+echo -e " You are logged in as $USER"
+echo -e " If the above says root,"
+echo -e " You may want to create a new user."
+echo -e " Create new user now?"
+echo -e "----------------------------------------------"
+echo -e "${STD}"
 
 CONFIRMATION
 
