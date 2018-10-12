@@ -13,31 +13,26 @@ clear
 # Menu Options
 # ------------
 
-# Sonarr
 SONARR(){
 	TASK="Sonarr"
 	source /opt/GooPlex/menus/apps.sh
 }
 
-# Radarr
 RADARR(){
 	TASK="Radarr"
 	source /opt/GooPlex/menus/apps.sh
 }
 
-# Deluge
 DELUGE(){
 	TASK="Deluge"
 	source /opt/GooPlex/menus/apps.sh
 }
 
-# NZBGet
 NZBGET(){
 	TASK="NZBGet"
 	source /opt/GooPlex/menus/apps.sh
 }
 
-# Exit
 QUIT(){
 	exit
 }
