@@ -110,6 +110,7 @@ NOAPPUPDATE(){
 }
 
 EXPLAINTASK(){
+	clear
 	echo -e "${CYAN}"
 	echo -e "--------------------------------------------------"
 	echo -e " This will ${PERFORM} ${TASK}"
