@@ -6,18 +6,21 @@ source /opt/GooPlex/menus/variables.sh
 # Menu Options
 
 DOMAIN(){
-	TASK="Domain"
-	source /opt/GooPlex/menus/server-env.sh
+	PERFORM="manage"
+	TASK="domain"
+	source /opt/GooPlex/install/server/${TASK}-${PERFORM}.sh
 }
 
 EMAILADDR(){
+	PERFORM="manage"
 	TASK="Email"
-	source /opt/GooPlex/menus/server-env.sh
+	source /opt/GooPlex/install/server/${TASK}-${PERFORM}.sh
 }
 
 TZONE(){
-	TASK="Timezone"
-	source /opt/GooPlex/menus/server-env.sh
+	PERFORM="manage"
+	TASK="timezone"
+	source /opt/GooPlex/install/server/${TASK}-${PERFORM}.sh
 }
 
 PATCHES(){
