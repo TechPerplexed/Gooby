@@ -5,6 +5,12 @@ source /opt/GooPlex/menus/variables.sh
 
 # Menu Options
 
+PARAM(){
+	PERFORM="set"
+	TASK="parameters"
+	source /opt/GooPlex/install/server/${TASK}-${PERFORM}.sh
+}
+
 PATCHES(){
 	PERFORM="apply"
 	TASK="patches"
@@ -27,8 +33,9 @@ show_menus() {
 	clear
 	echo " ${YELLOW}"
 	MENUSTART
-	echo " ${YELLOW}A${STD} - Update server with latest patches"
-	echo " ${YELLOW}B${STD} - Server Upgrade - Danger zone!"
+	echo " ${YELLOW}A${STD} - Set various parameters (url, email, timezone)"
+	echo " ${YELLOW}B${STD} - Update server with latest patches"
+	echo " ${YELLOW}C${STD} - Server Upgrade - Danger zone!"
 	echo " ${WHITE}Z${STD} - EXIT to Main Menu"
 	echo " ${YELLOW}"
 	MENUEND
@@ -40,8 +47,9 @@ read_options(){
 	local choice
 	read -n 1 -s -r -p "Choose option: " choice
 	case $choice in
-		[Aa]) PATCHES ;;
-		[Bb]) UPGRADE ;;
+		[Aa]) PARAM ;;
+		[Bb]) PATCHES ;;
+		[Cc]) UPGRADE ;;
 		[Zz]) QUIT ;;
 		*) echo "${LRED}Please select a valid option${STD}" && sleep 2
 	esac
