@@ -32,4 +32,7 @@ sudo chmod +x -R /opt/GooPlex/menus
 sudo rsync -a /opt/GooPlex/install/gooplex /bin
 sudo chmod 755 /bin/gooplex
 
+sudo mkdir -p /var/local/GooPlex/.config
+curl ifconfig.me >  $CONFIGS/.config/publicip
+
 gooplex
