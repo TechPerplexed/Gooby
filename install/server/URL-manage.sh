@@ -10,29 +10,54 @@ if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 
 	GOAHEAD
 
-	sudo mkdir -p $CONFIGS/.config
-	sudo chown -R $USER:$USER $CONFIGS
+# Menu Options
 
+INSTALL(){
+	echo "coming soon"
+}
+
+UPDATE(){
+	echo "coming soon"
+}
+
+REMOVE(){
+	echo "coming soon"
+}
+
+QUIT(){
+	exit
+}
+
+# Display menu
+
+show_menus() {
+	clear
+	echo " ${CYAN}"
+	MENUSTART
 	[[ -s $CONFIGS/.config/seturl ]] && echo "Your URL is currently set to $URL" || echo "You have not set an URL yet"
+	echo " ${CYAN}S${STD} - Set $TASK"
+	echo " ${CYAN}U${STD} - Update $TASK"
+	echo " ${CYAN}R${STD} - Remove $TASK"
+	echo " ${WHITE}Z${STD} - EXIT to Main Menu"
+	echo " ${CYAN}"
+	MENUEND
+}
 
-	read -p "New url: " SETURL
+# Read Choices
 
-	if [[ -z "$SETURL" ]]; then
+read_options(){
+	local choice
+	read -n 1 -s -r -p "Choose option: " choice
+	case $choice in
+		[Ii]) INSTALL ;;
+		[Uu]) UPDATE ;;
+		[Rr]) REMOVE ;;
+		[Zz]) QUIT ;;
+		*) echo "${LRED}Please select a valid option${STD}" && sleep 2
+	esac
+}
 
-		echo "No input entered... no changes made!"
-
-	else
-
-		echo "$SETURL" > $CONFIGS/.config/seturl
-
-		URL=$( cat $CONFIGS/.config/seturl )
-
-		echo "Your new URL is set to $URL"
-		echo "Remember to point it to IP address $PUBLICIP"
-
-		TASKCOMPLETE
-
-	fi
+MENUFINALIZE
 
 else
 
