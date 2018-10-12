@@ -32,6 +32,7 @@ QUIT(){
 # Display menu
 
 show_menus() {
+	clear
 	echo -e " ${LPURPLE}"
 	MENUSTART
 	echo -e " ${LPURPLE}A${STD} - Rclone"
