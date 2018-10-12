@@ -4,18 +4,21 @@ source /opt/GooPlex/menus/variables.sh
 
 if [ ! -f $CONFIGS/.config/publicip ]; then
 
+	sudo mkdir -p /var/local/GooPlex/.config
 	curl ifconfig.me >  $CONFIGS/.config/publicip
 
 fi
 
 if [ ! -f $CONFIGS/.config/seturl ]; then
 
+	sudo mkdir -p /var/local/GooPlex/.config
 	echo " " >  $CONFIGS/.config/seturl
 
 fi
 
 if [ ! -f $CONFIGS/.config/setemail ]; then
 
+	sudo mkdir -p /var/local/GooPlex/.config
 	echo " " >  $CONFIGS/.config/setemail
 
 fi
