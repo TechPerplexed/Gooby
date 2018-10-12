@@ -10,8 +10,6 @@ CONFIRMATION
 
 if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 
-	# Main script
-
 	clear
 	cd ~
 	sudo rm -r /opt/GooPlex
