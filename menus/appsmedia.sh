@@ -13,31 +13,26 @@ clear
 # Menu Options
 # ------------
 
-# Rclone
 RCLONE(){
 	TASK="Rclone"
 	source /opt/GooPlex/menus/apps.sh
 }
 
-# Plex
 PLEX(){
 	TASK="Plex"
 	source /opt/GooPlex/menus/apps.sh
 }
 
-# Tautulli
 TAUTULLI(){
 	TASK="Tautulli"
 	source /opt/GooPlex/menus/apps.sh
 }
 
-# Emby
 EMBY(){
 	TASK="Emby"
 	source /opt/GooPlex/menus/apps.sh
 }
 
-# Exit
 QUIT(){
 	exit
 }
