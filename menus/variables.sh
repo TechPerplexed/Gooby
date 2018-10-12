@@ -56,7 +56,7 @@ MENUEND(){
 
 VALIDOPTION(){
 	*) echo "${LRED}Please select a valid option${STD}" && sleep 2
-;
+}
 
 MENUFINALIZE(){
 	trap '' SIGINT SIGQUIT SIGTSTP
