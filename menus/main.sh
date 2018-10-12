@@ -34,15 +34,15 @@ quit(){
 
 show_menus() {
 	clear
-	echo -e " ${GREEN}"
+	echo " ${GREEN}"
 	MENUSTART
-	echo -e " ${GREEN}A${STD} - Maintain Server"
-	echo -e " ${GREEN}B${STD} - Media Applications"
-	echo -e " ${GREEN}C${STD} - Download Applications"
-	echo -e " ${GREEN}D${STD} - Other Applications"
-	echo -e " ${GREEN}E${STD} - Additional Tasks"
-	echo -e " ${LRED}Q${STD} - QUIT $FUNCTION"
-	echo -e "${GREEN}"
+	echo " ${GREEN}A${STD} - Maintain Server"
+	echo " ${GREEN}B${STD} - Media Applications"
+	echo " ${GREEN}C${STD} - Download Applications"
+	echo " ${GREEN}D${STD} - Other Applications"
+	echo " ${GREEN}E${STD} - Additional Tasks"
+	echo " ${LRED}Q${STD} - QUIT $FUNCTION"
+	echo " ${GREEN}"
 	MENUEND
 }
 
@@ -58,7 +58,7 @@ read_options(){
 		[Dd]) other ;;
 		[Ee]) misc ;;
 		[Qq]) quit ;;
-		*) echo -e "${LRED}Please select a valid option${STD}" && sleep 2
+		*) echo "${LRED}Please select a valid option${STD}" && sleep 2
 	esac
 }
 
