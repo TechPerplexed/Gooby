@@ -13,25 +13,21 @@ clear
 # Menu Options
 # ------------
 
-# Netdata
 NETDATA(){
 	TASK="Netdata"
 	source /opt/GooPlex/menus/apps.sh
 }
 
-# Organizr
 ORGANIZR(){
 	TASK="Organizr"
 	source /opt/GooPlex/menus/apps.sh
 }
 
-# Ombi
 OMBI(){
 	TASK="Ombi"
 	source /opt/GooPlex/menus/apps.sh
 }
 
-# Exit
 QUIT(){
 	exit
 }
