@@ -37,14 +37,14 @@ QUIT(){
 
 show_menus() {
 	clear
-	echo -e " ${CYAN}"
+	echo " ${CYAN}"
 	MENUSTART
-	echo -e " ${CYAN}A${STD} - Update GooPlex"
-	echo -e " ${CYAN}B${STD} - Review user parameters"
-	echo -e " ${CYAN}C${STD} - Backup Plex and Tautulli"
-	echo -e " ${CYAN}D${STD} - Restore Plex and Tautulli"
-	echo -e " ${WHITE}Z${STD} - EXIT to Main Menu"
-	echo -e " ${CYAN}"
+	echo " ${CYAN}A${STD} - Update GooPlex"
+	echo " ${CYAN}B${STD} - Review user parameters"
+	echo " ${CYAN}C${STD} - Backup Plex and Tautulli"
+	echo " ${CYAN}D${STD} - Restore Plex and Tautulli"
+	echo " ${WHITE}Z${STD} - EXIT to Main Menu"
+	echo " ${CYAN}"
 	MENUEND
 }
 
@@ -59,7 +59,7 @@ read_options(){
 		[Cc]) PBACKUP ;;
 		[Dd]) PRESTORE ;;
 		[Zz]) QUIT ;;
-		*) echo -e "${LRED}Please select a valid option${STD}" && sleep 2
+		*) echo "${LRED}Please select a valid option${STD}" && sleep 2
 	esac
 }
 
