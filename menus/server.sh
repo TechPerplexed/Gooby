@@ -8,19 +8,19 @@ source /opt/GooPlex/menus/variables.sh
 DOMAIN(){
 	PERFORM="manage"
 	TASK="URL"
-	source /opt/GooPlex/install/server/${TASK}-${PERFORM}.sh
+	source /opt/GooPlex/menus/server-env.sh
 }
 
 EMAILADDR(){
 	PERFORM="manage"
 	TASK="Email"
-	source /opt/GooPlex/install/server/${TASK}-${PERFORM}.sh
+	source /opt/GooPlex/menus/server-env.sh
 }
 
 TZONE(){
 	PERFORM="manage"
 	TASK="timezone"
-	source /opt/GooPlex/install/server/${TASK}-${PERFORM}.sh
+	source /opt/GooPlex/menus/server-env.sh
 }
 
 
