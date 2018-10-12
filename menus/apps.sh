@@ -6,25 +6,21 @@ clear
 # Menu Options
 # ------------
 
-# Install
 INSTALL(){
 	PERFORM="install"
 	source /opt/GooPlex/install/apps/${TASK}-${PERFORM}.sh
 }
 
-# Update
 UPDATE(){
 	PERFORM="update"
 	source /opt/GooPlex/install/apps/${TASK}-${PERFORM}.sh
 }
 
-# Remove
 REMOVE(){
 	PERFORM="remove"
 	source /opt/GooPlex/install/apps/${TASK}-${PERFORM}.sh
 }
 
-# Exit
 QUIT(){
 	exit
 }
