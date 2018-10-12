@@ -4,7 +4,7 @@
 
 sudo apt-get update -y && sudo apt-get upgrade -y
 
-sudo -s apt-get -y install \
+sudo apt-get -y install \
 	git \
 	fail2ban \
 	nano \
