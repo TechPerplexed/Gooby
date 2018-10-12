@@ -1,5 +1,7 @@
 #!/bin/bash
 
+clear
+
 # Define environment variables
 
 USERID=$( id -u $USER )
@@ -39,7 +41,6 @@ RUNPATCHES(){
 	# sudo apt autoremove -y
 	# sudo apt autoclean
 	# sudo apt-get autoremove
-	clear
 }
 
 MENUSTART(){
