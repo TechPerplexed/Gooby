@@ -1,7 +1,6 @@
 #!/bin/bash
 
 MENU="These are your current parameters"
-source /opt/GooPlex/menus/variables.sh
 
 clear
 echo " ${CYAN}"
