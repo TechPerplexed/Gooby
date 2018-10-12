@@ -1,6 +1,7 @@
 #!/bin/bash
 
 MENU="Maintain Server"
+source /opt/GooPlex/menus/variables.sh
 
 # Menu Options
 
