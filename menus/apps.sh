@@ -45,7 +45,7 @@ read_options(){
 		[Uu]) UPDATE ;;
 		[Rr]) REMOVE ;;
 		[Zz]) QUIT ;;
-		*) echo -e "${LRED}Please select a valid option${STD}" && sleep 2
+		*) echo "${LRED}Please select a valid option${STD}" && sleep 2
 	esac
 }
 
