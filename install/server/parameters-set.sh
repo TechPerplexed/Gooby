@@ -39,11 +39,7 @@ show_menus() {
 	clear
 	echo " ${CYAN}"
 	MENUSTART
-	echo " ${CYAN}A${STD} - ${CYAN}$USER${STD}"
-	echo " ${CYAN}E${STD} - Update or review server IP address"
-	echo " ${CYAN}C${STD} - Update or review URL"
-	echo " ${CYAN}D${STD} - Update or review email address"
-	echo " ${CYAN}B${STD} - Update or review timezone settings"
+	echo " Coming soon!"
 	echo " ${WHITE}Z${STD} - EXIT to Main Menu"
 	echo " ${CYAN}"
 	MENUEND
