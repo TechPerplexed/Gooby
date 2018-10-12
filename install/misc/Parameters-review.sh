@@ -12,8 +12,8 @@ echo " Your timezone is set to ${CYAN}$TIMEZONE${STD}"
 [[ -s $CONFIGS/.config/seturl ]] && echo " Your URL is currently set to ${CYAN}$URL${STD}" || echo " You have not set an URL yet"
 echo " Your VPS IP address is ${CYAN}$PUBLICIP${STD}"
 echo ""
-echo " You can change these settings"
-echo " under menu option A - Server settings"
+echo " You can change these settings in the main menu"
+echo " Option A - Server settings"
 MENUEND
 
 PAUSE
