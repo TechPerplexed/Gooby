@@ -23,12 +23,12 @@ if [ ! -f $CONFIGS/.config/setemail ]; then
 
 fi
 
-if [ "$(whoami)" = "root" ]; then
+if [ "$EUID" -ne 0 ]
 
-	/opt/GooPlex/install/misc/createuser.sh
+	/opt/GooPlex/menus/main.sh
 
 else
 
-	/opt/GooPlex/menus/main.sh
+	/opt/GooPlex/install/misc/createuser.sh
 
 fi
