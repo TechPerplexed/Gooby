@@ -1,7 +1,5 @@
 #!/bin/bash
 
-clear
-
 # Define environment variables
 
 USERID=$( id -u $USER )
@@ -44,24 +42,24 @@ RUNPATCHES(){
 }
 
 MENUSTART(){
-	echo -e "--------------------------------------------------"
-	echo -e " G O O P L E X - Visit techperplexed.ga"
-	echo -e "--------------------------------------------------"
-	echo -e " $MENU"
-	echo -e " ${STD}"
+	echo "--------------------------------------------------"
+	echo " G O O P L E X - Visit techperplexed.ga"
+	echo "--------------------------------------------------"
+	echo " $MENU"
+	echo " ${STD}"
 }
 
 MENUEND(){
-	echo -e "--------------------------------------------------"
-	echo -e " ${STD}"
+	echo "--------------------------------------------------"
+	echo " ${STD}"
 }
 
 MENUFINALIZE(){
 	trap '' SIGINT SIGQUIT SIGTSTP
 	while true
 	do
-		show_menus
-		read_options
+	show_menus
+	read_options
 	done
 }
 
@@ -69,111 +67,111 @@ MENUVISIT(){
 	clear
 	echo ""
 	echo "--------------------------------------------------"
-	echo -e " Visit the menu any time by typing '${WHITE}gooplex${STD}'"
+	echo " Visit the menu any time by typing '${WHITE}gooplex${STD}'"
 	echo "--------------------------------------------------"
 	echo ""
 }
 
 ALREADYINSTALLED(){
-	echo -e "${YELLOW}"
-	echo -e "--------------------------------------------------"
-	echo -e " ${TASK} appears to be installed"
-	echo -e "--------------------------------------------------"
-	echo -e "${STD}"
+	echo "${YELLOW}"
+	echo "--------------------------------------------------"
+	echo " ${TASK} appears to be installed"
+	echo "--------------------------------------------------"
+	echo "${STD}"
 }
 
 NOTINSTALLED(){
-	echo -e "${YELLOW}"
-	echo -e "--------------------------------------------------"
-	echo -e " ${TASK} is not installed yet"
-	echo -e "--------------------------------------------------"
-	echo -e "${STD}"
+	echo "${YELLOW}"
+	echo "--------------------------------------------------"
+	echo " ${TASK} is not installed yet"
+	echo "--------------------------------------------------"
+	echo "${STD}"
 }
 
 APPINSTALLED(){
-	echo -e "${YELLOW}"
-	echo -e "--------------------------------------------------"
-	echo -e " ${TASK} is now installed"
-	echo -e " You can reach it through this URL:"
-	echo -e " $PUBLICIP:$PORT"
-	# echo -e " This will soon be $URL/$APP"
-	echo -e "--------------------------------------------------"
-	echo -e "${STD}"
+	echo "${YELLOW}"
+	echo "--------------------------------------------------"
+	echo " ${TASK} is now installed"
+	echo " You can reach it through this URL:"
+	echo " $PUBLICIP:$PORT"
+	# echo " This will soon be $URL/$APP"
+	echo "--------------------------------------------------"
+	echo "${STD}"
 }
 
 NOAPPUPDATE(){
-	echo -e "${LRED}"
-	echo -e "--------------------------------------------------"
-	echo -e " ${TASK} cannot be updated through this menu"
-	echo -e " You can update it from the web interface itself"
-	echo -e "--------------------------------------------------"
-	echo -e "${STD}"
+	echo "${LRED}"
+	echo "--------------------------------------------------"
+	echo " ${TASK} cannot be updated through this menu"
+	echo " You can update it from the web interface itself"
+	echo "--------------------------------------------------"
+	echo "${STD}"
 }
 
 EXPLAINTASK(){
 	clear
-	echo -e "${CYAN}"
-	echo -e "--------------------------------------------------"
-	echo -e " This will ${PERFORM} ${TASK}"
-	echo -e "--------------------------------------------------"
-	echo -e "${STD}"
+	echo "${CYAN}"
+	echo "--------------------------------------------------"
+	echo " This will ${PERFORM} ${TASK}"
+	echo "--------------------------------------------------"
+	echo "${STD}"
 }
 
 CONFIRMATION(){
-	echo -e "${YELLOW}"
-	echo -e "--------------------------------------------------"
-	echo -e " Are you sure you want to ${PERFORM} ${TASK} (y/N)? "
-	echo -e "--------------------------------------------------"
-	echo -e "${STD}"
-	read -t 300 -n 1 -s -r -p " ---> "
+	echo "${YELLOW}"
+	echo "--------------------------------------------------"
+	echo " Are you sure you want to ${PERFORM} ${TASK} (y/N)? "
+	echo "--------------------------------------------------"
+	echo "${STD}"
+	read -t 60 -n 1 -s -r -p " ---> "
 	echo ""
 }
 
 CONFIRMDELETE(){
-	echo -e "${LRED}"
-	echo -e "--------------------------------------------------"
-	echo -e " DANGER ZONE - EXTREME CAUTION!!!"
-	echo -e " Are you really really sure?"
-	echo -e " You are about to ${PERFORM} ${TASK}"
-	echo -e " Including user settings and databases"
-	echo -e " Make sure you have a backup first!"
-	echo -e " Proceed? (y/N)?"
-	echo -e "--------------------------------------------------"
-	echo -e "${STD}"
-	read -t 300 -n 1 -s -r -p " ---> "
+	echo "${LRED}"
+	echo "--------------------------------------------------"
+	echo " DANGER ZONE - EXTREME CAUTION!!!"
+	echo " Are you really really sure?"
+	echo " You are about to ${PERFORM} ${TASK}"
+	echo " Including user settings and databases"
+	echo " Make sure you have a backup first!"
+	echo " Proceed? (y/N)?"
+	echo "--------------------------------------------------"
+	echo "${STD}"
+	read -t 60 -n 1 -s -r -p " ---> "
 	echo ""
 }
 
 GOAHEAD(){
-	echo -e "${LMAGENTA}"
-	echo -e "--------------------------------------------------"
-	echo -e " Starting ${PERFORM} ${TASK}"
-	echo -e "--------------------------------------------------"
-	echo -e "${STD}"
+	echo "${LMAGENTA}"
+	echo "--------------------------------------------------"
+	echo " Starting ${PERFORM} ${TASK}"
+	echo "--------------------------------------------------"
+	echo "${STD}"
 }
 
 TASKCOMPLETE(){
-	echo -e "${LMAGENTA}"
-	echo -e "--------------------------------------------------"
-	echo -e " ${PERFORM} ${TASK} completed"
-	echo -e "--------------------------------------------------"
-	echo -e "${STD}"
+	echo "${LMAGENTA}"
+	echo "--------------------------------------------------"
+	echo " ${PERFORM} ${TASK} completed"
+	echo "--------------------------------------------------"
+	echo "${STD}"
 }
 
 CANCELTHIS(){
-	echo -e "${YELLOW}"
-	echo -e "--------------------------------------------------"
-	echo -e " Cancelling ${PERFORM} ${TASK}"
-	echo -e "--------------------------------------------------"
-	echo -e "${STD}"
+	echo "${YELLOW}"
+	echo "--------------------------------------------------"
+	echo " Cancelling ${PERFORM} ${TASK}"
+	echo "--------------------------------------------------"
+	echo "${STD}"
 }
 
 PAUSE(){
-	echo -e "${GREEN}"
-	echo -e "--------------------------------------------------"
-	echo -e " All done! Press Enter to return to the menu"
-	echo -e "--------------------------------------------------"
-	echo -e "${STD}"
-	read -t 300 -n 1 -s -r -p " ---> "
+	echo "${GREEN}"
+	echo "--------------------------------------------------"
+	echo " All done! Press Enter to return to the menu"
+	echo "--------------------------------------------------"
+	echo "${STD}"
+	read -t 60 -n 1 -s -r -p " ---> "
 	echo ""
 }
