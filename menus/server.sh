@@ -13,7 +13,7 @@ DOMAIN(){
 
 EMAILADDR(){
 	PERFORM="manage"
-	TASK="Email"
+	TASK="email"
 	source /opt/GooPlex/install/server/${TASK}-${PERFORM}.sh
 }
 
