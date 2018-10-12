@@ -28,13 +28,13 @@ QUIT(){
 
 show_menus() {
 	clear
-	echo -e " ${LPURPLE}"
+	echo " ${LPURPLE}"
 	MENUSTART
-	echo -e " ${LPURPLE}A${STD} - Netdata"
-	echo -e " ${LPURPLE}B${STD} - Organizr"
-	echo -e " ${LPURPLE}C${STD} - Ombi"
-	echo -e " ${WHITE}Z${STD} - EXIT to Main Menu"
-	echo -e " ${LPURPLE}"
+	echo " ${LPURPLE}A${STD} - Netdata"
+	echo " ${LPURPLE}B${STD} - Organizr"
+	echo " ${LPURPLE}C${STD} - Ombi"
+	echo " ${WHITE}Z${STD} - EXIT to Main Menu"
+	echo " ${LPURPLE}"
 	MENUEND
 }
 
@@ -48,7 +48,7 @@ read_options(){
 		[Bb]) ORGANIZR ;;
 		[Cc]) OMBI ;;
 		[Zz]) QUIT ;;
-		*) echo -e "${LRED}Please select a valid option${STD}" && sleep 2
+		*) echo "${LRED}Please select a valid option${STD}" && sleep 2
 	esac
 }
  
