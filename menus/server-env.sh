@@ -3,7 +3,7 @@
 # Menu Options
 
 SET(){
-	PERFORM="install"
+	PERFORM="set"
 	source /opt/GooPlex/install/server/${TASK}-${PERFORM}.sh
 }
 
