@@ -27,7 +27,7 @@ TZONE(){
 PATCHES(){
 	PERFORM="apply"
 	TASK="patches"
-	
+	source /opt/GooPlex/install/server/${TASK}-${PERFORM}.sh
 }
 
 UPGRADE(){
