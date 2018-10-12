@@ -7,6 +7,9 @@ source /opt/GooPlex/menus/variables.sh
 
 EXPLAINTASK
 
+echo "You are probably logged in as root."
+echo "You only need to $PERFORM $TASK if you haven't done so yet"
+
 CONFIRMATION
 
 if [[ ${REPLY} =~ ^[Yy]$ ]]; then
