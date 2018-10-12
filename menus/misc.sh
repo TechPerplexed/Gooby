@@ -13,29 +13,31 @@ clear
 # Menu Options
 # ------------
 
-# Update GooPlex
-SERVER(){
+GOOPLEX(){
 	PERFORM="update"
 	TASK="GooPlex"
-	source /opt/GooPlex/install/misc/update.sh
+	source /opt/GooPlex/install/apps/${TASK}-${PERFORM}.sh
 }
 
-# Plex Backup
+USERSETTINGS(){
+	PERFORM="review"
+	TASK="Parameters"
+	source /opt/GooPlex/install/apps/${TASK}-${PERFORM}.sh
+}
+
 PBACKUP(){
 	PERFORM="backup"
-	TASK="Plex and Tautulli to Google"
-	source /opt/GooPlex/install/misc/plex-backup.sh
+	TASK="GooPlex"
+	source /opt/GooPlex/install/apps/${TASK}-${PERFORM}.sh
 }
 
 
-# Plex Restore
 PRESTORE(){
 	PERFORM="restore"
-	TASK="Plex and Tautulli database"
-	source /opt/GooPlex/install/misc/plex-restore.sh
+	TASK="GooPlex"
+	source /opt/GooPlex/install/apps/${TASK}-${PERFORM}.sh
 }
 
-# Exit
 QUIT(){
 	exit
 }
@@ -49,8 +51,9 @@ show_menus() {
 	echo -e " ${CYAN}"
 	MENUSTART
 	echo -e " ${CYAN}A${STD} - Update GooPlex"
-	echo -e " ${CYAN}B${STD} - Backup Plex and Tautulli"
-	echo -e " ${CYAN}C${STD} - Restore Plex and Tautulli"
+	echo -e " ${CYAN}B${STD} - Review user parameters"
+	echo -e " ${CYAN}C${STD} - Backup Plex and Tautulli"
+	echo -e " ${CYAN}D${STD} - Restore Plex and Tautulli"
 	echo -e " ${WHITE}Z${STD} - EXIT to Main Menu"
 	echo -e " ${CYAN}"
 	MENUEND
@@ -64,9 +67,10 @@ read_options(){
 	local choice
 	read -n 1 -s -r -p "Choose option: " choice
 	case $choice in
-		[Aa]) SERVER ;;
-		[Bb]) PBACKUP ;;
-		[Cc]) PRESTORE ;;
+		[Aa]) GOOPLEX ;;
+		[Bb]) USERSETTINGS ;;
+		[Cc]) PBACKUP ;;
+		[Dd]) PRESTORE ;;
 		[Zz]) QUIT ;;
 		*) echo -e "${LRED}Please select a valid option${STD}" && sleep 2
 	esac
