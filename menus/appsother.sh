@@ -1,17 +1,9 @@
 #!/bin/bash
 
 MENU="Other Applications"
-
-# ---------
-# Variables
-# ---------
-
 source /opt/GooPlex/menus/variables.sh
-clear
 
-# ------------
 # Menu Options
-# ------------
 
 NETDATA(){
 	TASK="Netdata"
@@ -32,9 +24,7 @@ QUIT(){
 	exit
 }
 
-# ------------
 # Display menu
-# ------------
 
 show_menus() {
 	clear
@@ -48,9 +38,7 @@ show_menus() {
 	MENUEND
 }
 
-# ------------
 # Read Choices
-# ------------
 
 read_options(){
 	local choice
@@ -64,8 +52,4 @@ read_options(){
 	esac
 }
  
-# ----------
-# Finalizing
-# ----------
-
 MENUFINALIZE
