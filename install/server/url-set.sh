@@ -28,6 +28,7 @@ if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 		URL=$( cat $CONFIGS/.config/seturl )
 
 		echo "Your new URL is set to $URL"
+		echo "Remember to point it to IP address $PUBLICIP"
 
 		TASKCOMPLETE
 
