@@ -33,14 +33,14 @@ QUIT(){
 
 show_menus() {
 	clear
-	echo -e " ${LPURPLE}"
+	echo " ${LPURPLE}"
 	MENUSTART
-	echo -e " ${LPURPLE}A${STD} - Sonarr"
-	echo -e " ${LPURPLE}B${STD} - Radarr"
-	echo -e " ${LPURPLE}C${STD} - Deluge"
-	echo -e " ${LPURPLE}D${STD} - NZBGet"
-	echo -e " ${WHITE}Z${STD} - EXIT to Main Menu"
-	echo -e " ${LPURPLE}"
+	echo " ${LPURPLE}A${STD} - Sonarr"
+	echo " ${LPURPLE}B${STD} - Radarr"
+	echo " ${LPURPLE}C${STD} - Deluge"
+	echo " ${LPURPLE}D${STD} - NZBGet"
+	echo " ${WHITE}Z${STD} - EXIT to Main Menu"
+	echo " ${LPURPLE}"
 	MENUEND
 }
 
@@ -56,7 +56,7 @@ read_options(){
 		[Dd]) NZBGET ;;
 		[Gg]) ORGANIZR ;;
 		[Zz]) QUIT ;;
-		*) echo -e "${LRED}Please select a valid option${STD}" && sleep 2
+		VALIDOPTION
 	esac
 }
 
