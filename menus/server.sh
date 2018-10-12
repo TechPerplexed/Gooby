@@ -43,7 +43,6 @@ UPGRADE(){
 	source /opt/GooPlex/install/server/${TASK}-${PERFORM}.sh
 }
 
-# Exit
 QUIT(){
 	exit
 }
