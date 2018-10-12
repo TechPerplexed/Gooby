@@ -2,14 +2,9 @@
 
 clear
 
-# Explanation
+EXPLAINTASK
 
-echo -e "${CYAN}"
-echo -e "--------------------------------------------------"
-echo -e " This will ${PERFORM} ${TASK}"
-echo -e " You can run this as often as you like!"
-echo -e "--------------------------------------------------"
-echo -e "${STD}"
+echo " You can run this as often as you like!"
 
 CONFIRMATION
 
