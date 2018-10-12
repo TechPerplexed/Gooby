@@ -33,7 +33,6 @@ misc(){
 	/opt/GooPlex/menus/misc.sh
 }
 
-# Exit
 quit(){
 	MENUVISIT
 	exit
