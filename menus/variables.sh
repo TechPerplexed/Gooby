@@ -54,8 +54,6 @@ MENUEND(){
 	echo " ${STD}"
 }
 
-
-
 MENUFINALIZE(){
 	trap '' SIGINT SIGQUIT SIGTSTP
 	while true
