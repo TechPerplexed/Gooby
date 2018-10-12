@@ -124,7 +124,7 @@ CONFIRMATION(){
 	echo -e " Are you sure you want to ${PERFORM} ${TASK} (y/N)? "
 	echo -e "--------------------------------------------------"
 	echo -e "${STD}"
-	read -t 30 -n 1 -s -r -p " ---> "
+	read -t 300 -n 1 -s -r -p " ---> "
 	echo ""
 }
 
@@ -139,7 +139,7 @@ CONFIRMDELETE(){
 	echo -e " Proceed? (y/N)?"
 	echo -e "--------------------------------------------------"
 	echo -e "${STD}"
-	read -t 30 -n 1 -s -r -p " ---> "
+	read -t 300 -n 1 -s -r -p " ---> "
 	echo ""
 }
 
@@ -173,6 +173,6 @@ PAUSE(){
 	echo -e " All done! Press Enter to return to the menu"
 	echo -e "--------------------------------------------------"
 	echo -e "${STD}"
-	read -t 30 -n 1 -s -r -p " ---> "
+	read -t 300 -n 1 -s -r -p " ---> "
 	echo ""
 }
