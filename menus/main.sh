@@ -33,6 +33,7 @@ quit(){
 # Display menu
 
 show_menus() {
+	clear
 	echo -e " ${GREEN}"
 	MENUSTART
 	echo -e " ${GREEN}A${STD} - Maintain Server"
