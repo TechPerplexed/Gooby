@@ -11,21 +11,15 @@ GOOPLEX(){
 	source /opt/GooPlex/install/misc/${TASK}-${PERFORM}.sh
 }
 
-USERSETTINGS(){
-	PERFORM="review"
-	TASK="Parameters"
+BACKUP(){
+	PERFORM="create"
+	TASK="backup"
 	source /opt/GooPlex/install/misc/${TASK}-${PERFORM}.sh
 }
 
-PBACKUP(){
-	PERFORM="backup"
-	TASK="GooPlex"
-	source /opt/GooPlex/install/misc/${TASK}-${PERFORM}.sh
-}
-
-PRESTORE(){
+RESTORE(){
 	PERFORM="restore"
-	TASK="GooPlex"
+	TASK="backup"
 	source /opt/GooPlex/install/misc/${TASK}-${PERFORM}.sh
 }
 
@@ -40,9 +34,8 @@ show_menus() {
 	echo " ${CYAN}"
 	MENUSTART
 	echo " ${CYAN}A${STD} - Update GooPlex"
-	echo " ${CYAN}B${STD} - Review user parameters"
-	echo " ${CYAN}C${STD} - Backup Plex and Tautulli"
-	echo " ${CYAN}D${STD} - Restore Plex and Tautulli"
+	echo " ${CYAN}B${STD} - Create Backup"
+	echo " ${CYAN}C${STD} - Restore Backup"
 	echo " ${WHITE}Z${STD} - EXIT to Main Menu"
 	echo " ${CYAN}"
 	MENUEND
@@ -55,9 +48,8 @@ read_options(){
 	read -n 1 -s -r -p "Choose option: " choice
 	case $choice in
 		[Aa]) GOOPLEX ;;
-		[Bb]) USERSETTINGS ;;
-		[Cc]) PBACKUP ;;
-		[Dd]) PRESTORE ;;
+		[Bb]) PBACKUP ;;
+		[Cc]) PRESTORE ;;
 		[Zz]) QUIT ;;
 		*) echo "${LRED}Please select a valid option${STD}" && sleep 2
 	esac
