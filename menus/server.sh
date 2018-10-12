@@ -32,7 +32,7 @@ PATCHES(){
 
 UPGRADE(){
 	PERFORM="upgrade"
-	TASK="version"
+	TASK="OS"
 	source /opt/GooPlex/install/server/${TASK}-${PERFORM}.sh
 }
 
