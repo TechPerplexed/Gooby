@@ -3,9 +3,7 @@
 MENU="GooPlex Menu"
 source /opt/GooPlex/menus/variables.sh
 
-# ------------
 # Menu Options
-# ------------
 
 server(){
 	/opt/GooPlex/menus/server.sh
@@ -32,9 +30,7 @@ quit(){
 	exit
 }
 
-# ------------
 # Display menu
-# ------------
 
 show_menus() {
 	clear
@@ -50,9 +46,7 @@ show_menus() {
 	MENUEND
 }
 
-# ------------
 # Read Choices
-# ------------
 
 read_options(){
 	local choice
@@ -67,9 +61,5 @@ read_options(){
 		*) echo -e "${LRED}Please select a valid option${STD}" && sleep 2
 	esac
 }
-
-# ----------
-# Finalizing
-# ----------
 
 MENUFINALIZE
