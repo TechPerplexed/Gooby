@@ -13,27 +13,22 @@ clear
 # Menu Options
 # ------------
 
-# Maintain Server
 server(){
 	/opt/GooPlex/menus/server.sh
 }
 
-# Install Media
 media(){
 	/opt/GooPlex/menus/appsmedia.sh
 }
 
-# Install Downloads
 download(){
 	/opt/GooPlex/menus/appsdownload.sh
 }
 
-# Install Other
 other(){
 	/opt/GooPlex/menus/appsother.sh
 }
 
-# Additional Options
 misc(){
 	/opt/GooPlex/menus/misc.sh
 }
