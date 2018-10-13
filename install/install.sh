@@ -35,12 +35,12 @@ sudo chmod 755 /bin/gooplex
 sudo mkdir -p /var/local/GooPlex/.config
 curl ifconfig.me >  $CONFIGS/.config/publicip
 
-
+source /opt/GooPlex/menus/variables.sh
 
 clear
 	echo -e "${GREEN}"
-	echo -e "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-	echo -e " All done!"
+	echo -e "--------------------------------------------------"
+	echo -e " Installation complete!"
 	echo -e " Type ${WHITE}gooplex${GREEN} to access the menu."
-	echo -e "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+	echo -e "--------------------------------------------------"
 	echo -e "${STD}"
