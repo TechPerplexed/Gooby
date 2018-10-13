@@ -4,35 +4,36 @@ source /opt/GooPlex/menus/variables.sh
 
 if [ ! -f $CONFIGS/.config/version ]; then
 
-	sudo mkdir -p /var/local/GooPlex/.config
-	sudo sh -c 'echo "1.1.2" > $CONFIGS/.config/version'
+	sudo mkdir -p $CONFIGS/.config
+	echo "echo '1.1.2' > $CONFIGS/.config/version" | sudo bash
 
 fi
 
 if [ ! -f $CONFIGS/.config/publicip ]; then
 
-	sudo mkdir -p /var/local/GooPlex/.config
+	sudo mkdir -p $CONFIGS/.config
+	sudo touch $CONFIGS/.config/publicip
 	curl ifconfig.me > $CONFIGS/.config/publicip
 
 fi
 
 if [ ! -f $CONFIGS/.config/seturl ]; then
 
-	sudo mkdir -p /var/local/GooPlex/.config
+	sudo mkdir -p $CONFIGS/.config
 	sudo touch $CONFIGS/.config/seturl
 
 fi
 
 if [ ! -f $CONFIGS/.config/setemail ]; then
 
-	sudo mkdir -p /var/local/GooPlex/.config
+	sudo mkdir -p $CONFIGS/.config
 	sudo touch $CONFIGS/.config/setemail
 
 fi
 
 if [ "$EUID" -ne 0 ]; then
 
-	sudo chown -R $USER:$USER /var/local/GooPlex/.config
+	sudo chown -R $USER:$USER $CONFIGS/.config
 	/opt/GooPlex/menus/main.sh
 
 else
