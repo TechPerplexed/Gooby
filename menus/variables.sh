@@ -2,6 +2,7 @@
 
 # Define environment variables
 
+VERSION=$( cat $CONFIGS/.config/version )
 USERID=$( id -u $USER )
 GROUPID=$( id -g $USER )
 TIMEZONE=$( cat /etc/timezone )
@@ -51,7 +52,7 @@ MENUSTART(){
 
 MENUEND(){
 	echo "--------------------------------------------------"
-	echo " ${STD}"
+	echo " GooPlex Version: VERSION ${STD}"
 }
 
 MENUFINALIZE(){
