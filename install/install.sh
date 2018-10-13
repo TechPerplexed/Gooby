@@ -4,7 +4,7 @@
 
 sudo apt-get update -y && sudo apt-get upgrade -y
 
-sudo apt-get -y -f install \
+sudo apt-get -y install \
 	git \
 	fail2ban \
 	nano \
@@ -14,7 +14,6 @@ sudo apt-get -y -f install \
 	ufw \
 	socat \
 	fuse \
-	mergerfs \
 	apt-transport-https \
 	acl \
 	ca-certificates \
