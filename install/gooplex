@@ -5,14 +5,14 @@ source /opt/GooPlex/menus/variables.sh
 if [ ! -f $CONFIGS/.config/version ]; then
 
 	sudo mkdir -p /var/local/GooPlex/.config
-	sudo sh -c 'echo "1.1.2" > version'
+	sudo sh -c 'echo "1.1.2" > $CONFIGS/.config/version'
 
 fi
 
 if [ ! -f $CONFIGS/.config/publicip ]; then
 
 	sudo mkdir -p /var/local/GooPlex/.config
-	curl ifconfig.me >  $CONFIGS/.config/publicip
+	curl ifconfig.me > $CONFIGS/.config/publicip
 
 fi
 
