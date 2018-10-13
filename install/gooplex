@@ -29,6 +29,6 @@ if [ "$EUID" -ne 0 ]; then
 
 else
 
-	/opt/GooPlex/install/misc/createuser.sh
+	/opt/GooPlex/install/server/user-create.sh
 
 fi
