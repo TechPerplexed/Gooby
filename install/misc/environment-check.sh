@@ -4,8 +4,6 @@ MENU="Check Environment"
 
 # Menu Options
 
-pause
-
 QUIT(){
 	exit
 }
@@ -20,7 +18,7 @@ show_menus() {
 	echo " Your Domain: ${CYAN}$URL${STD}"
 	echo " Your Email Address: ${CYAN}$EMAIL${STD}"
 	echo " Your Server IP Address: ${CYAN}$PUBLICIP${STD}"
-  echo " ${WHITE}Z${STD} - EXIT to Main Menu"
+	echo " ${WHITE}Z${STD} - EXIT to Main Menu"
 	echo " ${CYAN}"
 	MENUEND
 }
