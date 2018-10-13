@@ -23,7 +23,7 @@ else
 
 		# Dependencies
 
-		source /opt/GooPlex/install/misc/docker.sh
+		source /opt/GooPlex/install/server/docker-install.sh
 
 		# Main script
 
