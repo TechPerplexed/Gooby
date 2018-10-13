@@ -8,10 +8,6 @@ if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 
 	GOAHEAD
 
-	sudo mkdir -p $CONFIGS/.config
-	sudo chown -R $USER:$USER $CONFIGS
-
-	echo ""
 	[[ -s $CONFIGS/.config/setemail ]] && echo "Your email address is currently set to $EMAIL" || echo "You have not set an email address yet." 
 
 	read -p "New email address: " SETEMAIL
