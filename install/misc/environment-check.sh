@@ -4,6 +4,8 @@ MENU="Check Environment"
 
 # Menu Options
 
+pause
+
 QUIT(){
 	exit
 }
