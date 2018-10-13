@@ -2,34 +2,12 @@
 
 source /opt/GooPlex/menus/variables.sh
 
-if [ ! -f $CONFIGS/.config/version ]; then
+sudo mkdir -p $CONFIGS/.config
+echo "echo '1.1.3' > $CONFIGS/.config/version" | sudo bash
 
-	sudo mkdir -p $CONFIGS/.config
-	echo "echo '1.1.2' > $CONFIGS/.config/version" | sudo bash
-
-fi
-
-if [ ! -f $CONFIGS/.config/publicip ]; then
-
-	sudo mkdir -p $CONFIGS/.config
-	sudo touch $CONFIGS/.config/publicip
-	curl ifconfig.me > $CONFIGS/.config/publicip
-
-fi
-
-if [ ! -f $CONFIGS/.config/seturl ]; then
-
-	sudo mkdir -p $CONFIGS/.config
-	sudo touch $CONFIGS/.config/seturl
-
-fi
-
-if [ ! -f $CONFIGS/.config/setemail ]; then
-
-	sudo mkdir -p $CONFIGS/.config
-	sudo touch $CONFIGS/.config/setemail
-
-fi
+[ ! -f $CONFIGS/.config/publicip ] && curl ifconfig.me > $CONFIGS/.config/publicip
+[ ! -f $CONFIGS/.config/seturl ] && curl ifconfig.me > $CONFIGS/.config/seturl
+[ ! -f $CONFIGS/.config/setemail ] && curl ifconfig.me > $CONFIGS/.config/setemail
 
 if [ "$EUID" -ne 0 ]; then
 
