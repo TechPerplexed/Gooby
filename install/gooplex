@@ -4,7 +4,6 @@ source /opt/GooPlex/menus/variables.sh
 
 sudo mkdir -p $CONFIGS/.config
 echo "echo '1.1.3' > $CONFIGS/.config/version" | sudo bash
-sudo chown -R $USER:$USER $CONFIGS/.config
 
 [ ! -f $CONFIGS/.config/publicip ] && curl ifconfig.me > $CONFIGS/.config/publicip
 [ ! -f $CONFIGS/.config/seturl ] && sudo touch > $CONFIGS/.config/seturl
