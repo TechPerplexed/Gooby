@@ -14,6 +14,7 @@ sudo apt-get -y install \
 	ufw \
 	socat \
 	fuse \
+	mergerfs \	
 	apt-transport-https \
 	acl \
 	ca-certificates \
