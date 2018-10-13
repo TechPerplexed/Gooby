@@ -21,6 +21,7 @@ show_menus() {
 	echo " Your Domain: ${CYAN}$CHECKURL${STD}"
 	echo " Your Email Address: ${CYAN}$CHECKEMAIL${STD}"
 	echo " Your Server IP Address: ${CYAN}$PUBLICIP${STD}"
+	echo " GooPlex version: ${CYAN}$VERSION${STD}"
 	echo ""
 	echo " ${WHITE}Z${STD} - EXIT to Main Menu"
 	echo " ${CYAN}"
