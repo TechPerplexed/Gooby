@@ -52,7 +52,7 @@ MENUSTART(){
 
 MENUEND(){
 	echo "--------------------------------------------------"
-	echo " GooPlex Version: VERSION ${STD}"
+	echo " GooPlex Version: $VERSION ${STD}"
 }
 
 MENUFINALIZE(){
