@@ -5,6 +5,18 @@ source /opt/GooPlex/menus/variables.sh
 
 # Menu Options
 
+ROOTPW(){
+	PERFORM="root"
+	TASK="password"
+	source /opt/GooPlex/install/server/${TASK}-${PERFORM}.sh
+}
+
+USERPW(){
+	PERFORM="user"
+	TASK="password"
+	source /opt/GooPlex/install/server/${TASK}-${PERFORM}.sh
+}
+
 PATCHES(){
 	PERFORM="apply"
 	TASK="patches"
