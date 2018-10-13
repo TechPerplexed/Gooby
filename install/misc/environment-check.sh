@@ -2,6 +2,7 @@
 
 MENU="Check Environment"
 
+clear
 [[ -s $CONFIGS/.config/seturl ]] && CHECKURL="$URL" || CHECKURL="Not set yet"
 [[ -s $CONFIGS/.config/email ]] && CHECKEMAIL="$EMAIL" || CHECKEMAIL="Not set yet"
 curl ifconfig.me > $CONFIGS/.config/publicip; IP=$( cat $CONFIGS/.config/publicip )
