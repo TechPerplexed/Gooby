@@ -52,8 +52,11 @@ show_menus() {
 	echo " ${CYAN}"
 	MENUSTART
 	echo " ${CYAN}A${STD} - Update GooPlex"
-	echo " ${CYAN}B${STD} - Create Backup"
-	echo " ${CYAN}C${STD} - Restore Backup"
+	echo " ${CYAN}B${STD} - Manage Domain Name"
+	echo " ${CYAN}C${STD} - Manage Email Address"
+	echo " ${CYAN}D${STD} - Set Timezone"
+	echo " ${CYAN}E${STD} - Create Backup"
+	echo " ${CYAN}F${STD} - Restore Backup"
 	echo " ${WHITE}Z${STD} - EXIT to Main Menu"
 	echo " ${CYAN}"
 	MENUEND
@@ -66,8 +69,11 @@ read_options(){
 	read -n 1 -s -r -p "Choose option: " choice
 	case $choice in
 		[Aa]) GOOPLEX ;;
-		[Bb]) PBACKUP ;;
-		[Cc]) PRESTORE ;;
+		[Bb]) DOMAIN ;;
+		[Cc]) EMAILADDR ;;
+		[Dd]) TZONE ;;
+		[Ee]) PBACKUP ;;
+		[Ff]) PRESTORE ;;
 		[Zz]) QUIT ;;
 		*) echo "${LRED}Please select a valid option${STD}" && sleep 2
 	esac
