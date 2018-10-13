@@ -7,8 +7,8 @@ source /opt/GooPlex/menus/variables.sh
 
 EXPLAINTASK
 
-echo "You are probably logged in as root."
-echo "You only need to $PERFORM $TASK if you haven't done so yet"
+echo "You are logged in as $USER"
+echo "You will need to $PERFORM $TASK"
 
 CONFIRMATION
 
