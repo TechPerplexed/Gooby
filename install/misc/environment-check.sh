@@ -2,6 +2,9 @@
 
 MENU="Check Environment"
 
+[[ -s $CONFIGS/.config/seturl ]] && CHECKURL="$URL" || CHECKURL="Not set yet"
+[[ -s $CONFIGS/.config/email ]] && CHECKEMAIL="$EMAIL" || CHECKEMAIL="Not set yet"
+
 # Menu Options
 
 QUIT(){
@@ -15,9 +18,10 @@ show_menus() {
 	echo " ${CYAN}"
 	MENUSTART
 	echo " Timezone: ${CYAN}$TIMEZONE${STD}"
-	echo " Your Domain: ${CYAN}$URL${STD}"
-	echo " Your Email Address: ${CYAN}$EMAIL${STD}"
+	echo " Your Domain: ${CYAN}$CHECKURL${STD}"
+	echo " Your Email Address: ${CYAN}$CHECKEMAIL${STD}"
 	echo " Your Server IP Address: ${CYAN}$PUBLICIP${STD}"
+	echo ""
 	echo " ${WHITE}Z${STD} - EXIT to Main Menu"
 	echo " ${CYAN}"
 	MENUEND
