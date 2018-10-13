@@ -32,7 +32,7 @@ fi
 
 if [ "$EUID" -ne 0 ]; then
 
-	sudo chown -R $USER:$USER $CONFIGS/.config
+	sudo chown -R $USER:$USER /var/local/GooPlex/.config
 	/opt/GooPlex/menus/main.sh
 
 else
