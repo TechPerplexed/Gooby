@@ -2,6 +2,13 @@
 
 source /opt/GooPlex/menus/variables.sh
 
+if [ ! -f $CONFIGS/.config/version ]; then
+
+	sudo mkdir -p /var/local/GooPlex/.config
+	sudo echo "1.2.2" >  $CONFIGS/.config/version
+
+fi
+
 if [ ! -f $CONFIGS/.config/publicip ]; then
 
 	sudo mkdir -p /var/local/GooPlex/.config
