@@ -5,21 +5,27 @@ source /opt/GooPlex/menus/variables.sh
 
 # Menu Options
 
-ROOTPW(){
-	PERFORM="root"
-	TASK="password"
-	source /opt/GooPlex/install/server/${TASK}-${PERFORM}.sh
-}
-
-USERPW(){
-	PERFORM="user"
-	TASK="password"
-	source /opt/GooPlex/install/server/${TASK}-${PERFORM}.sh
-}
-
 PATCHES(){
 	PERFORM="apply"
 	TASK="patches"
+	source /opt/GooPlex/install/server/${TASK}-${PERFORM}.sh
+}
+
+DOMAIN(){
+	PERFORM="manage"
+	TASK="domain"
+	source /opt/GooPlex/install/server/${TASK}-${PERFORM}.sh
+}
+
+EMAILADDR(){
+	PERFORM="manage"
+	TASK="email"
+	source /opt/GooPlex/install/server/${TASK}-${PERFORM}.sh
+}
+
+TZONE(){
+	PERFORM="manage"
+	TASK="timezone"
 	source /opt/GooPlex/install/server/${TASK}-${PERFORM}.sh
 }
 
@@ -39,10 +45,11 @@ show_menus() {
 	clear
 	echo " ${YELLOW}"
 	MENUSTART
-	echo " ${YELLOW}A${STD} - Change Root Password"
-	echo " ${YELLOW}B${STD} - Change User Password"
-	echo " ${YELLOW}C${STD} - Update Server with Latest Patches"
-	echo " ${YELLOW}D${STD} - Server Upgrade - Danger zone!"
+	echo " ${YELLOW}A${STD} - Update Server with Latest Patches"
+	echo " ${YELLOW}B${STD} - Manage Domain Name"
+	echo " ${YELLOW}C${STD} - Manage Email Address"
+	echo " ${YELLOW}D${STD} - Set Timezone"
+	echo " ${YELLOW}E${STD} - Server Upgrade - Danger zone!"
 	echo " ${WHITE}Z${STD} - EXIT to Main Menu"
 	echo " ${YELLOW}"
 	MENUEND
@@ -54,10 +61,11 @@ read_options(){
 	local choice
 	read -n 1 -s -r -p "Choose option: " choice
 	case $choice in
-		[Aa]) ROOTPW ;;
-		[Bb]) USERPW ;;
-		[Cc]) PATCHES ;;
-		[Dd]) UPGRADE ;;
+		[Aa]) PATCHES ;;
+		[Bb]) DOMAIN ;;
+		[Cc]) EMAILADDR ;;
+		[Dd]) TZONE ;;
+		[Ee]) UPGRADE ;;
 		[Zz]) QUIT ;;
 		*) echo "${LRED}Please select a valid option${STD}" && sleep 2
 	esac
