@@ -2,7 +2,6 @@
 
 # Define environment variables
 
-VERSION=$( cat $CONFIGS/.config/version )
 USERID=$( id -u $USER )
 GROUPID=$( id -g $USER )
 TIMEZONE=$( cat /etc/timezone )
@@ -10,6 +9,7 @@ CONFIGS=/var/local/GooPlex
 EMAIL=$( cat $CONFIGS/.config/setemail )
 URL=$( cat $CONFIGS/.config/seturl )
 PUBLICIP=$( cat $CONFIGS/.config/publicip )
+VERSION=$( cat $CONFIGS/.config/version )
 
 # Define colors
 
@@ -51,8 +51,8 @@ MENUSTART(){
 }
 
 MENUEND(){
-	echo "--------------------------------------------------"
-	echo " GooPlex Version: $VERSION ${STD}"
+	echo "-------------------------------------------- V$VERSION"
+	echo " ${STD}"
 }
 
 MENUFINALIZE(){
