@@ -6,6 +6,7 @@ clear
 [[ -s $CONFIGS/.config/seturl ]] && CHECKURL="$URL" || CHECKURL="Not set yet"
 [[ -s $CONFIGS/.config/setemail ]] && CHECKEMAIL="$EMAIL" || CHECKEMAIL="Not set yet"
 curl ifconfig.me > $CONFIGS/.config/publicip; IP=$( cat $CONFIGS/.config/publicip )
+sudo chown -R $USER:$USER $CONFIGS
 
 # Menu Options
 
