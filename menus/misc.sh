@@ -11,6 +11,24 @@ GOOPLEX(){
 	source /opt/GooPlex/install/misc/${TASK}-${PERFORM}.sh
 }
 
+DOMAIN(){
+	PERFORM="manage"
+	TASK="domain"
+	source /opt/GooPlex/install/misc/${TASK}-${PERFORM}.sh
+}
+
+EMAILADDR(){
+	PERFORM="manage"
+	TASK="email"
+	source /opt/GooPlex/install/misc/${TASK}-${PERFORM}.sh
+}
+
+TZONE(){
+	PERFORM="manage"
+	TASK="timezone"
+	source /opt/GooPlex/install/misc/${TASK}-${PERFORM}.sh
+}
+
 BACKUP(){
 	PERFORM="create"
 	TASK="backup"
