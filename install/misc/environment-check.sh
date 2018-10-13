@@ -4,6 +4,7 @@ MENU="Check Environment"
 
 [[ -s $CONFIGS/.config/seturl ]] && CHECKURL="$URL" || CHECKURL="Not set yet"
 [[ -s $CONFIGS/.config/email ]] && CHECKEMAIL="$EMAIL" || CHECKEMAIL="Not set yet"
+curl ifconfig.me > $CONFIGS/.config/publicip; IP=$( cat $CONFIGS/.config/publicip )
 
 # Menu Options
 
@@ -20,7 +21,7 @@ show_menus() {
 	echo " Timezone: ${CYAN}$TIMEZONE${STD}"
 	echo " Your Domain: ${CYAN}$CHECKURL${STD}"
 	echo " Your Email Address: ${CYAN}$CHECKEMAIL${STD}"
-	echo " Your Server IP Address: ${CYAN}$PUBLICIP${STD}"
+	echo " Your Server IP Address: ${CYAN}$IP${STD}"
 	echo " GooPlex version: ${CYAN}$VERSION${STD}"
 	echo ""
 	echo " ${WHITE}Z${STD} - EXIT to Main Menu"
