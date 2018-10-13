@@ -5,7 +5,7 @@ source /opt/GooPlex/menus/variables.sh
 if [ ! -f $CONFIGS/.config/version ]; then
 
 	sudo mkdir -p /var/local/GooPlex/.config
-	sudo echo "1.2.2" >  $CONFIGS/.config/version
+	sudo sh -c 'echo "1.1.2" > version'
 
 fi
 
