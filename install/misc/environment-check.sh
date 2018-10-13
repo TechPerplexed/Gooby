@@ -14,7 +14,7 @@ show_menus() {
 	clear
 	echo " ${CYAN}"
 	MENUSTART
-	echo " Timezone: ${CYAN}$TIMEZON${STD}"
+	echo " Timezone: ${CYAN}$TIMEZONE${STD}"
 	echo " Your Domain: ${CYAN}$URL${STD}"
 	echo " Your Email Address: ${CYAN}$EMAIL${STD}"
 	echo " Your Server IP Address: ${CYAN}$PUBLICIP${STD}"
