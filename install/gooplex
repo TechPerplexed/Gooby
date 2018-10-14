@@ -9,8 +9,8 @@ if [ "$EUID" -ne 0 ]; then
 		sudo mkdir -p $CONFIGS/.config
 		sudo mkdir -p $CONFIGS/Docker
 		sudo chown -R $USER:$USER $CONFIGS
-		echo "Not set yet" > $CONFIGS/.config/mydomain
-		echo "Not set yet" > $CONFIGS/.config/myemail
+		echo "Not_set_yet" > $CONFIGS/.config/mydomain
+		echo "Not_set_yet" > $CONFIGS/.config/myemail
 		source /opt/GooPlex/install/misc/environment-build.sh
 
 	fi
