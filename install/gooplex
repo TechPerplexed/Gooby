@@ -11,7 +11,7 @@ if [ "$EUID" -ne 0 ]; then
 		sudo chown -R $USER:$USER $CONFIGS
 		echo "Not set yet" > $CONFIGS/.config/mydomain
 		echo "Not set yet" > $CONFIGS/.config/myemail
-		source /opt/GooPlex/misc/environment-build.sh
+		source /opt/GooPlex/install/misc/environment-build.sh
 
 	fi
 	
