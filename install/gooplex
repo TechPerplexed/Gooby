@@ -7,7 +7,7 @@ if [ "$EUID" -ne 0 ]; then
 	if [ ! -e $CONFIGS/Docker/.env ]; then
 
 		sudo mkdir -p $CONFIGS/.config
-		sudo mkdir -p $CONFIGS/Docker
+		sudo mkdir -p $CONFIGS/Docker/components
 		sudo chown -R $USER:$USER $CONFIGS
 		echo "None" > $CONFIGS/.config/mydomain
 		echo "None" > $CONFIGS/.config/myemail
