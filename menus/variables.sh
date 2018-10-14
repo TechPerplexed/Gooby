@@ -1,6 +1,7 @@
 #!/bin/bash
 
 VERSION="1.1.3"
+CONFIGS=/var/local/GooPlex
 
 # Define colors
 
