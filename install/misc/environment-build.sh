@@ -24,15 +24,13 @@ if [[ ${1,,} != "rebuild" ]]; then
 	sudo apt-get install -y docker-ce dialog > /dev/null 2>&1
 	sudo usermod -aG docker ${USER} > /dev/null 2>&1
 	sudo curl -L https://github.com/docker/compose/releases/download/1.19.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose > /dev/null 2>&1
-
-	clear
 	echo "Creating configuration file..."
 
 fi
 
 echo "###########################" > ${ENV}
 echo "#  Environment variables  #" >> ${ENV}
-echo "#     for GooPlex v$VERSION    #" >> ${ENV}
+echo "#    for GooPlex v$VERSION   #" >> ${ENV}
 echo "###########################" >> ${ENV}
 echo >> ${ENV}
 echo "HOME=${HOME}" >> ${ENV}
