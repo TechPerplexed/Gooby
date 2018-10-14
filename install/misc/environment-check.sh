@@ -3,7 +3,6 @@
 MENU="Check Environment"
 
 source $CONFIGS/Docker/.env
-curl ifconfig.me > $CONFIGS/.config/publicip; IP=$( cat $CONFIGS/.config/publicip )
 sudo chown -R $USER:$USER $CONFIGS
 
 # Menu Options
