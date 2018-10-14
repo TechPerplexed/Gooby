@@ -38,6 +38,7 @@ echo >> ${ENV}
 echo "HOME=${HOME}" >> ${ENV}
 echo "USERID=$(id -u)" >> ${ENV}
 echo "GROUPID=$(id -g)" >> ${ENV}
+echo "IP=$(cat $CONFIGS/.config/publicip)" >> ${ENV}
 echo "TIMEZONE=$(cat /etc/timezone)" >> ${ENV}
 echo "CONFIGS=${CONFIGS}" >> ${ENV}
 echo "DOWNLOADS=${HOME}/Downloads" >> ${ENV}
