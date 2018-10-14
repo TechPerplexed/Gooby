@@ -19,13 +19,6 @@ else
 	if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 
 		GOAHEAD
-		RUNPATCHES
-
-		# Dependencies
-
-		source /opt/GooPlex/install/server/docker-install.sh
-
-		# Main script
 
 		docker run -d --name=$APP \
 		--restart=always \
