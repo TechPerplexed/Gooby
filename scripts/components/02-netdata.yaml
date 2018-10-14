@@ -1,0 +1,31 @@
+#
+# NetData - System monitoring and graphs
+#
+  netdata:
+    restart: always
+    image: titpetric/netdata:latest
+    container_name: netdata
+    hostname: netdata
+    cpu_shares: 1024
+    depends_on:
+      - letsencrypt-nginx-proxy-companion
+    cap_add:
+      - SYS_PTRACE
+    volumes:
+      - /proc:/host/proc:ro
+      - /sys:/host/sys:ro
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /etc/localtime:/etc/localtime:ro
+      - /bin/netstat:/bin/netstat:ro
+    environment:
+      - TZ=${TIMEZONE}
+      - VIRTUAL_HOST=netdata.${MYDOMAIN}
+      - VIRTUAL_PORT=19999
+      - VIRTUAL_NETWORK=nginx-proxy
+      - LETSENCRYPT_HOST=netdata.${MYDOMAIN}
+      - LETSENCRYPT_EMAIL=${MYEMAIL}
+    healthcheck:
+      test: ["CMD-SHELL", "netstat -ntlp | grep :19999"]
+      interval: 10s
+      timeout: 2s
+      retries: 3
