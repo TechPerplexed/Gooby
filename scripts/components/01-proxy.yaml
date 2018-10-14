@@ -1,0 +1,41 @@
+#
+# Main NGINX web proxy service
+#
+  nginx-proxy:
+    restart: always
+    image: jwilder/nginx-proxy:alpine
+    container_name: nginx-proxy
+    hostname: nginx-proxy
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - /etc/nginx/vhost.d
+      - /usr/share/nginx/html
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+      - ${CONFIGS}/Certs:/etc/nginx/certs
+    healthcheck:
+      test: ["CMD-SHELL", "netstat -ntlp | grep :80"]
+      interval: 10s
+      timeout: 2s
+      retries: 3
+#
+# Certificate handling
+#
+  letsencrypt-nginx-proxy-companion:
+    restart: always
+    image: jrcs/letsencrypt-nginx-proxy-companion
+    container_name:  letsencrypt
+    hostname: letsencrypt
+    environment:
+      #- ACME_CA_URI=https://acme-staging.api.letsencrypt.org/directory
+      - ACME_CA_URI=https://acme-v01.api.letsencrypt.org/directory
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    volumes_from:
+      - nginx-proxy
+    healthcheck:
+      test: ["CMD-SHELL", "pidof letsencrypt_service"]
+      interval: 10s
+      timeout: 2s
+      retries: 3
