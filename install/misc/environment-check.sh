@@ -3,8 +3,8 @@
 MENU="Check Environment"
 
 clear
-[[ -s $CONFIGS/.config/seturl ]] && CHECKURL="$URL" || CHECKURL="Not set yet"
-[[ -s $CONFIGS/.config/setemail ]] && CHECKEMAIL="$EMAIL" || CHECKEMAIL="Not set yet"
+[[ -e $CONFIGS/.config/mydomain ]] && CHECKURL="$MYDOMAIN" || CHECKURL="Not set yet"
+[[ -e $CONFIGS/.config/myemail ]] && CHECKEMAIL="$MYEMAIL" || CHECKEMAIL="Not set yet"
 curl ifconfig.me > $CONFIGS/.config/publicip; IP=$( cat $CONFIGS/.config/publicip )
 sudo chown -R $USER:$USER $CONFIGS
 
