@@ -4,6 +4,17 @@ source /opt/GooPlex/menus/variables.sh
 
 if [ "$EUID" -ne 0 ]; then
 
+	if [ ! -e $CONFIGS/Docker/.env ]; then
+
+		sudo mkdir -p /var/local/GooPlex/.config
+		sudo mkdir -p /var/local/GooPlex/Docker
+		sudo chown -R $USER:$USER $CONFIGS
+		echo "Not set yet" > $CONFIGS/.config/mydomain
+		echo "Not set yet" > $CONFIGS/.config/myemail
+		source /opt/GooPlex/misc/environment-create.sh
+
+	fi
+	
 	/opt/GooPlex/menus/main.sh
 
 else
