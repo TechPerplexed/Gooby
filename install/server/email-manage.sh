@@ -23,6 +23,9 @@ if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 		echo "$SETMAIL" > $CONFIGS/.config/myemail
 
 		MYEMAIL=$(cat $CONFIGS/.config/myemail)
+		
+		source /opt/GooPlex/install/misc/environment-build.sh
+		source $CONFIGS/Docker/.env
 
 		echo "Your new email address is set to $MYEMAIL"
 
