@@ -24,6 +24,7 @@ if [[ ${1,,} != "rebuild" ]]; then
 	sudo apt-get install -y docker-ce dialog > /dev/null 2>&1
 	sudo usermod -aG docker ${USER} > /dev/null 2>&1
 	sudo curl -L https://github.com/docker/compose/releases/download/1.19.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose > /dev/null 2>&1
+	sudo chmod +x /usr/local/bin/docker-compose
 	echo "Creating configuration file..."
 
 fi
