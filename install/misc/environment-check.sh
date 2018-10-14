@@ -2,9 +2,7 @@
 
 MENU="Check Environment"
 
-clear
-[[ -e $CONFIGS/.config/mydomain ]] && CHECKURL="$MYDOMAIN" || CHECKURL="Not set yet"
-[[ -e $CONFIGS/.config/myemail ]] && CHECKEMAIL="$MYEMAIL" || CHECKEMAIL="Not set yet"
+source $CONFIGS/Docker/.env
 curl ifconfig.me > $CONFIGS/.config/publicip; IP=$( cat $CONFIGS/.config/publicip )
 sudo chown -R $USER:$USER $CONFIGS
 
@@ -21,8 +19,8 @@ show_menus() {
 	echo " ${CYAN}"
 	MENUSTART
 	echo " Timezone: ${CYAN}$TIMEZONE${STD}"
-	echo " Your Domain: ${CYAN}$CHECKURL${STD}"
-	echo " Your Email Address: ${CYAN}$CHECKEMAIL${STD}"
+	echo " Your Domain: ${CYAN}$MYDOMAIN${STD}"
+	echo " Your Email Address: ${CYAN}$MYEMAIL${STD}"
 	echo " Your Server IP Address: ${CYAN}$IP${STD}"
 	echo " GooPlex version: ${CYAN}$VERSION${STD}"
 	echo ""
