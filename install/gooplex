@@ -9,6 +9,7 @@ if [ "$EUID" -ne 0 ]; then
 		sudo mkdir -p $CONFIGS/.config
 		sudo mkdir -p $CONFIGS/Docker
 		sudo chown -R $USER:$USER $CONFIGS
+		curl ifconfig.me > $CONFIGS/.config/publicip
 		echo "None" > $CONFIGS/.config/mydomain
 		echo "None" > $CONFIGS/.config/myemail
 		source /opt/GooPlex/install/misc/environment-build.sh
