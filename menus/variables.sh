@@ -1,15 +1,6 @@
 #!/bin/bash
 
-# Define environment variables
-
-USERID=$( id -u $USER )
-GROUPID=$( id -g $USER )
-TIMEZONE=$( cat /etc/timezone )
-CONFIGS=/var/local/GooPlex
-EMAIL=$( cat $CONFIGS/.config/setemail )
-URL=$( cat $CONFIGS/.config/seturl )
-PUBLICIP=$( cat $CONFIGS/.config/publicip )
-VERSION=$( cat $CONFIGS/.config/version )
+VERSION="1.1.3"
 
 # Define colors
 
