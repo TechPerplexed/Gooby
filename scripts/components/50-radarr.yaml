@@ -1,0 +1,36 @@
+#
+# Radarr - Movie catalog and management
+#
+  radarr:
+    restart: unless-stopped
+    image: linuxserver/radarr:latest
+    container_name: radarr
+    hostname: radarr
+    cpu_shares: 2048
+    depends_on:
+      nginx-proxy:
+        condition: service_healthy
+      letsencrypt-nginx-proxy-companion:
+        condition: service_started
+        #deluge:
+        #condition: service_healthy
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ${CONFIGS}/Radarr:/config
+      - ${HOME}/logs:/config/logs
+      - ${GOOGLE}:/Google
+      - /bin/netstat:/bin/netstat:ro
+    environment:
+      - PGID=${GROUPID}
+      - PUID=${USERID}
+      - TZ=${TIMEZONE}
+      - VIRTUAL_HOST=radarr.${MYDOMAIN}
+      - VIRTUAL_PORT=7878
+      - VIRTUAL_NETWORK=nginx-proxy
+      - LETSENCRYPT_HOST=radarr.${MYDOMAIN}
+      - LETSENCRYPT_EMAIL=${MYEMAIL}
+    healthcheck:
+      test: ["CMD-SHELL", "netstat -ntlp | grep :7878 && mountpoint /movies"]
+      interval: 10s
+      timeout: 2s
+      retries: 3
