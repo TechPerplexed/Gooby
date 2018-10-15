@@ -1,0 +1,8 @@
+    blkio_config:
+      weight: 600
+      #device_read_bps:
+      #- path: /dev/md1
+      #rate: '200mb'
+      #device_write_bps:
+      #- path: /dev/md1
+      #rate: '200mb'
