@@ -1,0 +1,32 @@
+#
+# Deluge - Torrent download engine
+#
+  deluge:
+    restart: unless-stopped
+    image: linuxserver/deluge:latest
+    container_name: deluge
+    hostname: deluge
+    cpu_shares: 1024
+    ports:
+      - 55955:55955/tcp
+      - 55955:55955/udp
+      - 58846:58846/tcp
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ${CONFIGS}/Deluge:/config
+      - ${GOOGLE}:/Google
+    environment:
+      - PUID=${USERID}
+      - PGID=${GROUPID}
+      - TZ=${TIMEZONE}
+      - UMASK_SET=022
+      - VIRTUAL_HOST=deluge.${MYDOMAIN}
+      - VIRTUAL_PORT=8112
+      - VIRTUAL_NETWORK=nginx-proxy
+      - LETSENCRYPT_HOST=deluge.${MYDOMAIN}
+      - LETSENCRYPT_EMAIL=${MYEMAIL}
+    healthcheck:
+      test: ["CMD-SHELL", "netstat -ntlp | grep :8112"]
+      interval: 10s
+      timeout: 2s
+      retries: 3
