@@ -7,14 +7,18 @@ if [ "$EUID" -ne 0 ]; then
 	if [ ! -e $CONFIGS/Docker/.env ]; then
 		echo ""
 		echo "${YELLOW}Welcome to GooPlex!${STD}"
-		echo "${YELLOW}Please hang tight while we get some things ready...${STD}"
+		echo "${YELLOW}Please answer the following two questions:${STD}"
+		echo ""
+		read -e -p 'What domain will you be using to access your server (ex: mydomain.com)?  ' -i "${MYDOMAIN}" MYDOMAIN
+		read -e -p 'What is your email address for certificate registration (ex: myname@mydomain.com)  ' -i "${MYEMAIL}" MYEMAIL
+		echo "${YELLOW}Thank you! Please hang tight while we get some things ready...${STD}"
 		echo ""  && sleep 5
 		source /opt/GooPlex/install/server/docker-install.sh
 		sudo mkdir -p $CONFIGS/.config
 		sudo mkdir -p $CONFIGS/Docker/components
 		sudo chown -R $USER:$USER $CONFIGS
-		echo "None" > $CONFIGS/.config/mydomain
-		echo "None" > $CONFIGS/.config/myemail
+		echo "$MYDOMAIN" > $CONFIGS/.config/mydomain
+		echo "$MYEMAIL" > $CONFIGS/.config/myemail
 		sudo rsync -a /opt/GooPlex/scripts/components/00* $CONFIGS/Docker/components
 		sudo rsync -a /opt/GooPlex/scripts/components/01* $CONFIGS/Docker/components
 		source /opt/GooPlex/install/misc/environment-build.sh
