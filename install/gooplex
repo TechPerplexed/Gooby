@@ -6,6 +6,7 @@ if [ "$EUID" -ne 0 ]; then
 
 	if [ ! -e $CONFIGS/Docker/.env ]; then
 
+		source /opt/GooPlex/install/server/docker-install.sh
 		sudo mkdir -p $CONFIGS/.config
 		sudo mkdir -p $CONFIGS/Docker/components
 		sudo chown -R $USER:$USER $CONFIGS
