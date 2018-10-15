@@ -34,12 +34,12 @@ echo "#  Environment variables  #" >> ${ENV}
 echo "#    for GooPlex v$VERSION   #" >> ${ENV}
 echo "###########################" >> ${ENV}
 echo >> ${ENV}
-echo "HOME=${HOME}" >> ${ENV}
+echo "HOME=$CONFIGS" >> ${ENV}
 echo "USERID=$(id -u)" >> ${ENV}
 echo "GROUPID=$(id -g)" >> ${ENV}
 echo "IP=$(curl ifconfig.me)" >> ${ENV}
 echo "TIMEZONE=$(cat /etc/timezone)" >> ${ENV}
-echo "CONFIGS=${CONFIGS}" >> ${ENV}
+echo "CONFIGS=/" >> ${ENV}
 echo "DOWNLOADS=${HOME}/Downloads" >> ${ENV}
 echo "DOWNLOADS2=/mnt/Google/Downloads" >> ${ENV}
 echo "GOOGLE=/media/Google" >> ${ENV}
