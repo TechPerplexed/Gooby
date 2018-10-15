@@ -6,8 +6,8 @@ if [ "$EUID" -ne 0 ]; then
 
 	if [ ! -e $CONFIGS/Docker/.env ]; then
 		echo ""
-		echo "${YELLOW}It seems this is the first time you're running GooPlex...${STD}"
-		echo "${YELLOW}Please hang tight while we get some things ready!${STD}"
+		echo "${YELLOW}Welcome to GooPlex!${STD}"
+		echo "${YELLOW}Please hang tight while we get some things ready...${STD}"
 		echo ""  && sleep 5
 		source /opt/GooPlex/install/server/docker-install.sh
 		sudo mkdir -p $CONFIGS/.config
