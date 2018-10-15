@@ -1,0 +1,32 @@
+#
+# Tautulli - Reports on Plex stats
+#
+  tautulli:
+    restart: unless-stopped
+    image: linuxserver/tautulli:latest
+    container_name: tautulli
+    hostname: tautulli
+    cpu_shares: 1024
+    depends_on:
+      nginx-proxy:
+        condition: service_healthy
+      letsencrypt-nginx-proxy-companion:
+        condition: service_started
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ${CONFIGS}/Tautulli:/config
+      - ${CONFIGS}/Plex/Library/Application Support/Plex Media Server/Logs:/logs:ro
+    environment:
+      - PUID=${USERID}
+      - PGID=${GROUPID}
+      - TZ=${TIMEZONE}
+      - VIRTUAL_HOST=tautulli.${MYDOMAIN}
+      - VIRTUAL_PORT=8181
+      - VIRTUAL_NETWORK=nginx-proxy
+      - LETSENCRYPT_HOST=tautulli.${MYDOMAIN}
+      - LETSENCRYPT_EMAIL=${MYEMAIL}
+    healthcheck:
+      test: ["CMD-SHELL", "netstat -ntlp | grep :8181"]
+      interval: 10s
+      timeout: 2s
+      retries: 3
