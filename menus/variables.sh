@@ -1,6 +1,6 @@
 #!/bin/bash
 
-VERSION="2 alpha"
+VERSION="1.1.1"
 CONFIGS=/var/local/GooPlex
 COMMAND=${1,,}
 CURDIR=$(pwd)
