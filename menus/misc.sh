@@ -12,7 +12,7 @@ GOOPLEX(){
 }
 
 GOODEV(){
-	PERFORM="devel"
+	PERFORM="development-branch"
 	TASK="GooPlex"
 	source /opt/GooPlex/install/misc/${TASK}-${PERFORM}.sh
 }
@@ -46,7 +46,7 @@ show_menus() {
 	echo " ${CYAN}"
 	MENUSTART
 	echo " ${CYAN}A${STD} - Update GooPlex"
-	echo " ${CYAN}B${STD} - GooPlex Development Branch"
+	echo " ${CYAN}B${STD} - Switch to GooPlex Development Branch"
 	echo " ${CYAN}C${STD} - Check Environment"
 	echo " ${CYAN}D${STD} - Create Backup"
 	echo " ${CYAN}E${STD} - Restore Backup"
