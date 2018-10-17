@@ -2,6 +2,7 @@
 
 VERSION="1.1.3"
 CONFIGS=/var/local/GooPlex
+CURDIR=$(pwd)
 
 # Define colors
 
