@@ -24,7 +24,7 @@ if [ "$EUID" -ne 0 ]; then
 	#	source /opt/GooPlex/install/misc/environment-build.sh
 
 	# fi
-	
+
 	/opt/GooPlex/menus/main.sh
 
 else
