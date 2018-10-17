@@ -20,6 +20,8 @@ else
 
 		GOAHEAD
 
+		source /opt/GooPlex/install/server/docker-install.sh
+
 		docker run -d --name=$APP \
 		--restart=always \
 		-p $PORT:$PORT \
