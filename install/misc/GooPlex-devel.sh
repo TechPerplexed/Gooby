@@ -7,7 +7,7 @@ EXPLAINTASK
 echo "${LRED}"
 echo "--------------------------------------------------"
 echo " DANGER ZONE - EXTREME CAUTION!!!"
-echo " You are about to switch to
+echo " You are about to switch to"
 echo " the development branch of GooPlex"
 echo " There is NO upgrade path!!"
 echo " Many functions won't work yet."
