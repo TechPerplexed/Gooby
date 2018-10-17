@@ -1,5 +1,5 @@
 version: "2.2"
-	#
-	# GooPlex - Heavily Inspired by Kelinger's OmniPlex
-	#
+  #
+  # GooPlex - Heavily Inspired by Kelinger's OmniPlex
+  #
 services:
