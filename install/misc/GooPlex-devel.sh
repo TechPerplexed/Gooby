@@ -4,9 +4,14 @@ clear
 
 EXPLAINTASK
 
-echo "${LYELLOW}"
+echo "${LRED}"
 echo "--------------------------------------------------"
-echo " You can run this as often as you like"
+echo " DANGER ZONE - EXTREME CAUTION!!!"
+echo " You are about to switch to
+echo " the development branch of GooPlex"
+echo " There is NO upgrade path!!"
+echo " Many functions won't work yet."
+echo " Only use this on a test server!"
 echo "--------------------------------------------------"
 echo "${STD}"
 
@@ -17,7 +22,7 @@ if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 	clear
 	cd ~
 	sudo rm -r /opt/GooPlex
-	sudo git clone -b master https://github.com/TechPerplexed/GooPlex /opt/GooPlex
+	sudo git clone -b develop https://github.com/TechPerplexed/GooPlex /opt/GooPlex
 	sudo chmod +x -R /opt/GooPlex/install
 	sudo chmod +x -R /opt/GooPlex/menus
 	sudo rsync -a /opt/GooPlex/install/gooplex /bin
