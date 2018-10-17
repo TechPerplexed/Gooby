@@ -11,6 +11,12 @@ GOOPLEX(){
 	source /opt/GooPlex/install/misc/${TASK}-${PERFORM}.sh
 }
 
+GOODEV(){
+	PERFORM="devel"
+	TASK="GooPlex"
+	source /opt/GooPlex/install/misc/${TASK}-${PERFORM}.sh
+}
+
 CHECKENV(){
 	PERFORM="check"
 	TASK="environment"
@@ -40,9 +46,10 @@ show_menus() {
 	echo " ${CYAN}"
 	MENUSTART
 	echo " ${CYAN}A${STD} - Update GooPlex"
-	echo " ${CYAN}B${STD} - Check Environment"
-	echo " ${CYAN}C${STD} - Create Backup"
-	echo " ${CYAN}D${STD} - Restore Backup"
+	echo " ${CYAN}B${STD} - GooPlex Development Branch"
+	echo " ${CYAN}C${STD} - Check Environment"
+	echo " ${CYAN}D${STD} - Create Backup"
+	echo " ${CYAN}E${STD} - Restore Backup"
 	echo " ${WHITE}Z${STD} - EXIT to Main Menu"
 	echo " ${CYAN}"
 	MENUEND
@@ -55,9 +62,10 @@ read_options(){
 	read -n 1 -s -r -p "Choose option: " choice
 	case $choice in
 		[Aa]) GOOPLEX ;;
-		[Bb]) CHECKENV ;;
-		[Cc]) BACKUP ;;
-		[Dd]) RESTORE ;;
+		[Bb]) GOODEV ;;
+		[Cc]) CHECKENV ;;
+		[Dd]) BACKUP ;;
+		[Ee]) RESTORE ;;
 		[Zz]) QUIT ;;
 		*) echo "${LRED}Please select a valid option${STD}" && sleep 2
 	esac
