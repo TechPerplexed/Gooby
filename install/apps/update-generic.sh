@@ -18,8 +18,6 @@ else
 		GOAHEAD
 		RUNPATCHES
 
-		# Main script
-
 		docker stop $APP
 		docker start $APP
 
