@@ -6,7 +6,6 @@ DOCKERHOME=$CONFIGS/Docker
 sudo mkdir -p $DOCKERHOME/components
 sudo chown -R $USER:$USER $CONFIGS
 ENV=${DOCKERHOME}/.env
-MEDIA=/media/Google
 touch ${ENV}
 
 # Load existing variables and use them as defaults, if available
@@ -45,9 +44,9 @@ echo "DOWNLOADS=${HOME}/Downloads" >> ${ENV}
 echo "GOOGLE=/media/Google" >> ${ENV}
 echo "MYDOMAIN=$(cat $CONFIGS/.config/mydomain)" >> ${ENV}
 echo "MYEMAIL=$(cat $CONFIGS/.config/myemail)" >> ${ENV}
-echo "MEDIA=${MEDIA}" >> ${ENV}
-echo "TV=${MEDIA}" >> ${ENV}
-echo "MOVIES=${MEDIA}" >> ${ENV}
+echo "MEDIA=/media/Google" >> ${ENV}
+echo "TV=/media/Google/TV Shows" >> ${ENV}
+echo "MOVIES=/media/Google/Movies" >> ${ENV}
 echo "RCLONETARGET=Gdrive" >> ${ENV}
 
 cat ${CONFIGS}/Docker/components/??-* > ${DOCKERHOME}/docker-compose.yaml
