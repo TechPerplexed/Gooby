@@ -21,7 +21,7 @@ else
 		echo "Please choose what version you want to install:"
 		echo ""
 		echo "Plex regular without CloudFlare (A) - default"
-		echo "Plex regular with CloudFlare (B)?
+		echo "Plex regular with CloudFlare (B)?"
 		echo "Plex Pass without CloudFlare (C)"
 		echo "Plex Pass with CloudFlare (D)"
 		echo ""
