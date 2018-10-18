@@ -19,7 +19,8 @@ else
 
 		cd $CONFIGS/Docker
 		/usr/local/bin/docker-compose down
-		sudo rm $CONFIGS/Docker/components/02-netdata*
+		sudo rm $CONFIGS/Docker/components/$APPLOC
+		echo "Just a moment while $APP is being removed..."
 		source /opt/GooPlex/install/misc/environment-build.sh rebuild
 		/usr/local/bin/docker-compose up -d --remove-orphans ${@:2}
 		cd "${CURDIR}
