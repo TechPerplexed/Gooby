@@ -8,18 +8,24 @@ source /opt/GooPlex/menus/variables.sh
 NETDATA(){
 	TASK=Netdata
 	APP=netdata
-	APPTYPE=generic
+	APPTYPE=netdata
 	APPLOC=02-netdata.*
 	source /opt/GooPlex/menus/apps.sh
 }
 
 ORGANIZR(){
-	TASK="Organizr"
+	TASK=Organizr
+	APP=organizr
+	APPTYPE=generic
+	APPLOC=
 	source /opt/GooPlex/menus/apps.sh
 }
 
 OMBI(){
-	TASK="Ombi"
+	TASK=Ombi
+	APP=ombi
+	APPTYPE=generic
+	APPLOC=\
 	source /opt/GooPlex/menus/apps.sh
 }
 
