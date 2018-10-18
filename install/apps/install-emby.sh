@@ -17,13 +17,15 @@ else
 
 		GOAHEAD
 
-		echo "Are you going to use a CloudFlare Certificate (y/N)?"
-		echo "If in doubt, choose N!"
+		echo ""
+		echo "Are you going to use a CloudFlare Certificate (C)?"
+		echo "Or do you want regular installataion (R)? (When in doubt, choose R)"
 		read -n 1 -s -r -p " ---> "
 		
 		case "$REPLY" in
-			y|Y ) APPLOC=$APPLOC-cf ;;
-			* ) echo "" ;;
+			c|C ) APPLOC=$APPLOC-cf; echo "CloudFlare installation..." ;;
+			r|R ) echo "Regular installation..." ;;
+			* ) echo "No choice made, will use regular installation..." ;;
 		esac
 
 		cd $CONFIGS/Docker
