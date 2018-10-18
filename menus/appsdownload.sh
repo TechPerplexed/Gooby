@@ -54,7 +54,6 @@ read_options(){
 		[Bb]) RADARR ;;
 		[Cc]) DELUGE ;;
 		[Dd]) NZBGET ;;
-		[Gg]) ORGANIZR ;;
 		[Zz]) QUIT ;;
 		*) echo "${LRED}Please select a valid option${STD}" && sleep 2
 	esac
