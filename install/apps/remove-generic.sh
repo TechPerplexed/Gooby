@@ -1,6 +1,6 @@
 #!/bin/bash
 
-docker ps -q -f name=netdata > /tmp/checkapp.txt
+docker ps -q -f name=$APP > /tmp/checkapp.txt
 clear
 
 if [ ! -s /tmp/checkapp.txt ]; then
@@ -16,12 +16,14 @@ else
 	if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 
 		GOAHEAD
-		RUNPATCHES
 
-		# Main script
-
-		docker container netdata
-		docker container netdata
+		cd $CONFIGS/Docker
+		sudo rm $CONFIGS/Docker/components/$APPLOC
+		/usr/local/bin/docker-compose down
+		echo "Just a moment while $APP is being uninstalled..."
+		source /opt/GooPlex/install/misc/environment-build.sh rebuild
+		/usr/local/bin/docker-compose up -d --remove-orphans ${@:2}
+		cd "${CURDIR}"
 
 		TASKCOMPLETE
 
