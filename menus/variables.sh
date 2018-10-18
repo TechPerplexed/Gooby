@@ -150,6 +150,7 @@ CONFIRMDELETE(){
 }
 
 GOAHEAD(){
+	clear
 	echo "${LMAGENTA}"
 	echo "--------------------------------------------------"
 	echo " Starting ${PERFORM} ${TASK}"
