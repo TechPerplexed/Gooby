@@ -7,11 +7,13 @@ if [ "$EUID" -ne 0 ]; then
 	if [ ! -e $CONFIGS/Docker/.env ]; then
 		echo ""
 		echo "${YELLOW}Welcome to GooPlex 2-Pre-Alpha!${STD}"
+		echo ""
 		echo "Please only try this on a FRESH server - there is no upgrade path"
 		echo "You will need to have a domain... if you don't have one"
 		echo "You will need to keep on using the old GooPlex"
 		echo ""
 		echo "Honestly, this is NOT production ready!"
+		echo ""
 		echo "${YELLOW}Please answer the following two questions:${STD}"
 		echo ""
 		read -e -p 'What domain will you be using to access your server (ex: mydomain.com)?  ' -i "${MYDOMAIN}" MYDOMAIN
