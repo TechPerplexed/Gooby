@@ -1,8 +1,5 @@
 #!/bin/bash
 
-APP="organizr"
-PORT=" "
-
 docker ps -q -f name=$APP > /tmp/checkapp.txt
 clear
 
@@ -12,7 +9,7 @@ if [ -s /tmp/checkapp.txt ]; then
 
 else
 
-	EXPLAINTASK
+	EXPLAINAPP
 
 	CONFIRMATION
 
@@ -20,18 +17,15 @@ else
 
 		GOAHEAD
 
-		source /opt/GooPlex/install/server/docker-install.sh
+		cd $CONFIGS/Docker
+		sudo rsync -a /opt/GooPlex/scripts/components/$APPLOC $CONFIGS/Docker/components
+		/usr/local/bin/docker-compose down
+		echo "Just a moment while $APP is being installed..."
+		source /opt/GooPlex/install/misc/environment-build.sh rebuild
+		/usr/local/bin/docker-compose up -d --remove-orphans ${@:2}
+		sudo chown -R $USER:$USER $CONFIGS/$TASK
+		cd "${CURDIR}"
 
-		docker run -d \
-		--name=$APP \
-		--restart=always \
-		-v $CONFIGS/$APP:/config \
-		-e PGID=$GROUPID -e PUID=$USERID \
-		-p "80:80" \
-		lsiocommunity/organizr
-
-		sudo chown -R $USER:$USER $CONFIGS/$APP
-		
 		APPINSTALLED
 
 		TASKCOMPLETE
