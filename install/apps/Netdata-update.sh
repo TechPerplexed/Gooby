@@ -20,8 +20,8 @@ else
 
 		# Main script
 
-		docker container stop netdata
-		docker container start netdata
+		docker container netdata
+		docker container netdata
 
 		TASKCOMPLETE
 
