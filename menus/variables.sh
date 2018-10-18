@@ -38,7 +38,8 @@ RUNPATCHES(){
 
 MENUSTART(){
 	echo "--------------------------------------------------"
-	echo " G O O P L E X - Visit techperplexed.ga"
+	echo " G O O P L E X     D E V E L O P M E NT"
+	echo " For testing only - DO NOT USE ON LIVE SERVER!!!"
 	echo "--------------------------------------------------"
 	echo " $MENU"
 	echo " ${STD}"
