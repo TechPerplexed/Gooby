@@ -15,7 +15,6 @@ CONFIRMATION
 if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 
 	clear
-	cd ~
 	sudo rm -r /opt/GooPlex
 	sudo git clone -b develop https://github.com/TechPerplexed/GooPlex /opt/GooPlex
 	sudo chmod +x -R /opt/GooPlex/install
