@@ -6,7 +6,10 @@ source /opt/GooPlex/menus/variables.sh
 # Menu Options
 
 SONARR(){
-	TASK="Sonarr"
+	TASK=Sonarr
+	APP=sonarr
+	APPTYPE=generic
+	APPLOC="52-sonarr.yaml, 53-sonarr.limits.yaml"
 	source /opt/GooPlex/menus/apps.sh
 }
 
