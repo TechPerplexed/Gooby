@@ -2,7 +2,7 @@
 
 docker ps -q -f name=netdata > /tmp/checkapp.txt
 clear
-
+PAUSE
 if [ ! -s /tmp/checkapp.txt ]; then
 
 	NOTINSTALLED
