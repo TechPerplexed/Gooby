@@ -17,7 +17,7 @@ PLEX(){
 	TASK=Plex
 	APP=plex
 	APPTYPE=plex
-	APPLOC=20-plex.yaml
+	APPLOC=20-plex
 	source /opt/GooPlex/menus/apps.sh
 }
 
@@ -25,7 +25,7 @@ TAUTULLI(){
 	TASK=Tautulli
 	APP=tautulli
 	APPTYPE=generic
-	APPLOC=25-tautulli.yaml
+	APPLOC=25-tautulli
 	source /opt/GooPlex/menus/apps.sh
 }
 
@@ -33,7 +33,7 @@ EMBY(){
 	TASK=Emby
 	APP=emby
 	APPTYPE=emby
-	APPLOC=22-emby.yaml
+	APPLOC=22-emby
 	source /opt/GooPlex/menus/apps.sh
 }
 
