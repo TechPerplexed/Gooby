@@ -9,7 +9,7 @@ SONARR(){
 	TASK=Sonarr
 	APP=sonarr
 	APPTYPE=generic
-	APPLOC="52-sonarr.yaml, 53-sonarr.limits.yaml"
+	APPLOC=52-sonarr.yaml
 	source /opt/GooPlex/menus/apps.sh
 }
 
