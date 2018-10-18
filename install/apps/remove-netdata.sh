@@ -18,7 +18,7 @@ else
 		GOAHEAD
 
 		cd $CONFIGS/Docker
-		sudo rm $CONFIGS/Docker/components/$APPLOC
+		sudo rm $CONFIGS/Docker/components/$APPLOC*
 		/usr/local/bin/docker-compose down
 		echo "Just a moment while $APP is being uninstalled..."
 		source /opt/GooPlex/install/misc/environment-build.sh rebuild
