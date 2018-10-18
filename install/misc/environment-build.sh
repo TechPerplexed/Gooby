@@ -34,22 +34,21 @@ echo "#  Environment variables  #" >> ${ENV}
 echo "#    for GooPlex v$VERSION   #" >> ${ENV}
 echo "###########################" >> ${ENV}
 echo >> ${ENV}
-echo "HOME=$CONFIGS" >> ${ENV}
+echo "HOME=$HOME" >> ${ENV}
 echo "USERID=$(id -u)" >> ${ENV}
 echo "GROUPID=$(id -g)" >> ${ENV}
 echo "IP=$(curl ifconfig.me)" >> ${ENV}
 echo "TIMEZONE=$(cat /etc/timezone)" >> ${ENV}
 echo "CONFIGS=$CONFIGS" >> ${ENV}
 echo "DOWNLOADS=${HOME}/Downloads" >> ${ENV}
-echo "DOWNLOADS2=/mnt/Google/Downloads" >> ${ENV}
 echo "GOOGLE=/media/Google" >> ${ENV}
 echo "MYDOMAIN=$(cat $CONFIGS/.config/mydomain)" >> ${ENV}
 echo "MYEMAIL=$(cat $CONFIGS/.config/myemail)" >> ${ENV}
 echo "MEDIA=${MEDIA}" >> ${ENV}
-echo "TV=${TV}" >> ${ENV}
-echo "MOVIES=${MOVIES}" >> ${ENV}
-echo "RCLONETARGET=${RCLONETARGET}" >> ${ENV}
-echo "MENU=${MENU}" >> ${ENV}
+echo "TV=${MEDIA}" >> ${ENV}
+echo "MOVIES=${MEDIA}" >> ${ENV}
+echo "RCLONETARGET=Gdrive" >> ${ENV}
+echo "MENU=www" >> ${ENV}
 
 cat ${CONFIGS}/Docker/components/??-* > ${DOCKERHOME}/docker-compose.yaml
 echo done
