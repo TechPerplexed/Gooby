@@ -137,7 +137,7 @@ CONFIRMDELETE(){
 	echo "${LRED}"
 	echo "--------------------------------------------------"
 	echo " DANGER ZONE - EXTREME CAUTION!!!"
-	echo " Do you want to delete all users settings as well?"
+	echo " Do you want to delete all user settings as well?"
 	echo " This cannot be undone"
 	echo " Make sure you have a backup!"
 	echo " Proceed? (y/N)?"
