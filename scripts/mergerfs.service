@@ -1,12 +1,22 @@
 [Unit]
-Description=Tautulli - Stats for Plex Media Server usage
+Description=Mount writable, cachable version of Google to /media/Google (MergerFS)
+After=syslog.target local-fs.target network.target rclone.service
 
 [Service]
-ExecStart=/opt/Tautulli/Tautulli.py --quiet --daemon --nolaunch --config /opt/Tautulli/config.ini --datadir /opt/Tautulli
-GuessMainPID=no
 Type=forking
 User=plexuser
 Group=plexuser
+Environment=RCLONEMOUNT=/mnt/remote
+Environment=UPLOADS=/mnt/upload
+Environment=MOUNTTO=/media/Google
+
+ExecStartPre=/bin/mkdir -p ${UPLOADS} ${MOUNTTO}
+ExecStart=/usr/bin/mergerfs \
+	-o use_ino,hard_remove,auto_cache,sync_read,allow_other,category.action=all,category.create=ff \
+	${UPLOADS}:${RCLONEMOUNT} ${MOUNTTO}
+ExecStop=/bin/fusermount -u -z ${MOUNTTO}
+ExecStop=/bin/rmdir ${MOUNTTO}
+Restart=always
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=default.target
