@@ -25,7 +25,7 @@ sudo ufw allow ssh
 sudo ufw --force enable
 
 sudo rm -r /opt/GooPlex
-sudo git clone https://github.com/TechPerplexed/GooPlex.git /opt/GooPlex
+sudo git clone -b legacy https://github.com/TechPerplexed/GooPlex /opt/GooPlex
 
 sudo chmod +x -R /opt/GooPlex/install
 sudo chmod +x -R /opt/GooPlex/menus
