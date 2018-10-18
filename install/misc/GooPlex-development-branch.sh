@@ -4,15 +4,9 @@ clear
 
 EXPLAINTASK
 
-echo "${LRED}"
+echo "${LYELLOW}"
 echo "--------------------------------------------------"
-echo " DANGER ZONE - EXTREME CAUTION!!!"
-echo " You are about to switch to"
-echo " the development branch of GooPlex"
-echo " There is NO upgrade path!!"
-echo " Many functions won't work yet."
-echo " Be prepared for some bleeding edge suffering ;)"
-echo " Only use this on a test server!"
+echo " You can run this as often as you like"
 echo "--------------------------------------------------"
 echo "${STD}"
 
