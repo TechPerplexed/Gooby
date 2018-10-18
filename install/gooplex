@@ -24,7 +24,7 @@ if [ "$EUID" -ne 0 ]; then
 		sudo chown -R $USER:$USER $CONFIGS
 		echo "$MYDOMAIN" > $CONFIGS/.config/mydomain
 		echo "$MYEMAIL" > $CONFIGS/.config/myemail
-		sudo rsync -a /opt/GooPlex/scripts/components/{00-AAA.yaml,01-proxy.yaml} ~
+		sudo rsync -a /opt/GooPlex/scripts/components/{00-AAA.yaml,01-proxy.yaml} $CONFIGS/Docker/components
 		source /opt/GooPlex/install/misc/environment-build.sh
 
 	fi
