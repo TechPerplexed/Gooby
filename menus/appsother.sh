@@ -6,7 +6,10 @@ source /opt/GooPlex/menus/variables.sh
 # Menu Options
 
 NETDATA(){
-	TASK="Netdata"
+	TASK=Netdata
+	APP=netdata
+	APPTYPE=generic
+	APPLOC=02-netdata.*
 	source /opt/GooPlex/menus/apps.sh
 }
 
