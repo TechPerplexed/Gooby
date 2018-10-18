@@ -26,11 +26,11 @@ else
 		cd "${CURDIR}"
 		
 		clear
-		
-		CONFIRMDELETE
-		
+
 		echo "$TASK has been removed".
-		
+
+		CONFIRMDELETE
+
 		case "$REPLY" in
 			y|Y ) sudo rm -r $CONFIGS/$TASK ;;
 			* ) echo "User settings not deleted" ;;
