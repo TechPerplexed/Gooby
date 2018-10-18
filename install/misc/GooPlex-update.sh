@@ -4,9 +4,15 @@ clear
 
 EXPLAINTASK
 
-echo "${LYELLOW}"
+echo "${LRED}"
 echo "--------------------------------------------------"
-echo " You can run this as often as you like"
+echo " DANGER ZONE - EXTREME CAUTION!!!"
+echo " You are about to switch back to"
+echo " the original branch of GooPlex"
+echo " There is NO downgrade path!!"
+echo " Many functions won't work any longer."
+echo " Please only downgrade if you haven't"
+echo " made any changes yet!"
 echo "--------------------------------------------------"
 echo "${STD}"
 
