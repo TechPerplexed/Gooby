@@ -48,7 +48,6 @@ echo "MEDIA=${MEDIA}" >> ${ENV}
 echo "TV=${MEDIA}" >> ${ENV}
 echo "MOVIES=${MEDIA}" >> ${ENV}
 echo "RCLONETARGET=Gdrive" >> ${ENV}
-echo "MENU=$MENU" >> ${ENV}
 
 cat ${CONFIGS}/Docker/components/??-* > ${DOCKERHOME}/docker-compose.yaml
 echo done
