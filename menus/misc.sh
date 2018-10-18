@@ -45,8 +45,8 @@ show_menus() {
 	clear
 	echo " ${CYAN}"
 	MENUSTART
-	echo " ${CYAN}A${STD} - Update GooPlex"
-	echo " ${CYAN}B${STD} - Switch to GooPlex Development Branch"
+	echo " ${CYAN}A${STD} - Switch Back to Original GooPlex"
+	echo " ${CYAN}B${STD} - Update GooPlex Development Branch"
 	echo " ${CYAN}C${STD} - Check Environment"
 	echo " ${CYAN}D${STD} - Create Backup"
 	echo " ${CYAN}E${STD} - Restore Backup"
