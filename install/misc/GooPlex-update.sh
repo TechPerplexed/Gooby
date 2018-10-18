@@ -22,7 +22,7 @@ if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 
 	clear
 	sudo rm -r /opt/GooPlex
-	sudo git clone -b master https://github.com/TechPerplexed/GooPlex /opt/GooPlex
+	sudo git clone -b legacy https://github.com/TechPerplexed/GooPlex /opt/GooPlex
 	sudo chmod +x -R /opt/GooPlex/install
 	sudo chmod +x -R /opt/GooPlex/menus
 	sudo rsync -a /opt/GooPlex/install/gooplex /bin
