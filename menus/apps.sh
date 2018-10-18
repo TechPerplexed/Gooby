@@ -1,5 +1,7 @@
 #!/bin/bash
 
+source $CONFIGS/Docker/.env
+
 # Menu Options
 
 INSTALL(){
