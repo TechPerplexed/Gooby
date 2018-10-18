@@ -1,0 +1,34 @@
+#
+# Emby - Media streaming server
+#
+  emby:
+    restart: unless-stopped
+    image: emby/embyserver:latest
+    container_name: emby
+    hostname: emby
+    cpu_shares: 8192
+    volumes:
+      - ${CONFIGS}/Emby:/config
+      - ${MEDIA}:/media/Google
+      - /tmp:/transcode
+    environment:
+      - UID=${USERID}
+      - GID=${GROUPID}
+      - GIDLIST=44
+      - TZ=MST7
+      - VIRTUAL_HOST=emby.${MYDOMAIN}
+      - VIRTUAL_PORT=8096
+      - VIRTUAL_PROTO=http
+      - VIRTUAL_NETWORK=nginx-proxy
+      - LETSENCRYPT_HOST=emby.${MYDOMAIN}
+      - LETSENCRYPT_EMAIL=${MYEMAIL}
+#    devices:
+#      - /dev/dri:/dev/dri
+    blkio_config:
+      weight: 600
+      #device_read_bps:
+      #- path: /dev/md1
+      #rate: '200mb'
+      #device_write_bps:
+      #- path: /dev/md1
+      #rate: '200mb'
