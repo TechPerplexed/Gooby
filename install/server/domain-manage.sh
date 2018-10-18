@@ -24,7 +24,7 @@ if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 
 		MYDOMAIN=$(cat $CONFIGS/.config/mydomain)
 
-		source /opt/GooPlex/install/misc/environment-build.sh
+		/opt/GooPlex/install/misc/environment-build.sh rebuild
 		source $CONFIGS/Docker/.env
 
 		echo "Your new domain is set to $MYDOMAIN"
