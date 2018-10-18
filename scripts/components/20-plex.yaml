@@ -1,0 +1,30 @@
+#
+# Plex - Meadia streaming server
+#
+  plex:
+    restart: unless-stopped
+    image: plexinc/pms-docker
+    container_name: plex
+    hostname: plex
+    cpu_shares: 8192
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ${CONFIGS}/Plex:/config
+      - /tmp:/transcode
+      - /bin/netstat:/bin/netstat:ro
+      - ${MEDIA}:/media
+    environment:
+      - PUID=${USERID}
+      - PGID=${GROUPID}
+      - TZ=${TIMEZONE}
+      - VIRTUAL_HOST=plex.${MYDOMAIN}
+      - VIRTUAL_PORT=32400
+      - VIRTUAL_PROTO=https
+      - VIRTUAL_NETWORK=nginx-proxy
+      - LETSENCRYPT_HOST=plex.${MYDOMAIN}
+      - LETSENCRYPT_EMAIL=${MYEMAIL}
+    healthcheck:
+      test: ["CMD-SHELL", "netstat -ntlp | grep :32400 && mountpoint /media"]
+      interval: 10s
+      timeout: 2s
+      retries: 3
