@@ -9,7 +9,7 @@ SONARR(){
 	TASK=Sonarr
 	APP=sonarr
 	APPTYPE=generic
-	APPLOC=52-sonarr.yaml
+	APPLOC=52-sonarr
 	source /opt/GooPlex/menus/apps.sh
 }
 
@@ -17,7 +17,7 @@ RADARR(){
 	TASK=Radarr
 	APP=radarr
 	APPTYPE=generic
-	APPLOC=50-radarr.yaml
+	APPLOC=50-radarr
 	source /opt/GooPlex/menus/apps.sh
 }
 
@@ -25,7 +25,7 @@ DELUGE(){
 	TASK=Deluge
 	APP=deluge
 	APPTYPE=generic
-	APPLOC=40-deluge.yaml
+	APPLOC=40-deluge
 	source /opt/GooPlex/menus/apps.sh
 }
 
