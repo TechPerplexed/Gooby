@@ -1,8 +1,6 @@
 #!/bin/bash
 
-APP="netdata"
-
-docker ps -q -f name=$APP > /tmp/checkapp.txt
+docker ps -q -f name=netdata > /tmp/checkapp.txt
 clear
 
 if [ ! -s /tmp/checkapp.txt ]; then
@@ -11,20 +9,16 @@ if [ ! -s /tmp/checkapp.txt ]; then
 
 else
 
-	EXPLAINAPP
+	EXPLAINTASK
 
-	CONFIRMATION
+	CONFIRMDELETE
 
 	if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 
 		GOAHEAD
 
-		cd $CONFIGS/Docker
-		/usr/local/bin/docker-compose down
-		sudo rm $CONFIGS/Docker/components/02-netdata*
-		source /opt/GooPlex/install/misc/environment-build.sh rebuild
-		/usr/local/bin/docker-compose up -d --remove-orphans ${@:2}
-		cd "${CURDIR}"
+		docker container stop netdata
+		docker container rm netdata
 
 		TASKCOMPLETE
 
