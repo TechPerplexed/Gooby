@@ -6,6 +6,7 @@ DOCKERHOME=$CONFIGS/Docker
 sudo mkdir -p $DOCKERHOME/components
 sudo chown -R $USER:$USER $CONFIGS
 ENV=${DOCKERHOME}/.env
+MEDIA=/media/Google
 touch ${ENV}
 
 # Load existing variables and use them as defaults, if available
