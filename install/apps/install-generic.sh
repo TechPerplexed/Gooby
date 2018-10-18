@@ -18,10 +18,11 @@ else
 		GOAHEAD
 
 		cd $CONFIGS/Docker
-		sudo rsync -a /opt/GooPlex/scripts/components/$APPFILES $CONFIGS/Docker/components
+		sudo rsync -a /opt/GooPlex/scripts/components/$APPLOC $CONFIGS/Docker/components
 		/usr/local/bin/docker-compose down
 		echo "Just a moment while $APP is being installed..."
 		source /opt/GooPlex/install/misc/environment-build.sh rebuild
+		sudo chown -R $USER:$USER $CONFIGS/$TASK
 		/usr/local/bin/docker-compose up -d --remove-orphans ${@:2}
 		cd "${CURDIR}"
 
