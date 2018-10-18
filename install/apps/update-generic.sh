@@ -1,6 +1,6 @@
 #!/bin/bash
 
-docker ps -q -f name=netdata > /tmp/checkapp.txt
+docker ps -q -f name=$APP > /tmp/checkapp.txt
 clear
 
 if [ ! -s /tmp/checkapp.txt ]; then
@@ -20,8 +20,8 @@ else
 
 		# Main script
 
-		docker container netdata
-		docker container netdata
+		docker stop $APP
+		docker start $APP
 
 		TASKCOMPLETE
 
