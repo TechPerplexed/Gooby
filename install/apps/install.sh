@@ -1,8 +1,5 @@
 #!/bin/bash
 
-APP="netdata"
-APPFILES="02-netdata*"
-
 docker ps -q -f name=$APP > /tmp/checkapp.txt
 clear
 
