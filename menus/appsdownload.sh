@@ -14,17 +14,26 @@ SONARR(){
 }
 
 RADARR(){
-	TASK="Radarr"
+	TASK=Radarr
+	APP=radarr
+	APPTYPE=generic
+	APPLOC=50-radarr.yaml
 	source /opt/GooPlex/menus/apps.sh
 }
 
 DELUGE(){
-	TASK="Deluge"
+	TASK=Deluge
+	APP=deluge
+	APPTYPE=generic
+	APPLOC=40-deluge.yaml
 	source /opt/GooPlex/menus/apps.sh
 }
 
 NZBGET(){
-	TASK="NZBGet"
+	TASK=NZBGet
+	APP=nzbget
+	APPTYPE=generic
+	APPLOC=
 	source /opt/GooPlex/menus/apps.sh
 }
 
@@ -57,7 +66,6 @@ read_options(){
 		[Bb]) RADARR ;;
 		[Cc]) DELUGE ;;
 		[Dd]) NZBGET ;;
-		[Gg]) ORGANIZR ;;
 		[Zz]) QUIT ;;
 		*) echo "${LRED}Please select a valid option${STD}" && sleep 2
 	esac
