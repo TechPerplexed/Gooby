@@ -88,8 +88,8 @@ APPINSTALLED(){
 	echo "--------------------------------------------------"
 	echo " ${TASK} is now installed"
 	echo " You can reach it through this URL:"
-	echo " $PUBLICIP:$PORT"
-	# echo " This will soon be $URL/$APP"
+	echo " Don't forget to point $URL/$APP"
+	echo " To your server IP address $IP"
 	echo "--------------------------------------------------"
 	echo "${STD}"
 }
