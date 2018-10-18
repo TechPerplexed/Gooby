@@ -11,14 +11,17 @@ else
 
 	EXPLAINTASK
 
-	CONFIRMDELETE
+	CONFIRMATION
 
 	if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 
 		GOAHEAD
+		RUNPATCHES
+
+		# Main script
 
 		docker container stop netdata
-		docker container rm netdata
+		docker container start netdata
 
 		TASKCOMPLETE
 
