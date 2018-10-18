@@ -17,6 +17,15 @@ else
 
 		GOAHEAD
 
+		echo "Are you going to use a CloudFlare Certificate (y/N)?"
+		echo "If in doubt, choose N!"
+		read -n 1 -s -r -p " ---> "
+		
+		case "$REPLY" in
+			y|Y ) APPLOC=$APPLOC-cf ;;
+			* ) echo "" ;;
+		esac
+
 		cd $CONFIGS/Docker
 		sudo rsync -a /opt/GooPlex/scripts/components/$APPLOC.yaml $CONFIGS/Docker/components
 		/usr/local/bin/docker-compose down
