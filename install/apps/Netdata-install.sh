@@ -22,7 +22,7 @@ else
 		cd $CONFIGS/Docker
 		sudo rsync -a /opt/GooPlex/scripts/components/02-netdata* $CONFIGS/Docker/components
 		/usr/local/bin/docker-compose down
-		source /opt/GooPlex/install/misc/${TASK}-${PERFORM}.sh rebuild
+		source /opt/GooPlex/install/misc/environment-build.sh.sh rebuild
 		/usr/local/bin/docker-compose up -d --remove-orphans ${@:2}
 		cd "${CURDIR}"
 
