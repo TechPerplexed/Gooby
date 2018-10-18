@@ -11,7 +11,7 @@ else
 
 	EXPLAINTASK
 
-	CONFIRMTASK
+	CONFIRMATION
 
 	if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 
