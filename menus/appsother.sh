@@ -9,7 +9,7 @@ NETDATA(){
 	TASK=Netdata
 	APP=netdata
 	APPTYPE=netdata
-	APPLOC=02-netdata.yaml
+	APPLOC=02-netdata
 	source /opt/GooPlex/menus/apps.sh
 }
 
