@@ -24,6 +24,13 @@ else
 		source /opt/GooPlex/install/misc/environment-build.sh rebuild
 		/usr/local/bin/docker-compose up -d --remove-orphans ${@:2}
 		cd "${CURDIR}"
+		
+		CONFIRMDELETE
+		
+		case "$choice" in
+			y|Y ) sudo rm -r $CONFIGS/$TASK ;;
+			* ) echo "User settings not deleted" ;;
+		esac
 
 		TASKCOMPLETE
 
