@@ -129,7 +129,7 @@ CONFIRMATION(){
 	echo " Are you sure you want to ${PERFORM} ${TASK} (y/N)? "
 	echo "--------------------------------------------------"
 	echo "${STD}"
-	read -t 300 -n 1 -s -r -p " ---> "
+	read -n 1 -s -r -p " ---> "
 	echo ""
 }
 
@@ -137,14 +137,13 @@ CONFIRMDELETE(){
 	echo "${LRED}"
 	echo "--------------------------------------------------"
 	echo " DANGER ZONE - EXTREME CAUTION!!!"
-	echo " Are you really really sure?"
-	echo " You are about to ${PERFORM} ${TASK}"
-	echo " Including user settings and databases"
-	echo " Make sure you have a backup first!"
+	echo " Do you want to delete all users settings as well?"
+	echo " This cannot be undone"
+	echo " Make sure you have a backup!"
 	echo " Proceed? (y/N)?"
 	echo "--------------------------------------------------"
 	echo "${STD}"
-	read -t 300 -n 1 -s -r -p " ---> "
+	read -n 1 -s -r -p " ---> "
 	echo ""
 }
 
@@ -178,6 +177,6 @@ PAUSE(){
 	echo " All done! Press Enter to return to the menu"
 	echo "--------------------------------------------------"
 	echo "${STD}"
-	read -t 300 -n 1 -s -r -p " ---> "
+	read -n 1 -s -r -p " ---> "
 	echo ""
 }
