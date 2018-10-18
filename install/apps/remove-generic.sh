@@ -31,7 +31,7 @@ else
 		
 		echo "$TASK has been removed".
 		
-		case "$choice" in
+		case "$REPLY" in
 			y|Y ) sudo rm -r $CONFIGS/$TASK ;;
 			* ) echo "User settings not deleted" ;;
 		esac
