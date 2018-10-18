@@ -6,22 +6,34 @@ source /opt/GooPlex/menus/variables.sh
 # Menu Options
 
 RCLONE(){
-	TASK="Rclone"
+	TASK=Rclone
+	APP=rclone
+	APPTYPE=rclone
+	APPLOC=
 	source /opt/GooPlex/menus/apps.sh
 }
 
 PLEX(){
-	TASK="Plex"
+	TASK=Plex
+	APP=plex
+	APPTYPE=plex
+	APPLOC=20-plex.yaml
 	source /opt/GooPlex/menus/apps.sh
 }
 
 TAUTULLI(){
-	TASK="Tautulli"
+	TASK=Tautulli
+	APP=tautulli
+	APPTYPE=generic
+	APPLOC=25-tautulli.yaml
 	source /opt/GooPlex/menus/apps.sh
 }
 
 EMBY(){
-	TASK="Emby"
+	TASK=Emby
+	APP=emby
+	APPTYPE=emby
+	APPLOC=22-emby.yaml
 	source /opt/GooPlex/menus/apps.sh
 }
 
