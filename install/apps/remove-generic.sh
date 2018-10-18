@@ -2,28 +2,26 @@
 
 docker ps -q -f name=netdata > /tmp/checkapp.txt
 clear
-PAUSE
+
 if [ ! -s /tmp/checkapp.txt ]; then
 
 	NOTINSTALLED
 
 else
 
-	EXPLAINAPP
+	EXPLAINTASK
 
-	CONFIRMDELETE
+	CONFIRMATION
 
 	if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 
 		GOAHEAD
+		RUNPATCHES
 
-		cd $CONFIGS/Docker
-		/usr/local/bin/docker-compose down
-		sudo rm $CONFIGS/Docker/components/$APPLOC
-		echo "Just a moment while $APP is being removed..."
-		source /opt/GooPlex/install/misc/environment-build.sh rebuild
-		/usr/local/bin/docker-compose up -d --remove-orphans ${@:2}
-		cd "${CURDIR}
+		# Main script
+
+		docker container netdata
+		docker container netdata
 
 		TASKCOMPLETE
 
