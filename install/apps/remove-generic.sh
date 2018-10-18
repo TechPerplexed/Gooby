@@ -9,7 +9,7 @@ if [ ! -s /tmp/checkapp.txt ]; then
 
 else
 
-	EXPLAINTASK
+	EXPLAINAPP
 
 	CONFIRMATION
 
