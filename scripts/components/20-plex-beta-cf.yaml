@@ -31,3 +31,11 @@
       interval: 10s
       timeout: 2s
       retries: 3
+    blkio_config:
+      weight: 600
+      #device_read_bps:
+      #- path: /dev/md1
+      #rate: '200mb'
+      #device_write_bps:
+      #- path: /dev/md1
+      #rate: '200mb'
