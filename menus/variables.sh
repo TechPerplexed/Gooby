@@ -112,6 +112,16 @@ EXPLAINTASK(){
 	echo "${STD}"
 }
 
+EXPLAINAPP(){
+	clear
+	echo "${CYAN}"
+	echo "--------------------------------------------------"
+	echo " This will ${PERFORM} ${TASK}"
+	echo " This will cause a few seconds of downtime"
+	echo "--------------------------------------------------"
+	echo "${STD}"
+}
+
 CONFIRMATION(){
 	echo "${YELLOW}"
 	echo "--------------------------------------------------"
