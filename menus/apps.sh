@@ -6,17 +6,17 @@ source $CONFIGS/Docker/.env
 
 INSTALL(){
 	PERFORM="install"
-	source /opt/GooPlex/install/apps/${TASK}-${PERFORM}.sh
+	source /opt/GooPlex/install/apps/${PERFORM}-$APPTYPE.sh
 }
 
 UPDATE(){
 	PERFORM="update"
-	source /opt/GooPlex/install/apps/${TASK}-${PERFORM}.sh
+	source /opt/GooPlex/install/apps/${PERFORM}-$APPTYPE.sh
 }
 
 REMOVE(){
 	PERFORM="remove"
-	source /opt/GooPlex/install/apps/${TASK}-${PERFORM}.sh
+	source /opt/GooPlex/install/apps/${PERFORM}-$APPTYPE.sh
 }
 
 QUIT(){
@@ -29,9 +29,9 @@ show_menus() {
 	clear
 	echo " ${LPURPLE}"
 	MENUSTART
-	echo " ${LPURPLE}I${STD} - Install $TASK"
-	echo " ${LPURPLE}U${STD} - Update $TASK"
-	echo " ${LPURPLE}R${STD} - Remove $TASK"
+	echo " ${LPURPLE}I${STD} - Install ${TASK}"
+	echo " ${LPURPLE}U${STD} - Update ${TASK}"
+	echo " ${LPURPLE}R${STD} - Remove ${TASK}"
 	echo " ${WHITE}Z${STD} - EXIT to Main Menu"
 	echo " ${LPURPLE}"
 	MENUEND
