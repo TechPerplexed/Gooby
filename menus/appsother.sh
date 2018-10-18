@@ -9,7 +9,7 @@ NETDATA(){
 	TASK=Netdata
 	APP=netdata
 	APPTYPE=netdata
-	APPLOC=02-netdata.*
+	APPLOC=02-netdata.yaml
 	source /opt/GooPlex/menus/apps.sh
 }
 
@@ -25,7 +25,7 @@ OMBI(){
 	TASK=Ombi
 	APP=ombi
 	APPTYPE=generic
-	APPLOC=\
+	APPLOC=
 	source /opt/GooPlex/menus/apps.sh
 }
 
