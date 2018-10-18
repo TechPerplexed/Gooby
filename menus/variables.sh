@@ -88,9 +88,9 @@ APPINSTALLED(){
 	echo "${YELLOW}"
 	echo "--------------------------------------------------"
 	echo " ${TASK} is now installed"
-	echo " You can reach it through this URL: {YELLOW}$APP.$MYDOMAIN${YELLOW}"
+	echo " You can reach it through this URL: ${WHITE}$APP.$MYDOMAIN$${YELLOW}"
 	echo " Don't forget to create an A record for $APP"
-	echo " And point it to your server IP address {YELLOW}$IP${YELLOW}"
+	echo " And point it to your server IP address ${WHITE}$IP${YELLOW}"
 	echo "--------------------------------------------------"
 	echo "${STD}"
 }
