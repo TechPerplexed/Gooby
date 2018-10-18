@@ -25,7 +25,11 @@ else
 		/usr/local/bin/docker-compose up -d --remove-orphans ${@:2}
 		cd "${CURDIR}"
 		
+		clear
+		
 		CONFIRMDELETE
+		
+		echo "$TASK has been removed".
 		
 		case "$choice" in
 			y|Y ) sudo rm -r $CONFIGS/$TASK ;;
