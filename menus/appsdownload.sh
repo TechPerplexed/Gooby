@@ -8,7 +8,7 @@ source /opt/GooPlex/menus/variables.sh
 SONARR(){
 	TASK=Sonarr
 	APP=sonarr
-	APPTYPE=generic
+	APPTYPE=beta
 	APPLOC=52-sonarr
 	source /opt/GooPlex/menus/apps.sh
 }
