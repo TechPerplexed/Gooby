@@ -24,11 +24,13 @@ if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 
 		MYDOMAIN=$(cat $CONFIGS/.config/mydomain)
 
-		/usr/local/bin/docker-compose down
+		echo ""
 		echo "Just a moment while your new domain is being installed..."
+		echo ""
+		/usr/local/bin/docker-compose down
+		
 		source /opt/GooPlex/install/misc/environment-build.sh rebuild
 		/usr/local/bin/docker-compose up -d --remove-orphans ${@:2}
-
 		clear
 		source $CONFIGS/Docker/.env
 		echo "Your new domain is set to $MYDOMAIN"
