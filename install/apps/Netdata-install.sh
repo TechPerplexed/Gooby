@@ -1,6 +1,7 @@
 #!/bin/bash
 
 APP="netdata"
+APPFILES="02-netdata*"
 
 docker ps -q -f name=$APP > /tmp/checkapp.txt
 clear
@@ -20,7 +21,7 @@ else
 		GOAHEAD
 
 		cd $CONFIGS/Docker
-		sudo rsync -a /opt/GooPlex/scripts/components/02-netdata* $CONFIGS/Docker/components
+		sudo rsync -a /opt/GooPlex/scripts/components/$APPFILES $CONFIGS/Docker/components
 		/usr/local/bin/docker-compose down
 		source /opt/GooPlex/install/misc/environment-build.sh rebuild
 		/usr/local/bin/docker-compose up -d --remove-orphans ${@:2}
