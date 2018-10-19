@@ -1,0 +1,30 @@
+#
+# Organizr - Homelab Services Organizer
+#
+  organizr:
+    restart: unless-stopped
+    image: lsiocommunity/organizr
+    container_name: organizr
+    hostname: organizr
+    cpu_shares: 1024
+    ports:
+      - 80:80
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ${CONFIGS}/Organizr:/config
+      - ${GOOGLE}:/Google
+    environment:
+      - PUID=${USERID}
+      - PGID=${GROUPID}
+      - TZ=${TIMEZONE}
+      - UMASK_SET=022
+      - VIRTUAL_HOST=organizr.${MYDOMAIN}
+      - VIRTUAL_PORT=80
+      - VIRTUAL_NETWORK=nginx-proxy
+      - LETSENCRYPT_HOST=organizr.${MYDOMAIN}
+      - LETSENCRYPT_EMAIL=${MYEMAIL}
+    healthcheck:
+      test: ["CMD-SHELL", "netstat -ntlp | grep :6789"]
+      interval: 10s
+      timeout: 2s
+      retries: 3
