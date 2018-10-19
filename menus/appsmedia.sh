@@ -9,7 +9,6 @@ RCLONE(){
 	TASK=Rclone
 	APP=rclone
 	APPTYPE=rclone
-	APPLOC=
 	source /opt/GooPlex/menus/apps.sh
 }
 
