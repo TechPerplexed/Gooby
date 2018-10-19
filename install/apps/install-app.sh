@@ -23,7 +23,7 @@ else
 		echo ""
 		[[ -f "/opt/GooPlex/scripts/components/$APPLOC.yaml" ]] && echo " ${YELLOW}S${STD} - $TASK Stable - default"
 		[[ -f "/opt/GooPlex/scripts/components/$APPLOC-beta.yaml" ]] && echo " ${YELLOW}B${STD} - $TASK Beta"
-		[[ -f "/opt/GooPlex/scripts/components/$APPLOC-cf.yaml" ]] && echo " ${YELLOW}C${STD}- $TASK Stable with CloudFlare"
+		[[ -f "/opt/GooPlex/scripts/components/$APPLOC-cf.yaml" ]] && echo " ${YELLOW}C${STD} - $TASK Stable with CloudFlare"
 		[[ -f "/opt/GooPlex/scripts/components/$APPLOC-beta-cf.yaml" ]] && echo " ${YELLOW}Q${STD} - $TASK Beta with CloudFlare"
 		echo "--------------------------------------------------"
 		echo ""
