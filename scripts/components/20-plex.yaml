@@ -3,7 +3,7 @@
 #
   plex:
     restart: unless-stopped
-    image: plexinc/pms-docker:beta
+    image: plexinc/pms-docker
     container_name: plex
     hostname: plex
     cpu_shares: 8192
