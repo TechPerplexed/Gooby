@@ -2,14 +2,7 @@
 
 clear
 
-EXPLAINAPP
-
-echo "${YELLOW}"
-echo "--------------------------------------------------"
-echo " Create a backup of your user settings"
-echo " It can be found in your Google Backup folder"
-echo "--------------------------------------------------"
-echo "${STD}"
+EXPLAINTASK
 
 CONFIRMATION
 
@@ -39,7 +32,13 @@ if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 	sudo chown $USER:$USER ${CONFIGS}
 	sudo chown $USER:$USER ${HOME}
 
-	echo -e "${WHITE}Done!${STD}"
+	clear
+	echo "${YELLOW}"
+	echo "--------------------------------------------------"
+	echo " Done! The backup can be found"
+	echo " In your Google Backup folder"
+	echo "--------------------------------------------------"
+	echo "${STD}"
 
 	TASKCOMPLETE
 
