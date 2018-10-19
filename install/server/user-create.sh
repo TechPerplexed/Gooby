@@ -14,7 +14,7 @@ CONFIRMATION
 
 if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 
-	read -e -p "${YELLOW}Desired username${STD}: " -i "" PU
+	read -e -p "${YELLOW}Desired username${STD}: " -i "yourname" PU
 
 	sudo -s adduser $PU
 
