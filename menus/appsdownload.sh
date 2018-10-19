@@ -37,6 +37,14 @@ NZBGET(){
 	source /opt/GooPlex/menus/apps.sh
 }
 
+JACKETT(){
+	TASK=Jackett
+	APP=jackett
+	APPTYPE=app
+	APPLOC=44-jackett
+	source /opt/GooPlex/menus/apps.sh
+}
+
 QUIT(){
 	exit
 }
@@ -51,6 +59,7 @@ show_menus() {
 	echo " ${LPURPLE}B${STD} - Radarr"
 	echo " ${LPURPLE}C${STD} - Deluge"
 	echo " ${LPURPLE}D${STD} - NZBGet"
+	echo " ${LPURPLE}4${STD} - Jackett"
 	echo " ${WHITE}Z${STD} - EXIT to Main Menu"
 	echo " ${LPURPLE}"
 	MENUEND
@@ -66,6 +75,7 @@ read_options(){
 		[Bb]) RADARR ;;
 		[Cc]) DELUGE ;;
 		[Dd]) NZBGET ;;
+		[Ee]) JACKETT ;;
 		[Zz]) QUIT ;;
 		*) echo "${LRED}Please select a valid option${STD}" && sleep 2
 	esac
