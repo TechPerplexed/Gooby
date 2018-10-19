@@ -2,76 +2,49 @@
 
 clear
 
-# Explanation
+EXPLAINAPP
 
-echo -e "--------------------------------------------------"
-echo -e " This will create a backup of Plex and Tautulli"
-echo -e " The backup can be found in Google (Backup folder)"
-echo -e "--------------------------------------------------"
-echo ""
+echo "${YELLOW}"
+echo "--------------------------------------------------"
+echo " Create a backup of your user settings"
+echo " It can be found in your Google Backup folder"
+echo "--------------------------------------------------"
+echo "${STD}"
 
-# Confirmation
-
-read -p " Are you sure you want to ${PERFORM} ${TASK} (y/N)? " -n 1 -r
-echo ""
+CONFIRMATION
 
 if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 
-  # -----------
-  # Main script
-  # -----------
+	GOAHEAD
 
-  # Explanation
+	BACKUP=/tmp/$(date +%F).tar.gz
 
-  clear
-  echo -e "Plex will be unavailable during the backup"
-  echo -e "The backup can take several hours, depending on the size"
-  echo -e "Please don't exit PuTTY until it's done!"
-  echo ""
+	echo -e "The backup can take several hours, depending on the size"
+	echo -e "Please don't exit the terminal until it's done!"
+	echo ""
 
-  # Execution
+	echo -e "${LMAGENTA}Creating backup file...${STD}"
 
-  echo -e "${YELLOW}Stopping services...${STD}"
-  sudo systemctl stop tautulli.service
-  sudo service plexmediaserver stop
+	sudo tar -cf ${BACKUP} \
+	$CONFIGS \
+	--exclude-caches-all
 
-  # Creating backup
+	sudo chown $USER:$USER ${BACKUP}
 
-  echo -e "${LMAGENTA}Creating backup file...${STD}"
-  sudo tar -cf /tmp/$(date +%F).tar.gz \
-    /opt/Tautulli/config.ini \
-    /opt/Tautulli/tautulli.db \
-    /var/lib/plexmediaserver
+	echo -e "${LMAGENTA}Copying to Google...${STD}"
 
-  # Starting services
+	/usr/bin/rclone copy ${BACKUP} Gdrive:/Backup/$(hostname) --checksum --drive-chunk-size=64M
+	sudo rm ${BACKUP}
 
-  echo -e "${CYAN}Starting services...${STD}"
-  sudo service plexmediaserver start
-  sudo systemctl start tautulli.service
+	sudo chown $USER:$USER ${CONFIGS}
+	sudo chown $USER:$USER ${HOME}
 
-  # Copying to Gdrive
+	echo -e "${WHITE}Done!${STD}"
 
-  echo -e "${GREEN}Copying to Google drive...${STD}"
-  sudo rclone copy /tmp/$(date +%F).* Gdrive:/Backup/$(hostname) --checksum --drive-chunk-size=64M
-  sudo rm /tmp/$(date +%F).*
-  echo -e "${WHITE}Done!${STD}"
-
-  # Task Completed
-
-  echo -e "${LMAGENTA}"
-  echo -e "--------------------------------------------------"
-  echo -e " ${PERFORM} $TASK completed"
-  echo -e "--------------------------------------------------"
-  echo -e "${STD}"
+	TASKCOMPLETE
 
 else
 
-  echo ""
-  echo -e "--------------------------------------------------"
-  echo -e " You chose ${YELLOW}not${STD} to ${PERFORM} ${TASK}"
-  echo -e "--------------------------------------------------"
-  echo ""
+	CANCELTHIS
 
 fi
-
-PAUSE
