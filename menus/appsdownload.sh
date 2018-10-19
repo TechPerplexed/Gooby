@@ -59,7 +59,7 @@ show_menus() {
 	echo " ${LPURPLE}B${STD} - Radarr"
 	echo " ${LPURPLE}C${STD} - Deluge"
 	echo " ${LPURPLE}D${STD} - NZBGet"
-	echo " ${LPURPLE}4${STD} - Jackett"
+	echo " ${LPURPLE}E${STD} - Jackett"
 	echo " ${WHITE}Z${STD} - EXIT to Main Menu"
 	echo " ${LPURPLE}"
 	MENUEND
