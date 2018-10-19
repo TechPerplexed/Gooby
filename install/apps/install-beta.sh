@@ -18,14 +18,15 @@ else
 		GOAHEAD
 
 		echo ""
-		echo "Would you like to install $TASK regular (R) or beta (B)?"
-		echo "Remember it might not be backwards comptible..."
+		echo "Would you like to install $TASK stable (S) or beta (B)?"
+		echo "Remember the two might not be backwards comptible..."
+		echo ""
 		read -n 1 -s -r -p " ---> "
 		
 		case "$REPLY" in
-			b|B ) APPLOC=$APPLOC-beta; echo "CloudFlare installation..." ;;
-			r|R ) echo "Regular installation..." ;;
-			* ) echo "No choice made, will use regular installation..." ;;
+			b|B ) APPLOC=$APPLOC-beta; echo "Beta installation..." ;;
+			r|R ) echo "Stable installation..." ;;
+			* ) echo "No choice made, will use stable installation..." ;;
 		esac
 
 		cd $CONFIGS/Docker
