@@ -1,6 +1,6 @@
 #!/bin/bash
 
-which rclone > /tmp/checkapp.txt
+which rclone > $CONFIGS/.config/checkapp.txt
 clear
 
 if [ ! -s /tmp/checkapp.txt ]; then
@@ -48,5 +48,5 @@ else
 
 fi
 
-sudo rm /tmp/checkapp.txt
+rm $CONFIGS/.config/checkapp.txt
 PAUSE
