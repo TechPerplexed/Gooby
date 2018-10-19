@@ -1,0 +1,31 @@
+#
+# Ombi - Plex Request and user management
+#
+  ombi:
+    restart: unless-stopped
+    image: linuxserver/ombi
+    container_name: ombi
+    hostname: ombi
+    cpu_shares: 1024
+    ports:
+      - 3579:3579/tcp
+      - 3579:3579/udp
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ${CONFIGS}/Ombi:/config
+      - ${GOOGLE}:/Google
+    environment:
+      - PUID=${USERID}
+      - PGID=${GROUPID}
+      - TZ=${TIMEZONE}
+      - UMASK_SET=022
+      - VIRTUAL_HOST=ombi.${MYDOMAIN}
+      - VIRTUAL_PORT=3579
+      - VIRTUAL_NETWORK=nginx-proxy
+      - LETSENCRYPT_HOST=ombi.${MYDOMAIN}
+      - LETSENCRYPT_EMAIL=${MYEMAIL}
+    healthcheck:
+      test: ["CMD-SHELL", "netstat -ntlp | grep :6789"]
+      interval: 10s
+      timeout: 2s
+      retries: 3
