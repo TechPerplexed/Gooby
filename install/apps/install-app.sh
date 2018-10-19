@@ -42,7 +42,7 @@ else
 		echo "Just a moment while $APP is being installed..."
 		source /opt/GooPlex/install/misc/environment-build.sh rebuild
 		/usr/local/bin/docker-compose up -d --remove-orphans ${@:2}
-		sudo chown -R $USER:$USER $CONFIGS/$TASK
+		[[ -f "$CONFIGS/$TASK" ]] && sudo chown -R $USER:$USER $CONFIGS/$TASK		
 		cd "${CURDIR}"
 
 		APPINSTALLED
