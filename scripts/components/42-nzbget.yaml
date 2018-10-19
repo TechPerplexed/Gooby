@@ -3,7 +3,7 @@
 #
   nzbget:
     restart: unless-stopped
-    image: linuxserver/nzbget:latest
+    image: linuxserver/nzbget
     container_name: nzbget
     hostname: nzbget
     cpu_shares: 1024
