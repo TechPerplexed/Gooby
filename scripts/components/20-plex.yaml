@@ -1,12 +1,14 @@
 #
-# Plex - Meadia streaming server
+# Plex - Media streaming server
 #
   plex:
     restart: unless-stopped
-    image: plexinc/pms-docker
+    image: plexinc/pms-docker:beta
     container_name: plex
     hostname: plex
     cpu_shares: 8192
+    ports:
+      - 32400:32400
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - ${CONFIGS}/Plex:/config
