@@ -15,7 +15,7 @@ RCLONE(){
 PLEX(){
 	TASK=Plex
 	APP=plex
-	APPTYPE=plex
+	APPTYPE=app
 	APPLOC=20-plex
 	source /opt/GooPlex/menus/apps.sh
 }
@@ -23,7 +23,7 @@ PLEX(){
 TAUTULLI(){
 	TASK=Tautulli
 	APP=tautulli
-	APPTYPE=generic
+	APPTYPE=app
 	APPLOC=25-tautulli
 	source /opt/GooPlex/menus/apps.sh
 }
@@ -31,7 +31,7 @@ TAUTULLI(){
 EMBY(){
 	TASK=Emby
 	APP=emby
-	APPTYPE=emby
+	APPTYPE=app
 	APPLOC=22-emby
 	source /opt/GooPlex/menus/apps.sh
 }
