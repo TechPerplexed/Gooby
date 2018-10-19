@@ -27,10 +27,11 @@ if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 		echo ""
 		echo "Just a moment while your new domain is being installed..."
 		echo ""
+		cd $CONFIGS/Docker
 		/usr/local/bin/docker-compose down
-		
 		source /opt/GooPlex/install/misc/environment-build.sh rebuild
-		/usr/local/bin/docker-compose up -d --remove-orphans ${@:2}
+		/usr/local/bin/docker-compose up -d --remove-orphans
+		cd "${CURDIR}"
 		clear
 		source $CONFIGS/Docker/.env
 		echo "Your new domain is set to $MYDOMAIN"
