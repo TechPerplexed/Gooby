@@ -23,7 +23,7 @@ else
 		[[ -f "/opt/GooPlex/scripts/components/$APPLOC.yaml" ]] && echo "$TASK Stable (S) - default"
 		[[ -f "/opt/GooPlex/scripts/components/$APPLOC-beta.yaml" ]] && echo "$TASK Beta (B)"
 		[[ -f "/opt/GooPlex/scripts/components/$APPLOC-cf.yaml" ]] && echo "$TASK Stable with CloudFlare (C)"
-		[[ -f "/opt/GooPlex/scripts/components/$APPLOC-beta-cf.yaml" ]] && echo "$ Beta with CloudFlare (Q)"
+		[[ -f "/opt/GooPlex/scripts/components/$APPLOC-beta-cf.yaml" ]] && echo "$TASK Beta with CloudFlare (Q)"
 		echo ""
 		echo "(When in doubt, choose Stable or just hit Enter)"
 		read -n 1 -s -r -p " ---> "
