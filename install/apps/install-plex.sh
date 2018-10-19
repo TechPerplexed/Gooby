@@ -20,19 +20,19 @@ else
 		echo ""
 		echo "Please choose what version you want to install:"
 		echo ""
-		echo "Plex regular without CloudFlare (A) - default"
-		echo "Plex regular with CloudFlare (B)?"
-		echo "Plex Pass without CloudFlare (C)"
-		echo "Plex Pass with CloudFlare (D)"
+		echo "Plex Stable without CloudFlare (S) - default"
+		echo "Plex Stable with CloudFlare (C)?"
+		echo "Plex Pass without CloudFlare (P)"
+		echo "Plex Pass with CloudFlare (Q)"
 		echo ""
-		echo "(When in doubt, choose A)"
+		echo "(When in doubt, choose S or just hit Enter)"
 		read -n 1 -s -r -p " ---> "
 		
 		case "$REPLY" in
-			a|A ) echo "Regular installation without CloudFlare..." ;;
-			b|B ) APPLOC=$APPLOC-cf; echo "Regular installation with CloudFlare..." ;;
-			c|C ) APPLOC=$APPLOC-pp; echo "Plex Pass without CloudFlare..." ;;
-			d|D ) APPLOC=$APPLOC-pp-cf; echo "Plas Pass with CloudFlare..." ;;
+			s|S ) echo "Regular installation without CloudFlare..." ;;
+			c|C ) APPLOC=$APPLOC-cf; echo "Regular installation with CloudFlare..." ;;
+			p|P ) APPLOC=$APPLOC-pp; echo "Plex Pass without CloudFlare..." ;;
+			q|Q ) APPLOC=$APPLOC-pp-cf; echo "Plas Pass with CloudFlare..." ;;
 			* ) echo "No choice made, will use regular installation..." ;;
 		esac
 
