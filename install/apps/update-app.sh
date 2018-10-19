@@ -3,7 +3,7 @@
 docker ps -q -f name=$APP > $CONFIGS/.config/checkapp.txt
 clear
 
-if [ ! -s /tmp/checkapp.txt ]; then
+if [ ! -s $CONFIGS/.config/checkapp.txt ]; then
 
 	NOTINSTALLED
 
