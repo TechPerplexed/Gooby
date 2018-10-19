@@ -38,7 +38,7 @@ show_menus() {
 	echo " $MENU"
 	echo " ${STD}"
 	
-	echo " ${GREEN}A${STD} - NEW version (you will need a domain)"
+	echo " ${GREEN}A${STD} - Main version (you need a domain)"
 	echo " ${GREEN}B${STD} - Legacy (if you used GooPlex before)"
 	echo " ${GREEN}C${STD} - Developer (bleeding edge suffering)"
 	echo " ${LRED}Q${STD} - QUIT $FUNCTION"
