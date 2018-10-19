@@ -57,5 +57,5 @@ else
 
 fi
 
-rm /tmp/checkapp.txt
+sudo rm /tmp/checkapp.txt
 PAUSE
