@@ -14,7 +14,7 @@ CONFIRMATION
 
 if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 
-	read -e -p "${YELLOW}Desired username${STD} (Enter to accept): " -i "plexuser" PU
+	read -e -p "${YELLOW}Desired username${STD}: " -i "" PU
 
 	sudo -s adduser $PU
 
