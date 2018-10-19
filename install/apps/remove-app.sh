@@ -28,11 +28,13 @@ else
 		clear
 
 		echo "$TASK has been removed".
+		
+		
 
 		CONFIRMDELETE
 
 		case "$REPLY" in
-			y|Y ) sudo rm -r $CONFIGS/$TASK ;;
+			y|Y ) [[ -f "$CONFIGS/$TASK" ]] && sudo rm -r $CONFIGS/$TASK ;;
 			* ) echo "User settings not deleted" ;;
 		esac
 
