@@ -1,0 +1,31 @@
+#
+# NZBGet - Usenet downloader
+#
+  nzbget:
+    restart: unless-stopped
+    image: linuxserver/nzbget:latest
+    container_name: nzbget
+    hostname: nzbget
+    cpu_shares: 1024
+    ports:
+      - 6789:6789/tcp
+      - 6789:6789/udp
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ${CONFIGS}/NZBGet:/config
+      - ${GOOGLE}:/Google
+    environment:
+      - PUID=${USERID}
+      - PGID=${GROUPID}
+      - TZ=${TIMEZONE}
+      - UMASK_SET=022
+      - VIRTUAL_HOST=nzbget.${MYDOMAIN}
+      - VIRTUAL_PORT=6789
+      - VIRTUAL_NETWORK=nginx-proxy
+      - LETSENCRYPT_HOST=nzbget.${MYDOMAIN}
+      - LETSENCRYPT_EMAIL=${MYEMAIL}
+    healthcheck:
+      test: ["CMD-SHELL", "netstat -ntlp | grep :6789"]
+      interval: 10s
+      timeout: 2s
+      retries: 3
