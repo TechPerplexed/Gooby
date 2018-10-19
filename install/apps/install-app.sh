@@ -21,14 +21,15 @@ else
 		echo "--------------------------------------------------"
 		echo "Please choose what version you want to install:"
 		echo ""
-		[[ -f "/opt/GooPlex/scripts/components/$APPLOC.yaml" ]] && echo "$TASK Stable ${YELLOW}(S)${STD} - default"
-		[[ -f "/opt/GooPlex/scripts/components/$APPLOC-beta.yaml" ]] && echo "$TASK Beta ${YELLOW}(B)${STD}"
-		[[ -f "/opt/GooPlex/scripts/components/$APPLOC-cf.yaml" ]] && echo "$TASK Stable with CloudFlare ${YELLOW}(C)${STD}"
-		[[ -f "/opt/GooPlex/scripts/components/$APPLOC-beta-cf.yaml" ]] && echo "$TASK Beta with CloudFlare ${YELLOW}(Q)${STD}"
+		[[ -f "/opt/GooPlex/scripts/components/$APPLOC.yaml" ]] && echo "${YELLOW}S${STD} - $TASK Stable - default"
+		[[ -f "/opt/GooPlex/scripts/components/$APPLOC-beta.yaml" ]] && echo "${YELLOW}B${STD} - $TASK Beta"
+		[[ -f "/opt/GooPlex/scripts/components/$APPLOC-cf.yaml" ]] && echo "${YELLOW}C${STD}- $TASK Stable with CloudFlare"
+		[[ -f "/opt/GooPlex/scripts/components/$APPLOC-beta-cf.yaml" ]] && echo "${YELLOW}Q${STD} - $TASK Beta with CloudFlare"
 		echo "--------------------------------------------------"
 		echo ""
 		echo "(When in doubt, choose Stable or just hit Enter)"
 		read -n 1 -s -r -p " ---> "
+		echo ""
 		
 		case "$REPLY" in
 			s|S ) APPLOC=$APPLOC ;;
