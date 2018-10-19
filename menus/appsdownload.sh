@@ -8,7 +8,7 @@ source /opt/GooPlex/menus/variables.sh
 SONARR(){
 	TASK=Sonarr
 	APP=sonarr
-	APPTYPE=beta
+	APPTYPE=app
 	APPLOC=52-sonarr
 	source /opt/GooPlex/menus/apps.sh
 }
@@ -16,7 +16,7 @@ SONARR(){
 RADARR(){
 	TASK=Radarr
 	APP=radarr
-	APPTYPE=generic
+	APPTYPE=app
 	APPLOC=50-radarr
 	source /opt/GooPlex/menus/apps.sh
 }
@@ -24,7 +24,7 @@ RADARR(){
 DELUGE(){
 	TASK=Deluge
 	APP=deluge
-	APPTYPE=generic
+	APPTYPE=app
 	APPLOC=40-deluge
 	source /opt/GooPlex/menus/apps.sh
 }
@@ -32,7 +32,7 @@ DELUGE(){
 NZBGET(){
 	TASK=NZBGet
 	APP=nzbget
-	APPTYPE=generic
+	APPTYPE=app
 	APPLOC=
 	source /opt/GooPlex/menus/apps.sh
 }
