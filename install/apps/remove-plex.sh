@@ -1,6 +1,6 @@
 #!/bin/bash
 
-docker ps -q -f name=$APP > /tmp/checkapp.txt
+docker ps -q -f name=$APP > $CONFIGS/.config/checkapp.txt
 clear
 
 if [ ! -s /tmp/checkapp.txt ]; then
@@ -46,5 +46,5 @@ else
 
 fi
 
-sudo rm /tmp/checkapp.txt
+rm $CONFIGS/.config/checkapp.txt
 PAUSE
