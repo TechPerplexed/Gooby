@@ -1,6 +1,7 @@
 #!/bin/bash
 
 source $CONFIGS/Docker/.env
+sudo chown -R $USER:$USER /tmp
 
 # Menu Options
 
