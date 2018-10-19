@@ -17,7 +17,7 @@ ORGANIZR(){
 	TASK=Organizr
 	APP=organizr
 	APPTYPE=app
-	APPLOC=
+	APPLOC=62-organizr
 	source /opt/GooPlex/menus/apps.sh
 }
 
@@ -25,7 +25,7 @@ OMBI(){
 	TASK=Ombi
 	APP=ombi
 	APPTYPE=app
-	APPLOC=
+	APPLOC=60-ombi
 	source /opt/GooPlex/menus/apps.sh
 }
 
