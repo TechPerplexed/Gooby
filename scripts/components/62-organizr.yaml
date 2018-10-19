@@ -8,7 +8,7 @@
     hostname: organizr
     cpu_shares: 1024
     ports:
-      - 80:80
+      - 8080:80
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - ${CONFIGS}/Organizr:/config
