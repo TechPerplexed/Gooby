@@ -25,7 +25,7 @@ else
 		
 		case "$REPLY" in
 			b|B ) APPLOC=$APPLOC-beta; echo "Beta installation..." ;;
-			r|R ) echo "Stable installation..." ;;
+			s|S ) echo "Stable installation..." ;;
 			* ) echo "No choice made, will use stable installation..." ;;
 		esac
 
