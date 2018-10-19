@@ -37,7 +37,7 @@ RUNPATCHES(){
 
 MENUSTART(){
 	echo "--------------------------------------------------"
-	echo " G O O P L E X     D E V E L O P M E N T"
+	echo " G O O P L E X   D E V E L O P E R  V E R S I O N"
 	echo " For testing only - DO NOT USE ON LIVE SERVER!!!"
 	echo "--------------------------------------------------"
 	echo " $MENU"
