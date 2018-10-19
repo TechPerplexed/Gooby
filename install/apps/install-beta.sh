@@ -31,7 +31,7 @@ else
 
 		cd $CONFIGS/Docker
 		sudo rsync -a /opt/GooPlex/scripts/components/$APPLOC.yaml $CONFIGS/Docker/components
-		/usr/local/bin/docker-compose down
+		/usr/local/bin/docker-compose down ${@:2}
 		echo "Just a moment while $APP is being installed..."
 		source /opt/GooPlex/install/misc/environment-build.sh rebuild
 		/usr/local/bin/docker-compose up -d --remove-orphans ${@:2}
