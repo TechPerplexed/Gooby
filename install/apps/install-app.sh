@@ -39,6 +39,24 @@ else
 			* ) APPLOC=$APPLOC ;;
 		esac
 
+		if [[ -d $OLDLOC && ! -d $CONFIGS/$TASK ]]; then
+
+			echo "${YELLOW}"
+			echo "--------------------------------------------------"
+			echo " It seems you installed $TASK previously"
+			echo " Would you like to import those settings? (Y/n)"
+			echo "--------------------------------------------------"
+			echo "${STD}"
+			read -n 1 -s -r -p " ---> "
+			echo ""
+
+			case "$REPLY" in
+				n|N ) echo "Settings not imported"; echo "You chose to start from scratch" ;;
+				* ) sudo mv $OLDLOC $CONFIGS/$TASK ;;
+			esac
+
+		fi
+
 		cd $CONFIGS/Docker
 		sudo rsync -a /opt/GooPlex/scripts/components/$APPLOC.yaml $CONFIGS/Docker/components
 		/usr/local/bin/docker-compose down
