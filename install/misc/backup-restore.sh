@@ -39,6 +39,7 @@ if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 
   	cd $CONFIGS/Docker
 	/usr/local/bin/docker-compose down
+	cd "${CURDIR}"
 
 	sudo mv $CONFIGS/ /tmp/GooPlex/
 	sudo tar -xf /tmp/$filedate.tar.gz -C /
@@ -46,8 +47,10 @@ if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 	sudo chown $USER:$USER ${CONFIGS}
 	sudo chown $USER:$USER ${HOME}
 
+	cd $CONFIGS/Docker
 	source /opt/GooPlex/install/misc/environment-build.sh rebuild
 	/usr/local/bin/docker-compose up -d --remove-orphans ${@:2}
+	cd "${CURDIR}"
   
 	echo "${CYAN}Finished restoring${STD}"
 	echo ""
