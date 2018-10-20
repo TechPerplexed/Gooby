@@ -40,7 +40,7 @@ else
 		esac
 
 		if [[ -d $OLDLOC && ! -d $CONFIGS/$TASK ]]; then
-PAUSE
+
 			echo "${YELLOW}"
 			echo "--------------------------------------------------"
 			echo " It seems you installed $TASK previously"
