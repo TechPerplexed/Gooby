@@ -64,7 +64,7 @@ if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 
 	case "$choice" in
 		y|Y ) sudo rm -r /tmp/GooPlex;;
-		* ) echo "Your old installation files are available at /tmp until you reboot"; PAUSE;;
+		* ) echo "Your old installation files are available at /tmp until you reboot"; echo "";;
 	esac
 
 	sudo rm /tmp/$filedate.*
@@ -76,3 +76,5 @@ else
 	CANCELTHIS
 
 fi
+
+PAUSE
