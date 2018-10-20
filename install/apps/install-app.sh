@@ -48,7 +48,7 @@ else
 		[[ -d "$CONFIGS/$TASK" ]] && sudo chown -R $USER:$USER $CONFIGS/$TASK		
 		cd "${CURDIR}"
 		
-		if [ $TASK == Organizr ]; then TASK=www; fi
+		if [ $APP == organizr ]; then APP=www; fi
 
 		APPINSTALLED
 
