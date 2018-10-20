@@ -32,7 +32,7 @@ else
 		CONFIRMDELETE
 
 		case "$REPLY" in
-			y|Y ) [[ -f "$CONFIGS/$TASK" ]] && sudo rm -r $CONFIGS/$TASK ;;
+			y|Y ) [[ -d "$CONFIGS/$TASK" ]] && sudo rm -r $CONFIGS/$TASK ;;
 			* ) echo "User settings not deleted" ;;
 		esac
 
