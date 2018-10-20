@@ -17,6 +17,7 @@ PLEX(){
 	APP=plex
 	APPTYPE=app
 	APPLOC=20-plex
+	OLDLOC=/var/lib/plexmediaserver/
 	source /opt/GooPlex/menus/apps.sh
 }
 
@@ -25,6 +26,7 @@ TAUTULLI(){
 	APP=tautulli
 	APPTYPE=app
 	APPLOC=25-tautulli
+	OLDLOC=/opt/Tautulli/
 	source /opt/GooPlex/menus/apps.sh
 }
 
@@ -33,6 +35,7 @@ EMBY(){
 	APP=emby
 	APPTYPE=app
 	APPLOC=22-emby
+	OLDLOC=/var/lib/emby/
 	source /opt/GooPlex/menus/apps.sh
 }
 
