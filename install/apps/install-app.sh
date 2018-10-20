@@ -47,6 +47,8 @@ else
 		/usr/local/bin/docker-compose up -d --remove-orphans ${@:2}
 		[[ -d "$CONFIGS/$TASK" ]] && sudo chown -R $USER:$USER $CONFIGS/$TASK		
 		cd "${CURDIR}"
+		
+		if [ $TASK == Organizr ]; then TASK=www; fi
 
 		APPINSTALLED
 
