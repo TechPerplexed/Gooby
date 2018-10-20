@@ -30,7 +30,7 @@ else
 		echo " (When in doubt, choose Stable or just hit Enter)"
 		read -n 1 -s -r -p " ---> "
 		echo ""
-		
+
 		case "$REPLY" in
 			s|S ) APPLOC=$APPLOC ;;
 			b|B ) [[ -f "/opt/GooPlex/scripts/components/$APPLOC-beta.yaml" ]] && APPLOC=$APPLOC-beta ;;
@@ -63,7 +63,7 @@ else
 		echo "Just a moment while $APP is being installed..."
 		source /opt/GooPlex/install/misc/environment-build.sh rebuild
 		/usr/local/bin/docker-compose up -d --remove-orphans ${@:2}
-		[[ -d "$CONFIGS/$TASK" ]] && sudo chown -R $USER:$USER $CONFIGS/$TASK		
+		sudo chown -R $USER:$USER $CONFIGS
 		cd "${CURDIR}"
 		
 		if [ $APP == organizr ]; then APP=$ORGMENU; fi
