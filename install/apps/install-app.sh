@@ -52,11 +52,12 @@ else
 
 			case "$REPLY" in
 				n|N ) echo "Settings not imported"; echo "You chose to start from scratch" ;;
-				* ) sudo mv $OLDLOC $CONFIGS/$TASK ;;
+				* ) echo "Great, importing settings"; sudo mv $OLDLOC $CONFIGS/$TASK ;;
 			esac
 
 		fi
 
+		echo ""
 		cd $CONFIGS/Docker
 		sudo rsync -a /opt/GooPlex/scripts/components/$APPLOC.yaml $CONFIGS/Docker/components
 		/usr/local/bin/docker-compose down
