@@ -62,8 +62,8 @@ read_options(){
 	read -n 1 -s -r -p "Choose option: " choice
 	case $choice in
 		[Aa]) GOOPLEX ;;
-		[Bb]) GOODEV ;;
-		[Cc]) CHECKENV ;;
+		[Bb]) CHECKENV ;;
+		[Cc]) RCLEAN ;;
 		[Dd]) BACKUP ;;
 		[Ee]) RESTORE ;;
 		[Zz]) QUIT ;;
