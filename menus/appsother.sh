@@ -17,7 +17,7 @@ ORGANIZR(){
 	TASK=Organizr
 	APP=organizr
 	APPTYPE=app
-	APPLOC=62-organizr
+	APPLOC=03-organizr
 	source /opt/GooPlex/menus/apps.sh
 }
 
