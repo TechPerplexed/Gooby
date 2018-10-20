@@ -17,14 +17,16 @@ if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 	read -e -p "${YELLOW}Desired username${STD} (Enter to accept): " -i "plexuser" PU
 
 	if [ "$PU" != "plexuser" ]; then
-		echo -e "${CYAN}"
-		echo -e "I'm in the process of creating a new GooPlex."
-		echo -e "For now, it's only possible to create the user 'plexuser'"
-		echo -e "Stay tuned for a future update that makes it possible"
-		echo -e "to choose $PU as your user name!"
-		echo -e "${STD}"
-		PU=plexuser
+		echo "${CYAN}"
+		echo "You are on the Legacy branch of GooPlex."
+		echo "It can only run as 'plexuser'"
+		echo "To use $PU as your username, you will need to"
+		echo "switch to GooPlex v2 (coming soon)"
+		echo "${STD}"
+		
 	fi
+	
+	PU=plexuser
 
 	sudo -s adduser $PU
 
