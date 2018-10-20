@@ -28,8 +28,6 @@ else
 		clear
 
 		echo "$TASK has been removed".
-		
-		
 
 		CONFIRMDELETE
 
@@ -37,6 +35,8 @@ else
 			y|Y ) [[ -f "$CONFIGS/$TASK" ]] && sudo rm -r $CONFIGS/$TASK ;;
 			* ) echo "User settings not deleted" ;;
 		esac
+
+		sudo chown -R $USER:$USER $CONFIGS
 
 		TASKCOMPLETE
 
