@@ -20,6 +20,7 @@ else
 
 		docker stop $APP
 		docker start $APP
+		sudo chown -R $USER:$USER $CONFIGS
 
 		TASKCOMPLETE
 
