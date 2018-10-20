@@ -1,30 +1,29 @@
 #
-# Organizr - Homelab Services Organizer
+# Organizr - Default web site
 #
-  organizr:
-    restart: unless-stopped
-    image: lsiocommunity/organizr
+  Organizr:
+    restart: always
+    image: lsiocommunity/organizr:latest
     container_name: organizr
-    hostname: organizr
-    cpu_shares: 1024
-    ports:
-      - 8899:80
+    hostname: ${MENU}
+    depends_on:
+      nginx-proxy:
+        condition: service_healthy
+      letsencrypt-nginx-proxy-companion:
+        condition: service_started
     volumes:
-      - /etc/localtime:/etc/localtime:ro
       - ${CONFIGS}/Organizr:/config
-      - ${GOOGLE}:/Google
     environment:
       - PUID=${USERID}
       - PGID=${GROUPID}
-      - TZ=${TIMEZONE}
-      - UMASK_SET=022
-      - VIRTUAL_HOST=organizr.${MYDOMAIN}
-      - VIRTUAL_PORT=8899
+      - VIRTUAL_HOST=${MENU}.${MYDOMAIN}
+      - VIRTUAL_PORT=80
       - VIRTUAL_NETWORK=nginx-proxy
-      - LETSENCRYPT_HOST=organizr.${MYDOMAIN}
+      - TZ=${TIMEZONE}
+      - LETSENCRYPT_HOST=${MENU}.${MYDOMAIN}
       - LETSENCRYPT_EMAIL=${MYEMAIL}
     healthcheck:
-      test: ["CMD-SHELL", "netstat -ntlp | grep :6789"]
+      test: ["CMD-SHELL", "netstat -ntlp | grep :80"]
       interval: 10s
       timeout: 2s
       retries: 3
