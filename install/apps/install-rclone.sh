@@ -58,7 +58,6 @@ else
 		sudo chown -R $USER:$USER $CONFIGS/.config
 		sudo chown -R $USER:$USER $CONFIGS/$HOME
 		sudo chown -R $USER:$USER /media/Google
-		sudo chown -R $USER:$USER /mnt/media
 
 		sudo systemctl enable rclone.service
 		sudo systemctl daemon-reload
