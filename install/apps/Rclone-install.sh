@@ -44,7 +44,7 @@ else
 		sudo systemctl enable rclone.service
 		sudo systemctl daemon-reload
 		sudo systemctl start rclone.service
-		sudo chown -R $USER:$USER $CONFIGS/.config
+		sudo chown -R $USER:$USER $HOME
 
 		TASKCOMPLETE
 
