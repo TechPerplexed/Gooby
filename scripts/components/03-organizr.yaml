@@ -5,7 +5,7 @@
     restart: always
     image: lsiocommunity/organizr:latest
     container_name: organizr
-    hostname: ${WWW}
+    hostname: ${ORGMENU}
     depends_on:
       nginx-proxy:
         condition: service_healthy
@@ -16,11 +16,11 @@
     environment:
       - PUID=${USERID}
       - PGID=${GROUPID}
-      - VIRTUAL_HOST=${WWW}.${MYDOMAIN}
+      - VIRTUAL_HOST=${ORGMENU}.${MYDOMAIN}
       - VIRTUAL_PORT=80
       - VIRTUAL_NETWORK=nginx-proxy
       - TZ=${TIMEZONE}
-      - LETSENCRYPT_HOST=${WWW}.${MYDOMAIN}
+      - LETSENCRYPT_HOST=${ORGMENU}.${MYDOMAIN}
       - LETSENCRYPT_EMAIL=${MYEMAIL}
     healthcheck:
       test: ["CMD-SHELL", "netstat -ntlp | grep :80"]
