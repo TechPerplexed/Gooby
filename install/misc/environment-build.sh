@@ -48,7 +48,7 @@ echo "MEDIA=/media/Google" >> ${ENV}
 echo "TV=/media/Google/TV Shows" >> ${ENV}
 echo "MOVIES=/media/Google/Movies" >> ${ENV}
 echo "RCLONETARGET=Gdrive" >> ${ENV}
-echo "WWW=www" >> ${ENV}
+echo "ORGMENU=menu" >> ${ENV}
 
 cat ${CONFIGS}/Docker/components/??-* > ${DOCKERHOME}/docker-compose.yaml
 echo done
