@@ -33,7 +33,7 @@ NZBGET(){
 	TASK=NZBGet
 	APP=nzbget
 	APPTYPE=app
-	APPLOC=42-nzbget
+	APPLOC=30-nzbget
 	source /opt/GooPlex/menus/apps.sh
 }
 
