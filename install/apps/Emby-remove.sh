@@ -23,6 +23,7 @@ else
 
 		# Main script
 
+  		sudo service emby-server stop
 		sudo apt-get purge --auto-remove emby-server -y
 		sudo rm -r /opt/emby-server
 
