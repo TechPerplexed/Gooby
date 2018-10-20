@@ -18,6 +18,14 @@ else
 		GOAHEAD
 		RUNPATCHES
 
+		# Install MergerFS (for future use)
+
+		lsb_release -r -s > /tmp/version
+		VERSION=$( cat /tmp/version )
+
+		if [ "$VERSION" = "18.04" ]; then sudo apt-get -y install mergerfs; fi
+		
+
 		# Main script
 
 		cd /tmp
@@ -41,12 +49,20 @@ else
 		# Installing Services
 
 		sudo mkdir -p /var/local/GooPlex/.config
+		sudo mkdir - $HOME/logs
+		sudo mkdir /media/Google
+
 		sudo rsync -a $HOME/.config/rclone/rclone.conf $CONFIGS/.config
 		sudo rsync -a /opt/GooPlex/scripts/rclone.service /etc/systemd/system/rclone.service
+
+		sudo chown -R $USER:$USER $CONFIGS/.config
+		sudo chown -R $USER:$USER $CONFIGS/$HOME
+		sudo chown -R $USER:$USER /media/Google
+		sudo chown -R $USER:$USER /mnt/media
+
 		sudo systemctl enable rclone.service
 		sudo systemctl daemon-reload
 		sudo systemctl start rclone.service
-		sudo chown -R $USER:$USER $CONFIGS/.config
 
 		TASKCOMPLETE
 
