@@ -4,8 +4,7 @@ After=syslog.target local-fs.target network.target rclone.service
 
 [Service]
 Type=forking
-User=plexuser
-Group=plexuser
+User=root
 Environment=RCLONEMOUNT=/mnt/remote
 Environment=UPLOADS=/mnt/upload
 Environment=MOUNTTO=/media/Google
