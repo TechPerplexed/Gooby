@@ -23,6 +23,7 @@ else
 
 		# Main script
 
+		sudo systemctl stop tautulli.service
 		sudo rm -r /opt/Tautulli
 
 		# Removing Services
