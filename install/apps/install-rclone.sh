@@ -24,7 +24,8 @@ else
 		VERSION=$( cat /tmp/version )
 
 		if [ "$VERSION" = "18.04" ]; then sudo apt-get -y install mergerfs; fi
-		
+
+		rm /tmp/version
 
 		# Main script
 
@@ -39,7 +40,6 @@ else
 			* ) curl https://rclone.org/install.sh | sudo bash ;;
 		esac
 
-		cd ~
 		clear
 
 		echo "${YELLOW}Please follow the instructions to setup Rclone${STD}"
@@ -49,7 +49,7 @@ else
 		# Installing Services
 
 		sudo mkdir -p /var/local/GooPlex/.config
-		sudo mkdir - $HOME/logs
+		sudo mkdir -p $HOME/logs
 		sudo mkdir /media/Google
 
 		sudo rsync -a $HOME/.config/rclone/rclone.conf $CONFIGS/.config
