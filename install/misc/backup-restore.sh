@@ -28,7 +28,7 @@ if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 
 		clear
 		echo ""
-		echo "${LRED}$filename/$filedate.tar.gz${LRED} not found on Google!"
+		echo "${LRED}$filename/$filedate.tar.gz not found on Google!${STD}"
 		echo "Please try again"
 		echo "Exiting script..."
 		echo ""
