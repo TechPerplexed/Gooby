@@ -1,24 +1,24 @@
 #
-# NZBGet - Usenet downloader
+# NZBget - Usenet Downloader
 #
   nzbget:
     restart: unless-stopped
     image: linuxserver/nzbget
     container_name: nzbget
     hostname: nzbget
-    cpu_shares: 1024
-    ports:
-      - 6789:6789/tcp
-      - 6789:6789/udp
+    cpu_shares: 2048
+    depends_on:
+      nginx-proxy:
+        condition: service_healthy
+      letsencrypt-nginx-proxy-companion:
+        condition: service_started
     volumes:
-      - /etc/localtime:/etc/localtime:ro
-      - ${CONFIGS}/NZBGet:/config
-      - ${GOOGLE}:/Google
+      - ${CONFIGS}/NZBget:/config
+      - ${DOWNLOADS}:/downloads
+      - ${HOME}/logs:/logs
     environment:
-      - PUID=${USERID}
       - PGID=${GROUPID}
-      - TZ=${TIMEZONE}
-      - UMASK_SET=022
+      - PUID=${USERID}
       - VIRTUAL_HOST=nzbget.${MYDOMAIN}
       - VIRTUAL_PORT=6789
       - VIRTUAL_NETWORK=nginx-proxy
@@ -29,3 +29,11 @@
       interval: 10s
       timeout: 2s
       retries: 3
+    blkio_config:
+      weight: 150
+      #device_read_bps:
+      #- path: /dev/md1
+      #rate: '50mb'
+      #device_write_bps:
+      #- path: /dev/md1
+      #rate: '50mb'
