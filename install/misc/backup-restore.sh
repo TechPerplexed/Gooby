@@ -2,107 +2,85 @@
 
 clear
 
-# Explanation
+EXPLAINTASK
 
-echo -e "--------------------------------------------------"
-echo -e " This will restore the Plex and Tautulli backup"
-echo -e " from Google. Read the instructions carefully!"
-echo -e "--------------------------------------------------"
-echo ""
-
-# Confirmation
-
-read -p " Are you sure you want to ${PERFORM} ${TASK} (y/N)? " -n 1 -r
-echo ""
+CONFIRMATION
 
 if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 
-  # -----------
-  # Main script
-  # -----------
+	GOAHEAD
 
-  # Explanation
+	BACKUP=/tmp/$(date +%F).tar.gz
 
-  clear
-  echo -e "Plex will be unavailable during the restoring process"
-  echo -e "This can take several hours, depending on the size"
-  echo -e "Please don't exit PuTTY until it's done!"
-  echo ""
+	echo "Restoring the backup can take several hours"
+	echo "Please don't exit the terminal until it's done!"
+	echo ""
+	read -e -p "Host name to restore: " -i "$(hostname)" filename
+	read -e -p "File date to restore: " -i "$(date +%F)" filedate
 
-  # Execution
+	echo "${LMAGENTA}Copying from Google drive...${STD}"
+	
+	/usr/bin/rclone copy Gdrive:/Backup/$filename/$filedate.tar.gz /tmp --checksum --drive-chunk-size=64M
 
-  cd /tmp
-  read -e -p "Host name to restore: " -i "$(hostname)" filename
-  read -e -p "File date to restore: " -i "$(date +%F)" filedate
+	if [ -e "/tmp/$filedate.tar.gz" ]; then
+
+	echo "${LBLUE}Backup file downloaded, proceeding...${STD}"
+
+	else
+
+		clear
+		echo "$filename/$filedate.tar.gz not found on Google!"
+		echo "Please try again"
+		echo "Exiting script..."
+		PAUSE
+		exit
+
+	fi
+
+	echo "${GREEN}Restoring files...${STD}"
+
+  	cd $CONFIGS/Docker
+	/usr/local/bin/docker-compose down
+
+	sudo mv $CONFIGS/ /tmp/GooPlex/
+	sudo tar -xf /tmp/$filedate.tar.gz -C /
+
+	sudo chown $USER:$USER ${CONFIGS}
+	sudo chown $USER:$USER ${HOME}
+
+	source /opt/GooPlex/install/misc/environment-build.sh rebuild
+	/usr/local/bin/docker-compose up -d --remove-orphans ${@:2}
   
-  echo -e "${GREEN}Copying from Google drive...${STD}"
-  sudo rclone copy Gdrive:/Backup/$filename/$filedate.tar.gz /tmp --checksum --drive-chunk-size=64M
+	# Cleaning up
 
-  if [ -e "/tmp/$filedate.tar.gz" ]
+	echo "${CYAN}Finished restoring${STD}"
+	echo ""
+	echo "${WHITE}Make sure${STD} you check if your services are running properly before you remove the old files!"
+	echo ""
+	read -e -p "Remove old files (Y/n)? " -i "" choice
+	echo ""
 
-  then
-    echo -e "${LBLUE}File downloaded, proceeding...${STD}"
-  else
-    clear
-    echo "$filename/$filedate.tar.gz not found on Google!"
-    echo "Please try again"
-    echo "Exiting script..."
-    PAUSE
-    exit
-  fi
-  
-   # Execution
+	case "$choice" in
+		y|Y ) sudo rm -r /tmp/GooPlex;;
+		* ) echo "Your old installation is available at /tmp until you reboot";;
+	esac
 
-  echo -e "${LRED}Stopping services...${STD}"
-  sudo service plexmediaserver stop
-  sudo systemctl stop tautulli.service
+	sudo rm /tmp/$filedate.*
 
-  # Replacing Plex vanilla with Plex backup
-  
-  echo -e "${LMAGENTA}Restoring file...${STD}"
-  sudo mv /var/lib/plexmediaserver /tmp/plexmediaserver
-  sudo tar -xf /tmp/$filedate.tar.gz -C /
+	sudo chown $USER:$USER ${CONFIGS}
+	sudo chown $USER:$USER ${HOME}
 
-  # Starting services
-  
-  echo -e "${YELLOW}Starting services...${STD}"
-  sudo chown -R plex:plex /var/lib/plexmediaserver
-  sudo service plexmediaserver start
-  sudo systemctl start tautulli.service
+	clear
+	echo "${YELLOW}"
+	echo "--------------------------------------------------"
+	echo " Done!"
+	echo "--------------------------------------------------"
+	echo "${STD}"
 
-  # Cleaning up
-
-  echo -e "${CYAN}Finished restoring${STD}"
-  echo ""
-  echo -e "${WHITE}Make sure${STD} you check if Plex is running properly before you remove the old files!"
-  echo ""
-  read -e -p "Remove old Plex installation (Y/n)? " -i "" choice
-  echo ""
-
-  case "$choice" in
-    y|Y ) sudo rm -r /tmp/plexmediaserver;;
-    * ) echo "Your old installation is available at /tmp/plexmediaserver until you reboot";;
-  esac
-
-  sudo rm /tmp/$filedate.*
-  cd ~
-
-  # Task Completed
-
-  echo -e "${LMAGENTA}"
-  echo -e "--------------------------------------------------"
-  echo -e " ${PERFORM} $TASK completed"
-  echo -e "--------------------------------------------------"
-  echo -e "${STD}"
+	TASKCOMPLETE
 
 else
 
-  echo ""
-  echo -e "--------------------------------------------------"
-  echo -e " You chose ${YELLOW}not${STD} to ${PERFORM} ${TASK}"
-  echo -e "--------------------------------------------------"
-  echo ""
+	CANCELTHIS
 
 fi
-
-PAUSE
