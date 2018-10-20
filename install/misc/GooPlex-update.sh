@@ -6,7 +6,10 @@ EXPLAINTASK
 
 echo "${LYELLOW}"
 echo "--------------------------------------------------"
-echo " You can run this as often as you like"
+echo " This will update to GooPlex Legacy"
+echo " Coming soon:"
+echo " If you want to switch to the new branch,"
+echo " Please run the installer again"
 echo "--------------------------------------------------"
 echo "${STD}"
 
