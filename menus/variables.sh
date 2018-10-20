@@ -1,9 +1,6 @@
 #!/bin/bash
 
 VERSION="1.1.1"
-CONFIGS=/var/local/GooPlex
-COMMAND=${1,,}
-CURDIR=$(pwd)
 
 # Define colors
 
