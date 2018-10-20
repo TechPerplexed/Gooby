@@ -10,8 +10,6 @@ if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 
 	GOAHEAD
 
-	BACKUP=/tmp/$(date +%F).tar.gz
-
 	echo "Restoring the backup can take several hours"
 	echo "Please don't exit the terminal until it's done!"
 	echo ""
@@ -51,8 +49,6 @@ if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 	source /opt/GooPlex/install/misc/environment-build.sh rebuild
 	/usr/local/bin/docker-compose up -d --remove-orphans ${@:2}
   
-	# Cleaning up
-
 	echo "${CYAN}Finished restoring${STD}"
 	echo ""
 	echo "${WHITE}Make sure${STD} you check if your services are running properly before you remove the old files!"
@@ -66,9 +62,6 @@ if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 	esac
 
 	sudo rm /tmp/$filedate.*
-
-	sudo chown $USER:$USER ${CONFIGS}
-	sudo chown $USER:$USER ${HOME}
 
 	clear
 	echo "${YELLOW}"
