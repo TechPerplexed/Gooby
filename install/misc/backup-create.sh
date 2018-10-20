@@ -47,3 +47,5 @@ else
 	CANCELTHIS
 
 fi
+
+PAUSE
