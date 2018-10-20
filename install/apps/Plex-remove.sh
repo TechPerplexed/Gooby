@@ -23,6 +23,7 @@ else
 
 		# Main script
 
+  		sudo service plexmediaserver stop
 		sudo dpkg --purge plexmediaserver
 		sudo rm -r /opt/plexupdate
 
