@@ -1,6 +1,7 @@
 #!/bin/bash
 
 VERSION="1.1.1"
+TIMEZONE=$( cat /etc/timezone )
 
 # Define colors
 
