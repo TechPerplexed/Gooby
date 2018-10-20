@@ -58,17 +58,16 @@ if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 	echo ""
 	echo "${WHITE}Make sure${STD} you check if your services are running properly before you remove the old files!"
 	echo ""
-	read -e -p "Remove old files (Y/n)? " -i "" choice
+	read -n 1 -s -r -p "Remove old files (Y/n)? " -i "" choice
 	echo ""
 
 	case "$choice" in
 		y|Y ) sudo rm -r /tmp/GooPlex;;
-		* ) echo "Your old installation is available at /tmp until you reboot";;
+		* ) echo "Your old installation files are available at /tmp until you reboot"; echo "";;
 	esac
 
 	sudo rm /tmp/$filedate.*
 
-	clear
 	echo "${YELLOW}"
 	echo "--------------------------------------------------"
 	echo " Done!"
