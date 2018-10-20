@@ -11,15 +11,15 @@ GOOPLEX(){
 	source /opt/GooPlex/install/misc/${TASK}-${PERFORM}.sh
 }
 
-GOODEV(){
-	PERFORM="development-branch"
-	TASK="GooPlex"
-	source /opt/GooPlex/install/misc/${TASK}-${PERFORM}.sh
-}
-
 CHECKENV(){
 	PERFORM="check"
 	TASK="environment"
+	source /opt/GooPlex/install/misc/${TASK}-${PERFORM}.sh
+}
+
+RCLEAN(){
+	PERFORM="cleanup"
+	TASK="system"
 	source /opt/GooPlex/install/misc/${TASK}-${PERFORM}.sh
 }
 
@@ -45,9 +45,9 @@ show_menus() {
 	clear
 	echo " ${CYAN}"
 	MENUSTART
-	echo " ${CYAN}A${STD} - Switch Back to Original GooPlex"
-	echo " ${CYAN}B${STD} - Update GooPlex Development Branch"
-	echo " ${CYAN}C${STD} - Check Environment"
+	echo " ${CYAN}A${STD} - Update GooPlex"
+	echo " ${CYAN}B${STD} - Check Environment"
+	echo " ${CYAN}C${STD} - System Cleanup"
 	echo " ${CYAN}D${STD} - Create Backup"
 	echo " ${CYAN}E${STD} - Restore Backup"
 	echo " ${WHITE}Z${STD} - EXIT to Main Menu"
