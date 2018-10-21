@@ -56,8 +56,8 @@ else
 		sudo rsync -a $HOME/.config/rclone/rclone.conf $CONFIGS/.config
 		sudo rsync -a /opt/GooPlex/scripts/rclone.service /etc/systemd/system/rclone.service
 
-		sudo chown -R $USER:$USER $CONFIGS/.config
-		sudo chown -R $USER:$USER $CONFIGS/$HOME
+		sudo chown -R $USER:$USER $CONFIGS
+		sudo chown -R $USER:$USER $HOME
 		sudo chown -R $USER:$USER /media/Google
 
 		sudo systemctl enable rclone.service
