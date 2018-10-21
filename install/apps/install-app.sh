@@ -57,20 +57,7 @@ else
 
 		fi
 
-		if [[ $TASK = "Plex" && ! -d $OLDLOC && ! -d $CONFIGS/$TASK ]]; then
 
-			echo "${YELLOW}"
-			echo "--------------------------------------------------"
-			echo " It seems you you new to $TASK"
-			echo " In order to proceed, you will need to visit"
-			echo " ${LYELLOW}https://www.plex.tv/claim${YELLOW}"
-			echo " And copy the token to clipboard"
-			echo "--------------------------------------------------"
-			echo "${STD}"
-			read -e -p " Paste token here: " PLEXCLAIM
-			echo ""
-
-		if 
 
 		fi
 
