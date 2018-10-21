@@ -69,6 +69,7 @@ else
 			echo "${STD}"
 			read -e -p " Paste token here: " PLEXCLAIM
 			echo ""
+			echo "$PLEXCLAIM" > $CONFIGS/.config/plexclaim
 
 		fi
 
@@ -83,6 +84,7 @@ else
 		cd "${CURDIR}"
 
 		if [ $APP == organizr ]; then APP=$ORGMENU; fi
+		[[ -f "$CONFIGS/.config/plexclaim" ]] && rm $CONFIGS/.config/plexclaim
 
 		APPINSTALLED
 
