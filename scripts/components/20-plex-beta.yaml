@@ -18,6 +18,7 @@
     environment:
       - PUID=${USERID}
       - PGID=${GROUPID}
+      - PLEX_CLAIM=${PLEXCLAIM}
       - TZ=${TIMEZONE}
       - VIRTUAL_HOST=plex.${MYDOMAIN}
       - VIRTUAL_PORT=32400
