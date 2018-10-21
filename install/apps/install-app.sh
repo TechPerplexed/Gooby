@@ -41,6 +41,7 @@ else
 
 		if [[ -d $OLDLOC && ! -d $CONFIGS/$TASK ]]; then
 
+			clear
 			echo "${YELLOW}"
 			echo "--------------------------------------------------"
 			echo " It seems you installed $TASK previously"
@@ -59,6 +60,7 @@ else
 
 		if [[ $TASK = "Plex" && ! -d $OLDLOC && ! -d $CONFIGS/$TASK ]]; then
 
+			clear
 			echo "${YELLOW}"
 			echo "--------------------------------------------------"
 			echo " It seems you you new to $TASK"
