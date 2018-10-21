@@ -5,21 +5,21 @@ source /opt/GooPlex/menus/variables.sh
 if [ "$EUID" -ne 0 ]; then
 
 	if [ ! -e $CONFIGS/Docker/.env ]; then
+
+		clear
 		echo ""
-		echo "${YELLOW}Welcome to GooPlex 2-Pre-Alpha!${STD}"
+		echo "${YELLOW}Welcome to GooPlex $VERSION!${STD}"
 		echo ""
-		echo "Please only try this on a FRESH server - there is no upgrade path"
-		echo "You will need to have a domain... if you don't have one"
-		echo "You will need to keep on using the old GooPlex"
-		echo ""
-		echo "Honestly, this is NOT production ready!"
+		echo "You will need to own a domain... if you don't have one"
+		echo "You get can a free domain at Freenom"
 		echo ""
 		echo "${YELLOW}Please answer the following two questions:${STD}"
 		echo ""
-		read -e -p 'What domain will you be using to access your server (ex: mydomain.com)?  ' -i "${MYDOMAIN}" MYDOMAIN
-		read -e -p 'What is your email address for certificate registration (ex: myname@mydomain.com)  ' -i "${MYEMAIL}" MYEMAIL
+		read -e -p 'What ${YELLOW}domain${STD} will you be using to access your server (ex: mydomain.com)?  ' -i "${MYDOMAIN}" MYDOMAIN
+		read -e -p 'What is your ${YELLOW}email${STD} address for certificate registration (ex: myname@mydomain.com)  ' -i "${MYEMAIL}" MYEMAIL
+		echo ""
 		echo "${YELLOW}Thank you! Please hang tight while we get some things ready...${STD}"
-		echo ""  && sleep 5
+		echo "" && sleep 10
 		source /opt/GooPlex/install/server/docker-install.sh
 		sudo mkdir -p $CONFIGS/.config
 		sudo mkdir -p $CONFIGS/Docker/components
