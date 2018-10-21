@@ -10,6 +10,7 @@ SONARR(){
 	APP=sonarr
 	APPTYPE=app
 	APPLOC=52-sonarr
+	OLDLOC=$USER/.config/NzbDrone/
 	source /opt/GooPlex/menus/apps.sh
 }
 
@@ -18,6 +19,7 @@ RADARR(){
 	APP=radarr
 	APPTYPE=app
 	APPLOC=50-radarr
+	OLDLOC=$USER/.config/Radarr/
 	source /opt/GooPlex/menus/apps.sh
 }
 
@@ -26,6 +28,7 @@ DELUGE(){
 	APP=deluge
 	APPTYPE=app
 	APPLOC=40-deluge
+	OLDLOC=$USER/.config/deluge/
 	source /opt/GooPlex/menus/apps.sh
 }
 
@@ -34,6 +37,7 @@ NZBGET(){
 	APP=nzbget
 	APPTYPE=app
 	APPLOC=30-nzbget
+	OLDLOC=/noupgradepathprovided
 	source /opt/GooPlex/menus/apps.sh
 }
 
@@ -42,6 +46,7 @@ JACKETT(){
 	APP=jackett
 	APPTYPE=app
 	APPLOC=44-jackett
+	OLDLOC=/noupgradepathprovided
 	source /opt/GooPlex/menus/apps.sh
 }
 
