@@ -1,3 +1,7 @@
+#!/bin/bash
+
+source /opt/GooPlex/menus/variables.sh
+
 clear
 echo ""
 echo "${YELLOW}Welcome to GooPlex $VERSION!${STD}"
