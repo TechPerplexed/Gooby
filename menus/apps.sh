@@ -1,5 +1,7 @@
 #!/bin/bash
 
+if [ ! -e $CONFIGS/Docker/.env ]; then /opt/GooPlex/install/server/server-init.sh; fi
+
 source $CONFIGS/Docker/.env
 
 # Menu Options
