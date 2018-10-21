@@ -10,6 +10,7 @@ NETDATA(){
 	APP=netdata
 	APPTYPE=app
 	APPLOC=02-netdata
+	OLDLOC=/noupgradepathprovided
 	source /opt/GooPlex/menus/apps.sh
 }
 
@@ -18,6 +19,7 @@ ORGANIZR(){
 	APP=organizr
 	APPTYPE=app
 	APPLOC=03-organizr
+	OLDLOC=/noupgradepathprovided
 	source /opt/GooPlex/menus/apps.sh
 }
 
@@ -26,6 +28,7 @@ OMBI(){
 	APP=ombi
 	APPTYPE=app
 	APPLOC=60-ombi
+	OLDLOC=/opt/Ombi/
 	source /opt/GooPlex/menus/apps.sh
 }
 
