@@ -57,10 +57,6 @@ else
 
 		fi
 
-
-
-		fi
-
 		echo ""
 		cd $CONFIGS/Docker
 		sudo rsync -a /opt/GooPlex/scripts/components/$APPLOC.yaml $CONFIGS/Docker/components
