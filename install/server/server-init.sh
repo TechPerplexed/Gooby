@@ -4,7 +4,7 @@ source /opt/GooPlex/menus/variables.sh
 
 clear
 echo ""
-echo "${YELLOW}Welcome to GooPlex $VERSION!${STD}"
+echo "${YELLOW}Welcome to the renewed GooPlex $VERSION!${STD}"
 echo ""
 echo "You will need to own a domain... if you don't have one"
 echo "You get can a free domain at Freenom."
