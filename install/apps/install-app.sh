@@ -63,9 +63,9 @@ else
 			clear
 			echo "${YELLOW}"
 			echo "--------------------------------------------------"
-			echo " It seems you you new to $TASK"
+			echo " It seems you are new to $TASK"
 			echo " In order to proceed, you will need to visit"
-			echo " ${LYELLOW}https://www.plex.tv/claim${YELLOW}"
+			echo " https://www.${LYELLOW}plex.tv/claim${YELLOW}"
 			echo " And copy the token to clipboard"
 			echo "--------------------------------------------------"
 			echo "${STD}"
