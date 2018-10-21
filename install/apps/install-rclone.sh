@@ -50,6 +50,7 @@ else
 
 		sudo mkdir -p /var/local/GooPlex/.config
 		sudo mkdir -p $HOME/logs
+		sudo mkdir -p $HOME/Downloads
 		sudo mkdir /media/Google
 
 		sudo rsync -a $HOME/.config/rclone/rclone.conf $CONFIGS/.config
