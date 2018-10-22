@@ -25,7 +25,7 @@ if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 
 	sudo chown $USER:$USER ${BACKUP}
 
-	echo -e "${LMAGENTA}Copying to Google...${STD}"
+	echo -e "${GREEN}Copying to Google...${STD}"
 
 	/usr/bin/rclone copy ${BACKUP} Gdrive:/Backup/$(hostname) --checksum --drive-chunk-size=64M
 	sudo rm ${BACKUP}
