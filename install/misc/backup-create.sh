@@ -18,7 +18,7 @@ if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 
 	echo -e "${LMAGENTA}Creating backup file...${STD}"
 
-	sudo crontab -u $USER -l > $CONFIGS/.config/cron
+	# sudo crontab -u $USER -l > $CONFIGS/.config/cron
 	sudo tar -cf ${BACKUP} \
 	$CONFIGS \
 	--exclude-caches-all
