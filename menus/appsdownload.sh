@@ -1,7 +1,7 @@
 #!/bin/bash
 
 MENU="Download Applications"
-source /opt/GooPlex/menus/variables.sh
+source /opt/Gooby/menus/variables.sh
 
 # Menu Options
 
