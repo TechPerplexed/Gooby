@@ -38,8 +38,7 @@ RUNPATCHES(){
 
 MENUSTART(){
 	echo "--------------------------------------------------"
-	echo " G O O P L E X   D E V E L O P E R  V E R S I O N"
-	echo " For testing only - DO NOT USE ON LIVE SERVER!!!"
+	echo " W E L C O M E   T O   G O O B Y   P R E V I E W"
 	echo "--------------------------------------------------"
 	echo " $MENU"
 	echo " ${STD}"
@@ -63,7 +62,7 @@ MENUVISIT(){
 	clear
 	echo ""
 	echo "--------------------------------------------------"
-	echo " Visit the menu any time by typing '${WHITE}gooplex${STD}'"
+	echo " Visit the menu any time by typing '${WHITE}gooby${STD}'"
 	echo "--------------------------------------------------"
 	echo ""
 }
