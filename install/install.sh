@@ -23,7 +23,7 @@ sudo ufw allow ssh
 sudo ufw --force enable
 
 sudo rm -r /opt/Gooby
-sudo git clone develop https://github.com/TechPerplexed/GooPlex.git /opt/Gooby
+sudo git clone develop https://github.com/TechPerplexed/Gooby.git /opt/Gooby
 
 sudo chmod +x -R /opt/Gooby/install
 sudo chmod +x -R /opt/Gooby/menus
