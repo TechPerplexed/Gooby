@@ -3,7 +3,7 @@
 PERFORM="create"
 TASK="a new user"
 
-source /opt/GooPlex/menus/variables.sh
+source /opt/Gooby/menus/variables.sh
 
 EXPLAINTASK
 
@@ -26,7 +26,7 @@ if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 	echo -e "${GREEN}"
 	echo -e "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 	echo -e " You should now be switched to ${YELLOW}${PU}${GREEN}"
-	echo -e "    Type ${WHITE}gooplex${GREEN} to access the menu."
+	echo -e "    Type ${WHITE}gooby${GREEN} to access the menu."
 	echo -e "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 	echo -e "${STD}"
 
