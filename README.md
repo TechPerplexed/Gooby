@@ -4,5 +4,5 @@ Please check the Tutorial: [Infinite Plex on VPS](http://bit.ly/TechPerplexed "H
 ## Installation
 Run the preview version with this command:  
 `sudo wget https://raw.githubusercontent.com/TechPerplexed/GooPlex/develop/install/install.sh -O /tmp/install.sh && sudo bash /tmp/install.sh`
-## Installation
-Features: one click installation of Rclone, Plex, Tautulli, Emby, Sonarr, Radarr, Deluge, NZBGet, Jackett, Netdata, Organizr and Ombi.
+## Features
+One click installation of Rclone, Plex, Tautulli, Emby, Sonarr, Radarr, Deluge, NZBGet, Jackett, Netdata, Organizr and Ombi.
