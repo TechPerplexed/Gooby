@@ -9,12 +9,12 @@ CONFIRMATION
 if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 
 	clear
-	sudo rm -r /opt/GooPlex
-	sudo git clone -b develop https://github.com/TechPerplexed/GooPlex /opt/GooPlex
-	sudo chmod +x -R /opt/GooPlex/install
-	sudo chmod +x -R /opt/GooPlex/menus
-	sudo rsync -a /opt/GooPlex/install/gooplex /bin
-	sudo chmod 755 /bin/gooplex
+	sudo rm -r /opt/Gooby
+	sudo git clone -b develop https://github.com/TechPerplexed/GooPlex /opt/Gooby
+	sudo chmod +x -R /opt/Gooby/install
+	sudo chmod +x -R /opt/Gooby/menus
+	sudo rsync -a /opt/Gooby/install/goopby /bin
+	sudo chmod 755 /bin/gooby
 
 	clear
 
