@@ -21,10 +21,10 @@ else
 		echo "--------------------------------------------------"
 		echo " Please choose what version you want to install:"
 		echo ""
-		[[ -f "/opt/GooPlex/scripts/components/$APPLOC.yaml" ]] && echo " ${LYELLOW}S${STD} - ${WHITE}$TASK Stable${STD} (recommended)"
-		[[ -f "/opt/GooPlex/scripts/components/$APPLOC-beta.yaml" ]] && echo " ${YELLOW}B${STD} - $TASK Beta"
-		[[ -f "/opt/GooPlex/scripts/components/$APPLOC-cf.yaml" ]] && echo " ${YELLOW}C${STD} - $TASK Stable with CloudFlare"
-		[[ -f "/opt/GooPlex/scripts/components/$APPLOC-beta-cf.yaml" ]] && echo " ${YELLOW}Q${STD} - $TASK Beta with CloudFlare"
+		[[ -f "/opt/Gooby/scripts/components/$APPLOC.yaml" ]] && echo " ${LYELLOW}S${STD} - ${WHITE}$TASK Stable${STD} (recommended)"
+		[[ -f "/opt/Gooby/scripts/components/$APPLOC-beta.yaml" ]] && echo " ${YELLOW}B${STD} - $TASK Beta"
+		[[ -f "/opt/Gooby/scripts/components/$APPLOC-cf.yaml" ]] && echo " ${YELLOW}C${STD} - $TASK Stable with CloudFlare"
+		[[ -f "/opt/Gooby/scripts/components/$APPLOC-beta-cf.yaml" ]] && echo " ${YELLOW}Q${STD} - $TASK Beta with CloudFlare"
 		echo "--------------------------------------------------"
 		echo ""
 		echo " (When in doubt, choose Stable or just hit Enter)"
@@ -33,9 +33,9 @@ else
 
 		case "$REPLY" in
 			s|S ) APPLOC=$APPLOC ;;
-			b|B ) [[ -f "/opt/GooPlex/scripts/components/$APPLOC-beta.yaml" ]] && APPLOC=$APPLOC-beta ;;
-			c|C ) [[ -f "/opt/GooPlex/scripts/components/$APPLOC-cf.yaml" ]] && APPLOC=$APPLOC-cf ;;
-			q|Q ) [[ -f "/opt/GooPlex/scripts/components/$APPLOC-beta-cf.yaml" ]] && APPLOC=$APPLOC-beta-cf ;;
+			b|B ) [[ -f "/opt/Gooby/scripts/components/$APPLOC-beta.yaml" ]] && APPLOC=$APPLOC-beta ;;
+			c|C ) [[ -f "/opt/Gooby/scripts/components/$APPLOC-cf.yaml" ]] && APPLOC=$APPLOC-cf ;;
+			q|Q ) [[ -f "/opt/Gooby/scripts/components/$APPLOC-beta-cf.yaml" ]] && APPLOC=$APPLOC-beta-cf ;;
 			* ) APPLOC=$APPLOC ;;
 		esac
 
@@ -77,11 +77,11 @@ else
 
 		echo ""
 		cd $CONFIGS/Docker
-		sudo rsync -a /opt/GooPlex/scripts/components/$APPLOC.yaml $CONFIGS/Docker/components
+		sudo rsync -a /opt/Gooby/scripts/components/$APPLOC.yaml $CONFIGS/Docker/components
 		/usr/local/bin/docker-compose down
 		echo "Just a moment while $APP is being installed..."
 		[[ ! -f "$CONFIGS/.config/plexclaim" ]] && echo "-" > $CONFIGS/.config/plexclaim
-		source /opt/GooPlex/install/misc/environment-build.sh rebuild
+		source /opt/Gooby/install/misc/environment-build.sh rebuild
 		/usr/local/bin/docker-compose up -d --remove-orphans ${@:2}
 		sudo chown -R $USER:$USER $CONFIGS
 		cd "${CURDIR}"
