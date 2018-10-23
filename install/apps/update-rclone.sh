@@ -22,13 +22,14 @@ else
 		cd /tmp
 
 		clear
-		echo "You current have the $ of $TASK installed.
+
+		echo "You currently have version $( cat $TCONFIGS/rclonev ) of $TASK installed"
 
 		read -e -p "Release ${YELLOW}(R)${STD} or Beta installation ${YELLOW}(B)?${STD} " -i "" choice
 
 		case "$choice" in
-			b|B ) curl https://rclone.org/install.sh | sudo bash -s beta; echo "Beta" > $TCONFIGS/.config/rclonev ;;
-			r|R ) curl https://rclone.org/install.sh | sudo bash; echo "Release" > $TCONFIGS/.config/rclonev ;;
+			b|B ) curl https://rclone.org/install.sh | sudo bash -s beta; echo "Beta" > $TCONFIGS/rclonev ;;
+			r|R ) curl https://rclone.org/install.sh | sudo bash; echo "Release" > $TCONFIGS/rclonev ;;
 			* ) echo "No changes made" ;;
 		esac
 
@@ -40,6 +41,8 @@ else
 			y|Y ) sudo rclone config; sudo rsync -a $HOME/.config/rclone/rclone.conf $CONFIGS/.config ;;
 			* ) echo "All done!" ;;
 		esac
+
+		cd $CURDIR
 
 		TASKCOMPLETE
 
