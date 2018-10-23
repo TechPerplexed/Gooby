@@ -19,7 +19,7 @@
       - /etc/localtime:/etc/localtime:ro
       - ${CONFIGS}/Radarr:/config
       - ${HOME}/logs:/config/logs
-      - ${GOOGLE}:/Media
+      - ${GOOGLE}:/Google
       - /bin/netstat:/bin/netstat:ro
       - /usr/bin/killall:/usr/bin/killall:ro
     environment:
@@ -32,7 +32,7 @@
       - LETSENCRYPT_HOST=radarr.${MYDOMAIN}
       - LETSENCRYPT_EMAIL=${MYEMAIL}
     healthcheck:
-      test: ["CMD-SHELL", "netstat -ntlp | grep :7878 && mountpoint /Media"]
+      test: ["CMD-SHELL", "netstat -ntlp | grep :7878 && mountpoint /Google"]
       interval: 10s
       timeout: 2s
       retries: 3
