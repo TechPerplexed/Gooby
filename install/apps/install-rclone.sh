@@ -30,14 +30,15 @@ else
 		# Main script
 
 		cd /tmp
+		sudo mkdir $TCONFIGS
 		
 		clear
 
 		read -e -p "Release ${YELLOW}(R)${STD} or Beta installation ${YELLOW}(B)?${STD} " -i "R" choice
 
 		case "$choice" in 
-			b|B ) curl https://rclone.org/install.sh | sudo bash -s beta; echo "Beta" > $TCONFIGS/.config/rclonev ;;
-			* ) curl https://rclone.org/install.sh | sudo bash; echo "Release" > $TCONFIGS/.config/rclonev ;;
+			b|B ) curl https://rclone.org/install.sh | sudo bash -s beta; echo "Beta" > $TCONFIGS/rclonev ;;
+			* ) curl https://rclone.org/install.sh | sudo bash; echo "Release" > $TCONFIGS/rclonev ;;
 		esac
 
 		clear
@@ -49,6 +50,7 @@ else
 		# Installing Services
 
 		sudo mkdir -p /var/local/Gooby/.config
+		sudo mkdir -p /var/local/.
 		sudo mkdir -p $HOME/logs
 		sudo mkdir -p $HOME/Downloads
 		sudo mkdir -p /media/Google
@@ -57,6 +59,7 @@ else
 		sudo rsync -a /opt/GooPlex/scripts/rclone.service /etc/systemd/system/rclone.service
 
 		sudo chown -R $USER:$USER $CONFIGS
+		sudo chown -R $USER:$USER $TCONFIGS
 		sudo chown -R $USER:$USER $HOME
 		sudo chown -R $USER:$USER /media/Google
 
