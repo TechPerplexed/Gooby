@@ -21,7 +21,7 @@ else
 		sudo rm $CONFIGS/Docker/components/$APPLOC*
 		/usr/local/bin/docker-compose down
 		echo "Just a moment while $APP is being uninstalled..."
-		source /opt/GooPlex/install/misc/environment-build.sh rebuild
+		source /opt/Gooby/install/misc/environment-build.sh rebuild
 		/usr/local/bin/docker-compose up -d --remove-orphans ${@:2}
 		cd "${CURDIR}"
 		
