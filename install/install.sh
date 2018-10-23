@@ -1,7 +1,5 @@
 #!/bin/bash
 
-# Install GooPlex
-
 sudo apt-get update -y && sudo apt-get upgrade -y
 
 sudo apt-get -y install \
@@ -24,13 +22,13 @@ sudo ufw default allow outgoing
 sudo ufw allow ssh
 sudo ufw --force enable
 
-sudo rm -r /opt/GooPlex
-sudo git clone https://github.com/TechPerplexed/GooPlex.git /opt/GooPlex
+sudo rm -r /opt/Gooby
+sudo git clone develop https://github.com/TechPerplexed/GooPlex.git /opt/Gooby
 
-sudo chmod +x -R /opt/GooPlex/install
-sudo chmod +x -R /opt/GooPlex/menus
-sudo rsync -a /opt/GooPlex/install/gooplex /bin
-sudo chmod 755 /bin/gooplex
+sudo chmod +x -R /opt/Gooby/install
+sudo chmod +x -R /opt/Gooby/menus
+sudo rsync -a /opt/Gooby/install/gooby /bin
+sudo chmod 755 /bin/gooby
 
 source /opt/GooPlex/menus/variables.sh
 
@@ -38,6 +36,6 @@ clear
 	echo -e "${GREEN}"
 	echo -e "--------------------------------------------------"
 	echo -e " Installation complete!"
-	echo -e " Type ${WHITE}gooplex${GREEN} to access the menu."
+	echo -e " Type ${WHITE}gooby${GREEN} to access the menu."
 	echo -e "--------------------------------------------------"
 	echo -e "${STD}"
