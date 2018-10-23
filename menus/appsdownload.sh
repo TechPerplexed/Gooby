@@ -20,7 +20,7 @@ RADARR(){
 	APPTYPE=app
 	APPLOC=50-radarr
 	OLDLOC=$USER/.config/Radarr/
-	source /opt/Gooy/menus/apps.sh
+	source /opt/Gooby/menus/apps.sh
 }
 
 DELUGE(){
