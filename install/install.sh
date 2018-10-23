@@ -30,7 +30,7 @@ sudo chmod +x -R /opt/Gooby/menus
 sudo rsync -a /opt/Gooby/install/gooby /bin
 sudo chmod 755 /bin/gooby
 
-source /opt/GooPlex/menus/variables.sh
+source /opt/Gooby/menus/variables.sh
 
 clear
 	echo -e "${GREEN}"
