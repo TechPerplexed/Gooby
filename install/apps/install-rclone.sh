@@ -36,8 +36,8 @@ else
 		read -e -p "Release ${YELLOW}(R)${STD} or Beta installation ${YELLOW}(B)?${STD} " -i "R" choice
 
 		case "$choice" in 
-			b|B ) curl https://rclone.org/install.sh | sudo bash -s beta; echo "Beta" > $CONFIGS/.config/rclonev ;;
-			* ) curl https://rclone.org/install.sh | sudo bash; echo "Release" > $CONFIGS/.config/rclonev ;;
+			b|B ) curl https://rclone.org/install.sh | sudo bash -s beta; echo "Beta" > $TCONFIGS/.config/rclonev ;;
+			* ) curl https://rclone.org/install.sh | sudo bash; echo "Release" > $TCONFIGS/.config/rclonev ;;
 		esac
 
 		clear
