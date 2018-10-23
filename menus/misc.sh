@@ -1,13 +1,13 @@
 #!/bin/bash
 
 MENU="Additional Tasks"
-source /opt/GooPlex/menus/variables.sh
+source /opt/Gooby/menus/variables.sh
 
 # Menu Options
 
-GOOPLEX(){
+GOOBY(){
 	PERFORM="update"
-	TASK="GooPlex"
+	TASK="Gooby"
 	source /opt/GooPlex/install/misc/${TASK}-${PERFORM}.sh
 }
 
@@ -45,7 +45,7 @@ show_menus() {
 	clear
 	echo " ${CYAN}"
 	MENUSTART
-	echo " ${CYAN}A${STD} - Update GooPlex"
+	echo " ${CYAN}A${STD} - Update Gooby"
 	echo " ${CYAN}B${STD} - Check Environment"
 	echo " ${CYAN}C${STD} - System Cleanup"
 	echo " ${CYAN}D${STD} - Create Backup"
@@ -61,7 +61,7 @@ read_options(){
 	local choice
 	read -n 1 -s -r -p "Choose option: " choice
 	case $choice in
-		[Aa]) GOOPLEX ;;
+		[Aa]) GOOBY ;;
 		[Bb]) CHECKENV ;;
 		[Cc]) RCLEAN ;;
 		[Dd]) BACKUP ;;
