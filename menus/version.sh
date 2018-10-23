@@ -1,23 +1,23 @@
 #!/bin/bash
 
-MENU="GooPlex Version"
-source /opt/GooPlex/menus/variables.sh
+MENU="Gooby Version"
+source /opt/Gooby/menus/variables.sh
 
 # Menu Options
 
 MASTER(){
 	UVERSION=Master
-	/opt/GooPlex/install/misc/GooPlex-update.sh
+	/opt/Gooby/install/misc/Gooby-update.sh
 }
 
 LEGACY(){
 	UVERSION=Legacy
-	/opt/GooPlex/install/misc/GooPlex-update.sh
+	/opt/Gooby/install/misc/Gooby-update.sh
 }
 
 DEVELOPER(){
 	UVERSION-Developer
-	/opt/GooPlex/install/misc/GooPlex-update.sh
+	/opt/Gooby/install/misc/Gooby-update.sh
 }
 
 QUIT(){
@@ -39,7 +39,7 @@ show_menus() {
 	echo " ${STD}"
 	
 	echo " ${GREEN}A${STD} - Main version (you need a domain)"
-	echo " ${GREEN}B${STD} - Legacy (if you used GooPlex before)"
+	echo " ${GREEN}B${STD} - Legacy (if you used Gooby before)"
 	echo " ${GREEN}C${STD} - Developer (bleeding edge suffering)"
 	echo " ${LRED}Q${STD} - QUIT $FUNCTION"
 	echo " ${GREEN}"
