@@ -1,38 +1,38 @@
 #!/bin/bash
 
 MENU="Maintain Server"
-source /opt/GooPlex/menus/variables.sh
+source /opt/Gooby/menus/variables.sh
 
 # Menu Options
 
 PATCHES(){
 	PERFORM="apply"
 	TASK="patches"
-	source /opt/GooPlex/install/server/${TASK}-${PERFORM}.sh
+	source /opt/Gooby/install/server/${TASK}-${PERFORM}.sh
 }
 
 DOMAIN(){
 	PERFORM="manage"
 	TASK="domain"
-	source /opt/GooPlex/install/server/${TASK}-${PERFORM}.sh
+	source /opt/Gooby/install/server/${TASK}-${PERFORM}.sh
 }
 
 EMAILADDR(){
 	PERFORM="manage"
 	TASK="email"
-	source /opt/GooPlex/install/server/${TASK}-${PERFORM}.sh
+	source /opt/Gooby/install/server/${TASK}-${PERFORM}.sh
 }
 
 TZONE(){
 	PERFORM="manage"
 	TASK="timezone"
-	source /opt/GooPlex/install/server/${TASK}-${PERFORM}.sh
+	source /opt/Gooby/install/server/${TASK}-${PERFORM}.sh
 }
 
 UPGRADE(){
 	PERFORM="upgrade"
 	TASK="OS"
-	source /opt/GooPlex/install/server/${TASK}-${PERFORM}.sh
+	source /opt/Gooby/install/server/${TASK}-${PERFORM}.sh
 }
 
 QUIT(){
