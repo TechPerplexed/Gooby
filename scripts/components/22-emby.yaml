@@ -9,7 +9,7 @@
     cpu_shares: 8192
     volumes:
       - ${CONFIGS}/Emby:/config
-      - ${MEDIA}:/media/Google
+      - ${MEDIA}:/media
       - /tmp:/transcode
     environment:
       - UID=${USERID}
@@ -22,8 +22,13 @@
       - VIRTUAL_NETWORK=nginx-proxy
       - LETSENCRYPT_HOST=emby.${MYDOMAIN}
       - LETSENCRYPT_EMAIL=${MYEMAIL}
-#    devices:
-#      - /dev/dri:/dev/dri
+    devices:
+      - /dev/dri:/dev/dri
+    healthcheck:
+      test: ["CMD-SHELL", "netstat -ntlp | grep :8920"]
+      interval: 10s
+      timeout: 2s
+      retries: 3
     blkio_config:
       weight: 600
       #device_read_bps:
