@@ -2,7 +2,7 @@
 
 VERSION="2-alpha"
 TIMEZONE=$( cat /etc/timezone )
-CONFIGS=/var/local/GooPlex
+CONFIGS=/var/local/Gooby
 CURDIR=$(pwd)
 
 # Define colors
