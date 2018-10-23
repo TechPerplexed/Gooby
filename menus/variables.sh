@@ -1,6 +1,7 @@
 #!/bin/bash
 
 VERSION="2-alpha"
+TIMEZONE=$( cat /etc/timezone )
 CONFIGS=/var/local/GooPlex
 CURDIR=$(pwd)
 
