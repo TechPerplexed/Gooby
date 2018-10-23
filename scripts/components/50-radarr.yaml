@@ -32,7 +32,7 @@
       - LETSENCRYPT_HOST=radarr.${MYDOMAIN}
       - LETSENCRYPT_EMAIL=${MYEMAIL}
     healthcheck:
-      test: ["CMD-SHELL", "netstat -ntlp | grep :7878 && mountpoint /Google"]
+      test: ["CMD-SHELL", "netstat -ntlp | grep :7878 && mountpoint /Media"]
       interval: 10s
       timeout: 2s
       retries: 3
