@@ -1,28 +1,28 @@
 #!/bin/bash
 
-MENU="GooPlex Menu"
-source /opt/GooPlex/menus/variables.sh
+MENU="Gooby Menu"
+source /opt/Gooby/menus/variables.sh
 
 # Menu Options
 
 server(){
-	/opt/GooPlex/menus/server.sh
+	/opt/Gooby/menus/server.sh
 }
 
 media(){
-	/opt/GooPlex/menus/appsmedia.sh
+	/opt/Gooby/menus/appsmedia.sh
 }
 
 download(){
-	/opt/GooPlex/menus/appsdownload.sh
+	/opt/Gooby/menus/appsdownload.sh
 }
 
 other(){
-	/opt/GooPlex/menus/appsother.sh
+	/opt/Gooby/menus/appsother.sh
 }
 
 misc(){
-	/opt/GooPlex/menus/misc.sh
+	/opt/Gooby/menus/misc.sh
 }
 
 quit(){
