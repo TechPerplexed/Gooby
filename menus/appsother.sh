@@ -1,7 +1,7 @@
 #!/bin/bash
 
 MENU="Other Applications"
-source /opt/GooPlex/menus/variables.sh
+source /opt/Gooby/menus/variables.sh
 
 # Menu Options
 
@@ -11,7 +11,7 @@ NETDATA(){
 	APPTYPE=app
 	APPLOC=02-netdata
 	OLDLOC=/noupgradepathprovided
-	source /opt/GooPlex/menus/apps.sh
+	source /opt/Gooby/menus/apps.sh
 }
 
 ORGANIZR(){
@@ -20,7 +20,7 @@ ORGANIZR(){
 	APPTYPE=app
 	APPLOC=03-organizr
 	OLDLOC=/noupgradepathprovided
-	source /opt/GooPlex/menus/apps.sh
+	source /opt/Gooby/menus/apps.sh
 }
 
 OMBI(){
@@ -29,7 +29,7 @@ OMBI(){
 	APPTYPE=app
 	APPLOC=60-ombi
 	OLDLOC=/opt/Ombi/
-	source /opt/GooPlex/menus/apps.sh
+	source /opt/Gooby/menus/apps.sh
 }
 
 QUIT(){
