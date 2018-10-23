@@ -29,7 +29,7 @@ if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 		echo ""
 		cd $CONFIGS/Docker
 		/usr/local/bin/docker-compose down
-		source /opt/GooPlex/install/misc/environment-build.sh rebuild
+		source /opt/Gooby/install/misc/environment-build.sh rebuild
 		/usr/local/bin/docker-compose up -d --remove-orphans
 		cd "${CURDIR}"
 		clear
