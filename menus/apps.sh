@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [ ! -e $CONFIGS/Docker/.env ]; then /opt/GooPlex/install/server/server-init.sh; fi
+if [ ! -e $CONFIGS/Docker/.env ]; then /opt/Gooby/install/server/server-init.sh; fi
 
 source $CONFIGS/Docker/.env
 
@@ -8,17 +8,17 @@ source $CONFIGS/Docker/.env
 
 INSTALL(){
 	PERFORM="install"
-	source /opt/GooPlex/install/apps/${PERFORM}-$APPTYPE.sh
+	source /opt/Gooby/install/apps/${PERFORM}-$APPTYPE.sh
 }
 
 UPDATE(){
 	PERFORM="update"
-	source /opt/GooPlex/install/apps/${PERFORM}-$APPTYPE.sh
+	source /opt/Gooby/install/apps/${PERFORM}-$APPTYPE.sh
 }
 
 REMOVE(){
 	PERFORM="remove"
-	source /opt/GooPlex/install/apps/${PERFORM}-$APPTYPE.sh
+	source /opt/Gooby/install/apps/${PERFORM}-$APPTYPE.sh
 }
 
 QUIT(){
