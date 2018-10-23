@@ -8,31 +8,31 @@ source /opt/Gooby/menus/variables.sh
 GOOBY(){
 	PERFORM="update"
 	TASK="Gooby"
-	source /opt/GooPlex/install/misc/${TASK}-${PERFORM}.sh
+	source /opt/Gooby/install/misc/${TASK}-${PERFORM}.sh
 }
 
 CHECKENV(){
 	PERFORM="check"
 	TASK="environment"
-	source /opt/GooPlex/install/misc/${TASK}-${PERFORM}.sh
+	source /opt/Gooby/install/misc/${TASK}-${PERFORM}.sh
 }
 
 RCLEAN(){
 	PERFORM="cleanup"
 	TASK="system"
-	source /opt/GooPlex/install/misc/${TASK}-${PERFORM}.sh
+	source /opt/Gooby/install/misc/${TASK}-${PERFORM}.sh
 }
 
 BACKUP(){
 	PERFORM="create"
 	TASK="backup"
-	source /opt/GooPlex/install/misc/${TASK}-${PERFORM}.sh
+	source /opt/Gooby/install/misc/${TASK}-${PERFORM}.sh
 }
 
 RESTORE(){
 	PERFORM="restore"
 	TASK="backup"
-	source /opt/GooPlex/install/misc/${TASK}-${PERFORM}.sh
+	source /opt/Gooby/install/misc/${TASK}-${PERFORM}.sh
 }
 
 QUIT(){
