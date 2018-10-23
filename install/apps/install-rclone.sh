@@ -56,7 +56,7 @@ else
 		sudo mkdir -p /media/Google
 
 		sudo rsync -a $HOME/.config/rclone/rclone.conf $CONFIGS/.config
-		sudo rsync -a /opt/GooPlex/scripts/rclone.service /etc/systemd/system/rclone.service
+		sudo rsync -a /opt/Gooby/scripts/rclone.service /etc/systemd/system/rclone.service
 
 		sudo chown -R $USER:$USER $CONFIGS
 		sudo chown -R $USER:$USER $TCONFIGS
