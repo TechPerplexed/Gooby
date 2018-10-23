@@ -23,7 +23,8 @@ else
 
 		clear
 
-		echo "You currently have version $( cat $TCONFIGS/rclonev ) of $TASK installed"
+		echo "You currently have the $( cat $TCONFIGS/rclonev ) version of $TASK installed"
+		echo ""
 
 		read -e -p "Release ${YELLOW}(R)${STD} or Beta installation ${YELLOW}(B)?${STD} " -i "" choice
 
