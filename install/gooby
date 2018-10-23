@@ -1,15 +1,15 @@
 #!/bin/bash
 
-source /opt/GooPlex/menus/variables.sh
+source /opt/Gooby/menus/variables.sh
 
 if [ "$EUID" -ne 0 ]; then
 
-	if [ ! -e $CONFIGS/Docker/.env ]; then /opt/GooPlex/install/server/server-init.sh; fi
+	if [ ! -e $CONFIGS/Docker/.env ]; then /opt/Gooby/install/server/server-init.sh; fi
 
-	/opt/GooPlex/menus/main.sh
+	/opt/Gooby/menus/main.sh
 
 else
 
-	/opt/GooPlex/install/server/user-create.sh
+	/opt/Gooby/install/server/user-create.sh
 
 fi
