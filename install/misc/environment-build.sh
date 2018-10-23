@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source /opt/GooPlex/menus/variables.sh
+source /opt/Gooby/menus/variables.sh
 
 DOCKERHOME=$CONFIGS/Docker
 sudo mkdir -p $DOCKERHOME/components
@@ -31,7 +31,7 @@ fi
 
 echo "###########################" > ${ENV}
 echo "#  Environment variables  #" >> ${ENV}
-echo "#    for GooPlex v$VERSION   #" >> ${ENV}
+echo "#     for Gooby v$VERSION    #" >> ${ENV}
 echo "###########################" >> ${ENV}
 echo >> ${ENV}
 echo "HOME=$HOME" >> ${ENV}
