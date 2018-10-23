@@ -3,7 +3,8 @@
 #
   radarr:
     restart: unless-stopped
-    image: linuxserver/radarr:latest
+    image: lsiodev/radarr
+    #image: linuxserver/radarr:latest
     container_name: radarr
     hostname: radarr
     cpu_shares: 2048
@@ -20,6 +21,7 @@
       - ${HOME}/logs:/config/logs
       - ${GOOGLE}:/Google
       - /bin/netstat:/bin/netstat:ro
+      - /usr/bin/killall:/usr/bin/killall:ro
     environment:
       - PGID=${GROUPID}
       - PUID=${USERID}
@@ -30,15 +32,7 @@
       - LETSENCRYPT_HOST=radarr.${MYDOMAIN}
       - LETSENCRYPT_EMAIL=${MYEMAIL}
     healthcheck:
-      test: ["CMD-SHELL", "netstat -ntlp | grep :7878 && mountpoint /movies"]
+      test: ["CMD-SHELL", "netstat -ntlp | grep :7878 && mountpoint /Google"]
       interval: 10s
       timeout: 2s
       retries: 3
-    blkio_config:
-      weight: 150
-      #device_read_bps:
-      #- path: /dev/md1
-      #rate: '50mb'
-      #device_write_bps:
-      #- path: /dev/md1
-      #rate: '50mb'
