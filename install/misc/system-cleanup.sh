@@ -23,7 +23,7 @@ if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 	# sudo systemctl start mergerfs
 
 	docker system prune -a -f --volumes
-	source /opt/GooPlex/install/misc/environment-build.sh rebuild
+	source /opt/Gooby/install/misc/environment-build.sh rebuild
 	/usr/local/bin/docker-compose up -d --remove-orphans ${@:2}
 
 	sudo chown -R $USER:$USER $CONFIGS
