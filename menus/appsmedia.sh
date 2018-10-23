@@ -1,7 +1,7 @@
 #!/bin/bash
 
 MENU="Media Applications"
-source /opt/GooPlex/menus/variables.sh
+source /opt/Gooby/menus/variables.sh
 
 # Menu Options
 
@@ -9,7 +9,7 @@ RCLONE(){
 	TASK=Rclone
 	APP=rclone
 	APPTYPE=rclone
-	source /opt/GooPlex/menus/apps.sh
+	source /opt/Gooby/menus/apps.sh
 }
 
 PLEX(){
@@ -18,7 +18,7 @@ PLEX(){
 	APPTYPE=app
 	APPLOC=20-plex
 	OLDLOC=/var/lib/plexmediaserver/
-	source /opt/GooPlex/menus/apps.sh
+	source /opt/Gooby/menus/apps.sh
 }
 
 TAUTULLI(){
@@ -27,7 +27,7 @@ TAUTULLI(){
 	APPTYPE=app
 	APPLOC=25-tautulli
 	OLDLOC=/opt/Tautulli/
-	source /opt/GooPlex/menus/apps.sh
+	source /opt/Gooby/menus/apps.sh
 }
 
 EMBY(){
@@ -36,7 +36,7 @@ EMBY(){
 	APPTYPE=app
 	APPLOC=22-emby
 	OLDLOC=/var/lib/emby/
-	source /opt/GooPlex/menus/apps.sh
+	source /opt/Gooby/menus/apps.sh
 }
 
 QUIT(){
