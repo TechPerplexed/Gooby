@@ -3,21 +3,23 @@
 #
   netdata:
     restart: always
-    image: titpetric/netdata:latest
+    image: netdata/netdata
     container_name: netdata
-    hostname: netdata
+    hostname: netdata.${MYDOMAIN}
     cpu_shares: 1024
     depends_on:
       - letsencrypt-nginx-proxy-companion
     cap_add:
       - SYS_PTRACE
+    security_opt:
+      - apparmor:unconfined
     volumes:
       - /proc:/host/proc:ro
       - /sys:/host/sys:ro
-      - /var/run/docker.sock:/var/run/docker.sock
+      - /var/run/docker.sock:/var/run/docker.sock:ro
       - /etc/localtime:/etc/localtime:ro
-      - /bin/netstat:/bin/netstat:ro
     environment:
+      - PGID=999
       - TZ=${TIMEZONE}
       - VIRTUAL_HOST=netdata.${MYDOMAIN}
       - VIRTUAL_PORT=19999
