@@ -13,6 +13,7 @@ if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 	sudo dpkg-reconfigure tzdata
 	echo ""
 	echo "Your timezone is now set to ${CYAN}$TIMEZONE${STD}"
+	echo ""
 
 	TASKCOMPLETE
 
