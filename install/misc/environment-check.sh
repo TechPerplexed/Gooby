@@ -17,7 +17,7 @@ show_menus() {
 	clear
 	echo " ${CYAN}"
 	MENUSTART
-	echo " Timezone: ${CYAN}( cat /etc/timezone )${STD}"
+	echo " Timezone: ${CYAN}$TIMEZONE${STD}"
 	echo " Your Domain: ${CYAN}$MYDOMAIN${STD}"
 	echo " Your Email Address: ${CYAN}$MYEMAIL${STD}"
 	echo " Your Server IP Address: ${CYAN}$IP${STD}"
