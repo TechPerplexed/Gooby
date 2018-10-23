@@ -21,11 +21,14 @@ else
 
 		cd /tmp
 
+		clear
+		echo "You current have the $ of $TASK installed.
+
 		read -e -p "Release ${YELLOW}(R)${STD} or Beta installation ${YELLOW}(B)?${STD} " -i "" choice
 
 		case "$choice" in
-			b|B ) curl https://rclone.org/install.sh | sudo bash -s beta ;;
-			r|R ) curl https://rclone.org/install.sh | sudo bash ;;
+			b|B ) curl https://rclone.org/install.sh | sudo bash -s beta; echo "Beta" > $TCONFIGS/.config/rclonev ;;
+			r|R ) curl https://rclone.org/install.sh | sudo bash; echo "Release" > $TCONFIGS/.config/rclonev ;;
 			* ) echo "No changes made" ;;
 		esac
 
