@@ -48,7 +48,7 @@ else
 
 		# Installing Services
 
-		sudo mkdir -p /var/local/GooPlex/.config
+		sudo mkdir -p /var/local/Gooby/.config
 		sudo mkdir -p $HOME/logs
 		sudo mkdir -p $HOME/Downloads
 		sudo mkdir -p /media/Google
