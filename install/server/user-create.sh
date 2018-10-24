@@ -23,12 +23,13 @@ if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 	sudo -s chmod 0440 /etc/sudoers.d/$PU
 
 	clear
-	echo -e "${GREEN}"
-	echo -e "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-	echo -e " You should now be switched to ${YELLOW}${PU}${GREEN}"
-	echo -e "    Type ${WHITE}gooby${GREEN} to access the menu."
-	echo -e "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-	echo -e "${STD}"
+	echo "${GREEN}"
+	echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+	echo " You should now be switched to ${YELLOW}${PU}${GREEN}"
+	echo " Type ${WHITE}gooby${GREEN} to access the menu."
+	echo " Visit techperplexed.ga for setup instructions!"
+	echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+	echo "${STD}"
 
 	su $PU
 
