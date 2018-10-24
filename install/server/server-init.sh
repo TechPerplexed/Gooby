@@ -11,8 +11,11 @@ echo "Then you get can a free domain for example at Freenom."
 echo ""
 echo "${YELLOW}Please answer the following two questions:${STD}"
 echo ""
-read -e -p 'What domain will you be using to access your server (ex: mydomain.com)?  ' -i "${MYDOMAIN}" MYDOMAIN
-read -e -p 'What is your email address for certificate registration (ex: myname@mydomain.com)  ' -i "${MYEMAIL}" MYEMAIL
+echo "What domain will you be using to access your server?"
+read -e -p '(ex: mydomain.com)?  ' -i "${MYDOMAIN}" MYDOMAIN
+echo ""
+echo "What is your email address for certificate registration?"
+read -e -p '(ex: myname@mydomain.com)  ' -i "${MYEMAIL}" MYEMAIL
 echo ""
 echo "${YELLOW}Thank you! Please hang tight while we get some things ready...${STD}"
 echo "" && sleep 10
