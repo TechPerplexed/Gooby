@@ -13,7 +13,7 @@ if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 	echo ""
 
 	if [ ! -s $TCONFIGS/cronboot ]; then
-		(crontab -l 2>/dev/null; echo "@reboot /opt/Gooby/install/misc/system-cleanup.sh > /dev/null 2>&1") | crontab -
+		(crontab -l 2>/dev/null; echo "@reboot /opt/Gooby/scripts/rclean.sh > /dev/null 2>&1") | crontab -
 		touch $TCONFIGS/cronboot
 	fi
 
