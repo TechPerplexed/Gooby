@@ -24,11 +24,12 @@ if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 
 	clear
 	echo "${GREEN}"
-	echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+	echo "--------------------------------------------------"
+	echo " G O O B Y - Find instructions at techperplexed.ga"
+	echo "--------------------------------------------------"
 	echo " You should now be switched to ${YELLOW}${PU}${GREEN}"
 	echo " Type ${WHITE}gooby${GREEN} to access the menu."
-	echo " Visit techperplexed.ga for setup instructions!"
-	echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+	echo "--------------------------------------------------"
 	echo "${STD}"
 
 	su $PU
