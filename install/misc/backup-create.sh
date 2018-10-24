@@ -46,14 +46,17 @@ if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 
 		if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 
-		(crontab -l 2>/dev/null; echo "5 1 * * Sun /opt/Gooby/install/misc/backup-create.sh > /dev/null 2>&1") | crontab -
-		touch $TCONFIGS/cronbackup
-		echo "Backup scheduled to run at 01:15 every Sunday"
-		echo "You can always change this by typing ${LYELLOW}crontab -e${STD}"
+			(crontab -l 2>/dev/null; echo "5 1 * * Sun /opt/Gooby/install/misc/backup-create.sh > /dev/null 2>&1") | crontab -
+			touch $TCONFIGS/cronbackup
+			echo "Backup scheduled to run at 01:15 every Sunday"
+			echo "You can always change this by typing ${LYELLOW}crontab -e${STD}"
 
 		else
 
-		echo "No worries, you can always add a backup schedule later!"
+			echo "No worries, you can always add a backup schedule later!"
+
+		fi
+
 	fi
 
 	TASKCOMPLETE
