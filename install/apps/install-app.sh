@@ -22,7 +22,7 @@ else
 		echo " Please choose what version you want to install:"
 		echo ""
 		[[ -f "/opt/Gooby/scripts/components/$APPLOC.yaml" ]] && echo " ${LYELLOW}S${STD} - $TASK Stable"
-		[[ -f "/opt/Gooby/scripts/components/$APPLOC-beta.yaml" ]] && echo " ${YELLOW}B${STD} - $TASK Beta"
+		[[ -f "/opt/Gooby/scripts/components/$APPLOC-beta.yaml" ]] && echo " ${LYELLOW}B${STD} - $TASK Beta"
 		echo "--------------------------------------------------"
 		echo ""
 		read -n 1 -s -r -p " ---> "
