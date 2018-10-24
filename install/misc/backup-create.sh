@@ -38,7 +38,7 @@ if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 	echo "--------------------------------------------------"
 	echo "${STD}"
 
-	if [ ! -s $TCONFIGS/cronbackup ]; then
+	if [ ! -f $TCONFIGS/cronbackup ]; then
 
 		echo ""
 		read -n 1 -s -r -p " Would you like to schedule a weekly backup (y/N)? "
