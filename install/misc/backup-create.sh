@@ -41,15 +41,15 @@ if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 	if [ ! -s $TCONFIGS/cronbackup ]; then
 
 		echo ""
-		read -n 1 -s -r -p " Would you like to schedule a weekly backup?"
+		read -n 1 -s -r -p " Would you like to schedule a weekly backup (y/N)? "
 		echo ""
 
 		if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 
 			(crontab -l 2>/dev/null; echo "5 1 * * Sun /opt/Gooby/install/misc/backup-create.sh > /dev/null 2>&1") | crontab -
 			touch $TCONFIGS/cronbackup
-			echo "Backup scheduled to run at 01:15 every Sunday"
-			echo "You can always change this by typing ${LYELLOW}crontab -e${STD}"
+			echo " Backup scheduled to run at 01:15 every Sunday"
+			echo " You can always change this by typing ${LYELLOW}crontab -e${STD}"
 
 		else
 
