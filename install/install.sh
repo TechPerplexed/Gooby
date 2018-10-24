@@ -37,5 +37,6 @@ clear
 	echo -e "--------------------------------------------------"
 	echo -e " Installation complete!"
 	echo -e " Type ${WHITE}gooby${GREEN} to access the menu."
+	echo -e " Visit techperplexed.ga for setup instructions!"
 	echo -e "--------------------------------------------------"
 	echo -e "${STD}"
