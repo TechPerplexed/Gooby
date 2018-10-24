@@ -30,7 +30,7 @@ else
 
 		case "$choice" in
 			b|B ) curl https://rclone.org/install.sh | sudo bash -s beta; echo "Beta" > $TCONFIGS/rclonev ;;
-			r|R ) curl https://rclone.org/install.sh | sudo bash; echo "Stable" > $TCONFIGS/rclonev ;;
+			s|S ) curl https://rclone.org/install.sh | sudo bash; echo "Stable" > $TCONFIGS/rclonev ;;
 			* ) echo "No changes made" ;;
 		esac
 
