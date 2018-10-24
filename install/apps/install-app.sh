@@ -64,7 +64,7 @@ else
 			echo " And copy the token to clipboard"
 			echo ""
 			echo " Make sure you active the token within 4 minutes"
-			echo " at ${WHITE}$APP.$MYDOMAIN$:8443{YELLOW}"
+			echo " at ${LYELLOW}$APP.$MYDOMAIN$:8443${YELLOW}"
 			echo "--------------------------------------------------"
 			echo "${STD}"
 			read -e -p " Paste token here: " PLEXCLAIM
