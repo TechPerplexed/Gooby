@@ -63,7 +63,7 @@ else
 			echo " https://www.${LYELLOW}plex.tv/claim${YELLOW}"
 			echo " And copy the token to clipboard"
 			echo ""
-			echo " Make sure you active the token within 4 minutes"
+			echo " Make sure you activate the token within 4 minutes"
 			echo " at ${LYELLOW}$APP.$MYDOMAIN:8443${YELLOW}"
 			echo "--------------------------------------------------"
 			echo "${STD}"
