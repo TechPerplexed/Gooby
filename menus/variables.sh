@@ -38,7 +38,7 @@ RUNPATCHES(){
 
 MENUSTART(){
 	echo "--------------------------------------------------"
-	echo " W E L C O M E   T O   G O O B Y   P R E V I E W"
+	echo " G O O B Y - Find instructions at techperplexed.ga"
 	echo "--------------------------------------------------"
 	echo " $MENU"
 	echo " ${STD}"
