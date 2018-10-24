@@ -55,14 +55,14 @@ else
 		/usr/local/bin/docker-compose down
 		cd "${CURDIR}"
 
-		sudo mv $CONFIGS/ /tmp/GooPlex/
+		sudo mv $CONFIGS/ /tmp/Gooby/
 		sudo tar -xf /tmp/$filedate.tar.gz -C /
 
 		sudo chown $USER:$USER ${CONFIGS}
 		sudo chown $USER:$USER ${HOME}
 
 		cd $CONFIGS/Docker
-		source /opt/GooPlex/install/misc/environment-build.sh rebuild
+		source /opt/Gooby/install/misc/environment-build.sh rebuild
 		/usr/local/bin/docker-compose up -d --remove-orphans ${@:2}
 		cd "${CURDIR}"
 
@@ -75,7 +75,7 @@ else
 		echo ""
 
 		case "$choice" in
-			y|Y ) sudo rm -r /tmp/GooPlex;;
+			y|Y ) sudo rm -r /tmp/Gooby;;
 			* ) echo "Your old installation files are available at /tmp until you reboot"; echo "";;
 		esac
 
