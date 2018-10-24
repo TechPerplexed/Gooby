@@ -33,10 +33,10 @@ sudo chmod 755 /bin/gooby
 source /opt/Gooby/menus/variables.sh
 
 clear
-	echo -e "${GREEN}"
-	echo -e "--------------------------------------------------"
-	echo -e " Installation complete!"
-	echo -e " Type ${WHITE}gooby${GREEN} to access the menu."
-	echo -e " Visit techperplexed.ga for setup instructions!"
-	echo -e "--------------------------------------------------"
-	echo -e "${STD}"
+echo -e "${GREEN}"
+echo -e "--------------------------------------------------"
+echo -e " Installation complete!"
+echo -e " Type ${WHITE}gooby${GREEN} to access the menu."
+echo -e " Visit techperplexed.ga for setup instructions!"
+echo -e "--------------------------------------------------"
+echo -e "${STD}"
