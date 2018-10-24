@@ -24,7 +24,7 @@ if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 	sudo systemctl stop rclone
 
 	touch $TCONFIGS/rclonev
-	if [ $( cat $TCONFIGS/rclonev ) = "Release" ]; then
+	if [ $( cat $TCONFIGS/rclonev ) = "Stable" ]; then
 		curl https://rclone.org/install.sh | sudo bash
 	elif [ $( cat $TCONFIGS/rclonev ) = "Beta" ]; then
 		curl https://rclone.org/install.sh | sudo bash -s beta
