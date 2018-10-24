@@ -21,21 +21,16 @@ else
 		echo "--------------------------------------------------"
 		echo " Please choose what version you want to install:"
 		echo ""
-		[[ -f "/opt/Gooby/scripts/components/$APPLOC.yaml" ]] && echo " ${LYELLOW}S${STD} - ${WHITE}$TASK Stable${STD} (recommended)"
+		[[ -f "/opt/Gooby/scripts/components/$APPLOC.yaml" ]] && echo " ${LYELLOW}S${STD} - $TASK Stable"
 		[[ -f "/opt/Gooby/scripts/components/$APPLOC-beta.yaml" ]] && echo " ${YELLOW}B${STD} - $TASK Beta"
-		[[ -f "/opt/Gooby/scripts/components/$APPLOC-cf.yaml" ]] && echo " ${YELLOW}C${STD} - ${LGRAY}$TASK Stable with CloudFlare${STD}"
-		[[ -f "/opt/Gooby/scripts/components/$APPLOC-beta-cf.yaml" ]] && echo " ${YELLOW}Q${STD} - ${LGRAY}$TASK Beta with CloudFlare${STD}"
 		echo "--------------------------------------------------"
 		echo ""
-		echo " (When in doubt, choose Stable or just hit Enter)"
 		read -n 1 -s -r -p " ---> "
 		echo ""
 
 		case "$REPLY" in
 			s|S ) APPLOC=$APPLOC ;;
 			b|B ) [[ -f "/opt/Gooby/scripts/components/$APPLOC-beta.yaml" ]] && APPLOC=$APPLOC-beta ;;
-			c|C ) [[ -f "/opt/Gooby/scripts/components/$APPLOC-cf.yaml" ]] && APPLOC=$APPLOC-cf ;;
-			q|Q ) [[ -f "/opt/Gooby/scripts/components/$APPLOC-beta-cf.yaml" ]] && APPLOC=$APPLOC-beta-cf ;;
 			* ) APPLOC=$APPLOC ;;
 		esac
 
@@ -67,7 +62,8 @@ else
 			echo " In order to proceed, you will need to visit"
 			echo " https://www.${LYELLOW}plex.tv/claim${YELLOW}"
 			echo " And copy the token to clipboard"
-			echo " Make sure you active the token within 4 minutes
+			echo ""
+			echo " Make sure you active the token within 4 minutes"
 			echo " at ${WHITE}$APP.$MYDOMAIN$:8443{YELLOW}"
 			echo "--------------------------------------------------"
 			echo "${STD}"
