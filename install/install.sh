@@ -3,18 +3,18 @@
 sudo apt-get update -y && sudo apt-get upgrade -y
 
 sudo apt-get -y install \
- git \
- fail2ban \
- nano \
- unzip \
- wget \
- curl \
- ufw \
- socat \
- fuse \
- apt-transport-https \
- acl \
- ca-certificates \
+	git \
+	fail2ban \
+	nano \
+	unzip \
+	wget \
+	curl \
+	ufw \
+	socat \
+	fuse \
+	apt-transport-https \
+	acl \
+	ca-certificates \
 denyhosts at sudo software-properties-common
 
 sudo ufw default deny incoming
