@@ -141,7 +141,7 @@ CONFIRMDELETE(){
 	echo " Do you want to delete all user settings as well?"
 	echo " This cannot be undone"
 	echo " Make sure you have a backup!"
-	echo " Proceed? (y/N)?"
+	echo " Delete user settings for $TASK? (y/N)?"
 	echo "--------------------------------------------------"
 	echo "${STD}"
 	read -n 1 -s -r -p " ---> "
