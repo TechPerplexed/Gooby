@@ -77,5 +77,5 @@ else
 
 fi
 
-rm $TCONFIGS/.config/checkapp
+rm $TCONFIGS/checkapp
 PAUSE
