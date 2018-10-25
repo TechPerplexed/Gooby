@@ -25,8 +25,8 @@
       - VIRTUAL_NETWORK=nginx-proxy
       - LETSENCRYPT_HOST=emby.${MYDOMAIN}
       - LETSENCRYPT_EMAIL=${MYEMAIL}
-    devices:
-      - /dev/dri:/dev/dri
+#    devices:
+#      - /dev/dri:/dev/dri
     healthcheck:
       test: ["CMD-SHELL", "netstat -ntlp | grep :8920"]
       interval: 10s
