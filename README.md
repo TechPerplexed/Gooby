@@ -6,3 +6,5 @@ Run with this command:
 `sudo wget http://bit.ly/GetGooby -O /tmp/install.sh && sudo bash /tmp/install.sh`
 ## Features
 One click installation of Rclone, Plex, Tautulli, Emby, Sonarr, Radarr, Deluge, NZBGet, Jackett, Netdata, Organizr and Ombi.
+
+NEW! Completely rewritten from scratch - I strongly advise to install this on a freshly installed VPS!
