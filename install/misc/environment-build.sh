@@ -49,7 +49,7 @@ echo "TV=/media/Google/TV" >> ${ENV}
 echo "MOVIES=/media/Google/Movies" >> ${ENV}
 echo "RCLONETARGET=Gdrive" >> ${ENV}
 echo "ORGMENU=menu" >> ${ENV}
-[[ -f "$CONFIGS/.config/plexclaim" ]] && echo "PLEXCLAIM=$(cat $CONFIGS/.config/plexclaim)" >> ${ENV}
+[[ -f "$TCONFIGS/plexclaim" ]] && echo "PLEXCLAIM=$(cat $TCONFIGS/plexclaim)" >> ${ENV}
 
 cat ${CONFIGS}/Docker/components/??-* > ${DOCKERHOME}/docker-compose.yaml
 echo done
