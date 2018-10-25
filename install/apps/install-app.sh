@@ -1,9 +1,9 @@
 #!/bin/bash
 
-docker ps -q -f name=$APP > $CONFIGS/.config/checkapp.txt
+docker ps -q -f name=$APP > $TCONFIGS/checkapp
 clear
 
-if [ -s $CONFIGS/.config/checkapp.txt ]; then
+if [ -s $TCONFIGS/checkapp ]; then
 
 	ALREADYINSTALLED
 
@@ -82,6 +82,7 @@ else
 		source /opt/Gooby/install/misc/environment-build.sh rebuild
 		/usr/local/bin/docker-compose up -d --remove-orphans ${@:2}
 		sudo chown -R $USER:$USER $CONFIGS
+		sudo chown -R $USER:$USER $TCONFIGS
 		cd "${CURDIR}"
 
 		if [ $APP == organizr ]; then APP=$ORGMENU; fi
@@ -98,5 +99,5 @@ else
 
 fi
 
-rm $CONFIGS/.config/checkapp.txt
+rm $TCONFIGS/checkapp
 PAUSE
