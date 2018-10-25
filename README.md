@@ -23,6 +23,6 @@ This software is supplied "AS IS" without any warranties and support. You are so
 
 ## Known issues:
 
-Because this is a full overhaul of the previous version, it will not be fully backwards compatible. You can probably import your Plex, Emby, Radarr and Sonarr database but you will have to tweak them all individually. The media path is different from before, also you'll have to re-establish the link between the apps (such as Sonarr/Radarr and Deluge etc).
+Because this is a complete overhaul of the previous version, it will only be partically backwards compatible. You can probably import your Plex, Emby, Radarr and Sonarr database but you will have to tweak them all individually. The media path is different from before, also you'll have to re-establish the link between the apps (in order for Sonarr/Radarr to be able to talk to Deluge, etc).
 
 If you can't live with these changes, make sure you switch back to the legacy brand before updating your Gooby/GooPlex from the menu!
