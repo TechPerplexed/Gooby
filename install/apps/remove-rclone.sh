@@ -1,9 +1,9 @@
 #!/bin/bash
 
-which rclone > $CONFIGS/.config/checkapp.txt
+which rclone > $TCONFIGS/checkapp
 clear
 
-if [ ! -s $CONFIGS/.config/checkapp.txt ]; then
+if [ ! -s $TCONFIGS/checkapp ]; then
 
 	NOTINSTALLED
 
@@ -43,5 +43,5 @@ else
 
 fi
 
-rm $CONFIGS/.config/checkapp.txt
+rm $TCONFIGS/checkapp
 PAUSE
