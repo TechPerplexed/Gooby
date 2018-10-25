@@ -4,7 +4,8 @@ MENU="Check Environment"
 
 source $CONFIGS/Docker/.env
 
-clear; echo "Fetching your settings..."
+clear
+echo "Fetching your settings..."
 
 sudo chown -R $USER:$USER $CONFIGS
 
