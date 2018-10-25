@@ -69,7 +69,7 @@ else
 			echo "${STD}"
 			read -e -p " Paste token here: " PLEXCLAIM
 			echo ""
-			echo "$PLEXCLAIM" > $CONFIGS/.config/plexclaim
+			echo "$PLEXCLAIM" > $TCONFIGS/plexclaim
 
 		fi
 
@@ -78,7 +78,7 @@ else
 		sudo rsync -a /opt/Gooby/scripts/components/$APPLOC.yaml $CONFIGS/Docker/components
 		/usr/local/bin/docker-compose down
 		echo "Just a moment while $APP is being installed..."
-		[[ ! -f "$CONFIGS/.config/plexclaim" ]] && echo "-" > $CONFIGS/.config/plexclaim
+		[[ ! -f "$TCONFIGS/plexclaim" ]] && echo "-" > $TCONFIGS/plexclaim
 		source /opt/Gooby/install/misc/environment-build.sh rebuild
 		/usr/local/bin/docker-compose up -d --remove-orphans ${@:2}
 		sudo chown -R $USER:$USER $CONFIGS
