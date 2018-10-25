@@ -1,6 +1,6 @@
 #!/bin/bash
 
-MENU="Gooby Menu"
+MENU="Main Menu"
 source /opt/Gooby/menus/variables.sh
 
 # Menu Options
