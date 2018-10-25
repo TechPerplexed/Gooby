@@ -1,5 +1,5 @@
 #
-# Plex - Media streaming serverx
+# Plex - Media streaming server beta
 #
   plex:
     restart: unless-stopped
