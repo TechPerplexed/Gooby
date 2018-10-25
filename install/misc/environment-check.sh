@@ -3,6 +3,9 @@
 MENU="Check Environment"
 
 source $CONFIGS/Docker/.env
+
+echo "Fetching your settings..."
+
 sudo chown -R $USER:$USER $CONFIGS
 
 # Menu Options
