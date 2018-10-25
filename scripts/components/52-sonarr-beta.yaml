@@ -1,5 +1,5 @@
 #
-# Sonarr - TV Show catalog and management
+# Sonarr - TV Show catalog and management preview
 #
   sonarr:
     restart: unless-stopped
