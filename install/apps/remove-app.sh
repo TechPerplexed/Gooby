@@ -37,6 +37,7 @@ else
 		esac
 
 		sudo chown -R $USER:$USER $CONFIGS
+		sudo chown -R $USER:$USER $TCONFIGS
 
 		TASKCOMPLETE
 
