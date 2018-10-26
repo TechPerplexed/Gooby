@@ -57,7 +57,7 @@ else
 	DELUSER(){
 		echo
 		read -p "Username to remove (line number): " LINE
-		sed -i '${LINE}d' $FILENAME
+		sed -i '${LINE}d'
 
 		cd $CURDIR
 		docker stop $APP
