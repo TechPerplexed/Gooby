@@ -3,7 +3,7 @@
 docker ps -q -f name=$APP > $TCONFIGS/checkapp
 clear
 
-if [ ! -s $CONFIGS/checkapp ]; then
+if [ ! -s $TCONFIGS/checkapp ]; then
 
 	NOTINSTALLED
 
