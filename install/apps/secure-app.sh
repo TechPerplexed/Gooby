@@ -110,6 +110,8 @@ else
 
 		echo
 		echo " ${CYAN}A${STD} - Add user to access ${FILENAME}"
+		if [ -f $FILENAME ]; then; echo " ${CYAN}R${STD} - Remove user from being able to access ${FILENAME}"; fi
+		
 		echo " ${WHITE}Z${STD} - EXIT to Main Menu"
 		echo " ${CYAN}"
 		MENUEND
