@@ -8,9 +8,9 @@ CONFIRMATION
 
 if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 
-	echo ""
+	echo
 	echo "Giving your system a nice little spring cleaning..."
-	echo ""
+	echo
 
 	if [ ! -f $TCONFIGS/cronboot ]; then
 		(crontab -l 2>/dev/null; echo "@reboot /opt/Gooby/scripts/cron/rclean.sh > /dev/null 2>&1") | crontab -
