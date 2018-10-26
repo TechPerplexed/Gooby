@@ -72,7 +72,6 @@ else
 	RESTOREACCESS(){
 		echo
 		echo "Restoring unrestricted access to the ${FILENAME}"
-		echo "No password needed for ${FILENAME}
 		rm ${FILENAME}
 
 		cd $CURDIR
