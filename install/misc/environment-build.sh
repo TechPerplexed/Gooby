@@ -4,7 +4,6 @@ source /opt/Gooby/menus/variables.sh
 
 DOCKERHOME=$CONFIGS/Docker
 sudo mkdir -p $DOCKERHOME/components
-sudo chown -R $USER:$USER $CONFIGS
 ENV=${DOCKERHOME}/.env
 touch ${ENV}
 
