@@ -50,7 +50,7 @@ else
 
 		TASKCOMPLETE
 
-		rm $TCONFIGS/checkapp
+		touch $TCONFIGS/checkapp; rm $TCONFIGS/checkapp
 		PAUSE
 	}
 
