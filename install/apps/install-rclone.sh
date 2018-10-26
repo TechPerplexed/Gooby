@@ -44,7 +44,8 @@ else
 		clear
 
 		echo "${YELLOW}Please follow the instructions to setup Rclone${STD}"
-		echo ""
+		echo "Make sure you name the config ${YELLOW}Gdrive${STD}"
+		echo
 		sudo rclone config
 
 		# Installing Services
@@ -66,6 +67,9 @@ else
 		sudo systemctl enable rclone.service
 		sudo systemctl daemon-reload
 		sudo systemctl start rclone.service
+
+		echo
+		echo "Done! Your mount can be found at ${YELLOW}/media/Google${STD}"
 
 		TASKCOMPLETE
 
