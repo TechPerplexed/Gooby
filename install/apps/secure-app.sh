@@ -95,7 +95,7 @@ else
 
 		echo
 		echo " ${CYAN}A${STD} - Add user to access ${FILENAME}"
-		if [ -f $FILENAME ]; then echo " ${CYAN}r${STD} - Undo all password access from ${FILENAME} (reset to default)"; fi
+		if [ -f $FILENAME ]; then echo " ${CYAN}R${STD} - Restore unrestricted access to ${FILENAME} (reset to default)"; fi
 		echo " ${WHITE}Z${STD} - EXIT to Main Menu"
 		echo " ${CYAN}"
 		MENUEND
