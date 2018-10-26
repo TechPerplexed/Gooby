@@ -57,7 +57,7 @@ else
 	DELUSER(){
 		echo
 		read -p "Username to remove (line number): " LINE
-		sed -e '${LINE}' ${FILENAME}
+		sed "${LINE}d" ${FILENAME}
 
 		cd $CURDIR
 		docker stop $APP
@@ -65,7 +65,7 @@ else
 
 		TASKCOMPLETE
 
-		rm $TCONFIGS/checkapp
+		touch $TCONFIGS/checkapp; rm $TCONFIGS/checkapp
 		PAUSE
 	}
 
@@ -80,7 +80,7 @@ else
 
 		TASKCOMPLETE
 
-		rm $TCONFIGS/checkapp
+		touch $TCONFIGS/checkapp; rm $TCONFIGS/checkapp
 		PAUSE
 	}
 
