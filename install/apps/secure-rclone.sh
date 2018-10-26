@@ -17,8 +17,8 @@ else
 
 		GOAHEAD
 
-		echo "$TASK does not have its own web page"
-		echo "There is nothing to secure!"
+		echo " $TASK does not have its own web page"
+		echo " There is nothing to secure!"
 
 		TASKCOMPLETE
 
