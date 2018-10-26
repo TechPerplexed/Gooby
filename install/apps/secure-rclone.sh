@@ -1,6 +1,6 @@
 #!/bin/bash
 
-docker ps -q -f name=$APP > $TCONFIGS/checkapp
+which rclone > $TCONFIGS/checkapp
 clear
 
 if [ ! -s $TCONFIGS/checkapp ]; then
