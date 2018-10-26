@@ -21,6 +21,11 @@ REMOVE(){
 	source /opt/Gooby/install/apps/${PERFORM}-$APPTYPE.sh
 }
 
+SECURE(){
+	PERFORM="secure"
+	source /opt/Gooby/install/apps/${PERFORM}-$APPTYPE.sh
+}
+
 QUIT(){
 	exit
 }
@@ -34,6 +39,7 @@ show_menus() {
 	echo " ${LPURPLE}I${STD} - Install ${TASK}"
 	echo " ${LPURPLE}U${STD} - Update ${TASK}"
 	echo " ${LPURPLE}R${STD} - Remove ${TASK}"
+	echo " ${LPURPLE}S${STD} - Secure ${TASK}"
 	echo " ${WHITE}Z${STD} - EXIT to Main Menu"
 	echo " ${LPURPLE}"
 	MENUEND
@@ -48,6 +54,7 @@ read_options(){
 		[Ii]) INSTALL ;;
 		[Uu]) UPDATE ;;
 		[Rr]) REMOVE ;;
+		[Ss]) SECURE ;;
 		[Zz]) QUIT ;;
 		*) echo "${LRED}Please select a valid option${STD}" && sleep 2
 	esac
