@@ -8,7 +8,7 @@ GooPlex is now Gooby, completely rewritten from scratch. It has full docker inte
 
 More [information and instructions can be found on TechPerplexed](http://bit.ly/TechPerplexed "How to create an infinite media server using a VPS and Cloud service").
 
-## Installation
+## Installation:
 
 Run with this command:  
 `sudo wget http://bit.ly/GetGooby -O /tmp/install.sh && sudo bash /tmp/install.sh`
