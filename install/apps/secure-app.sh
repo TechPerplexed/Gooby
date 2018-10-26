@@ -54,21 +54,6 @@ else
 		PAUSE
 	}
 
-	DELUSER(){
-		echo
-		read -p "Username to remove (line number): " LINE
-		sed "${LINE}d" ${FILENAME}
-
-		cd $CURDIR
-		docker stop $APP
-		docker start $APP
-
-		TASKCOMPLETE
-
-		touch $TCONFIGS/checkapp; rm $TCONFIGS/checkapp
-		PAUSE
-	}
-
 	RESTOREACCESS(){
 		echo
 		echo "Restoring unrestricted access to the ${FILENAME}"
@@ -110,8 +95,7 @@ else
 
 		echo
 		echo " ${CYAN}A${STD} - Add user to access ${FILENAME}"
-		if [ -f $FILENAME ]; then echo " ${CYAN}R${STD} - Remove user from being able to access ${FILENAME}"; fi
-		if [ -f $FILENAME ]; then echo " ${CYAN}U${STD} - Undo all password access from ${FILENAME} (reset to default)"; fi
+		if [ -f $FILENAME ]; then echo " ${CYAN}r${STD} - Undo all password access from ${FILENAME} (reset to default)"; fi
 		echo " ${WHITE}Z${STD} - EXIT to Main Menu"
 		echo " ${CYAN}"
 		MENUEND
@@ -124,8 +108,7 @@ else
 		read -n 1 -s -r -p "Choose option: " choice
 		case $choice in
 			[Aa]) NEWUSER ;;
-			[Rr]) DELUSER ;;
-			[Uu]) RESTOREACCESS ;;
+			[Rr]) RESTOREACCESS ;;
 			[Zz]) QUIT ;;
 			*) echo "${LRED}Please select a valid option${STD}" && sleep 2
 		esac
