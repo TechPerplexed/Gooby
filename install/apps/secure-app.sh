@@ -36,7 +36,7 @@ else
 		if [[ -e ${FILENAME} ]]
 		then							# File exists so append with new user
 			echo Updating file ${FILENAME}
-			echo Adding  user ${USERNAME}
+			echo Adding user ${USERNAME}
 			htpasswd ${FILENAME} ${USERNAME}
 		else							# Create file then create first user
 			echo Creating file ${FILENAME}
@@ -57,7 +57,23 @@ else
 	DELUSER(){
 		echo
 		read -p "Username to remove (line number): " LINE
-		sed -i '${LINE}d'
+		sed -e '${LINE}' ${FILENAME}
+
+		cd $CURDIR
+		docker stop $APP
+		docker start $APP
+
+		TASKCOMPLETE
+
+		rm $TCONFIGS/checkapp
+		PAUSE
+	}
+
+	RESTOREACCESS(){
+		echo
+		echo "Restoring unrestricted access to the ${FILENAME}"
+		echo "No password needed for ${FILENAME}
+		rm ${FILENAME}
 
 		cd $CURDIR
 		docker stop $APP
@@ -82,20 +98,21 @@ else
 
 		if [ -f $FILENAME ]; then
 
-			echo " Current users for $TASK:"
+			echo " Current users to access ${FILENAME} (not the app itself):"
 			echo " The string after the name is the hashed password"
 			echo
 			cat -s -n $FILENAME
-			echo
 
 		else
 
-			echo "You haven't added any passwords to $TASK yet"
+			echo "You haven't added any passwords to ${FILENAME} yet"
 
 		fi
 
-		echo " ${CYAN}A${STD} - Add user to ${TASK}"
-		echo " ${CYAN}R${STD} - Remove user from ${TASK}"
+		echo
+		echo " ${CYAN}A${STD} - Add user to access ${FILENAME}"
+		if [ -f $FILENAME ]; then; echo " ${CYAN}R${STD} - Remove user from being able to access ${FILENAME}"; fi
+		if [ -f $FILENAME ]; then; echo " ${CYAN}U${STD} - Undo all password access from the ${FILENAME} website (restore to default)"; fi
 		echo " ${WHITE}Z${STD} - EXIT to Main Menu"
 		echo " ${CYAN}"
 		MENUEND
@@ -109,6 +126,7 @@ else
 		case $choice in
 			[Aa]) NEWUSER ;;
 			[Rr]) DELUSER ;;
+			[Uu]) RESTOREACCESS ;;
 			[Zz]) QUIT ;;
 			*) echo "${LRED}Please select a valid option${STD}" && sleep 2
 		esac
