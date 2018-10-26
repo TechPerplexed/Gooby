@@ -55,8 +55,8 @@ else
 	}
 
 	RESTOREACCESS(){
-		echo
-		echo "Restoring unrestricted access to the ${FILENAME}"
+		clear
+		echo "Restoring unrestricted access to ${FILENAME}..."
 		rm ${FILENAME}
 
 		cd $CURDIR
@@ -89,7 +89,7 @@ else
 
 		else
 
-			echo "You haven't added any passwords to ${FILENAME} yet"
+			echo " You haven't added any passwords to ${FILENAME} yet"
 
 		fi
 
