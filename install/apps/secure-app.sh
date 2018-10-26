@@ -82,8 +82,8 @@ else
 
 		if [ -f $FILENAME ]; then
 
-			echo " Current users to access ${FILENAME} (not the app itself):"
-			echo " The string after the name is the hashed password"
+			echo " Current users to access ${FILENAME}:"
+			echo " (Ignore the string behind the name)"
 			echo
 			cat -s -n $FILENAME
 
