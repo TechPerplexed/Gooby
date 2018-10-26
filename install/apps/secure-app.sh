@@ -1,6 +1,7 @@
 #!/bin/bash
 
 docker ps -q -f name=$APP > $TCONFIGS/checkapp
+MENU="Secure App"
 clear
 
 if [ ! -s $TCONFIGS/checkapp ]; then
