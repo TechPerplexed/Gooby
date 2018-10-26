@@ -9,46 +9,23 @@ if [ ! -s $TCONFIGS/checkapp ]; then
 
 else
 
-	EXPLAINTASK
+	FILENAME=$APP.$MYDOMAIN
+	cd $CONFIGS/Security
 
-	CONFIRMATION
+	# Menu Options
 
-	if [[ ${REPLY} =~ ^[Yy]$ ]]; then
+	NEWUSER(){
+		clear
+		read -p "Username to add: " USERNAME
 
-		GOAHEAD
-
-		FILENAME=$APP.$MYDOMAIN
-		cd $CONFIGS/Security
-
-		if [ -f $FILENAME ]; then
-
-			echo " Current users for $TASK:"
+		try_install() {
+			dpkg -l "$1" | grep -q ^ii && return 1		# Package already installed
 			echo
-			cat -s -n $FILENAME
-
-			# Remove user
-			echo " Removing users coming soon..."
+			echo Installing ${@}
 			echo
-
-	else
-
-		echo "You haven't added any passwords to $TASK yet"
-
-	fi
-
-	# Add user
-
-		echo
-		read -p "Name: " USERNAME
-
-	try_install() {
-		dpkg -l "$1" | grep -q ^ii && return 1		# Package already installed
-		echo
-		echo Installing ${@}
-		echo
-		sudo apt -y install "$@"
-		return 0
-	}
+			sudo apt -y install "$@"
+			return 0
+		}
 
 		# Check to see if apache2-utils are installed.  If not, then install them.
 
@@ -67,20 +44,76 @@ else
 			htpasswd -c ${FILENAME} ${USERNAME}
 		fi
 
+		cd $CURDIR
 		docker stop $APP
 		docker start $APP
 
+		TASKCOMPLETE
+
+		rm $TCONFIGS/checkapp
+		PAUSE
+	}
+
+	DELUSER(){
+		echo
+		read -p "Username to remove (line number): " LINE
+		sed -i '${LINE}d' $FILENAME
+
 		cd $CURDIR
+		docker stop $APP
+		docker start $APP
 
 		TASKCOMPLETE
 
-	else
+		rm $TCONFIGS/checkapp
+		PAUSE
+	}
 
-		CANCELTHIS
+	QUIT(){
+		exit
+	}
 
-	fi
+	# Display menu
+
+	show_menus() {
+		clear
+		echo " ${CYAN}"
+		MENUSTART
+
+		if [ -f $FILENAME ]; then
+
+			echo " Current users for $TASK:"
+			echo " The string after the name is the hashed password"
+			echo
+			cat -s -n $FILENAME
+			echo
+
+		else
+
+			echo "You haven't added any passwords to $TASK yet"
+
+		fi
+
+		echo " ${CYAN}A${STD} - Add user to ${TASK}"
+		echo " ${CYAN}R${STD} - Remove user from ${TASK}"
+		echo " ${WHITE}Z${STD} - EXIT to Main Menu"
+		echo " ${CYAN}"
+		MENUEND
+	}
+
+	# Read Choices
+
+	read_options(){
+		local choice
+		read -n 1 -s -r -p "Choose option: " choice
+		case $choice in
+			[Aa]) NEWUSER ;;
+			[Rr]) DELUSER ;;
+			[Zz]) QUIT ;;
+			*) echo "${LRED}Please select a valid option${STD}" && sleep 2
+		esac
+	}
+
+	MENUFINALIZE
 
 fi
-
-rm $TCONFIGS/checkapp
-PAUSE
