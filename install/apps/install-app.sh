@@ -81,8 +81,6 @@ else
 		[[ ! -f "$TCONFIGS/plexclaim" ]] && echo "-" > $TCONFIGS/plexclaim
 		source /opt/Gooby/install/misc/environment-build.sh rebuild
 		/usr/local/bin/docker-compose up -d --remove-orphans ${@:2}
-		sudo chown -R $USER:$USER $CONFIGS
-		sudo chown -R $USER:$USER $TCONFIGS
 		cd "${CURDIR}"
 
 		if [ $APP == organizr ]; then APP=$ORGMENU; fi
