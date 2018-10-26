@@ -16,12 +16,11 @@ else
 	if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 
 		GOAHEAD
-		RUNPATCHES
 
 		echo "Coming soon!"
 
-		docker stop $APP
-		docker start $APP
+#		docker stop $APP
+#		docker start $APP
 
 		TASKCOMPLETE
 
