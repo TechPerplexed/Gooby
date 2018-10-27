@@ -1,7 +1,6 @@
 #!/bin/bash
 
 source /opt/Gooby/menus/variables.sh
-
 BACKUP=/tmp/$(date +%F).tar.gz
 sudo tar -cf ${BACKUP} $CONFIGS --exclude-caches-all
 sudo chown $USER:$USER ${BACKUP}
