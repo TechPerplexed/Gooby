@@ -27,10 +27,7 @@ if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 	# sudo systemctl stop mergerfs
 	sudo systemctl stop rclone
 
-	# Make sure folders exist and components are up to date
-	sudo mkdir -p $CONFIGS/.config
-	sudo mkdir -p $CONFIGS/Docker/components
-	sudo mkdir -p $TCONFIGS
+	# Make sure components are up to date
 	sudo rsync -a /opt/Gooby/scripts/components/{00-AAA.yaml,01-proxy.yaml} $CONFIGS/Docker/components
 
 	# Update Rclone to latest version
