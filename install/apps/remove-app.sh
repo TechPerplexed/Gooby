@@ -32,8 +32,8 @@ else
 		CONFIRMDELETE
 
 		case "$REPLY" in
-			y|Y ) [[ -d "$CONFIGS/$TASK" ]] && sudo rm -r $CONFIGS/$TASK; echo "Done, all traces of $TASK are gone" ;;
-			* ) echo "User settings of $TASK preserved" ;;
+			y|Y ) [[ -d "$CONFIGS/$TASK" ]] && sudo rm -r $CONFIGS/$TASK; echo " Done, all traces of $TASK are gone" ;;
+			* ) echo " User settings of $TASK preserved" ;;
 		esac
 
 		TASKCOMPLETE
