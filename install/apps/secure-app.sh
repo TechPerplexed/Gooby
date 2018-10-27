@@ -84,9 +84,8 @@ else
 		if [ -f $FILENAME ]; then
 
 			echo " Current users to access ${FILENAME}:"
-			echo " (Ignore the string behind the name)"
 			echo
-			cat -s -n $FILENAME
+			cat $FILENAME | cut -f1 -d":"
 
 		else
 
@@ -96,7 +95,7 @@ else
 
 		echo
 		echo " ${CYAN}A${STD} - Add user to access ${FILENAME}"
-		if [ -f $FILENAME ]; then echo " ${CYAN}R${STD} - Restore unrestricted access to ${FILENAME} (reset to default)"; fi
+		if [ -f $FILENAME ]; then echo " ${CYAN}R${STD} - Reset access to default (remove users)"; fi
 		echo " ${WHITE}Z${STD} - EXIT to Main Menu"
 		echo " ${CYAN}"
 		MENUEND
