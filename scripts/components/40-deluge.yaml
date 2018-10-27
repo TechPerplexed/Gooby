@@ -14,7 +14,7 @@
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - ${CONFIGS}/Deluge:/config
-      - ${DOWNLOADS}:/downloads
+      - ${DOWNLOADS}:/Downloads
       - ${GOOGLE}:/Google
     environment:
       - PUID=${USERID}
