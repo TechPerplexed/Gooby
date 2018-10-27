@@ -89,7 +89,7 @@ else
 
 		else
 
-			echo " You haven't added any passwords to ${FILENAME} yet"
+			echo " You haven't added any passwords for ${FILENAME} yet"
 
 		fi
 
