@@ -5,7 +5,7 @@ source /opt/Gooby/menus/variables.sh
 cd $CONFIGS/Docker
 /usr/local/bin/docker-compose down
 sudo systemctl daemon-reload
-# sudo systemctl stop mergerfs
+
 sudo systemctl stop rclone
 
 touch $TCONFIGS/rclonev
@@ -17,7 +17,6 @@ fi
 
 sudo systemctl start rclone
 sleep 10
-# sudo systemctl start mergerfs
 
 docker system prune -a -f --volumes
 source /opt/Gooby/install/misc/environment-build.sh rebuild
