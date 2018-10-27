@@ -85,7 +85,7 @@ else
 
 			echo " Current users to access ${FILENAME}:"
 			echo
-			cat $FILENAME | cut -f1 -d":"
+			cat -s -n $FILENAME | cut -f1 -d":"
 
 		else
 
