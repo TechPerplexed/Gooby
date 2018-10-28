@@ -56,6 +56,18 @@ source /opt/Gooby/install/misc/environment-build.sh rebuild
 /usr/local/bin/docker-compose up -d --remove-orphans ${@:2}
 
 echo
+echo "${LYELLOW}Updating Gooby${STD}"
+echo
+
+sudo rm -r /opt/Gooby
+sudo git clone -b master https://github.com/TechPerplexed/Gooby /opt/Gooby
+sudo chmod +x -R /opt/Gooby/install
+sudo chmod +x -R /opt/Gooby/menus
+sudo chmod +x -R /opt/Gooby/scripts/cron
+sudo rsync -a /opt/Gooby/install/goopby /bin
+sudo chmod 755 /bin/gooby
+
+echo
 echo "${LYELLOW}Restoring permissions... this could take a few minutes${STD}"
 echo
 
