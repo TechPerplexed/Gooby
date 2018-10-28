@@ -10,8 +10,6 @@ if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 
 	GOAHEAD
 
-	BACKUP=/tmp/$(date +%F).tar.gz
-
 	echo -e "The backup can take several hours"
 	echo -e "Please don't exit the terminal until it's done!"
 	echo ""
