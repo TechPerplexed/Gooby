@@ -45,7 +45,7 @@ show_menus() {
 	clear
 	echo " ${YELLOW}"
 	MENUSTART
-	echo " ${YELLOW}A${STD} - Change password for $USER or root"
+	echo " ${YELLOW}A${STD} - Change password for ${YELLOW}$USER${STD} or ${YELLOW}root${STD}"
 	echo " ${YELLOW}B${STD} - Manage Domain Name"
 	echo " ${YELLOW}C${STD} - Manage Email Address"
 	echo " ${YELLOW}D${STD} - Set Timezone"
