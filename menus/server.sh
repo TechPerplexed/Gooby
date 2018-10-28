@@ -6,8 +6,8 @@ source /opt/Gooby/menus/variables.sh
 # Menu Options
 
 PWCHANGE(){
-	PERFORM="password"
-	TASK="change"
+	PERFORM="change"
+	TASK="password"
 	source /opt/Gooby/install/server/${TASK}-${PERFORM}.sh
 }
 
