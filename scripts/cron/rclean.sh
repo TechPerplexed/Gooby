@@ -2,12 +2,14 @@
 
 source /opt/Gooby/menus/variables.sh
 
+echo
 echo "${LYELLOW}${LYELLOW}Taking containers down${STD}"
 echo
 
 cd $CONFIGS/Docker
 /usr/local/bin/docker-compose down
 
+echo
 echo "${LYELLOW}Taking services down${STD}"
 echo
 
@@ -15,11 +17,13 @@ sudo systemctl daemon-reload
 # sudo systemctl stop mergerfs
 sudo systemctl stop rclone
 
+echo
 echo "${LYELLOW}Making sure components are up to date${STD}"
 echo
 
 sudo rsync -a /opt/Gooby/scripts/components/{00-AAA.yaml,01-proxy.yaml} $CONFIGS/Docker/components
 
+echo
 echo "${LYELLOW}Update Rclone${STD}"
 echo
 
@@ -30,6 +34,7 @@ elif [ $( cat $TCONFIGS/rclonev ) = "Beta" ]; then
 	curl https://rclone.org/install.sh | sudo bash -s beta
 fi
 
+echo
 echo "${LYELLOW}Starting services${STD}"
 echo
 
@@ -37,17 +42,20 @@ sudo systemctl start rclone
 sleep 10
 # sudo systemctl start mergerfs
 
+echo
 echo "${LYELLOW}Pruning old volumes${STD}"
 echo
 
 docker system prune -a -f --volumes
 
+echo
 echo "${LYELLOW}Bringing system back online${STD}"
 echo
 
 source /opt/Gooby/install/misc/environment-build.sh rebuild
 /usr/local/bin/docker-compose up -d --remove-orphans ${@:2}
 
+echo
 echo "${LYELLOW}Restoring permissions... this could take a few minutes${STD}"
 echo
 
