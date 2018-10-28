@@ -15,7 +15,8 @@ sudo systemctl daemon-reload
 # sudo systemctl stop mergerfs
 sudo systemctl stop rclone
 
-echo "${LYELLOW}Making sure components are up to date
+echo "${LYELLOW}Making sure components are up to date${STD}"
+echo
 
 sudo rsync -a /opt/Gooby/scripts/components/{00-AAA.yaml,01-proxy.yaml} $CONFIGS/Docker/components
 
