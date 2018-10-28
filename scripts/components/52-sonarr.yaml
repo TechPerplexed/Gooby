@@ -19,6 +19,7 @@
       - ${CONFIGS}/Sonarr:/config
       - ${HOME}/logs:/config/logs
       - ${GOOGLE}:/Media
+      - ${DOWNLOADS}:/Downloads
       - /bin/netstat:/bin/netstat:ro
     environment:
       - PGID=${GROUPID}
