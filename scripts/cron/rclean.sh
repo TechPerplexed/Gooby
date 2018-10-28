@@ -20,7 +20,7 @@ echo
 
 sudo rsync -a /opt/Gooby/scripts/components/{00-AAA.yaml,01-proxy.yaml} $CONFIGS/Docker/components
 
-echo "${LYELLOW}Update Rclone to latest version${STD}"
+echo "${LYELLOW}Update Rclone${STD}"
 echo
 
 touch $TCONFIGS/rclonev
@@ -30,7 +30,7 @@ elif [ $( cat $TCONFIGS/rclonev ) = "Beta" ]; then
 	curl https://rclone.org/install.sh | sudo bash -s beta
 fi
 
-echo "${LYELLOW}Bringing services back up${STD}"
+echo "${LYELLOW}Starting services${STD}"
 echo
 
 sudo systemctl start rclone
