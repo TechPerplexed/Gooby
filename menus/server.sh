@@ -5,7 +5,7 @@ source /opt/Gooby/menus/variables.sh
 
 # Menu Options
 
-PATCHES(){
+PWCHANGE(){
 	PERFORM="password"
 	TASK="change"
 	source /opt/Gooby/install/server/${TASK}-${PERFORM}.sh
@@ -45,7 +45,7 @@ show_menus() {
 	clear
 	echo " ${YELLOW}"
 	MENUSTART
-	echo " ${YELLOW}A${STD} - Update Server with Latest Patches"
+	echo " ${YELLOW}A${STD} - Change password for $USER or root"
 	echo " ${YELLOW}B${STD} - Manage Domain Name"
 	echo " ${YELLOW}C${STD} - Manage Email Address"
 	echo " ${YELLOW}D${STD} - Set Timezone"
@@ -61,7 +61,7 @@ read_options(){
 	local choice
 	read -n 1 -s -r -p "Choose option: " choice
 	case $choice in
-		[Aa]) PATCHES ;;
+		[Aa]) PWCHANGE ;;
 		[Bb]) DOMAIN ;;
 		[Cc]) EMAILADDR ;;
 		[Dd]) TZONE ;;
