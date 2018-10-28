@@ -3,17 +3,6 @@
 source /opt/Gooby/menus/variables.sh
 
 echo
-echo "${LYELLOW}${LYELLOW}Patching server${STD}"
-echo
-
-sudo apt-get update
-sudo apt-get upgrade -y
-sudo apt-get dist-upgrade -y
-sudo apt autoremove -y
-sudo apt autoclean
-sudo apt-get autoremove
-
-echo
 echo "${LYELLOW}${LYELLOW}Taking containers down${STD}"
 echo
 
@@ -77,6 +66,17 @@ sudo chmod +x -R /opt/Gooby/menus
 sudo chmod +x -R /opt/Gooby/scripts/cron
 sudo rsync -a /opt/Gooby/install/goopby /bin
 sudo chmod 755 /bin/gooby
+
+echo
+echo "${LYELLOW}${LYELLOW}Patching server${STD}"
+echo
+
+sudo apt-get update
+sudo apt-get upgrade -y
+sudo apt-get dist-upgrade -y
+sudo apt autoremove -y
+sudo apt autoclean
+sudo apt-get autoremove
 
 echo
 echo "${LYELLOW}Restoring permissions... this could take a few minutes${STD}"
