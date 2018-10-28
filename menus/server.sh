@@ -6,8 +6,8 @@ source /opt/Gooby/menus/variables.sh
 # Menu Options
 
 PATCHES(){
-	PERFORM="apply"
-	TASK="patches"
+	PERFORM="password"
+	TASK="change"
 	source /opt/Gooby/install/server/${TASK}-${PERFORM}.sh
 }
 
