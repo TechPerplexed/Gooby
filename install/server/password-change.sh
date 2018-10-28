@@ -13,11 +13,12 @@ if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 		clear
 
 		echo
-		read -e -p "Change password for user $USER ${YELLOW}(U)${STD} or root ${YELLOW}(R)?${STD} " -i "" choice
+		echo "Change password for your user $USER ${YELLOW}(U)${STD}"
+		read -n 1 -s -r -p "or root ${YELLOW}(R)?${STD} " -i "" choice
 
 		case "$choice" in
 			u|U ) passwd ;;
-			r|U ) sudo -s passwd ;;
+			r|R ) sudo -i passwd ;;
 			* ) echo "No passwords changed" ;;
 		esac
 
