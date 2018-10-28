@@ -27,15 +27,6 @@ WHITE=$(echo -en '\033[01;37m')
 
 # Define choices
 
-RUNPATCHES(){
-	sudo apt-get update
-	sudo apt-get upgrade -y
-	# sudo apt-get dist-upgrade -y
-	# sudo apt autoremove -y
-	# sudo apt autoclean
-	# sudo apt-get autoremove
-}
-
 MENUSTART(){
 	echo "--------------------------------------------------"
 	echo " G O O B Y - Find instructions at techperplexed.ga"
