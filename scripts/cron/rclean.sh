@@ -32,9 +32,12 @@ sudo systemctl start rclone
 sleep 10
 # sudo systemctl start mergerfs
 
-echo Updating containers to the latest version
+echo Pruning old volumes
 
 docker system prune -a -f --volumes
+
+echo Bringing system back online
+
 source /opt/Gooby/install/misc/environment-build.sh rebuild
 /usr/local/bin/docker-compose up -d --remove-orphans ${@:2}
 
