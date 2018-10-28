@@ -9,7 +9,7 @@ CONFIRMATION
 if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 
 	echo
-	echo "Giving your system a nice little spring cleaning..."
+	echo "${GREEN}Giving your system a nice little spring cleaning...${STD}"
 	echo
 
 	# Add rlean to bootup cron if not added yet
