@@ -16,7 +16,6 @@ else
 	if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 
 		GOAHEAD
-		RUNPATCHES
 
 		docker stop $APP
 		docker start $APP
