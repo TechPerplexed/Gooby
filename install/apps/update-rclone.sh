@@ -17,8 +17,6 @@ else
 
 		GOAHEAD
 
-		RUNPATCHES
-
 		cd /tmp
 
 		clear
