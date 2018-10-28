@@ -84,6 +84,7 @@ NOTINSTALLED(){
 }
 
 APPINSTALLED(){
+	clear
 	echo "${YELLOW}"
 	echo "--------------------------------------------------"
 	echo " ${TASK} is now installed"
