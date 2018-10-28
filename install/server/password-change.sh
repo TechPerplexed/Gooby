@@ -18,7 +18,7 @@ if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 
 		case "$choice" in
 			u|U ) passwd ;;
-			r|R ) sudo -i passwd ;;
+			r|R ) echo "Coming soon" ;;
 			* ) echo "No passwords changed" ;;
 		esac
 
