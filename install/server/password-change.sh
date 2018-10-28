@@ -13,8 +13,8 @@ if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 		clear
 
 		echo
-		echo "Change password for your user $USER ${YELLOW}(U)${STD}"
-		read -n 1 -s -r -p "or root ${YELLOW}(R)?${STD} " -i "" choice
+		read -n 1 -s -r -p "Change password for your user $USER ${YELLOW}(U)${STD} or root ${YELLOW}(R)?${STD} " -i "" choice
+		echo
 
 		case "$choice" in
 			u|U ) passwd ;;
