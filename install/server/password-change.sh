@@ -4,6 +4,8 @@ clear
 
 EXPLAINTASK
 
+echo " Update the password to access your VPS"
+
 CONFIRMATION
 
 if [[ ${REPLY} =~ ^[Yy]$ ]]; then
