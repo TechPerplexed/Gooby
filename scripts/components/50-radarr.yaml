@@ -20,6 +20,7 @@
       - ${CONFIGS}/Radarr:/config
       - ${HOME}/logs:/config/logs
       - ${GOOGLE}:/Media
+      - ${DOWNLOADS}:/Downloads
       - /bin/netstat:/bin/netstat:ro
       - /usr/bin/killall:/usr/bin/killall:ro
     environment:
