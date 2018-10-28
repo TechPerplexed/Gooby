@@ -10,12 +10,16 @@ if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 
 	GOAHEAD
     
-	sudo apt-get update
-	sudo apt-get upgrade -y
-	sudo apt-get dist-upgrade -y
-	sudo apt autoremove -y
-	sudo apt autoclean
-	sudo apt-get autoremove
+		clear
+
+		echo
+		read -e -p "Change password for user $USER ${YELLOW}(U)${STD} or root ${YELLOW}(R)?${STD} " -i "" choice
+
+		case "$choice" in
+			u|U ) passwd ;;
+			r|U ) sudo -s passwd ;;
+			* ) echo "No passwords changed" ;;
+		esac
 
 	TASKCOMPLETE
 
