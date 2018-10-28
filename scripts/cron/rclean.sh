@@ -21,6 +21,14 @@ echo
 echo "${LYELLOW}Making sure components are up to date${STD}"
 echo
 
+sudo rm -r /opt/Gooby
+sudo git clone -b master https://github.com/TechPerplexed/Gooby /opt/Gooby
+sudo chmod +x -R /opt/Gooby/install
+sudo chmod +x -R /opt/Gooby/menus
+sudo chmod +x -R /opt/Gooby/scripts/cron
+sudo rsync -a /opt/Gooby/install/gooby /bin
+sudo chmod 755 /bin/gooby
+
 sudo rsync -a /opt/Gooby/scripts/components/{00-AAA.yaml,01-proxy.yaml} $CONFIGS/Docker/components
 
 echo
@@ -54,18 +62,6 @@ echo
 
 source /opt/Gooby/install/misc/environment-build.sh rebuild
 /usr/local/bin/docker-compose up -d --remove-orphans ${@:2}
-
-echo
-echo "${LYELLOW}Updating Gooby${STD}"
-echo
-
-sudo rm -r /opt/Gooby
-sudo git clone -b master https://github.com/TechPerplexed/Gooby /opt/Gooby
-sudo chmod +x -R /opt/Gooby/install
-sudo chmod +x -R /opt/Gooby/menus
-sudo chmod +x -R /opt/Gooby/scripts/cron
-sudo rsync -a /opt/Gooby/install/gooby /bin
-sudo chmod 755 /bin/gooby
 
 echo
 echo "${LYELLOW}${LYELLOW}Patching server${STD}"
