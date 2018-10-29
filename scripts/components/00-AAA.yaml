@@ -1,5 +1,5 @@
 version: "2.2"
   #
-  # GooPlex - Heavily Inspired by Kelinger's OmniPlex
+  # Gooby - Based on Kelinger's OmniStream
   #
 services:
