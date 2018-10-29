@@ -13,7 +13,7 @@
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - ${CONFIGS}/Ombi:/config
-      - ${GOOGLE}:/Google
+      - ${GOOGLE}:/Media
     environment:
       - PUID=${USERID}
       - PGID=${GROUPID}
