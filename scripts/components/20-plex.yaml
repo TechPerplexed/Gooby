@@ -14,7 +14,7 @@
       - ${CONFIGS}/Plex:/config
       - /tmp:/transcode
       - /bin/netstat:/bin/netstat:ro
-      - ${MEDIA}:/Nedia
+      - ${MEDIA}:/Media
     environment:
       - ADVERTISE_IP=https://plex.${MYDOMAIN}:8443
       - PUID=${USERID}
