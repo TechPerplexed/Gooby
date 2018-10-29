@@ -8,7 +8,8 @@ if [ -s $TCONFIGS/checkapp ]; then
 	ALREADYINSTALLED
 
 	echo
-	echo "Here is a list of the root folders in /media/Google:"
+	echo "Here is a list of the root folders in your mount"
+
 	echo
 	ls -1 /media/Google
 	echo
