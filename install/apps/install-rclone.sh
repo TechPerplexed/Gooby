@@ -81,9 +81,9 @@ else
 
 echo "This is a list of the root folders in your Gdrive: folder:"
 echo
-rclone lsd Gdrive:
+ls /media/Google
 echo
-echo "If you're getting an error here, Rclone didn't install properly."
+echo "If you're getting an error here, please check your Rclone config settings."
 echo "You may need to uninstall and try again!"
 
 fi
