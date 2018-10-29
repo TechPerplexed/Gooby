@@ -14,7 +14,7 @@
         condition: service_started
     volumes:
       - ${CONFIGS}/NZBget:/config
-      - ${DOWNLOADS}:/downloads
+      - ${DOWNLOADS}:/Downloads
       - ${HOME}/logs:/logs
     environment:
       - PGID=${GROUPID}
