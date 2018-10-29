@@ -11,7 +11,7 @@
       - 2096:8920
     volumes:
       - ${CONFIGS}/Emby:/config
-      - ${MEDIA}:/media
+      - ${MEDIA}:/Media
       - /tmp:/transcode
     environment:
       - ADVERTISE_IP=https://emby.${MYDOMAIN}
