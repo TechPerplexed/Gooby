@@ -12,9 +12,9 @@ if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 
 	if [ ! -f $TCONFIGS/cronbackup ]; then
 
-		echo ""
+		echo
 		read -n 1 -s -r -p " Would you like to schedule a weekly backup (y/N)? "
-		echo ""
+		echo
 
 		if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 
@@ -22,17 +22,19 @@ if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 			touch $TCONFIGS/cronbackup
 			echo " Backup scheduled to run at 02:15 every Sunday"
 			echo " You can always change this by typing ${LYELLOW}crontab -e${STD}"
+			echo
 
 		else
 
-			echo "No worries, you can always add a backup schedule later!"
+			echo " No worries, you can always add a backup schedule later!"
+			echo
 
 		fi
 
 	fi
 
-	echo -e "The backup can take several hours"
-	echo -e "Please don't exit the terminal until it's done!"
+	echo -e " The backup can take several hours"
+	echo -e " Please don't exit the terminal until it's done!"
 	echo ""
 
 	source /opt/Gooby/scripts/cron/backup.sh
