@@ -61,7 +61,7 @@ else
 			echo " It seems you are new to $TASK"
 			echo " In order to proceed, you will need to visit"
 			echo " https://www.${LYELLOW}plex.tv/claim${YELLOW}"
-			echo " And copy the token to clipboard"
+			echo " and copy the token to clipboard"
 			echo ""
 			echo " Make sure you activate the token within 4 minutes"
 			echo " at ${LYELLOW}$APP.$MYDOMAIN:8443${YELLOW}"
