@@ -10,20 +10,6 @@ if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 
 	GOAHEAD
 
-	echo -e "The backup can take several hours"
-	echo -e "Please don't exit the terminal until it's done!"
-	echo ""
-
-	source /opt/Gooby/scripts/cron/backup.sh
-
-	clear
-	echo "${YELLOW}"
-	echo "--------------------------------------------------"
-	echo " Done! The backup can be found"
-	echo " In your Google Backup folder"
-	echo "--------------------------------------------------"
-	echo "${STD}"
-
 	if [ ! -f $TCONFIGS/cronbackup ]; then
 
 		echo ""
@@ -44,6 +30,20 @@ if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 		fi
 
 	fi
+
+	echo -e "The backup can take several hours"
+	echo -e "Please don't exit the terminal until it's done!"
+	echo ""
+
+	source /opt/Gooby/scripts/cron/backup.sh
+
+	clear
+	echo "${YELLOW}"
+	echo "--------------------------------------------------"
+	echo " Done! The backup can be found in"
+	echo " your Gdrive: Backup folder (on Google)"
+	echo "--------------------------------------------------"
+	echo "${STD}"
 
 	TASKCOMPLETE
 
