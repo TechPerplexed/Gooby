@@ -8,12 +8,14 @@ if [ -s $TCONFIGS/checkapp ]; then
 	ALREADYINSTALLED
 
 	echo
-	echo "Here is a list of the root folders in /media/Google:"
+	echo " Here is a list of the root folders in /media/Google:"
 	echo
-	ls /media/Google
+	ls -1 /media/Google
 	echo
-	echo "If you're getting an error here, please check your Rclone config settings."
-	echo "You may need to uninstall and try again!"
+	echo " If you're getting an error here, please check your"
+	echo " Rclone config settings."
+	echo " You may need to uninstall and try again!"
+	echo
 
 else
 
