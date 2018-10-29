@@ -79,6 +79,13 @@ else
 
 	fi
 
+echo "This is a list of the root folders in your Gdrive: folder:"
+echo
+rclone lsd Gdrive:
+echo
+echo "If you're getting an error here, Rclone didn't install properly."
+echo "You may need to uninstall and try again!"
+
 fi
 
 rm $TCONFIGS/checkapp
