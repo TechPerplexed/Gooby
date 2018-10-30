@@ -15,7 +15,7 @@ Run with this command:
 
 ## Supported apps:
 
-One click installation of Rclone, Plex, Tautulli, Emby, Sonarr, Radarr, Deluge, NZBGet, Jackett, Netdata, Organizr and Ombi.
+One click installation of Rclone, Plex, Tautulli, Emby, Sonarr, Radarr, Deluge, NZBGet, Jackett, Netdata, Organizr, Ombi and Portainer.
 
 ## Disclaimer:
 
