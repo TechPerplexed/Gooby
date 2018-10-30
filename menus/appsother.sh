@@ -32,6 +32,15 @@ OMBI(){
 	source /opt/Gooby/menus/apps.sh
 }
 
+PORTAINER(){
+	TASK=Portainer
+	APP=portainer
+	APPTYPE=app
+	APPLOC=60-ombi
+	OLDLOC=/noupgradepathprovided
+	source /opt/Gooby/menus/apps.sh
+}
+
 QUIT(){
 	exit
 }
@@ -45,6 +54,7 @@ show_menus() {
 	echo " ${LPURPLE}A${STD} - Netdata"
 	echo " ${LPURPLE}B${STD} - Organizr"
 	echo " ${LPURPLE}C${STD} - Ombi"
+	echo " ${LPURPLE}D${STD} - Portainer"
 	echo " ${WHITE}Z${STD} - EXIT to Main Menu"
 	echo " ${LPURPLE}"
 	MENUEND
@@ -59,6 +69,7 @@ read_options(){
 		[Aa]) NETDATA ;;
 		[Bb]) ORGANIZR ;;
 		[Cc]) OMBI ;;
+		[Dd]) PORTAINER ;;
 		[Zz]) QUIT ;;
 		*) echo "${LRED}Please select a valid option${STD}" && sleep 2
 	esac
