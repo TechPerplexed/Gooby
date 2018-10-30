@@ -25,7 +25,7 @@
       - LETSENCRYPT_HOST=ombi.${MYDOMAIN}
       - LETSENCRYPT_EMAIL=${MYEMAIL}
     healthcheck:
-      test: ["CMD-SHELL", "netstat -ntlp | grep :6789"]
+      test: ["CMD-SHELL", "netstat -ntlp | grep :3579"]
       interval: 10s
       timeout: 2s
       retries: 3
