@@ -7,8 +7,6 @@
     container_name: jackett
     hostname: jackett
     cpu_shares: 1024
-    ports:
-      - 9117:9117
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - ${CONFIGS}/Jackett:/config
