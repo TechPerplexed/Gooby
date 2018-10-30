@@ -1,0 +1,24 @@
+#
+# Portainer - manages the Docker environment
+#
+  portainer:
+    restart: always
+    image: portainer/portainer
+    container_name: portainer
+    hostname: portainer
+    cpu_shares: 1024
+    depends_on:
+      nginx-proxy:
+        condition: service_healthy
+      letsencrypt-nginx-proxy-companion:
+        condition: service_started
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ${CONFIGS}/portainer:/data
+    environment:
+      - VIRTUAL_HOST=portainer.${MYDOMAIN}
+      - VIRTUAL_NETWORK=nginx-proxy
+      - VIRTUAL_PORT=9000
+      - LETSENCRYPT_HOST=portainer.${MYDOMAIN}
+      - LETSENCRYPT_EMAIL=${MYEMAIL}
