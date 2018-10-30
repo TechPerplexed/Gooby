@@ -17,7 +17,7 @@ Run with this command:
 
 One click installation of Rclone, Plex, Tautulli, Emby, Sonarr, Radarr, Deluge, NZBGet, Jackett, Netdata, Organizr, Ombi and Portainer.
 
-Make sure you check out the excellent [Wiki here on GitHub](http://bit.ly/TechPerplexed "Gooby Wiki") that Gooby participant @deedeefink has put together!
+Make sure you check out the excellent [Wiki here on GitHub](https://github.com/TechPerplexed/Gooby/wiki "Gooby Wiki") that Gooby participant @deedeefink has put together!
 
 ## Disclaimer:
 
