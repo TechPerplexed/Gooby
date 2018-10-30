@@ -1,0 +1,29 @@
+#
+# Organizr - Default web site
+#
+  Organizr:
+    restart: always
+    image: organizrtools/organizr-v2
+    container_name: organizr
+    hostname: ${ORGMENU}
+    depends_on:
+      nginx-proxy:
+        condition: service_healthy
+      letsencrypt-nginx-proxy-companion:
+        condition: service_started
+    volumes:
+      - ${CONFIGS}/Organizr:/config
+    environment:
+      - PUID=${USERID}
+      - PGID=${GROUPID}
+      - VIRTUAL_HOST=${ORGMENU}.${MYDOMAIN}
+      - VIRTUAL_PORT=80
+      - VIRTUAL_NETWORK=nginx-proxy
+      - TZ=${TIMEZONE}
+      - LETSENCRYPT_HOST=${ORGMENU}.${MYDOMAIN}
+      - LETSENCRYPT_EMAIL=${MYEMAIL}
+    healthcheck:
+      test: ["CMD-SHELL", "netstat -ntlp | grep :80"]
+      interval: 10s
+      timeout: 2s
+      retries: 3
