@@ -1,6 +1,6 @@
 #!/bin/bash
 
-VERSION="2.0.1"
+VERSION="2.0.2"
 CONFIGS=/var/local/Gooby
 TCONFIGS=/var/local/.gtemp
 CURDIR=$(pwd)
