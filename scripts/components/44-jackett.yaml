@@ -25,7 +25,7 @@
       - LETSENCRYPT_HOST=jackett.${MYDOMAIN}
       - LETSENCRYPT_EMAIL=${MYEMAIL}
     healthcheck:
-      test: ["CMD-SHELL", "netstat -ntlp | grep :8112"]
+      test: ["CMD-SHELL", "netstat -ntlp | grep :9117"]
       interval: 10s
       timeout: 2s
       retries: 3
