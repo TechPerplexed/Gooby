@@ -6,7 +6,8 @@ Create an infinite Plex or Emby media server with Google Drive on a VPS.
 
 GooPlex is now Gooby, completely rewritten from scratch. It has full docker integration for all apps, NginX with reverse proxy and Letsencrypt, one click (automatic) backup, several additional apps.
 
-More [information and instructions can be found on TechPerplexed](http://bit.ly/TechPerplexed "How to create an infinite media server using a VPS and Cloud service").
+Basic [information and instructions can be found on TechPerplexed](http://bit.ly/TechPerplexed "How to create an infinite media server using a VPS and Cloud service").
+Make sure you check out the excellent [Wiki here on GitHub](http://bit.ly/TechPerplexed "Gooby Wiki") that Gooby participant @deedeefink has put together!
 
 ## Installation:
 
