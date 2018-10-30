@@ -36,7 +36,7 @@ PORTAINER(){
 	TASK=Portainer
 	APP=portainer
 	APPTYPE=app
-	APPLOC=60-ombi
+	APPLOC=10-portainer
 	OLDLOC=/noupgradepathprovided
 	source /opt/Gooby/menus/apps.sh
 }
