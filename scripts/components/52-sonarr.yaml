@@ -31,7 +31,7 @@
       - LETSENCRYPT_HOST=sonarr.${MYDOMAIN}
       - LETSENCRYPT_EMAIL=${MYEMAIL}
     healthcheck:
-      test: ["CMD-SHELL", "netstat -ntlp | grep :8989 && mountpoint /tv"]
+      test: ["CMD-SHELL", "netstat -ntlp | grep :8989 && mountpoint /Media"]
       interval: 10s
       timeout: 2s
       retries: 3
