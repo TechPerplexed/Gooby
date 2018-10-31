@@ -15,7 +15,7 @@
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - /var/run/docker.sock:/var/run/docker.sock
-      - ${CONFIGS}/portainer:/data
+      - ${CONFIGS}/Portainer:/data
     environment:
       - VIRTUAL_HOST=portainer.${MYDOMAIN}
       - VIRTUAL_NETWORK=nginx-proxy
