@@ -81,4 +81,4 @@ echo
 sudo chown -R $USER:$USER $CONFIGS
 sudo chown -R $USER:$USER $TCONFIGS
 sudo chown -R $USER:$USER $HOME
-cd "${CURDIR}"
+cd ${CURDIR}
