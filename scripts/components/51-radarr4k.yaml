@@ -1,0 +1,41 @@
+#
+# Radarr4K - Movie catalog and management 4K version
+#
+  radarr4k:
+    restart: unless-stopped
+    image: lsiodev/radarr
+    #image: linuxserver/radarr:latest
+    container_name: radarr4k
+    hostname: radarr4k
+    cpu_shares: 2048
+    ports:
+      - 7879:7878
+    depends_on:
+      nginx-proxy:
+        condition: service_healthy
+      letsencrypt-nginx-proxy-companion:
+        condition: service_started
+        #deluge:
+        #condition: service_healthy
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ${CONFIGS}/Radarr4K:/config
+      - ${HOME}/logs:/config/logs
+      - ${GOOGLE}:/Media
+      - ${DOWNLOADS}:/Downloads
+      - /bin/netstat:/bin/netstat:ro
+      - /usr/bin/killall:/usr/bin/killall:ro
+    environment:
+      - PGID=${GROUPID}
+      - PUID=${USERID}
+      - TZ=${TIMEZONE}
+      - VIRTUAL_HOST=radarr4k.${MYDOMAIN}
+      - VIRTUAL_PORT=7879
+      - VIRTUAL_NETWORK=nginx-proxy
+      - LETSENCRYPT_HOST=radarr4k.${MYDOMAIN}
+      - LETSENCRYPT_EMAIL=${MYEMAIL}
+    healthcheck:
+      test: ["CMD-SHELL", "netstat -ntlp | grep :7879 && mountpoint /Media"]
+      interval: 10s
+      timeout: 2s
+      retries: 3
