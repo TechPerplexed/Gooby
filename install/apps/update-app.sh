@@ -17,8 +17,9 @@ else
 
 		GOAHEAD
 
-		docker stop $APP
-		docker start $APP
+		cd $CONFIGS/Docker
+		/usr/local/bin/docker-compose up -d --no-deps --build plex $APP
+		cd ${CURDIR}
 
 		TASKCOMPLETE
 
