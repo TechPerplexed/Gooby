@@ -18,7 +18,7 @@ else
 		GOAHEAD
 
 		cd $CONFIGS/Docker
-		/usr/local/bin/docker-compose up -d --no-deps --build plex $APP
+		/usr/local/bin/docker-compose up -d --no-deps --build $APP
 		cd ${CURDIR}
 
 		TASKCOMPLETE
