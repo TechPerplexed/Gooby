@@ -1,0 +1,42 @@
+#
+# SABnzbd - Usenet Downloader
+#
+  sabnzbd:
+    restart: unless-stopped
+    image: linuxserver/sabnzbd
+    container_name: sabnzbd
+    hostname: sabnzbd
+    cpu_shares: 2048
+    depends_on:
+      nginx-proxy:
+        condition: service_healthy
+      letsencrypt-nginx-proxy-companion:
+        condition: service_started
+    volumes:
+      - ${CONFIGS}/SABnzbd:/config
+      - ${DOWNLOADS}:/Downloads
+      - ${GOOGLE}:/Media
+      - ${LOGS}:/logs
+      - /bin/netstat:/bin/netstat:ro
+    environment:
+      - PGID=${GROUPID}
+      - PUID=${USERID}
+      - TZ=${TIMEZONE}
+      - VIRTUAL_HOST=sabnzbd.${MYDOMAIN}
+      - VIRTUAL_PORT=8080
+      - VIRTUAL_NETWORK=nginx-proxy
+      - LETSENCRYPT_HOST=sabnzbd.${MYDOMAIN}
+      - LETSENCRYPT_EMAIL=${MYEMAIL}
+    healthcheck:
+      test: ["CMD-SHELL", "netstat -ntlp | grep :8080"]
+      interval: 10s
+      timeout: 2s
+      retries: 3
+    blkio_config:
+      weight: 150
+      #device_read_bps:
+      #- path: /dev/md1
+      #rate: '50mb'
+      #device_write_bps:
+      #- path: /dev/md1
+      #rate: '50mb'
