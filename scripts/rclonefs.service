@@ -20,7 +20,7 @@ ExecStart=/usr/bin/rclone mount \
 	--vfs-read-chunk-size 128M \
 	--vfs-read-chunk-size-limit off \
 	--config ${RCLONEHOME}/rclone.conf \
-	Gdrive ${MOUNTTO}
+	Gdrive: ${MOUNTTO}
 ExecStop=/bin/fusermount -u -z ${MOUNTTO}
 ExecStop=/bin/rmdir ${MOUNTTO}
 Restart=always
