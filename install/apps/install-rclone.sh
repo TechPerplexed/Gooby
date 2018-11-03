@@ -7,7 +7,7 @@ if [ -s $TCONFIGS/checkapp ]; then
 
 	ALREADYINSTALLED
 
-	echo "Here is a list of the root folders in your mount"
+	echo "Here is a list of the root folders in your mount:"
 	echo
 	ls -1 /media/Google
 	echo
@@ -77,7 +77,13 @@ else
 		sudo systemctl start rclone.service
 
 		echo
-		echo "Done! Your mount can be found at ${YELLOW}/media/Google${STD}"
+		echo "Done! Here is a list of the root folders in your mount:"
+		echo
+		ls -1 /media/Google
+		echo
+		echo "If you're getting an error here, please"
+		echo "check your Rclone config settings."
+		echo "You may need to uninstall and try again!"
 
 		TASKCOMPLETE
 
