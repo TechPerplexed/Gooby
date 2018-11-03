@@ -3,7 +3,7 @@ Description=Mount and cache Google drive with MergerFS
 After=syslog.target local-fs.target network.target
 
 [Service]
-Environment=RCLONEHOME=/var/local/GooPlex/.config
+Environment=RCLONEHOME=/var/local/Gooby/.config
 Environment=MOUNTTO=/mnt/rclone
 
 Type=simple
