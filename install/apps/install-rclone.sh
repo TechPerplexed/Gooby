@@ -52,6 +52,7 @@ else
 		clear
 
 		echo "${YELLOW}Please follow the instructions to setup Rclone${STD}"
+		echo
 		echo "Make sure you name the config ${YELLOW}Gdrive${STD}"
 		echo
 		sudo rclone config
@@ -77,13 +78,8 @@ else
 		sudo systemctl start rclone.service
 
 		echo
-		echo "Done! Here is a list of the root folders in your mount:"
+		echo "Done!"
 		echo
-		ls -1 /media/Google
-		echo
-		echo "If you're getting an error here, please"
-		echo "check your Rclone config settings."
-		echo "You may need to uninstall and try again!"
 
 		TASKCOMPLETE
 
