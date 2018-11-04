@@ -1,0 +1,33 @@
+#
+# rTorrent - Torrent download engine
+#
+  rtorrent:
+    restart: unless-stopped
+    image: linuxserver/rutorrent
+    container_name: rtorrent
+    hostname: rtorrent
+    cpu_shares: 1024
+    ports:
+      - 51413:51413
+      - 6881:6881/udp
+      - 5000:5000
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ${CONFIGS}/rTorrent:/config
+      - ${DOWNLOADS}/rtorrent:/Downloads
+      - ${GOOGLE}:/Media
+    environment:
+      - PUID=${USERID}
+      - PGID=${GROUPID}
+      - TZ=${TIMEZONE}
+      - UMASK_SET=022
+      - VIRTUAL_HOST=rtorrent.${MYDOMAIN}
+      - VIRTUAL_PORT=80
+      - VIRTUAL_NETWORK=nginx-proxy
+      - LETSENCRYPT_HOST=rtorrent.${MYDOMAIN}
+      - LETSENCRYPT_EMAIL=${MYEMAIL}
+    healthcheck:
+      test: ["CMD-SHELL", "netstat -ntlp | grep :80"]
+      interval: 10s
+      timeout: 2s
+      retries: 3
