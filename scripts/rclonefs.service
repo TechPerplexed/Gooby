@@ -1,5 +1,5 @@
 [Unit]
-Description=Mount and cache Google drive with MergerFS
+Description=Mount Google Drive (rclone)
 After=syslog.target local-fs.target network.target
 
 [Service]
@@ -22,7 +22,7 @@ ExecStart=/usr/bin/rclone mount \
 	--vfs-read-chunk-size-limit off \
 	--config ${HOMEDIR}/.config/rclone/rclone.conf \
 	${RCLONESERVICE}:${RCLONEFOLDER} ${RCLONEMOUNT}
-ExecStop=/bin/fusermount -u -z ${RCLONEMOUNT}
+ExecStop=/bin/fusermount -uz ${RCLONEMOUNT}
 ExecStop=/bin/rmdir ${RCLONEMOUNT}
 Restart=always
 
