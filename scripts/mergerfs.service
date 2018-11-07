@@ -1,20 +1,18 @@
 [Unit]
-Description=Mount writable, cachable version of Google to /media/Google (MergerFS)
+Description=Mount Google Drive (MergerFS)
 After=syslog.target local-fs.target network.target rclone.service
 
 [Service]
-Type=forking
-User=$USER
-Group=$USER
-Environment=RCLONEMOUNT=/mnt/rclone
-Environment=UPLOADS=/mnt/upload
-Environment=MOUNTTO=/media/Google
+EnvironmentFile=/var/home/Gooby/Docker/.env
 
-ExecStartPre=/bin/mkdir -p ${UPLOADS} ${MOUNTTO}
+Type=forking
+User=${USERNAME}
+Group=${GROUPNAME}
+ExecStartPre=/bin/mkdir -p ${UPLOADS} ${RCLONEMOUNT}
 ExecStart=/usr/bin/mergerfs \
 	-o use_ino,hard_remove,auto_cache,sync_read,allow_other,category.action=all,category.create=ff \
 	${UPLOADS}:${RCLONEMOUNT} ${MOUNTTO}
-ExecStop=/bin/fusermount -u -z ${MOUNTTO}
+ExecStop=/bin/fusermount -uz ${MOUNTTO}
 ExecStop=/bin/rmdir ${MOUNTTO}
 Restart=always
 
