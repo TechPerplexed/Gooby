@@ -7,9 +7,6 @@
     container_name: ombi
     hostname: ombi
     cpu_shares: 1024
-    ports:
-      - 3579:3579/tcp
-      - 3579:3579/udp
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - ${CONFIGS}/Ombi:/config
