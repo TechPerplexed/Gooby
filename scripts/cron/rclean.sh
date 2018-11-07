@@ -14,8 +14,10 @@ echo "${LYELLOW}Taking services down${STD}"
 echo
 
 sudo systemctl daemon-reload
-# sudo systemctl stop mergerfs
-sudo systemctl stop rclone
+
+if [ -e /etc/systemd/system/mergerfs.service ]; then sudo systemctl stop mergerfs; fi
+if [ -e /etc/systemd/system/rclonefs.service ]; then sudo systemctl stop rclonefs; fi
+if [ -e /etc/systemd/system/rclone.service ]; then sudo systemctl stop rclone; fi
 
 echo
 echo "${LYELLOW}Making sure components are up to date${STD}"
@@ -46,9 +48,10 @@ echo
 echo "${LYELLOW}Starting services${STD}"
 echo
 
-sudo systemctl start rclone
+if [ -e /etc/systemd/system/rclone.service ]; then sudo systemctl start rclone; fi
+if [ -e /etc/systemd/system/rclonefs.service ]; then sudo systemctl start rclonefs; fi
 sleep 10
-# sudo systemctl start mergerfs
+if [ -e /etc/systemd/system/mergerfs.service ]; then sudo systemctl start mergerfs; fi
 
 echo
 echo "${LYELLOW}Pruning old volumes${STD}"
