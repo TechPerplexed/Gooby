@@ -2,6 +2,8 @@
 
 source /opt/Gooby/menus/variables.sh
 
+[[ -d "/var/local/.gtemp" ]] && mv /var/local/.gtemp ${TCONFIG}
+
 ENV=$CONFIGS/Docker/.env
 touch ${ENV}
 touch ${CONFIGS}/.config/rclonefolder
@@ -45,8 +47,8 @@ echo "CONFIGS=${CONFIGS}" >> ${ENV}
 echo "DOWNLOADS=${HOMEDIR}/Downloads" >> ${ENV}
 echo "GOOGLE=/media/Google" >> ${ENV}
 echo "MEDIA=/media/Google" >> ${ENV}
-echo "TV=/media/Google/TV" >> ${ENV}
 echo "MOVIES=/media/Google/Movies" >> ${ENV}
+echo "TV=/media/Google/TV" >> ${ENV}
 echo "MYDOMAIN=$(cat ${CONFIGS}/.config/mydomain)" >> ${ENV}
 echo "MYEMAIL=$(cat ${CONFIGS}/.config/myemail)" >> ${ENV}
 echo "RCLONEFOLDER=${CONFIGS}/.config/rclonefolder)" >> ${ENV}
