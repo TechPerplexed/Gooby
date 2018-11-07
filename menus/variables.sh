@@ -2,7 +2,7 @@
 
 VERSION="2.0.3"
 CONFIGS=/var/local/Gooby
-TCONFIGS=/var/local/.gtemp
+TCONFIGS=/var/local/.Gooby
 CURDIR=$(pwd)
 
 # Define colors
