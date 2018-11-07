@@ -2,8 +2,6 @@
 
 source /opt/Gooby/menus/variables.sh
 
-[[ -d "/var/local/.gtemp" ]] && mv /var/local/.gtemp ${TCONFIG}
-
 ENV=$CONFIGS/Docker/.env
 touch ${ENV}
 
