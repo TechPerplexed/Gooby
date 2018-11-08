@@ -88,6 +88,9 @@ else
 
 		sudo rsync -a /opt/Gooby/scripts/services/gooby* /etc/systemd/system/
 		sudo rsync -a /opt/Gooby/scripts/services/mnt* /etc/systemd/system/
+		sudo sed -i "s/GOOBYUSER/${USER}/g" /etc/systemd/system/gooby-rclone.service
+		sudo sed -i "s/GOOBYUSER/${USER}/g" /etc/systemd/system/gooby-find.service
+		sudo sed -i "s/GOOBYUSER/${USER}/g" /etc/systemd/system/mnt-google.mount
 
 		sudo chown -R $USER:$USER $CONFIGS
 		sudo chown -R $USER:$USER $TCONFIGS
