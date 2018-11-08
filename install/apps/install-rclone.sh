@@ -80,8 +80,13 @@ else
 		sudo mkdir -p ${MOUNTTO}
 		sudo mkdir -p ${UPLOADS}
 
-		sudo rsync -a /opt/Gooby/scripts/rclonefs.service /etc/systemd/system/rclonefs.service
-		sudo rsync -a /opt/Gooby/scripts/merger.service /etc/systemd/system/mergerfs.service
+		if [ ! -d ${UPLOADS}/Downloads ]; then
+			sudo mv $HOME/Downloads ${UPLOADS}
+			sudo ln -s ${UPLOADS}/Downloads $HOME/Downloads
+		fi
+
+		sudo rsync -a /opt/Gooby/scripts/services/gooby* /etc/systemd/system/
+		sudo rsync -a /opt/Gooby/scripts/mnt* /etc/systemd/system/
 
 		sudo chown -R $USER:$USER $CONFIGS
 		sudo chown -R $USER:$USER $TCONFIGS
@@ -90,13 +95,10 @@ else
 		sudo chown -R $USER:$USER $MOUNTTO
 		sudo chown -R $USER:$USER $UPLOADS
 		
-		sudo systemctl enable mergerfs.service
-		sudo systemctl enable rclonefs.service
+		sudo systemctl enable gooby.service
 		sudo systemctl daemon-reload
-		sudo systemctl start mergerfs.service
-		wait 10
-		sudo systemctl start rclonefs.service
-
+		sudo systemctl start gooby.service
+		
 		if [ ! -f $TCONFIGS/cronsyncmount ]; then
 			(crontab -l 2>/dev/null; echo "0,15,30,45 * * * * /opt/Gooby/scripts/cron/syncmount.sh > /dev/null 2>&1") | crontab -
 			touch $TCONFIGS/cronsyncmount
