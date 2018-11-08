@@ -3,7 +3,7 @@ Description=Mount Google Drive (rclone)
 PartOf=gooby.service
 
 [Service]
-EnvironmentFile=/var/home/Gooby/Docker/.env
+EnvironmentFile=/var/local/Gooby/Docker/.env
 
 Type=notify
 User=${USERNAME}
