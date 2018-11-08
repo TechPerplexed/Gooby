@@ -5,7 +5,7 @@ PartOf=gooby.service
 After=gooby-rclone.service
 
 [Mount]
-EnvironmentFile=/var/home/Gooby/Docker/.env
+EnvironmentFile=/var/local/Gooby/Docker/.env
 User=${USERNAME}
 What = ${UPLOADS}:${RCLONEMOUNT}
 Where = ${MOUNTTO}
