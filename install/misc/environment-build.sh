@@ -34,6 +34,7 @@ echo >> ${ENV}
 echo "CONFIGS=${CONFIGS}" >> ${ENV}
 echo "TCONFIGS=${TCONFIGS}" >> ${ENV}
 echo "HOMEDIR=$HOME" >> ${ENV}
+echo "LOGS=$HOME/logs" >> ${ENV}
 echo "USERID=$(id -u)" >> ${ENV}
 echo "GROUPID=$(id -g)" >> ${ENV}
 echo "USERNAME=$USER" >> ${ENV}
@@ -43,15 +44,15 @@ echo "TIMEZONE=$(cat /etc/timezone)" >> ${ENV}
 echo "MYDOMAIN=$(cat ${CONFIGS}/.config/mydomain)" >> ${ENV}
 echo "MYEMAIL=$(cat ${CONFIGS}/.config/myemail)" >> ${ENV}
 echo "ORGMENU=menu" >> ${ENV}
-echo "GOOGLE=/media/Google" >> ${ENV}
-echo "MEDIA=/media/Google" >> ${ENV}
-echo "MOVIES=/media/Google/Movies" >> ${ENV}
-echo "TV=/media/Google/TV" >> ${ENV}
 echo "RCLONESERVICE=$(cat ${CONFIGS}/.config/rcloneservice)" >> ${ENV}
 echo "RCLONEFOLDER=$(cat ${CONFIGS}/.config/rclonefolder)" >> ${ENV}
 echo "RCLONEMOUNT=$(cat ${CONFIGS}/.config/rclonemount)" >> ${ENV}
 echo "MOUNTTO=$(cat ${CONFIGS}/.config/mountto)" >> ${ENV}
 echo "UPLOADS=$(cat ${CONFIGS}/.config/uploads)" >> ${ENV}
+echo "GOOGLE=$(cat ${CONFIGS}/.config/mountto)" >> ${ENV}
+echo "MEDIA=$(cat ${CONFIGS}/.config/mountto)" >> ${ENV}
+echo "MOVIES=$(cat ${CONFIGS}/.config/mountto)/Movies" >> ${ENV}
+echo "TV=$(cat ${CONFIGS}/.config/mountto)/TV" >> ${ENV}
 echo "DOWNLOADS=$(cat ${HOMEDIR}/Downloads)" >> ${ENV}
 [[ -f "${TCONFIGS}/plexclaim" ]] && echo "PLEXCLAIM=$(cat ${TCONFIGS}/plexclaim)" >> ${ENV}
 
