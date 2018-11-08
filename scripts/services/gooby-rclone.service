@@ -6,8 +6,8 @@ PartOf=gooby.service
 EnvironmentFile=/var/local/Gooby/Docker/.env
 
 Type=notify
-User=${USERNAME}
-Group=${GROUPNAME}
+User=GOOBYUSER
+Group=GOOBYUSER
 ExecStartPre=/bin/mkdir -p ${RCLONEMOUNT}
 ExecStart=/usr/bin/rclone mount \
 	--allow-other \
