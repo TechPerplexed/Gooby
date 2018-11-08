@@ -72,9 +72,7 @@ else
 		MOUNTTO=/mnt/google; echo $MOUNTTO > $CONFIGS/.config/mountto
 		UPLOADS=/mnt/uploads; echo $UPLOADS > $CONFIGS/.config/uploads
 
-		sudo -s cat > /etc/fuse.conf << EOF
-		user_allow_other
-		EOF
+		sed -i 's/^#user_allow_other/user_allow_other/g' /etc/fuse.conf
 
 		sudo mkdir -p $HOME/logs
 		sudo mkdir -p $HOME/Downloads
