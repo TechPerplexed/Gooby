@@ -7,7 +7,7 @@ After=mnt-google.mount
 
 [Service]
 Type=oneshot
-EnvironmentFile=/var/home/Gooby/Docker/.env
+EnvironmentFile=/var/local/Gooby/Docker/.env
 ExecStart=/bin/sh -c "/bin/sleep 10 ; /usr/bin/find ${RCLONEMOUNT} > ${LOGS}/precache"
 # This service shall be considered active after start
 RemainAfterExit=yes
