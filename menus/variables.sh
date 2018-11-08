@@ -108,6 +108,17 @@ EXPLAINTASK(){
 
 EXPLAINAPP(){
 	clear
+	which rclone > $TCONFIGS/checkapp
+	if [ ! -s $TCONFIGS/checkapp ]; then
+		echo "${LRED}"
+		echo "--------------------------------------------------"
+		echo " WARNING! Rclone is not installed yet."
+		echo " Please configure that first, otherwise your"
+		echo " system will not work as intended."
+		echo "--------------------------------------------------"
+		echo "${STD}"
+	fi
+	echo
 	echo "${CYAN}"
 	echo "--------------------------------------------------"
 	echo " This will ${PERFORM} ${TASK}"
