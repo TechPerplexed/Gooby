@@ -1,6 +1,6 @@
 #!/bin/bash
 
-VERSION="2.0.3"
+VERSION="2.1.0"
 CONFIGS=/var/local/Gooby
 TCONFIGS=/var/local/.Gooby
 CURDIR=$(pwd)
@@ -118,7 +118,6 @@ EXPLAINAPP(){
 		echo "--------------------------------------------------"
 		echo "${STD}"
 	fi
-	echo
 	echo "${CYAN}"
 	echo "--------------------------------------------------"
 	echo " This will ${PERFORM} ${TASK}"
