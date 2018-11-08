@@ -6,7 +6,7 @@ After=gooby-rclone.service
 
 [Mount]
 EnvironmentFile=/var/local/Gooby/Docker/.env
-User=${USERNAME}
+User=GOOBYUSER
 What = ${UPLOADS}:${RCLONEMOUNT}
 Where = ${MOUNTTO}
 Type = fuse.mergerfs
