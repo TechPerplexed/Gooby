@@ -69,12 +69,18 @@ else
 		RCLONESERVICE=${RCLONESERVICE#:}; echo $RCLONESERVICE > $CONFIGS/.config/rcloneservice
 		RCLONEFOLDER=${RCLONEFOLDER%/}; RCLONEFOLDER=${RCLONEFOLDER#/}; echo $RCLONEFOLDER > $CONFIGS/.config/rclonefolder
 		RCLONEMOUNT=/mnt/rclone; echo $RCLONEMOUNT > $CONFIGS/.config/rclonemount
-		MOUNTTO=/mnt/merger; echo $MOUNTTO > $CONFIGS/.config/mountto
+		MOUNTTO=/mnt/google; echo $MOUNTTO > $CONFIGS/.config/mountto
 		UPLOADS=/mnt/uploads; echo $UPLOADS > $CONFIGS/.config/uploads
+
+		sudo -s cat > /etc/fuse.conf << EOF
+		user_allow_other
+		EOF
 
 		sudo mkdir -p $HOME/logs
 		sudo mkdir -p $HOME/Downloads
-		sudo mkdir -p /media/Google
+		sudo mkdir -p ${RCLONEMOUNT}
+		sudo mkdir -p ${MOUNTTO}
+		sudo mkdir -p ${UPLOADS}
 
 		sudo rsync -a /opt/Gooby/scripts/rclonefs.service /etc/systemd/system/rclonefs.service
 		sudo rsync -a /opt/Gooby/scripts/merger.service /etc/systemd/system/mergerfs.service
@@ -92,6 +98,11 @@ else
 		sudo systemctl start mergerfs.service
 		wait 10
 		sudo systemctl start rclonefs.service
+
+		if [ ! -f $TCONFIGS/cronsyncmount ]; then
+			(crontab -l 2>/dev/null; echo "0,15,30,45 * * * * /opt/Gooby/scripts/cron/syncmount.sh > /dev/null 2>&1") | crontab -
+			touch $TCONFIGS/cronsyncmount
+		fi
 
 		echo
 		echo "Done!"
