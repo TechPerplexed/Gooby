@@ -15,10 +15,8 @@ if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 	# Add rlean to bootup cron if not added yet
 
 	if [ ! -f $TCONFIGS/cronboot ]; then
-
 		(crontab -l 2>/dev/null; echo "@reboot /opt/Gooby/scripts/cron/rclean.sh > /dev/null 2>&1") | crontab -
 		touch $TCONFIGS/cronboot
-
 	fi
 
 	source /opt/Gooby/scripts/cron/rclean.sh
