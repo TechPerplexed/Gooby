@@ -62,7 +62,7 @@ else
 		read -r RCLONESERVICE < $HOME/.config/rclone/rclone.conf; RCLONESERVICE=${RCLONESERVICE:1:-1}
 		read -e -p "Confirm that this is what you named your mount: " -i "$RCLONESERVICE"
 		echo
-		read -e -p "What is your media folder in $RCLONESERVICE? (press Enter for root): " -i "" FOLDER
+		read -e -p "What is your media folder in $RCLONESERVICE? (press Enter for root): " -i "" RCLONEFOLDER
 		echo
 
 		# Installing Services
@@ -95,7 +95,9 @@ else
 		sudo chown -R $USER:$USER $RCLONEMOUNT
 		sudo chown -R $USER:$USER $MOUNTTO
 		sudo chown -R $USER:$USER $UPLOADS
-		
+
+		source /opt/Gooby/install/misc/environment-build.sh rebuild
+
 		sudo systemctl enable gooby.service
 		sudo systemctl daemon-reload
 		sudo systemctl start gooby.service
