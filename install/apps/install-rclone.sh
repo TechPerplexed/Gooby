@@ -45,6 +45,7 @@ else
 
 		sudo mkdir -p $TCONFIGS
 		cd /tmp
+		clear
 		read -n 1 -s -r -p "Stable ${YELLOW}(S)${STD} or Beta installation ${YELLOW}(B)?${STD} " -i "S" choice
 
 		case "$choice" in 
@@ -72,7 +73,7 @@ else
 		MOUNTTO=/mnt/google; echo $MOUNTTO > $CONFIGS/.config/mountto
 		UPLOADS=/mnt/uploads; echo $UPLOADS > $CONFIGS/.config/uploads
 
-		sed -i 's/^#user_allow_other/user_allow_other/g' /etc/fuse.conf
+		sudo sed -i 's/^#user_allow_other/user_allow_other/g' /etc/fuse.conf
 
 		sudo mkdir -p $HOME/logs
 		sudo mkdir -p $HOME/Downloads
@@ -86,7 +87,7 @@ else
 		fi
 
 		sudo rsync -a /opt/Gooby/scripts/services/gooby* /etc/systemd/system/
-		sudo rsync -a /opt/Gooby/scripts/mnt* /etc/systemd/system/
+		sudo rsync -a /opt/Gooby/scripts/services/mnt* /etc/systemd/system/
 
 		sudo chown -R $USER:$USER $CONFIGS
 		sudo chown -R $USER:$USER $TCONFIGS
