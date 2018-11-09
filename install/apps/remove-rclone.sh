@@ -17,10 +17,6 @@ else
 
 		GOAHEAD
 
-		# Close ports
-
-		#na
-
 		# Main script
 
 		sudo rm /usr/bin/rclone
@@ -28,9 +24,18 @@ else
 
 		# Removing Services
 
-		sudo systemctl stop rclone.service
-		sudo systemctl disable rclone.service
-		sudo rm /etc/systemd/system/rclone.service
+		if [ -e /etc/systemd/system/rclone.service ]; then
+			sudo systemctl stop rclone.service
+			sudo systemctl disable rclone.service
+			sudo rm /etc/systemd/system/rclone.service
+		fi
+
+		if [ -e /etc/systemd/system/gooby.service ]; then
+			sudo systemctl stop gooby.service gooby-rclone.service gooby-find.service mnt-google.mount
+			sudo systemctl disable gooby.service gooby-rclone.service gooby-find.service mnt-google.mount
+			sudo rm /etc/systemd/system/rclone* /etc/systemd/system/mnt-*
+		fi
+
 		sudo systemctl daemon-reload
 
 		TASKCOMPLETE
