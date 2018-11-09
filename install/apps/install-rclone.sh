@@ -86,7 +86,6 @@ else
 		sudo rsync -a /opt/Gooby/scripts/services/mnt* /etc/systemd/system/
 		sudo sed -i "s/GOOBYUSER/${USER}/g" /etc/systemd/system/gooby-rclone.service
 		sudo sed -i "s/GOOBYUSER/${USER}/g" /etc/systemd/system/gooby-find.service
-		sudo sed -i "s/GOOBYUSER/${USER}/g" /etc/systemd/system/mnt-google.mount
 
 		source /opt/Gooby/install/misc/environment-build.sh rebuild
 
