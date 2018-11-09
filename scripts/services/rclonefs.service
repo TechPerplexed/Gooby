@@ -1,0 +1,31 @@
+[Unit]
+Description=Mount and cache Google drive
+After=syslog.target local-fs.target network.target
+
+[Service]
+EnvironmentFile=/var/local/Gooby/Docker/.env
+
+Type=notify
+User=GOOBYUSER
+Group=GOOBYUSER
+ExecStartPre=/bin/mkdir -p ${RCLONEMOUNT}
+ExecStart=/usr/bin/rclone mount \
+	--allow-other \
+	--buffer-size 1G \
+	--dir-cache-time 72h \
+	--drive-chunk-size 32M \
+	--fast-list \
+	--gid ${USERID} \
+	--log-level INFO \
+	--log-file ${HOMEDIR}/logs/rclone.log \
+	--uid ${GROUPID} \
+	--vfs-read-chunk-size 128M \
+	--vfs-read-chunk-size-limit off \
+	--config ${HOMEDIR}/.config/rclone/rclone.conf \
+	${RCLONESERVICE}:${RCLONEFOLDER} ${RCLONEMOUNT}
+ExecStop=/bin/fusermount -uz ${RCLONEMOUNT}
+ExecStop=/bin/rmdir ${RCLONEMOUNT}
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
