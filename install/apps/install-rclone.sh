@@ -74,7 +74,7 @@ else
 
 		sudo sed -i 's/^#user_allow_other/user_allow_other/g' /etc/fuse.conf
 
-		sudo mkdir -p $HOME/logs $HOME/Downloads
+		mkdir -p $HOME/logs $HOME/Downloads
 		sudo mkdir -p ${RCLONEMOUNT} ${MOUNTTO} ${UPLOADS}
 
 		if [ ! -d ${UPLOADS}/Downloads ]; then
