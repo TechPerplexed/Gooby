@@ -43,7 +43,6 @@ else
 
 		# Main script
 
-		sudo mkdir -p $TCONFIGS
 		cd /tmp
 		clear
 		read -n 1 -s -r -p "Stable ${YELLOW}(S)${STD} or Beta installation ${YELLOW}(B)?${STD} " -i "S" choice
