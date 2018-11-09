@@ -25,7 +25,6 @@ else
 	if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 
 		GOAHEAD
-		RUNPATCHES
 
 		# Install MergerFS
 
@@ -61,7 +60,7 @@ else
 		read -r RCLONESERVICE < $HOME/.config/rclone/rclone.conf; RCLONESERVICE=${RCLONESERVICE:1:-1}
 		read -e -p "Confirm that this is what you named your mount: " -i "$RCLONESERVICE"
 		echo
-		read -e -p "What is your media folder in $RCLONESERVICE? (press Enter for root): " -i "" RCLONEFOLDER
+		read -e -p "What is your media folder in $RCLONESERVICE? (leave empty for root): " -i "" RCLONEFOLDER
 		echo
 
 		# Installing Services
