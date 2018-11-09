@@ -75,35 +75,30 @@ else
 
 		sudo sed -i 's/^#user_allow_other/user_allow_other/g' /etc/fuse.conf
 
-		sudo mkdir -p $HOME/logs
-		sudo mkdir -p $HOME/Downloads
-		sudo mkdir -p ${RCLONEMOUNT}
-		sudo mkdir -p ${MOUNTTO}
-		sudo mkdir -p ${UPLOADS}
+		sudo mkdir -p $HOME/logs $HOME/Downloads
+		sudo mkdir -p ${RCLONEMOUNT} ${MOUNTTO} ${UPLOADS}
 
 		if [ ! -d ${UPLOADS}/Downloads ]; then
 			sudo mv $HOME/Downloads ${UPLOADS}
 			sudo ln -s ${UPLOADS}/Downloads $HOME/Downloads
 		fi
 
-		sudo rsync -a /opt/Gooby/scripts/services/gooby* /etc/systemd/system/
-		sudo rsync -a /opt/Gooby/scripts/services/mnt* /etc/systemd/system/
-		sudo sed -i "s/GOOBYUSER/${USER}/g" /etc/systemd/system/gooby-rclone.service
-		sudo sed -i "s/GOOBYUSER/${USER}/g" /etc/systemd/system/gooby-find.service
-		sudo sed -i "s/GOOBYUSER/${USER}/g" /etc/systemd/system/mnt-google.mount
+		sudo rsync -a /opt/Gooby/scripts/services/rclone* /etc/systemd/system/
+		sudo rsync -a /opt/Gooby/scripts/services/merger* /etc/systemd/system/
+		sudo sed -i "s/GOOBYUSER/${USER}/g" /etc/systemd/system/rclone-fs.service
+		sudo sed -i "s/GOOBYUSER/${USER}/g" /etc/systemd/system/merger-fs.service
 
-		sudo chown -R $USER:$USER $CONFIGS
-		sudo chown -R $USER:$USER $TCONFIGS
-		sudo chown -R $USER:$USER $HOME
-		sudo chown -R $USER:$USER $RCLONEMOUNT
-		sudo chown -R $USER:$USER $MOUNTTO
-		sudo chown -R $USER:$USER $UPLOADS
+		sudo chown -R $USER:$USER $HOME $CONFIGS $TCONFIGS $RCLONEMOUNT $MOUNTTO $UPLOADS
 
 		source /opt/Gooby/install/misc/environment-build.sh rebuild
 
-		sudo systemctl enable gooby.service
+		sudo systemctl enable rclone-fs.service
+		sudo systemctl enable mergerfs.service
+		
 		sudo systemctl daemon-reload
-		sudo systemctl start gooby.service
+		sudo systemctl start rclone-fs.service
+		wait 10
+		sudo systemctl start mergerfs.service
 		
 		if [ ! -f $TCONFIGS/cronsyncmount ]; then
 			(crontab -l 2>/dev/null; echo "0,15,30,45 * * * * /opt/Gooby/scripts/cron/syncmount.sh > /dev/null 2>&1") | crontab -
