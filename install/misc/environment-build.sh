@@ -53,7 +53,7 @@ echo "GOOGLE=$(cat ${CONFIGS}/.config/mountto)" >> ${ENV}
 echo "MEDIA=$(cat ${CONFIGS}/.config/mountto)" >> ${ENV}
 echo "MOVIES=$(cat ${CONFIGS}/.config/mountto)/Movies" >> ${ENV}
 echo "TV=$(cat ${CONFIGS}/.config/mountto)/TV" >> ${ENV}
-echo "DOWNLOADS=$(cat $HOME/Downloads)" >> ${ENV}
+echo "DOWNLOADS=$(cat $HOMEDIR/Downloads" >> ${ENV}
 [[ -f "${TCONFIGS}/plexclaim" ]] && echo "PLEXCLAIM=$(cat ${TCONFIGS}/plexclaim)" >> ${ENV}
 
 cat ${CONFIGS}/Docker/components/??-* > ${CONFIGS}/Docker/docker-compose.yaml
