@@ -76,6 +76,7 @@ else
 
 		mkdir -p $HOME/logs $HOME/Downloads
 		sudo mkdir -p ${RCLONEMOUNT} ${MOUNTTO} ${UPLOADS}
+		sudo chown -R $USER:$USER $HOME $CONFIGS $TCONFIGS $RCLONEMOUNT $MOUNTTO $UPLOADS
 
 		if [ ! -d ${UPLOADS}/Downloads ]; then
 			sudo mv $HOME/Downloads ${UPLOADS}
@@ -87,8 +88,6 @@ else
 		sudo sed -i "s/GOOBYUSER/${USER}/g" /etc/systemd/system/gooby-rclone.service
 		sudo sed -i "s/GOOBYUSER/${USER}/g" /etc/systemd/system/gooby-find.service
 		sudo sed -i "s/GOOBYUSER/${USER}/g" /etc/systemd/system/mnt-google.mount
-
-		sudo chown -R $USER:$USER $HOME $CONFIGS $TCONFIGS $RCLONEMOUNT $MOUNTTO $UPLOADS
 
 		source /opt/Gooby/install/misc/environment-build.sh rebuild
 
