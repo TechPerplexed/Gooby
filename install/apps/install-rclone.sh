@@ -29,8 +29,8 @@ else
 		
 		# Install MergerFS (for future use)
 
-		lsb_release -r -s > /$CONFIGS/osversion
-		VERSION=$( cat /$CONFIGS/osversion )
+		lsb_release -r -s > /$TCONFIGS/osversion
+		VERSION=$( cat /$TCONFIGS/osversion )
 
 		if [ "$VERSION" = "18.04" ]; then
 			sudo apt-get -y install mergerfs
@@ -39,7 +39,7 @@ else
 			sudo dpkg -i /tmp/mergerfs.deb
 		fi
 
-		rm /$CONFIGS/osversion
+		rm /$TCONFIGS/osversion
 
 		# Main script
 
