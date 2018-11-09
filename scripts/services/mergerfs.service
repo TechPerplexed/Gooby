@@ -6,6 +6,7 @@ After=syslog.target local-fs.target network.target rclonefs.service
 Type=forking
 User=GOOBYUSER
 Group=GOOBYUSER
+EnvironmentFile=/var/local/Gooby/Docker/.env
 
 ExecStartPre=/bin/mkdir -p ${UPLOADS} ${MOUNTTO}
 ExecStart=/usr/bin/mergerfs \
