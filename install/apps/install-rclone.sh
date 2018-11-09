@@ -87,13 +87,13 @@ else
 		sudo rsync -a /opt/Gooby/scripts/services/mnt* /etc/systemd/system/
 		sudo sed -i "s/GOOBYUSER/${USER}/g" /etc/systemd/system/gooby-rclone.service
 		sudo sed -i "s/GOOBYUSER/${USER}/g" /etc/systemd/system/gooby-find.service
-		sudo sed -i "s/GOOBYUSER/${USER}/g" /etc/systemd/system/mnt-google.service
+		sudo sed -i "s/GOOBYUSER/${USER}/g" /etc/systemd/system/mnt-google.mount
 
 		sudo chown -R $USER:$USER $HOME $CONFIGS $TCONFIGS $RCLONEMOUNT $MOUNTTO $UPLOADS
 
 		source /opt/Gooby/install/misc/environment-build.sh rebuild
 
-		sudo systemctl enable gooby.service gooby-rclone.service gooby-find.service mnt-google.service
+		sudo systemctl enable gooby.service gooby-rclone.service gooby-find.service mnt-google.mount
 		sudo systemctl daemon-reload
 		sudo systemctl start gooby.service
 		
