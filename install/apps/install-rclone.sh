@@ -26,8 +26,8 @@ else
 
 		GOAHEAD
 		RUNPATCHES
-		
-		# Install MergerFS (for future use)
+
+		# Install MergerFS
 
 		lsb_release -r -s > /$TCONFIGS/osversion
 		VERSION=$( cat /$TCONFIGS/osversion )
@@ -94,7 +94,7 @@ else
 		sudo systemctl enable gooby.service gooby-rclone.service gooby-find.service mnt-google.mount
 		sudo systemctl daemon-reload
 		sudo systemctl start gooby.service
-		
+
 		if [ ! -f $TCONFIGS/cronsyncmount ]; then
 			(crontab -l 2>/dev/null; echo "0,15,30,45 * * * * /opt/Gooby/scripts/cron/syncmount.sh > /dev/null 2>&1") | crontab -
 			touch $TCONFIGS/cronsyncmount
