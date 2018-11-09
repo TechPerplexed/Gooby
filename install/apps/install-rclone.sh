@@ -83,20 +83,20 @@ else
 			sudo ln -s ${UPLOADS}/Downloads $HOME/Downloads
 		fi
 
-		sudo rsync -a /opt/Gooby/scripts/services/rclone* /etc/systemd/system/
-		sudo rsync -a /opt/Gooby/scripts/services/merger* /etc/systemd/system/
-		sudo sed -i "s/GOOBYUSER/${USER}/g" /etc/systemd/system/rclone-fs.service
-		sudo sed -i "s/GOOBYUSER/${USER}/g" /etc/systemd/system/merger-fs.service
+		sudo rsync -a /opt/Gooby/scripts/services/rclonefs* /etc/systemd/system/
+		sudo rsync -a /opt/Gooby/scripts/services/mergerfs* /etc/systemd/system/
+		sudo sed -i "s/GOOBYUSER/${USER}/g" /etc/systemd/system/rclonefs.service
+		sudo sed -i "s/GOOBYUSER/${USER}/g" /etc/systemd/system/mergerfs.service
 
 		sudo chown -R $USER:$USER $HOME $CONFIGS $TCONFIGS $RCLONEMOUNT $MOUNTTO $UPLOADS
 
 		source /opt/Gooby/install/misc/environment-build.sh rebuild
 
-		sudo systemctl enable rclone-fs.service
+		sudo systemctl enable rclonefs.service
 		sudo systemctl enable mergerfs.service
 		
 		sudo systemctl daemon-reload
-		sudo systemctl start rclone-fs.service
+		sudo systemctl start rclonefs.service
 		wait 10
 		sudo systemctl start mergerfs.service
 		
