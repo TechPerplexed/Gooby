@@ -6,7 +6,6 @@ RequiresMountsFor=/mnt/rclone
 
 [Mount]
 EnvironmentFile=/var/local/Gooby/Docker/.env
-User=GOOBYUSER
 What = ${UPLOADS}:${RCLONEMOUNT}
 Where = ${MOUNTTO}
 Type = fuse.mergerfs
