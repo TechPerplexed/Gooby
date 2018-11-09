@@ -37,8 +37,18 @@ else
 		read -e -p "Make any changes to your config? ${YELLOW}(y/N)${STD}? " -i "" choice
 		
 		case "$choice" in 
-			y|Y ) sudo rclone config; sudo rsync -a $HOME/.config/rclone/rclone.conf $CONFIGS/.config ;;
-			* ) echo "All done!" ;;
+			y|Y )	sudo rclone config
+				echo
+				read -r RCLONESERVICE < $HOME/.config/rclone/rclone.conf; RCLONESERVICE=${RCLONESERVICE:1:-1}
+				read -e -p "Confirm that this is what you named your mount: " -i "$RCLONESERVICE"
+				echo
+				read -e -p "What is your media folder in $RCLONESERVICE? (leave empty for root): " -i "" RCLONEFOLDER
+				echo
+				RCLONESERVICE=${RCLONESERVICE#:}; echo $RCLONESERVICE > $CONFIGS/.config/rcloneservice
+				RCLONEFOLDER=${RCLONEFOLDER%/}; RCLONEFOLDER=${RCLONEFOLDER#/}; echo $RCLONEFOLDER > $CONFIGS/.config/rclonefolder
+				source /opt/Gooby/install/misc/environment-build.sh rebuild
+				;;
+			* )	echo "All done!" ;;
 		esac
 
 		cd $CURDIR
