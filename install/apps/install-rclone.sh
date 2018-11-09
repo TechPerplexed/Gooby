@@ -55,7 +55,7 @@ else
 
 		echo "${YELLOW}Please follow the instructions to setup Rclone${STD}"
 		echo
-		sudo rclone config
+		rclone config
 		echo
 		read -r RCLONESERVICE < $HOME/.config/rclone/rclone.conf; RCLONESERVICE=${RCLONESERVICE:1:-1}
 		read -e -p "Confirm that this is what you named your mount: " -i "$RCLONESERVICE"
