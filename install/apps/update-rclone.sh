@@ -33,9 +33,9 @@ else
 		esac
 
 		cd ~
-		
+		clear
 		read -e -p "Make any changes to your config? ${YELLOW}(y/N)${STD}? " -i "" choice
-		
+
 		case "$choice" in 
 			y|Y )	sudo rclone config
 				echo
