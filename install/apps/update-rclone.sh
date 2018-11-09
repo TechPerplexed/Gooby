@@ -27,13 +27,17 @@ else
 		read -n 1 -s -r -p "Stable ${YELLOW}(S)${STD} or Beta installation ${YELLOW}(B)?${STD} " -i "" choice
 
 		case "$choice" in
-			b|B ) curl https://rclone.org/install.sh | sudo bash -s beta; echo "Beta" > $TCONFIGS/rclonev ;;
-			s|S ) curl https://rclone.org/install.sh | sudo bash; echo "Stable" > $TCONFIGS/rclonev ;;
-			* ) echo "No changes made" ;;
+			b|B )	curl https://rclone.org/install.sh | sudo bash -s beta; echo "Beta" > $TCONFIGS/rclonev ;;
+			s|S )	curl https://rclone.org/install.sh | sudo bash; echo "Stable" > $TCONFIGS/rclonev ;;
+			* )	if [ $( cat $TCONFIGS/rclonev ) = "Stable" ]; then
+					curl https://rclone.org/install.sh | sudo bash
+				elif [ $( cat $TCONFIGS/rclonev ) = "Beta" ]; then
+					curl https://rclone.org/install.sh | sudo bash -s beta
+				fi ;;
 		esac
 
 		cd ~
-		clear
+		echo
 		read -e -p "Make any changes to your config? ${YELLOW}(y/N)${STD}? " -i "" choice
 
 		case "$choice" in 
