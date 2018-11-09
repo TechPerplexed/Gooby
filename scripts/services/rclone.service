@@ -1,4 +1,3 @@
-
 [Unit]
 Description=Mount and cache Google drive
 After=syslog.target local-fs.target network.target
