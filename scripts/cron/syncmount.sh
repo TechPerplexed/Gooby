@@ -4,7 +4,7 @@ if pidof -o %PPID -x "$(basename $0)"; then
 	exit 1
 fi
 
-source /var/home/Gooby/Docker/.env
+source /var/local/Gooby/Docker/.env
 
 PID=${$}
 AGE=2		# How many minutes old a file must be before copying/deleting
