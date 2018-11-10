@@ -2,20 +2,9 @@
 
 sudo apt-get update -y && sudo apt-get upgrade -y
 
-sudo apt-get -y install \
-	git \
-	fail2ban \
-	nano \
-	unzip \
-	wget \
-	curl \
-	ufw \
-	socat \
-	fuse \
-	apt-transport-https \
-	acl \
-	ca-certificates \
-denyhosts at sudo software-properties-common
+for i in git fail2ban nano unzip wget curl ufw socat fuse apt-transport-https acl mergerfs ca-certificates; do
+  sudo apt-get -y install $i
+done
 
 sudo ufw default deny incoming
 sudo ufw default allow outgoing
