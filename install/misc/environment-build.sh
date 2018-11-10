@@ -49,10 +49,10 @@ echo "RCLONEFOLDER=$(cat ${CONFIGS}/.config/rclonefolder)" >> ${ENV}
 echo "RCLONEMOUNT=/mnt/rclone" >> ${ENV}
 echo "MOUNTTO=/mnt/google" >> ${ENV}
 echo "UPLOADS=/mnt/uploads" >> ${ENV}
-echo "GOOGLE=$(cat ${CONFIGS}/.config/mountto)" >> ${ENV}
-echo "MEDIA=$(cat ${CONFIGS}/.config/mountto)" >> ${ENV}
-echo "MOVIES=$(cat ${CONFIGS}/.config/mountto)/Movies" >> ${ENV}
-echo "TV=$(cat ${CONFIGS}/.config/mountto)/TV" >> ${ENV}
+echo "GOOGLE=/mnt/google" >> ${ENV}
+echo "MEDIA=/mnt/google" >> ${ENV}
+echo "MOVIES=/mnt/google/Movies" >> ${ENV}
+echo "TV=/mnt/google/TV" >> ${ENV}
 echo "DOWNLOADS=${HOMEDIR}/Downloads" >> ${ENV}
 [[ -f "${TCONFIGS}/plexclaim" ]] && echo "PLEXCLAIM=$(cat ${TCONFIGS}/plexclaim)" >> ${ENV}
 
