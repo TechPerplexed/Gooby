@@ -28,17 +28,12 @@ else
 
 		# Install MergerFS
 
-		lsb_release -r -s > /$TCONFIGS/osversion
-		VERSION=$( cat /$TCONFIGS/osversion )
-
-		if [ "$VERSION" = "18.04" ]; then
-			sudo apt-get -y install mergerfs
-		else
+		which mergerfs > $TCONFIGS/mergerfs
+		if [ ! -s $TCONFIGS/mergerfs ]; then
 			sudo wget https://github.com/trapexit/mergerfs/releases/download/2.24.2/mergerfs_2.24.2.ubuntu-xenial_amd64.deb -O /tmp/mergerfs.deb
 			sudo dpkg -i /tmp/mergerfs.deb
 		fi
-
-		rm /$TCONFIGS/osversion
+		rm /$TCONFIGS/mergerfs
 
 		# Main script
 
