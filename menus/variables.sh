@@ -121,7 +121,6 @@ EXPLAINAPP(){
 	echo "${CYAN}"
 	echo "--------------------------------------------------"
 	echo " This will ${PERFORM} ${TASK}"
-	echo " You will have a few seconds of server downtime"
 	echo "--------------------------------------------------"
 	echo "${STD}"
 }
