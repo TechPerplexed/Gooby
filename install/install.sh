@@ -3,18 +3,9 @@
 sudo apt-get update -y
 sudo apt-get upgrade -y
 
-sudo apt-get -y install git
-sudo apt-get -y install fail2ban
-sudo apt-get -y install nano
-sudo apt-get -y install unzip
-sudo apt-get -y install wget
-sudo apt-get -y install curl
-sudo apt-get -y install ufw
-sudo apt-get -y install socat
-sudo apt-get -y install fuse
-sudo apt-get -y install apt-transport-https
-sudo apt-get -y install acl
-sudo apt-get -y install ca-certificates
+for i in git fail2ban nano unzip wget curl ufw socat fuse apt-transport-https acl mergerfs ca-certificates; do
+  sudo apt-get -y install $i
+done
 
 sudo ufw default deny incoming
 sudo ufw default allow outgoing
