@@ -29,3 +29,4 @@ echo "$MYDOMAIN" > $CONFIGS/.config/mydomain
 echo "$MYEMAIL" > $CONFIGS/.config/myemail
 sudo rsync -a /opt/Gooby/scripts/components/{00-AAA.yaml,01-proxy.yaml} $CONFIGS/Docker/components
 source /opt/Gooby/install/misc/environment-build.sh
+cd $CONFIGS/Docker; /usr/local/bin/docker-compose up -d --remove-orphans ${@:2}; cd "${CURDIR}"
