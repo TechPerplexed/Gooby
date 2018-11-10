@@ -67,9 +67,6 @@ else
 
 		RCLONESERVICE=${RCLONESERVICE#:}; echo $RCLONESERVICE > $CONFIGS/.config/rcloneservice
 		RCLONEFOLDER=${RCLONEFOLDER%/}; RCLONEFOLDER=${RCLONEFOLDER#/}; echo $RCLONEFOLDER > $CONFIGS/.config/rclonefolder
-		RCLONEMOUNT=/mnt/rclone; echo $RCLONEMOUNT > $CONFIGS/.config/rclonemount
-		MOUNTTO=/mnt/google; echo $MOUNTTO > $CONFIGS/.config/mountto
-		UPLOADS=/mnt/uploads; echo $UPLOADS > $CONFIGS/.config/uploads
 
 		sudo sed -i 's/^#user_allow_other/user_allow_other/g' /etc/fuse.conf
 
