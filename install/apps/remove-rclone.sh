@@ -1,5 +1,6 @@
 #!/bin/bash
 
+source $CONFIGS/Docker/.env
 which rclone > $TCONFIGS/checkapp
 clear
 
@@ -19,6 +20,7 @@ else
 
 		# Main script
 
+		/bin/fusermount -uz ${RCLONEMOUNT}
 		sudo rm /usr/bin/rclone
 		sudo rm /usr/local/share/man/man1/rclone.1
 
