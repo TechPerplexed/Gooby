@@ -12,7 +12,7 @@ echo ""
 echo "${YELLOW}Please answer the following two questions:${STD}"
 echo ""
 echo "What domain will you be using to access your server?"
-read -e -p '(ex: mydomain.com)?  ' -i "${MYDOMAIN}" MYDOMAIN
+read -e -p '(ex: mydomain.com)  ' -i "${MYDOMAIN}" MYDOMAIN
 echo ""
 echo "What is your email address for certificate registration?"
 read -e -p '(ex: myname@mydomain.com)  ' -i "${MYEMAIL}" MYEMAIL
