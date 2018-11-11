@@ -15,8 +15,7 @@ echo
 
 sudo systemctl daemon-reload
 
-if [ -e /etc/systemd/system/rclone.service ]; then sudo systemctl stop rclone; fi
-if [ -e /etc/systemd/system/gooby.service ]; then sudo systemctl stop gooby; fi
+sudo systemctl stop gooby
 
 echo
 echo "${LYELLOW}Making sure components are up to date${STD}"
@@ -47,14 +46,7 @@ echo
 echo "${LYELLOW}Starting services${STD}"
 echo
 
-if [ -e /etc/systemd/system/gooby.service ]; then sudo systemctl start gooby; fi
-if [ -e /etc/systemd/system/rclone.service ]; then sudo systemctl start rclone; fi
-
-echo
-echo "${LYELLOW}Pruning old volumes${STD}"
-echo
-
-docker system prune -a -f --volumes
+sudo systemctl start gooby
 
 echo
 echo "${LYELLOW}Bringing system back online${STD}"
@@ -62,6 +54,12 @@ echo
 
 source /opt/Gooby/install/misc/environment-build.sh rebuild
 /usr/local/bin/docker-compose up -d --remove-orphans ${@:2}
+
+echo
+echo "${LYELLOW}Pruning old volumes${STD}"
+echo
+
+docker system prune -f --volumes
 
 echo
 echo "${LYELLOW}${LYELLOW}Patching server${STD}"
@@ -75,6 +73,7 @@ sudo apt autoclean
 sudo apt-get autoremove
 
 echo
+echo "${GREEN}Your system should be back online${STD}"
 echo "${LYELLOW}Restoring permissions... this could take a few minutes${STD}"
 echo
 
