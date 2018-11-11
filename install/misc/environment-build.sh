@@ -58,3 +58,10 @@ echo "DOWNLOADS=${HOMEDIR}/Downloads" >> ${ENV}
 
 cat ${CONFIGS}/Docker/components/??-* > ${CONFIGS}/Docker/docker-compose.yaml
 echo done
+
+if [ -e /etc/systemd/system/rclone.service ]; then
+	sudo sed -i "s/media/mnt/g" /etc/systemd/system/rclone.service
+	sudo sed -i "s/Google/google/g" /etc/systemd/system/rclone.service
+	sudo systemctl restart rclone
+	sudo systemctl daemon-reload
+fi
