@@ -1,5 +1,6 @@
 #!/bin/bash
 
+source $CONFIGS/Docker/.env
 which rclone > $TCONFIGS/checkapp
 clear
 
@@ -9,7 +10,7 @@ if [ -s $TCONFIGS/checkapp ]; then
 
 	echo "Here is a list of the root folders in your mount:"
 	echo
-	ls -1 /media/Google
+	ls -1 ${MOUNTTO}
 	echo
 	echo "If you're getting an error here, please"
 	echo "check your Rclone config settings."
@@ -24,24 +25,20 @@ else
 	if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 
 		GOAHEAD
-		RUNPATCHES
 
-		# Install MergerFS (for future use)
+		# Install MergerFS
 
-		lsb_release -r -s > /tmp/version
-		VERSION=$( cat /tmp/version )
-
-		if [ "$VERSION" = "18.04" ]; then sudo apt-get -y install mergerfs; fi
-
-		rm /tmp/version
+		which mergerfs > $TCONFIGS/mergerfs
+		if [ ! -s $TCONFIGS/mergerfs ]; then
+			sudo wget https://github.com/trapexit/mergerfs/releases/download/2.24.2/mergerfs_2.24.2.ubuntu-xenial_amd64.deb -O /tmp/mergerfs.deb
+			sudo dpkg -i /tmp/mergerfs.deb
+		fi
+		rm /$TCONFIGS/mergerfs
 
 		# Main script
 
 		cd /tmp
-		sudo mkdir $TCONFIGS
-		
 		clear
-
 		read -n 1 -s -r -p "Stable ${YELLOW}(S)${STD} or Beta installation ${YELLOW}(B)?${STD} " -i "S" choice
 
 		case "$choice" in 
@@ -53,29 +50,45 @@ else
 
 		echo "${YELLOW}Please follow the instructions to setup Rclone${STD}"
 		echo
-		echo "Make sure you name the config ${YELLOW}Gdrive${STD}"
+		rclone config
 		echo
-		sudo rclone config
+		read -r RCLONESERVICE < $HOME/.config/rclone/rclone.conf; RCLONESERVICE=${RCLONESERVICE:1:-1}
+		read -e -p "Confirm that this is what you named your mount: " -i "$RCLONESERVICE"
+		echo
+		read -e -p "What is your media folder in $RCLONESERVICE? (leave empty for root): " -i "" RCLONEFOLDER
+		echo
 
 		# Installing Services
 
-		sudo mkdir -p /var/local/Gooby/.config
-		sudo mkdir -p /var/local/.
-		sudo mkdir -p $HOME/logs
-		sudo mkdir -p $HOME/Downloads
-		sudo mkdir -p /media/Google
+		RCLONESERVICE=${RCLONESERVICE#:}; echo $RCLONESERVICE > $CONFIGS/.config/rcloneservice
+		RCLONEFOLDER=${RCLONEFOLDER%/}; RCLONEFOLDER=${RCLONEFOLDER#/}; echo $RCLONEFOLDER > $CONFIGS/.config/rclonefolder
 
-		sudo rsync -a $HOME/.config/rclone/rclone.conf $CONFIGS/.config
-		sudo rsync -a /opt/Gooby/scripts/rclone.service /etc/systemd/system/rclone.service
+		sudo sed -i 's/^#user_allow_other/user_allow_other/g' /etc/fuse.conf
 
-		sudo chown -R $USER:$USER $CONFIGS
-		sudo chown -R $USER:$USER $TCONFIGS
-		sudo chown -R $USER:$USER $HOME
-		sudo chown -R $USER:$USER /media/Google
+		mkdir -p $HOME/logs $HOME/Downloads
+		sudo mkdir -p ${RCLONEMOUNT} ${MOUNTTO} ${UPLOADS}
+		sudo chown -R $USER:$USER $HOME $CONFIGS $TCONFIGS $RCLONEMOUNT $MOUNTTO $UPLOADS
 
-		sudo systemctl enable rclone.service
+		if [ ! -d ${UPLOADS}/Downloads ]; then
+			sudo mv $HOME/Downloads ${UPLOADS}
+			sudo ln -s ${UPLOADS}/Downloads $HOME/Downloads
+		fi
+
+		sudo rsync -a /opt/Gooby/scripts/services/gooby* /etc/systemd/system/
+		sudo rsync -a /opt/Gooby/scripts/services/mnt* /etc/systemd/system/
+		sudo sed -i "s/GOOBYUSER/${USER}/g" /etc/systemd/system/gooby-rclone.service
+		sudo sed -i "s/GOOBYUSER/${USER}/g" /etc/systemd/system/gooby-find.service
+
+		source /opt/Gooby/install/misc/environment-build.sh rebuild
+
+		sudo systemctl enable gooby.service gooby-rclone.service gooby-find.service mnt-google.mount
 		sudo systemctl daemon-reload
-		sudo systemctl start rclone.service
+		sudo systemctl start gooby.service
+
+		if [ ! -f $TCONFIGS/cronsyncmount ]; then
+			(crontab -l 2>/dev/null; echo "0,15,30,45 * * * * /opt/Gooby/scripts/cron/syncmount.sh > /dev/null 2>&1") | crontab -
+			touch $TCONFIGS/cronsyncmount
+		fi
 
 		echo
 		echo "Done!"

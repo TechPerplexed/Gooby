@@ -1,0 +1,15 @@
+[Unit]
+Description = Overlay writable storage on Google mount
+PartOf=gooby.service
+After=gooby-rclone.service
+RequiresMountsFor=/mnt/rclone
+
+[Mount]
+EnvironmentFile=/var/local/Gooby/Docker/.env
+What = ${UPLOADS}:${RCLONEMOUNT}
+Where = ${MOUNTTO}
+Type = fuse.mergerfs
+Options = use_ino,hard_remove,auto_cache,sync_read,allow_other,category.action=all,category.create=ff
+
+[Install]
+WantedBy=gooby.service

@@ -1,5 +1,6 @@
 #!/bin/bash
 
+source $CONFIGS/Docker/.env
 which rclone > $TCONFIGS/checkapp
 clear
 
@@ -17,20 +18,26 @@ else
 
 		GOAHEAD
 
-		# Close ports
-
-		#na
-
 		# Main script
 
+		/bin/fusermount -uz ${RCLONEMOUNT}
 		sudo rm /usr/bin/rclone
 		sudo rm /usr/local/share/man/man1/rclone.1
 
 		# Removing Services
 
-		sudo systemctl stop rclone.service
-		sudo systemctl disable rclone.service
-		sudo rm /etc/systemd/system/rclone.service
+		if [ -e /etc/systemd/system/rclone.service ]; then
+			sudo systemctl stop rclone.service
+			sudo systemctl disable rclone.service
+			sudo rm /etc/systemd/system/rclone.service
+		fi
+
+		if [ -e /etc/systemd/system/gooby.service ]; then
+			sudo systemctl stop gooby.service gooby-rclone.service gooby-find.service mnt-google.mount
+			sudo systemctl disable gooby.service gooby-rclone.service gooby-find.service mnt-google.mount
+			sudo rm /etc/systemd/system/gooby* /etc/systemd/system/mnt-*
+		fi
+
 		sudo systemctl daemon-reload
 
 		TASKCOMPLETE

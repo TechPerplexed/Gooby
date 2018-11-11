@@ -76,11 +76,10 @@ else
 		echo ""
 		cd $CONFIGS/Docker
 		sudo rsync -a /opt/Gooby/scripts/components/$APPLOC.yaml $CONFIGS/Docker/components
-		/usr/local/bin/docker-compose down
 		echo "Just a moment while $APP is being installed..."
 		[[ ! -f "$TCONFIGS/plexclaim" ]] && echo "-" > $TCONFIGS/plexclaim
 		source /opt/Gooby/install/misc/environment-build.sh rebuild
-		/usr/local/bin/docker-compose up -d --remove-orphans ${@:2}
+		/usr/local/bin/docker-compose up -d --no-deps --build $APP
 		cd "${CURDIR}"
 
 		if [ $APP == organizr ]; then APP=$ORGMENU; fi

@@ -1,0 +1,19 @@
+[Unit]
+Description=Gooby Pre-Cacher
+PartOf=gooby.service
+After=mnt-google.mount
+
+# This just simply does a complete walk of the file system to load the directory structure into the dir-cache
+
+[Service]
+Type=oneshot
+EnvironmentFile=/var/local/Gooby/Docker/.env
+ExecStart=/bin/sh -c "/bin/sleep 10 ; /usr/bin/find ${RCLONEMOUNT} > ${LOGS}/precache"
+# This service shall be considered active after start
+RemainAfterExit=yes
+User=GOOBYUSER
+Group=GOOBYUSER
+
+[Install]
+# Components of this application should be started at boot time
+WantedBy=gooby.service

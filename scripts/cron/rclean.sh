@@ -15,9 +15,8 @@ echo
 
 sudo systemctl daemon-reload
 
-if [ -e /etc/systemd/system/mergerfs.service ]; then sudo systemctl stop mergerfs; fi
-if [ -e /etc/systemd/system/rclonefs.service ]; then sudo systemctl stop rclonefs; fi
 if [ -e /etc/systemd/system/rclone.service ]; then sudo systemctl stop rclone; fi
+if [ -e /etc/systemd/system/gooby.service ]; then sudo systemctl stop gooby; fi
 
 echo
 echo "${LYELLOW}Making sure components are up to date${STD}"
@@ -48,10 +47,8 @@ echo
 echo "${LYELLOW}Starting services${STD}"
 echo
 
+if [ -e /etc/systemd/system/gooby.service ]; then sudo systemctl start gooby; fi
 if [ -e /etc/systemd/system/rclone.service ]; then sudo systemctl start rclone; fi
-if [ -e /etc/systemd/system/rclonefs.service ]; then sudo systemctl start rclonefs; fi
-sleep 10
-if [ -e /etc/systemd/system/mergerfs.service ]; then sudo systemctl start mergerfs; fi
 
 echo
 echo "${LYELLOW}Pruning old volumes${STD}"

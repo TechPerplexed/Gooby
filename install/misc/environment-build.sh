@@ -2,9 +2,7 @@
 
 source /opt/Gooby/menus/variables.sh
 
-DOCKERHOME=$CONFIGS/Docker
-sudo mkdir -p $DOCKERHOME/components
-ENV=${DOCKERHOME}/.env
+ENV=$CONFIGS/Docker/.env
 touch ${ENV}
 
 # Load existing variables and use them as defaults, if available
@@ -33,22 +31,30 @@ echo "#  Environment variables  #" >> ${ENV}
 echo "#     for Gooby v$VERSION    #" >> ${ENV}
 echo "###########################" >> ${ENV}
 echo >> ${ENV}
-echo "HOME=$HOME" >> ${ENV}
+echo "CONFIGS=${CONFIGS}" >> ${ENV}
+echo "TCONFIGS=${TCONFIGS}" >> ${ENV}
+echo "HOMEDIR=$HOME" >> ${ENV}
+echo "LOGS=$HOME/logs" >> ${ENV}
 echo "USERID=$(id -u)" >> ${ENV}
 echo "GROUPID=$(id -g)" >> ${ENV}
+echo "USERNAME=$USER" >> ${ENV}
+echo "GROUPNAME=$USER" >> ${ENV}
 echo "IP=$(curl ifconfig.me)" >> ${ENV}
 echo "TIMEZONE=$(cat /etc/timezone)" >> ${ENV}
-echo "CONFIGS=$CONFIGS" >> ${ENV}
-echo "DOWNLOADS=${HOME}/Downloads" >> ${ENV}
-echo "GOOGLE=/media/Google" >> ${ENV}
-echo "MYDOMAIN=$(cat $CONFIGS/.config/mydomain)" >> ${ENV}
-echo "MYEMAIL=$(cat $CONFIGS/.config/myemail)" >> ${ENV}
-echo "MEDIA=/media/Google" >> ${ENV}
-echo "TV=/media/Google/TV" >> ${ENV}
-echo "MOVIES=/media/Google/Movies" >> ${ENV}
-echo "RCLONETARGET=Gdrive" >> ${ENV}
+echo "MYDOMAIN=$(cat ${CONFIGS}/.config/mydomain)" >> ${ENV}
+echo "MYEMAIL=$(cat ${CONFIGS}/.config/myemail)" >> ${ENV}
 echo "ORGMENU=menu" >> ${ENV}
-[[ -f "$TCONFIGS/plexclaim" ]] && echo "PLEXCLAIM=$(cat $TCONFIGS/plexclaim)" >> ${ENV}
+echo "RCLONESERVICE=$(cat ${CONFIGS}/.config/rcloneservice)" >> ${ENV}
+echo "RCLONEFOLDER=$(cat ${CONFIGS}/.config/rclonefolder)" >> ${ENV}
+echo "RCLONEMOUNT=/mnt/rclone" >> ${ENV}
+echo "MOUNTTO=/mnt/google" >> ${ENV}
+echo "UPLOADS=/mnt/uploads" >> ${ENV}
+echo "GOOGLE=/mnt/google" >> ${ENV}
+echo "MEDIA=/mnt/google" >> ${ENV}
+echo "MOVIES=/mnt/google/Movies" >> ${ENV}
+echo "TV=/mnt/google/TV" >> ${ENV}
+echo "DOWNLOADS=${HOMEDIR}/Downloads" >> ${ENV}
+[[ -f "${TCONFIGS}/plexclaim" ]] && echo "PLEXCLAIM=$(cat ${TCONFIGS}/plexclaim)" >> ${ENV}
 
-cat ${CONFIGS}/Docker/components/??-* > ${DOCKERHOME}/docker-compose.yaml
+cat ${CONFIGS}/Docker/components/??-* > ${CONFIGS}/Docker/docker-compose.yaml
 echo done

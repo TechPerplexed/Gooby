@@ -1,6 +1,7 @@
 #!/bin/bash
 
 source /opt/Gooby/menus/variables.sh
+[[ -d "/var/local/.gtemp" ]] && sudo mv /var/local/.gtemp /var/local/.Gooby
 
 if [ "$EUID" -ne 0 ]; then
 
