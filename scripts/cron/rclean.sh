@@ -43,7 +43,7 @@ elif [ $( cat $TCONFIGS/rclonev ) = "Beta" ]; then
 fi
 
 echo
-echo "${LYELLOW}Starting services${STD}"
+echo "${LYELLOW}Checking for updated containers${STD}"
 echo
 
 sudo systemctl start gooby
