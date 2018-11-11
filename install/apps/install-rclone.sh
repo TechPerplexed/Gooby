@@ -67,7 +67,7 @@ else
 
 		mkdir -p $HOME/logs $HOME/Downloads
 		sudo mkdir -p ${RCLONEMOUNT} ${MOUNTTO} ${UPLOADS}
-		sudo chown -R $USER:$USER $HOME $CONFIGS $TCONFIGS $RCLONEMOUNT $MOUNTTO $UPLOADS
+		sudo chown -R $USER:$USER $HOME $CONFIGS/.config $TCONFIGS $RCLONEMOUNT $MOUNTTO $UPLOADS
 
 		if [ ! -d ${UPLOADS}/Downloads ]; then
 			sudo mv $HOME/Downloads ${UPLOADS}
