@@ -1,5 +1,5 @@
 [Unit]
-Description = Overlay writable storage on Google mount
+Description = MergerFS overlay writable storage
 PartOf=gooby.service
 After=gooby-rclone.service
 RequiresMountsFor=/mnt/rclone
