@@ -79,7 +79,7 @@ else
 		echo "Just a moment while $APP is being installed..."
 		[[ ! -f "$TCONFIGS/plexclaim" ]] && echo "-" > $TCONFIGS/plexclaim
 		source /opt/Gooby/install/misc/environment-build.sh rebuild
-		/usr/local/bin/docker-compose up -d --no-deps --build $APP
+		/usr/local/bin/docker-compose up -d --remove-orphans ${@:2}
 		cd "${CURDIR}"
 
 		if [ $APP == organizr ]; then APP=$ORGMENU; fi
