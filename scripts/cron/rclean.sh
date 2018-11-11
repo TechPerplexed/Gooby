@@ -74,6 +74,7 @@ sudo apt-get autoremove
 
 echo
 echo "${GREEN}Your system should be back online${STD}"
+echo
 echo "${LYELLOW}Restoring permissions... this could take a few minutes${STD}"
 echo
 
