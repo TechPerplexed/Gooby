@@ -1,11 +1,11 @@
 #
-# Sonarr - TV Show catalog and management
+# Lidarr - Music catalog and management
 #
-  sonarr:
+  lidarr:
     restart: unless-stopped
-    image: lsiodev/sonarr
-    container_name: sonarr
-    hostname: sonarr
+    image: linuxserver/lidarr
+    container_name: lidarr
+    hostname: lidarr
     cpu_shares: 2048
     depends_on:
       nginx-proxy:
@@ -16,7 +16,7 @@
         #condition: service_healthy
     volumes:
       - /etc/localtime:/etc/localtime:ro
-      - ${CONFIGS}/Sonarr:/config
+      - ${CONFIGS}/Lidarr:/config
       - ${HOME}/logs:/config/logs
       - ${GOOGLE}:/Media
       - ${DOWNLOADS}:/Downloads
@@ -25,13 +25,13 @@
       - PGID=${GROUPID}
       - PUID=${USERID}
       - TZ=${TIMEZONE}
-      - VIRTUAL_HOST=sonarr.${MYDOMAIN}
-      - VIRTUAL_PORT=8989
+      - VIRTUAL_HOST=lidarr.${MYDOMAIN}
+      - VIRTUAL_PORT=8686
       - VIRTUAL_NETWORK=nginx-proxy
-      - LETSENCRYPT_HOST=sonarr.${MYDOMAIN}
+      - LETSENCRYPT_HOST=lidarr.${MYDOMAIN}
       - LETSENCRYPT_EMAIL=${MYEMAIL}
     healthcheck:
-      test: ["CMD-SHELL", "netstat -ntlp | grep :8989 && mountpoint /Media"]
+      test: ["CMD-SHELL", "netstat -ntlp | grep :8686 && mountpoint /Media"]
       interval: 10s
       timeout: 2s
       retries: 3
