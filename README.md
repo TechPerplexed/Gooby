@@ -16,7 +16,7 @@ Run with this command:
 ## Supported apps:
 
 One click installation of Rclone, Plex, Tautulli, Emby, Sonarr, Radarr, Deluge, NZBGet, Jackett, Netdata, Organizr, Ombi and Portainer.
-Lidarr, SABnzbd and Radarr4k are available through self installation (see Wiki).
+Lidarr, SABnzbd and Radarr4k are available through self installation.
 
 Make sure you check out the excellent [Wiki here on GitHub](https://github.com/TechPerplexed/Gooby/wiki "Gooby Wiki") that Gooby participant @deedeefink has put together!
 
