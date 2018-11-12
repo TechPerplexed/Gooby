@@ -9,6 +9,7 @@
     cpu_shares: 1024
     volumes:
       - /etc/localtime:/etc/localtime:ro
+      - /bin/netstat:/bin/netstat
       - ${CONFIGS}/Ombi:/config
       - ${GOOGLE}:/Media
     environment:
