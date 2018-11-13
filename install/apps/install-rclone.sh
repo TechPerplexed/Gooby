@@ -53,9 +53,10 @@ else
 		rclone config
 		echo
 		read -r RCLONESERVICE < $HOME/.config/rclone/rclone.conf; RCLONESERVICE=${RCLONESERVICE:1:-1}
-		read -e -p "Confirm that this is what you named your mount: " -i "$RCLONESERVICE"
+		read -e -p "Confirm that this is what you named your mount  " -i "$RCLONESERVICE"
 		echo
-		read -e -p "What is your media folder in $RCLONESERVICE? (leave empty for root): " -i "" RCLONEFOLDER
+		echo "What is your media folder in $RCLONESERVICE?"
+		read -e -p "Leave empty for root - not recommended! (ex: Media)  " -i "" RCLONEFOLDER
 		echo
 
 		# Installing Services
