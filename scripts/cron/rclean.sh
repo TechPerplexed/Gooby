@@ -16,7 +16,7 @@ echo
 sudo systemctl daemon-reload
 
 sudo systemctl stop gooby
-sudo rm -r /mnt/google
+# sudo rm -r /mnt/google
 
 echo
 echo "${LYELLOW}Making sure components are up to date${STD}"
