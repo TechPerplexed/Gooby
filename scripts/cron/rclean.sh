@@ -13,10 +13,6 @@ echo
 echo "${LYELLOW}Taking services down${STD}"
 echo
 
-sudo systemctl daemon-reload
-
-sudo systemctl stop gooby
-
 echo
 echo "${LYELLOW}Making sure components are up to date${STD}"
 echo
@@ -45,8 +41,6 @@ fi
 echo
 echo "${LYELLOW}Checking for updated containers${STD}"
 echo
-
-sudo systemctl start gooby
 
 echo
 echo "${LYELLOW}Bringing system back online${STD}"
