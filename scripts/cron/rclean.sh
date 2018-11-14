@@ -57,7 +57,6 @@ sudo mkdir ${MOUNTTO}
 sudo chown -R $USER:$USER ${MOUNTTO}
 
 sudo systemctl start gooby
-sudo systemctl restart gooby
 
 echo
 echo "${LYELLOW}Bringing system back online${STD}"
