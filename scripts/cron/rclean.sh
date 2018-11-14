@@ -16,6 +16,7 @@ echo
 
 sudo systemctl daemon-reload
 
+if [ -f /etc/systemd/system/rclone.service ]; then sudo systemctl stop rclone; fi
 sudo systemctl stop gooby
 
 /bin/fusermount -uz ${RCLONEMOUNT}
@@ -53,7 +54,9 @@ echo
 echo "${LYELLOW}Checking for updated containers${STD}"
 echo
 
-sudo mkdir ${MOUNTTO}
+if [ -f /etc/systemd/system/rclone.service ]; then sudo systemctl start rclone; fi
+
+sudo mkdir -p ${MOUNTTO}
 sudo chown -R $USER:$USER ${MOUNTTO}
 
 sudo systemctl start gooby
