@@ -24,6 +24,8 @@ sudo systemctl disable gooby.service gooby-rclone.service gooby-find.service mnt
 /bin/fusermount -uz ${RCLONEMOUNT}
 /bin/fusermount -uz ${MOUNTTO}
 
+sleep 10
+
 sudo rmdir ${RCLONEMOUNT} > /dev/null 2>&1
 sudo rmdir ${MOUNTTO} > /dev/null 2>&1
 
