@@ -19,10 +19,6 @@ sudo systemctl daemon-reload
 if [ -f /etc/systemd/system/rclone.service ]; then sudo systemctl stop rclone; fi
 
 sudo systemctl stop gooby
-sudo systemctl disable gooby.service gooby-rclone.service gooby-find.service mnt-google.mount
-
-/bin/fusermount -uz ${RCLONEMOUNT}
-/bin/fusermount -uz ${MOUNTTO}
 
 echo "Waiting a few seconds for mount to clear"; sleep 20
 
@@ -34,7 +30,7 @@ echo "${LYELLOW}Making sure components are up to date${STD}"
 echo
 
 sudo rm -r /opt/Gooby
-sudo git clone -b master https://github.com/TechPerplexed/Gooby /opt/Gooby
+sudo git clone -b rcleantest https://github.com/TechPerplexed/Gooby /opt/Gooby
 sudo chmod +x -R /opt/Gooby/install
 sudo chmod +x -R /opt/Gooby/menus
 sudo chmod +x -R /opt/Gooby/scripts/cron
@@ -55,7 +51,7 @@ elif [ $( cat $TCONFIGS/rclonev ) = "Beta" ]; then
 fi
 
 echo
-echo "${LYELLOW}Checking for updated containers${STD}"
+echo "${LYELLOW}Bringing services back online${STD}"
 echo
 
 if [ -f /etc/systemd/system/rclone.service ]; then sudo systemctl start rclone; fi
@@ -63,12 +59,11 @@ if [ -f /etc/systemd/system/rclone.service ]; then sudo systemctl start rclone; 
 sudo mkdir -p ${RCLONEMOUNT} ${MOUNTTO}
 sudo chown -R $USER:$USER $RCLONEMOUNT $MOUNTTO
 
-sudo systemctl enable gooby.service gooby-rclone.service gooby-find.service mnt-google.mount
-sudo systemctl daemon-reload; sleep 10
+sleep 10
 sudo systemctl start gooby
 
 echo
-echo "${LYELLOW}Bringing system back online${STD}"
+echo "${LYELLOW}Checking for updated containers${STD}"
 echo
 
 source /opt/Gooby/install/misc/environment-build.sh rebuild
@@ -79,6 +74,8 @@ echo "${LYELLOW}Pruning old volumes${STD}"
 echo
 
 docker system prune -f --volumes
+
+cd ${CURDIR}
 
 echo
 echo "${LYELLOW}${LYELLOW}Patching server${STD}"
@@ -97,7 +94,6 @@ echo
 echo "${LYELLOW}Restoring permissions... this could take a few minutes${STD}"
 echo
 
-sudo chown -R $USER:$USER $CONFIGS
-sudo chown -R $USER:$USER $TCONFIGS
-sudo chown -R $USER:$USER $HOME
-cd ${CURDIR}
+sudo chown -R $USER:$USER $CONFIGS $TCONFIGS $HOME
+
+PAUSE
