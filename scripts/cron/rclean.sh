@@ -17,7 +17,9 @@ echo
 sudo systemctl daemon-reload
 
 if [ -f /etc/systemd/system/rclone.service ]; then sudo systemctl stop rclone; fi
+
 sudo systemctl stop gooby
+sudo systemctl disable gooby.service gooby-rclone.service gooby-find.service mnt-google.mount
 
 /bin/fusermount -uz ${RCLONEMOUNT}
 /bin/fusermount -uz ${MOUNTTO}
@@ -56,9 +58,13 @@ echo
 
 if [ -f /etc/systemd/system/rclone.service ]; then sudo systemctl start rclone; fi
 
-sudo mkdir -p ${MOUNTTO}
 sudo chown -R $USER:$USER ${MOUNTTO}
 
+sudo mkdir -p ${RCLONEMOUNT} ${MOUNTTO}
+sudo chown -R $USER:$USER $RCLONEMOUNT $MOUNTTO
+
+sudo systemctl enable gooby.service gooby-rclone.service gooby-find.service mnt-google.mount
+sudo systemctl daemon-reload; sleep 10
 sudo systemctl start gooby
 
 echo
