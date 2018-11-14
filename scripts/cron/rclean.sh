@@ -20,7 +20,7 @@ echo "${LYELLOW}${LYELLOW}Taking containers down${STD}"
 echo
 
 cd $CONFIGS/Docker
-/usr/local/bin/docker-compose down
+# /usr/local/bin/docker-compose down
 
 sudo rsync -a /opt/Gooby/scripts/components/{00-AAA.yaml,01-proxy.yaml} $CONFIGS/Docker/components
 
@@ -66,13 +66,13 @@ echo "${LYELLOW}Checking for updated containers${STD}"
 echo
 
 source /opt/Gooby/install/misc/environment-build.sh rebuild
-/usr/local/bin/docker-compose up -d --remove-orphans ${@:2}
+# /usr/local/bin/docker-compose up -d --remove-orphans ${@:2}
 
 echo
 echo "${LYELLOW}Pruning old volumes${STD}"
 echo
 
-docker system prune -f --volumes
+# docker system prune -f --volumes
 
 cd ${CURDIR}
 
@@ -80,12 +80,12 @@ echo
 echo "${LYELLOW}${LYELLOW}Patching server${STD}"
 echo
 
-sudo apt-get update
-sudo apt-get upgrade -y
-sudo apt-get dist-upgrade -y
-sudo apt autoremove -y
-sudo apt autoclean
-sudo apt-get autoremove
+# sudo apt-get update
+# sudo apt-get upgrade -y
+# sudo apt-get dist-upgrade -y
+# sudo apt autoremove -y
+# sudo apt autoclean
+# sudo apt-get autoremove
 
 echo
 echo "${GREEN}Your system should be back online${STD}"
