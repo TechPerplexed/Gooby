@@ -4,21 +4,6 @@ source /opt/Gooby/menus/variables.sh
 source $CONFIGS/Docker/.env
 
 echo
-echo "${LYELLOW}Taking services down${STD}"
-echo
-
-sudo systemctl daemon-reload
-
-if [ -f /etc/systemd/system/rclone.service ]; then sudo systemctl stop rclone; fi
-
-sudo systemctl stop gooby
-
-echo "Waiting a few seconds for mount to clear"; sleep 20
-
-sudo rmdir ${RCLONEMOUNT} > /dev/null 2>&1
-sudo rmdir ${MOUNTTO} > /dev/null 2>&1
-
-echo
 echo "${LYELLOW}Making sure components are up to date${STD}"
 echo
 
@@ -30,7 +15,29 @@ sudo chmod +x -R /opt/Gooby/scripts/cron
 sudo rsync -a /opt/Gooby/install/gooby /bin
 sudo chmod 755 /bin/gooby
 
+echo
+echo "${LYELLOW}${LYELLOW}Taking containers down${STD}"
+echo
+
+cd $CONFIGS/Docker
+/usr/local/bin/docker-compose down
+
 sudo rsync -a /opt/Gooby/scripts/components/{00-AAA.yaml,01-proxy.yaml} $CONFIGS/Docker/components
+
+echo
+echo "${LYELLOW}Taking services down${STD}"
+echo
+
+if [ -f /etc/systemd/system/rclone.service ]; then sudo systemctl stop rclone; fi
+
+sudo systemctl stop gooby
+
+sudo systemctl daemon-reload
+
+echo "Waiting a few seconds for mount to clear"; sleep 20
+
+sudo rmdir ${RCLONEMOUNT} > /dev/null 2>&1
+sudo rmdir ${MOUNTTO} > /dev/null 2>&1
 
 echo
 echo "${LYELLOW}Update Rclone${STD}"
@@ -53,13 +60,6 @@ sudo mkdir -p ${RCLONEMOUNT} ${MOUNTTO}
 sudo chown -R $USER:$USER $RCLONEMOUNT $MOUNTTO
 
 wait 10; sudo systemctl start gooby
-
-echo
-echo "${LYELLOW}${LYELLOW}Taking containers down${STD}"
-echo
-
-cd $CONFIGS/Docker
-/usr/local/bin/docker-compose down
 
 echo
 echo "${LYELLOW}Checking for updated containers${STD}"
@@ -95,3 +95,11 @@ echo
 # echo
 
 # sudo chown -R $USER:$USER $CONFIGS $TCONFIGS $HOME
+
+echo Rclone
+echo
+ls ${RCLONEMOUNT}
+echo
+echo MergerFS
+echo 
+ls ${MOUNTTO}
