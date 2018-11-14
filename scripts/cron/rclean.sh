@@ -56,10 +56,9 @@ echo
 
 if [ -f /etc/systemd/system/rclone.service ]; then sudo systemctl start rclone; fi
 
-sudo mkdir -p ${RCLONEMOUNT} ${MOUNTTO}
-sudo chown -R $USER:$USER $RCLONEMOUNT $MOUNTTO
+sudo mkdir -p ${RCLONEMOUNT} ${MOUNTTO}; sleep 10
+sudo chown -R $USER:$USER $RCLONEMOUNT $MOUNTTO; sleep 10
 
-sleep 10
 sudo systemctl start gooby
 
 echo
