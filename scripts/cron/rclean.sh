@@ -1,14 +1,9 @@
 #!/bin/bash
 
+# test
+
 source /opt/Gooby/menus/variables.sh
 source $CONFIGS/Docker/.env
-
-echo
-echo "${LYELLOW}${LYELLOW}Taking containers down${STD}"
-echo
-
-cd $CONFIGS/Docker
-/usr/local/bin/docker-compose down
 
 echo
 echo "${LYELLOW}Taking services down${STD}"
@@ -56,10 +51,17 @@ echo
 
 if [ -f /etc/systemd/system/rclone.service ]; then sudo systemctl start rclone; fi
 
-sudo mkdir -p ${RCLONEMOUNT} ${MOUNTTO}; sleep 10
-sudo chown -R $USER:$USER $RCLONEMOUNT $MOUNTTO; sleep 10
+sudo mkdir -p ${RCLONEMOUNT} ${MOUNTTO}
+sudo chown -R $USER:$USER $RCLONEMOUNT $MOUNTTO
 
-sudo systemctl start gooby
+wait 10; sudo systemctl start gooby
+
+echo
+echo "${LYELLOW}${LYELLOW}Taking containers down${STD}"
+echo
+
+cd $CONFIGS/Docker
+/usr/local/bin/docker-compose down
 
 echo
 echo "${LYELLOW}Checking for updated containers${STD}"
@@ -90,9 +92,8 @@ sudo apt-get autoremove
 echo
 echo "${GREEN}Your system should be back online${STD}"
 echo
-echo "${LYELLOW}Restoring permissions... this could take a few minutes${STD}"
-echo
 
-sudo chown -R $USER:$USER $CONFIGS $TCONFIGS $HOME
+# echo "${LYELLOW}Restoring permissions... this could take a few minutes${STD}"
+# echo
 
-PAUSE
+# sudo chown -R $USER:$USER $CONFIGS $TCONFIGS $HOME
