@@ -57,6 +57,7 @@ sudo mkdir ${MOUNTTO}
 sudo chown -R $USER:$USER ${MOUNTTO}
 
 sudo systemctl start gooby
+sudo systemctl restart gooby
 
 echo
 echo "${LYELLOW}Bringing system back online${STD}"
@@ -81,8 +82,6 @@ sudo apt-get dist-upgrade -y
 sudo apt autoremove -y
 sudo apt autoclean
 sudo apt-get autoremove
-
-sudo systemctl start gooby
 
 echo
 echo "${GREEN}Your system should be back online${STD}"
