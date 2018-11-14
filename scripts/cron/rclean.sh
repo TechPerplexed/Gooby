@@ -103,3 +103,4 @@ echo
 echo MergerFS
 echo 
 ls ${MOUNTTO}
+PAUSE
