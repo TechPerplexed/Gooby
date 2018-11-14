@@ -33,7 +33,7 @@ else
 		fi
 
 		if [ -f /etc/systemd/system/gooby.service ]; then
-			sudo systemctl stop gooby.service gooby-rclone.service gooby-find.service mnt-google.mount
+			sudo systemctl stop gooby.service
 			sudo systemctl disable gooby.service gooby-rclone.service gooby-find.service mnt-google.mount
 			sudo rm /etc/systemd/system/gooby* /etc/systemd/system/mnt-*
 		fi
