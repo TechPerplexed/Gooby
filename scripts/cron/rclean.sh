@@ -1,7 +1,5 @@
 #!/bin/bash
 
-# test
-
 source /opt/Gooby/menus/variables.sh
 source $CONFIGS/Docker/.env
 
