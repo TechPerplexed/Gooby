@@ -1,6 +1,7 @@
 #!/bin/bash
 
 source /opt/Gooby/menus/variables.sh
+source $CONFIGS/Docker/.env
 
 echo
 echo "${LYELLOW}${LYELLOW}Taking containers down${STD}"
