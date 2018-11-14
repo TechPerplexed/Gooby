@@ -54,7 +54,7 @@ echo "${LYELLOW}Checking for updated containers${STD}"
 echo
 
 sudo mkdir ${MOUNTTO}
-sudo chown -R $USER:$USER /mnt/{MOUNTTO}
+sudo chown -R $USER:$USER ${MOUNTTO}
 
 sudo systemctl start gooby
 
