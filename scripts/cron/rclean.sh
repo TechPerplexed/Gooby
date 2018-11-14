@@ -82,6 +82,8 @@ sudo apt autoremove -y
 sudo apt autoclean
 sudo apt-get autoremove
 
+sudo systemctl start gooby
+
 echo
 echo "${GREEN}Your system should be back online${STD}"
 echo
