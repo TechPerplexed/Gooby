@@ -16,7 +16,12 @@ echo
 sudo systemctl daemon-reload
 
 sudo systemctl stop gooby
-# sudo rm -r /mnt/google
+
+/bin/fusermount -uz ${RCLONEMOUNT}
+/bin/fusermount -uz ${MOUNTTO}
+
+sudo rmdir ${RCLONEMOUNT} > /dev/null 2>&1
+sudo rmdir ${MOUNTTO} > /dev/null 2>&1
 
 echo
 echo "${LYELLOW}Making sure components are up to date${STD}"
@@ -46,6 +51,9 @@ fi
 echo
 echo "${LYELLOW}Checking for updated containers${STD}"
 echo
+
+sudo mkdir ${MOUNTTO}
+sudo chown -R $USER:$USER /mnt/{MOUNTTO}
 
 sudo systemctl start gooby
 
