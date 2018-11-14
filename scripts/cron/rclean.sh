@@ -21,6 +21,9 @@ if [ -f /etc/systemd/system/rclone.service ]; then sudo systemctl stop rclone; f
 sudo systemctl stop gooby
 sudo systemctl disable gooby.service gooby-rclone.service gooby-find.service mnt-google.mount
 
+/bin/fusermount -uz ${RCLONEMOUNT}
+/bin/fusermount -uz ${MOUNTTO}
+
 echo "Waiting a few seconds for mount to clear"; sleep 20
 
 sudo rmdir ${RCLONEMOUNT} > /dev/null 2>&1
