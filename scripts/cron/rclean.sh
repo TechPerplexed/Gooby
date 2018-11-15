@@ -96,6 +96,8 @@ echo
 
 # sudo chown -R $USER:$USER $CONFIGS $TCONFIGS $HOME
 
+echo Mount check:
+echo
 echo Rclone
 echo
 ls ${RCLONEMOUNT}
