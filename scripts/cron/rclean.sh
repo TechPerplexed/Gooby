@@ -20,7 +20,7 @@ echo "${LYELLOW}${LYELLOW}Taking containers down${STD}"
 echo
 
 cd $CONFIGS/Docker
-# /usr/local/bin/docker-compose down
+/usr/local/bin/docker-compose down
 
 sudo rsync -a /opt/Gooby/scripts/components/{00-AAA.yaml,01-proxy.yaml} $CONFIGS/Docker/components
 
@@ -29,8 +29,7 @@ echo "${LYELLOW}Taking services down${STD}"
 echo
 
 if [ -f /etc/systemd/system/rclone.service ]; then sudo systemctl stop rclone; fi
-
-sudo systemctl stop gooby
+if [ -f /etc/systemd/system/rclonefs.service ]; then sudo systemctl stop mergerfs rclonefs; fi
 
 sudo systemctl daemon-reload
 
@@ -56,19 +55,18 @@ echo
 echo "${LYELLOW}Bringing services back online${STD}"
 echo
 
-if [ -f /etc/systemd/system/rclone.service ]; then sudo systemctl start rclone; fi
-
 sudo mkdir -p ${RCLONEMOUNT} ${MOUNTTO}
 sudo chown -R $USER:$USER $RCLONEMOUNT $MOUNTTO
 
-sleep 10; sudo systemctl start gooby
+if [ -f /etc/systemd/system/rclone.service ]; then sudo systemctl start rclone; fi
+if [ -f /etc/systemd/system/rclonefs.service ]; then sudo systemctl start rclonefs; sleep 10; sudo systemctl start mergerfs fi
 
 echo
 echo "${LYELLOW}Checking for updated containers${STD}"
 echo
 
 source /opt/Gooby/install/misc/environment-build.sh rebuild
-# /usr/local/bin/docker-compose up -d --remove-orphans ${@:2}
+/usr/local/bin/docker-compose up -d --remove-orphans ${@:2}
 
 echo
 echo "${LYELLOW}Pruning old volumes${STD}"
