@@ -94,4 +94,4 @@ echo
 echo "${LYELLOW}Restoring permissions... this could take a few minutes${STD}"
 echo
 
-sudo chown -R $USER:$USER $CONFIGS $TCONFIGS $HOME
+sudo chown -R $USER:$USER $TCONFIGS $HOME $CONFIGS/Certs $CONFIGS/Docker $CONFIGS/Security
