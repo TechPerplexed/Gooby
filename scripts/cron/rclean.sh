@@ -59,7 +59,7 @@ sudo mkdir -p ${RCLONEMOUNT} ${MOUNTTO}
 sudo chown -R $USER:$USER $RCLONEMOUNT $MOUNTTO
 
 if [ -f /etc/systemd/system/rclone.service ]; then sudo systemctl start rclone; fi
-if [ -f /etc/systemd/system/rclonefs.service ]; then sudo systemctl start rclonefs; sleep 10; sudo systemctl start mergerfs fi
+if [ -f /etc/systemd/system/rclonefs.service ]; then sudo systemctl start rclonefs; sleep 10; sudo systemctl start mergerfs; fi
 
 echo
 echo "${LYELLOW}Checking for updated containers${STD}"
