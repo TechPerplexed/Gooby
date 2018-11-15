@@ -35,10 +35,8 @@ sudo systemctl daemon-reload
 
 echo "Waiting a few seconds for mount to clear"; sleep 20
 
-sudo rmdir ${RCLONEMOUNT}
-sudo rmdir ${MOUNTTO}
-
-ls /tmp
+sudo rmdir ${RCLONEMOUNT} > /dev/null 2>&1
+sudo rmdir ${MOUNTTO} > /dev/null 2>&1
 
 echo
 echo "${LYELLOW}Update Rclone${STD}"
