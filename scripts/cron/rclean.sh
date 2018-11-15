@@ -72,7 +72,7 @@ echo
 echo "${LYELLOW}Pruning old volumes${STD}"
 echo
 
-# docker system prune -f --volumes
+docker system prune -f --volumes
 
 cd ${CURDIR}
 
@@ -80,12 +80,12 @@ echo
 echo "${LYELLOW}${LYELLOW}Patching server${STD}"
 echo
 
-# sudo apt-get update
-# sudo apt-get upgrade -y
-# sudo apt-get dist-upgrade -y
-# sudo apt autoremove -y
-# sudo apt autoclean
-# sudo apt-get autoremove
+sudo apt-get update
+sudo apt-get upgrade -y
+sudo apt-get dist-upgrade -y
+sudo apt autoremove -y
+sudo apt autoclean
+sudo apt-get autoremove
 
 echo
 echo "${GREEN}Your system should be back online${STD}"
@@ -103,4 +103,5 @@ echo
 echo MergerFS
 echo 
 ls ${MOUNTTO}
-PAUSE
+
+sleep 20
