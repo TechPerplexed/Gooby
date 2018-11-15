@@ -37,6 +37,8 @@ echo "Waiting a few seconds for mount to clear"; sleep 20
 
 sudo rmdir ${RCLONEMOUNT} > /dev/null 2>&1
 sudo rmdir ${MOUNTTO} > /dev/null 2>&1
+rm ${LOGS}/*.? > /dev/null
+echo -n > ${LOGS}/rclone.log
 
 echo
 echo "${LYELLOW}Update Rclone${STD}"
@@ -63,14 +65,10 @@ echo
 echo "${LYELLOW}Checking for updated containers${STD}"
 echo
 
+docker system prune -a -f --volumes
+
 source /opt/Gooby/install/misc/environment-build.sh rebuild
 /usr/local/bin/docker-compose up -d --remove-orphans ${@:2}
-
-echo
-echo "${LYELLOW}Pruning old volumes${STD}"
-echo
-
-docker system prune -f --volumes
 
 cd ${CURDIR}
 
