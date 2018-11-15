@@ -12,7 +12,7 @@ cd $CONFIGS/Docker
 
 sudo systemctl daemon-reload
 if [ -f /etc/systemd/system/rclone.service ]; then sudo systemctl stop rclone; fi
-if [ -f /etc/systemd/system/rclonefs.service ]; then sudo systemctl stop mergerfs rclonefs; fi
+if [ -f /etc/systemd/system/rclonefs.service ]; then sudo systemctl stop mergerfs; sudo systemctl stop rclonefs; fi
 
 echo
 echo "${LYELLOW}Making sure components are up to date${STD}"
