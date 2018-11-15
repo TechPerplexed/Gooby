@@ -45,8 +45,6 @@ echo
 
 sudo rmdir ${RCLONEMOUNT} > /dev/null 2>&1
 sudo rmdir ${MOUNTTO} > /dev/null 2>&1
-rm ${LOGS}/*.? > /dev/null
-echo -n > ${LOGS}/rclone.log
 
 sudo mkdir -p ${RCLONEMOUNT} ${MOUNTTO}
 sudo chown -R $USER:$USER $RCLONEMOUNT $MOUNTTO
