@@ -104,4 +104,4 @@ echo MergerFS
 echo 
 ls ${MOUNTTO}
 
-sleep 20
+PAUSE
