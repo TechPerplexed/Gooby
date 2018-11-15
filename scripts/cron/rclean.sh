@@ -91,19 +91,7 @@ echo
 echo "${GREEN}Your system should be back online${STD}"
 echo
 
-# echo "${LYELLOW}Restoring permissions... this could take a few minutes${STD}"
-# echo
-
-# sudo chown -R $USER:$USER $CONFIGS $TCONFIGS $HOME
-
-echo Mount check:
+echo "${LYELLOW}Restoring permissions... this could take a few minutes${STD}"
 echo
-echo Rclone
-echo
-ls ${RCLONEMOUNT}
-echo
-echo MergerFS
-echo 
-ls ${MOUNTTO}
 
-sleep 30
+sudo chown -R $USER:$USER $CONFIGS $TCONFIGS $HOME
