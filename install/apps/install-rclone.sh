@@ -75,16 +75,17 @@ else
 			sudo ln -s ${UPLOADS}/Downloads $HOME/Downloads
 		fi
 
-		sudo rsync -a /opt/Gooby/scripts/services/gooby* /etc/systemd/system/
-		sudo rsync -a /opt/Gooby/scripts/services/mnt* /etc/systemd/system/
-		sudo sed -i "s/GOOBYUSER/${USER}/g" /etc/systemd/system/gooby-rclone.service
-		sudo sed -i "s/GOOBYUSER/${USER}/g" /etc/systemd/system/gooby-find.service
+		sudo rsync -a /opt/Gooby/scripts/services/rclonefs* /etc/systemd/system/
+		sudo rsync -a /opt/Gooby/scripts/services/mergerfs* /etc/systemd/system/
+		sudo sed -i "s/GOOBYUSER/${USER}/g" /etc/systemd/system/rclonefs.service
+		sudo sed -i "s/GOOBYUSER/${USER}/g" /etc/systemd/system/mergerfs.service
 
 		source /opt/Gooby/install/misc/environment-build.sh rebuild
 
-		sudo systemctl enable gooby.service gooby-rclone.service gooby-find.service mnt-google.mount
+		sudo systemctl enable rclonefs.service mergerfs.service
 		sudo systemctl daemon-reload
-		sudo systemctl start gooby.service
+		sudo systemctl start rclonefs.service
+		sleep 10; sudo systemctl start mergerfs.service
 
 		if [ ! -f $TCONFIGS/cronsyncmount ]; then
 			(crontab -l 2>/dev/null; echo "0,15,30,45 * * * * /opt/Gooby/scripts/cron/syncmount.sh > /dev/null 2>&1") | crontab -
