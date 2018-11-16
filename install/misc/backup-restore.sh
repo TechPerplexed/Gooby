@@ -24,9 +24,9 @@ else
 
 		echo "Restoring the backup can take several hours"
 		echo "Please don't exit the terminal until it's done!"
-		echo ""
-		read -e -p "Host name to restore: " -i "$(hostname)" filename
-		read -e -p "File date to restore: " -i "$(date +%F)" filedate
+		echo
+		read -p "Host name to restore: " -i "$(hostname)" filename
+		read -p "File date to restore: " -i "$(date +%F)" filedate
 
 		echo "${LMAGENTA}Copying from Google drive...${STD}"
 
@@ -39,11 +39,11 @@ else
 		else
 
 			clear
-			echo ""
+			echo
 			echo "${LRED}$filename/$filedate.tar.gz not found on Google!${STD}"
 			echo "Please try again"
 			echo "Exiting script..."
-			echo ""
+			echo
 			PAUSE
 			exit
 
@@ -67,12 +67,12 @@ else
 		cd "${CURDIR}"
 
 		echo "${CYAN}Finished restoring${STD}"
-		echo ""
-		echo ""
+		echo
+		echo
 		echo "${WHITE}Make sure${STD} you check if your services are running properly before you remove the old files!"
-		echo ""
+		echo
 		read -n 1 -s -r -p "Remove old files (Y/n)? " -i "" choice
-		echo ""
+		echo
 
 		case "$choice" in
 			y|Y ) sudo rm -r /tmp/Gooby;;
