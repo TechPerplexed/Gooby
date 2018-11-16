@@ -14,7 +14,9 @@ if [ "$EUID" -ne 0 ]; then
 		echo " Please remove and reinstall Rclone (no need to edit config)"
 		echo " Apologies for the inconvience!"
 		echo
-		read -n 1 -s -r -p " Press Enter to continue "
+		echo " You can find the Rclone installation under option B - choice A"
+		echo
+		read -n 1 -s -r -p " Press Enter to continue >"
 	fi
 
 	/opt/Gooby/menus/main.sh
