@@ -3,20 +3,7 @@
 source /opt/Gooby/menus/variables.sh
 source $CONFIGS/Docker/.env
 
-echo
-echo "${LYELLOW}${LYELLOW}Taking containers and services down${STD}"
-echo
-
-cd $CONFIGS/Docker
-/usr/local/bin/docker-compose down
-
-sudo systemctl daemon-reload
-if [ -f /etc/systemd/system/rclone.service ]; then sudo systemctl stop rclone; fi
-if [ -f /etc/systemd/system/rclonefs.service ]; then sudo systemctl stop mergerfs; sudo systemctl stop rclonefs; fi
-
-echo
-echo "${LYELLOW}Making sure components are up to date${STD}"
-echo
+# Update Gooby
 
 sudo rm -r /opt/Gooby
 sudo git clone -b rcleantest https://github.com/TechPerplexed/Gooby /opt/Gooby
@@ -28,9 +15,16 @@ sudo chmod 755 /bin/gooby
 
 sudo rsync -a /opt/Gooby/scripts/components/{00-AAA.yaml,01-proxy.yaml} $CONFIGS/Docker/components
 
-echo
-echo "${LYELLOW}Update Rclone${STD}"
-echo
+# Shut everything down
+
+cd $CONFIGS/Docker
+/usr/local/bin/docker-compose down
+
+sudo systemctl stop mergerfs
+sudo systemctl stop rclonefs
+sudo systemctl daemon-reload
+
+# Update Rclone if possible
 
 touch $TCONFIGS/rclonev
 if [ $( cat $TCONFIGS/rclonev ) = "Stable" ]; then
@@ -39,33 +33,67 @@ elif [ $( cat $TCONFIGS/rclonev ) = "Beta" ]; then
 	curl https://rclone.org/install.sh | sudo bash -s beta
 fi
 
-echo
-echo "${LYELLOW}Bringing services back online${STD}"
-echo
+# Clean system Rclone leftovers
 
-sudo rmdir ${RCLONEMOUNT} > /dev/null 2>&1
-sudo rmdir ${MOUNTTO} > /dev/null 2>&1
+# Are mounts truly down?
 
-sudo mkdir -p ${RCLONEMOUNT} ${MOUNTTO}
-sudo chown -R $USER:$USER $RCLONEMOUNT $MOUNTTO
+mountpoint ${RCLONEMOUNT} > /dev/null
+CODE=${?}
+mountpoint ${MOUNTTO} > /dev/null
+CODE=$[${CODE}+${?}]
 
-if [ -f /etc/systemd/system/rclone.service ]; then sudo systemctl start rclone; fi
-if [ -f /etc/systemd/system/rclonefs.service ]; then sudo systemctl start rclonefs; sleep 10; sudo systemctl start mergerfs; fi
+while [ ${CODE} -lt 2 ]
+do
+	echo Waiting on mounts to drop...
+	sleep 5
+	mountpoint ${RCLONEMOUNT} > /dev/null
+	CODE=${?}
+	mountpoint ${MOUNTTO} > /dev/null
+	CODE=$[${CODE}+${?}]
+done
 
-echo
-echo "${LYELLOW}Checking for updated containers${STD}"
-echo
+sudo rm -r ${RCLONEMOUNT} > /dev/null 2>&1
+sudo rm -r ${MOUNTTO} > /dev/null 2>&1
+rm ${LOGS}/*.? > /dev/null
+echo -n > ${LOGS}/rclone.log
+
+# Start Rclone and MergerFS
+
+sudo systemctl start rclonefs
+sleep 10
+sudo systemctl start mergerfs
+
+# Are mounts truly up?
+
+mountpoint ${RCLONEMOUNT} > /dev/null
+CODE=${?}
+mountpoint ${MOUNTTO} > /dev/null
+CODE=$[${CODE}+${?}]
+
+while [ ${CODE} -ne 0 ]
+do
+        echo Waiting on mounts to be created...
+        sleep 5
+        mountpoint ${RCLONEMOUNT} > /dev/null
+        CODE=${?}
+        mountpoint ${MOUNTTO} > /dev/null
+        CODE=$[${CODE}+${?}]
+done
+
+# Update and start containers
+
+source /opt/Gooby/install/misc/environment-build.sh rebuild
+
+/usr/local/bin/docker-compose pull
+/usr/local/bin/docker-compose up --remove-orphans --build -d
+
+# Clean Docker leftovers
 
 docker system prune -a -f --volumes
 
-source /opt/Gooby/install/misc/environment-build.sh rebuild
-/usr/local/bin/docker-compose up -d --remove-orphans ${@:2}
-
 cd ${CURDIR}
 
-echo
-echo "${LYELLOW}${LYELLOW}Patching server${STD}"
-echo
+# Patching Server
 
 sudo apt-get update
 sudo apt-get upgrade -y
@@ -75,7 +103,7 @@ sudo apt autoclean
 sudo apt-get autoremove
 
 echo
-echo "${GREEN}Your system should be back online${STD}"
+echo "${GREEN}$(date) - Done! Your system should be back online${STD}"
 echo
 
 echo "${LYELLOW}Restoring permissions... this could take a few minutes${STD}"
