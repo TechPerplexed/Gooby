@@ -1,0 +1,20 @@
+[Unit]
+Description=MergerFS overlay writable storage
+After=syslog.target local-fs.target network.target rclone.service
+
+[Service]
+Type=forking
+User=GOOBYUSER
+Group=GOOBYUSER
+EnvironmentFile=/var/local/Gooby/Docker/.env
+
+ExecStartPre=/bin/mkdir -p ${UPLOADS} ${MOUNTTO}
+ExecStart=/usr/bin/mergerfs \
+	-o use_ino,hard_remove,auto_cache,sync_read,allow_other,category.action=all,category.create=ff \
+	${UPLOADS}:${RCLONEMOUNT} ${MOUNTTO}
+ExecStop=/bin/fusermount -uz ${MOUNTTO}
+ExecStop=/bin/rmdir ${MOUNTTO}
+Restart=always
+
+[Install]
+WantedBy=default.target
