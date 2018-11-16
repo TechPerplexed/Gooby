@@ -10,7 +10,7 @@ if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 
 	GOAHEAD
 
-	if [ ! -f $TCONFIGS/cronbackup ]; then
+	if [ ! -e $TCONFIGS/cronbackup ]; then
 
 		echo
 		read -n 1 -s -r -p " Would you like to schedule a weekly backup (y/N)? "
@@ -33,9 +33,9 @@ if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 
 	fi
 
-	echo -e " The backup can take several hours"
-	echo -e " Please don't exit the terminal until it's done!"
-	echo ""
+	echo " The backup can take several hours"
+	echo " Please don't exit the terminal until it's done!"
+	echo
 
 	source /opt/Gooby/scripts/cron/backup.sh
 
