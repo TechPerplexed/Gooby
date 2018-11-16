@@ -9,7 +9,8 @@ if [ "$EUID" -ne 0 ]; then
 
 	if [ -e /etc/systemd/system/rclone.service -o -e /etc/systemd/system/gooby.service ]; then
 		clear
-		echo "${YELLOW}Important!${STD}"
+		echo
+		echo " ${YELLOW}Important!${STD}"
 		echo
 		echo " It appears you are running an older version of the mount service..."
 		echo " Please remove and reinstall Rclone (no need to edit config)"
