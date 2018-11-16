@@ -3,7 +3,9 @@
 source /opt/Gooby/menus/variables.sh
 source $CONFIGS/Docker/.env
 
-# Update Gooby
+echo
+echo "${LYELLOW}Updating Gooby${STD}"
+echo
 
 sudo rm -r /opt/Gooby
 sudo git clone -b rcleantest https://github.com/TechPerplexed/Gooby /opt/Gooby
@@ -15,7 +17,9 @@ sudo chmod 755 /bin/gooby
 
 sudo rsync -a /opt/Gooby/scripts/components/{00-AAA.yaml,01-proxy.yaml} $CONFIGS/Docker/components
 
-# Shut everything down
+echo
+echo "${LYELLOW}Shutting everything down${STD}"
+echo
 
 cd $CONFIGS/Docker
 /usr/local/bin/docker-compose down
@@ -24,7 +28,9 @@ sudo systemctl stop mergerfs
 sudo systemctl stop rclonefs
 sudo systemctl daemon-reload
 
-# Update Rclone if possible
+echo
+echo "${LYELLOW}Updating Rclone if possible${STD}"
+echo
 
 touch $TCONFIGS/rclonev
 if [ $( cat $TCONFIGS/rclonev ) = "Stable" ]; then
@@ -33,7 +39,9 @@ elif [ $( cat $TCONFIGS/rclonev ) = "Beta" ]; then
 	curl https://rclone.org/install.sh | sudo bash -s beta
 fi
 
-# Clean system Rclone leftovers
+echo
+echo "${LYELLOW}Cleaning mount leftovers${STD}"
+echo
 
 # Are mounts truly down?
 
@@ -80,20 +88,26 @@ do
         CODE=$[${CODE}+${?}]
 done
 
-# Update and start containers
+echo
+echo "${LYELLOW}Updating and starting containers${STD}"
+echo
 
 source /opt/Gooby/install/misc/environment-build.sh rebuild
 
 /usr/local/bin/docker-compose pull
 /usr/local/bin/docker-compose up --remove-orphans --build -d
 
-# Clean Docker leftovers
+echo
+echo "${LYELLOW}Cleaning Docker leftovers${STD}"
+echo
 
 docker system prune -a -f --volumes
 
 cd ${CURDIR}
 
-# Patching Server
+echo
+echo "${LYELLOW}Patching server${STD}"
+echo
 
 sudo apt-get update
 sudo apt-get upgrade -y
