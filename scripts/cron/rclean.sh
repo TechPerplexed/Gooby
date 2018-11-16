@@ -4,6 +4,17 @@ source /opt/Gooby/menus/variables.sh
 source $CONFIGS/Docker/.env
 
 echo
+echo "${LYELLOW}${LYELLOW}Taking containers and services down${STD}"
+echo
+
+cd $CONFIGS/Docker
+/usr/local/bin/docker-compose down
+
+sudo systemctl daemon-reload
+if [ -f /etc/systemd/system/rclone.service ]; then sudo systemctl stop rclone; fi
+if [ -f /etc/systemd/system/rclonefs.service ]; then sudo systemctl stop mergerfs; sudo systemctl stop rclonefs; fi
+
+echo
 echo "${LYELLOW}Making sure components are up to date${STD}"
 echo
 
@@ -15,29 +26,7 @@ sudo chmod +x -R /opt/Gooby/scripts/cron
 sudo rsync -a /opt/Gooby/install/gooby /bin
 sudo chmod 755 /bin/gooby
 
-echo
-echo "${LYELLOW}${LYELLOW}Taking containers down${STD}"
-echo
-
-cd $CONFIGS/Docker
-/usr/local/bin/docker-compose down
-
 sudo rsync -a /opt/Gooby/scripts/components/{00-AAA.yaml,01-proxy.yaml} $CONFIGS/Docker/components
-
-echo
-echo "${LYELLOW}Taking services down${STD}"
-echo
-
-if [ -f /etc/systemd/system/rclone.service ]; then sudo systemctl stop rclone; fi
-
-sudo systemctl stop gooby
-
-sudo systemctl daemon-reload
-
-echo "Waiting a few seconds for mount to clear"; sleep 20
-
-sudo rmdir ${RCLONEMOUNT} > /dev/null 2>&1
-sudo rmdir ${MOUNTTO} > /dev/null 2>&1
 
 echo
 echo "${LYELLOW}Update Rclone${STD}"
@@ -54,25 +43,23 @@ echo
 echo "${LYELLOW}Bringing services back online${STD}"
 echo
 
-if [ -f /etc/systemd/system/rclone.service ]; then sudo systemctl start rclone; fi
+sudo rmdir ${RCLONEMOUNT} > /dev/null 2>&1
+sudo rmdir ${MOUNTTO} > /dev/null 2>&1
 
 sudo mkdir -p ${RCLONEMOUNT} ${MOUNTTO}
 sudo chown -R $USER:$USER $RCLONEMOUNT $MOUNTTO
 
-sleep 10; sudo systemctl start gooby
+if [ -f /etc/systemd/system/rclone.service ]; then sudo systemctl start rclone; fi
+if [ -f /etc/systemd/system/rclonefs.service ]; then sudo systemctl start rclonefs; sleep 10; sudo systemctl start mergerfs; fi
 
 echo
 echo "${LYELLOW}Checking for updated containers${STD}"
 echo
 
+docker system prune -a -f --volumes
+
 source /opt/Gooby/install/misc/environment-build.sh rebuild
 /usr/local/bin/docker-compose up -d --remove-orphans ${@:2}
-
-echo
-echo "${LYELLOW}Pruning old volumes${STD}"
-echo
-
-docker system prune -f --volumes
 
 cd ${CURDIR}
 
@@ -91,7 +78,7 @@ echo
 echo "${GREEN}Your system should be back online${STD}"
 echo
 
-# echo "${LYELLOW}Restoring permissions... this could take a few minutes${STD}"
-# echo
+echo "${LYELLOW}Restoring permissions... this could take a few minutes${STD}"
+echo
 
-# sudo chown -R $USER:$USER $CONFIGS $TCONFIGS $HOME
+sudo chown -R $USER:$USER $TCONFIGS $HOME $CONFIGS/Certs $CONFIGS/Docker $CONFIGS/Security
