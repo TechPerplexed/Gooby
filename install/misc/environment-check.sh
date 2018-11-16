@@ -26,7 +26,7 @@ show_menus() {
 	echo " In app media location: ${CYAN}/Media${STD}"
 	echo " In app download location: ${CYAN}/Downloads${STD}"
 	echo " Gooby version: ${CYAN}$VERSION${STD}"
-	echo ""
+	echo
 	echo " ${WHITE}Z${STD} - EXIT to Main Menu"
 	echo " ${CYAN}"
 	MENUEND
