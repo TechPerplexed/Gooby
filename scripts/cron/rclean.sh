@@ -62,7 +62,7 @@ done
 
 sudo rm -r ${RCLONEMOUNT} > /dev/null 2>&1
 sudo rm -r ${MOUNTTO} > /dev/null 2>&1
-rm ${LOGS}/*.? > /dev/null
+# rm ${LOGS}/*.? > /dev/null
 echo -n > ${LOGS}/rclone.log
 
 # Start Rclone and MergerFS
