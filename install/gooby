@@ -7,6 +7,20 @@ if [ "$EUID" -ne 0 ]; then
 
 	if [ ! -e $CONFIGS/Docker/.env ]; then /opt/Gooby/install/server/server-init.sh; fi
 
+	if [ -e /etc/systemd/system/rclone.service -o -e /etc/systemd/system/gooby.service ]; then
+		clear
+		echo
+		echo " ${YELLOW}Important!${STD}"
+		echo
+		echo " It appears you are running an older version of the mount service..."
+		echo " Please remove and reinstall Rclone (no need to edit config)"
+		echo " Apologies for the inconvience!"
+		echo
+		echo " You can find the Rclone installation under option B - choice A"
+		echo
+		read -n 1 -s -r -p " Press Enter to continue >"
+	fi
+
 	/opt/Gooby/menus/main.sh
 
 else
