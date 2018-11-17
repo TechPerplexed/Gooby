@@ -18,7 +18,7 @@ if [ "$EUID" -ne 0 ]; then
 		echo
 		echo " You can find the Rclone installation under option B - choice A"
 		echo
-		read -n 1 -s -r -p " Press Enter to continue >"
+		read -n 1 -s -r -p " Press Enter to continue > "
 	fi
 
 	/opt/Gooby/menus/main.sh
