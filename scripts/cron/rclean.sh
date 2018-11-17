@@ -65,6 +65,8 @@ sudo rmdir ${MOUNTTO} > /dev/null 2>&1
 # rm ${LOGS}/*.? > /dev/null
 echo -n > ${LOGS}/rclone.log
 
+sudo chown -R $USER:$USER /mnt
+
 # Start Rclone and MergerFS
 
 sudo systemctl start rclonefs
