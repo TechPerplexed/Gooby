@@ -18,11 +18,11 @@ else
 		GOAHEAD
 
 		cd $CONFIGS/Docker
-		sudo rm $CONFIGS/Docker/components/$APPLOC*
-		/usr/local/bin/docker-compose down
 		echo " Just a moment while $APP is being uninstalled..."
+		docker stop $APP
+		sudo rm $CONFIGS/Docker/components/$APPLOC*
 		source /opt/Gooby/install/misc/environment-build.sh rebuild
-		/usr/local/bin/docker-compose up -d --remove-orphans ${@:2}
+		/usr/local/bin/docker-compose up -d --remove-orphans
 		cd "${CURDIR}"
 		
 		clear
