@@ -39,3 +39,10 @@ cd $CONFIGS/Docker
 cd "${CURDIR}"
 
 sudo chown -R $USER:$USER $CONFIGS $TCONFIGS $HOME
+
+# Add rlean to bootup cron
+
+if [ ! -f $TCONFIGS/cronboot ]; then
+	(crontab -l 2>/dev/null; echo "@reboot /opt/Gooby/scripts/cron/rclean.sh > /dev/null 2>&1") | crontab -
+	touch $TCONFIGS/cronboot
+fi
