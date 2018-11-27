@@ -25,8 +25,8 @@ else
 		echo "Restoring the backup can take several hours"
 		echo "Please don't exit the terminal until it's done!"
 		echo
-		read -p "Host name to restore: " -i "$(hostname)" filename
-		read -p "File date to restore: " -i "$(date +%F)" filedate
+		read -e -p "Host name to restore: " -i "$(hostname)" filename
+		read -e -p "File date to restore: " -i "$(date +%F)" filedate
 
 		echo "${LMAGENTA}Copying from Google drive...${STD}"
 
