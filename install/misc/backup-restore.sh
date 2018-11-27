@@ -28,12 +28,14 @@ else
 		read -e -p "Host name to restore: " -i "$(hostname)" filename
 		read -e -p "File date to restore: " -i "$(date +%F)" filedate
 
+		echo
 		echo "${LMAGENTA}Copying from Google drive...${STD}"
 
 		/usr/bin/rclone copy Gdrive:/Backup/$filename/$filedate.tar.gz /tmp --checksum --drive-chunk-size=64M
 
 		if [ -e "/tmp/$filedate.tar.gz" ]; then
 
+		echo
 		echo "${LBLUE}Backup file downloaded, proceeding...${STD}"
 
 		else
@@ -49,12 +51,14 @@ else
 
 		fi
 
+		echo
 		echo "${YELLOW}Taking containers down...${STD}"
 
 		cd $CONFIGS/Docker
 		/usr/local/bin/docker-compose down
 		cd "${CURDIR}"
 
+		echo
 		echo "${GREEN}Restoring files...${STD}"
 
 		sudo mv $CONFIGS/ /tmp/Gooby/
@@ -68,6 +72,7 @@ else
 		/usr/local/bin/docker-compose up -d --remove-orphans ${@:2}
 		cd "${CURDIR}"
 
+		echo
 		echo "${CYAN}Finished restoring${STD}"
 		echo
 		echo
