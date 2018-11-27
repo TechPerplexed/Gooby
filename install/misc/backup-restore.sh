@@ -49,11 +49,13 @@ else
 
 		fi
 
-		echo "${GREEN}Restoring files...${STD}"
+		echo "${YELLOW}Taking containers down...${STD}"
 
 		cd $CONFIGS/Docker
 		/usr/local/bin/docker-compose down
 		cd "${CURDIR}"
+
+		echo "${GREEN}Restoring files...${STD}"
 
 		sudo mv $CONFIGS/ /tmp/Gooby/
 		sudo tar -xf /tmp/$filedate.tar.gz -C /
