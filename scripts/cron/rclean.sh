@@ -24,9 +24,9 @@ echo
 cd $CONFIGS/Docker
 /usr/local/bin/docker-compose down
 
+sudo systemctl daemon-reload
 sudo systemctl stop mergerfs
 sudo systemctl stop rclonefs
-sudo systemctl daemon-reload
 
 echo
 echo "${LYELLOW}Updating Rclone if possible${STD}"
