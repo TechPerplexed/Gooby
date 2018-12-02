@@ -3,9 +3,9 @@
 source /opt/Gooby/menus/variables.sh
 source $CONFIGS/Docker/.env
 
-echo
-echo "${LYELLOW}Updating Gooby${STD}"
-echo
+# echo
+# echo "${LYELLOW}Updating Gooby${STD}"
+# echo
 
 # sudo rm -r /opt/Gooby
 # sudo git clone -b master https://github.com/TechPerplexed/Gooby /opt/Gooby
@@ -15,7 +15,7 @@ echo
 # sudo rsync -a /opt/Gooby/install/gooby /bin
 # sudo chmod 755 /bin/gooby
 
-sudo rsync -a /opt/Gooby/scripts/components/{00-AAA.yaml,01-proxy.yaml} $CONFIGS/Docker/components
+# sudo rsync -a /opt/Gooby/scripts/components/{00-AAA.yaml,01-proxy.yaml} $CONFIGS/Docker/components
 
 echo
 echo "${LYELLOW}Shutting everything down${STD}"
