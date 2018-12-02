@@ -7,13 +7,13 @@ echo
 echo "${LYELLOW}Updating Gooby${STD}"
 echo
 
-sudo rm -r /opt/Gooby
-sudo git clone -b master https://github.com/TechPerplexed/Gooby /opt/Gooby
-sudo chmod +x -R /opt/Gooby/install
-sudo chmod +x -R /opt/Gooby/menus
-sudo chmod +x -R /opt/Gooby/scripts/cron
-sudo rsync -a /opt/Gooby/install/gooby /bin
-sudo chmod 755 /bin/gooby
+# sudo rm -r /opt/Gooby
+# sudo git clone -b master https://github.com/TechPerplexed/Gooby /opt/Gooby
+# sudo chmod +x -R /opt/Gooby/install
+# sudo chmod +x -R /opt/Gooby/menus
+# sudo chmod +x -R /opt/Gooby/scripts/cron
+# sudo rsync -a /opt/Gooby/install/gooby /bin
+# sudo chmod 755 /bin/gooby
 
 sudo rsync -a /opt/Gooby/scripts/components/{00-AAA.yaml,01-proxy.yaml} $CONFIGS/Docker/components
 
