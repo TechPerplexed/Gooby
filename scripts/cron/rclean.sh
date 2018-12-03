@@ -3,19 +3,23 @@
 source /opt/Gooby/menus/variables.sh
 source $CONFIGS/Docker/.env
 
-# echo
-# echo "${LYELLOW}Updating Gooby${STD}"
-# echo
+echo
+echo "${LYELLOW}Updating Gooby${STD}"
+echo
 
-# sudo rm -r /opt/Gooby
-# sudo git clone -b master https://github.com/TechPerplexed/Gooby /opt/Gooby
-# sudo chmod +x -R /opt/Gooby/install
-# sudo chmod +x -R /opt/Gooby/menus
-# sudo chmod +x -R /opt/Gooby/scripts/cron
-# sudo rsync -a /opt/Gooby/install/gooby /bin
-# sudo chmod 755 /bin/gooby
+sudo git clone -b mounttest https://github.com/TechPerplexed/Gooby /opt/.Gooby
 
-# sudo rsync -a /opt/Gooby/scripts/components/{00-AAA.yaml,01-proxy.yaml} $CONFIGS/Docker/components
+if [ -d /opt/.Gooby ]; then
+	sudo rm -r /opt/Gooby
+	sudo mv /opt/.Gooby /opt/Gooby
+	sudo chmod +x -R /opt/Gooby/install
+	sudo chmod +x -R /opt/Gooby/menus
+	sudo chmod +x -R /opt/Gooby/scripts/cron
+	sudo rsync -a /opt/Gooby/install/gooby /bin
+	sudo chmod 755 /bin/gooby
+fi
+
+sudo rsync -a /opt/Gooby/scripts/components/{00-AAA.yaml,01-proxy.yaml} $CONFIGS/Docker/components
 
 echo
 echo "${LYELLOW}Shutting everything down${STD}"
@@ -69,6 +73,9 @@ sudo chown -R $USER:$USER /mnt
 
 # Start Rclone and MergerFS
 
+[[ ! -f "$TCONFIGS/plexclaim" ]] && echo "-" > $TCONFIGS/plexclaim
+source /opt/Gooby/install/misc/environment-build.sh rebuild
+
 sudo systemctl start rclonefs
 sleep 10
 sudo systemctl start mergerfs
@@ -93,8 +100,6 @@ done
 echo
 echo "${LYELLOW}Updating and starting containers${STD}"
 echo
-
-source /opt/Gooby/install/misc/environment-build.sh rebuild
 
 /usr/local/bin/docker-compose pull
 /usr/local/bin/docker-compose up --remove-orphans --build -d
