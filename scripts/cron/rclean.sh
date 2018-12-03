@@ -7,7 +7,7 @@ echo
 echo "${LYELLOW}Updating Gooby${STD}"
 echo
 
-sudo git clone -b mounttest https://github.com/TechPerplexed/Gooby /opt/.Gooby
+sudo git clone -b master https://github.com/TechPerplexed/Gooby /opt/.Gooby
 
 if [ -d /opt/.Gooby ]; then
 	sudo rm -r /opt/Gooby
