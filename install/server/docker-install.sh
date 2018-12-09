@@ -9,7 +9,59 @@ sudo apt-get -y install \
 	curl \
 	software-properties-common
 
-	curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+	curl -fsSL https://downloa#!/bin/bash
+
+# install docker
+
+sudo apt-get -y install \
+	apt-transport-https \
+	acl \
+	ca-certificates \
+	curl \
+	gpg-agent \
+	software-properties-common
+
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+
+sudo add-apt-repository \
+	"deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+	$(lsb_release -cs) \
+	stable"
+
+sudo apt-get update
+
+sudo apt-get install -y docker-ce
+
+# Alternatively you can use the official docker install script
+
+which docker > $TCONFIGS/checkapp
+if [ ! -s $TCONFIGS/checkapp ]; then
+	sudo true
+	wget -qO- https://get.docker.com/ | sh
+fi
+rm $TCONFIGS/checkapp
+
+# Install docker-compose
+
+COMPOSE_VERSION=`git ls-remote https://github.com/docker/compose | grep refs/tags | grep -oP "[0-9]+\.[0-9][0-9]+\.[0-9]+$" | tail -n 1`
+sudo sh -c "curl -L https://github.com/docker/compose/releases/download/${COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose"
+sudo chmod +x /usr/local/bin/docker-compose
+sudo sh -c "curl -L https://raw.githubusercontent.com/docker/compose/${COMPOSE_VERSION}/contrib/completion/bash/docker-compose > /etc/bash_completion.d/docker-compose"
+
+# Install docker-cleanup command
+
+cd /tmp
+git clone https://gist.github.com/76b450a0c986e576e98b.git
+cd 76b450a0c986e576e98b
+sudo mv docker-cleanup /usr/local/bin/docker-cleanup
+sudo chmod +x /usr/local/bin/docker-cleanup
+
+# Give proper privileges
+
+sudo usermod -a -G docker $USER
+sudo gpasswd -a $USER docker
+sudo setfacl -m user:$USER:rw /var/run/docker.sock
+d.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 
 sudo add-apt-repository \
 	"deb [arch=amd64] https://download.docker.com/linux/ubuntu \
