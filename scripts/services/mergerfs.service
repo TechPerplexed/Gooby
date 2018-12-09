@@ -8,10 +8,10 @@ User=GOOBYUSER
 Group=GOOBYUSER
 EnvironmentFile=/var/local/Gooby/Docker/.env
 
-ExecStartPre=/bin/mkdir -p ${UPLOADS} ${MOUNTTO}
+ExecStartPre=/bin/mkdir -p ${UPLOADS} ${MOUNTTO} ${UNSYNCED}
 ExecStart=/usr/bin/mergerfs \
 	-o use_ino,hard_remove,auto_cache,sync_read,allow_other,category.action=all,category.create=ff \
-	${UPLOADS}:${RCLONEMOUNT} ${MOUNTTO}
+	${UPLOADS}:${UNSYNCED}:${RCLONEMOUNT} ${MOUNTTO}
 ExecStop=/bin/fusermount -uz ${MOUNTTO}
 ExecStop=/bin/rmdir ${MOUNTTO}
 Restart=always
