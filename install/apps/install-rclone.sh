@@ -66,9 +66,11 @@ else
 
 		sudo sed -i 's/^#user_allow_other/user_allow_other/g' /etc/fuse.conf
 
+		source /opt/Gooby/install/misc/environment-build.sh rebuild
+
 		mkdir -p $HOME/logs $HOME/Downloads
-		sudo mkdir -p ${RCLONEMOUNT} ${MOUNTTO} ${UPLOADS}
-		sudo chown -R $USER:$USER $HOME $CONFIGS/.config $TCONFIGS $RCLONEMOUNT $MOUNTTO $UPLOADS
+		sudo mkdir -p ${RCLONEMOUNT} ${MOUNTTO} ${UPLOADS} ${UNSYNCED}
+		sudo chown -R $USER:$USER $HOME $CONFIGS/.config $TCONFIGS ${RCLONEMOUNT} ${MOUNTTO} ${UPLOADS} ${UNSYNCED}
 
 		if [ ! -d ${UPLOADS}/Downloads ]; then
 			sudo mv $HOME/Downloads ${UPLOADS}
@@ -79,8 +81,6 @@ else
 		sudo rsync -a /opt/Gooby/scripts/services/mergerfs* /etc/systemd/system/
 		sudo sed -i "s/GOOBYUSER/${USER}/g" /etc/systemd/system/rclonefs.service
 		sudo sed -i "s/GOOBYUSER/${USER}/g" /etc/systemd/system/mergerfs.service
-
-		source /opt/Gooby/install/misc/environment-build.sh rebuild
 
 		sudo systemctl enable rclonefs.service mergerfs.service
 		sudo systemctl daemon-reload
