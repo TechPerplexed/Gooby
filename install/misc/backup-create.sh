@@ -42,8 +42,8 @@ if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 	clear
 	echo "${YELLOW}"
 	echo "--------------------------------------------------"
-	echo " Done! The backup can be found in"
-	echo " your Gdrive: Backup folder (on Google)"
+	echo " Done! The backup can be found in your"
+	echo " Backup folder (on the Google drive)"
 	echo "--------------------------------------------------"
 	echo "${STD}"
 
