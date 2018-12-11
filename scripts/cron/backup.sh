@@ -1,6 +1,7 @@
 #!/bin/bash
 
 source /opt/Gooby/menus/variables.sh
+source $CONFIGS/Docker/.env
 BACKUP=/tmp/$(date +%F).tar.gz
 
 echo
@@ -14,5 +15,5 @@ echo
 echo "${GREEN}Copying to Google...${STD}"
 echo
 
-/usr/bin/rclone copy ${BACKUP} Gdrive:/Backup/$(hostname) --checksum --drive-chunk-size=64M
+/usr/bin/rclone copy ${BACKUP} $RCLONESERVICE:/Backup/$(hostname) --checksum --drive-chunk-size=64M
 sudo rm ${BACKUP}
