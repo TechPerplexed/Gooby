@@ -1,5 +1,6 @@
 #!/bin/bash
 
+source $CONFIGS/Docker/.env
 which rclone > $CONFIGS/.config/checkapp.txt
 clear
 
@@ -31,7 +32,7 @@ else
 		echo
 		echo "${LMAGENTA}Copying from Google drive...${STD}"
 
-		/usr/bin/rclone copy Gdrive:/Backup/$filename/$filedate.tar.gz /tmp --checksum --drive-chunk-size=64M
+		/usr/bin/rclone copy $RCLONESERVICE:/Backup/$filename/$filedate.tar.gz /tmp --checksum --drive-chunk-size=64M
 
 		if [ -e "/tmp/$filedate.tar.gz" ]; then
 
