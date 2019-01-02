@@ -11,14 +11,12 @@ PID=${$}
 CDIR=/var/local/Gooby/Docker
 ENV=${CDIR}/.env
 
-
 # Load existing variables and use them as defaults, if available
 
 source ${ENV}
 
 AGE=2		# How many minutes old a file must be before copying/deleting
 LOG=${LOGS}/mounter-sync.log
-COMMANDS=${LOGS}/commands.sh
 
 echo Starting sync at $(date) | tee -a ${LOG}
 
@@ -35,7 +33,6 @@ then
 	echo Files to copy: $(cat /tmp/filesmissing |wc -l) | tee -a ${LOG}
 	echo /usr/bin/rclone move ${UPLOADS} ${RCLONESERVICE}:${RCLONEFOLDER} --checkers 3 --fast-list --tpslimit 2 --delete-during --delete-excluded --checksum --transfers 3 --drive-chunk-size=16M --exclude "Downloads/**" --min-age ${AGE}m
 	/usr/bin/rclone move ${UPLOADS} ${RCLONESERVICE}:${RCLONEFOLDER} --checkers 3 --fast-list --tpslimit 2 --delete-during --delete-excluded --checksum --transfers 3 --drive-chunk-size=16M --exclude "Downloads/**" --min-age ${AGE}m
-	#/usr/bin/rclone move ${UPLOADS} ${RCLONESERVICE}:${RCLONEFOLDER} --checkers 3 --fast-list --tpslimit 2 --delete-during --delete-excluded --checksum --transfers 3 --drive-chunk-size=16M --files-from /tmp/filesmissing -v
 else
 	echo Nothing to copy | tee -a ${LOG}
 fi
