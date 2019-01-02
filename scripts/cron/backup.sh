@@ -1,4 +1,8 @@
 #!/bin/bash
+if pidof -o %PPID -x "$(basename $0)"; then
+	echo Already running!
+	exit 1
+fi
 
 source /opt/Gooby/menus/variables.sh
 source $CONFIGS/Docker/.env
