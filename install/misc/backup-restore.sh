@@ -32,7 +32,7 @@ else
 		echo
 		echo "${LMAGENTA}Copying from Google drive...${STD}"
 
-		/usr/bin/rclone copy $RCLONESERVICE:/Backup/$filename/$filedate.tar.gz /tmp --checksum --drive-chunk-size=64M
+		/usr/bin/rclone --stats-one-line -P copy $RCLONESERVICE:/Backup/$filename/$filedate.tar.gz /tmp --checksum --drive-chunk-size=64M
 
 		if [ -e "/tmp/$filedate.tar.gz" ]; then
 
