@@ -11,6 +11,7 @@ echo
 echo "${LYELLOW}Updating Gooby${STD}"
 echo
 
+sudo rm -r /opt/.Gooby > /dev/null 2>&1
 sudo git clone -b master https://github.com/TechPerplexed/Gooby /opt/.Gooby
 
 if [ -d /opt/.Gooby ]; then
