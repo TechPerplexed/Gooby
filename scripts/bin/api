@@ -1,0 +1,3 @@
+#!/bin/bash
+
+apicheck "1 day ago"
