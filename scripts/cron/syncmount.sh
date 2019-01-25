@@ -56,7 +56,6 @@ fi
 
 rm ${TEMPFILE}
 cd ${UPLOADS}
-find . -type d -empty -delete
-mkdir -p ${UPLOADS} ${UPLOADS}/Downloads
+find . ! -path "*Downloads*" -type d -empty -delete
 echo Finished at $(date) | tee -a ${LOG}
 echo --------------------------------------------------- | tee -a ${LOG}
