@@ -1,5 +1,5 @@
 #
-# Ombi - Plex Request and user management
+# Ombi - Content request and user management
 #
   ombi:
     restart: unless-stopped
