@@ -1,6 +1,6 @@
 #!/bin/bash
 
-VERSION="2.1.2"
+VERSION="2.1.3"
 CONFIGS=/var/local/Gooby
 TCONFIGS=/var/local/.Gooby
 CURDIR=$(pwd)
