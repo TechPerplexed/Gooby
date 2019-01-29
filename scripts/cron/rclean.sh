@@ -17,7 +17,6 @@ sudo git clone -b master https://github.com/TechPerplexed/Gooby /opt/.Gooby
 if [ -d /opt/.Gooby ]; then
 	sudo rm -r /opt/Gooby
 	sudo mv /opt/.Gooby /opt/Gooby
-
 	sudo chmod +x -R /opt/Gooby/install
 	sudo chmod +x -R /opt/Gooby/menus
 	sudo chmod +x -R /opt/Gooby/scripts/bin
