@@ -12,15 +12,19 @@ sudo ufw default allow outgoing
 sudo ufw allow ssh
 sudo ufw --force enable
 
-sudo rm -r /opt/Gooby
-sudo git clone -b master https://github.com/TechPerplexed/Gooby /opt/Gooby
+sudo rm -r /opt/.Gooby > /dev/null 2>&1
+sudo git clone -b master https://github.com/TechPerplexed/Gooby /opt/.Gooby
 
-sudo chmod +x -R /opt/Gooby/install
-sudo chmod +x -R /opt/Gooby/menus
-sudo chmod +x -R /opt/Gooby/scripts/bin
-sudo chmod +x -R /opt/Gooby/scripts/cron
-sudo rsync -a /opt/Gooby/scripts/bin/gooby /bin
-sudo chmod 755 /bin/gooby
+if [ -d /opt/.Gooby ]; then
+	sudo rm -r /opt/Gooby
+	sudo mv /opt/.Gooby /opt/Gooby
+	sudo chmod +x -R /opt/Gooby/install
+	sudo chmod +x -R /opt/Gooby/menus
+	sudo chmod +x -R /opt/Gooby/scripts/bin
+	sudo chmod +x -R /opt/Gooby/scripts/cron
+	sudo rsync -a /opt/Gooby/scripts/bin/gooby /bin
+	sudo chmod 755 /bin/gooby
+fi
 
 source /opt/Gooby/menus/variables.sh
 
