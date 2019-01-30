@@ -13,6 +13,7 @@
       - 58846:58846/tcp
     volumes:
       - /etc/localtime:/etc/localtime:ro
+      - /bin/netstat:/bin/netstat:ro
       - ${CONFIGS}/Deluge:/config
       - ${DOWNLOADS}:/Downloads
       - ${GOOGLE}:/Media
