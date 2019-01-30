@@ -29,12 +29,12 @@ echo Starting sync at $(date) | tee -a ${LOG}
 
 # Fix dates in the future
 
-find ${UPLOADS}/ ! -path "*Downloads*" -type f -mmin -0 -exec touch "{}" -d "$(date -d "-5 minutes")" \;
+find ${UPLOADS}/ ! -path "*Downloads*" ! -iname "*.partial~" -type f -mmin -0 -exec touch "{}" -d "$(date -d "-5 minutes")" \;
 
 # Identify files needing to be copied
 
-find ${UPLOADS}/ ! -path "*Downloads*" -type f -mmin +${AGE} | sed 's|'${UPLOADS}'||' | sort > ${TEMPFILE}
-BYTES=$(find ${UPLOADS}/ ! -path "*Downloads*" -type f -mmin +${AGE} -exec du -bc {} + | grep total$ | cut -f1 | awk '{ total += $1 }; END { print total }')
+find ${UPLOADS}/ ! -path "*Downloads*" ! -iname "*.partial~" -type f -mmin +${AGE} | sed 's|'${UPLOADS}'||' | sort > ${TEMPFILE}
+BYTES=$(find ${UPLOADS}/ ! -path "*Downloads*" ! -iname "*.partial~" -type f -mmin +${AGE} -exec du -bc {} + | grep total$ | cut -f1 | awk '{ total += $1 }; END { print total }')
 
 # Copy files
 
