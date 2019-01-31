@@ -1,4 +1,4 @@
-# Gooby 2
+# Gooby - Infinite Media Server
 
 Create an infinite Plex or Emby media server with Google Drive on a VPS. It has full docker integration for all apps, NginX with reverse proxy and Letsencrypt, one click (automatic) backup, several additional apps.
 
@@ -9,7 +9,7 @@ Basic [information and instructions can be found on TechPerplexed](http://bit.ly
 Run on Ubuntu or Debian with this command:  
 `sudo wget http://bit.ly/GetGooby -O /tmp/install.sh && sudo bash /tmp/install.sh`
 
-## Supported apps:
+## Supported Apps:
 
 One click installation of Rclone, Plex, Tautulli, Emby, Sonarr, Radarr, Deluge, NZBGet, Jackett, Netdata, Organizr, Ombi and Portainer.
 Lidarr, SABnzbd and Radarr4k are available through self installation.
