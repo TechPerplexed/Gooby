@@ -1,0 +1,31 @@
+#
+# Monitorr - webfront to live display the status of any webapp or service
+#
+  monitorr:
+    restart: unless-stopped
+    image: monitorr/monitorr
+    container_name: monitorr
+    hostname: monitorr
+    cpu_shares: 1024
+    depends_on:
+      nginx-proxy:
+        condition: service_healthy
+      letsencrypt-nginx-proxy-companion:
+        condition: service_started
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ${CONFIGS}/Monitorr:/app
+    environment:
+      - PUID=${USERID}
+      - PGID=${GROUPID}
+      - TZ=${TIMEZONE}
+      - VIRTUAL_HOST=monitorr.${MYDOMAIN}
+      - VIRTUAL_PORT=80
+      - VIRTUAL_NETWORK=nginx-proxy
+      - LETSENCRYPT_HOST=monitorr.${MYDOMAIN}
+      - LETSENCRYPT_EMAIL=${MYEMAIL}
+    healthcheck:
+      test: ["CMD-SHELL", "netstat -ntlp | grep :80"]
+      interval: 10s
+      timeout: 2s
+      retries: 3
