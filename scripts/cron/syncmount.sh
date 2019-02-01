@@ -18,10 +18,10 @@ LOG=${LOGS}/mounter-sync.log
 APILOG=${LOGS}/api.log
 
 # Conservative options (slower but safe)
-#OPTIONS="--checkers 3 --fast-list --tpslimit 2 --delete-during --delete-excluded --checksum --transfers 5 --drive-chunk-size=16M -v"
+#OPTIONS="--stats-one-line -P --checkers 3 --fast-list --tpslimit 2 --delete-during --delete-excluded --checksum --transfers 5 --drive-chunk-size=16M -v"
 
 # Turbo options (faster but could interfere with processes)
-OPTIONS="--checkers 5 --fast-list --tpslimit 5 --delete-during --delete-excluded --checksum --transfers 8 --drive-chunk-size=16M -v"
+OPTIONS="--stats-one-line -P --checkers 5 --fast-list --tpslimit 5 --delete-during --delete-excluded --checksum --transfers 8 --drive-chunk-size=16M -v"
 
 TEMPFILE="/tmp/filesmissing"
 
