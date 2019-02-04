@@ -15,7 +15,7 @@
       - /etc/localtime:/etc/localtime:ro
       - ${CONFIGS}/rTorrent:/config
       - ${DOWNLOADS}/rtorrent:/Downloads
-      - ${GOOGLE}:/Media
+      - ${MEDIA}:/Media
     environment:
       - PUID=${USERID}
       - PGID=${GROUPID}
