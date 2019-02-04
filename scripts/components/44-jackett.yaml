@@ -10,7 +10,7 @@
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - ${CONFIGS}/Jackett:/config
-      - ${GOOGLE}:/Media
+      - ${MEDIA}:/Media
       - ${DOWNLOADS}:/Downloads
     environment:
       - PUID=${USERID}
