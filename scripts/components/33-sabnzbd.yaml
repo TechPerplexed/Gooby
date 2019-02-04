@@ -15,7 +15,7 @@
     volumes:
       - ${CONFIGS}/SABnzbd:/config
       - ${DOWNLOADS}:/Downloads
-      - ${GOOGLE}:/Media
+      - ${MEDIA}:/Media
       - ${LOGS}:/logs
       - /bin/netstat:/bin/netstat:ro
     environment:
