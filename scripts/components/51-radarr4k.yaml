@@ -21,7 +21,7 @@
       - /etc/localtime:/etc/localtime:ro
       - ${CONFIGS}/Radarr4K:/config
       - ${HOME}/logs:/config/logs
-      - ${GOOGLE}:/Media
+      - ${MEDIA}:/Media
       - ${DOWNLOADS}:/Downloads
       - /bin/netstat:/bin/netstat:ro
       - /usr/bin/killall:/usr/bin/killall:ro
