@@ -18,7 +18,7 @@
       - UID=${USERID}
       - GID=${GROUPID}
       - GIDLIST=44
-      - TZ=MST7
+      - TZ=${TIMEZONE}
       - VIRTUAL_HOST=emby.${MYDOMAIN}
       - VIRTUAL_PORT=8096
       - VIRTUAL_PROTO=http
