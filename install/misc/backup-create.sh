@@ -10,8 +10,12 @@ if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 
 	GOAHEAD
 
+	echo "Current backup schedule:"
+
 	if ! crontab -l | grep 'backup.sh'; then
 
+		echo
+		echo "You currently have no backup cron scheduled."
 		echo
 		read -n 1 -s -r -p " Would you like to schedule a weekly backup (y/N)? "
 		echo
@@ -28,10 +32,6 @@ if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 			echo " No worries, you can always add a backup schedule later!"
 
 		fi
-
-	else
-
-		echo "The above shows your current cron schedule."
 
 	fi
 
