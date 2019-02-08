@@ -22,17 +22,20 @@ if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 			echo
 			echo " Backup scheduled to run at 02:15 every Sunday"
 			echo " You can always change this by typing ${LYELLOW}crontab -e${STD}"
-			echo
 
 		else
 
 			echo " No worries, you can always add a backup schedule later!"
-			echo
 
 		fi
 
+	else
+
+		echo "The above shows your current cron schedule."
+
 	fi
 
+	echo
 	echo " The backup can take several hours"
 	echo " Please don't exit the terminal until it's done!"
 	echo
