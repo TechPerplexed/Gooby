@@ -87,10 +87,8 @@ else
 		sudo systemctl start rclonefs.service
 		sleep 10; sudo systemctl start mergerfs.service
 
-		if [ ! -f $TCONFIGS/cronsyncmount ]; then
-			(crontab -l 2>/dev/null; echo "0,15,30,45 * * * * /opt/Gooby/scripts/cron/syncmount.sh > /dev/null 2>&1") | crontab -
-			touch $TCONFIGS/cronsyncmount
-		fi
+		# Create syncmount cron
+		crontab -l | grep 'syncmount.sh' || (crontab -l 2>/dev/null; echo "0,15,30,45 * * * * /opt/Gooby/scripts/cron/syncmount.sh > /dev/null 2>&1") | crontab -
 
 		echo
 		echo "Done!"
