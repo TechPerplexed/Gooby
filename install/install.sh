@@ -22,8 +22,6 @@ for i in $APPLIST; do
 	echo; sleep 2
 	sudo apt-get -y install $i
 	echo
-	echo Done
-	echo
 done
 
 echo Setting UFW firewall...
