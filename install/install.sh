@@ -32,8 +32,8 @@ sudo ufw allow ssh
 sudo ufw --force enable
 echo
 
-echo Installing Gooby...
-echo
+# Finalizing
+
 sudo rm -r /opt/.Gooby > /dev/null 2>&1
 sudo git clone -b master https://github.com/TechPerplexed/Gooby /opt/.Gooby > /dev/null 2>&1
 
