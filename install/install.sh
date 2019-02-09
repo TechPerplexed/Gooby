@@ -10,7 +10,7 @@ echo "--------------------------------------------------"
 echo
 
 echo Getting updates...
-sudo apt-get update -y > /dev/null 2>&1
+sudo apt-get update -y
 
 echo Installing updates...
 sudo apt-get upgrade -y
