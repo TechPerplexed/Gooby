@@ -7,17 +7,18 @@ echo " This will install Gooby"
 echo " Please sit back while we intialize dependencies"
 echo " For best results, run as user 'root'"
 echo "--------------------------------------------------"
-echo
+echo; sleep 5
 
 echo Installing server updates...
 sudo apt-get update -y
 sudo apt-get upgrade -y
+echo
 
 APPLIST="git fail2ban nano unzip wget curl rsync grsync ufw socat fuse apt-transport-https acl mergerfs ca-certificates gpg-agent"
 
 for i in $APPLIST; do
 	echo Installing $i...
-	echo
+	echo; sleep 2
 	sudo apt-get -y install $i
 	echo
 	echo Done
@@ -29,6 +30,7 @@ sudo ufw default deny incoming
 sudo ufw default allow outgoing
 sudo ufw allow ssh
 sudo ufw --force enable
+echo
 
 echo Installing Gooby...
 sudo rm -r /opt/.Gooby > /dev/null 2>&1
