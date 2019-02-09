@@ -9,26 +9,33 @@ echo " For best results, run as user 'root'"
 echo "--------------------------------------------------"
 echo
 
-sleep 10
-sudo apt-get update -y
-sudo apt-get upgrade -y
+echo Getting updates...
+sudo apt-get update -y > /dev/null 2>&1
+
+echo Installing updates...
+sudo apt-get upgrade -y > /dev/null 2>&1
 
 APPLIST="git fail2ban nano unzip wget curl rsync grsync ufw socat fuse apt-transport-https acl mergerfs ca-certificates gpg-agent"
 
 for i in $APPLIST; do
-  sudo apt-get -y install $i
+	echo Installing $i...
+	sudo apt-get -y install $i  > /dev/null 2>&1
+	echo Done
+	echo
 done
 
-sudo ufw default deny incoming
-sudo ufw default allow outgoing
-sudo ufw allow ssh
-sudo ufw --force enable
+echo Setting UFW firewall...
+sudo ufw default deny incoming > /dev/null 2>&1
+sudo ufw default allow outgoing > /dev/null 2>&1
+sudo ufw allow ssh > /dev/null 2>&1
+sudo ufw --force enable > /dev/null 2>&1
 
+echo Installing Gooby...
 sudo rm -r /opt/.Gooby > /dev/null 2>&1
-sudo git clone -b master https://github.com/TechPerplexed/Gooby /opt/.Gooby
+sudo git clone -b master https://github.com/TechPerplexed/Gooby /opt/.Gooby > /dev/null 2>&1
 
 if [ -d /opt/.Gooby ]; then
-	sudo rm -r /opt/Gooby
+	sudo rm -r /opt/Gooby > /dev/null 2>&1
 	sudo mv /opt/.Gooby /opt/Gooby
 	sudo chmod +x -R /opt/Gooby/install
 	sudo chmod +x -R /opt/Gooby/menus
