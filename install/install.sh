@@ -10,6 +10,7 @@ echo "--------------------------------------------------"
 echo; sleep 5
 
 echo Installing server updates...
+echo
 sudo apt-get update -y
 sudo apt-get upgrade -y
 echo
@@ -26,6 +27,7 @@ for i in $APPLIST; do
 done
 
 echo Setting UFW firewall...
+echo
 sudo ufw default deny incoming
 sudo ufw default allow outgoing
 sudo ufw allow ssh
@@ -33,6 +35,7 @@ sudo ufw --force enable
 echo
 
 echo Installing Gooby...
+echo
 sudo rm -r /opt/.Gooby > /dev/null 2>&1
 sudo git clone -b master https://github.com/TechPerplexed/Gooby /opt/.Gooby > /dev/null 2>&1
 
