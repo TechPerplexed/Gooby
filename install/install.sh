@@ -19,9 +19,9 @@ APPLIST="git fail2ban nano unzip wget curl rsync grsync ufw socat fuse apt-trans
 
 for i in $APPLIST; do
 	echo Installing $i...
-	echo; sleep 2
-	sudo apt-get -y install $i
 	echo
+	sudo apt-get -y install $i
+	echo; sleep 2
 done
 
 echo Setting UFW firewall...
