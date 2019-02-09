@@ -50,7 +50,7 @@ source /opt/Gooby/menus/variables.sh
 clear
 echo "${GREEN}"
 echo "--------------------------------------------------"
-echo " Server inialization and dependencies complete!"
+echo " Server initialization and dependencies complete!"
 echo " Type ${WHITE}gooby${GREEN} to continue installation."
 echo " Visit techperplexed.ga for setup instructions."
 echo "--------------------------------------------------"
