@@ -1,9 +1,21 @@
 #!/bin/bash
 
+clear
+echo
+echo "--------------------------------------------------"
+echo " This will install Gooby"
+echo " Please sit back while we intialize dependencies"
+echo " For best results, run as user 'root'"
+echo "--------------------------------------------------"
+echo
+
+sleep 10
 sudo apt-get update -y
 sudo apt-get upgrade -y
 
-for i in git fail2ban nano unzip wget curl rsync grsync ufw socat fuse apt-transport-https acl mergerfs ca-certificates gpg-agent; do
+APPLIST="git fail2ban nano unzip wget curl rsync grsync ufw socat fuse apt-transport-https acl mergerfs ca-certificates gpg-agent"
+
+for i in $APPLIST; do
   sudo apt-get -y install $i
 done
 
