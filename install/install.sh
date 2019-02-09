@@ -13,22 +13,22 @@ echo Getting updates...
 sudo apt-get update -y > /dev/null 2>&1
 
 echo Installing updates...
-sudo apt-get upgrade -y > /dev/null 2>&1
+sudo apt-get upgrade -y
 
 APPLIST="git fail2ban nano unzip wget curl rsync grsync ufw socat fuse apt-transport-https acl mergerfs ca-certificates gpg-agent"
 
 for i in $APPLIST; do
 	echo Installing $i...
-	sudo apt-get -y install $i  > /dev/null 2>&1
+	sudo apt-get -y install $i
 	echo Done
 	echo
 done
 
 echo Setting UFW firewall...
-sudo ufw default deny incoming > /dev/null 2>&1
-sudo ufw default allow outgoing > /dev/null 2>&1
-sudo ufw allow ssh > /dev/null 2>&1
-sudo ufw --force enable > /dev/null 2>&1
+sudo ufw default deny incoming
+sudo ufw default allow outgoing
+sudo ufw allow ssh
+sudo ufw --force enable
 
 echo Installing Gooby...
 sudo rm -r /opt/.Gooby > /dev/null 2>&1
