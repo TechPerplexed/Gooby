@@ -27,7 +27,7 @@ if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 	echo " ${GREEN}"
 	MENUSTART
 	echo " You should now be switched to ${YELLOW}${PU}${STD}"
-	echo " Type ${LGREEN}gooby${STD} to access the menu."
+	echo " Type ${YELLOW}gooby${STD} to access the menu."
 	echo " ${GREEN}"
 	MENUEND
 	su $PU
