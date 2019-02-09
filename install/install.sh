@@ -17,7 +17,9 @@ APPLIST="git fail2ban nano unzip wget curl rsync grsync ufw socat fuse apt-trans
 
 for i in $APPLIST; do
 	echo Installing $i...
+	echo
 	sudo apt-get -y install $i
+	echo
 	echo Done
 	echo
 done
