@@ -9,10 +9,8 @@ echo " For best results, run as user 'root'"
 echo "--------------------------------------------------"
 echo
 
-echo Getting updates...
+echo Installing server updates...
 sudo apt-get update -y
-
-echo Installing updates...
 sudo apt-get upgrade -y
 
 APPLIST="git fail2ban nano unzip wget curl rsync grsync ufw socat fuse apt-transport-https acl mergerfs ca-certificates gpg-agent"
