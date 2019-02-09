@@ -21,7 +21,7 @@ for i in $APPLIST; do
 	echo Installing $i...
 	echo
 	sudo apt-get -y install $i
-	echo; sleep 2
+	echo; sleep 5
 done
 
 echo Setting UFW firewall...
@@ -50,7 +50,7 @@ fi
 
 source /opt/Gooby/menus/variables.sh
 
-clear
+sleep 5; clear
 echo "${GREEN}"
 echo "--------------------------------------------------"
 echo " Server initialization and dependencies complete!"
