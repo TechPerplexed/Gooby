@@ -43,8 +43,8 @@ source /opt/Gooby/menus/variables.sh
 clear
 echo "${GREEN}"
 echo "--------------------------------------------------"
-echo " Installation complete!"
-echo " Type ${WHITE}gooby${GREEN} to access the menu."
-echo " Visit techperplexed.ga for setup instructions!"
+echo " Server inialization and dependencies complete!"
+echo " Type ${WHITE}gooby${GREEN} to continue installation."
+echo " Visit techperplexed.ga for setup instructions."
 echo "--------------------------------------------------"
 echo "${STD}"
