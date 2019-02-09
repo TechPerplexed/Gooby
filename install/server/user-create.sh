@@ -1,5 +1,6 @@
 #!/bin/bash
 
+MENU="Create User"
 PERFORM="create"
 TASK="a new user"
 
@@ -23,15 +24,12 @@ if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 	sudo -s chmod 0440 /etc/sudoers.d/$PU
 
 	clear
-	echo "${GREEN}"
-	echo "--------------------------------------------------"
-	echo " G O O B Y - Find instructions at techperplexed.ga"
-	echo "--------------------------------------------------"
-	echo " You should now be switched to ${YELLOW}${PU}${GREEN}"
-	echo " Type ${WHITE}gooby${GREEN} to access the menu."
-	echo "--------------------------------------------------"
-	echo "${STD}"
-
+	echo " ${GREEN}"
+	MENUSTART
+	echo " You should now be switched to ${YELLOW}${PU}$${STD}"
+	echo " Type ${LGREEN}gooby${STD} to access the menu."
+	echo " ${GREEN}"
+	MENUEND
 	su $PU
 
 else
