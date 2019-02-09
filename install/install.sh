@@ -50,7 +50,7 @@ fi
 
 source /opt/Gooby/menus/variables.sh
 
-sleep 5; clear
+sleep 5; echo
 echo "${GREEN}"
 echo "--------------------------------------------------"
 echo " Server initialization and dependencies complete!"
