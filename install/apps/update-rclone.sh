@@ -18,7 +18,6 @@ else
 		GOAHEAD
 
 		cd /tmp
-		if [ -e /etc/systemd/system/gooby.service ]; then sudo systemctl stop gooby.service; fi
 		clear
 
 		echo "You currently have the $( cat $TCONFIGS/rclonev ) version of $TASK installed"
@@ -56,7 +55,6 @@ else
 		esac
 
 		sudo systemctl daemon-reload
-		if [ -e /etc/systemd/system/gooby.service ]; then sudo systemctl start gooby.service; fi
 
 		cd $CURDIR
 
