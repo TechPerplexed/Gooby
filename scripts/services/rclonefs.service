@@ -18,6 +18,7 @@ ExecStart=/usr/bin/rclone mount \
 	--gid ${USERID} \
 	--log-level INFO \
 	--log-file ${HOMEDIR}/logs/rclone.log \
+	--tpslimit 10
 	--uid ${GROUPID} \
 	--vfs-read-chunk-size 128M \
 	--vfs-read-chunk-size-limit off \
