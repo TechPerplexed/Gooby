@@ -1,0 +1,29 @@
+#
+# HTTPd - Apache web server
+#
+  HTTPd:
+    restart: always
+    image: httpd:alpine
+    container_name: httpd
+    hostname: web
+    depends_on:
+      nginx-proxy:
+        condition: service_healthy
+      letsencrypt-nginx-proxy-companion:
+        condition: service_started
+    volumes:
+      - ${CONFIGS}/HTTPd:/usr/local/apache2/htdocs/
+    environment:
+      - PUID=${USERID}
+      - PGID=${GROUPID}
+      - VIRTUAL_HOST=web.${MYDOMAIN}
+      - VIRTUAL_PORT=80
+      - VIRTUAL_NETWORK=nginx-proxy
+      - TZ=${TIMEZONE}
+      - LETSENCRYPT_HOST=web.${MYDOMAIN}
+      - LETSENCRYPT_EMAIL=${MYEMAIL}
+    healthcheck:
+      test: ["CMD-SHELL", "netstat -ntlp | grep :80"]
+      interval: 10s
+      timeout: 2s
+      retries: 3
