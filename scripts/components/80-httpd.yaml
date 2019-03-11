@@ -1,7 +1,7 @@
 #
-# HTTPd - Apache Web Server
+# HTTPd - Apache web server
 #
-  HTTPd:
+  httpd:
     restart: always
     image: httpd:alpine
     container_name: httpd
