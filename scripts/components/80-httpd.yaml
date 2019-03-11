@@ -1,5 +1,5 @@
 #
-# HTTPd - Apache web server
+# HTTPd - Apache Web Server
 #
   HTTPd:
     restart: always
