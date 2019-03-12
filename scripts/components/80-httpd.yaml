@@ -12,7 +12,7 @@
       letsencrypt-nginx-proxy-companion:
         condition: service_started
     volumes:
-      - ${CONFIGS}/HTTPd:/var/www/html
+      - ${CONFIGS}/Web:/var/www/html
     environment:
       - PUID=${USERID}
       - PGID=${GROUPID}
