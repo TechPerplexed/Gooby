@@ -3,7 +3,7 @@
 #
   httpd:
     restart: always
-    image: httpd:alpine
+    image: php:apache0
     container_name: httpd
     hostname: web
     depends_on:
@@ -12,7 +12,7 @@
       letsencrypt-nginx-proxy-companion:
         condition: service_started
     volumes:
-      - ${CONFIGS}/HTTPd:/usr/local/apache2/htdocs/
+      - ${CONFIGS}/HTTPd:/var/www/html
     environment:
       - PUID=${USERID}
       - PGID=${GROUPID}
