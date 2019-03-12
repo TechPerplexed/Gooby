@@ -3,7 +3,7 @@
 #
   httpd:
     restart: always
-    image: php:apache0
+    image: php:apache
     container_name: httpd
     hostname: web
     depends_on:
