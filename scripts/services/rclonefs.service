@@ -11,17 +11,17 @@ Group=GOOBYUSER
 ExecStartPre=/bin/mkdir -p ${RCLONEMOUNT}
 ExecStart=/usr/bin/rclone mount \
 	--allow-other \
-	--buffer-size 512M \
-	--dir-cache-time 72h \
+	--dir-cache-time 96h \
 	--drive-chunk-size 32M \
 	--fast-list \
 	--gid ${USERID} \
 	--log-level INFO \
 	--log-file ${HOMEDIR}/logs/rclone.log \
-	--tpslimit 10 \
+	--rc \
+	--timeout 1h \
+	--tpslimit 7 \
 	--uid ${GROUPID} \
-	--vfs-read-chunk-size 128M \
-	--vfs-read-chunk-size-limit off \
+	--umask 002 \
 	--config ${HOMEDIR}/.config/rclone/rclone.conf \
 	${RCLONESERVICE}:${RCLONEFOLDER} ${RCLONEMOUNT}
 ExecStop=/bin/fusermount -uz ${RCLONEMOUNT}
