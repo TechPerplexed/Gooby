@@ -15,7 +15,7 @@ sudo apt-get update -y
 sudo apt-get upgrade -y
 echo
 
-APPLIST="git fail2ban nano unzip wget curl rsync grsync ufw socat fuse apt-transport-https acl mergerfs ca-certificates gpg-agent"
+APPLIST="acl apt-transport-https ca-certificates curl fail2ban fuse git gpg-agent grsync jq mergerfs nano rsyncufw socat unzip wget"
 
 for i in $APPLIST; do
 	echo Installing $i...
