@@ -41,6 +41,15 @@ PORTAINER(){
 	source /opt/Gooby/menus/apps.sh
 }
 
+WATCHTOWER(){
+	TASK=Watchtower
+	APP=watchtower
+	APPTYPE=app
+	APPLOC=98-watchtower
+	OLDLOC=/noupgradepathprovided
+	source /opt/Gooby/menus/apps.sh
+}
+
 QUIT(){
 	exit
 }
@@ -55,6 +64,7 @@ show_menus() {
 	echo " ${LPURPLE}B${STD} - Organizr"
 	echo " ${LPURPLE}C${STD} - Ombi"
 	echo " ${LPURPLE}D${STD} - Portainer"
+	echo " ${LPURPLE}E${STD} - Watchtower"
 	echo " ${WHITE}Z${STD} - EXIT to Main Menu"
 	echo " ${LPURPLE}"
 	MENUEND
@@ -70,6 +80,7 @@ read_options(){
 		[Bb]) ORGANIZR ;;
 		[Cc]) OMBI ;;
 		[Dd]) PORTAINER ;;
+		[Ee]) WATCHTOWER ;;
 		[Zz]) QUIT ;;
 		*) echo "${LRED}Please select a valid option${STD}" && sleep 2
 	esac
