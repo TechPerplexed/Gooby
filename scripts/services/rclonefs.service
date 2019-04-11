@@ -11,6 +11,10 @@ Group=GOOBYUSER
 ExecStartPre=/bin/mkdir -p ${RCLONEMOUNT}
 ExecStart=/usr/bin/rclone mount \
 	--allow-other \
+	--checkers 12 \
+	--checksum \
+	--delete-during \
+	--delete-excluded \
 	--dir-cache-time 96h \
 	--drive-chunk-size 32M \
 	--fast-list \
@@ -18,8 +22,11 @@ ExecStart=/usr/bin/rclone mount \
 	--log-level INFO \
 	--log-file ${HOMEDIR}/logs/rclone.log \
 	--rc \
+	--rc-pass Go0by \
+	--rc-user gooby \
 	--timeout 1h \
-	--tpslimit 7 \
+	--transfers 12 \
+	--tpslimit 10 \
 	--uid ${GROUPID} \
 	--umask 002 \
 	--config ${HOMEDIR}/.config/rclone/rclone.conf \
