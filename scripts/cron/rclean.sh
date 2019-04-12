@@ -77,6 +77,12 @@ echo -n > ${LOGS}/rclone.log
 
 sudo chown -R $USER:$USER /mnt
 
+echo
+echo "${LYELLOW}Calling on Upgrade Service${STD}"
+echo
+
+source /opt/Gooby/scripts/cron/upgradeservice.sh
+
 # Start Rclone and MergerFS
 
 [[ ! -f "$TCONFIGS/plexclaim" ]] && echo "-" > $TCONFIGS/plexclaim
