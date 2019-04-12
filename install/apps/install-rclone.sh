@@ -59,6 +59,13 @@ else
 		read -e -p "Leave empty for root - not recommended! (ex: Media)  " -i "" RCLONEFOLDER
 		echo
 
+		cat $HOME/.config/rclone/rclone.conf | grep "[Local]" > /dev/null
+		if ! [[ ${?} -eq 0 ]]; then
+			echo [Local] >> $HOME/.config/rclone/rclone.conf
+			echo type = local >> $HOME/.config/rclone/rclone.conf
+			echo nounc = >> $HOME/.config/rclone/rclone.conf
+		fi
+
 		# Installing Services
 
 		RCLONESERVICE=${RCLONESERVICE#:}; echo $RCLONESERVICE > $CONFIGS/.config/rcloneservice
