@@ -72,7 +72,7 @@ else
 		sudo mkdir -p ${RCLONEMOUNT} ${MOUNTTO} ${UPLOADS} ${UNSYNCED}
 		sudo chown -R $USER:$USER $HOME $CONFIGS/.config $TCONFIGS ${RCLONEMOUNT} ${MOUNTTO} ${UPLOADS} ${UNSYNCED}
 
-		cat $HOME/.config/rclone/rclone.conf | grep "[Local]" > /dev/null
+		cat $HOME/.config/rclone/rclone.conf | grep "Local" > /dev/null
 		if ! [[ ${?} -eq 0 ]]; then
 			echo [Local] >> $HOME/.config/rclone/rclone.conf
 			echo type = local >> $HOME/.config/rclone/rclone.conf
