@@ -10,7 +10,7 @@
       - 80:80
       - 443:443
     volumes:
-      - /etc/nginx/vhost.d
+      - ${CONFIGS}/nginx/vhost.d:/etc/nginx/vhost.d
       - /usr/share/nginx/html
       - /var/run/docker.sock:/tmp/docker.sock:ro
       - ${CONFIGS}/Certs:/etc/nginx/certs
