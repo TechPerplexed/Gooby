@@ -16,7 +16,7 @@
     volumes:
       - /proc:/host/proc:ro
       - /sys:/host/sys:ro
-      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /var/run/docker.sock:/var/run/docker.sock:rw
       - /etc/localtime:/etc/localtime:ro
     environment:
       - PGID=999
