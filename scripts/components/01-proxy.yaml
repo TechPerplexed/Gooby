@@ -10,11 +10,11 @@
       - 80:80
       - 443:443
     volumes:
-      - ${CONFIGS}/nginx/vhost.d:/etc/nginx/vhost.d
+      - ${CONFIGS}/Docker/nginx/vhost.d:/etc/nginx/vhost.d
       - /usr/share/nginx/html
       - /var/run/docker.sock:/tmp/docker.sock:ro
-      - ${CONFIGS}/Certs:/etc/nginx/certs
-      - ${CONFIGS}/Security:/etc/nginx/htpasswd
+      - ${CONFIGS}/Docker/certs:/etc/nginx/certs
+      - ${CONFIGS}/Docker/security:/etc/nginx/htpasswd
     healthcheck:
       test: ["CMD-SHELL", "netstat -ntlp | grep :80"]
       interval: 10s
