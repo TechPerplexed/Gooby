@@ -52,7 +52,7 @@ else
 	echo Nothing to copy | tee -a ${LOG}
 fi
 
-# Cleanup letovers
+# Cleanup leftovers
 
 rm ${TEMPFILE}
 cd ${UPLOADS}
