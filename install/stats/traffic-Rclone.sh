@@ -1,6 +1,6 @@
 #!/bin/bash
 
-MENU="Check Environment"
+MENU="Rclone Traffic"
 
 source $CONFIGS/Docker/.env
 
@@ -42,7 +42,7 @@ show_menus() {
 	echo -n ' Checks completed  : '; printf "%'d\n" ${CHECK}
 	echo -n ' Deletes performed : '; printf "%'d\n" ${DEL}
 	echo -n ' Errors occurred   : '; printf "%'d\n" ${ERR}
-	echo 
+	echo
 	echo " ${LBLUE}Rclone Real Time${STD}"
 	echo -----------------------------------------
 	echo -n ' TurboSync jobs    : '; printf "%'d\n" ${QSIZE}
