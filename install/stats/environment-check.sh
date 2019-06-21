@@ -17,7 +17,7 @@ QUIT(){
 
 show_menus() {
 	clear
-	echo " ${CYAN}"
+	echo " ${LBLUE}"
 	MENUSTART
 	echo " Timezone: ${CYAN}$( cat /etc/timezone )${STD}"
 	echo " Your Domain: ${CYAN}$MYDOMAIN${STD}"
@@ -28,7 +28,7 @@ show_menus() {
 	echo " Gooby version: ${CYAN}$VERSION${STD}"
 	echo
 	echo " ${WHITE}Z${STD} - EXIT to Main Menu"
-	echo " ${CYAN}"
+	echo " ${LBLUE}"
 	MENUEND
 }
 
