@@ -1,6 +1,6 @@
 #!/bin/bash
 
-MENU="Check Environment"
+MENU="Installed Apps"
 
 source $CONFIGS/Docker/.env
 
