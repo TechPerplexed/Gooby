@@ -6,14 +6,14 @@ fi
 
 source /opt/Gooby/menus/variables.sh
 source $CONFIGS/Docker/.env
-BACKUP=/tmp/$(date +%F).tar.gz
+BACKUP=$(date +%F).tar.gz
 
 echo
 echo "${LMAGENTA}Creating backup file...${STD}"
 echo
 
-sudo tar -cf ${BACKUP} $CONFIGS --exclude-caches-all
-sudo chown $USER:$USER ${BACKUP}
+sudo tar -cf /tmp/${BACKUP} $CONFIGS --exclude-caches-all
+sudo chown $USER:$USER /tmp/${BACKUP}
 
 echo
 echo "${GREEN}Copying to Google...${STD}"
@@ -23,7 +23,4 @@ APILOG=$LOGS/api.log
 
 BYTES=$(find /tmp -name '${BACKUP}' -exec du -bc {} + | grep total$ | cut -f1 | awk '{ total += $1 }; END { print total }')
 echo $(date '+%F %H:%M:%S'),START,1,${BYTES} >> ${APILOG}
-/usr/bin/rclone copy ${BACKUP} $RCLONESERVICE:/Backup/$(hostname) --stats-one-line -P --checksum --drive-chunk-size=64M
-echo $(date '+%F %H:%M:%S'),STOP,1,${BYTES} >> ${APILOG}
-
-sudo rm ${BACKUP}
+/usr/bin/rclone rc operations/movefile _async=true srcFs=Local: srcRemote=/tmp/${BACKUP} dstFs=$RCLONESERVICE: dstRemote=/Backup/$(hostname)/${BACKUP} --user $RCLONEUSERNAME --pass $RCLONEPASSWORD > /dev/null
