@@ -17,12 +17,6 @@ AGE=2	# How many minutes old a file must be before copying/deleting
 LOG=${LOGS}/mounter-sync.log
 APILOG=${LOGS}/api.log
 
-# Conservative options (slower but safe)
-#OPTIONS="--stats-one-line -P --checkers 3 --fast-list --tpslimit 2 --delete-during --delete-excluded --checksum --transfers 5 --drive-chunk-size=16M -v"
-
-# Turbo options (faster but could interfere with processes)
-OPTIONS="--stats-one-line -P --checkers 5 --fast-list --tpslimit 5 --delete-during --delete-excluded --checksum --transfers 8 --drive-chunk-size=16M -v"
-
 TEMPFILE="/tmp/filesmissing"
 
 echo Starting sync at $(date) | tee -a ${LOG}
@@ -34,25 +28,31 @@ find ${UPLOADS}/ ! -path "*Downloads*" ! -iname "*.partial~" -type f -mmin -0 -e
 # Identify files needing to be copied
 
 find ${UPLOADS}/ ! -path "*Downloads*" ! -iname "*.partial~" -type f -mmin +${AGE} | sed 's|'${UPLOADS}'||' | sort > ${TEMPFILE}
-BYTES=$(find ${UPLOADS}/ ! -path "*Downloads*" ! -iname "*.partial~" -type f -mmin +${AGE} -exec du -bc {} + | grep total$ | cut -f1 | awk '{ total += $1 }; END { print total }')
 
 # Copy files
 
 if [[ -s ${TEMPFILE} ]]
 then
-	echo Copying files | tee -a ${LOG}
-	cat ${TEMPFILE} | tee -a ${LOG}
-	FILECOUNT=$(cat ${TEMPFILE} |wc -l)
-	echo Files to copy: ${FILECOUNT} | tee -a ${LOG}
-	echo Bytes to copy: ${BYTES} | tee -a ${LOG}
-	echo $(date '+%F %H:%M:%S'),START,${FILECOUNT},${BYTES} >> ${APILOG}
-	/usr/bin/rclone move ${UPLOADS} ${RCLONESERVICE}:${RCLONEFOLDER} --files-from ${TEMPFILE} ${OPTIONS}
-	echo $(date '+%F %H:%M:%S'),STOP,${FILECOUNT},${BYTES} >> ${APILOG}
+	while IFS= read -r FILE
+	do
+		rclone rc core/stats --user gooby --pass Go0by | jq '.transferring' | grep "${UPLOADS}${FILE}" > /dev/null
+		RUNCHECK=${?}
+		if [[ ${RUNCHECK} -gt 0 ]]
+		then
+			BYTES=$(du "${UPLOADS}${FILE}" | cut -f1)
+			BYTESH=$(du -h "${UPLOADS}${FILE}" | cut -f1)
+			echo $(date '+%F %H:%M:%S'),START,1,${BYTES} "# ${FILE}" >> ${APILOG}
+			echo Queuing ${FILE} of size ${BYTESH}
+			rclone rc operations/movefile _async=true srcFs=Local: srcRemote="${UPLOADS}${FILE}" dstFs=${RCLONESERVICE}:${RCLONEFOLDER} dstRemote="${FILE}" --user $RCLONEUSERNAME --pass $RCLONEPASSWORD > /dev/null
+		else
+			echo Skipping ${FILE}:  Already in queue
+		fi
+	done < ${TEMPFILE}
 else
 	echo Nothing to copy | tee -a ${LOG}
 fi
 
-# Cleanup leftovers
+# Cleanup letovers
 
 rm ${TEMPFILE}
 cd ${UPLOADS}
