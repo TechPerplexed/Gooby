@@ -34,7 +34,7 @@ show_menus() {
 	clear
 	echo " ${LBLUE}"
 	MENUSTART
-	echo " ${LBLUE}Rclone Since Startup${STD}"
+	echo " ${LBLUE}Transfers Since Reboot/Cleanup${STD}"
 	echo -----------------------------------------
 	echo ' Startup Time      : '${SDATE}
 	echo -n ' Data transferred  : '; printf "%'.2f" ${GIG} ; echo ' GB'
@@ -43,7 +43,7 @@ show_menus() {
 	echo -n ' Deletes performed : '; printf "%'d\n" ${DEL}
 	echo -n ' Errors occurred   : '; printf "%'d\n" ${ERR}
 	echo
-	echo " ${LBLUE}Rclone Real Time${STD}"
+	echo " ${LBLUE}Transfers Real Time${STD}"
 	echo -----------------------------------------
 	echo -n ' TurboSync jobs    : '; printf "%'d\n" ${QSIZE}
 	echo -n ' Files in motion   : '; printf "%'d\n" ${TRANSFERS}
