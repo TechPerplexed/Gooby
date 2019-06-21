@@ -17,8 +17,8 @@ CONTAINERS(){
 	source /opt/Gooby/install/stats/${TASK}-${PERFORM}.sh
 }
 
-RTRAFFIC(){
-	PERFORM="Rclone"
+VIEWTRAFFIC(){
+	PERFORM="view"
 	TASK="traffic"
 	source /opt/Gooby/install/stats/${TASK}-${PERFORM}.sh
 }
@@ -35,7 +35,7 @@ show_menus() {
 	MENUSTART
 	echo " ${LBLUE}A${STD} - Check Environment"
 	echo " ${LBLUE}B${STD} - Installed Apps (Containers)"
-	echo " ${LBLUE}C${STD} - Rclone Traffic"
+	echo " ${LBLUE}C${STD} - View Rclone Traffic"
 	echo " ${WHITE}Z${STD} - EXIT to Main Menu"
 	echo " ${LBLUE}"
 	MENUEND
@@ -49,7 +49,7 @@ read_options(){
 	case $choice in
 		[Aa]) CHECKENV ;;
 		[Bb]) CONTAINERS ;;
-		[Cc]) RTRAFFIC ;;
+		[Cc]) VIEWTRAFFIC ;;
 		[Zz]) QUIT ;;
 		*) echo "${LRED}Please select a valid option${STD}" && sleep 2
 	esac
