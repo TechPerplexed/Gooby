@@ -24,7 +24,7 @@ show_menus() {
 	echo " Your Email Address: ${CYAN}$MYEMAIL${STD}"
 	echo " Your Server IP Address: ${CYAN}$IP${STD}"
 	echo " In app media location: ${CYAN}/Media${STD}"
-	echo " In app download location: ${CYAN}/Downloads${STD}"
+	echo " In app download location: ${CYAN}/Media/Downloads${STD}"
 	echo " Gooby version: ${CYAN}$VERSION${STD}"
 	echo
 	echo " ${WHITE}Z${STD} - EXIT to Main Menu"
