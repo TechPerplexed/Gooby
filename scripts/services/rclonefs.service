@@ -22,8 +22,8 @@ ExecStart=/usr/bin/rclone mount \
 	--log-level INFO \
 	--log-file ${HOMEDIR}/logs/rclone.log \
 	--rc \
-	--rc-pass Go0by \
-	--rc-user gooby \
+	--rc-pass $RCLONEPASSWORD \
+	--rc-user $RCLONEUSERNAME \
 	--timeout 1h \
 	--transfers 12 \
 	--tpslimit 10 \
