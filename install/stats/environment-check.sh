@@ -19,6 +19,7 @@ show_menus() {
 	clear
 	echo " ${LBLUE}"
 	MENUSTART
+	echo -n " OS version: ${LBLUE}" ; lsb_release -ds 2>/dev/null || cat /etc/*release 2>/dev/null | head -n1 || uname -om ; echo -n "${STD}" ; echo -n "${STD}"
 	echo " Timezone: ${LBLUE}$( cat /etc/timezone )${STD}"
 	echo " Your Domain: ${LBLUE}$MYDOMAIN${STD}"
 	echo " Your Email Address: ${LBLUE}$MYEMAIL${STD}"
