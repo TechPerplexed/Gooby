@@ -21,30 +21,14 @@ fi
 
 # Upgrade Rclone service 
 
-cat /etc/systemd/system/rclone.service | grep "RCLONEUSERNAME" > /dev/null
+cat /etc/systemd/system/rclonefs.service | grep "pass" > /dev/null
 if ! [[ ${?} -eq 0 ]]; then
 	sudo mv /etc/systemd/system/rclone* /tmp
 	sudo rsync -a /opt/Gooby/scripts/services/rclonefs* /etc/systemd/system/
 	sudo sed -i "s/GOOBYUSER/${USER}/g" /etc/systemd/system/rclonefs.service
 fi
 
-cat $HOME/.config/rclone/rclone.conf | grep "[Local]" > /dev/null
-if ! [[ ${?} -eq 0 ]]; then
-	echo [Local] >> $HOME/.config/rclone/rclone.conf
-	echo type = local >> $HOME/.config/rclone/rclone.conf
-	echo nounc = >> $HOME/.config/rclone/rclone.conf
-fi
-
-# Upgrade Rclone service 
-
-cat /etc/systemd/system/rclone.service | grep "RCLONEUSERNAME" > /dev/null
-if ! [[ ${?} -eq 0 ]]; then
-	sudo mv /etc/systemd/system/rclone* /tmp
-	sudo rsync -a /opt/Gooby/scripts/services/rclonefs* /etc/systemd/system/
-	sudo sed -i "s/GOOBYUSER/${USER}/g" /etc/systemd/system/rclonefs.service
-fi
-
-cat $HOME/.config/rclone/rclone.conf | grep "[Local]" > /dev/null
+cat $HOME/.config/rclone/rclone.conf | grep "Local" > /dev/null
 if ! [[ ${?} -eq 0 ]]; then
 	echo [Local] >> $HOME/.config/rclone/rclone.conf
 	echo type = local >> $HOME/.config/rclone/rclone.conf
@@ -52,4 +36,3 @@ if ! [[ ${?} -eq 0 ]]; then
 fi
 
 sudo systemctl daemon-reload
-
