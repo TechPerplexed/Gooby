@@ -5,10 +5,8 @@ sudo apt-get update
 APPLIST="acl apt-transport-https ca-certificates curl fail2ban fuse git gpg-agent grsync jq mergerfs nano rsyncufw socat unzip wget"
 
 for i in $APPLIST; do
-	echo Installing $i...
-	echo
+	echo Checking $i...
 	sudo apt-get -y install $i
-	echo; sleep 2
 done
 
 # Moving all Proxy folders to Docker
