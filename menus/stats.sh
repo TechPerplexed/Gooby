@@ -35,7 +35,7 @@ show_menus() {
 	MENUSTART
 	echo " ${LBLUE}A${STD} - Check Environment"
 	echo " ${LBLUE}B${STD} - Installed Apps (Containers)"
-	echo " ${LBLUE}C${STD} - View Rclone Traffic"
+	echo " ${LBLUE}C${STD} - View Rclone Activity"
 	echo " ${WHITE}Z${STD} - EXIT to Main Menu"
 	echo " ${LBLUE}"
 	MENUEND
