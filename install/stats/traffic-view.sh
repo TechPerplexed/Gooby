@@ -45,7 +45,7 @@ show_menus() {
 	echo
 	echo " ${LBLUE}Transfers Real Time${STD}"
 	echo -----------------------------------------
-	echo -n ' TurboSync jobs    : '; printf "%'d\n" ${QSIZE}
+	echo -n ' Rclone Sync jobs  : '; printf "%'d\n" ${QSIZE}
 	echo -n ' Files in motion   : '; printf "%'d\n" ${TRANSFERS}
 	echo -n ' Size of files     : '; printf "%'.2f" ${SIZE}; echo ' GB'
 	echo -n ' Current speed     : '; printf "%'.2f" ${SPEED}; echo ' MB/sec'
