@@ -1,6 +1,6 @@
 #!/bin/bash
 
-MENU="View Rclone Traffic"
+MENU="Rclone Activity"
 
 source $CONFIGS/Docker/.env
 
