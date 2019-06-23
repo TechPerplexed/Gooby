@@ -13,7 +13,9 @@ if [[ ${VERSION:0:3} != "2.2" ]] then
 		sudo apt-get -y install $i
 	done
 
-	# Moving all Proxy folders to Docker
+	# Update Proxy
+
+	sudo rsync -a /opt/Gooby/scripts/components/{00-AAA.yaml,01-proxy.yaml} $CONFIGS/Docker/components
 
 	if [ -d $CONFIGS/Security ]; then
 		sudo mv $CONFIGS/Certs $CONFIGS/Docker
