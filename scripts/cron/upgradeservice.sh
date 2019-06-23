@@ -1,6 +1,6 @@
-# Version check
+#!/bin/bash
 
-if [[ ${VERSION:0:3} != "2.2" ]] then
+if [[ ${VERSION:0:3} != "2.2" ]]; then
 
 	# Check if necessary apps are installed
 
