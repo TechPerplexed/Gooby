@@ -2,7 +2,7 @@
 
 if [[ ${VERSION:0:3} != "2.2" ]]; then
 
-	echo "${LYELLOW}Upgrading...${STD}"
+	echo "${LYELLOW}Upgrading...${STD}"; echo; sleep 2
 
 	# Check if necessary apps are installed
 
@@ -47,6 +47,6 @@ if [[ ${VERSION:0:3} != "2.2" ]]; then
 
 else
 
-	echo "${GREEN}Your system has already been upgraded... prodeeding${STD}"
+	echo "${GREEN}Your system has already been upgraded... prodeeding${STD}"; echo
 
 fi
