@@ -25,8 +25,6 @@ if [ -d /opt/.Gooby ]; then
 	sudo chmod 755 /bin/gooby
 fi
 
-sudo rsync -a /opt/Gooby/scripts/components/{00-AAA.yaml,01-proxy.yaml} $CONFIGS/Docker/components
-
 echo
 echo "${LYELLOW}Shutting everything down${STD}"
 echo
