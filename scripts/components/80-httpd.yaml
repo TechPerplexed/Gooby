@@ -22,8 +22,3 @@
       - TZ=${TIMEZONE}
       - LETSENCRYPT_HOST=web.${MYDOMAIN}
       - LETSENCRYPT_EMAIL=${MYEMAIL}
-    healthcheck:
-      test: ["CMD-SHELL", "netstat -ntlp | grep :80"]
-      interval: 10s
-      timeout: 2s
-      retries: 3
