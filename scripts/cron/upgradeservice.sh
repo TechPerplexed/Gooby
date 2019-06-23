@@ -2,6 +2,8 @@
 
 if [[ ${VERSION:0:3} != "2.2" ]]; then
 
+	echo "${LYELLOW}Upgrading...${STD}"
+
 	# Check if necessary apps are installed
 
 	sudo apt-get update
@@ -42,5 +44,9 @@ if [[ ${VERSION:0:3} != "2.2" ]]; then
 	fi
 
 	sudo systemctl daemon-reload
+
+else
+
+	echo "${GREEN}Your system has already been upgraded... prodeeding${STD}"
 
 fi
