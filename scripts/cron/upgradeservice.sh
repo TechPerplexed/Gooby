@@ -1,38 +1,44 @@
-# Check if necessary apps are installed
+# Version check
 
-sudo apt-get update
+if [[ ${VERSION:0:3} != "2.2" ]] then
 
-APPLIST="acl apt-transport-https ca-certificates curl fail2ban fuse git gpg-agent grsync jq mergerfs nano rsyncufw socat unzip wget"
+	# Check if necessary apps are installed
 
-for i in $APPLIST; do
-	echo Checking $i...
-	sudo apt-get -y install $i
-done
+	sudo apt-get update
 
-# Moving all Proxy folders to Docker
+	APPLIST="acl apt-transport-https ca-certificates curl fail2ban fuse git gpg-agent grsync jq mergerfs nano rsyncufw socat unzip wget"
 
-if [ -d $CONFIGS/Security ]; then
-	sudo mv /$CONFIGS/Certs $CONFIGS/Docker
-	sudo mv $CONFIGS/Docker/Certs $CONFIGS/Docker/certs
-	sudo mv /$CONFIGS/nginx $CONFIGS/Docker
-	sudo mv /$CONFIGS/Security $CONFIGS/Docker
-	sudo mv $CONFIGS/Docker/Security $CONFIGS/Docker/security
+	for i in $APPLIST; do
+		echo Checking $i...
+		sudo apt-get -y install $i
+	done
+
+	# Moving all Proxy folders to Docker
+
+	if [ -d $CONFIGS/Security ]; then
+		sudo mv $CONFIGS/Certs $CONFIGS/Docker
+		sudo mv $CONFIGS/Docker/Certs $CONFIGS/Docker/certs
+		sudo mv $CONFIGS/nginx $CONFIGS/Docker
+		sudo mv $CONFIGS/Security $CONFIGS/Docker
+		sudo mv $CONFIGS/Docker/Security $CONFIGS/Docker/security
+	fi
+
+	# Upgrade Rclone service 
+
+	cat /etc/systemd/system/rclonefs.service | grep "pass" > /dev/null
+	if ! [[ ${?} -eq 0 ]]; then
+		sudo mv /etc/systemd/system/rclone* /tmp
+		sudo rsync -a /opt/Gooby/scripts/services/rclonefs* /etc/systemd/system/
+		sudo sed -i "s/GOOBYUSER/${USER}/g" /etc/systemd/system/rclonefs.service
+	fi
+
+	cat $HOME/.config/rclone/rclone.conf | grep "Local" > /dev/null
+	if ! [[ ${?} -eq 0 ]]; then
+		echo [Local] >> $HOME/.config/rclone/rclone.conf
+		echo type = local >> $HOME/.config/rclone/rclone.conf
+		echo nounc = >> $HOME/.config/rclone/rclone.conf
+	fi
+
+	sudo systemctl daemon-reload
+
 fi
-
-# Upgrade Rclone service 
-
-cat /etc/systemd/system/rclonefs.service | grep "pass" > /dev/null
-if ! [[ ${?} -eq 0 ]]; then
-	sudo mv /etc/systemd/system/rclone* /tmp
-	sudo rsync -a /opt/Gooby/scripts/services/rclonefs* /etc/systemd/system/
-	sudo sed -i "s/GOOBYUSER/${USER}/g" /etc/systemd/system/rclonefs.service
-fi
-
-cat $HOME/.config/rclone/rclone.conf | grep "Local" > /dev/null
-if ! [[ ${?} -eq 0 ]]; then
-	echo [Local] >> $HOME/.config/rclone/rclone.conf
-	echo type = local >> $HOME/.config/rclone/rclone.conf
-	echo nounc = >> $HOME/.config/rclone/rclone.conf
-fi
-
-sudo systemctl daemon-reload
