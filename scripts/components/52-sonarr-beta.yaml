@@ -3,7 +3,7 @@
 #
   sonarr:
     restart: unless-stopped
-    image: lsiodev/sonarr-preview
+    image: linuxserver:sonarr:preview
     container_name: sonarr
     hostname: sonarr
     cpu_shares: 2048
