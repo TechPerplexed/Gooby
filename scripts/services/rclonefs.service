@@ -1,5 +1,5 @@
 [Unit]
-Description=Mount Google Drive (rclone)
+Description=Mount Google Drive (Rclone)
 After=syslog.target local-fs.target network.target
 
 [Service]
@@ -11,24 +11,18 @@ Group=GOOBYUSER
 ExecStartPre=/bin/mkdir -p ${RCLONEMOUNT}
 ExecStart=/usr/bin/rclone mount \
 	--allow-other \
-	--checkers 12 \
-	--checksum \
-	--delete-during \
-	--delete-excluded \
+	--buffer-size 1G \
 	--dir-cache-time 96h \
-	--drive-chunk-size 32M \
-	--fast-list \
 	--gid ${USERID} \
 	--log-level INFO \
 	--log-file ${HOMEDIR}/logs/rclone.log \
+	--timeout 1h \
+	--uid ${GROUPID} \
+	--umask 002 \
+	--user-agent $RCLONEUSERNAME_GOOBYUSER \
 	--rc \
 	--rc-pass $RCLONEPASSWORD \
 	--rc-user $RCLONEUSERNAME \
-	--timeout 1h \
-	--transfers 12 \
-	--tpslimit 10 \
-	--uid ${GROUPID} \
-	--umask 002 \
 	--config ${HOMEDIR}/.config/rclone/rclone.conf \
 	${RCLONESERVICE}:${RCLONEFOLDER} ${RCLONEMOUNT}
 ExecStop=/bin/fusermount -uz ${RCLONEMOUNT}
