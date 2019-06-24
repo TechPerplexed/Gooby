@@ -1,6 +1,6 @@
 [Unit]
 Description=MergerFS overlay writable storage and local mount
-After=syslog.target local-fs.target network.target rclone.service
+After=syslog.target local-fs.target network.target rclonefs.service
 
 [Service]
 Type=forking
