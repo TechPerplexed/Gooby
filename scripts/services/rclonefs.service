@@ -19,7 +19,7 @@ ExecStart=/usr/bin/rclone mount \
 	--timeout 1h \
 	--uid ${GROUPID} \
 	--umask 002 \
-	--user-agent $RCLONEUSERNAME_GOOBYUSER \
+	--user-agent GOOBYUSER \
 	--rc \
 	--rc-pass $RCLONEPASSWORD \
 	--rc-user $RCLONEUSERNAME \
