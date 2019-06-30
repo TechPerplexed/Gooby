@@ -5,15 +5,15 @@ source /opt/Gooby/menus/variables.sh
 
 # Menu Options
 
-BACKUP(){
-	PERFORM="create"
-	TASK="backup"
+GOOBY(){
+	PERFORM="update"
+	TASK="Gooby"
 	source /opt/Gooby/install/misc/${TASK}-${PERFORM}.sh
 }
 
-RESTORE(){
-	PERFORM="restore"
-	TASK="backup"
+UPLOAD(){
+	PERFORM="trigger"
+	TASK="upload"
 	source /opt/Gooby/install/misc/${TASK}-${PERFORM}.sh
 }
 
@@ -23,9 +23,15 @@ RCLEAN(){
 	source /opt/Gooby/install/misc/${TASK}-${PERFORM}.sh
 }
 
-GOOBY(){
-	PERFORM="update"
-	TASK="Gooby"
+BACKUP(){
+	PERFORM="create"
+	TASK="backup"
+	source /opt/Gooby/install/misc/${TASK}-${PERFORM}.sh
+}
+
+RESTORE(){
+	PERFORM="restore"
+	TASK="backup"
 	source /opt/Gooby/install/misc/${TASK}-${PERFORM}.sh
 }
 
@@ -39,10 +45,11 @@ show_menus() {
 	clear
 	echo " ${CYAN}"
 	MENUSTART
-	echo " ${CYAN}A${STD} - Create Backup"
-	echo " ${CYAN}B${STD} - Restore Backup"
+	echo " ${CYAN}A${STD} - Update Gooby"
+	echo " ${CYAN}B${STD} - Trigger Uploading"
 	echo " ${CYAN}C${STD} - System Cleanup"
-	echo " ${CYAN}D${STD} - Update Gooby"	
+	echo " ${CYAN}D${STD} - Create Backup"
+	echo " ${CYAN}E${STD} - Restore Backup"
 	echo " ${WHITE}Z${STD} - EXIT to Main Menu"
 	echo " ${CYAN}"
 	MENUEND
@@ -54,10 +61,11 @@ read_options(){
 	local choice
 	read -n 1 -s -r -p "Choose option: " choice
 	case $choice in
-		[Aa]) BACKUP ;;
-		[Bb]) RESTORE ;;
+		[Aa]) GOOBY ;;
+		[Bb]) UPLOAD ;;
 		[Cc]) RCLEAN ;;
-		[Dd]) GOOBY ;;
+		[Dd]) BACKUP ;;
+		[Ee]) RESTORE ;;
 		[Zz]) QUIT ;;
 		*) echo "${LRED}Please select a valid option${STD}" && sleep 2
 	esac
