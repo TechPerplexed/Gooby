@@ -44,6 +44,7 @@ then
 			echo $(date '+%F %H:%M:%S'),START,1,${BYTES} "# ${FILE}" >> ${APILOG}
 			echo Queuing ${FILE} of size ${BYTESH}
 			rclone rc operations/movefile _async=true srcFs=Local: srcRemote="${UPLOADS}${FILE}" dstFs=${RCLONESERVICE}:${RCLONEFOLDER} dstRemote="${FILE}" --user $RCLONEUSERNAME --pass $RCLONEPASSWORD > /dev/null
+			echo "Sleeping 1 second - temp fix for duplicate folders" ; sleep 1
 		else
 			echo Skipping ${FILE}:  Already in queue
 		fi
