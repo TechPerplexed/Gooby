@@ -1,0 +1,3 @@
+#!/bin/bash
+
+/opt/Gooby/scripts/cron/rclean.sh
