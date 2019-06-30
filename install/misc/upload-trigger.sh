@@ -12,7 +12,7 @@ if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 	echo "${GREEN}This will manually trigger your upload process (runs every 15 minutes regardless)${STD}"
 	echo
 
-	Gooby/scripts/cron/syncmount.sh
+	source /opt/Gooby/scripts/cron/syncmount.sh
 
 	TASKCOMPLETE
 
