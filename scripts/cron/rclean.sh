@@ -24,7 +24,8 @@ if [ -d /opt/.Gooby ]; then
 	sudo rsync -a /opt/Gooby/scripts/bin/* /bin
 	sudo chmod 755 /bin/gooby
 	sudo chmod 755 /bin/rclean
-	sudo chmod 755 /bin/rclean
+	sudo chmod 755 /bin/rstats
+	sudo chmod 755 /bin/syncmount
 fi
 
 echo
