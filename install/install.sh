@@ -48,6 +48,7 @@ if [ -d /opt/.Gooby ]; then
 	sudo chmod 755 /bin/gooby
 	sudo chmod 755 /bin/rclean
 	sudo chmod 755 /bin/rstats
+	sudo chmod 755 /bin/syncmount
 fi
 
 source /opt/Gooby/menus/variables.sh
