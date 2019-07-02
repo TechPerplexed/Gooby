@@ -16,7 +16,6 @@ source $CONFIGS/Docker/.env
 AGE=2	# How many minutes old a file must be before copying/deleting
 LOG=${LOGS}/mounter-sync.log
 APILOG=${LOGS}/api.log
-
 TEMPFILE="/tmp/filesmissing"
 
 echo Starting sync at $(date) | tee -a ${LOG}
@@ -43,11 +42,11 @@ then
 			echo $(date '+%F %H:%M:%S'),START,1,${BYTES} "# ${FILE}" >> ${APILOG}
 			echo Queuing ${FILE} of size ${BYTESH}
 	                ## Fix for Rclone RC creating multiple directories
-			# if [[ ! -d "${RCLONEMOUNT}$(dirname ${FILE})" ]]; then
-			#	mkdir -p "${RCLONEMOUNT}$(dirname ${FILE})"
-			#fi
+			if [[ ! -d "${RCLONEMOUNT}${RCLONEFOLDER}$(dirname ${FILE})" ]]; then
+				mkdir -p "${RCLONEMOUNT}${RCLONEFOLDER}$(dirname ${FILE})"
+			fi
 			rclone rc operations/movefile _async=true srcFs=Local: srcRemote="${UPLOADS}${FILE}" dstFs=${RCLONESERVICE}:${RCLONEFOLDER} dstRemote="${FILE}" --user $RCLONEUSERNAME --pass $RCLONEPASSWORD > /dev/null
-			echo "Sleeping 1 second - temp fix for duplicate folders" ; sleep 1
+			# echo "Sleeping 1 second - temp fix for duplicate folders" ; sleep 1
 		else
 			echo Skipping ${FILE}:  Already in queue
 		fi
