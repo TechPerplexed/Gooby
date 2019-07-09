@@ -11,9 +11,9 @@ GOOBY(){
 	source /opt/Gooby/install/misc/${TASK}-${PERFORM}.sh
 }
 
-CHECKENV(){
-	PERFORM="check"
-	TASK="environment"
+UPLOAD(){
+	PERFORM="trigger"
+	TASK="upload"
 	source /opt/Gooby/install/misc/${TASK}-${PERFORM}.sh
 }
 
@@ -46,7 +46,7 @@ show_menus() {
 	echo " ${CYAN}"
 	MENUSTART
 	echo " ${CYAN}A${STD} - Update Gooby"
-	echo " ${CYAN}B${STD} - Check Environment"
+	echo " ${CYAN}B${STD} - Trigger Uploading"
 	echo " ${CYAN}C${STD} - System Cleanup"
 	echo " ${CYAN}D${STD} - Create Backup"
 	echo " ${CYAN}E${STD} - Restore Backup"
@@ -62,7 +62,7 @@ read_options(){
 	read -n 1 -s -r -p "Choose option: " choice
 	case $choice in
 		[Aa]) GOOBY ;;
-		[Bb]) CHECKENV ;;
+		[Bb]) UPLOAD ;;
 		[Cc]) RCLEAN ;;
 		[Dd]) BACKUP ;;
 		[Ee]) RESTORE ;;

@@ -44,8 +44,11 @@ if [ -d /opt/.Gooby ]; then
 	sudo chmod +x -R /opt/Gooby/menus
 	sudo chmod +x -R /opt/Gooby/scripts/bin
 	sudo chmod +x -R /opt/Gooby/scripts/cron
-	sudo rsync -a /opt/Gooby/scripts/bin/gooby /bin
+	sudo rsync -a /opt/Gooby/scripts/bin/* /bin
 	sudo chmod 755 /bin/gooby
+	sudo chmod 755 /bin/rclean
+	sudo chmod 755 /bin/rstats
+	sudo chmod 755 /bin/syncmount
 fi
 
 source /opt/Gooby/menus/variables.sh

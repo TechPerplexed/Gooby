@@ -25,6 +25,10 @@ misc(){
 	/opt/Gooby/menus/misc.sh
 }
 
+stats(){
+	/opt/Gooby/menus/stats.sh
+}
+
 quit(){
 	MENUVISIT
 	exit
@@ -41,6 +45,7 @@ show_menus() {
 	echo " ${GREEN}C${STD} - Download Applications"
 	echo " ${GREEN}D${STD} - Other Applications"
 	echo " ${GREEN}E${STD} - Additional Tasks"
+	echo " ${GREEN}F${STD} - Various Statistics"
 	echo " ${LRED}Q${STD} - QUIT $FUNCTION"
 	echo " ${GREEN}"
 	MENUEND
@@ -57,6 +62,7 @@ read_options(){
 		[Cc]) download ;;
 		[Dd]) other ;;
 		[Ee]) misc ;;
+		[Ff]) stats ;;
 		[Qq]) quit ;;
 		*) echo "${LRED}Please select a valid option${STD}" && sleep 2
 	esac

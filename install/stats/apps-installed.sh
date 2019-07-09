@@ -1,6 +1,6 @@
 #!/bin/bash
 
-MENU="Check Environment"
+MENU="Installed Apps"
 
 source $CONFIGS/Docker/.env
 
@@ -17,18 +17,12 @@ QUIT(){
 
 show_menus() {
 	clear
-	echo " ${CYAN}"
+	echo " ${LBLUE}"
 	MENUSTART
-	echo " Timezone: ${CYAN}$( cat /etc/timezone )${STD}"
-	echo " Your Domain: ${CYAN}$MYDOMAIN${STD}"
-	echo " Your Email Address: ${CYAN}$MYEMAIL${STD}"
-	echo " Your Server IP Address: ${CYAN}$IP${STD}"
-	echo " In app media location: ${CYAN}/Media${STD}"
-	echo " In app download location: ${CYAN}/Downloads${STD}"
-	echo " Gooby version: ${CYAN}$VERSION${STD}"
+	docker ps -a --format "table {{.Status}}\t: ${LBLUE}{{.Names}}${STD}" | sort
 	echo
 	echo " ${WHITE}Z${STD} - EXIT to Main Menu"
-	echo " ${CYAN}"
+	echo " ${LBLUE}"
 	MENUEND
 }
 
