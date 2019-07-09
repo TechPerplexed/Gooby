@@ -30,7 +30,7 @@ else
 
 		which mergerfs > $TCONFIGS/mergerfs
 		if [ ! -s $TCONFIGS/mergerfs ]; then
-			sudo wget https://github.com/trapexit/mergerfs/releases/download/2.24.2/mergerfs_2.24.2.ubuntu-xenial_amd64.deb -O /tmp/mergerfs.deb
+			sudo wget https://github.com/trapexit/mergerfs/releases/download/2.28.1/mergerfs_2.28.1.ubuntu-xenial_amd64.deb -O /tmp/mergerfs.deb
 			sudo dpkg -i /tmp/mergerfs.deb
 		fi
 		rm /$TCONFIGS/mergerfs
