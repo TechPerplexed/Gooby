@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [[ ${VERSION:0:3} != "2.2" ]]; then
+if [ ! -s $TCONFIGS/upgrade ]; then
 
 	echo "${LYELLOW}Upgrading...${STD}"; echo; sleep 2
 
@@ -50,3 +50,5 @@ else
 	echo "${GREEN}Your system has already been upgraded... prodeeding${STD}"; echo
 
 fi
+
+echo v2 > $TCONFIGS/upgrade
