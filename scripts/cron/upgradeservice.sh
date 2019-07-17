@@ -8,7 +8,7 @@ if [ ! -s $TCONFIGS/upgrade ]; then
 
 	sudo apt-get update
 
-	APPLIST="acl apt-transport-https ca-certificates curl fail2ban fuse git gpg-agent grsync jq mergerfs nano rsyncufw socat unzip wget"
+	APPLIST="acl apt-transport-https ca-certificates curl fuse git gpg-agent grsync jq mergerfs nano rsyncufw socat sqlite3 unzip wget"
 
 	for i in $APPLIST; do
 		echo Checking $i...
