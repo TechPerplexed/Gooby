@@ -23,6 +23,7 @@ if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 		sudo chmod 755 /bin/rclean
 		sudo chmod 755 /bin/rstats
 		sudo chmod 755 /bin/syncmount
+		sudo chmod 755 /bin/plexstats
 	fi
 
 	clear
