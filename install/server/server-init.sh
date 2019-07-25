@@ -23,8 +23,8 @@ sleep 10
 
 source /opt/Gooby/install/server/docker-install.sh
 
-sudo mkdir -p $CONFIGS/.config $CONFIGS/Docker/components $TCONFIGS 
-sudo chown -R $USER:$USER $CONFIGS $TCONFIGS
+sudo mkdir -p $CONFIGS/.config $CONFIGS/Docker/components 
+sudo chown -R $USER:$USER $CONFIGS
 
 echo "$MYDOMAIN" > $CONFIGS/.config/mydomain
 echo "$MYEMAIL" > $CONFIGS/.config/myemail
@@ -38,7 +38,7 @@ cd $CONFIGS/Docker
 /usr/local/bin/docker-compose up --remove-orphans --build -d
 cd "${CURDIR}"
 
-sudo chown -R $USER:$USER $CONFIGS $TCONFIGS $HOME
+sudo chown -R $USER:$USER $CONFIGS $HOME
 
 # Add rlean to bootup cron
 
