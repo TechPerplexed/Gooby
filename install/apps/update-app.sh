@@ -1,9 +1,9 @@
 #!/bin/bash
 
-docker ps -q -f name=$APP > $TCONFIGS/checkapp
+docker ps -q -f name=$APP > $CONFIGS/.config/checkapp
 clear
 
-if [ ! -s $TCONFIGS/checkapp ]; then
+if [ ! -s $CONFIGS/.config/checkapp ]; then
 
 	NOTINSTALLED
 
@@ -32,5 +32,5 @@ else
 
 fi
 
-rm $TCONFIGS/checkapp
+rm $CONFIGS/.config/checkapp
 PAUSE
