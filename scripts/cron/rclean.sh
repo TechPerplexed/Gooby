@@ -44,10 +44,10 @@ echo
 echo "${LYELLOW}Updating Rclone if possible${STD}"
 echo
 
-touch $TCONFIGS/rclonev
-if [ $( cat $TCONFIGS/rclonev ) = "Stable" ]; then
+touch $CONFIGS/.config/rclonev
+if [ $( cat $CONFIGS/.config/rclonev ) = "Stable" ]; then
 	curl https://rclone.org/install.sh | sudo bash
-elif [ $( cat $TCONFIGS/rclonev ) = "Beta" ]; then
+elif [ $( cat $CONFIGS/.config/rclonev ) = "Beta" ]; then
 	curl https://rclone.org/install.sh | sudo bash -s beta
 fi
 
@@ -87,7 +87,7 @@ source /opt/Gooby/scripts/cron/upgradeservice.sh
 
 # Start Rclone and MergerFS
 
-[[ ! -f "$TCONFIGS/plexclaim" ]] && echo "-" > $TCONFIGS/plexclaim
+[[ ! -f "$CONFIGS/.config/plexclaim" ]] && echo "-" > $CONFIGS/.config/plexclaim
 source /opt/Gooby/install/misc/environment-build.sh rebuild
 
 sudo systemctl start rclonefs
@@ -144,4 +144,4 @@ echo
 echo "${LYELLOW}Restoring permissions... this could take a few minutes${STD}"
 echo
 
-sudo chown -R $USER:$USER $HOME $CONFIGS/Docker $TCONFIGS /tmp
+sudo chown -R $USER:$USER $HOME $CONFIGS/.config $CONFIGS/Docker /tmp
