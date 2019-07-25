@@ -1,19 +1,8 @@
 #!/bin/bash
 
-if [ ! -s $TCONFIGS/upgrade ]; then
+if [ ! -s $CONFIGS/.config/upgrade ]; then
 
-	echo "${LYELLOW}Upgrading...${STD}"; echo; sleep 2
-
-	# Check if necessary apps are installed
-
-	sudo apt-get update
-
-	APPLIST="acl apt-transport-https ca-certificates curl fuse git gpg-agent grsync jq mergerfs nano rsyncufw socat sqlite3 unzip wget"
-
-	for i in $APPLIST; do
-		echo Checking $i...
-		sudo apt-get -y install $i
-	done
+	echo "${LYELLOW}Upgrading to v2.0.0 ...${STD}"; echo; sleep 2
 
 	# Update Proxy
 
@@ -45,10 +34,29 @@ if [ ! -s $TCONFIGS/upgrade ]; then
 
 	sudo systemctl daemon-reload
 
+elif [ $( cat $CONFIGS/.config/upgrade ) = "v2" ]; then
+
+	echo "${LYELLOW}Upgrading to v2.2.1 ...${STD}"; echo; sleep 2
+
+	# Check if necessary apps are installed
+
+	sudo apt-get update
+
+	APPLIST="acl apt-transport-https ca-certificates curl fuse git gpg-agent grsync jq mergerfs nano pigz rsyncufw socat sqlite3 unzip wget"
+
+	for i in $APPLIST; do
+		echo Checking $i...
+		sudo apt-get -y install $i
+	done
+
+	# Update Configs
+
+	sudo mv /var/local/.Gooby/* $CONFIGS/.config
+
 else
 
 	echo "${GREEN}Your system has already been upgraded... prodeeding${STD}"; echo
 
 fi
 
-echo v2 > $TCONFIGS/upgrade
+echo v221 > $CONFIGS/.config/upgrade
