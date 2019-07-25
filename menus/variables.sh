@@ -2,7 +2,6 @@
 
 VERSION="2.2.0"
 CONFIGS=/var/local/Gooby
-TCONFIGS=/var/local/.Gooby
 CURDIR=$(pwd)
 
 # Define colors
@@ -108,8 +107,8 @@ EXPLAINTASK(){
 
 EXPLAINAPP(){
 	clear
-	which rclone > $TCONFIGS/checkapp
-	if [ ! -s $TCONFIGS/checkapp ]; then
+	which rclone > $CONFIGS/.config/checkapp
+	if [ ! -s $CONFIGS/.config/checkapp ]; then
 		echo "${LRED}"
 		echo "--------------------------------------------------"
 		echo " WARNING! Rclone is not installed yet."
