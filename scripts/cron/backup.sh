@@ -30,6 +30,8 @@ echo Creating backup
 sudo crontab -u ${USER} -l > /home/${USER}/backup/cron
 echo -n "/tmp/${SERVER}-backup.tar.gz --> "
 sudo tar -cpf /tmp/${SERVER}-backup.tar.gz \
+	--use-compress-program=pigz \
+	--exclude=.cache \
 	--exclude=/home/${USER}/Downloads \
 	/home/${USER} > /dev/null 2>&1
 sudo chown ${USERID}:${GROUPID} /tmp/${SERVER}-*.tar.gz
@@ -60,6 +62,7 @@ do
 		fi
 		sudo tar --listed-incremental "${SNAPSHOTS}/${FILENAME}.snar" \
 			-cpf "/tmp/${FILENAME2}.tar.gz" \
+			--use-compress-program=pigz \
 			--exclude=.cache \
 			"${FILENAME}" > /dev/null 2>&1
 		sudo chown ${USERID}:${GROUPID} "/tmp/${FILENAME2}.tar.gz" "${SNAPSHOTS}/${FILENAME}.snar"
