@@ -1,10 +1,10 @@
 #!/bin/bash
 
 source $CONFIGS/Docker/.env
-which rclone > $TCONFIGS/checkapp
+which rclone > $CONFIGS/.config/checkapp
 clear
 
-if [ -s $TCONFIGS/checkapp ]; then
+if [ -s $CONFIGS/.config/checkapp ]; then
 
 	ALREADYINSTALLED
 
@@ -28,12 +28,12 @@ else
 
 		# Install MergerFS
 
-		which mergerfs > $TCONFIGS/mergerfs
-		if [ ! -s $TCONFIGS/mergerfs ]; then
+		which mergerfs > $CONFIGS/.config/mergerfs
+		if [ ! -s $CONFIGS/.config/mergerfs ]; then
 			sudo wget https://github.com/trapexit/mergerfs/releases/download/2.28.1/mergerfs_2.28.1.ubuntu-xenial_amd64.deb -O /tmp/mergerfs.deb
 			sudo dpkg -i /tmp/mergerfs.deb
 		fi
-		rm /$TCONFIGS/mergerfs
+		rm $CONFIGS/.config/mergerfs
 
 		# Main script
 
@@ -42,8 +42,8 @@ else
 		read -n 1 -s -r -p "Stable ${YELLOW}(S)${STD} or Beta installation ${YELLOW}(B)?${STD} " -i "S" choice
 
 		case "$choice" in 
-			b|B ) curl https://rclone.org/install.sh | sudo bash -s beta; echo "Beta" > $TCONFIGS/rclonev ;;
-			* ) curl https://rclone.org/install.sh | sudo bash; echo "Stable" > $TCONFIGS/rclonev ;;
+			b|B ) curl https://rclone.org/install.sh | sudo bash -s beta; echo "Beta" > $CONFIGS/.config/rclonev ;;
+			* ) curl https://rclone.org/install.sh | sudo bash; echo "Stable" > $CONFIGS/.config/rclonev ;;
 		esac
 
 		clear
@@ -70,7 +70,7 @@ else
 
 		mkdir -p $HOME/logs $HOME/Downloads
 		sudo mkdir -p ${RCLONEMOUNT} ${MOUNTTO} ${UPLOADS} ${UNSYNCED}
-		sudo chown -R $USER:$USER $HOME $CONFIGS/.config $TCONFIGS ${RCLONEMOUNT} ${MOUNTTO} ${UPLOADS} ${UNSYNCED}
+		sudo chown -R $USER:$USER $HOME $CONFIGS/.config $CONFIGS/Docker ${RCLONEMOUNT} ${MOUNTTO} ${UPLOADS} ${UNSYNCED}
 
 		cat $HOME/.config/rclone/rclone.conf | grep "Local" > /dev/null
 		if ! [[ ${?} -eq 0 ]]; then
@@ -111,5 +111,5 @@ else
 
 fi
 
-rm $TCONFIGS/checkapp
+rm $CONFIGS/.config/checkapp
 PAUSE
