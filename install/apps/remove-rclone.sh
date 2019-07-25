@@ -1,10 +1,10 @@
 #!/bin/bash
 
 source $CONFIGS/Docker/.env
-which rclone > $TCONFIGS/checkapp
+which rclone > $CONFIGS/.config/checkapp
 clear
 
-if [ ! -s $TCONFIGS/checkapp ]; then
+if [ ! -s $CONFIGS/.config/checkapp ]; then
 
 	NOTINSTALLED
 
@@ -59,5 +59,5 @@ else
 
 fi
 
-rm $TCONFIGS/checkapp
+rm $CONFIGS/.config/checkapp
 PAUSE
