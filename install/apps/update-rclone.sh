@@ -1,9 +1,9 @@
 #!/bin/bash
 
-which rclone > $TCONFIGS/checkapp
+which rclone > $CONFIGS/.config/checkapp
 clear
 
-if [ ! -s $TCONFIGS/checkapp ]; then
+if [ ! -s $CONFIGS/.config/checkapp ]; then
 
 	NOTINSTALLED
 
@@ -20,17 +20,17 @@ else
 		cd /tmp
 		clear
 
-		echo "You currently have the $( cat $TCONFIGS/rclonev ) version of $TASK installed"
+		echo "You currently have the $( cat $CONFIGS/.config/rclonev ) version of $TASK installed"
 		echo ""
 
 		read -n 1 -s -r -p "Stable ${YELLOW}(S)${STD} or Beta installation ${YELLOW}(B)?${STD} " -i "" choice
 
 		case "$choice" in
-			b|B )	curl https://rclone.org/install.sh | sudo bash -s beta; echo "Beta" > $TCONFIGS/rclonev ;;
-			s|S )	curl https://rclone.org/install.sh | sudo bash; echo "Stable" > $TCONFIGS/rclonev ;;
-			* )	if [ $( cat $TCONFIGS/rclonev ) = "Stable" ]; then
+			b|B )	curl https://rclone.org/install.sh | sudo bash -s beta; echo "Beta" > $CONFIGS/.config/rclonev ;;
+			s|S )	curl https://rclone.org/install.sh | sudo bash; echo "Stable" > $CONFIGS/.config/rclonev ;;
+			* )	if [ $( cat $CONFIGS/.config/rclonev ) = "Stable" ]; then
 					curl https://rclone.org/install.sh | sudo bash
-				elif [ $( cat $TCONFIGS/rclonev ) = "Beta" ]; then
+				elif [ $( cat $CONFIGS/.config/rclonev ) = "Beta" ]; then
 					curl https://rclone.org/install.sh | sudo bash -s beta
 				fi ;;
 		esac
@@ -68,5 +68,5 @@ else
 
 fi
 
-rm $TCONFIGS/checkapp
+rm $CONFIGS/.config/checkapp
 PAUSE
