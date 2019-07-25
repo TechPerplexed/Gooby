@@ -1,9 +1,9 @@
 #!/bin/bash
 
-docker ps -q -f name=$APP > $TCONFIGS/checkapp
+docker ps -q -f name=$APP > $CONFIGS/.config/checkapp
 clear
 
-if [ -s $TCONFIGS/checkapp ]; then
+if [ -s $CONFIGS/.config/checkapp ]; then
 
 	ALREADYINSTALLED
 
@@ -69,7 +69,7 @@ else
 			echo "${STD}"
 			read -e -p " Paste token here: " PLEXCLAIM
 			echo ""
-			echo "$PLEXCLAIM" > $TCONFIGS/plexclaim
+			echo "$PLEXCLAIM" > $CONFIGS/.config/plexclaim
 
 		fi
 
@@ -77,7 +77,7 @@ else
 		cd $CONFIGS/Docker
 		sudo rsync -a /opt/Gooby/scripts/components/$APPLOC.yaml $CONFIGS/Docker/components
 		echo "Just a moment while $APP is being installed..."
-		[[ ! -f "$TCONFIGS/plexclaim" ]] && echo "-" > $TCONFIGS/plexclaim
+		[[ ! -f "$CONFIGS/.config/plexclaim" ]] && echo "-" > $CONFIGS/.config/plexclaim
 		source /opt/Gooby/install/misc/environment-build.sh rebuild
 		/usr/local/bin/docker-compose up -d --remove-orphans
 		cd "${CURDIR}"
@@ -96,5 +96,5 @@ else
 
 fi
 
-rm $TCONFIGS/checkapp
+rm $CONFIGS/.config/checkapp
 PAUSE
