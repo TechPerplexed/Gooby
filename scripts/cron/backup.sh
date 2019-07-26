@@ -26,7 +26,7 @@ rmove() {
 }
 
 cd ${HOME}
-echo Creating backup
+echo Creating backup - please be patient...
 sudo crontab -u ${USER} -l > /home/${USER}/backup/cron
 echo -n "/tmp/${SERVER}-backup.tar.gz --> "
 sudo tar -cpf /tmp/${SERVER}-backup.tar.gz \
@@ -72,6 +72,11 @@ do
 			# Future differential backups are based on the original, not the previous
 			# Differential
 			mv "${SNAPSHOTS}/${FILENAME}.bak" "${SNAPSHOTS}/${FILENAME}.snar"
+		else
+			# This is a full so remove any previous differential
+			echo Removing outdated DIFF for ${FILENAME}
+			/usr/bin/rclone rc operations/deletefile _async=true fs=${RCLONESERVICE}: remote="/Backup/${SERVER}/Gooby/${FILENAME}-diff.tar.gz"  --user ${RCLONEUSERNAME} --pass ${RCLONEPASSWORD} > /dev/null
+
 		fi
 		rmove "/tmp/${FILENAME2}.tar.gz" "/Backup/${SERVER}/Gooby/${FILENAME2}.tar.gz"
 		cp "${SNAPSHOTS}/${FILENAME}.snar" /tmp/
