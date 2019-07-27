@@ -28,6 +28,7 @@ cat > ${ENV} << EOF
 ###########################
 
 CONFIGS=${CONFIGS}
+CURDIR=$(pwd)
 DOWNLOADS=${HOMEDIR}/Downloads
 GOOGLE=/mnt/google
 GROUPID=$(id -g)
