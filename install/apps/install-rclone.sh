@@ -42,8 +42,8 @@ else
 		read -n 1 -s -r -p "Stable ${YELLOW}(S)${STD} or Beta installation ${YELLOW}(B)?${STD} " -i "S" choice
 
 		case "$choice" in 
-			b|B ) curl https://rclone.org/install.sh | sudo bash -s beta; echo "Beta" > $CONFIGS/.config/rclonev ;;
-			* ) curl https://rclone.org/install.sh | sudo bash; echo "Stable" > $CONFIGS/.config/rclonev ;;
+			b|B ) curl https://rclone.org/install.sh | sudo bash -s beta; echo "Beta" > $CONFIGS/.config/rcloneversion ;;
+			* ) curl https://rclone.org/install.sh | sudo bash; echo "Stable" > $CONFIGS/.config/rcloneversion ;;
 		esac
 
 		clear
