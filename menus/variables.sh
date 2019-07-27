@@ -1,8 +1,6 @@
 #!/bin/bash
 
-VERSION="2.2.1"
 CONFIGS=/var/local/Gooby
-CURDIR=$(pwd)
 
 # Define colors
 
