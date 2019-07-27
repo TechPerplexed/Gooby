@@ -45,10 +45,10 @@ echo "${LYELLOW}Updating Rclone if possible${STD}"
 echo
 
 touch $CONFIGS/.config/rclonev
-if [ $( cat $CONFIGS/.config/rclonev ) = "Stable" ]; then
-	curl https://rclone.org/install.sh | sudo bash
-elif [ $( cat $CONFIGS/.config/rclonev ) = "Beta" ]; then
+if [ $( cat $CONFIGS/.config/rclonev ) = "Beta" ]; then
 	curl https://rclone.org/install.sh | sudo bash -s beta
+else 
+	curl https://rclone.org/install.sh | sudo bash
 fi
 
 echo
