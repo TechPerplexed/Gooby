@@ -52,6 +52,7 @@ elif [ $( cat $CONFIGS/.config/upgrade ) = "v2" ]; then
 	# Update Configs
 
 	sudo mv /var/local/.Gooby/* $CONFIGS/.config
+	sudo mv $CONFIGS/.config/rclonev $CONFIGS/.config/rcloneversion
 
 else
 
