@@ -52,6 +52,7 @@ UNSYNCED=/mnt/local
 UPLOADS=/mnt/uploads
 USERID=$(id -u)
 USERNAME=$USER
+VERSION=$(cat ${CONFIGS}/.config/version)
 EOF
 
 cat ${CONFIGS}/Docker/components/??-* > ${CONFIGS}/Docker/docker-compose.yaml
