@@ -30,7 +30,7 @@ echo "$MYDOMAIN" > $CONFIGS/.config/mydomain
 echo "$MYEMAIL" > $CONFIGS/.config/myemail
 
 sudo rsync -a /opt/Gooby/scripts/components/{00-AAA.yaml,01-proxy.yaml} $CONFIGS/Docker/components
-$CONFIGS/.config/plexclaim $CONFIGS/.config/rclonefolder touch $CONFIGS/.config/rcloneservice $CONFIGS/.config/rcloneversion
+touch $CONFIGS/.config/plexclaim $CONFIGS/.config/rclonefolder $CONFIGS/.config/rcloneservice $CONFIGS/.config/rcloneversion
 
 source /opt/Gooby/install/misc/environment-build.sh
 
@@ -43,3 +43,7 @@ sudo chown -R $USER:$USER $CONFIGS $HOME
 # Add rlean to bootup cron
 
 crontab -l | grep 'rclean.sh' || (crontab -l 2>/dev/null; echo "@reboot /opt/Gooby/scripts/cron/rclean.sh > /dev/null 2>&1") | crontab -
+
+# Add Gooby version
+
+echo 2.2.1 > $CONFIGS/.config/version
