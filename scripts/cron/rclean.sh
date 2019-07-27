@@ -87,7 +87,6 @@ source /opt/Gooby/scripts/cron/upgradeservice.sh
 
 # Start Rclone and MergerFS
 
-[[ ! -f "$CONFIGS/.config/plexclaim" ]] && echo "-" > $CONFIGS/.config/plexclaim
 source /opt/Gooby/install/misc/environment-build.sh rebuild
 
 sudo systemctl start rclonefs
