@@ -30,7 +30,7 @@ echo "$MYDOMAIN" > $CONFIGS/.config/mydomain
 echo "$MYEMAIL" > $CONFIGS/.config/myemail
 
 sudo rsync -a /opt/Gooby/scripts/components/{00-AAA.yaml,01-proxy.yaml} $CONFIGS/Docker/components
-touch $CONFIGS/.config/rcloneservice $CONFIGS/.config/rclonefolder $CONFIGS/.config/rcloneversion
+$CONFIGS/.config/plexclaim $CONFIGS/.config/rclonefolder touch $CONFIGS/.config/rcloneservice $CONFIGS/.config/rcloneversion
 
 source /opt/Gooby/install/misc/environment-build.sh
 
