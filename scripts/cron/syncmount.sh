@@ -15,7 +15,6 @@ source $CONFIGS/Docker/.env
 
 AGE=2	# How many minutes old a file must be before copying/deleting
 LOG=${LOGS}/mounter-sync.log
-APILOG=${LOGS}/api.log
 TEMPFILE="/tmp/filesmissing"
 
 echo Starting sync at $(date) | tee -a ${LOG}
