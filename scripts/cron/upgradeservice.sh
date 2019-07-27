@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [ ! -s $CONFIGS/.config/upgrade ]; then
+if [ ! -s $CONFIGS/.config/version ]; then
 
 	echo "${LYELLOW}Upgrading to v2.0.0 ...${STD}"; echo; sleep 2
 
@@ -53,6 +53,7 @@ elif [ $( cat $CONFIGS/.config/upgrade ) = "v2" ]; then
 
 	sudo mv /var/local/.Gooby/* $CONFIGS/.config
 	sudo mv $CONFIGS/.config/rclonev $CONFIGS/.config/rcloneversion
+	sudo mv $CONFIGS/.config/upgrade $CONFIGS/.config/version
 
 else
 
@@ -60,4 +61,4 @@ else
 
 fi
 
-echo v221 > $CONFIGS/.config/upgrade
+echo 2.2.1 > $CONFIGS/.config/version
