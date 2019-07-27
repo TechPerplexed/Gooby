@@ -27,7 +27,7 @@ cat > ${ENV} << EOF
 #     for Gooby v$VERSION    #
 ###########################
 
-CONFIGS=${CONFIGS}
+CONFIGS=/var/local/Gooby
 CURDIR=$(pwd)
 DOWNLOADS=${HOMEDIR}/Downloads
 GOOGLE=/mnt/google
