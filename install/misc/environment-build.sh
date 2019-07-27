@@ -27,6 +27,7 @@ cat > ${ENV} << EOF
 #     for Gooby v$VERSION    #
 ###########################
 
+APILOG="${LOGS}/api.log"
 CONFIGS=/var/local/Gooby
 CURDIR=$(pwd)
 DOWNLOADS=${HOMEDIR}/Downloads
@@ -48,6 +49,7 @@ RCLONEMOUNT=/mnt/rclone
 RCLONEPASSWORD=Go0by
 RCLONESERVICE=$(cat ${CONFIGS}/.config/rcloneservice)
 RCLONEUSERNAME=gooby
+SERVER=$(hostname)
 TIMEZONE=$(cat /etc/timezone)
 UNSYNCED=/mnt/local
 UPLOADS=/mnt/uploads
