@@ -34,7 +34,7 @@ if [ ! -s $CONFIGS/.config/version ]; then
 
 	sudo systemctl daemon-reload
 
-elif [ $( cat $CONFIGS/.config/upgrade ) = "v2" ]; then
+elif [ $( cat $CONFIGS/.config/upgrade ) = "2.1.0" ]; then
 
 	echo "${LYELLOW}Upgrading to v2.2.1 ...${STD}"; echo; sleep 2
 
