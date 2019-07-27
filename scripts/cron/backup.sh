@@ -7,9 +7,6 @@ fi
 source /opt/Gooby/menus/variables.sh
 source $CONFIGS/Docker/.env
 
-SERVER=$(hostname)
-APILOG="${LOGS}/api.log"
-
 # Make sure there's a place to store backup index for full versus differential
 mkdir -p ${HOME}/backup/snapshots
 SNAPSHOTS="${HOME}/backup/snapshots"
