@@ -26,6 +26,7 @@ if [ -d /opt/.Gooby ]; then
 	sudo chmod 755 /bin/plexstats
 	sudo chmod 755 /bin/rclean
 	sudo chmod 755 /bin/rstats
+	sudo chmod 755 /bin/sizer
 	sudo chmod 755 /bin/syncmount
 fi
 
