@@ -1,5 +1,7 @@
 #!/bin/bash
 
+VERSION=2.2.1
+
 source /opt/Gooby/menus/variables.sh
 
 clear
@@ -46,4 +48,4 @@ crontab -l | grep 'rclean.sh' || (crontab -l 2>/dev/null; echo "@reboot /opt/Goo
 
 # Add Gooby version
 
-echo 2.2.1 > $CONFIGS/.config/version
+echo ${VERSION} > $CONFIGS/.config/version
