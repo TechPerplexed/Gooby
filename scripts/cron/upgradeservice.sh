@@ -4,11 +4,11 @@ VERSION=2.2.1
 
 if [ "$(cat $CONFIGS/.config/version)" == ${VERSION} ]; then
 
-	echo "${GREEN}Your system has already been upgraded to v${VERSION}... prodeeding${STD}"; echo
+	echo; echo "${GREEN}Your system has already been upgraded to v${VERSION}... prodeeding${STD}"; echo
 
 else
 
-	echo "${LYELLOW}Upgrading to v${VERSION} ...${STD}"; echo; sleep 2
+	echo; echo "${LYELLOW}Upgrading to v${VERSION} ...${STD}"; echo; sleep 2
 
 	# Check if necessary apps are installed
 
@@ -62,7 +62,7 @@ else
 
 	# Finalizing upgrade
 
-	echo "${GREEN}Upgrade to v${VERSION} complete... prodeeding${STD}"; echo
+	echo; echo "${GREEN}Upgrade to v${VERSION} complete... prodeeding${STD}"; echo
 
 fi
 
