@@ -9,7 +9,7 @@ if [ "$(cat $CONFIGS/.config/version)" == ${VERSION} ]; then
 
 else
 
-	echo; echo "${LYELLOW}Upgrading to v${VERSION}... just a moment${STD}"; echo; sleep 2
+	echo "${LYELLOW}Upgrading to v${VERSION}... just a moment${STD}"; echo; sleep 2
 
 	# Check if necessary apps are installed
 
