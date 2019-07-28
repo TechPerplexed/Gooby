@@ -12,19 +12,24 @@ mkdir -p ${HOME}/backup/snapshots
 SNAPSHOTS="${HOME}/backup/snapshots"
 
 rmove() {
+	# This function handles moving a file from the local storage to Google.  It will display
+	# the original path as well as the target and file size upon completion.
 	SOURCE=${1}
 	TARGET=${2}
 	SOURCEDIR=$(dirname "${SOURCE}")
 	SOURCEFILE=$(basename "${SOURCE}")
 	BYTES=$(stat --printf="%s" "${SOURCE}")
-	echo "${TARGET} @ ${BYTES} Bytes"
+	echo -n "${TARGET} @ "
+	/bin/sizer ${BYTES}
 	echo $(date '+%F %H:%M:%S'),START,1,${BYTES} "# ${SOURCE}" >> ${APILOG}
 	/usr/bin/rclone rc operations/movefile _async=true srcFs=Local: srcRemote=${SOURCE} dstFs=${RCLONESERVICE}: dstRemote=${TARGET} --user ${RCLONEUSERNAME} --pass ${RCLONEPASSWORD} > /dev/null
 }
 
 cd ${HOME}
-echo Creating backup - please be patient...
+echo Creating backup - please be patient...; echo
+# Dump the user's CRONTAB to the local home directory so that it can be included in the backup.
 sudo crontab -u ${USER} -l > /home/${USER}/backup/cron
+# Create the home folder backup.
 echo -n "/tmp/${SERVER}-backup.tar.gz --> "
 sudo tar -cpf /tmp/${SERVER}-backup.tar.gz \
 	--use-compress-program=pigz \
@@ -37,15 +42,20 @@ rmove "/tmp/${SERVER}-backup.tar.gz" "/Backup/${SERVER}/${SERVER}-backup.tar.gz"
 cd ${CONFIGS}
 
 FILES=${CONFIGS}/*
+# Loop through each filename / directory name in the Configs directory
 for f in ${FILES}
 do
 	FILENAME="$(basename "${f}")"
 	echo -n "${f} --> "
-	if [[ ${f: -3} == 'tar' ]] || [[ ${f: -3} == ".gz" ]] || [[ ${f: -3} == "bz2" ]]
+	if [[ -f "${f}" ]]
 	then
+		# This is a file, not a directory.  So, we're just going to copy it to Google
+		# as is (no tar/zip).
 		cp "${f}" /tmp/
 		rmove "/tmp/${FILENAME}" "/Backup/${SERVER}/Gooby/${FILENAME}"
 	else
+		# This is a directory so we're going to pack it up into /tmp and then ship
+		# it off to Google drive.
 		if [[ -f "${SNAPSHOTS}/${FILENAME}.snar" ]]
 		then
 			# We already have a snar, which means that this is a differential
@@ -66,12 +76,12 @@ do
 		if [[ ${FULL} -eq 0 ]]
 		then
 			# If this is a differential, we want to remember the original so that
-			# Future differential backups are based on the original, not the previous
-			# Differential
+			# future differential backups are based on the original, not the previous
+			# differential
 			mv "${SNAPSHOTS}/${FILENAME}.bak" "${SNAPSHOTS}/${FILENAME}.snar"
 		else
 			# This is a full so remove any previous differential
-			echo Removing outdated DIFF for ${FILENAME}
+			echo -n "Removing outdated DIFF for ${FILENAME} --> "
 			/usr/bin/rclone rc operations/deletefile _async=true fs=${RCLONESERVICE}: remote="/Backup/${SERVER}/Gooby/${FILENAME}-diff.tar.gz"  --user ${RCLONEUSERNAME} --pass ${RCLONEPASSWORD} > /dev/null
 
 		fi
