@@ -2,6 +2,8 @@
 
 VERSION=2.2.1
 
+touch $CONFIGS/.config/version
+
 if [ ! $( cat $CONFIGS/.config/version ) = "${VERSION}" ]; then
 
 	echo "${LYELLOW}Upgrading to v${VERSION} ...${STD}"; echo; sleep 2
