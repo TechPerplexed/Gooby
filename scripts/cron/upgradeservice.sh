@@ -1,8 +1,21 @@
 #!/bin/bash
 
-if [ ! -s $CONFIGS/.config/version ]; then
+VERSION=2.2.1
 
-	echo "${LYELLOW}Upgrading to v2.0.0 ...${STD}"; echo; sleep 2
+if [ ! $( cat $CONFIGS/.config/version ) = "${VERSION}" ]; then
+
+	echo "${LYELLOW}Upgrading to v${VERSION} ...${STD}"; echo; sleep 2
+
+	# Check if necessary apps are installed
+
+	sudo apt-get update
+
+	APPLIST="acl apt-transport-https ca-certificates curl fuse git gpg-agent grsync jq mergerfs nano pigz rsyncufw socat sqlite3 unzip wget"
+
+	for i in $APPLIST; do
+		echo Checking $i...
+		sudo apt-get -y install $i
+	done
 
 	# Update Proxy
 
@@ -34,26 +47,14 @@ if [ ! -s $CONFIGS/.config/version ]; then
 
 	sudo systemctl daemon-reload
 
-elif [ $( cat $CONFIGS/.config/version ) = "2.1.0" ]; then
-
-	echo "${LYELLOW}Upgrading to v2.2.1 ...${STD}"; echo; sleep 2
-
-	# Check if necessary apps are installed
-
-	sudo apt-get update
-
-	APPLIST="acl apt-transport-https ca-certificates curl fuse git gpg-agent grsync jq mergerfs nano pigz rsyncufw socat sqlite3 unzip wget"
-
-	for i in $APPLIST; do
-		echo Checking $i...
-		sudo apt-get -y install $i
-	done
-
 	# Update Configs
 
-	sudo mv /var/local/.Gooby/* $CONFIGS/.config
-	sudo mv $CONFIGS/.config/rclonev $CONFIGS/.config/rcloneversion
-	sudo mv $CONFIGS/.config/upgrade $CONFIGS/.config/version
+	if [ -d /var/local/.Gooby]; then
+		sudo mv /var/local/.Gooby/* $CONFIGS/.config
+		sudo mv $CONFIGS/.config/rclonev $CONFIGS/.config/rcloneversion
+		sudo mv $CONFIGS/.config/upgrade $CONFIGS/.config/version
+		sudo rm -r /var/local/.Gooby
+	fi
 
 else
 
@@ -61,4 +62,4 @@ else
 
 fi
 
-echo 2.2.1 > $CONFIGS/.config/version
+echo ${VERSION} > $CONFIGS/.config/version
