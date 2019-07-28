@@ -5,7 +5,7 @@ VERSION=2.2.1
 touch $CONFIGS/.config/version
 if [ "$(cat $CONFIGS/.config/version)" == ${VERSION} ]; then
 
-	echo; echo "${GREEN}Your system has already been upgraded to v${VERSION}... prodeeding${STD}"; echo
+	echo "${GREEN}Your system has already been upgraded to v${VERSION}... prodeeding${STD}"; echo
 
 else
 
