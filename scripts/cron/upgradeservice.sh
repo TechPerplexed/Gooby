@@ -2,9 +2,11 @@
 
 VERSION=2.2.1
 
-touch $CONFIGS/.config/version
+if [ "$(cat $CONFIGS/.config/version)" == ${VERSION} ]; then
 
-if [ ! $( cat $CONFIGS/.config/version ) = "${VERSION}" ]; then
+	echo "${GREEN}Your system has already been upgraded to v${VERSION}... prodeeding${STD}"; echo
+
+else
 
 	echo "${LYELLOW}Upgrading to v${VERSION} ...${STD}"; echo; sleep 2
 
@@ -58,9 +60,9 @@ if [ ! $( cat $CONFIGS/.config/version ) = "${VERSION}" ]; then
 		sudo rm -r /var/local/.Gooby
 	fi
 
-else
+	# Finalizing upgrade
 
-	echo "${GREEN}Your system has already been upgraded... prodeeding${STD}"; echo
+	echo "${GREEN}Upgrade to v${VERSION} complete... prodeeding${STD}"; echo
 
 fi
 
