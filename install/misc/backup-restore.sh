@@ -59,7 +59,7 @@ else
 
 		if [ -s $CONFIGS/.config/checkapp ]; then
 
-			echo; echo "${LBLUE}Backup file downloaded, proceeding...${STD}"
+			echo; echo " ${LBLUE}Backup file downloaded, proceeding...${STD}"
 
 		else
 
@@ -139,7 +139,7 @@ else
 		echo
 		echo
 		echo " ${WHITE}Make sure${STD} you check if your services are"
-		echo "running properly before you remove the old files!"
+		echo " running properly before you remove the old files!"
 		echo
 		read -n 1 -s -r -p " Remove old files (Y/n)? " -i "" choice
 		echo
