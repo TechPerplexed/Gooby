@@ -26,20 +26,20 @@ else
 		mkdir -p /tmp/goobyrestore
 		RESTOREFOLDER=/tmp/goobyrestore
 
-		echo Restoring the backup can take several hours
-		echo Please don't exit the terminal until it's done!
+		echo " Restoring the backup can take several hours"
+		echo " Please don't exit the terminal until it's done!"
 		echo
-		read -e -p "Host name to restore: " -i "${SERVER}" SERVERNAME
+		read -e -p " Host name to restore: " -i "${SERVER}" SERVERNAME
 		echo
-		echo App name to restore: (for example, ${WHITE}Docker${STD} or ${WHITE}Plex${STD})
-		echo You can find your app names in ${RCLONESERVICE}:/Backup/${SERVER}/Gooby
-		echo You can type ${WHITE}all${STD} for all apps,
-		echo Or ${WHITE}home${STD} for restoring your /home/${USER} directory
+		echo " App name to restore: (for example, ${WHITE}Docker${STD} or ${WHITE}Plex${STD})"
+		echo " You can find your app names in ${RCLONESERVICE}:/Backup/${SERVER}/Gooby"
+		echo " You can type ${WHITE}all${STD} for all apps,"
+		echo " Or ${WHITE}home${STD} for restoring your /home/${USER} directory"
 		echo
-		read -e -p "App to restore: " -i "all" APPNAME
+		read -e -p " App to restore: " -i "all" APPNAME
 
 		echo
-		echo ${LMAGENTA}Copying from Google drive...${STD}
+		echo " ${LMAGENTA}Copying from Google drive...${STD}"
 
 		if APPNAME=all; then
 
@@ -82,14 +82,14 @@ else
 		if APPNAME=all; then
 
 			echo
-			echo "${YELLOW}Taking containers down...${STD}"
+			echo " ${YELLOW}Taking containers down...${STD}"
 
 			cd $CONFIGS/Docker
 			/usr/local/bin/docker-compose down
 			cd "${CURDIR}"
 
 			echo
-			echo ${GREEN}Restoring files...${STD}
+			echo " ${GREEN}Restoring files...${STD}"
 
 			sudo mv $CONFIGS/ /tmp/Gooby/
 
@@ -106,7 +106,7 @@ else
 		elif APPNAME=home; then
 
 			echo
-			echo ${GREEN}Restoring files...${STD}
+			echo " ${GREEN}Restoring files...${STD}"
 
 			tar -xpf ${RESTOREFOLDER}/*-full.tar.gz -C /
 			sudo chown $USER:$USER ${HOME}
@@ -118,7 +118,7 @@ else
 			cd "${CURDIR}"
 
 			echo
-			echo ${GREEN}Restoring files...${STD}
+			echo " ${GREEN}Restoring files...${STD}"
 
 			sudo mv $CONFIGS/${APPNAME} /tmp/Gooby/
 			tar -xpf ${RESTOREFOLDER}/${APPNAME}-full.tar.gz -C /
@@ -135,13 +135,13 @@ else
 		fi
 
 		echo
-		echo ${CYAN}Finished restoring${STD}
+		echo " ${CYAN}Finished restoring${STD}"
 		echo
 		echo
-		echo ${WHITE}Make sure${STD} you check if your services are
-		echo running properly before you remove the old files!
+		echo " ${WHITE}Make sure${STD} you check if your services are"
+		echo "running properly before you remove the old files!"
 		echo
-		read -n 1 -s -r -p "Remove old files (Y/n)? " -i "" choice
+		read -n 1 -s -r -p " Remove old files (Y/n)? " -i "" choice
 		echo
 
 		case "$choice" in
