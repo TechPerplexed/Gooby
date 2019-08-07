@@ -47,7 +47,7 @@ else
 
 			/usr/bin/rclone --stats-one-line -P copy ${RCLONESERVICE}:/Backup/${SERVER}/Gooby/* ${RESTOREFOLDER} --checksum --drive-chunk-size=64M
 
-		if [ "${APPNAME}" == "Home" ]; then
+		elif [ "${APPNAME}" == "Home" ]; then
 
 			/usr/bin/rclone --stats-one-line -P copy ${RCLONESERVICE}:/Backup/${SERVER}/${SERVER}-backup.tar.gz ${RESTOREFOLDER} --checksum --drive-chunk-size=64M
 
@@ -105,7 +105,7 @@ else
 			/usr/local/bin/docker-compose up -d --remove-orphans ${@:2}
 			cd "${CURDIR}"
 
-		if [ "${APPNAME}" == "Home" ]; then
+		elif [ "${APPNAME}" == "Home" ]; then
 
 			echo
 			echo " ${GREEN}Restoring files...${STD}"
