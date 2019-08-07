@@ -43,11 +43,11 @@ else
 		echo
 		echo " ${LMAGENTA}Copying ${APPNAME} backup from ${RCLONESERVICE}...${STD}"
 
-		if APPNAME=All; then
+		if [ "${APPNAME}" == "All" ]; then
 
 			/usr/bin/rclone --stats-one-line -P copy ${RCLONESERVICE}:/Backup/${SERVER}/Gooby/* ${RESTOREFOLDER} --checksum --drive-chunk-size=64M
 
-		elif APPNAME=Home; then
+		if [ "${APPNAME}" == "Home" ]; then
 
 			/usr/bin/rclone --stats-one-line -P copy ${RCLONESERVICE}:/Backup/${SERVER}/${SERVER}-backup.tar.gz ${RESTOREFOLDER} --checksum --drive-chunk-size=64M
 
@@ -81,7 +81,7 @@ else
 
 		fi
 
-		if APPNAME=all; then
+		if [ "${APPNAME}" == "All" ]; then
 
 			echo
 			echo " ${YELLOW}Taking containers down...${STD}"
@@ -105,12 +105,12 @@ else
 			/usr/local/bin/docker-compose up -d --remove-orphans ${@:2}
 			cd "${CURDIR}"
 
-		elif APPNAME=home; then
+		if [ "${APPNAME}" == "Home" ]; then
 
 			echo
 			echo " ${GREEN}Restoring files...${STD}"
 
-			tar -xpf ${RESTOREFOLDER}/*-full.tar.gz -C /
+			tar -xpf ${RESTOREFOLDER}/${SERVER}-backup.tar.gz -C /
 			sudo chown $USER:$USER ${HOME}
 
 		else
