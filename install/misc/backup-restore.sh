@@ -30,7 +30,7 @@ else
 		echo " Restoring the backup can take several hours"
 		echo " please don't exit the terminal until it's done!"
 		echo
-		read -e -p " Server to restore: " -i "${SERVER}" SERVERNAME
+		read -e -p " Server to restore: " -i "${SERVER}" SERVER
 		echo
 		echo " App name to restore: (for example, ${LYELLOW}Docker${STD} or ${LYELLOW}Plex${STD})"
 		echo " You can find your app names in ${RCLONESERVICE}:/Backup/${SERVER}/Gooby"
