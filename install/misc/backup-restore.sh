@@ -45,7 +45,8 @@ else
 
 		if [ "${APPNAME}" == "All" ]; then
 
-			/usr/bin/rclone --stats-one-line -P copy ${RCLONESERVICE}:/Backup/${SERVER}/Gooby/* ${RESTOREFOLDER} --checksum --drive-chunk-size=64M
+			/usr/bin/rclone --stats-one-line -P copy ${RCLONESERVICE}:/Backup/${SERVER}/Gooby --include '*' ${RESTOREFOLDER} --checksum --drive-chunk-size
+			=64M
 
 		elif [ "${APPNAME}" == "Home" ]; then
 
@@ -53,7 +54,7 @@ else
 
 		else
 
-			/usr/bin/rclone --stats-one-line -P copy ${RCLONESERVICE}:/Backup/${SERVER}/Gooby/${APPNAME}.* ${RESTOREFOLDER} --checksum --drive-chunk-size=64M
+			/usr/bin/rclone --stats-one-line -P copy ${RCLONESERVICE}:/Backup/${SERVER}/Gooby --include '${APPNAME}*' ${RESTOREFOLDER} --checksum --drive-chunk-size=64M
 
 		fi
 
