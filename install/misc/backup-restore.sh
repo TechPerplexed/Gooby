@@ -48,7 +48,7 @@ else
 
 				/usr/bin/rclone --stats-one-line -P copy ${RCLONESERVICE}:/Backup/${SERVER}/Gooby --include '*' ${RESTOREFOLDER} --checksum --drive-chunk-size=64M
 
-				[ -f ${RESTOREFOLDER}/*-backup.tar.gz ] || { echo; echo " ${LRED}Sorry, ${APPNAME} no backup found on ${RCLONESERVICE}!${STD}"; PAUSE; exit ;}
+				[ -f ${RESTOREFOLDER}/*-full.tar.gz ] || { echo; echo " ${LRED}Sorry, ${APPNAME} no backup found on ${RCLONESERVICE}!${STD}"; PAUSE; exit ;}
 				
 				echo
 				echo " ${LBLUE}${APPNAME} backup downloaded, proceeding...${STD}"
@@ -70,7 +70,7 @@ else
 				tar -xpvf ${RESTOREFOLDER}/*-full.tar.gz ${CONFIGS}
 				[ -f ${RESTOREFOLDER}/*-diff.tar.gz ] && tar --incremental -xpvf *-diff.tar.gz ${CONFIGS}
 
-				sudo mv ${RESTOREFOLDER}/snapshots ${CONFIGS}/.config/snapshots
+				sudo mv ${RESTOREFOLDER}/snapshots ${HOME}/backup/snapshots
 
 				sudo chown $USER:$USER ${HOME} ${CONFIGS}
 
@@ -85,7 +85,7 @@ else
 
 				/usr/bin/rclone --stats-one-line -P copy ${RCLONESERVICE}:/Backup/${SERVER}/${SERVER}-backup.tar.gz ${RESTOREFOLDER} --checksum --drive-chunk-size=64M
 
-				[ -f ${RESTOREFOLDER}/${SERVER}-backup.tar.gz ] || { echo; echo " ${LRED}Sorry, no backup found on ${RCLONESERVICE}!${STD}"; PAUSE; exit ;}
+				[ -f ${RESTOREFOLDER}/${SERVER}-backup.tar.gz ] || { echo; echo " ${LRED}Sorry, backup not found on ${RCLONESERVICE}!${STD}"; PAUSE; exit ;}
 
 				echo
 				echo " ${GREEN}Restoring Gooby...${STD}"
@@ -102,7 +102,7 @@ else
 				echo "- *" >> $CONFIGS/.config/checkapp.txt
 				/usr/bin/rclone --stats-one-line -P copy ${RCLONESERVICE}:/Backup/${SERVER}/Gooby --filter-from $CONFIGS/.config/checkapp.txt ${RESTOREFOLDER} --checksum --drive-chunk-size=64M
 
-				[ -f ${RESTOREFOLDER}/${SERVER}-backup.tar.gz ] || { echo; echo " ${LRED}Sorry, ${APPNAME} backup not found on ${RCLONESERVICE}!${STD}"; rm $CONFIGS/.config/checkapp.txt; PAUSE; exit ;}
+				[ -f ${RESTOREFOLDER}/*-full.tar.gz] || { echo; echo " ${LRED}Sorry, ${APPNAME} backup not found on ${RCLONESERVICE}!${STD}"; rm $CONFIGS/.config/checkapp.txt; PAUSE; exit ;}
 
 				cd $CONFIGS/Docker
 				/usr/local/bin/docker-compose down
@@ -117,7 +117,7 @@ else
 				tar -xpvf ${RESTOREFOLDER}/*-full.tar.gz ${CONFIGS}
 				[ -f ${RESTOREFOLDER}/*-diff.tar.gz ] && tar --incremental -xpvf *-diff.tar.gz ${CONFIGS}
 
-				sudo mv ${RESTOREFOLDER}/snapshots ${CONFIGS}/.config/snapshots
+				sudo mv ${RESTOREFOLDER}/snapshots ${HOME}/backup/snapshots
 
 				sudo chown $USER:$USER ${HOME} ${CONFIGS}
 
