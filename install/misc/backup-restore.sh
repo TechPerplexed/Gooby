@@ -38,25 +38,28 @@ else
 		echo " Or ${LYELLOW}Home${STD} for restoring your /home/${USER} directory"
 		echo
 		read -e -p " App to restore: " -i "All" APPNAME
-		APPNAME="${APPNAME^}"
+		shopt -s nocasematch
 
 		echo
 		echo " ${LMAGENTA}Copying ${APPNAME} backup from ${RCLONESERVICE}...${STD}"
 
-		if [ "${APPNAME}" == "All" ]; then
+		case "${APPNAME}" in 
 
-			/usr/bin/rclone --stats-one-line -P copy ${RCLONESERVICE}:/Backup/${SERVER}/Gooby --include '*' ${RESTOREFOLDER} --checksum --drive-chunk-size
-			=64M
+			all )
+				/usr/bin/rclone --stats-one-line -P copy ${RCLONESERVICE}:/Backup/${SERVER}/Gooby --include '*' ${RESTOREFOLDER} --checksum --drive-chunk-size=64M
+			;;
 
-		elif [ "${APPNAME}" == "Home" ]; then
+			home )
+				/usr/bin/rclone --stats-one-line -P copy ${RCLONESERVICE}:/Backup/${SERVER}/${SERVER}-backup.tar.gz ${RESTOREFOLDER} --checksum --drive-chunk-size=64M
+			;;
 
-			/usr/bin/rclone --stats-one-line -P copy ${RCLONESERVICE}:/Backup/${SERVER}/${SERVER}-backup.tar.gz ${RESTOREFOLDER} --checksum --drive-chunk-size=64M
+			* )
+				echo "+ ${APPNAME}*" > $CONFIGS/.config/restoreapp
+				echo "- *" >> $CONFIGS/.config/restoreapp
+				/usr/bin/rclone --stats-one-line -P copy ${RCLONESERVICE}:/Backup/${SERVER}/Gooby --ignore-case --filter-from $CONFIGS/.config/restoreapp ${RESTOREFOLDER} --checksum --drive-chunk-size=64M
+			;;
 
-		else
-
-			/usr/bin/rclone --stats-one-line -P copy ${RCLONESERVICE}:/Backup/${SERVER}/Gooby --include '${APPNAME}*' ${RESTOREFOLDER} --checksum --drive-chunk-size=64M
-
-		fi
+		esac
 
 		ls -A ${RESTOREFOLDER} > $CONFIGS/.config/checkapp
 
@@ -165,4 +168,5 @@ else
 fi
 
 rm $CONFIGS/.config/checkapp.txt
+
 PAUSE
