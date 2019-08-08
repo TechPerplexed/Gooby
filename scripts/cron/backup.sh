@@ -8,8 +8,8 @@ source /opt/Gooby/menus/variables.sh
 source $CONFIGS/Docker/.env
 
 # Make sure there's a place to store backup index for full versus differential
-mkdir -p ${HOME}/backup/snapshots
-SNAPSHOTS="${HOME}/backup/snapshots"
+mkdir -p ${CONFIGS}/.config/snapshots
+SNAPSHOTS="${CONFIGS}/.config/snapshots"
 
 rmove() {
 	# This function handles moving a file from the local storage to Google.  It will display
