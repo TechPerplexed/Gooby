@@ -69,8 +69,10 @@ else
 				
 				tar -xpvf ${RESTOREFOLDER}/*-full.tar.gz ${CONFIGS}
 				[ -f ${RESTOREFOLDER}/*-diff.tar.gz ] && tar --incremental -xpvf *-diff.tar.gz ${CONFIGS}
+				
+				sudo mv ${RESTOREFOLDER}/snapshots ${HOME}/backup/snapshots
 
-				sudo chown $USER:$USER ${CONFIGS}
+				sudo chown $USER:$USER ${HOME} ${CONFIGS}
 
 				cd $CONFIGS/Docker
 				source /opt/Gooby/install/misc/environment-build.sh rebuild
@@ -115,7 +117,9 @@ else
 				tar -xpvf ${RESTOREFOLDER}/*-full.tar.gz ${CONFIGS}
 				[ -f ${RESTOREFOLDER}/*-diff.tar.gz ] && tar --incremental -xpvf *-diff.tar.gz ${CONFIGS}
 
-				sudo chown $USER:$USER ${CONFIGS}
+				sudo mv ${RESTOREFOLDER}/snapshots ${HOME}/backup/snapshots
+
+				sudo chown $USER:$USER ${HOME} ${CONFIGS}
 
 				cd $CONFIGS/Docker
 				source /opt/Gooby/install/misc/environment-build.sh rebuild
