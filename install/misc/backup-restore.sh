@@ -112,7 +112,7 @@ else
 				echo " ${GREEN}Restoring ${APPNAME}...${STD}"
 				echo
 
-				sudo mv $CONFIGS/${APPNAME}/ ${OLDFILES}
+				sudo mv $CONFIGS/${APPNAME}/ ${OLDFILES}/*
 
 				tar -xpvf ${RESTOREFOLDER}/*-full.tar.gz ${CONFIGS}
 				[ -f ${RESTOREFOLDER}/*-diff.tar.gz ] && tar --incremental -xpvf ${RESTOREFOLDER}/*-diff.tar.gz ${CONFIGS}
