@@ -43,106 +43,94 @@ else
 		echo
 		echo " ${LMAGENTA}Copying ${APPNAME} backup from ${RCLONESERVICE}...${STD}"
 
-		case "${APPNAME}" in 
+		case "${APPNAME}" in
 
 			all )
+
 				/usr/bin/rclone --stats-one-line -P copy ${RCLONESERVICE}:/Backup/${SERVER}/Gooby --include '*' ${RESTOREFOLDER} --checksum --drive-chunk-size=64M
+
+				[ ! -f ${RESTOREFOLDER}/*-full.tar.gz ] && echo " ${LRED}${APPNAME} backup not found on ${RCLONESERVICE}!${STD}"; PAUSE; exit
+				
+				echo
+				echo " ${LBLUE}${APPNAME} backup downloaded, proceeding...${STD}"
+				echo
+
+				echo
+				echo " ${YELLOW}Taking containers down...${STD}"
+
+				cd $CONFIGS/Docker
+				/usr/local/bin/docker-compose down
+				cd "${CURDIR}"
+
+				echo
+				echo " ${GREEN}Restoring files...${STD}"
+				echo
+
+				sudo mv $CONFIGS/ ${OLDFILES}
+				
+				tar -xpvf ${RESTOREFOLDER}/*-full.tar.gz ${CONFIGS}
+				[ -f ${RESTOREFOLDER}/*-diff.tar.gz ] && tar --incremental -xpvf *-diff.tar.gz ${CONFIGS}
+
+				sudo chown $USER:$USER ${CONFIGS}
+
+				cd $CONFIGS/Docker
+				source /opt/Gooby/install/misc/environment-build.sh rebuild
+				/usr/local/bin/docker-compose up -d --remove-orphans ${@:2}
+				cd "${CURDIR}"
+
 			;;
 
 			home )
+
 				/usr/bin/rclone --stats-one-line -P copy ${RCLONESERVICE}:/Backup/${SERVER}/${SERVER}-backup.tar.gz ${RESTOREFOLDER} --checksum --drive-chunk-size=64M
+
+				[ ! -f ${RESTOREFOLDER}/${SERVER}-backup.tar.gz ] && echo; echo " ${LRED}Sorry, no backup found on ${RCLONESERVICE}!${STD}"; PAUSE; exit
+
+				echo
+				echo " ${GREEN}Restoring Gooby...${STD}"
+				echo
+
+				tar -xpvf ${RESTOREFOLDER}/${SERVER}-backup.tar.gz -C /
+				sudo chown $USER:$USER ${HOME}
+
 			;;
 
 			* )
-				echo "+ ${APPNAME}*" > $CONFIGS/.config/restoreapp
-				echo "- *" >> $CONFIGS/.config/restoreapp
-				/usr/bin/rclone --stats-one-line -P copy ${RCLONESERVICE}:/Backup/${SERVER}/Gooby --ignore-case --filter-from $CONFIGS/.config/restoreapp ${RESTOREFOLDER} --checksum --drive-chunk-size=64M
+
+				echo "+ ${APPNAME}*" > $CONFIGS/.config/checkapp.txt
+				echo "- *" >> $CONFIGS/.config/checkapp.txt
+				/usr/bin/rclone --stats-one-line -P copy ${RCLONESERVICE}:/Backup/${SERVER}/Gooby --ignore-case --filter-from $CONFIGS/.config/checkapp.txt ${RESTOREFOLDER} --checksum --drive-chunk-size=64M
+
+				[ ! -f ${RESTOREFOLDER}/*-full.tar.gz ] && echo " ${LRED}${APPNAME} backup not found on ${RCLONESERVICE}!${STD}"; rm $CONFIGS/.config/checkapp.txt; PAUSE; exit
+
+				cd $CONFIGS/Docker
+				/usr/local/bin/docker-compose down
+				cd "${CURDIR}"
+
+				echo
+				echo " ${GREEN}Restoring ${APPNAME}...${STD}"
+				echo
+
+				sudo mv $CONFIGS/${APPNAME}/ ${OLDFILES}
+
+				tar -xpvf ${RESTOREFOLDER}/*-full.tar.gz ${CONFIGS}
+				[ -f ${RESTOREFOLDER}/*-diff.tar.gz ] && tar --incremental -xpvf *-diff.tar.gz ${CONFIGS}
+
+				sudo chown $USER:$USER ${CONFIGS}
+
+				cd $CONFIGS/Docker
+				source /opt/Gooby/install/misc/environment-build.sh rebuild
+				/usr/local/bin/docker-compose up -d --remove-orphans ${@:2}
+				cd "${CURDIR}"
+
 			;;
 
 		esac
 
-		ls -A ${RESTOREFOLDER} > $CONFIGS/.config/checkapp
-
-		if [ -s $CONFIGS/.config/checkapp ]; then
-
-			echo; echo " ${LBLUE}${APPNAME} backup downloaded, proceeding...${STD}"
-
-		else
-
-			clear
-			echo
-			echo " ${LRED}${APPNAME} backup not found on ${RCLONESERVICE}!${STD}"
-			echo
-			echo " Please try again!"
-			echo " Exiting script..."
-			echo
-
-			sudo rm -r ${RESTOREFOLDER}
-			rm $CONFIGS/.config/checkapp.txt
-
-			PAUSE
-			exit
-
-		fi
-
-		if [ "${APPNAME}" == "All" ]; then
-
-			echo
-			echo " ${YELLOW}Taking containers down...${STD}"
-
-			cd $CONFIGS/Docker
-			/usr/local/bin/docker-compose down
-			cd "${CURDIR}"
-
-			echo
-			echo " ${GREEN}Restoring files...${STD}"
-
-			sudo mv $CONFIGS/ ${OLDFILES}
-
-			tar -xpf ${RESTOREFOLDER}/*-full.tar.gz -C /
-			tar --incremental -xpf *-diff.tar.gz
-
-			sudo chown $USER:$USER ${CONFIGS}
-
-			cd $CONFIGS/Docker
-			source /opt/Gooby/install/misc/environment-build.sh rebuild
-			/usr/local/bin/docker-compose up -d --remove-orphans ${@:2}
-			cd "${CURDIR}"
-
-		elif [ "${APPNAME}" == "Home" ]; then
-
-			echo
-			echo " ${GREEN}Restoring files...${STD}"
-
-			tar -xpf ${RESTOREFOLDER}/${SERVER}-backup.tar.gz -C /
-			sudo chown $USER:$USER ${HOME}
-
-		else
-
-			cd $CONFIGS/Docker
-			/usr/local/bin/docker-compose down
-			cd "${CURDIR}"
-
-			echo
-			echo " ${GREEN}Restoring files...${STD}"
-
-			sudo mv $CONFIGS/${APPNAME}/ ${OLDFILES}
-			tar -xpf ${RESTOREFOLDER}/${APPNAME}-full.tar.gz -C /
-			tar --incremental -xpf ${APPNAME}-diff.tar.gz
-
-			sudo chown $USER:$USER ${CONFIGS}
-			sudo chown $USER:$USER ${HOME}
-
-			cd $CONFIGS/Docker
-			source /opt/Gooby/install/misc/environment-build.sh rebuild
-			/usr/local/bin/docker-compose up -d --remove-orphans ${@:2}
-			cd "${CURDIR}"
-
-		fi
-
 		echo
 		echo " ${CYAN}Finished restoring ${APPNAME}${STD}"
 		echo
+
 		echo
 		echo " ${WHITE}Make sure${STD} you check if your services are"
 		echo " running properly before you remove the old installation!"
