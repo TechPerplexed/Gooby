@@ -49,7 +49,7 @@ else
 				/usr/bin/rclone --stats-one-line -P copy ${RCLONESERVICE}:/Backup/${SERVER}/Gooby --include '*' ${RESTOREFOLDER} --checksum --drive-chunk-size=64M
 
 				[ -f ${RESTOREFOLDER}/*-full.tar.gz ] || { echo; echo " ${LRED}Sorry, ${APPNAME} no backup found on ${RCLONESERVICE}!${STD}"; PAUSE; exit ;}
-				
+
 				echo
 				echo " ${LBLUE}${APPNAME} backup downloaded, proceeding...${STD}"
 				echo
@@ -68,9 +68,9 @@ else
 				sudo mv $CONFIGS/ ${OLDFILES}
 
 				tar -xpvf ${RESTOREFOLDER}/*-full.tar.gz ${CONFIGS}
-				[ -f ${RESTOREFOLDER}/*-diff.tar.gz ] && tar --incremental -xpvf *-diff.tar.gz ${CONFIGS}
+				[ -f ${RESTOREFOLDER}/*-diff.tar.gz ] && tar --incremental -xpvf ${RESTOREFOLDER}/*-diff.tar.gz ${CONFIGS}
 
-				sudo mv ${RESTOREFOLDER}/snapshots ${HOME}/backup/snapshots
+				sudo mv ${RESTOREFOLDER}/snapshots ${CONFIGS}/.config/snapshots
 
 				sudo chown $USER:$USER ${HOME} ${CONFIGS}
 
@@ -102,7 +102,7 @@ else
 				echo "- *" >> $CONFIGS/.config/checkapp.txt
 				/usr/bin/rclone --stats-one-line -P copy ${RCLONESERVICE}:/Backup/${SERVER}/Gooby --filter-from $CONFIGS/.config/checkapp.txt ${RESTOREFOLDER} --checksum --drive-chunk-size=64M
 
-				[ -f ${RESTOREFOLDER}/*-full.tar.gz] || { echo; echo " ${LRED}Sorry, ${APPNAME} backup not found on ${RCLONESERVICE}!${STD}"; rm $CONFIGS/.config/checkapp.txt; PAUSE; exit ;}
+				[ -f ${RESTOREFOLDER}/*-full.tar.gz ] || { echo; echo " ${LRED}Sorry, ${APPNAME} backup not found on ${RCLONESERVICE}!${STD}"; rm $CONFIGS/.config/checkapp.txt; PAUSE; exit ;}
 
 				cd $CONFIGS/Docker
 				/usr/local/bin/docker-compose down
@@ -115,9 +115,9 @@ else
 				sudo mv $CONFIGS/${APPNAME}/ ${OLDFILES}
 
 				tar -xpvf ${RESTOREFOLDER}/*-full.tar.gz ${CONFIGS}
-				[ -f ${RESTOREFOLDER}/*-diff.tar.gz ] && tar --incremental -xpvf *-diff.tar.gz ${CONFIGS}
+				[ -f ${RESTOREFOLDER}/*-diff.tar.gz ] && tar --incremental -xpvf ${RESTOREFOLDER}/*-diff.tar.gz ${CONFIGS}
 
-				sudo mv ${RESTOREFOLDER}/snapshots ${HOME}/backup/snapshots
+				sudo mv ${RESTOREFOLDER}/snapshots ${CONFIGS}/.config/snapshots
 
 				sudo chown $USER:$USER ${HOME} ${CONFIGS}
 
