@@ -28,7 +28,7 @@ rmove() {
 cd ${HOME}
 echo Creating backup - please be patient...; echo
 # Dump the user's CRONTAB to the local home directory so that it can be included in the backup.
-sudo crontab -u ${USER} -l > /home/${USER}/backup/cron
+sudo crontab -u ${USER} -l > /home/${USER}/cron
 # Create the home folder backup.
 echo -n "/tmp/${SERVER}-backup.tar.gz --> "
 sudo tar -cpf /tmp/${SERVER}-backup.tar.gz \
@@ -90,3 +90,5 @@ do
 		rmove "/tmp/${FILENAME}.snar" "/Backup/${SERVER}/Gooby/snapshots/${FILENAME}.snar"
 	fi
 done
+
+rm /home/${USER}/cron
