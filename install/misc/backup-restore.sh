@@ -46,7 +46,7 @@ else
 
 			All )
 
-				/usr/bin/rclone --stats-one-line -P copy ${RCLONESERVICE}:/Backup/${SERVER}/Gooby --include '*' ${RESTOREFOLDER} --checksum --drive-chunk-size=64M
+				/usr/bin/rclone --stats-one-line -P copy ${RCLONESERVICE}:/Backup/${SERVER}/Gooby ${RESTOREFOLDER} --checksum --drive-chunk-size=64M
 
 				[ -f ${RESTOREFOLDER}/*-full.tar.gz ] || { echo; echo " ${LRED}Sorry, ${APPNAME} no backup found on ${RCLONESERVICE}!${STD}"; PAUSE; exit ;}
 
