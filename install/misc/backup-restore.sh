@@ -48,7 +48,7 @@ else
 
 				/usr/bin/rclone --stats-one-line -P copy ${RCLONESERVICE}:/Backup/${SERVER}/Gooby ${RESTOREFOLDER} --checksum --drive-chunk-size=64M
 
-				[ -f ${RESTOREFOLDER}/*-full.tar.gz ] || { echo; echo " ${LRED}Sorry, ${APPNAME} no backup found on ${RCLONESERVICE}!${STD}"; PAUSE; exit ;}
+				[ -f ${RESTOREFOLDER}/Docker-full.tar.gz ] || { echo; echo " ${LRED}Sorry, no ${SERVER} backups found on ${RCLONESERVICE}!${STD}"; PAUSE; exit ;}
 
 				echo
 				echo " ${LBLUE}${APPNAME} backup downloaded, proceeding...${STD}"
@@ -65,7 +65,7 @@ else
 				echo " ${GREEN}Restoring files...${STD}"
 				echo
 
-				sudo mv $CONFIGS/ ${OLDFILES}
+				sudo mv $CONFIGS/[^.]* ${OLDFILES}
 
 				tar -xpvf ${RESTOREFOLDER}/*-full.tar.gz ${CONFIGS}
 				[ -f ${RESTOREFOLDER}/*-diff.tar.gz ] && tar --incremental -xpvf ${RESTOREFOLDER}/*-diff.tar.gz ${CONFIGS}
@@ -112,7 +112,7 @@ else
 				echo " ${GREEN}Restoring ${APPNAME}...${STD}"
 				echo
 
-				sudo mv $CONFIGS/${APPNAME}/ ${OLDFILES}/*
+				sudo mv $CONFIGS/${APPNAME} ${OLDFILES}/${APPNAME}
 
 				tar -xpvf ${RESTOREFOLDER}/*-full.tar.gz ${CONFIGS}
 				[ -f ${RESTOREFOLDER}/*-diff.tar.gz ] && tar --incremental -xpvf ${RESTOREFOLDER}/*-diff.tar.gz ${CONFIGS}
