@@ -5,7 +5,7 @@ BEGIN{	x = ARGV[1]
 		split("B KB MB GB TB PB",type)
 
 	for(i=5;y < 1;i--)
-		y = x / (2**(10*i))
+		y = x / (2^(10*i))
 
 	printf("%.2f %s\n",y,type[i+2])
 }
