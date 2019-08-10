@@ -62,15 +62,17 @@ else
 			
 				/usr/bin/rclone --stats-one-line -P copy ${RCLONESERVICE}:/Backup/${SERVER}/Gooby ${RESTOREFOLDER} --checksum --drive-chunk-size=64M
 				[ -f ${RESTOREFOLDER}/Docker-full.tar.gz ] || { echo; echo " ${LRED}Sorry, backup not found on ${RCLONESERVICE}!${STD}, please try again"; PAUSE; exit ;}
+				sudo mv ${CONFIGS}/[^.]* ${OLDFILES}
 
 			else
 
 				echo "+ ${APPNAME}*" > ${CONFIGS}/.config/checkapp.txt
 				echo "- *" >> ${CONFIGS}/.config/checkapp.txt
-				/usr/bin/rclone --stats-one-line -P copy ${RCLONESERVICE}:/Backup/${SERVER}/Gooby --filter-from ${CONFIGS}/.config/checkapp.txt ${RESTOREFOLDER} --ignore-case --checksum --drive-chunk-size=64M
+				/usr/bin/rclone --stats-one-line -P copy ${RCLONESERVICE}:/Backup/${SERVER}/Gooby --filter-from ${CONFIGS}/.config/checkapp.txt ${RESTOREFOLDER} --checksum --drive-chunk-size=64M
 				rm ${CONFIGS}/.config/checkapp.txt
 				[ -f ${RESTOREFOLDER}/${APPNAME}-full.tar.gz ] || { echo; echo " ${LRED}Sorry, backup not found on ${RCLONESERVICE}!${STD}, please try again"; PAUSE; exit ;}
-
+				sudo mv ${CONFIGS}/${APPNAME} ${OLDFILES}
+				
 			fi
 
 			echo
@@ -82,13 +84,11 @@ else
 
 			cd ${CONFIGS}/Docker
 			/usr/local/bin/docker-compose down
-			cd "${CURDIR}"
+			cd ${CURDIR}
 
 			echo
 			echo " ${GREEN}Restoring files...${STD}"
 			echo
-
-			sudo mv ${CONFIGS}/[^.]* ${OLDFILES}
 
 			cd ${CONFIGS}
 
@@ -116,13 +116,13 @@ else
 
 			done
 
-			cd "${CURDIR}"
+			cd ${CURDIR}
 			sudo mv ${RESTOREFOLDER}/snapshots ${CONFIGS}/.config/snapshots
 
 			cd ${CONFIGS}/Docker
 			source /opt/Gooby/install/misc/environment-build.sh rebuild
 			/usr/local/bin/docker-compose up -d --remove-orphans ${@:2}
-			cd "${CURDIR}"
+			cd ${CURDIR}
 
 			echo " ${GREEN} Restoring permissions, please wait...${STD}"
 			echo
