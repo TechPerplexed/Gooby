@@ -37,116 +37,116 @@ else
 		echo " You can type ${LYELLOW}All${STD} for all apps,"
 		echo " Or ${LYELLOW}Home${STD} for restoring your /home/${USER} directory"
 		echo
-		read -e -p " App to restore (caps matter!): " -i "All" APPNAME
+		read -e -p " App to restore (case matters): " -i "All" APPNAME
 
 		echo
 		echo " ${LMAGENTA}Copying ${APPNAME} backup from ${RCLONESERVICE}...${STD}"
+		echo
 
-		case "${APPNAME}" in
+		if [ "${APPNAME}" == "Home" ]; then
 
-			All )
+			/usr/bin/rclone --stats-one-line -P copy ${RCLONESERVICE}:/Backup/${SERVER}/${SERVER}-backup.tar.gz ${RESTOREFOLDER} --checksum --drive-chunk-size=64M
 
+			[ -f ${RESTOREFOLDER}/${SERVER}-backup.tar.gz ] || { echo; echo " ${LRED}Sorry, backup not found on ${RCLONESERVICE}!${STD}, please try again"; PAUSE; exit ;}
+
+			echo
+			echo " ${GREEN}Restoring your home folder...${STD}"
+			echo
+
+			tar -xpvf ${RESTOREFOLDER}/${SERVER}-backup.tar.gz -C /
+			sudo chown $USER:$USER ${HOME}
+
+		else
+
+			if [ "${APPNAME}" == "All" ]; then
+			
 				/usr/bin/rclone --stats-one-line -P copy ${RCLONESERVICE}:/Backup/${SERVER}/Gooby ${RESTOREFOLDER} --checksum --drive-chunk-size=64M
+				[ -f ${RESTOREFOLDER}/Docker-full.tar.gz ] || { echo; echo " ${LRED}Sorry, backup not found on ${RCLONESERVICE}!${STD}, please try again"; PAUSE; exit ;}
 
-				[ -f ${RESTOREFOLDER}/Docker-full.tar.gz ] || { echo; echo " ${LRED}Sorry, no ${SERVER} backups found on ${RCLONESERVICE}!${STD}"; PAUSE; exit ;}
+			else
 
+				echo "+ ${APPNAME}*" > ${CONFIGS}/.config/checkapp.txt
+				echo "- *" >> ${CONFIGS}/.config/checkapp.txt
+				/usr/bin/rclone --stats-one-line -P copy ${RCLONESERVICE}:/Backup/${SERVER}/Gooby --filter-from ${CONFIGS}/.config/checkapp.txt ${RESTOREFOLDER} --ignore-case --checksum --drive-chunk-size=64M
+				rm ${CONFIGS}/.config/checkapp.txt
+				[ -f ${RESTOREFOLDER}/${APPNAME}-full.tar.gz ] || { echo; echo " ${LRED}Sorry, backup not found on ${RCLONESERVICE}!${STD}, please try again"; PAUSE; exit ;}
+
+			fi
+
+			echo
+			echo " ${LBLUE}${APPNAME} backup downloaded, proceeding...${STD}"
+			echo
+
+			echo
+			echo " ${YELLOW}Taking containers down...${STD}"
+
+			cd ${CONFIGS}/Docker
+			/usr/local/bin/docker-compose down
+			cd "${CURDIR}"
+
+			echo
+			echo " ${GREEN}Restoring files...${STD}"
+			echo
+
+			sudo mv ${CONFIGS}/[^.]* ${OLDFILES}
+
+			cd ${CONFIGS}
+
+			for f in ${RESTOREFOLDER}/*-full.tar.gz
+
+			do
+
+				echo " ${GREEN} Extracting full archive... ${f}${STD}"
 				echo
-				echo " ${LBLUE}${APPNAME} backup downloaded, proceeding...${STD}"
+				tar -xpvf "$f"
 				echo
+				rm ${f}
 
+			done
+
+				for f in ${RESTOREFOLDER}/*-diff.tar.gz
+
+			do
+
+				echo " ${GREEN} Extracting differential archive... ${f}${STD}"
 				echo
-				echo " ${YELLOW}Taking containers down...${STD}"
-
-				cd $CONFIGS/Docker
-				/usr/local/bin/docker-compose down
-				cd "${CURDIR}"
-
+				tar --incremental -xpvf "$f"
 				echo
-				echo " ${GREEN}Restoring files...${STD}"
-				echo
+				rm ${f}
 
-				sudo mv $CONFIGS/[^.]* ${OLDFILES}
+			done
 
-				tar -xpvf ${RESTOREFOLDER}/*-full.tar.gz ${CONFIGS}
-				[ -f ${RESTOREFOLDER}/*-diff.tar.gz ] && tar --incremental -xpvf ${RESTOREFOLDER}/*-diff.tar.gz ${CONFIGS}
+			cd "${CURDIR}"
+			sudo mv ${RESTOREFOLDER}/snapshots ${CONFIGS}/.config/snapshots
 
-				sudo mv ${RESTOREFOLDER}/snapshots ${CONFIGS}/.config/snapshots
+			cd ${CONFIGS}/Docker
+			source /opt/Gooby/install/misc/environment-build.sh rebuild
+			/usr/local/bin/docker-compose up -d --remove-orphans ${@:2}
+			cd "${CURDIR}"
 
-				sudo chown $USER:$USER ${HOME} ${CONFIGS}
+			echo " ${GREEN} Restoring permissions, please wait...${STD}"
+			echo
+			sudo chown $USER:$USER ${CONFIGS}
 
-				cd $CONFIGS/Docker
-				source /opt/Gooby/install/misc/environment-build.sh rebuild
-				/usr/local/bin/docker-compose up -d --remove-orphans ${@:2}
-				cd "${CURDIR}"
+			echo
+			echo " ${CYAN}Finished restoring ${APPNAME}${STD}"
+			echo
 
-			;;
+			echo
+			echo " ${WHITE}Make sure${STD} you check if your services are"
+			echo " running properly before you remove the old installation!"
+			echo
+			read -n 1 -s -r -p " Remove old installation files (Y/n)? " -i "" choice
+			echo
 
-			Home )
+			case "$choice" in
+				y|Y ) sudo rm -r ${OLDFILES};;
+				* ) echo " Your old installation files are available"; echo " at ${OLDFILES} until you reboot"; echo;;
+			esac
 
-				/usr/bin/rclone --stats-one-line -P copy ${RCLONESERVICE}:/Backup/${SERVER}/${SERVER}-backup.tar.gz ${RESTOREFOLDER} --checksum --drive-chunk-size=64M
+		fi
 
-				[ -f ${RESTOREFOLDER}/${SERVER}-backup.tar.gz ] || { echo; echo " ${LRED}Sorry, backup not found on ${RCLONESERVICE}!${STD}"; PAUSE; exit ;}
-
-				echo
-				echo " ${GREEN}Restoring Gooby...${STD}"
-				echo
-
-				tar -xpvf ${RESTOREFOLDER}/${SERVER}-backup.tar.gz -C /
-				sudo chown $USER:$USER ${HOME}
-
-			;;
-
-			* )
-
-				echo "+ ${APPNAME}*" > $CONFIGS/.config/checkapp.txt
-				echo "- *" >> $CONFIGS/.config/checkapp.txt
-				/usr/bin/rclone --stats-one-line -P copy ${RCLONESERVICE}:/Backup/${SERVER}/Gooby --filter-from $CONFIGS/.config/checkapp.txt ${RESTOREFOLDER} --checksum --drive-chunk-size=64M
-
-				[ -f ${RESTOREFOLDER}/*-full.tar.gz ] || { echo; echo " ${LRED}Sorry, ${APPNAME} backup not found on ${RCLONESERVICE}!${STD}"; rm $CONFIGS/.config/checkapp.txt; PAUSE; exit ;}
-
-				cd $CONFIGS/Docker
-				/usr/local/bin/docker-compose down
-				cd "${CURDIR}"
-
-				echo
-				echo " ${GREEN}Restoring ${APPNAME}...${STD}"
-				echo
-
-				sudo mv $CONFIGS/${APPNAME} ${OLDFILES}/${APPNAME}
-
-				tar -xpvf ${RESTOREFOLDER}/*-full.tar.gz ${CONFIGS}
-				[ -f ${RESTOREFOLDER}/*-diff.tar.gz ] && tar --incremental -xpvf ${RESTOREFOLDER}/*-diff.tar.gz ${CONFIGS}
-
-				sudo mv ${RESTOREFOLDER}/snapshots ${CONFIGS}/.config/snapshots
-
-				sudo chown $USER:$USER ${HOME} ${CONFIGS}
-
-				cd $CONFIGS/Docker
-				source /opt/Gooby/install/misc/environment-build.sh rebuild
-				/usr/local/bin/docker-compose up -d --remove-orphans ${@:2}
-				cd "${CURDIR}"
-
-			;;
-
-		esac
-
-		echo
-		echo " ${CYAN}Finished restoring ${APPNAME}${STD}"
-		echo
-
-		echo
-		echo " ${WHITE}Make sure${STD} you check if your services are"
-		echo " running properly before you remove the old installation!"
-		echo
-		read -n 1 -s -r -p " Remove old installation files (Y/n)? " -i "" choice
-		echo
-
-		case "$choice" in
-			y|Y ) sudo rm -r ${OLDFILES};;
-			* ) echo " Your old installation files are available"; echo " at ${OLDFILES} until you reboot"; echo;;
-		esac
-
-		sudo rm -r ${RESTOREFOLDER}
+			sudo rm -r ${RESTOREFOLDER}
 
 		TASKCOMPLETE
 
