@@ -110,7 +110,7 @@ else
 
 				echo " ${GREEN}Extracting differential archive... ${f}${STD}"
 				echo
-				tar --incremental -xpvf "$f"
+				[ -f "$f" ] && tar --incremental -xpvf "$f"
 				echo
 				rm "$f"
 
@@ -158,6 +158,6 @@ else
 
 fi
 
-rm $CONFIGS/.config/checkapp.txt
+rm $CONFIGS/.config/checkapp.txt 2>/dev/null;
 
 PAUSE
