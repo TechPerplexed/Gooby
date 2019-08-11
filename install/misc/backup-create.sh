@@ -24,7 +24,7 @@ if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 			echo "Ok, script will quit now to allow you to restore your existing backup first."; PAUSE; exit
 
 		fi
-
+	fi
 
 	echo "Current backup schedule:"
 
