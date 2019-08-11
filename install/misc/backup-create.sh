@@ -13,15 +13,18 @@ if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 	if [ ! -d $CONFIGS/.config/snapshots ]; then
 
 		echo
-		echo "It looks like this is the first time you are creating a backup."
-		echo "Please make ${LYELLOW}sure${STD} that you restore an existing backup first!"
+		echo " It looks like this is the first time you are creating a backup."
+		echo " Please make ${LYELLOW}sure${STD} that you restore an existing backup first!"
 		echo
-		read -n 1 -s -r -p "Do you wish to proceed with the backup now (y/N)? "
+		read -n 1 -s -r -p " Do you wish to proceed with the backup now (y/N)? "
 		echo
 
-		if [[ ${REPLY} ! =~ ^[Yy]$ ]]; then
+		if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 
-			echo "Ok, script will quit now to allow you to restore your existing backup first."; PAUSE; exit
+			echo " Ok, proceeding..."; echo
+
+		else
+			echo " Ok, script will quit now to allow you to restore your existing backup first."; PAUSE; exit
 
 		fi
 	fi
