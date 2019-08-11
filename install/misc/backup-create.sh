@@ -10,6 +10,22 @@ if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 
 	GOAHEAD
 
+	if [ ! -d $CONFIGS/.config/snapshots ]; then
+
+		echo
+		echo "It looks like this is the first time you are creating a backup."
+		echo "Please make ${LYELLOW}sure${STD} that you restore an existing backup first!"
+		echo
+		read -n 1 -s -r -p "Do you wish to proceed with the backup now (y/N)? "
+		echo
+
+		if [[ ${REPLY} ! =~ ^[Yy]$ ]]; then
+
+			echo "Ok, script will quit now to allow you to restore your existing backup first."; PAUSE; exit
+
+		fi
+
+
 	echo "Current backup schedule:"
 
 	if ! crontab -l | grep 'backup.sh'; then
