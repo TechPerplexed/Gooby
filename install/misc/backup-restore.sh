@@ -47,7 +47,7 @@ else
 
 			/usr/bin/rclone --stats-one-line -P copy ${RCLONESERVICE}:/Backup/${SERVER}/${SERVER}-backup.tar.gz ${RESTOREFOLDER} --checksum --drive-chunk-size=64M
 
-			[ -f ${RESTOREFOLDER}/${SERVER}-backup.tar.gz ] || { echo; echo " ${LRED}Sorry, backup not found on ${RCLONESERVICE}!${STD}, please try again"; PAUSE; exit ;}
+			[ -f ${RESTOREFOLDER}/${SERVER}-backup.tar.gz ] || { echo; echo " ${LRED}Sorry, backup not found on ${RCLONESERVICE}!${STD} - please try again"; PAUSE; exit ;}
 
 			echo
 			echo " ${GREEN}Restoring your home folder...${STD}"
@@ -61,7 +61,7 @@ else
 			if [ "${APPNAME}" == "All" ]; then
 			
 				/usr/bin/rclone --stats-one-line -P copy ${RCLONESERVICE}:/Backup/${SERVER}/Gooby ${RESTOREFOLDER} --checksum --drive-chunk-size=64M
-				[ -f ${RESTOREFOLDER}/Docker-full.tar.gz ] || { echo; echo " ${LRED}Sorry, backup not found on ${RCLONESERVICE}!${STD}, please try again"; PAUSE; exit ;}
+				[ -f ${RESTOREFOLDER}/Docker-full.tar.gz ] || { echo; echo " ${LRED}Sorry, backup not found on ${RCLONESERVICE}!${STD} - please try again"; PAUSE; exit ;}
 				sudo mv ${CONFIGS}/[^.]* ${OLDFILES}
 
 			else
@@ -96,11 +96,11 @@ else
 
 			do
 
-				echo " ${GREEN} Extracting full archive... ${f}${STD}"
+				echo " ${GREEN}Extracting full archive... ${f}${STD}"
 				echo
 				tar -xpvf "$f"
 				echo
-				rm ${f}
+				rm "$f"
 
 			done
 
@@ -108,11 +108,11 @@ else
 
 			do
 
-				echo " ${GREEN} Extracting differential archive... ${f}${STD}"
+				echo " ${GREEN}Extracting differential archive... ${f}${STD}"
 				echo
 				tar --incremental -xpvf "$f"
 				echo
-				rm ${f}
+				rm "$f"
 
 			done
 
@@ -124,7 +124,7 @@ else
 			/usr/local/bin/docker-compose up -d --remove-orphans ${@:2}
 			cd ${CURDIR}
 
-			echo " ${GREEN} Restoring permissions, please wait...${STD}"
+			echo " ${GREEN}Restoring permissions, please wait...${STD}"
 			echo
 			sudo chown $USER:$USER ${CONFIGS}
 
@@ -140,8 +140,8 @@ else
 			echo
 
 			case "$choice" in
-				y|Y ) sudo rm -r ${OLDFILES};;
-				* ) echo " Your old installation files are available"; echo " at ${OLDFILES} until you reboot"; echo;;
+				y|Y ) sudo rm -r ${OLDFILES} ;;
+				* ) echo " Your old installation files are available"; echo " at ${OLDFILES} until you reboot"; echo ;;
 			esac
 
 		fi
