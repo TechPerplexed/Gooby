@@ -118,6 +118,7 @@ else
 			done
 
 			cd ${CURDIR}
+			mkdir -p ${CONFIGS}/.config/snapshots
 			sudo mv ${RESTOREFOLDER}/snapshots/* ${CONFIGS}/.config/snapshots
 
 			cd ${CONFIGS}/Docker
