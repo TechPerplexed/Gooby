@@ -11,7 +11,7 @@ if [ ! -s $CONFIGS/.config/checkapp ]; then
 else
 
 	FILENAME=$APP.$MYDOMAIN
-	cd $CONFIGS/Security
+	cd $CONFIGS/Docker/security
 
 	# Menu Options
 
