@@ -35,6 +35,8 @@ touch $CONFIGS/.config/rcloneservice $CONFIGS/.config/rclonefolder
 source /opt/Gooby/install/misc/environment-build.sh
 
 cd $CONFIGS/Docker
+sudo mkdir nginx
+sudo echo "client_max_body_size 30m;" > $CONFIGS/Docker/nginx/my_custom_proxy_settings.conf
 /usr/local/bin/docker-compose up --remove-orphans --build -d
 cd "${CURDIR}"
 
