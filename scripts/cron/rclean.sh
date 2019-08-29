@@ -29,11 +29,6 @@ if [ -d /opt/.Gooby ]; then
 	sudo chmod 755 /bin/syncmount
 fi
 
-if [[ ! -e $CONFIGS/Docker/nginx/my_custom_proxy_settings.conf ]]; then
-    sudo mkdir -p $CONFIGS/Docker/nginx
-    sudo echo "client_max_body_size 30m;" > $CONFIGS/Docker/nginx/my_custom_proxy_settings.conf
-fi
-
 echo
 echo "${LYELLOW}Shutting everything down${STD}"
 echo
