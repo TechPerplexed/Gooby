@@ -35,7 +35,7 @@ else
 		echo
 		echo " App name to restore: (for example, ${LYELLOW}Docker${STD} or ${LYELLOW}Plex${STD})"
 		echo " You can find your app names in ${RCLONESERVICE}:/Backup/${SERVER}/Gooby"
-		echo " You can type ${LYELLOW}All${STD} for all apps,"
+		echo " You can type ${LYELLOW}All${STD} for all Docker apps,"
 		echo " Or ${LYELLOW}Home${STD} for restoring your /home/${USER} directory"
 		echo
 		read -e -p " App to restore (case matters): " -i "All" APPNAME
