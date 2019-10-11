@@ -8,9 +8,6 @@ clear
 echo
 echo "${YELLOW}Welcome to Gooby $VERSION!${STD}"
 echo
-echo "You will need to own a domain... if you don't have one"
-echo "then you get can a free domain for example at Freenom."
-echo
 echo "${YELLOW}Please answer the following two questions:${STD}"
 echo
 echo "What domain will you be using to access your server?"
