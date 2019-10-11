@@ -119,7 +119,7 @@ else
 
 			cd ${CURDIR}
 			mkdir -p ${CONFIGS}/.config/snapshots
-			sudo mv ${RESTOREFOLDER}/snapshots/* ${CONFIGS}/.config/snapshots
+			# sudo mv ${RESTOREFOLDER}/snapshots/* ${CONFIGS}/.config/snapshots
 
 			cd ${CONFIGS}/Docker
 			source /opt/Gooby/install/misc/environment-build.sh rebuild
