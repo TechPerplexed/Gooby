@@ -10,6 +10,8 @@ if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 
 	GOAHEAD
 
+	crontab -l | grep 'resetbackup' || (crontab -l 2>/dev/null; echo "0 0 1 * * /bin/resetbackup > /dev/null 2>&1") | crontab -
+
 	if [ ! -d $CONFIGS/.config/snapshots ]; then
 
 		echo
@@ -43,8 +45,10 @@ if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 
 			crontab -l | grep 'backup.sh' || (crontab -l 2>/dev/null; echo "15 2 * * SUN /opt/Gooby/scripts/cron/backup.sh > /dev/null 2>&1") | crontab -
 			echo
-			echo "Backup scheduled to run at 02:15 every Sunday"
-			echo "You can always change this by typing ${LYELLOW}crontab -e${STD}"
+			echo "Backup scheduled to run at 02:15 every Sunday."
+			echo "The incremental backup will reset on the first of each month."
+			echo
+			echo "You can always change these settings by typing ${LYELLOW}crontab -e${STD}"
 
 		else
 
