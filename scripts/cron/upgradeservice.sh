@@ -61,6 +61,10 @@ else
 		sudo rm -r /var/local/.Gooby
 	fi
 
+	# Add cron
+
+	crontab -l | grep 'resetbackup' || (crontab -l 2>/dev/null; echo "0 0 1 * * /bin/resetbackup > /dev/null 2>&1") | crontab -
+
 	# Finalizing upgrade
 
 	echo; echo "${GREEN}Upgrade to v${VERSION} complete... prodeeding${STD}"; echo
