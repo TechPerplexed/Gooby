@@ -50,7 +50,7 @@ echo
 touch $CONFIGS/.config/rcloneversion
 if [ $( cat $CONFIGS/.config/rcloneversion ) = "Beta" ]; then
 	curl https://rclone.org/install.sh | sudo bash -s beta
-else 
+else
 	curl https://rclone.org/install.sh | sudo bash
 fi
 
