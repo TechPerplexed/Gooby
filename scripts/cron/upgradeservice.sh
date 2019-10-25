@@ -63,7 +63,10 @@ else
 
 	# Add cron
 
-	crontab -l | grep 'resetbackup' || (crontab -l 2>/dev/null; echo "0 0 1 * * /bin/resetbackup > /dev/null 2>&1") | crontab -
+
+	if crontab -l | grep 'backup.sh'; then
+		crontab -l | grep 'resetbackup' || (crontab -l 2>/dev/null; echo "10 2 1 * * /bin/resetbackup > /dev/null 2>&1") | crontab -
+	fi
 
 	# Finalizing upgrade
 
