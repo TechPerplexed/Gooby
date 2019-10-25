@@ -15,7 +15,7 @@ else
 
 	sudo apt-get update
 
-	APPLIST="acl apt-transport-https ca-certificates curl fuse git gpg-agent grsync jq mergerfs nano pigz rsyncufw socat sqlite3 unzip wget"
+	APPLIST="acl apt-transport-https ca-certificates curl fuse git gpg-agent grsync jq mergerfs nano pigz rsyncufw socat sqlite3 ufw unzip wget"
 
 	for i in $APPLIST; do
 		echo Checking $i...
@@ -62,7 +62,6 @@ else
 	fi
 
 	# Add cron
-
 
 	if crontab -l | grep 'backup.sh'; then
 		crontab -l | grep 'resetbackup' || (crontab -l 2>/dev/null; echo "10 2 1 * * /bin/resetbackup > /dev/null 2>&1") | crontab -
