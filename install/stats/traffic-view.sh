@@ -4,6 +4,7 @@ MENU="Rclone Activity"
 
 source /opt/Gooby/menus/variables.sh
 source $CONFIGS/Docker/.env
+OPTION=${1}
 
 while true; do
 
@@ -43,8 +44,8 @@ while true; do
 	echo -n " Current speed     : ${LBLUE}"; printf "%'.2f" ${SPEED}; echo " MB/sec${STD}"
 	echo
 
-	if ${TRANSFERS} != 0 ]]; then
-		echo " Files transferring:"
+	if [[ ${OPTION,,} != "short" && ${TRANSFERS} != 0 ]]; then
+		echo 'Files transferring:'
 		echo
 		for ((x=0; x<${TRANSFERS}; x++))
 		do
