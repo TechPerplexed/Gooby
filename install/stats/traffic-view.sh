@@ -43,22 +43,24 @@ while true; do
 	echo -n " Current speed     : ${LBLUE}"; printf "%'.2f" ${SPEED}; echo " MB/sec${STD}"
 	echo
 
-	echo " Files transferring:"
-	echo
-	for ((x=0; x<${TRANSFERS}; x++))
-	do
-		percent=$(echo ${RAW} | jq ".transferring[${x}] .percentage")
-		name=$(echo ${RAW} | jq ".transferring[${x}] .name")
-		name=$(basename "${name}")
-		if [[ ${percent} -lt 10 ]]
-		then
-			percent=" ${percent}"
-		fi
-		echo  "${percent}% ${name//\"}" >> /tmp/xfer-${$}
-	done
-	cat /tmp/xfer-${$} | sort -n
-	rm /tmp/xfer-${$}
-	
+	if ${TRANSFERS} != 0 ]]; then
+		echo " Files transferring:"
+		echo
+		for ((x=0; x<${TRANSFERS}; x++))
+		do
+			percent=$(echo ${RAW} | jq ".transferring[${x}] .percentage")
+			name=$(echo ${RAW} | jq ".transferring[${x}] .name")
+			name=$(basename "${name}")
+			if [[ ${percent} -lt 10 ]]
+			then
+				percent=" ${percent}"
+			fi
+			echo  "${percent}% ${name//\"}" >> /tmp/xfer-${$}
+		done
+		cat /tmp/xfer-${$} | sort -n
+		rm /tmp/xfer-${$}
+	fi
+
 	echo
 	echo " ${WHITE}Z${STD} - EXIT to Main Menu"
 	echo " ${LBLUE}"
