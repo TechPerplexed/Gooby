@@ -22,14 +22,14 @@ sleep 10
 
 source /opt/Gooby/install/server/docker-install.sh
 
-sudo mkdir -p $CONFIGS/.config $CONFIGS/Docker/components 
+sudo mkdir -p ${CONFIGVARS} $CONFIGS/Docker/components 
 sudo chown -R $USER:$USER $CONFIGS
 
-echo "$MYDOMAIN" > $CONFIGS/.config/mydomain
-echo "$MYEMAIL" > $CONFIGS/.config/myemail
+echo "$MYDOMAIN" > ${CONFIGVARS}/mydomain
+echo "$MYEMAIL" > ${CONFIGVARS}/myemail
 
 sudo rsync -a /opt/Gooby/scripts/components/{00-AAA.yaml,01-proxy.yaml} $CONFIGS/Docker/components
-touch $CONFIGS/.config/plexclaim $CONFIGS/.config/rclonefolder $CONFIGS/.config/rcloneservice $CONFIGS/.config/rcloneversion
+touch ${CONFIGVARS}/plexclaim ${CONFIGVARS}/rclonefolder ${CONFIGVARS}/rcloneservice ${CONFIGVARS}/rcloneversion
 
 source /opt/Gooby/install/misc/environment-build.sh
 
@@ -45,4 +45,4 @@ crontab -l | grep 'rclean.sh' || (crontab -l 2>/dev/null; echo "@reboot /opt/Goo
 
 # Add Gooby version
 
-echo ${VERSION} > $CONFIGS/.config/version
+echo ${VERSION} > ${CONFIGVARS}/version
