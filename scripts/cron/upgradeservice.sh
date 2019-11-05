@@ -4,6 +4,7 @@ VERSION=2.2.1
 
 CONFIGVARS=${CONFIGS}/Docker/.config
 sudo mkdir -p ${CONFIGVARS}
+sudo chown -R $USER:$USER $HOME $CONFIGS/Docker
 touch ${CONFIGVARS}/version
 
 if [ "$(cat ${CONFIGVARS}/version)" == ${VERSION} ]; then
