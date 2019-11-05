@@ -3,9 +3,10 @@
 VERSION=2.2.1
 
 touch ${CONFIGVARS}/version
+
 if [ "$(cat ${CONFIGVARS}/version)" == ${VERSION} ]; then
 
-	echo "${GREEN}Your system has already been upgraded to v${VERSION}... prodeeding${STD}"; echo
+	echo "${GREEN}Your system has already been upgraded to v${VERSION}... skipping upgrade${STD}"; echo
 
 else
 
@@ -20,6 +21,7 @@ else
 	for i in $APPLIST; do
 		echo Checking $i...
 		sudo apt-get -y install $i
+		echo
 	done
 
 	# Move and rename folders
