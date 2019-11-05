@@ -22,9 +22,7 @@ else
 		sudo apt-get -y install $i
 	done
 
-	# Update Proxy
-
-	sudo rsync -a /opt/Gooby/scripts/components/{00-AAA.yaml,01-proxy.yaml} $CONFIGS/Docker/components
+	# Move and rename folders
 
 	if [ -d $CONFIGS/Security ]; then
 		sudo mv $CONFIGS/Certs $CONFIGS/Docker
@@ -61,7 +59,7 @@ else
 		sudo rm -r /var/local/.Gooby
 	fi
 
-	# Add cron
+	# Add resetbackup cron
 
 	if crontab -l | grep 'backup.sh'; then
 		crontab -l | grep 'resetbackup' || (crontab -l 2>/dev/null; echo "10 2 1 * * /bin/resetbackup > /dev/null 2>&1") | crontab -
@@ -69,7 +67,9 @@ else
 
 	# Add proxy version
 
-	echo "nginx" > ${CONFIGVARS}/proxyversion
+	if [ ! -e ${CONFIGVARS}/proxyversion ]; then
+		echo "NGINX" > ${CONFIGVARS}/proxyversion
+	fi
 
 	# Finalizing upgrade
 
