@@ -1,10 +1,10 @@
 #!/bin/bash
 
 source $CONFIGS/Docker/.env
-which rclone > $CONFIGS/.config/checkapp.txt
+which rclone > ${CONFIGVARS}/checkapp.txt
 clear
 
-if [ ! -s $CONFIGS/.config/checkapp.txt ]; then
+if [ ! -s ${CONFIGVARS}/checkapp.txt ]; then
 
 	echo "${YELLOW}"
 	echo "--------------------------------------------------"
@@ -161,6 +161,6 @@ else
 
 fi
 
-rm $CONFIGS/.config/checkapp.txt 2>/dev/null;
+rm ${CONFIGVARS}/checkapp.txt 2>/dev/null;
 
 PAUSE
