@@ -37,6 +37,18 @@ else
 		sudo mv $CONFIGS/Docker/Security $CONFIGS/Docker/security
 	fi
 
+	if [ -d /var/local/.Gooby ]; then
+		sudo mv /var/local/.Gooby/* ${CONFIGVARS}
+		sudo rm -r /var/local/.Gooby
+	fi
+
+	if [ -d /var/local/Gooby/.config ]; then
+		sudo mv $CONFIGS/.config/* ${CONFIGVARS}
+		sudo mv ${CONFIGVARS}/rclonev ${CONFIGVARS}/rcloneversion
+		sudo mv ${CONFIGVARS}/upgrade ${CONFIGVARS}/version
+		sudo rm -r /var/local/Gooby/.config
+	fi
+
 	# Upgrade Rclone service 
 
 	cat /etc/systemd/system/rclonefs.service | grep "pass" > /dev/null
@@ -54,20 +66,6 @@ else
 	fi
 
 	sudo systemctl daemon-reload
-
-	# Update Configs
-
-	if [ -d /var/local/.Gooby ]; then
-		sudo mv /var/local/.Gooby/* ${CONFIGVARS}
-		sudo rm -r /var/local/.Gooby
-	fi
-
-	if [ -d /var/local/Gooby/.config ]; then
-		sudo mv /var/local/Gooby/.config/* ${CONFIGVARS}
-		sudo mv ${CONFIGVARS}/rclonev ${CONFIGVARS}/rcloneversion
-		sudo mv ${CONFIGVARS}/upgrade ${CONFIGVARS}/version
-		sudo rm -r /var/local/Gooby/.config
-	fi
 
 	# Add resetbackup cron
 
