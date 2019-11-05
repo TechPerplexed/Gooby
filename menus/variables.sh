@@ -1,6 +1,7 @@
 #!/bin/bash
 
 CONFIGS=/var/local/Gooby
+CONFIGVARS=${CONFIGS}/Docker/.config
 
 # Define colors
 
