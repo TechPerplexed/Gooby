@@ -10,7 +10,7 @@ if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 
 	GOAHEAD
 
-	if [ ! -d $CONFIGS/.config/snapshots ]; then
+	if [ ! -d ${CONFIGVARS}/snapshots ]; then
 
 		echo
 		echo " It looks like this is the first time you are creating a backup."
