@@ -29,8 +29,7 @@
     container_name:  letsencrypt
     hostname: letsencrypt
     environment:
-      #- ACME_CA_URI=https://acme-staging.api.letsencrypt.org/directory
-      - ACME_CA_URI=https://acme-v01.api.letsencrypt.org/directory
+      - ACME_CA_URI=https://acme-v02.api.letsencrypt.org/directory
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
     volumes_from:
