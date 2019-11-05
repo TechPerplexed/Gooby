@@ -60,20 +60,20 @@ else
 		else
 
 			if [ "${APPNAME}" == "All" ]; then
-			
+
 				/usr/bin/rclone --stats-one-line -P copy ${RCLONESERVICE}:/Backup/${SERVER}/Gooby ${RESTOREFOLDER} --checksum --drive-chunk-size=64M
 				[ -f ${RESTOREFOLDER}/Docker-full.tar.gz ] || { echo; echo " ${LRED}Sorry, backup not found on ${RCLONESERVICE}!${STD} - please try again"; PAUSE; exit ;}
 				sudo mv ${CONFIGS}/[^.]* ${OLDFILES}
 
 			else
 
-				echo "+ ${APPNAME}*" > ${CONFIGS}/.config/checkapp.txt
-				echo "- *" >> ${CONFIGS}/.config/checkapp.txt
-				/usr/bin/rclone --stats-one-line -P copy ${RCLONESERVICE}:/Backup/${SERVER}/Gooby --filter-from ${CONFIGS}/.config/checkapp.txt ${RESTOREFOLDER} --checksum --drive-chunk-size=64M
-				rm ${CONFIGS}/.config/checkapp.txt
+				echo "+ ${APPNAME}*" > ${CONFIGVARS}/checkapp.txt
+				echo "- *" >> ${CONFIGVARS}/checkapp.txt
+				/usr/bin/rclone --stats-one-line -P copy ${RCLONESERVICE}:/Backup/${SERVER}/Gooby --filter-from ${CONFIGVARS}/checkapp.txt ${RESTOREFOLDER} --checksum --drive-chunk-size=64M
+				rm ${CONFIGVARS}/checkapp.txt
 				[ -f ${RESTOREFOLDER}/${APPNAME}-full.tar.gz ] || { echo; echo " ${LRED}Sorry, backup not found on ${RCLONESERVICE}!${STD}, please try again"; PAUSE; exit ;}
 				sudo mv ${CONFIGS}/${APPNAME}/ ${OLDFILES}
-				
+
 			fi
 
 			echo
@@ -118,9 +118,8 @@ else
 			done
 
 			cd ${CURDIR}
-			mkdir -p ${CONFIGS}/.config/snapshots
+			mkdir -p ${CONFIGVARS}/snapshots
 			source /bin/resetbackup
-			# sudo mv ${RESTOREFOLDER}/snapshots/* ${CONFIGS}/.config/snapshots
 
 			cd ${CONFIGS}/Docker
 			source /opt/Gooby/install/misc/environment-build.sh rebuild
