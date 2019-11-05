@@ -2,6 +2,8 @@
 
 VERSION=2.2.1
 
+CONFIGVARS=${CONFIGS}/Docker/.config
+sudo mkdir -p ${CONFIGVARS}
 touch ${CONFIGVARS}/version
 
 if [ "$(cat ${CONFIGVARS}/version)" == ${VERSION} ]; then
