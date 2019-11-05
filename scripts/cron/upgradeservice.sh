@@ -2,8 +2,8 @@
 
 VERSION=2.2.1
 
-touch $CONFIGS/.config/version
-if [ "$(cat $CONFIGS/.config/version)" == ${VERSION} ]; then
+touch ${CONFIGVARS}/version
+if [ "$(cat ${CONFIGVARS}/version)" == ${VERSION} ]; then
 
 	echo "${GREEN}Your system has already been upgraded to v${VERSION}... prodeeding${STD}"; echo
 
@@ -55,9 +55,9 @@ else
 	# Update Configs
 
 	if [ -d /var/local/.Gooby]; then
-		sudo mv /var/local/.Gooby/* $CONFIGS/.config
-		sudo mv $CONFIGS/.config/rclonev $CONFIGS/.config/rcloneversion
-		sudo mv $CONFIGS/.config/upgrade $CONFIGS/.config/version
+		sudo mv /var/local/.Gooby/* ${CONFIGVARS}
+		sudo mv ${CONFIGVARS}/rclonev ${CONFIGVARS}/rcloneversion
+		sudo mv ${CONFIGVARS}/upgrade ${CONFIGVARS}/version
 		sudo rm -r /var/local/.Gooby
 	fi
 
@@ -67,10 +67,14 @@ else
 		crontab -l | grep 'resetbackup' || (crontab -l 2>/dev/null; echo "10 2 1 * * /bin/resetbackup > /dev/null 2>&1") | crontab -
 	fi
 
+	# Add proxy version
+
+	echo "nginx" > ${CONFIGVARS}/proxyversion
+
 	# Finalizing upgrade
 
 	echo; echo "${GREEN}Upgrade to v${VERSION} complete... prodeeding${STD}"; echo
 
 fi
 
-echo ${VERSION} > $CONFIGS/.config/version
+echo ${VERSION} > ${CONFIGVARS}/version
