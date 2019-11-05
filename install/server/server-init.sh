@@ -29,7 +29,7 @@ echo "$MYDOMAIN" > ${CONFIGVARS}/mydomain
 echo "$MYEMAIL" > ${CONFIGVARS}/myemail
 
 sudo rsync -a /opt/Gooby/scripts/components/{00-AAA.yaml,01-proxy.yaml} $CONFIGS/Docker/components
-touch ${CONFIGVARS}/plexclaim ${CONFIGVARS}/rclonefolder ${CONFIGVARS}/rcloneservice ${CONFIGVARS}/rcloneversion
+touch ${CONFIGVARS}/cf_email ${CONFIGVARS}/cf_key ${CONFIGVARS}/plexclaim ${CONFIGVARS}/proxyversion ${CONFIGVARS}/rclonefolder ${CONFIGVARS}/rcloneservice ${CONFIGVARS}/rcloneversion
 
 source /opt/Gooby/install/misc/environment-build.sh
 
