@@ -54,7 +54,7 @@ else
 
 	# Update Configs
 
-	if [ -d /var/local/.Gooby]; then
+	if [ -d /var/local/.Gooby ]; then
 		sudo mv /var/local/.Gooby/* ${CONFIGVARS}
 		sudo mv ${CONFIGVARS}/rclonev ${CONFIGVARS}/rcloneversion
 		sudo mv ${CONFIGVARS}/upgrade ${CONFIGVARS}/version
@@ -71,6 +71,7 @@ else
 
 	if [ ! -e ${CONFIGVARS}/proxyversion ]; then
 		echo "NGINX" > ${CONFIGVARS}/proxyversion
+		touch ${CONFIGVARS}/cf_email ${CONFIGVARS}/cf_key
 	fi
 
 	# Finalizing upgrade
