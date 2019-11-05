@@ -10,7 +10,7 @@ if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 
 	GOAHEAD
 
-	[[ -e $CONFIGS/.config/myemail ]] && echo "Your email address is currently set to $(cat $CONFIGS/.config/myemail)"
+	[[ -e ${CONFIGVARS}/myemail ]] && echo "Your email address is currently set to $(cat ${CONFIGVARS}/myemail)"
 
 	read -p "Your new email address: " SETMAIL
 
@@ -20,9 +20,9 @@ if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 
 	else
 
-		echo "$SETMAIL" > $CONFIGS/.config/myemail
+		echo "$SETMAIL" > ${CONFIGVARS}/myemail
 
-		MYEMAIL=$(cat $CONFIGS/.config/myemail)
+		MYEMAIL=$(cat ${CONFIGVARS}/myemail)
 		
 		/opt/Gooby/install/misc/environment-build.sh rebuild
 		source $CONFIGS/Docker/.env
