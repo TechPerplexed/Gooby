@@ -106,8 +106,8 @@ EXPLAINTASK(){
 
 EXPLAINAPP(){
 	clear
-	which rclone > $CONFIGS/.config/checkapp
-	if [ ! -s $CONFIGS/.config/checkapp ]; then
+	which rclone > ${CONFIGVARS}/checkapp
+	if [ ! -s ${CONFIGVARS}/checkapp ]; then
 		echo "${LRED}"
 		echo "--------------------------------------------------"
 		echo " WARNING! Rclone is not installed yet."
