@@ -8,8 +8,8 @@ source /opt/Gooby/menus/variables.sh
 source $CONFIGS/Docker/.env
 
 # Make sure there's a place to store backup index for full versus differential
-mkdir -p ${CONFIGS}/.config/snapshots
-SNAPSHOTS="${CONFIGS}/.config/snapshots"
+mkdir -p ${CONFIGVARS}/snapshots
+SNAPSHOTS=${CONFIGVARS}/snapshots
 
 rmove() {
 	# This function handles moving a file from the local storage to Google.  It will display
@@ -86,8 +86,8 @@ do
 
 		fi
 		rmove "/tmp/${FILENAME2}.tar.gz" "/Backup/${SERVER}/Gooby/${FILENAME2}.tar.gz"
-		cp "${SNAPSHOTS}/${FILENAME}.snar" /tmp/
-		rmove "/tmp/${FILENAME}.snar" "/Backup/${SERVER}/Gooby/snapshots/${FILENAME}.snar"
+		# cp "${SNAPSHOTS}/${FILENAME}.snar" /tmp/
+		# rmove "/tmp/${FILENAME}.snar" "/Backup/${SERVER}/Gooby/snapshots/${FILENAME}.snar"
 	fi
 done
 
