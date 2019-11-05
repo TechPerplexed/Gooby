@@ -47,8 +47,8 @@ echo
 echo "${LYELLOW}Updating Rclone if possible${STD}"
 echo
 
-touch $CONFIGS/.config/rcloneversion
-if [ $( cat $CONFIGS/.config/rcloneversion ) = "Beta" ]; then
+touch ${CONFIGVARS}/rcloneversion
+if [ $( cat ${CONFIGVARS}/rcloneversion ) = "Beta" ]; then
 	curl https://rclone.org/install.sh | sudo bash -s beta
 else
 	curl https://rclone.org/install.sh | sudo bash
@@ -146,4 +146,4 @@ echo
 echo "${LYELLOW}Restoring permissions... this could take a few minutes${STD}"
 echo
 
-sudo chown -R $USER:$USER $HOME $CONFIGS/.config $CONFIGS/Docker /tmp
+sudo chown -R $USER:$USER $HOME $CONFIGS/Docker /tmp
