@@ -1,10 +1,10 @@
 #!/bin/bash
 
-docker ps -q -f name=$APP > $CONFIGS/.config/checkapp
+docker ps -q -f name=$APP > ${CONFIGVARS}/checkapp
 MENU="Secure App"
 clear
 
-if [ ! -s $CONFIGS/.config/checkapp ]; then
+if [ ! -s ${CONFIGVARS}/checkapp ]; then
 
 	NOTINSTALLED
 
@@ -51,7 +51,7 @@ else
 
 		TASKCOMPLETE
 
-		touch $CONFIGS/.config/checkapp; rm $CONFIGS/.config/checkapp
+		touch ${CONFIGVARS}/checkapp; rm ${CONFIGVARS}/checkapp
 		PAUSE
 	}
 
@@ -66,7 +66,7 @@ else
 
 		TASKCOMPLETE
 
-		touch $CONFIGS/.config/checkapp; rm $CONFIGS/.config/checkapp
+		touch ${CONFIGVARS}/checkapp; rm ${CONFIGVARS}/checkapp
 		PAUSE
 	}
 
