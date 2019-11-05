@@ -67,6 +67,11 @@ else
 		crontab -l | grep 'resetbackup' || (crontab -l 2>/dev/null; echo "10 2 1 * * /bin/resetbackup > /dev/null 2>&1") | crontab -
 	fi
 
+	# Update Proxy
+
+	sudo rsync -a /opt/Gooby/scripts/components/{00-version.yaml,01-proxy.yaml} $CONFIGS/Docker/components
+	sudo rm /opt/Gooby/scripts/components/00-AAA.yaml
+
 	# Add proxy version
 
 	if [ ! -e ${CONFIGVARS}/proxyversion ]; then
