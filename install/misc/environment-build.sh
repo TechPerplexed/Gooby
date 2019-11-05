@@ -27,8 +27,11 @@ cat > ${ENV} << EOF
 #     for Gooby v$VERSION    #
 ###########################
 
-APILOG="${LOGS}/api.log"
+APILOG=${LOGS}/api.log
+CF_EMAIL=$(cat ${CONFIGVARS}/cf_email)
+CF_KEY=$(cat ${CONFIGVARS}/cf_key)
 CONFIGS=/var/local/Gooby
+CONFIGVARS=${CONFIGS}/Docker/.config
 CURDIR=$(pwd)
 DOWNLOADS=${HOMEDIR}/Downloads
 GOOGLE=/mnt/google
@@ -40,14 +43,15 @@ LOGS=${HOME}/logs
 MEDIA=/mnt/google
 ORGMENU=menu
 MOUNTTO=/mnt/google
-MYDOMAIN=$(cat ${CONFIGS}/.config/mydomain)
-MYEMAIL=$(cat ${CONFIGS}/.config/myemail)
-PLEXCLAIM=$(cat ${CONFIGS}/.config/plexclaim)
-RCLONEFOLDER=$(cat ${CONFIGS}/.config/rclonefolder)
+MYDOMAIN=$(cat ${CONFIGVARS}/mydomain)
+MYEMAIL=$(cat ${CONFIGVARS}/myemail)
+PLEXCLAIM=$(cat ${CONFIGVARS}/plexclaim)
+PROXYVERSION=$(cat ${CONFIGVARS}/proxyversion)
+RCLONEFOLDER=$(cat ${CONFIGVARS}/rclonefolder)
 RCLONEHOME=${HOME}/.config/rclone
 RCLONEMOUNT=/mnt/rclone
 RCLONEPASSWORD=Go0by
-RCLONESERVICE=$(cat ${CONFIGS}/.config/rcloneservice)
+RCLONESERVICE=$(cat ${CONFIGVARS}/rcloneservice)
 RCLONEUSERNAME=gooby
 SERVER=$(hostname)
 TIMEZONE=$(cat /etc/timezone)
@@ -55,7 +59,7 @@ UNSYNCED=/mnt/local
 UPLOADS=/mnt/uploads
 USERID=$(id -u)
 USERNAME=$USER
-VERSION=$(cat ${CONFIGS}/.config/version)
+VERSION=$(cat ${CONFIGVARS}/version)
 EOF
 
 cat ${CONFIGS}/Docker/components/??-* > ${CONFIGS}/Docker/docker-compose.yaml
