@@ -70,7 +70,7 @@ else
 	# Update Proxy
 
 	sudo rsync -a /opt/Gooby/scripts/components/{00-version.yaml,01-proxy.yaml} $CONFIGS/Docker/components
-	sudo rm /opt/Gooby/scripts/components/00-AAA.yaml
+	sudo rm $CONFIGS/Docker/components/00-AAA.yaml
 
 	# Add proxy version
 
