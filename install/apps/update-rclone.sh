@@ -1,9 +1,9 @@
 #!/bin/bash
 
-which rclone > $CONFIGS/.config/checkapp
+which rclone > ${CONFIGVARS}/checkapp
 clear
 
-if [ ! -s $CONFIGS/.config/checkapp ]; then
+if [ ! -s ${CONFIGVARS}/checkapp ]; then
 
 	NOTINSTALLED
 
@@ -20,17 +20,17 @@ else
 		cd /tmp
 		clear
 
-		echo "You currently have the $( cat $CONFIGS/.config/rcloneverson ) version of $TASK installed"
+		echo "You currently have the $( cat ${CONFIGVARS}/rcloneverson ) version of $TASK installed"
 		echo ""
 
 		read -n 1 -s -r -p "Stable ${YELLOW}(S)${STD} or Beta installation ${YELLOW}(B)?${STD} " -i "" choice
 
 		case "$choice" in
-			b|B )	curl https://rclone.org/install.sh | sudo bash -s beta; echo "Beta" > $CONFIGS/.config/rcloneversion ;;
-			s|S )	curl https://rclone.org/install.sh | sudo bash; echo "Stable" > $CONFIGS/.config/rcloneversion ;;
-			* )	if [ $( cat $CONFIGS/.config/rcloneversion ) = "Stable" ]; then
+			b|B )	curl https://rclone.org/install.sh | sudo bash -s beta; echo "Beta" > ${CONFIGVARS}/rcloneversion ;;
+			s|S )	curl https://rclone.org/install.sh | sudo bash; echo "Stable" > ${CONFIGVARS}/rcloneversion ;;
+			* )	if [ $( cat ${CONFIGVARS}/rcloneversion ) = "Stable" ]; then
 					curl https://rclone.org/install.sh | sudo bash
-				elif [ $( cat $CONFIGS/.config/rcloneversion ) = "Beta" ]; then
+				elif [ $( cat ${CONFIGVARS}/rcloneversion ) = "Beta" ]; then
 					curl https://rclone.org/install.sh | sudo bash -s beta
 				fi ;;
 		esac
@@ -47,8 +47,8 @@ else
 				echo
 				read -e -p "What is your media folder in $RCLONESERVICE? (leave empty for root): " -i "" RCLONEFOLDER
 				echo
-				RCLONESERVICE=${RCLONESERVICE#:}; echo $RCLONESERVICE > $CONFIGS/.config/rcloneservice
-				RCLONEFOLDER=${RCLONEFOLDER%/}; RCLONEFOLDER=${RCLONEFOLDER#/}; echo $RCLONEFOLDER > $CONFIGS/.config/rclonefolder
+				RCLONESERVICE=${RCLONESERVICE#:}; echo $RCLONESERVICE > ${CONFIGVARS}/rcloneservice
+				RCLONEFOLDER=${RCLONEFOLDER%/}; RCLONEFOLDER=${RCLONEFOLDER#/}; echo $RCLONEFOLDER > ${CONFIGVARS}/rclonefolder
 				source /opt/Gooby/install/misc/environment-build.sh rebuild
 				;;
 			* )	echo "All done!" ;;
@@ -68,5 +68,5 @@ else
 
 fi
 
-rm $CONFIGS/.config/checkapp
+rm ${CONFIGVARS}/checkapp
 PAUSE
