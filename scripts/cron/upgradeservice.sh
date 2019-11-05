@@ -58,7 +58,7 @@ else
 	# Update Configs
 
 	if [ -d /var/local/.Gooby ]; then
-		sudo mv /var/local/.Gooby/* ${CONFIGVARS}
+		sudo mv /var/local/.Gooby/* ${CONFIGVARS}/*
 		sudo mv ${CONFIGVARS}/rclonev ${CONFIGVARS}/rcloneversion
 		sudo mv ${CONFIGVARS}/upgrade ${CONFIGVARS}/version
 		sudo rm -r /var/local/.Gooby
