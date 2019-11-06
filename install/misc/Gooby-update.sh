@@ -1,5 +1,8 @@
 #!/bin/bash
 
+source /opt/Gooby/menus/variables.sh
+source $CONFIGS/Docker/.env
+
 clear
 
 EXPLAINTASK
@@ -30,6 +33,8 @@ if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 		sudo chmod 755 /bin/sizer
 		sudo chmod 755 /bin/syncmount
 	fi
+
+	sleep 5
 
 	clear
 
