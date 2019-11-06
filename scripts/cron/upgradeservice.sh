@@ -87,7 +87,7 @@ else
 	# Add proxy version
 
 	if [ ! -e ${CONFIGVARS}/proxyversion ]; then
-		echo "NGINX" > ${CONFIGVARS}/proxyversion
+		echo "nginx" > ${CONFIGVARS}/proxyversion
 		touch ${CONFIGVARS}/cf_email ${CONFIGVARS}/cf_key
 	fi
 
