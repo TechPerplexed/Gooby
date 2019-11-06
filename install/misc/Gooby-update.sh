@@ -1,6 +1,5 @@
 #!/bin/bash
 
-source /opt/Gooby/menus/variables.sh
 source $CONFIGS/Docker/.env
 
 clear
