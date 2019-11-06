@@ -1,13 +1,12 @@
 #!/bin/bash
 
+VERSION=2.2.1
+
 source /opt/Gooby/menus/variables.sh
 
 clear
 echo
 echo "${YELLOW}Welcome to Gooby $VERSION!${STD}"
-echo
-echo "You will need to own a domain... if you don't have one"
-echo "then you get can a free domain for example at Freenom."
 echo
 echo "${YELLOW}Please answer the following two questions:${STD}"
 echo
@@ -23,14 +22,23 @@ sleep 10
 
 source /opt/Gooby/install/server/docker-install.sh
 
-sudo mkdir -p $CONFIGS/.config $CONFIGS/Docker/components $TCONFIGS 
-sudo chown -R $USER:$USER $CONFIGS $TCONFIGS
+sudo mkdir -p ${CONFIGVARS} $CONFIGS/Docker/components 
+sudo chown -R $USER:$USER $CONFIGS
 
-echo "$MYDOMAIN" > $CONFIGS/.config/mydomain
-echo "$MYEMAIL" > $CONFIGS/.config/myemail
+echo "$MYDOMAIN" > ${CONFIGVARS}/mydomain
+echo "$MYEMAIL" > ${CONFIGVARS}/myemail
 
-sudo rsync -a /opt/Gooby/scripts/components/{00-AAA.yaml,01-proxy.yaml} $CONFIGS/Docker/components
-touch $CONFIGS/.config/rcloneservice $CONFIGS/.config/rclonefolder
+if [ ! -e ${CONFIGVARS}/goobybranch ]; then
+  echo "master" > ${CONFIGVARS}/goobybranch
+fi
+
+if [ ! -e ${CONFIGVARS}/proxyversion ]; then
+  echo "nginx" > ${CONFIGVARS}/proxyversion
+  PROXYVERSION=$(cat ${CONFIGVARS}/proxyversion)
+fi
+
+sudo rsync -a /opt/Gooby/scripts/${PROXYVERSION}/{00-version.yaml,01-proxy.yaml,99-network.yaml} $CONFIGS/Docker/components
+touch ${CONFIGVARS}/cf_email ${CONFIGVARS}/cf_key ${CONFIGVARS}/plexclaim ${CONFIGVARS}/rclonefolder ${CONFIGVARS}/rcloneservice ${CONFIGVARS}/rcloneversion
 
 source /opt/Gooby/install/misc/environment-build.sh
 
@@ -41,8 +49,12 @@ echo "client_max_body_size 30m;" > $CONFIGS/Docker/nginx/my_custom_proxy_setting
 /usr/local/bin/docker-compose up --remove-orphans --build -d
 cd "${CURDIR}"
 
-sudo chown -R $USER:$USER $CONFIGS $TCONFIGS $HOME
+sudo chown -R $USER:$USER $CONFIGS $HOME
 
 # Add rlean to bootup cron
 
 crontab -l | grep 'rclean.sh' || (crontab -l 2>/dev/null; echo "@reboot /opt/Gooby/scripts/cron/rclean.sh > /dev/null 2>&1") | crontab -
+
+# Add Gooby version
+
+echo ${VERSION} > ${CONFIGVARS}/version

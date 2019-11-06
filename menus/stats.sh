@@ -23,6 +23,12 @@ VIEWTRAFFIC(){
 	source /opt/Gooby/install/stats/${TASK}-${PERFORM}.sh
 }
 
+PLEXSTATS(){
+	PERFORM="stats"
+	TASK="plex"
+	source /opt/Gooby/install/stats/${TASK}-${PERFORM}.sh
+}
+
 QUIT(){
 	exit
 }
@@ -36,6 +42,7 @@ show_menus() {
 	echo " ${LBLUE}A${STD} - Check Environment"
 	echo " ${LBLUE}B${STD} - Installed Apps (Containers)"
 	echo " ${LBLUE}C${STD} - View Rclone Activity"
+	echo " ${LBLUE}D${STD} - Plex Statistics"
 	echo " ${WHITE}Z${STD} - EXIT to Main Menu"
 	echo " ${LBLUE}"
 	MENUEND
@@ -50,6 +57,7 @@ read_options(){
 		[Aa]) CHECKENV ;;
 		[Bb]) CONTAINERS ;;
 		[Cc]) VIEWTRAFFIC ;;
+		[Dd]) PLEXSTATS ;;
 		[Zz]) QUIT ;;
 		*) echo "${LRED}Please select a valid option${STD}" && sleep 2
 	esac

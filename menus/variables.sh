@@ -1,9 +1,7 @@
 #!/bin/bash
 
-VERSION="2.2.0"
 CONFIGS=/var/local/Gooby
-TCONFIGS=/var/local/.Gooby
-CURDIR=$(pwd)
+CONFIGVARS=${CONFIGS}/Docker/.config
 
 # Define colors
 
@@ -29,7 +27,7 @@ WHITE=$(echo -en '\033[01;37m')
 
 MENUSTART(){
 	echo "--------------------------------------------------"
-	echo " G O O B Y - Find instructions at techperplexed.ga"
+	echo " Gooby instructions at techperplexed.blogspot.com"
 	echo "--------------------------------------------------"
 	echo " $MENU"
 	echo " ${STD}"
@@ -108,8 +106,8 @@ EXPLAINTASK(){
 
 EXPLAINAPP(){
 	clear
-	which rclone > $TCONFIGS/checkapp
-	if [ ! -s $TCONFIGS/checkapp ]; then
+	which rclone > ${CONFIGVARS}/checkapp
+	if [ ! -s ${CONFIGVARS}/checkapp ]; then
 		echo "${LRED}"
 		echo "--------------------------------------------------"
 		echo " WARNING! Rclone is not installed yet."

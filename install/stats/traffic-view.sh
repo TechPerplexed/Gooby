@@ -4,6 +4,7 @@ MENU="Rclone Activity"
 
 source /opt/Gooby/menus/variables.sh
 source $CONFIGS/Docker/.env
+OPTION=${1}
 
 while true; do
 
@@ -20,7 +21,7 @@ while true; do
 	SIZE=$(echo ${RAW} | jq '[.transferring[].size]' | jq 'add /1024/1024/1024')
 	SPEED=$(echo ${RAW} | jq '[.transferring[].speed]' | jq 'add /1024/1024')
 	FILES=$(echo ${RAW} | jq '[ .transferring[] | {name: .name, percent: .percentage} ]')
-	QSIZE=$(echo ${JRAW} | jq .jobids | jq length)
+	#QSIZE=$(echo ${JRAW} | jq .jobids | jq length)
 
 	clear
 
@@ -28,7 +29,7 @@ while true; do
 	MENUSTART
 	echo " Transfers Since Reboot/Cleanup"
 	echo -----------------------------------------
-	echo -n " Startup Time      : ${LBLUE}"${SDATE}; echo "${STD}"
+	#echo -n " Startup Time      : ${LBLUE}"${SDATE}; echo "${STD}"
 	echo -n " Data transferred  : ${LBLUE}"; printf "%'.2f" ${GIG}; echo " GB${STD}"
 	echo -n " Files transferred : ${LBLUE}"; printf "%'d\n" ${FT}; echo -n "${STD}"
 	echo -n " Checks completed  : ${LBLUE}"; printf "%'d\n" ${CHECK}; echo -n "${STD}"
@@ -37,12 +38,30 @@ while true; do
 	echo
 	echo " Transfers Real Time"
 	echo -----------------------------------------
-	echo -n " Rclone Sync jobs  : ${LBLUE}"; printf "%'d\n" ${QSIZE}; echo -n "${STD}"
+	#echo -n " Rclone Sync jobs  : ${LBLUE}"; printf "%'d\n" ${QSIZE}; echo -n "${STD}"
 	echo -n " Files in motion   : ${LBLUE}"; printf "%'d\n" ${TRANSFERS}; echo -n "${STD}"
 	echo -n " Size of files     : ${LBLUE}"; printf "%'.2f" ${SIZE}; echo " GB${STD}"
 	echo -n " Current speed     : ${LBLUE}"; printf "%'.2f" ${SPEED}; echo " MB/sec${STD}"
 	echo
-	echo " Files transferring:"; echo ${FILES} | jq
+
+	if [[ ${OPTION,,} != "short" && ${TRANSFERS} != 0 ]]; then
+		echo 'Files transferring:'
+		echo
+		for ((x=0; x<${TRANSFERS}; x++))
+		do
+			percent=$(echo ${RAW} | jq ".transferring[${x}] .percentage")
+			name=$(echo ${RAW} | jq ".transferring[${x}] .name")
+			name=$(basename "${name}")
+			if [[ ${percent} -lt 10 ]]
+			then
+				percent=" ${percent}"
+			fi
+			echo  "${percent}% ${name//\"}" >> /tmp/xfer-${$}
+		done
+		cat /tmp/xfer-${$} | sort -n
+		rm /tmp/xfer-${$}
+	fi
+
 	echo
 	echo " ${WHITE}Z${STD} - EXIT to Main Menu"
 	echo " ${LBLUE}"

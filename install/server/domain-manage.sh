@@ -10,7 +10,7 @@ if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 
 	GOAHEAD
 
-	[[ -e $CONFIGS/.config/mydomain ]] && echo "Your domain is currently set to $(cat $CONFIGS/.config/mydomain)"
+	[[ -e ${CONFIGVARS}/mydomain ]] && echo "Your domain is currently set to $(cat ${CONFIGVARS}/mydomain)"
 
 	read -p "Your new domain: " SETURL
 
@@ -20,9 +20,9 @@ if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 
 	else
 
-		echo "$SETURL" > $CONFIGS/.config/mydomain
+		echo "$SETURL" > ${CONFIGVARS}/mydomain
 
-		MYDOMAIN=$(cat $CONFIGS/.config/mydomain)
+		MYDOMAIN=$(cat ${CONFIGVARS}/mydomain)
 
 		echo ""
 		echo "Just a moment while your new domain is being installed..."

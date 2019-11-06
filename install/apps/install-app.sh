@@ -1,9 +1,9 @@
 #!/bin/bash
 
-docker ps -q -f name=$APP > $TCONFIGS/checkapp
+docker ps -q -f name=$APP > ${CONFIGVARS}/checkapp
 clear
 
-if [ -s $TCONFIGS/checkapp ]; then
+if [ -s ${CONFIGVARS}/checkapp ]; then
 
 	ALREADYINSTALLED
 
@@ -21,8 +21,8 @@ else
 		echo "--------------------------------------------------"
 		echo " Please choose what version you want to install:"
 		echo ""
-		[[ -f "/opt/Gooby/scripts/components/$APPLOC.yaml" ]] && echo " ${LYELLOW}S${STD} - $TASK Stable"
-		[[ -f "/opt/Gooby/scripts/components/$APPLOC-beta.yaml" ]] && echo " ${LYELLOW}B${STD} - $TASK Beta"
+		[[ -f "/opt/Gooby/scripts/${PROXYVERSION}/$APPLOC.yaml" ]] && echo " ${LYELLOW}S${STD} - $TASK Stable"
+		[[ -f "/opt/Gooby/scripts/${PROXYVERSION}/$APPLOC-beta.yaml" ]] && echo " ${LYELLOW}B${STD} - $TASK Beta"
 		echo "--------------------------------------------------"
 		echo ""
 		read -n 1 -s -r -p " ---> "
@@ -30,7 +30,7 @@ else
 
 		case "$REPLY" in
 			s|S ) APPLOC=$APPLOC ;;
-			b|B ) [[ -f "/opt/Gooby/scripts/components/$APPLOC-beta.yaml" ]] && APPLOC=$APPLOC-beta ;;
+			b|B ) [[ -f "/opt/Gooby/scripts/${PROXYVERSION}/$APPLOC-beta.yaml" ]] && APPLOC=$APPLOC-beta ;;
 			* ) APPLOC=$APPLOC ;;
 		esac
 
@@ -69,15 +69,14 @@ else
 			echo "${STD}"
 			read -e -p " Paste token here: " PLEXCLAIM
 			echo ""
-			echo "$PLEXCLAIM" > $TCONFIGS/plexclaim
+			echo "$PLEXCLAIM" > ${CONFIGVARS}/plexclaim
 
 		fi
 
 		echo ""
 		cd $CONFIGS/Docker
-		sudo rsync -a /opt/Gooby/scripts/components/$APPLOC.yaml $CONFIGS/Docker/components
+		sudo rsync -a /opt/Gooby/scripts/${PROXYVERSION}/$APPLOC.yaml $CONFIGS/Docker/components
 		echo "Just a moment while $APP is being installed..."
-		[[ ! -f "$TCONFIGS/plexclaim" ]] && echo "-" > $TCONFIGS/plexclaim
 		source /opt/Gooby/install/misc/environment-build.sh rebuild
 		/usr/local/bin/docker-compose up -d --remove-orphans
 		cd "${CURDIR}"
@@ -96,5 +95,5 @@ else
 
 fi
 
-rm $TCONFIGS/checkapp
+rm ${CONFIGVARS}/checkapp
 PAUSE

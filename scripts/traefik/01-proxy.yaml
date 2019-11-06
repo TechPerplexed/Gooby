@@ -1,0 +1,41 @@
+#
+# Traefik - Maps containers to public FQDNs accessible via https with valid certs
+#
+  traefik:
+    image: traefik:alpine
+    container_name: traefik
+    hostname: traefik
+    domainname: ${MYDOMAIN}
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+    environment:
+      - CLOUDFLARE_EMAIL=${CF_EMAIL}
+      - CLOUDFLARE_API_KEY=${CF_KEY}
+    labels:
+      - "traefik.enable=true"
+      - "traefik.backend=traefik"
+      - "traefik.frontend.rule=Host:traefik.${MYDOMAIN}"
+      - "traefik.port=8080"
+      - "traefik.docker.network=gooby"
+      - "traefik.frontend.headers.SSLRedirect=true"
+      - "traefik.frontend.headers.STSSeconds=315360000"
+      - "traefik.frontend.headers.browserXSSFilter=true"
+      - "traefik.frontend.headers.contentTypeNosniff=true"
+      - "traefik.frontend.headers.forceSTSHeader=true"
+      - "traefik.frontend.headers.SSLHost=${MYDOMAIN}"
+      - "traefik.frontend.headers.STSIncludeSubdomains=true"
+      - "traefik.frontend.headers.STSPreload=true"
+      - "traefik.frontend.headers.frameDeny=true"
+      - "traefik.frontend.auth.basic.usersFile=/etc/traefik/security"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ${CONFIGS}/Docker/traefik:/etc/traefik
+    networks:
+      - gooby
+    healthcheck:
+      test: ["CMD-SHELL", "netstat -ntlp | grep :443"]
+      interval: 10s
+      timeout: 2s
+      retries: 3

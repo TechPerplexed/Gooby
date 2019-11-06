@@ -12,7 +12,7 @@ echo "${LYELLOW}Updating Gooby${STD}"
 echo
 
 sudo rm -r /opt/.Gooby > /dev/null 2>&1
-sudo git clone -b master https://github.com/TechPerplexed/Gooby /opt/.Gooby
+sudo git clone -b ${GOOBYBRANCH} https://github.com/TechPerplexed/Gooby /opt/.Gooby
 
 if [ -d /opt/.Gooby ]; then
 	sudo rm -r /opt/Gooby
@@ -23,9 +23,12 @@ if [ -d /opt/.Gooby ]; then
 	sudo chmod +x -R /opt/Gooby/scripts/cron
 	sudo rsync -a /opt/Gooby/scripts/bin/* /bin
 	sudo chmod 755 /bin/gooby
+	sudo chmod 755 /bin/gbackup
 	sudo chmod 755 /bin/plexstats
 	sudo chmod 755 /bin/rclean
+	sudo chmod 755 /bin/resetbackup
 	sudo chmod 755 /bin/rstats
+	sudo chmod 755 /bin/sizer
 	sudo chmod 755 /bin/syncmount
 fi
 
@@ -44,11 +47,11 @@ echo
 echo "${LYELLOW}Updating Rclone if possible${STD}"
 echo
 
-touch $TCONFIGS/rclonev
-if [ $( cat $TCONFIGS/rclonev ) = "Stable" ]; then
-	curl https://rclone.org/install.sh | sudo bash
-elif [ $( cat $TCONFIGS/rclonev ) = "Beta" ]; then
+touch ${CONFIGVARS}/rcloneversion
+if [ $( cat ${CONFIGVARS}/rcloneversion ) = "Beta" ]; then
 	curl https://rclone.org/install.sh | sudo bash -s beta
+else
+	curl https://rclone.org/install.sh | sudo bash
 fi
 
 echo
@@ -87,7 +90,6 @@ source /opt/Gooby/scripts/cron/upgradeservice.sh
 
 # Start Rclone and MergerFS
 
-[[ ! -f "$TCONFIGS/plexclaim" ]] && echo "-" > $TCONFIGS/plexclaim
 source /opt/Gooby/install/misc/environment-build.sh rebuild
 
 sudo systemctl start rclonefs
@@ -144,4 +146,4 @@ echo
 echo "${LYELLOW}Restoring permissions... this could take a few minutes${STD}"
 echo
 
-sudo chown -R $USER:$USER $HOME $CONFIGS/Docker $TCONFIGS /tmp
+sudo chown -R $USER:$USER $HOME $CONFIGS/Docker /tmp

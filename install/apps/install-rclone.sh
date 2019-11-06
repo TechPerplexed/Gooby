@@ -1,10 +1,10 @@
 #!/bin/bash
 
 source $CONFIGS/Docker/.env
-which rclone > $TCONFIGS/checkapp
+which rclone > ${CONFIGVARS}/checkapp
 clear
 
-if [ -s $TCONFIGS/checkapp ]; then
+if [ -s ${CONFIGVARS}/checkapp ]; then
 
 	ALREADYINSTALLED
 
@@ -28,12 +28,12 @@ else
 
 		# Install MergerFS
 
-		which mergerfs > $TCONFIGS/mergerfs
-		if [ ! -s $TCONFIGS/mergerfs ]; then
+		which mergerfs > ${CONFIGVARS}/mergerfs
+		if [ ! -s ${CONFIGVARS}/mergerfs ]; then
 			sudo wget https://github.com/trapexit/mergerfs/releases/download/2.28.1/mergerfs_2.28.1.ubuntu-xenial_amd64.deb -O /tmp/mergerfs.deb
 			sudo dpkg -i /tmp/mergerfs.deb
 		fi
-		rm /$TCONFIGS/mergerfs
+		rm ${CONFIGVARS}/mergerfs
 
 		# Main script
 
@@ -42,8 +42,8 @@ else
 		read -n 1 -s -r -p "Stable ${YELLOW}(S)${STD} or Beta installation ${YELLOW}(B)?${STD} " -i "S" choice
 
 		case "$choice" in 
-			b|B ) curl https://rclone.org/install.sh | sudo bash -s beta; echo "Beta" > $TCONFIGS/rclonev ;;
-			* ) curl https://rclone.org/install.sh | sudo bash; echo "Stable" > $TCONFIGS/rclonev ;;
+			b|B ) curl https://rclone.org/install.sh | sudo bash -s beta; echo "Beta" > ${CONFIGVARS}/rcloneversion ;;
+			* ) curl https://rclone.org/install.sh | sudo bash; echo "Stable" > ${CONFIGVARS}/rcloneversion ;;
 		esac
 
 		clear
@@ -61,8 +61,8 @@ else
 
 		# Installing Services
 
-		RCLONESERVICE=${RCLONESERVICE#:}; echo $RCLONESERVICE > $CONFIGS/.config/rcloneservice
-		RCLONEFOLDER=${RCLONEFOLDER%/}; RCLONEFOLDER=${RCLONEFOLDER#/}; echo $RCLONEFOLDER > $CONFIGS/.config/rclonefolder
+		RCLONESERVICE=${RCLONESERVICE#:}; echo $RCLONESERVICE > ${CONFIGVARS}/rcloneservice
+		RCLONEFOLDER=${RCLONEFOLDER%/}; RCLONEFOLDER=${RCLONEFOLDER#/}; echo $RCLONEFOLDER > ${CONFIGVARS}/rclonefolder
 
 		sudo sed -i 's/^#user_allow_other/user_allow_other/g' /etc/fuse.conf
 
@@ -70,7 +70,7 @@ else
 
 		mkdir -p $HOME/logs $HOME/Downloads
 		sudo mkdir -p ${RCLONEMOUNT} ${MOUNTTO} ${UPLOADS} ${UNSYNCED}
-		sudo chown -R $USER:$USER $HOME $CONFIGS/.config $TCONFIGS ${RCLONEMOUNT} ${MOUNTTO} ${UPLOADS} ${UNSYNCED}
+		sudo chown -R $USER:$USER $HOME ${CONFIGVARS} $CONFIGS/Docker ${RCLONEMOUNT} ${MOUNTTO} ${UPLOADS} ${UNSYNCED}
 
 		cat $HOME/.config/rclone/rclone.conf | grep "Local" > /dev/null
 		if ! [[ ${?} -eq 0 ]]; then
@@ -111,5 +111,5 @@ else
 
 fi
 
-rm $TCONFIGS/checkapp
+rm ${CONFIGVARS}/checkapp
 PAUSE

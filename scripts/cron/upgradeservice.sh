@@ -1,23 +1,33 @@
 #!/bin/bash
 
-if [ ! -s $TCONFIGS/upgrade ]; then
+VERSION=2.2.1
 
-	echo "${LYELLOW}Upgrading...${STD}"; echo; sleep 2
+CONFIGVARS=${CONFIGS}/Docker/.config
+sudo mkdir -p ${CONFIGVARS}
+sudo chown -R $USER:$USER $CONFIGS/Docker
+touch ${CONFIGVARS}/version
+
+if [ "$(cat ${CONFIGVARS}/version)" == ${VERSION} ]; then
+
+	echo "${GREEN}Your system has already been upgraded to v${VERSION}... skipping upgrade${STD}"; echo
+
+else
+
+	echo "${LYELLOW}Upgrading to v${VERSION}... just a moment${STD}"; echo; sleep 2
 
 	# Check if necessary apps are installed
 
-	sudo apt-get update
+	if [ ! -e ${CONFIGVARS}/proxyversion ]; then
+		sudo apt-get update
+		APPLIST="acl apt-transport-https ca-certificates curl fuse git gpg-agent grsync jq mergerfs nano pigz rsyncufw socat sqlite3 ufw unzip wget"
+		for i in $APPLIST; do
+			echo Checking $i...
+			sudo apt-get -y install $i
+			echo
+		done
+	fi
 
-	APPLIST="acl apt-transport-https ca-certificates curl fuse git gpg-agent grsync jq mergerfs nano rsyncufw socat sqlite3 unzip wget"
-
-	for i in $APPLIST; do
-		echo Checking $i...
-		sudo apt-get -y install $i
-	done
-
-	# Update Proxy
-
-	sudo rsync -a /opt/Gooby/scripts/components/{00-AAA.yaml,01-proxy.yaml} $CONFIGS/Docker/components
+	# Move and rename folders
 
 	if [ -d $CONFIGS/Security ]; then
 		sudo mv $CONFIGS/Certs $CONFIGS/Docker
@@ -27,6 +37,18 @@ if [ ! -s $TCONFIGS/upgrade ]; then
 		sudo mv $CONFIGS/Docker/Security $CONFIGS/Docker/security
 	fi
 
+	if [ -d /var/local/.Gooby ]; then
+		sudo mv /var/local/.Gooby/* ${CONFIGVARS}
+		sudo rm -r /var/local/.Gooby
+	fi
+
+	if [ -d /var/local/Gooby/.config ]; then
+		sudo mv $CONFIGS/.config/* ${CONFIGVARS}
+		sudo mv ${CONFIGVARS}/rclonev ${CONFIGVARS}/rcloneversion
+		sudo mv ${CONFIGVARS}/upgrade ${CONFIGVARS}/version
+		sudo rm -r /var/local/Gooby/.config
+	fi
+
 	# Upgrade Rclone service 
 
 	cat /etc/systemd/system/rclonefs.service | grep "pass" > /dev/null
@@ -34,6 +56,7 @@ if [ ! -s $TCONFIGS/upgrade ]; then
 		sudo mv /etc/systemd/system/rclone* /tmp
 		sudo rsync -a /opt/Gooby/scripts/services/rclonefs* /etc/systemd/system/
 		sudo sed -i "s/GOOBYUSER/${USER}/g" /etc/systemd/system/rclonefs.service
+		sudo systemctl daemon-reload
 	fi
 
 	cat $HOME/.config/rclone/rclone.conf | grep "Local" > /dev/null
@@ -43,12 +66,37 @@ if [ ! -s $TCONFIGS/upgrade ]; then
 		echo nounc = >> $HOME/.config/rclone/rclone.conf
 	fi
 
-	sudo systemctl daemon-reload
+	# Add resetbackup cron
 
-else
+	if crontab -l | grep 'backup.sh'; then
+		crontab -l | grep 'resetbackup' || (crontab -l 2>/dev/null; echo "10 2 1 * * /bin/resetbackup > /dev/null 2>&1") | crontab -
+	fi
 
-	echo "${GREEN}Your system has already been upgraded... prodeeding${STD}"; echo
+	# Add Gooby branch
+
+	if [ ! -e ${CONFIGVARS}/goobybranch ]; then
+		echo "master" > ${CONFIGVARS}/goobybranch
+	fi
+
+	# Add proxy version
+
+	if [ ! -e ${CONFIGVARS}/proxyversion ]; then
+		echo "nginx" > ${CONFIGVARS}/proxyversion
+		touch ${CONFIGVARS}/cf_email ${CONFIGVARS}/cf_key
+	fi
+
+	# Update Proxy
+
+	if [ -e $CONFIGS/Docker/components/00-AAA.yaml ]; then
+		PROXYVERSION=$(cat ${CONFIGVARS}/proxyversion)
+		sudo rsync -a /opt/Gooby/scripts/${PROXYVERSION}/{00-version.yaml,01-proxy.yaml,99-network.yaml} $CONFIGS/Docker/components
+		sudo rm $CONFIGS/Docker/components/00-AAA.yaml
+	fi
+
+	# Finalizing upgrade
+
+	echo; echo "${GREEN}Upgrade to v${VERSION} complete... prodeeding${STD}"; echo
 
 fi
 
-echo v2 > $TCONFIGS/upgrade
+echo ${VERSION} > ${CONFIGVARS}/version

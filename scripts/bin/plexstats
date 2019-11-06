@@ -57,5 +57,16 @@ query="select count(*) from metadata_items meta \
 			and meta.metadata_type in (1, 4, 12) and part.file != '';"
 result=$(sqlite3 -header -line "$db" "$query")
 echo "${result:11} files missing deep analyzation info." | tee -a $logfile
-exit
+echo
+echo " ${WHITE}Z${STD} - EXIT to Main Menu"
+echo
+while true; do
+     read -t 0.25 -N 1 input
+        if [[ $input = "z" ]] || [[ $input = "Z" ]]; then
+                echo
+                break
+        fi
+
+done
+
 
