@@ -8,6 +8,8 @@ CONFIRMATION
 
 if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 
+	echo Updating Gooby to ${GOOBYBRANCH}; echo
+
 	sudo rm -r /opt/.Gooby > /dev/null 2>&1
 	sudo git clone -b ${GOOBYBRANCH} https://github.com/TechPerplexed/Gooby /opt/.Gooby
 
