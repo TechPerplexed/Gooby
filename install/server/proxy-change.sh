@@ -13,7 +13,7 @@ if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 		clear
 
 		echo
-		Coming soon! Stay tuned...
+		echo Coming soon! Stay tuned...
 		echo
 
 	TASKCOMPLETE
