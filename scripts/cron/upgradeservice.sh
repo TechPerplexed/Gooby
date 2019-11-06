@@ -17,15 +17,15 @@ else
 
 	# Check if necessary apps are installed
 
-	sudo apt-get update
-
-	APPLIST="acl apt-transport-https ca-certificates curl fuse git gpg-agent grsync jq mergerfs nano pigz rsyncufw socat sqlite3 ufw unzip wget"
-
-	for i in $APPLIST; do
-		echo Checking $i...
-		sudo apt-get -y install $i
-		echo
-	done
+	if [ ! -e ${CONFIGVARS}/proxyversion ]; then
+		sudo apt-get update
+		APPLIST="acl apt-transport-https ca-certificates curl fuse git gpg-agent grsync jq mergerfs nano pigz rsyncufw socat sqlite3 ufw unzip wget"
+		for i in $APPLIST; do
+			echo Checking $i...
+			sudo apt-get -y install $i
+			echo
+		done
+	fi
 
 	# Move and rename folders
 
@@ -56,6 +56,7 @@ else
 		sudo mv /etc/systemd/system/rclone* /tmp
 		sudo rsync -a /opt/Gooby/scripts/services/rclonefs* /etc/systemd/system/
 		sudo sed -i "s/GOOBYUSER/${USER}/g" /etc/systemd/system/rclonefs.service
+		sudo systemctl daemon-reload
 	fi
 
 	cat $HOME/.config/rclone/rclone.conf | grep "Local" > /dev/null
@@ -64,8 +65,6 @@ else
 		echo type = local >> $HOME/.config/rclone/rclone.conf
 		echo nounc = >> $HOME/.config/rclone/rclone.conf
 	fi
-
-	sudo systemctl daemon-reload
 
 	# Add resetbackup cron
 
@@ -81,8 +80,10 @@ else
 
 	# Update Proxy
 
-	sudo rsync -a /opt/Gooby/scripts/components/{00-version.yaml,01-proxy.yaml} $CONFIGS/Docker/components
-	sudo rm $CONFIGS/Docker/components/00-AAA.yaml
+	if [ ! -e $CONFIGS/Docker/components/00-AAA.yaml ]; then
+		sudo rsync -a /opt/Gooby/scripts/components/{00-version.yaml,01-proxy.yaml} $CONFIGS/Docker/components
+		sudo rm $CONFIGS/Docker/components/00-AAA.yaml
+	fi
 
 	# Add proxy version
 
