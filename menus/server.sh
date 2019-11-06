@@ -5,12 +5,6 @@ source /opt/Gooby/menus/variables.sh
 
 # Menu Options
 
-PWCHANGE(){
-	PERFORM="change"
-	TASK="password"
-	source /opt/Gooby/install/server/${TASK}-${PERFORM}.sh
-}
-
 DOMAIN(){
 	PERFORM="manage"
 	TASK="domain"
@@ -35,6 +29,13 @@ UPGRADE(){
 	source /opt/Gooby/install/server/${TASK}-${PERFORM}.sh
 }
 
+
+PROXYCHOICE(){
+	PERFORM="change"
+	TASK="proxy"
+	source /opt/Gooby/install/server/${TASK}-${PERFORM}.sh
+}
+
 QUIT(){
 	exit
 }
@@ -45,11 +46,11 @@ show_menus() {
 	clear
 	echo " ${YELLOW}"
 	MENUSTART
-	echo " ${YELLOW}A${STD} - Change password for ${YELLOW}$USER${STD} or ${YELLOW}root${STD}"
-	echo " ${YELLOW}B${STD} - Manage Domain Name"
-	echo " ${YELLOW}C${STD} - Manage Email Address"
-	echo " ${YELLOW}D${STD} - Set Timezone"
-	echo " ${YELLOW}E${STD} - Server Upgrade - Danger zone!"
+	echo " ${YELLOW}A${STD} - Manage Domain Name"
+	echo " ${YELLOW}B${STD} - Manage Email Address"
+	echo " ${YELLOW}C${STD} - Set Timezone"
+	echo " ${YELLOW}D${STD} - Server Upgrade - Danger zone!"
+	echo " ${YELLOW}E${STD} - Change Proxy - Coming soon"
 	echo " ${WHITE}Z${STD} - EXIT to Main Menu"
 	echo " ${YELLOW}"
 	MENUEND
@@ -61,11 +62,11 @@ read_options(){
 	local choice
 	read -n 1 -s -r -p "Choose option: " choice
 	case $choice in
-		[Aa]) PWCHANGE ;;
-		[Bb]) DOMAIN ;;
-		[Cc]) EMAILADDR ;;
-		[Dd]) TZONE ;;
-		[Ee]) UPGRADE ;;
+		[Aa]) DOMAIN ;;
+		[Bb]) EMAILADDR ;;
+		[Cc]) TZONE ;;
+		[Dd]) UPGRADE ;;
+		[Ee]) PROXYCHOICE ;;
 		[Zz]) QUIT ;;
 		*) echo "${LRED}Please select a valid option${STD}" && sleep 2
 	esac
