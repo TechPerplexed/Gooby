@@ -34,7 +34,7 @@ if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 	if ! crontab -l | grep 'backup.sh'; then
 
 		echo
-		echo "Y ou currently have no backup cron scheduled."
+		echo " You currently have no backup cron scheduled."
 		echo
 		read -n 1 -s -r -p " Would you like to schedule a weekly backup (y/N)? "
 		echo
@@ -48,11 +48,11 @@ if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 			echo " The incremental backup will reset on the first of each month."
 			echo
 			echo " You can always change these settings by typing ${LYELLOW}crontab -e${STD}"
-			wait 10
+			sleep 10
 
 		else
 
-			echo " No worries, you can always add a backup schedule later!"; wait 10
+			echo " No worries, you can always add a backup schedule later!"; sleep 10
 
 		fi
 
