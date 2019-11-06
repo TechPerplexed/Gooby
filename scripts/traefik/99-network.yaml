@@ -1,0 +1,6 @@
+networks:
+  gooby:
+    name: Gooby
+    driver: bridge
+    ipam:
+      driver: default

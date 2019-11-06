@@ -21,8 +21,8 @@ else
 		echo "--------------------------------------------------"
 		echo " Please choose what version you want to install:"
 		echo ""
-		[[ -f "/opt/Gooby/scripts/components/$APPLOC.yaml" ]] && echo " ${LYELLOW}S${STD} - $TASK Stable"
-		[[ -f "/opt/Gooby/scripts/components/$APPLOC-beta.yaml" ]] && echo " ${LYELLOW}B${STD} - $TASK Beta"
+		[[ -f "/opt/Gooby/scripts/${PROXYVERSION}/$APPLOC.yaml" ]] && echo " ${LYELLOW}S${STD} - $TASK Stable"
+		[[ -f "/opt/Gooby/scripts/${PROXYVERSION}/$APPLOC-beta.yaml" ]] && echo " ${LYELLOW}B${STD} - $TASK Beta"
 		echo "--------------------------------------------------"
 		echo ""
 		read -n 1 -s -r -p " ---> "
@@ -30,7 +30,7 @@ else
 
 		case "$REPLY" in
 			s|S ) APPLOC=$APPLOC ;;
-			b|B ) [[ -f "/opt/Gooby/scripts/components/$APPLOC-beta.yaml" ]] && APPLOC=$APPLOC-beta ;;
+			b|B ) [[ -f "/opt/Gooby/scripts/${PROXYVERSION}/$APPLOC-beta.yaml" ]] && APPLOC=$APPLOC-beta ;;
 			* ) APPLOC=$APPLOC ;;
 		esac
 
@@ -75,9 +75,8 @@ else
 
 		echo ""
 		cd $CONFIGS/Docker
-		sudo rsync -a /opt/Gooby/scripts/components/$APPLOC.yaml $CONFIGS/Docker/components
+		sudo rsync -a /opt/Gooby/scripts/${PROXYVERSION}/$APPLOC.yaml $CONFIGS/Docker/components
 		echo "Just a moment while $APP is being installed..."
-		[[ ! -f "${CONFIGVARS}/plexclaim" ]] && echo "-" > ${CONFIGVARS}/plexclaim
 		source /opt/Gooby/install/misc/environment-build.sh rebuild
 		/usr/local/bin/docker-compose up -d --remove-orphans
 		cd "${CURDIR}"

@@ -1,0 +1,49 @@
+
+#debug = true
+
+logLevel = "ERROR" #DEBUG, INFO, WARN, ERROR, FATAL, PANIC
+InsecureSkipVerify = true 
+defaultEntryPoints = ["https", "http"]
+
+# WEB interface of Traefik - it will show web page with overview of frontend and backend configurations 
+[web]
+  entryPoint = "traefik"
+  dashboard = true
+  address = ":8080"
+  #usersFile = "/etc/traefik/security"
+
+# Force HTTPS
+[entryPoints]
+  [entryPoints.http]
+  address = ":80"
+    [entryPoints.http.redirect]
+    entryPoint = "https"
+  [entryPoints.https]
+  address = ":443"
+    [entryPoints.https.tls]
+
+[file]
+  watch = true
+  filename = "/etc/traefik/rules.toml"
+
+# Let's encrypt configuration
+[acme]
+email = "GOOBYEMAIL"
+storage="/etc/traefik/acme/acme.json"
+entryPoint = "https"
+acmeLogging=true 
+onDemand = false #create certificate when container is created
+[acme.dnsChallenge]
+  provider = "cloudflare"
+  delayBeforeCheck = 0
+[[acme.domains]]
+   main = "GOOBYDOMAIN"
+[[acme.domains]]
+   main = "*.GOOBYDOMAIN"
+   
+# Connection to docker host system (docker.sock)
+[docker]
+endpoint = "unix:///var/run/docker.sock"
+domain = "GOOBYDOMAIN"
+watch = true
+exposedbydefault = true

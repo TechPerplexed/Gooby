@@ -27,10 +27,18 @@ sudo chown -R $USER:$USER $CONFIGS
 
 echo "$MYDOMAIN" > ${CONFIGVARS}/mydomain
 echo "$MYEMAIL" > ${CONFIGVARS}/myemail
-echo "master"  > ${CONFIGVARS}/goobybranch
 
-sudo rsync -a /opt/Gooby/scripts/components/{00-AAA.yaml,01-proxy.yaml} $CONFIGS/Docker/components
-touch ${CONFIGVARS}/cf_email ${CONFIGVARS}/cf_key ${CONFIGVARS}/plexclaim ${CONFIGVARS}/proxyversion ${CONFIGVARS}/rclonefolder ${CONFIGVARS}/rcloneservice ${CONFIGVARS}/rcloneversion
+if [ ! -e ${CONFIGVARS}/goobybranch ]; then
+  echo "master" > ${CONFIGVARS}/goobybranch
+fi
+
+if [ ! -e ${CONFIGVARS}/proxyversion ]; then
+  echo "nginx" > ${CONFIGVARS}/proxyversion
+  PROXYVERSION=$(cat ${CONFIGVARS}/proxyversion)
+fi
+
+sudo rsync -a /opt/Gooby/scripts/${PROXYVERSION}/{00-version.yaml,01-proxy.yaml,99-network.yaml} $CONFIGS/Docker/components
+touch ${CONFIGVARS}/cf_email ${CONFIGVARS}/cf_key ${CONFIGVARS}/plexclaim ${CONFIGVARS}/rclonefolder ${CONFIGVARS}/rcloneservice ${CONFIGVARS}/rcloneversion
 
 source /opt/Gooby/install/misc/environment-build.sh
 

@@ -1,0 +1,48 @@
+#
+# Radarr - Movie catalog and management
+#
+  radarr:
+    image: linuxserver/radarr
+    container_name: radarr
+    hostname: radarr
+    domainname: ${MYDOMAIN}
+    restart: unless-stopped
+    depends_on:
+      traefik:
+        condition: service_healthy
+    environment:
+      - PGID=${GROUPID}
+      - PUID=${USERID}
+      - TZ=${TIMEZONE}
+    labels:
+      - "traefik.enable=true"
+      - "traefik.backend=radarr"
+      - "traefik.frontend.rule=Host:radarr.${MYDOMAIN}"
+      - "traefik.port=7878"
+      - "traefik.docker.network=gooby"
+      - "traefik.frontend.headers.SSLRedirect=true"
+      - "traefik.frontend.headers.STSSeconds=315360000"
+      - "traefik.frontend.headers.browserXSSFilter=true"
+      - "traefik.frontend.headers.contentTypeNosniff=true"
+      - "traefik.frontend.headers.forceSTSHeader=true"
+      - "traefik.frontend.headers.SSLHost=${MYDOMAIN}"
+      - "traefik.frontend.headers.STSIncludeSubdomains=true"
+      - "traefik.frontend.headers.STSPreload=true"
+      - "traefik.frontend.headers.frameDeny=true"
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ${CONFIGS}/Radarr:/config
+      - ${LOGS}:/config/logs
+      - ${MEDIA}:/Media
+      - /bin/netstat:/bin/netstat:ro
+      - /usr/bin/killall:/usr/bin/killall:ro
+    networks:
+      - gooby
+    cpu_shares: 2048
+    blkio_config:
+      weight: 150
+    healthcheck:
+      test: ["CMD-SHELL", "netstat -ntlp | grep :7878 && mountpoint /Media"]
+      interval: 10s
+      timeout: 2s
+      retries: 3
