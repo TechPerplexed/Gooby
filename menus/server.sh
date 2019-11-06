@@ -29,7 +29,6 @@ UPGRADE(){
 	source /opt/Gooby/install/server/${TASK}-${PERFORM}.sh
 }
 
-
 PROXYCHOICE(){
 	PERFORM="change"
 	TASK="proxy"
