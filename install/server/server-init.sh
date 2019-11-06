@@ -27,6 +27,7 @@ sudo chown -R $USER:$USER $CONFIGS
 
 echo "$MYDOMAIN" > ${CONFIGVARS}/mydomain
 echo "$MYEMAIL" > ${CONFIGVARS}/myemail
+echo "master"  > ${CONFIGVARS}/goobybranch
 
 sudo rsync -a /opt/Gooby/scripts/components/{00-AAA.yaml,01-proxy.yaml} $CONFIGS/Docker/components
 touch ${CONFIGVARS}/cf_email ${CONFIGVARS}/cf_key ${CONFIGVARS}/plexclaim ${CONFIGVARS}/proxyversion ${CONFIGVARS}/rclonefolder ${CONFIGVARS}/rcloneservice ${CONFIGVARS}/rcloneversion
