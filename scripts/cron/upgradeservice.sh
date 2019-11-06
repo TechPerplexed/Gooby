@@ -80,7 +80,7 @@ else
 
 	# Update Proxy
 
-	if [ ! -e $CONFIGS/Docker/components/00-AAA.yaml ]; then
+	if [ -e $CONFIGS/Docker/components/00-AAA.yaml ]; then
 		sudo rsync -a /opt/Gooby/scripts/components/{00-version.yaml,01-proxy.yaml} $CONFIGS/Docker/components
 		sudo rm $CONFIGS/Docker/components/00-AAA.yaml
 	fi
