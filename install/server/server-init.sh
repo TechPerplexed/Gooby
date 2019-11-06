@@ -43,6 +43,9 @@ touch ${CONFIGVARS}/cf_email ${CONFIGVARS}/cf_key ${CONFIGVARS}/plexclaim ${CONF
 source /opt/Gooby/install/misc/environment-build.sh
 
 cd $CONFIGS/Docker
+sudo mkdir nginx
+sudo chown -R $USER:$USER $CONFIGS/Docker
+echo "client_max_body_size 30m;" > $CONFIGS/Docker/nginx/my_custom_proxy_settings.conf
 /usr/local/bin/docker-compose up --remove-orphans --build -d
 cd "${CURDIR}"
 
