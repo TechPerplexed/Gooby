@@ -78,18 +78,19 @@ else
 		echo "master" > ${CONFIGVARS}/goobybranch
 	fi
 
-	# Update Proxy
-
-	if [ -e $CONFIGS/Docker/components/00-AAA.yaml ]; then
-		sudo rsync -a /opt/Gooby/scripts/components/{00-version.yaml,01-proxy.yaml} $CONFIGS/Docker/components
-		sudo rm $CONFIGS/Docker/components/00-AAA.yaml
-	fi
-
 	# Add proxy version
 
 	if [ ! -e ${CONFIGVARS}/proxyversion ]; then
 		echo "nginx" > ${CONFIGVARS}/proxyversion
 		touch ${CONFIGVARS}/cf_email ${CONFIGVARS}/cf_key
+	fi
+
+	# Update Proxy
+
+	if [ -e $CONFIGS/Docker/components/00-AAA.yaml ]; then
+		PROXYVERSION=$(cat ${CONFIGVARS}/proxyversion)
+		sudo rsync -a /opt/Gooby/scripts/${PROXYVERSION}/{00-version.yaml,01-proxy.yaml,99-network.yaml} $CONFIGS/Docker/components
+		sudo rm $CONFIGS/Docker/components/00-AAA.yaml
 	fi
 
 	# Finalizing upgrade
