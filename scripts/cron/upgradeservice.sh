@@ -73,6 +73,12 @@ else
 		crontab -l | grep 'resetbackup' || (crontab -l 2>/dev/null; echo "10 2 1 * * /bin/resetbackup > /dev/null 2>&1") | crontab -
 	fi
 
+	# Add Gooby branch
+
+	if [ ! -e ${CONFIGVARS}/goobybranch ]; then
+		echo "master" > ${CONFIGVARS}/goobybranch
+	fi
+
 	# Update Proxy
 
 	sudo rsync -a /opt/Gooby/scripts/components/{00-version.yaml,01-proxy.yaml} $CONFIGS/Docker/components
