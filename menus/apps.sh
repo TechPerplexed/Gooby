@@ -2,28 +2,28 @@
 
 if [ ! -e $CONFIGS/Docker/.env ]; then /opt/Gooby/install/server/server-init.sh; fi
 
-source $CONFIGS/Docker/.env
+source ${CONFIGS}/Docker/.env
 
 # Menu Options
 
 INSTALL(){
 	PERFORM="install"
-	source /opt/Gooby/install/apps/${PERFORM}-$APPTYPE.sh
+	source /opt/Gooby/install/apps/${PERFORM}-${APPTYPE}.sh
 }
 
 UPDATE(){
 	PERFORM="update"
-	source /opt/Gooby/install/apps/${PERFORM}-$APPTYPE.sh
+	source /opt/Gooby/install/apps/${PERFORM}-${APPTYPE}E.sh
 }
 
 REMOVE(){
 	PERFORM="remove"
-	source /opt/Gooby/install/apps/${PERFORM}-$APPTYPE.sh
+	source /opt/Gooby/install/apps/${PERFORM}-${APPTYPE}.sh
 }
 
 SECURE(){
 	PERFORM="secure"
-	source /opt/Gooby/install/apps/${PERFORM}-$APPTYPE.sh
+	source /opt/Gooby/install/apps/${PERFORM}-${APPTYPE}.sh
 }
 
 QUIT(){
@@ -56,7 +56,7 @@ read_options(){
 		[Rr]) REMOVE ;;
 		[Ss]) SECURE ;;
 		[Zz]) QUIT ;;
-		*) echo "${LRED}Please select a valid option${STD}" && sleep 2
+		*) echo "${LRED}Please select a valid option${STD}" && sleep 1
 	esac
 }
 
