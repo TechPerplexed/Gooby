@@ -5,7 +5,7 @@ if pidof -o %PPID -x "$(basename $0)"; then
 fi
 
 source /opt/Gooby/menus/variables.sh
-source $CONFIGS/Docker/.env
+source ${CONFIGS}/Docker/.env
 
 echo
 echo "${LYELLOW}Updating Gooby${STD}"
@@ -36,7 +36,7 @@ echo
 echo "${LYELLOW}Shutting everything down${STD}"
 echo
 
-cd $CONFIGS/Docker
+cd ${CONFIGS}/Docker
 /usr/local/bin/docker-compose down
 
 sudo systemctl daemon-reload
@@ -77,10 +77,9 @@ done
 
 sudo rmdir ${RCLONEMOUNT} > /dev/null 2>&1
 sudo rmdir ${MOUNTTO} > /dev/null 2>&1
-# rm ${LOGS}/*.? > /dev/null
 echo -n > ${LOGS}/rclone.log
 
-sudo chown -R $USER:$USER /mnt
+sudo chown -R ${USER}:${USER} /mnt
 
 echo
 echo "${LYELLOW}Calling on Upgrade Service${STD}"
@@ -146,4 +145,4 @@ echo
 echo "${LYELLOW}Restoring permissions... this could take a few minutes${STD}"
 echo
 
-sudo chown -R $USER:$USER $HOME $CONFIGS/Docker /tmp
+sudo chown -R ${USER}:${USER} ${HOME} ${CONFIGS}/Docker /tmp
