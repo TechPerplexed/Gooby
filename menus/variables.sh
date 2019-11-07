@@ -3,6 +3,7 @@
 CONFIGS=/var/local/Gooby
 CONFIGVARS=${CONFIGS}/Docker/.config
 CONFIGENV=$CONFIGS/Docker/.env
+GOOBY=${RED}G${BLUE}O${GREEN}O${YELLOW}B${LPURPLE}Y${STD}
 
 # Define colors
 
@@ -28,7 +29,7 @@ WHITE=$(echo -en '\033[01;37m')
 
 MENUSTART(){
 	echo "--------------------------------------------------"
-	echo " Gooby instructions at techperplexed.blogspot.com"
+	echo " ${GOOBY} instructions at techperplexed.blogspot.com"
 	echo "--------------------------------------------------"
 	echo " $MENU"
 	echo " ${STD}"
