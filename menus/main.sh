@@ -64,7 +64,7 @@ read_options(){
 		[Ee]) misc ;;
 		[Ff]) stats ;;
 		[Qq]) quit ;;
-		*) echo "${LRED}Please select a valid option${STD}" && sleep 2
+		*) echo "${LRED}Please select a valid option${STD}" && sleep 1
 	esac
 }
 
