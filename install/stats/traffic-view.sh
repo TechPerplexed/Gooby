@@ -3,7 +3,7 @@
 MENU="Rclone Activity"
 
 source /opt/Gooby/menus/variables.sh
-source $CONFIGS/Docker/.env
+source ${CONFIGS}/Docker/.env
 OPTION=${1}
 
 while true; do
@@ -29,7 +29,6 @@ while true; do
 	MENUSTART
 	echo " Transfers Since Reboot/Cleanup"
 	echo -----------------------------------------
-	#echo -n " Startup Time      : ${LBLUE}"${SDATE}; echo "${STD}"
 	echo -n " Data transferred  : ${LBLUE}"; printf "%'.2f" ${GIG}; echo " GB${STD}"
 	echo -n " Files transferred : ${LBLUE}"; printf "%'d\n" ${FT}; echo -n "${STD}"
 	echo -n " Checks completed  : ${LBLUE}"; printf "%'d\n" ${CHECK}; echo -n "${STD}"
@@ -38,7 +37,6 @@ while true; do
 	echo
 	echo " Transfers Real Time"
 	echo -----------------------------------------
-	#echo -n " Rclone Sync jobs  : ${LBLUE}"; printf "%'d\n" ${QSIZE}; echo -n "${STD}"
 	echo -n " Files in motion   : ${LBLUE}"; printf "%'d\n" ${TRANSFERS}; echo -n "${STD}"
 	echo -n " Size of files     : ${LBLUE}"; printf "%'.2f" ${SIZE}; echo " GB${STD}"
 	echo -n " Current speed     : ${LBLUE}"; printf "%'.2f" ${SPEED}; echo " MB/sec${STD}"
