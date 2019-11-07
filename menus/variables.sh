@@ -2,7 +2,7 @@
 
 CONFIGS=/var/local/Gooby
 CONFIGVARS=${CONFIGS}/Docker/.config
-CONFIGENV=$CONFIGS/Docker/.env
+CONFIGENV=${CONFIGS}/Docker/.env
 
 # Define colors
 
@@ -30,7 +30,7 @@ MENUSTART(){
 	echo "--------------------------------------------------"
 	echo " GOOBY instructions at techperplexed.blogspot.com"
 	echo "--------------------------------------------------"
-	echo " $MENU"
+	echo " ${MENU}"
 	echo " ${STD}"
 }
 
