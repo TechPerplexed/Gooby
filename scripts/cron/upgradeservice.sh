@@ -4,7 +4,7 @@ VERSION=2.2.1
 
 CONFIGVARS=${CONFIGS}/Docker/.config
 sudo mkdir -p ${CONFIGVARS}
-sudo chown -R $USER:$USER $CONFIGS/Docker
+sudo chown -R ${USER}:${USER} ${CONFIGS}/Docker
 touch ${CONFIGVARS}/version
 
 if [ "$(cat ${CONFIGVARS}/version)" == ${VERSION} ]; then
@@ -20,7 +20,7 @@ else
 	if [ ! -e ${CONFIGVARS}/proxyversion ]; then
 		sudo apt-get update
 		APPLIST="acl apt-transport-https ca-certificates curl fuse git gpg-agent grsync jq mergerfs nano pigz rsyncufw socat sqlite3 ufw unzip wget"
-		for i in $APPLIST; do
+		for i in ${APPLIST}; do
 			echo Checking $i...
 			sudo apt-get -y install $i
 			echo
@@ -29,12 +29,12 @@ else
 
 	# Move and rename folders
 
-	if [ -d $CONFIGS/Security ]; then
-		sudo mv $CONFIGS/Certs $CONFIGS/Docker
-		sudo mv $CONFIGS/Docker/Certs $CONFIGS/Docker/certs
-		sudo mv $CONFIGS/nginx $CONFIGS/Docker
-		sudo mv $CONFIGS/Security $CONFIGS/Docker
-		sudo mv $CONFIGS/Docker/Security $CONFIGS/Docker/security
+	if [ -d ${CONFIGS}/Security ]; then
+		sudo mv ${CONFIGS}/Certs ${CONFIGS}/Docker
+		sudo mv ${CONFIGS}/Docker/Certs ${CONFIGS}/Docker/certs
+		sudo mv ${CONFIGS}/nginx ${CONFIGS}/Docker
+		sudo mv ${CONFIGS}/Security ${CONFIGS}/Docker
+		sudo mv ${CONFIGS}/Docker/Security ${CONFIGS}/Docker/security
 	fi
 
 	if [ -d /var/local/.Gooby ]; then
@@ -43,7 +43,7 @@ else
 	fi
 
 	if [ -d /var/local/Gooby/.config ]; then
-		sudo mv $CONFIGS/.config/* ${CONFIGVARS}
+		sudo mv ${CONFIGS}/.config/* ${CONFIGVARS}
 		sudo mv ${CONFIGVARS}/rclonev ${CONFIGVARS}/rcloneversion
 		sudo mv ${CONFIGVARS}/upgrade ${CONFIGVARS}/version
 		sudo rm -r /var/local/Gooby/.config
@@ -94,10 +94,10 @@ else
 
 	# Update Proxy
 
-	if [ -e $CONFIGS/Docker/components/00-AAA.yaml ]; then
+	if [ -e ${CONFIGS}/Docker/components/00-AAA.yaml ]; then
 		PROXYVERSION=$(cat ${CONFIGVARS}/proxyversion)
-		sudo rsync -a /opt/Gooby/scripts/${PROXYVERSION}/{00-version.yaml,01-proxy.yaml,99-network.yaml} $CONFIGS/Docker/components
-		sudo rm $CONFIGS/Docker/components/00-AAA.yaml
+		sudo rsync -a /opt/Gooby/scripts/${PROXYVERSION}/{00-version.yaml,01-proxy.yaml,99-network.yaml} ${CONFIGS}/Docker/components
+		sudo rm ${CONFIGS}/Docker/components/00-AAA.yaml
 	fi
 
 	# Finalizing upgrade
