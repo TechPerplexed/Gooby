@@ -28,6 +28,7 @@ if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 		echo "Just a moment while your new domain is being installed..."
 		echo ""
 		cd $CONFIGS/Docker
+		sudo sed -i "s/GOOBYDOMAIN/${MYDOMAIN}/g" ${CONFIGS}/Docker/traefik/traefik.toml
 		/usr/local/bin/docker-compose down
 		source /opt/Gooby/install/misc/environment-build.sh rebuild
 		/usr/local/bin/docker-compose up -d --remove-orphans
