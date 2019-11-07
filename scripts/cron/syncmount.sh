@@ -5,11 +5,11 @@ if pidof -o %PPID -x "$(basename $0)"; then
 fi
 
 source /opt/Gooby/menus/variables.sh
-source $CONFIGS/Docker/.env
+source ${CONFIGS}/Docker/.env
 
 # Check to see if anything needs to be cached locally.  Doing this before the sync allows new files to be copied locally first.
 
-[ -f $HOME/bin/localcache ] && $HOME/bin/localcache
+[ -f ${HOME}/bin/localcache ] && ${HOME}/bin/localcache
 
 # Load existing variables and use them as defaults, if available
 
