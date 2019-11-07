@@ -46,7 +46,7 @@ show_menus() {
 	echo " ${GREEN}D${STD} - Other Applications"
 	echo " ${GREEN}E${STD} - Additional Tasks"
 	echo " ${GREEN}F${STD} - Various Statistics"
-	echo " ${LRED}Q${STD} - QUIT $FUNCTION"
+	echo " ${LRED}Q${STD} - QUIT ${FUNCTION}"
 	echo " ${GREEN}"
 	MENUEND
 }
