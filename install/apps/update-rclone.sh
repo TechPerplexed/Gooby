@@ -37,18 +37,18 @@ else
 
 		cd ~
 		echo
-		read -e -p "Make any changes to your config? ${YELLOW}(y/N)${STD}? " -i "" choice
+		read -e -p "Make any changes to your config? ${YELLOW}(y/N)${STD}? " -i "" CHOICE
 
-		case "$choice" in 
+		case "${CHOICE}" in 
 			y|Y )	sudo rclone config
 				echo
-				read -r RCLONESERVICE < $HOME/.config/rclone/rclone.conf; RCLONESERVICE=${RCLONESERVICE:1:-1}
-				read -e -p "Confirm that this is what you named your mount: " -i "$RCLONESERVICE"
+				read -r RCLONESERVICE < ${HOME}/.config/rclone/rclone.conf; RCLONESERVICE=${RCLONESERVICE:1:-1}
+				read -e -p "Confirm that this is what you named your mount: " -i "${RCLONESERVICE}"
 				echo
-				read -e -p "What is your media folder in $RCLONESERVICE? (leave empty for root): " -i "" RCLONEFOLDER
+				read -e -p "What is your media folder in ${RCLONESERVICE}? (leave empty for root): " -i "" RCLONEFOLDER
 				echo
-				RCLONESERVICE=${RCLONESERVICE#:}; echo $RCLONESERVICE > ${CONFIGVARS}/rcloneservice
-				RCLONEFOLDER=${RCLONEFOLDER%/}; RCLONEFOLDER=${RCLONEFOLDER#/}; echo $RCLONEFOLDER > ${CONFIGVARS}/rclonefolder
+				RCLONESERVICE=${RCLONESERVICE#:}; echo ${RCLONESERVICE} > ${CONFIGVARS}/rcloneservice
+				RCLONEFOLDER=${RCLONEFOLDER%/}; RCLONEFOLDER=${RCLONEFOLDER#/}; echo ${RCLONEFOLDER} > ${CONFIGVARS}/rclonefolder
 				source /opt/Gooby/install/misc/environment-build.sh rebuild
 				;;
 			* )	echo "All done!" ;;
@@ -56,7 +56,7 @@ else
 
 		sudo systemctl daemon-reload
 
-		cd $CURDIR
+		cd ${CURDIR}
 
 		TASKCOMPLETE
 
