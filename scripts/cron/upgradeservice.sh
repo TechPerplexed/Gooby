@@ -85,6 +85,13 @@ else
 		touch ${CONFIGVARS}/cf_email ${CONFIGVARS}/cf_key
 	fi
 
+	if [ ! -d ${CONFIGS}/Docker/traefik ]; then
+		sudo mkdir -p ${CONFIGS}/Docker/traefik
+		sudo rsync -a /opt/Gooby/scripts/services/traefik.toml ${CONFIGS}/Docker/traefik/
+		sudo sed -i "s/GOOBYDOMAIN/${MYDOMAIN}/g" ${CONFIGS}/Docker/traefik/traefik.toml
+		sudo sed -i "s/GOOBYEMAIL/${MYEMAIL}/g" ${CONFIGS}/Docker/traefik/traefik.toml
+	fi
+
 	# Update Proxy
 
 	if [ -e $CONFIGS/Docker/components/00-AAA.yaml ]; then
