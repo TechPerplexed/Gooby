@@ -1,12 +1,10 @@
 #!/bin/bash
 
-VERSION=2.2.1
-
 source /opt/Gooby/menus/variables.sh
 
 clear
 echo
-echo "${YELLOW}Welcome to Gooby $VERSION!${STD}"
+echo "${YELLOW}Welcome to Gooby!"
 echo
 echo "${YELLOW}Please answer the following two questions:${STD}"
 echo
@@ -54,7 +52,3 @@ sudo chown -R $USER:$USER $CONFIGS $HOME
 # Add rlean to bootup cron
 
 crontab -l | grep 'rclean.sh' || (crontab -l 2>/dev/null; echo "@reboot /opt/Gooby/scripts/cron/rclean.sh > /dev/null 2>&1") | crontab -
-
-# Add Gooby version
-
-echo ${VERSION} > ${CONFIGVARS}/version
