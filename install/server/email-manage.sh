@@ -23,7 +23,9 @@ if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 		echo "$SETMAIL" > ${CONFIGVARS}/myemail
 
 		MYEMAIL=$(cat ${CONFIGVARS}/myemail)
-		
+
+		sudo sed -i "s/GOOBYEMAIL/${MYEMAIL}/g" ${CONFIGS}/Docker/traefik/traefik.toml
+
 		/opt/Gooby/install/misc/environment-build.sh rebuild
 		source $CONFIGS/Docker/.env
 
