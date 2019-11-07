@@ -18,7 +18,7 @@ else
 		GOAHEAD
 
 		cd ${CONFIGS}/Docker
-		echo " Just a moment while $APP is being uninstalled..."
+		echo " Just a moment while ${APP} is being uninstalled..."
 		docker stop ${APP}
 		sudo rm ${CONFIGS}/Docker/components/${APPLOC}*
 		source /opt/Gooby/install/misc/environment-build.sh rebuild
