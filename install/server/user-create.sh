@@ -8,8 +8,8 @@ source /opt/Gooby/menus/variables.sh
 
 EXPLAINTASK
 
-echo "You are logged in as $USER"
-echo "You will need to $PERFORM $TASK"
+echo "You are logged in as ${USER}"
+echo "You will need to ${PERFORM} ${TASK}"
 
 CONFIRMATION
 
@@ -17,11 +17,11 @@ if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 
 	read -e -p "${YELLOW}Desired username${STD}: " -i "yourname" PU
 
-	sudo -s adduser $PU
+	sudo -s adduser ${PU}
 
-	sudo -s usermod -a -G sudo $PU
-	sudo -s echo -e "$PU\tALL=(ALL)\tNOPASSWD:ALL" > /etc/sudoers.d/$PU
-	sudo -s chmod 0440 /etc/sudoers.d/$PU
+	sudo -s usermod -a -G sudo ${PU}
+	sudo -s echo -e "${PU}\tALL=(ALL)\tNOPASSWD:ALL" > /etc/sudoers.d/${PU}
+	sudo -s chmod 0440 /etc/sudoers.d/${PU}
 
 	clear
 	echo " ${GREEN}"
