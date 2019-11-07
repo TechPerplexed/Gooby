@@ -48,12 +48,12 @@ sudo rsync -a /opt/Gooby/scripts/services/traefik.toml ${CONFIGS}/Docker/traefik
 sudo sed -i "s/GOOBYDOMAIN/${MYDOMAIN}/g" ${CONFIGS}/Docker/traefik/traefik.toml
 sudo sed -i "s/GOOBYEMAIL/${MYEMAIL}/g" ${CONFIGS}/Docker/traefik/traefik.toml
 
-sudo chown -R $USER:$USER $CONFIGS/Docker
+sudo chown -R $USER:$USER $CONFIGS $HOME
+
 echo "client_max_body_size 30m;" > $CONFIGS/Docker/nginx/my_custom_proxy_settings.conf
 /usr/local/bin/docker-compose up --remove-orphans --build -d
-cd "${CURDIR}"
 
-sudo chown -R $USER:$USER $CONFIGS $HOME
+cd "${CURDIR}"
 
 # Add rlean to bootup cron
 
