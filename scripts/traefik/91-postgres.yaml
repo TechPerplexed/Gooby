@@ -1,4 +1,7 @@
-  postgres:
+#
+# PostgreSQL - Postgres database server
+#
+postgres:
     restart: unless-stopped
     image: postgres:latest
     container_name: postgres
