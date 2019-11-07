@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source $CONFIGS/Docker/.env
+source ${CONFIGS}/Docker/.env
 which rclone > ${CONFIGVARS}/checkapp.txt
 clear
 
@@ -128,7 +128,7 @@ else
 
 			echo " ${GREEN}Restoring permissions, please wait...${STD}"
 			echo
-			sudo chown $USER:$USER ${CONFIGS}
+			sudo chown ${USER}:${USER} ${CONFIGS}
 
 			echo
 			echo " ${CYAN}Finished restoring ${APPNAME}${STD}"
