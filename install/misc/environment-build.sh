@@ -2,7 +2,7 @@
 
 source /opt/Gooby/menus/variables.sh
 
-ENV=$CONFIGS/Docker/.env
+ENV=${CONFIGS}/Docker/.env
 touch ${ENV}
 
 # Since Docker processes " as part of the paths, we don't actually store it in the variables.  However, BASH does require
@@ -37,7 +37,7 @@ DOWNLOADS=${HOMEDIR}/Downloads
 GOOBYBRANCH=$(cat ${CONFIGVARS}/goobybranch)
 GOOGLE=/mnt/google
 GROUPID=$(id -g)
-GROUPNAME=$USER
+GROUPNAME=${USER}
 HOMEDIR=${HOME}
 IP=$(curl ifconfig.me)
 LOGS=${HOME}/logs
