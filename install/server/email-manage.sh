@@ -16,13 +16,13 @@ if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 
 	read -p "Your new email address: " SETMAIL
 
-	if [[ -z "$SETMAIL" ]]; then
+	if [[ -z "${SETMAIL}" ]]; then
 
 		echo "No input entered... no changes made!"
 
 	else
 
-		echo "$SETMAIL" > ${CONFIGVARS}/myemail
+		echo "${SETMAIL}" > ${CONFIGVARS}/myemail
 
 		MYEMAIL=$(cat ${CONFIGVARS}/myemail)
 
@@ -31,7 +31,7 @@ if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 		/opt/Gooby/install/misc/environment-build.sh rebuild
 		source $CONFIGS/Docker/.env
 
-		echo; echo "Your new email address is set to $MYEMAIL"
+		echo; echo "Your new email address is set to ${MYEMAIL}"
 
 		TASKCOMPLETE
 
