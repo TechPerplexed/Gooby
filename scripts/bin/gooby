@@ -2,9 +2,9 @@
 
 source /opt/Gooby/menus/variables.sh
 
-if [ "$EUID" -ne 0 ]; then
+if [ "${EUID}" -ne 0 ]; then
 
-	if [ ! -e $CONFIGS/Docker/.env ]; then /opt/Gooby/install/server/server-init.sh; fi
+	if [ ! -e ${CONFIGS}/Docker/.env ]; then /opt/Gooby/install/server/server-init.sh; fi
 
 	/opt/Gooby/menus/main.sh
 
