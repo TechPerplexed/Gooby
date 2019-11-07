@@ -59,11 +59,11 @@ else
 		sudo systemctl daemon-reload
 	fi
 
-	cat $HOME/.config/rclone/rclone.conf | grep "Local" > /dev/null
+	cat ${HOME}/.config/rclone/rclone.conf | grep "Local" > /dev/null
 	if ! [[ ${?} -eq 0 ]]; then
-		echo [Local] >> $HOME/.config/rclone/rclone.conf
-		echo type = local >> $HOME/.config/rclone/rclone.conf
-		echo nounc = >> $HOME/.config/rclone/rclone.conf
+		echo [Local] >> ${HOME}/.config/rclone/rclone.conf
+		echo type = local >> ${HOME}/.config/rclone/rclone.conf
+		echo nounc = >> ${HOME}/.config/rclone/rclone.conf
 	fi
 
 	# Add resetbackup cron
