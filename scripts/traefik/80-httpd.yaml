@@ -1,1 +1,27 @@
-
+#
+# httpd - Apache HTTPd (web server)
+#
+  httpd:
+    restart: always
+    image: php:apache
+    container_name: httpd
+    hostname: web
+    depends_on:
+      traefik:
+        condition: service_healthy
+    volumes:
+      - ${CONFIGS}/Web:/var/www/html
+      - /bin/netstat:/bin/netstat:ro
+    networks:
+      - gooby
+    labels:
+      - "traefik.enable=true"
+      - "traefik.backend=web"
+      - "traefik.frontend.rule=Host:web.${MYDOMAIN}"
+      - "traefik.port=80"
+      - "traefik.protocol=http"
+    healthcheck:
+      web: ["CMD-SHELL", "netstat -ntlp | grep :80"]
+      interval: 10s
+      timeout: 2s
+      retries: 3
