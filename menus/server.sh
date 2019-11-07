@@ -29,8 +29,8 @@ UPGRADE(){
 	source /opt/Gooby/install/server/${TASK}-${PERFORM}.sh
 }
 
-PROXYCHOICE(){
-	PERFORM="change"
+PROXYSWITCH(){
+	PERFORM="switch"
 	TASK="proxy"
 	source /opt/Gooby/install/server/${TASK}-${PERFORM}.sh
 }
@@ -49,7 +49,7 @@ show_menus() {
 	echo " ${YELLOW}B${STD} - Manage Email Address"
 	echo " ${YELLOW}C${STD} - Set Timezone"
 	echo " ${YELLOW}D${STD} - Server Upgrade - Danger zone!"
-	echo " ${YELLOW}E${STD} - Change Proxy - Coming soon"
+	echo " ${YELLOW}E${STD} - Switch Proxy - Coming soon"
 	echo " ${WHITE}Z${STD} - EXIT to Main Menu"
 	echo " ${YELLOW}"
 	MENUEND
@@ -65,7 +65,7 @@ read_options(){
 		[Bb]) EMAILADDR ;;
 		[Cc]) TZONE ;;
 		[Dd]) UPGRADE ;;
-		[Ee]) PROXYCHOICE ;;
+		[Ee]) PROXYSWITCH ;;
 		[Zz]) QUIT ;;
 		*) echo "${LRED}Please select a valid option${STD}" && sleep 2
 	esac
