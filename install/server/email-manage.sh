@@ -31,7 +31,7 @@ if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 		/opt/Gooby/install/misc/environment-build.sh rebuild
 		source $CONFIGS/Docker/.env
 
-		echo "Your new email address is set to $MYEMAIL"
+		echo; echo "Your new email address is set to $MYEMAIL"
 
 		TASKCOMPLETE
 
