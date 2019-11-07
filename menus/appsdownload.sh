@@ -10,7 +10,7 @@ SONARR(){
 	APP=sonarr
 	APPTYPE=app
 	APPLOC=52-sonarr
-	OLDLOC=$USER/.config/NzbDrone/
+	OLDLOC=${USER}/.config/NzbDrone/
 	source /opt/Gooby/menus/apps.sh
 }
 
@@ -19,7 +19,7 @@ RADARR(){
 	APP=radarr
 	APPTYPE=app
 	APPLOC=50-radarr
-	OLDLOC=$USER/.config/Radarr/
+	OLDLOC=${USER}/.config/Radarr/
 	source /opt/Gooby/menus/apps.sh
 }
 
@@ -28,7 +28,7 @@ DELUGE(){
 	APP=deluge
 	APPTYPE=app
 	APPLOC=40-deluge
-	OLDLOC=$USER/.config/deluge/
+	OLDLOC=${USER}/.config/deluge/
 	source /opt/Gooby/menus/apps.sh
 }
 
@@ -82,7 +82,7 @@ read_options(){
 		[Dd]) NZBGET ;;
 		[Ee]) JACKETT ;;
 		[Zz]) QUIT ;;
-		*) echo "${LRED}Please select a valid option${STD}" && sleep 2
+		*) echo "${LRED}Please select a valid option${STD}" && sleep 1
 	esac
 }
 
