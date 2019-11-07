@@ -10,7 +10,9 @@ if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 
 	GOAHEAD
 
-	[[ -e ${CONFIGVARS}/myemail ]] && echo "Your email address is currently set to $(cat ${CONFIGVARS}/myemail)"
+	OLDEMAIL=$(cat ${CONFIGVARS}/myemail)
+
+	echo "Your email address is currently set to ${OLDEMAIL}"
 
 	read -p "Your new email address: " SETMAIL
 
@@ -24,7 +26,7 @@ if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 
 		MYEMAIL=$(cat ${CONFIGVARS}/myemail)
 
-		sudo sed -i "s/GOOBYEMAIL/${MYEMAIL}/g" ${CONFIGS}/Docker/traefik/traefik.toml
+		sudo sed -i "s/${OLDEMAIL}/${MYEMAIL}/g" ${CONFIGS}/Docker/traefik/traefik.toml
 
 		/opt/Gooby/install/misc/environment-build.sh rebuild
 		source $CONFIGS/Docker/.env
