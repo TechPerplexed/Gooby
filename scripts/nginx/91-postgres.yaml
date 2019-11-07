@@ -1,0 +1,70 @@
+#
+# PostgreSQL - Postgres database server
+#
+  postgres:
+    restart: unless-stopped
+    image: postgres:latest
+    container_name: postgres
+    hostname: postgres
+    volumes:
+      - ${CONFIGS}/Postgres:/var/lib/postgresql/data
+      - /etc/localtime:/etc/localtime:ro
+      - /bin/netstat:/bin/netstat:ro
+    environment:
+      - POSTGRES_PASSWORD=<setyourownpassword>
+    ports:
+      - 5432:5432
+    healthcheck:
+      test: ["CMD-SHELL", "netstat -ntlp | grep :5432"]
+      interval: 10s
+      timeout: 2s
+      retries: 3
+
+  pgadmin:
+    restart: unless-stopped
+    image: dockage/phppgadmin
+    container_name: pgadmin
+    depends_on:
+      nginx-proxy:
+        condition: service_healthy
+      letsencrypt-nginx-proxy-companion:
+        condition: service_started
+      postgres:
+        condition: service_healthy
+    volumes:
+      - ${CONFIGS}/Web:/var/www/html
+    environment:
+      - PHP_PG_ADMIN_SERVER_DESC=PostgreSQL
+      - PHP_PG_ADMIN_SERVER_HOST=postgres
+      - PHP_PG_ADMIN_SERVER_PORT=5432
+      - PHP_PG_ADMIN_SERVER_SSL_MODE=allow
+      - PHP_PG_ADMIN_SERVER_DEFAULT_DB=template1
+      - PHP_PG_ADMIN_SERVER_PG_DUMP_PATH=/usr/bin/pg_dump
+      - PHP_PG_ADMIN_SERVER_PG_DUMPALL_PATH=/usr/bin/pg_dumpall
+      - PHP_PG_ADMIN_DEFAULT_LANG=auto
+      - PHP_PG_ADMIN_AUTO_COMPLETE=default on
+      - PHP_PG_ADMIN_EXTRA_LOGIN_SECURITY=false
+      - PHP_PG_ADMIN_OWNED_ONLY=false
+      - PHP_PG_ADMIN_SHOW_COMMENTS=true
+      - PHP_PG_ADMIN_SHOW_ADVANCED=false
+      - PHP_PG_ADMIN_SHOW_SYSTEM=false
+      - PHP_PG_ADMIN_MIN_PASSWORD_LENGTH=1
+      - PHP_PG_ADMIN_LEFT_WIDTH=200
+      - PHP_PG_ADMIN_THEME=default
+      - PHP_PG_ADMIN_SHOW_OIDS=false
+      - PHP_PG_ADMIN_MAX_ROWS=30
+      - PHP_PG_ADMIN_MAX_CHARS=50
+      - PHP_PG_ADMIN_USE_XHTML_STRICT=false
+      - PHP_PG_ADMIN_HELP_BASE=http://www.postgresql.org/docs/%s/interactive/
+      - PHP_PG_ADMIN_AJAX_REFRESH=3
+      - VIRTUAL_HOST=pgadmin.${MYDOMAIN}
+      - VIRTUAL_PORT=80
+      - VIRTUAL_NETWORK=nginx-proxy
+      - TZ=${TIMEZONE}
+      - LETSENCRYPT_HOST=pgadmin.${MYDOMAIN}
+      - LETSENCRYPT_EMAIL=${MYEMAIL}
+    healthcheck:
+      test: ["CMD-SHELL", "netstat -ntlp | grep :80"]
+      interval: 10s
+      timeout: 2s
+      retries: 3
