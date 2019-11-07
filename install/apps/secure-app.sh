@@ -1,6 +1,6 @@
 #!/bin/bash
 
-docker ps -q -f name=$APP > ${CONFIGVARS}/checkapp
+docker ps -q -f name=${APP} > ${CONFIGVARS}/checkapp
 MENU="Secure App"
 clear
 
@@ -10,8 +10,8 @@ if [ ! -s ${CONFIGVARS}/checkapp ]; then
 
 else
 
-	FILENAME=$APP.$MYDOMAIN
-	cd $CONFIGS/Docker/security
+	FILENAME=${APP}.${MYDOMAIN}
+	cd ${CONFIGS}/Docker/security
 
 	# Menu Options
 
@@ -45,9 +45,9 @@ else
 			htpasswd -c ${FILENAME} ${USERNAME}
 		fi
 
-		cd $CURDIR
-		docker stop $APP
-		docker start $APP
+		cd ${CURDIR}
+		docker stop ${APP}
+		docker start ${APP}
 
 		TASKCOMPLETE
 
@@ -60,9 +60,9 @@ else
 		echo "Restoring unrestricted access to ${FILENAME}..."
 		rm ${FILENAME}
 
-		cd $CURDIR
-		docker stop $APP
-		docker start $APP
+		cd ${CURDIR}
+		docker stop ${APP}
+		docker start ${APP}
 
 		TASKCOMPLETE
 
@@ -85,7 +85,7 @@ else
 
 			echo " Current users to access ${FILENAME}:"
 			echo
-			cat -s -n $FILENAME | cut -f1 -d":"
+			cat -s -n ${FILENAME} | cut -f1 -d":"
 
 		else
 
@@ -95,7 +95,7 @@ else
 
 		echo
 		echo " ${CYAN}A${STD} - Add user to access ${FILENAME}"
-		if [ -f $FILENAME ]; then echo " ${CYAN}R${STD} - Reset access to default (remove users)"; fi
+		if [ -f ${FILENAME} ]; then echo " ${CYAN}R${STD} - Reset access to default (remove users)"; fi
 		echo " ${WHITE}Z${STD} - EXIT to Main Menu"
 		echo " ${CYAN}"
 		MENUEND
@@ -110,7 +110,7 @@ else
 			[Aa]) NEWUSER ;;
 			[Rr]) RESTOREACCESS ;;
 			[Zz]) QUIT ;;
-			*) echo "${LRED}Please select a valid option${STD}" && sleep 2
+			*) echo "${LRED}Please select a valid option${STD}" && sleep 1
 		esac
 	}
 
