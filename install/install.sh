@@ -17,7 +17,7 @@ echo
 
 APPLIST="acl apt-transport-https ca-certificates curl fail2ban fuse git gpg-agent grsync jq mergerfs nano rsync sqlite3 ufw socat unzip wget"
 
-for i in $APPLIST; do
+for i in ${APPLIST}; do
 	echo Installing $i...
 	echo
 	sudo apt-get -y install $i
@@ -61,6 +61,6 @@ echo "${GREEN}"
 echo "--------------------------------------------------"
 echo " Server initialization and dependencies complete!"
 echo " Type ${WHITE}gooby${GREEN} to continue installation."
-echo " Visit techperplexed.ga for setup instructions."
+echo " Visit techperplexed.blogspot.com for instructions"
 echo "--------------------------------------------------"
 echo "${STD}"
