@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source $CONFIGS/Docker/.env
+source ${CONFIGS}/Docker/.env
 which rclone > ${CONFIGVARS}/checkapp
 clear
 
