@@ -4,7 +4,7 @@ source /opt/Gooby/menus/variables.sh
 
 clear
 echo
-echo "${YELLOW}Welcome to Gooby!"
+echo "${YELLOW}Welcome to GOOBY!"
 echo
 echo "${YELLOW}Please answer the following two questions:${STD}"
 echo
