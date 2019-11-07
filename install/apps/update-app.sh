@@ -19,7 +19,7 @@ else
 
 		cd ${CONFIGS}/Docker
 		/usr/local/bin/docker-compose pull
-		/usr/local/bin/docker-compose up --remove-orphans --build -d $APP
+		/usr/local/bin/docker-compose up --remove-orphans --build -d ${APP}
 		cd ${CURDIR}
 
 		TASKCOMPLETE
