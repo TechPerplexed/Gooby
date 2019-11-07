@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source $CONFIGS/Docker/.env
+source ${CONFIGS}/Docker/.env
 which rclone > ${CONFIGVARS}/checkapp
 clear
 
@@ -39,9 +39,9 @@ else
 
 		cd /tmp
 		clear
-		read -n 1 -s -r -p "Stable ${YELLOW}(S)${STD} or Beta installation ${YELLOW}(B)?${STD} " -i "S" choice
+		read -n 1 -r "Stable ${YELLOW}(S)${STD} or Beta installation ${YELLOW}(B)?${STD} " -i "S" CHOICE
 
-		case "$choice" in 
+		case "$CHOICE" in 
 			b|B ) curl https://rclone.org/install.sh | sudo bash -s beta; echo "Beta" > ${CONFIGVARS}/rcloneversion ;;
 			* ) curl https://rclone.org/install.sh | sudo bash; echo "Stable" > ${CONFIGVARS}/rcloneversion ;;
 		esac
@@ -70,7 +70,7 @@ else
 
 		mkdir -p $HOME/logs $HOME/Downloads
 		sudo mkdir -p ${RCLONEMOUNT} ${MOUNTTO} ${UPLOADS} ${UNSYNCED}
-		sudo chown -R $USER:$USER $HOME ${CONFIGVARS} $CONFIGS/Docker ${RCLONEMOUNT} ${MOUNTTO} ${UPLOADS} ${UNSYNCED}
+		sudo chown -R $USER:$USER $HOME ${CONFIGVARS} ${CONFIGS}/Docker ${RCLONEMOUNT} ${MOUNTTO} ${UPLOADS} ${UNSYNCED}
 
 		cat $HOME/.config/rclone/rclone.conf | grep "Local" > /dev/null
 		if ! [[ ${?} -eq 0 ]]; then
