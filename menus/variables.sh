@@ -2,6 +2,7 @@
 
 CONFIGS=/var/local/Gooby
 CONFIGVARS=${CONFIGS}/Docker/.config
+CONFIGENV=$CONFIGS/Docker/.env
 
 # Define colors
 
