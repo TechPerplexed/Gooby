@@ -69,7 +69,7 @@ read_options(){
 		[Cc]) TAUTULLI ;;
 		[Dd]) EMBY ;;      
 		[Zz]) QUIT ;;
-		*) echo "${LRED}Please select a valid option${STD}" && sleep 2
+		*) echo "${LRED}Please select a valid option${STD}" && sleep 1
 	esac
 }
 
