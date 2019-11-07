@@ -15,20 +15,20 @@ if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 
 	read -p "Your new domain: " SETURL
 
-	if [[ -z "$SETURL" ]]; then
+	if [[ -z "${SETURL}" ]]; then
 
 		echo "No input entered... no changes made!"
 
 	else
 
-		echo "$SETURL" > ${CONFIGVARS}/mydomain
+		echo "${SETURL}" > ${CONFIGVARS}/mydomain
 
 		MYDOMAIN=$(cat ${CONFIGVARS}/mydomain)
 
 		echo ""
 		echo "Just a moment while your new domain is being installed..."
 		echo ""
-		cd $CONFIGS/Docker
+		cd ${CONFIGS}/Docker
 		sudo sed -i "s/${OLDDOMAIN}/${MYDOMAIN}/g" ${CONFIGS}/Docker/traefik/traefik.toml
 
 		/usr/local/bin/docker-compose down
@@ -36,11 +36,11 @@ if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 		/usr/local/bin/docker-compose up -d --remove-orphans
 		cd "${CURDIR}"
 		clear
-		source $CONFIGS/Docker/.env
+		source ${CONFIGS}/Docker/.env
 
 		echo
-		echo "Your new domain is set to $MYDOMAIN"
-		echo "Remember to point it to IP address $IP"
+		echo "Your new domain is set to ${MYDOMAIN}"
+		echo "Remember to point it to IP address ${IP}"
 
 		TASKCOMPLETE
 
