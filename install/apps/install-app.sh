@@ -28,7 +28,7 @@ else
 		read -n 1 -s -r -p " ---> "
 		echo ""
 
-		case "$REPLY" in
+		case "${REPLY}" in
 			s|S ) APPLOC=${APPLOC} ;;
 			b|B ) [[ -f "/opt/Gooby/scripts/${PROXYVERSION}/${APPLOC}-beta.yaml" ]] && APPLOC=${APPLOC}-beta ;;
 			* ) APPLOC=${APPLOC} ;;
@@ -39,14 +39,14 @@ else
 			clear
 			echo "${YELLOW}"
 			echo "--------------------------------------------------"
-			echo " It seems you installed $TASK previously"
+			echo " It seems you installed ${TASK} previously"
 			echo " Would you like to import those settings? (Y/n)"
 			echo "--------------------------------------------------"
 			echo "${STD}"
 			read -n 1 -s -r -p " ---> "
 			echo ""
 
-			case "$REPLY" in
+			case "{$REPLY}" in
 				n|N ) echo "Settings not imported"; echo "You chose to start from scratch" ;;
 				* ) echo "Great, importing settings"; sudo mv ${OLDLOC} ${CONFIGS}/${TASK} ;;
 			esac
