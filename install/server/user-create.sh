@@ -30,7 +30,7 @@ if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 	echo " Type ${YELLOW}gooby${STD} to access the menu."
 	echo " ${GREEN}"
 	MENUEND
-	su $PU
+	su ${PU}
 
 else
 
