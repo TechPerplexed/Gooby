@@ -67,7 +67,7 @@ read_options(){
 		[Dd]) UPGRADE ;;
 		[Ee]) PROXYSWITCH ;;
 		[Zz]) QUIT ;;
-		*) echo "${LRED}Please select a valid option${STD}" && sleep 2
+		*) echo "${LRED}Please select a valid option${STD}" && sleep 1
 	esac
 }
 
