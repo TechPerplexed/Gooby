@@ -41,7 +41,7 @@ else
 		clear
 		read -n 1 -r "Stable ${YELLOW}(S)${STD} or Beta installation ${YELLOW}(B)?${STD} " -i "S" CHOICE
 
-		case "$CHOICE" in 
+		case "${CHOICE}" in 
 			b|B ) curl https://rclone.org/install.sh | sudo bash -s beta; echo "Beta" > ${CONFIGVARS}/rcloneversion ;;
 			* ) curl https://rclone.org/install.sh | sudo bash; echo "Stable" > ${CONFIGVARS}/rcloneversion ;;
 		esac
@@ -52,7 +52,7 @@ else
 		echo
 		rclone config
 		echo
-		read -r RCLONESERVICE < $HOME/.config/rclone/rclone.conf; RCLONESERVICE=${RCLONESERVICE:1:-1}
+		read -r RCLONESERVICE < ${HOME}/.config/rclone/rclone.conf; RCLONESERVICE=${RCLONESERVICE:1:-1}
 		read -e -p "Confirm that this is what you named your mount  " -i "$RCLONESERVICE" RCLONESERVICE
 		echo
 		echo "What is your media folder in $RCLONESERVICE?"
@@ -68,20 +68,20 @@ else
 
 		source /opt/Gooby/install/misc/environment-build.sh rebuild
 
-		mkdir -p $HOME/logs $HOME/Downloads
+		mkdir -p ${HOME}/logs ${HOME}/Downloads
 		sudo mkdir -p ${RCLONEMOUNT} ${MOUNTTO} ${UPLOADS} ${UNSYNCED}
-		sudo chown -R $USER:$USER $HOME ${CONFIGVARS} ${CONFIGS}/Docker ${RCLONEMOUNT} ${MOUNTTO} ${UPLOADS} ${UNSYNCED}
+		sudo chown -R ${USER}:${USER} ${HOME} ${CONFIGVARS} ${CONFIGS}/Docker ${RCLONEMOUNT} ${MOUNTTO} ${UPLOADS} ${UNSYNCED}
 
-		cat $HOME/.config/rclone/rclone.conf | grep "Local" > /dev/null
+		cat ${HOME}/.config/rclone/rclone.conf | grep "Local" > /dev/null
 		if ! [[ ${?} -eq 0 ]]; then
-			echo [Local] >> $HOME/.config/rclone/rclone.conf
-			echo type = local >> $HOME/.config/rclone/rclone.conf
-			echo nounc = >> $HOME/.config/rclone/rclone.conf
+			echo [Local] >> ${HOME}/.config/rclone/rclone.conf
+			echo type = local >> ${HOME}/.config/rclone/rclone.conf
+			echo nounc = >> ${HOME}/.config/rclone/rclone.conf
 		fi
 
 		if [ ! -d ${UPLOADS}/Downloads ]; then
-			sudo mv $HOME/Downloads ${UPLOADS}
-			sudo ln -s ${UPLOADS}/Downloads $HOME/Downloads
+			sudo mv ${HOME}/Downloads ${UPLOADS}
+			sudo ln -s ${UPLOADS}/Downloads ${HOME}/Downloads
 		fi
 
 		sudo rsync -a /opt/Gooby/scripts/services/rclonefs* /etc/systemd/system/
