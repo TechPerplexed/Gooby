@@ -10,7 +10,8 @@ if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 
 	GOAHEAD
 
-	[[ -e ${CONFIGVARS}/mydomain ]] && echo "Your domain is currently set to $(cat ${CONFIGVARS}/mydomain)"
+	OLDDOMAIN=$(cat ${CONFIGVARS}/mydomain)
+	echo "Your domain is currently set to ${OLDDOMAIN}"
 
 	read -p "Your new domain: " SETURL
 
@@ -28,13 +29,16 @@ if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 		echo "Just a moment while your new domain is being installed..."
 		echo ""
 		cd $CONFIGS/Docker
-		sudo sed -i "s/GOOBYDOMAIN/${MYDOMAIN}/g" ${CONFIGS}/Docker/traefik/traefik.toml
+		sudo sed -i "s/${OLDDOMAIN}/${MYDOMAIN}/g" ${CONFIGS}/Docker/traefik/traefik.toml
+
 		/usr/local/bin/docker-compose down
 		source /opt/Gooby/install/misc/environment-build.sh rebuild
 		/usr/local/bin/docker-compose up -d --remove-orphans
 		cd "${CURDIR}"
 		clear
 		source $CONFIGS/Docker/.env
+
+		echo
 		echo "Your new domain is set to $MYDOMAIN"
 		echo "Remember to point it to IP address $IP"
 
