@@ -81,7 +81,7 @@ else
 		echo " ${CYAN}"
 		MENUSTART
 
-		if [ -f $FILENAME ]; then
+		if [ -f ${FILENAME} ]; then
 
 			echo " Current users to access ${FILENAME}:"
 			echo
