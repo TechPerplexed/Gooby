@@ -24,6 +24,7 @@ show_menus() {
 	echo " Domain            : ${LBLUE}$MYDOMAIN${STD}"
 	echo " Email Address     : ${LBLUE}$MYEMAIL${STD}"
 	echo " IP Address        : ${LBLUE}$IP${STD}"
+	echo " Proxy version     : ${LBLUE}${PROXYVERSION^^}{STD}"
 	echo " Media location    : ${LBLUE}/Media${STD}"
 	echo " Download location : ${LBLUE}/Media/Downloads${STD}"
 	echo " Gooby version     : ${LBLUE}$VERSION${STD}"
