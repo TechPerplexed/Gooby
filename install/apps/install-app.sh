@@ -74,8 +74,8 @@ else
 		fi
 
 		echo ""
-		cd $CONFIGS/Docker
-		sudo rsync -a /opt/Gooby/scripts/${PROXYVERSION}/${APPLOC}.yaml $CONFIGS/Docker/components
+		cd ${CONFIGS}/Docker
+		sudo rsync -a /opt/Gooby/scripts/${PROXYVERSION}/${APPLOC}.yaml ${CONFIGS}/Docker/components
 		echo "Just a moment while ${APP} is being installed..."
 		source /opt/Gooby/install/misc/environment-build.sh rebuild
 		/usr/local/bin/docker-compose up -d --remove-orphans
