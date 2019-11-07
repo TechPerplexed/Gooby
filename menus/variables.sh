@@ -3,7 +3,6 @@
 CONFIGS=/var/local/Gooby
 CONFIGVARS=${CONFIGS}/Docker/.config
 CONFIGENV=$CONFIGS/Docker/.env
-GOOBY=${RED}G${BLUE}O${GREEN}O${YELLOW}B${LPURPLE}Y${STD}
 
 # Define colors
 
@@ -24,6 +23,8 @@ LMAGENTA=$(echo -en '\033[01;35m')
 LPURPLE=$(echo -en '\033[01;35m')
 LCYAN=$(echo -en '\033[01;36m')
 WHITE=$(echo -en '\033[01;37m')
+
+GOOBY=${RED}G${BLUE}O${GREEN}O${YELLOW}B${LPURPLE}Y${STD}
 
 # Define choices
 
