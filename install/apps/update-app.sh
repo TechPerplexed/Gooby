@@ -1,6 +1,6 @@
 #!/bin/bash
 
-docker ps -q -f name=$APP > ${CONFIGVARS}/checkapp
+docker ps -q -f name=${APP} > ${CONFIGVARS}/checkapp
 clear
 
 if [ ! -s ${CONFIGVARS}/checkapp ]; then
@@ -17,7 +17,7 @@ else
 
 		GOAHEAD
 
-		cd $CONFIGS/Docker
+		cd ${CONFIGS}/Docker
 		/usr/local/bin/docker-compose pull
 		/usr/local/bin/docker-compose up --remove-orphans --build -d $APP
 		cd ${CURDIR}
