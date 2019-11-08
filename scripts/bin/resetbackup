@@ -1,7 +1,7 @@
 #!/bin/bash
 
 source /opt/Gooby/menus/variables.sh
-source $CONFIGS/Docker/.env
+source ${CONFIGS}/Docker/.env
 
 sudo rm ${CONFIGVARS}/snapshots/*
 
