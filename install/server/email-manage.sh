@@ -29,7 +29,7 @@ if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 		sudo sed -i "s/${OLDEMAIL}/${MYEMAIL}/g" ${CONFIGS}/Docker/traefik/traefik.toml
 
 		/opt/Gooby/install/misc/environment-build.sh rebuild
-		source $CONFIGS/Docker/.env
+		source ${CONFIGS}/Docker/.env
 
 		echo; echo "Your new email address is set to ${MYEMAIL}"
 
