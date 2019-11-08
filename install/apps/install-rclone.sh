@@ -53,16 +53,16 @@ else
 		rclone config
 		echo
 		read -r RCLONESERVICE < ${HOME}/.config/rclone/rclone.conf; RCLONESERVICE=${RCLONESERVICE:1:-1}
-		read -e -p "Confirm that this is what you named your mount  " -i "$RCLONESERVICE" RCLONESERVICE
+		read -e -p "Confirm that this is what you named your mount  " -i "${RCLONESERVICE}" RCLONESERVICE
 		echo
-		echo "What is your media folder in $RCLONESERVICE?"
+		echo "What is your media folder in ${RCLONESERVICE}?"
 		read -e -p "Leave empty for root - not recommended! (ex: Media)  " -i "" RCLONEFOLDER
 		echo
 
 		# Installing Services
 
-		RCLONESERVICE=${RCLONESERVICE#:}; echo $RCLONESERVICE > ${CONFIGVARS}/rcloneservice
-		RCLONEFOLDER=${RCLONEFOLDER%/}; RCLONEFOLDER=${RCLONEFOLDER#/}; echo $RCLONEFOLDER > ${CONFIGVARS}/rclonefolder
+		RCLONESERVICE=${RCLONESERVICE#:}; echo ${RCLONESERVICE} > ${CONFIGVARS}/rcloneservice
+		RCLONEFOLDER=${RCLONEFOLDER%/}; RCLONEFOLDER=${RCLONEFOLDER#/}; echo ${RCLONEFOLDER} > ${CONFIGVARS}/rclonefolder
 
 		sudo sed -i 's/^#user_allow_other/user_allow_other/g' /etc/fuse.conf
 
