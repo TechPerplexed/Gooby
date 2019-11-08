@@ -73,9 +73,9 @@ show_menus() {
 # Read Choices
 
 read_options(){
-	local choice
-	read -n 1 -s -r -p "Choose option: " choice
-    case $choice in
+	local CHOICE
+	read -n 1 -s -r -p "Choose option: " CHOICE
+    case ${CHOICE} in
 		[Aa]) NETDATA ;;
 		[Bb]) ORGANIZR ;;
 		[Cc]) OMBI ;;
