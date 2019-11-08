@@ -1,6 +1,6 @@
 #!/bin/bash
 source /opt/Gooby/menus/variables.sh
-source $CONFIGS/Docker/.env
+source ${CONFIGS}/Docker/.env
 
 x=$(date --date="${1}" '+%F %H:%M:%S')
 
