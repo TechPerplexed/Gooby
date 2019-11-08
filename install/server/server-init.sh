@@ -20,7 +20,7 @@ sleep 10
 
 source /opt/Gooby/install/server/docker-install.sh
 
-sudo mkdir -p ${CONFIGVARS} $CONFIGS/Docker/components 
+sudo mkdir -p ${CONFIGVARS} ${CONFIGS}/Docker/components 
 sudo chown -R ${USER}:${USER} ${CONFIGS}
 
 echo "${MYDOMAIN}" > ${CONFIGVARS}/mydomain
@@ -35,12 +35,12 @@ if [ ! -e ${CONFIGVARS}/proxyversion ]; then
   PROXYVERSION=$(cat ${CONFIGVARS}/proxyversion)
 fi
 
-sudo rsync -a /opt/Gooby/scripts/${PROXYVERSION}/{00-version.yaml,01-proxy.yaml,99-network.yaml} $CONFIGS/Docker/components
+sudo rsync -a /opt/Gooby/scripts/${PROXYVERSION}/{00-version.yaml,01-proxy.yaml,99-network.yaml} ${CONFIGS}/Docker/components
 touch ${CONFIGVARS}/cf_email ${CONFIGVARS}/cf_key ${CONFIGVARS}/plexclaim ${CONFIGVARS}/rclonefolder ${CONFIGVARS}/rcloneservice ${CONFIGVARS}/rcloneversion ${CONFIGVARS}/version
 
 source /opt/Gooby/install/misc/environment-build.sh
 
-cd $CONFIGS/Docker
+cd ${CONFIGS}/Docker
 
 sudo mkdir nginx
 sudo mkdir -p traefik
@@ -50,7 +50,7 @@ sudo sed -i "s/GOOBYEMAIL/${MYEMAIL}/g" ${CONFIGS}/Docker/traefik/traefik.toml
 
 sudo chown -R ${USER}:${USER} ${CONFIGS} ${HOME}
 
-echo "client_max_body_size 30m;" > $CONFIGS/Docker/nginx/my_custom_proxy_settings.conf
+echo "client_max_body_size 30m;" > ${CONFIGS}/Docker/nginx/my_custom_proxy_settings.conf
 /usr/local/bin/docker-compose up --remove-orphans --build -d
 
 cd "${CURDIR}"
