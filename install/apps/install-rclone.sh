@@ -39,7 +39,7 @@ else
 
 		cd /tmp
 		clear
-		read -n 1 -r "Stable ${YELLOW}(S)${STD} or Beta installation ${YELLOW}(B)?${STD} " -i "S" CHOICE
+		read -n 1 -s -r -p "Stable ${YELLOW}(S)${STD} or Beta installation ${YELLOW}(B)?${STD} " -i "S" CHOICE
 
 		case "${CHOICE}" in 
 			b|B ) curl https://rclone.org/install.sh | sudo bash -s beta; echo "Beta" > ${CONFIGVARS}/rcloneversion ;;
