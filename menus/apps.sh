@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [ ! -e $CONFIGS/Docker/.env ]; then /opt/Gooby/install/server/server-init.sh; fi
+if [ ! -e ${CONFIGS}/Docker/.env ]; then /opt/Gooby/install/server/server-init.sh; fi
 
 source ${CONFIGS}/Docker/.env
 
