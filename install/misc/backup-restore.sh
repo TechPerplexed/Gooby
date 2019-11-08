@@ -55,7 +55,7 @@ else
 			echo
 
 			tar -xpvf ${RESTOREFOLDER}/${SERVER}-backup.tar.gz -C /
-			sudo chown $USER:$USER ${HOME}
+			sudo chown ${USER}:${USER} ${HOME}
 
 		else
 
