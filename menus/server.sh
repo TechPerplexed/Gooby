@@ -49,7 +49,7 @@ show_menus() {
 	echo " ${YELLOW}B${STD} - Manage Email Address"
 	echo " ${YELLOW}C${STD} - Set Timezone"
 	echo " ${YELLOW}D${STD} - Server Upgrade - Danger zone!"
-	echo " ${YELLOW}E${STD} - Switch Proxy - Coming soon"
+	echo " ${YELLOW}E${STD} - Switch Proxy"
 	echo " ${WHITE}Z${STD} - EXIT to Main Menu"
 	echo " ${YELLOW}"
 	MENUEND
