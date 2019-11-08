@@ -50,11 +50,11 @@ MENUFINALIZE(){
 
 MENUVISIT(){
 	clear
-	echo ""
+	echo
 	echo "--------------------------------------------------"
 	echo " Visit the menu any time by typing '${WHITE}gooby${STD}'"
 	echo "--------------------------------------------------"
-	echo ""
+	echo
 }
 
 ALREADYINSTALLED(){
@@ -131,7 +131,7 @@ CONFIRMATION(){
 	echo "--------------------------------------------------"
 	echo "${STD}"
 	read -n 1 -s -r -p " ---> "
-	echo ""
+	echo
 }
 
 CONFIRMDELETE(){
@@ -145,7 +145,7 @@ CONFIRMDELETE(){
 	echo "--------------------------------------------------"
 	echo "${STD}"
 	read -n 1 -s -r -p " ---> "
-	echo ""
+	echo
 }
 
 GOAHEAD(){
@@ -180,5 +180,5 @@ PAUSE(){
 	echo "--------------------------------------------------"
 	echo "${STD}"
 	read -n 1 -s -r -p " ---> "
-	echo ""
+	echo
 }
