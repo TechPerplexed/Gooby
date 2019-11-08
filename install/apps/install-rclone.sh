@@ -98,7 +98,7 @@ else
 		crontab -l | grep 'syncmount.sh' || (crontab -l 2>/dev/null; echo "0,15,30,45 * * * * /opt/Gooby/scripts/cron/syncmount.sh > /dev/null 2>&1") | crontab -
 
 		echo
-		echo "Done!"
+		echo " Done!"
 		echo
 
 		TASKCOMPLETE
