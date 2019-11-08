@@ -23,7 +23,7 @@ else
 		echo "You currently have the $( cat ${CONFIGVARS}/rcloneverson ) version of ${TASK} installed"
 		echo ""
 
-		read -n 1 -r -p "Stable ${YELLOW}(S)${STD} or Beta installation ${YELLOW}(B)?${STD} " -i "" CHOICE
+		read -n 1 -s -r -p "Stable ${YELLOW}(S)${STD} or Beta installation ${YELLOW}(B)?${STD} " -i "" CHOICE
 
 		case "${CHOICE}" in
 			b|B )	curl https://rclone.org/install.sh | sudo bash -s beta; echo "Beta" > ${CONFIGVARS}/rcloneversion ;;
