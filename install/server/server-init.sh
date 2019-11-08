@@ -21,7 +21,7 @@ sleep 10
 source /opt/Gooby/install/server/docker-install.sh
 
 sudo mkdir -p ${CONFIGVARS} $CONFIGS/Docker/components 
-sudo chown -R ${USER}:{$USER} ${CONFIGS}
+sudo chown -R ${USER}:${USER} ${CONFIGS}
 
 echo "${MYDOMAIN}" > ${CONFIGVARS}/mydomain
 echo "${MYEMAIL}" > ${CONFIGVARS}/myemail
@@ -48,7 +48,7 @@ sudo rsync -a /opt/Gooby/scripts/services/traefik.toml ${CONFIGS}/Docker/traefik
 sudo sed -i "s/GOOBYDOMAIN/${MYDOMAIN}/g" ${CONFIGS}/Docker/traefik/traefik.toml
 sudo sed -i "s/GOOBYEMAIL/${MYEMAIL}/g" ${CONFIGS}/Docker/traefik/traefik.toml
 
-sudo chown -R {$USER}:${USER} ${CONFIGS} ${HOME}
+sudo chown -R ${USER}:${USER} ${CONFIGS} ${HOME}
 
 echo "client_max_body_size 30m;" > $CONFIGS/Docker/nginx/my_custom_proxy_settings.conf
 /usr/local/bin/docker-compose up --remove-orphans --build -d
