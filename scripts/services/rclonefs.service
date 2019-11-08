@@ -21,8 +21,8 @@ ExecStart=/usr/bin/rclone mount \
 	--umask 002 \
 	--user-agent GOOBYUSER \
 	--rc \
-	--rc-pass $RCLONEPASSWORD \
-	--rc-user $RCLONEUSERNAME \
+	--rc-pass ${RCLONEPASSWORD} \
+	--rc-user ${RCLONEUSERNAME} \
 	--config ${HOMEDIR}/.config/rclone/rclone.conf \
 	${RCLONESERVICE}:${RCLONEFOLDER} ${RCLONEMOUNT}
 ExecStop=/bin/fusermount -uz ${RCLONEMOUNT}
