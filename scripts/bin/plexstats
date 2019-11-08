@@ -3,7 +3,7 @@
 # Adapted for Omni: Ken Linger
 
 source /opt/Gooby/menus/variables.sh
-source $CONFIGS/Docker/.env
+source ${CONFIGS}/Docker/.env
 
 logfile="${LOGS}/plexstats.log"
 db="/${CONFIGS}/Plex/Library/Application Support/Plex Media Server/Plug-in Support/Databases/com.plexapp.plugins.library.db"
