@@ -5,7 +5,7 @@ if pidof -o %PPID -x "$(basename $0)"; then
 fi
 
 source /opt/Gooby/menus/variables.sh
-source $CONFIGS/Docker/.env
+source ${CONFIGS}/Docker/.env
 
 # Make sure there's a place to store backup index for full versus differential
 mkdir -p ${CONFIGVARS}/snapshots
