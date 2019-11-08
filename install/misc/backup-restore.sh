@@ -138,10 +138,10 @@ else
 			echo " ${WHITE}Make sure${STD} you check if your services are"
 			echo " running properly before you remove the old installation!"
 			echo
-			read -n 1 -s -r -p " Remove old installation files (Y/n)? " -i "" choice
+			read -n 1 -r -p " Remove old installation files (Y/n)? " -i "" CHOICE
 			echo
 
-			case "$choice" in
+			case "${CHOICE}" in
 				y|Y ) sudo rm -r ${OLDFILES} ;;
 				* ) echo " Your old installation files are available"; echo " at ${OLDFILES} until you reboot"; echo ;;
 			esac
