@@ -21,8 +21,8 @@ else
 		echo "--------------------------------------------------"
 		echo " Please choose what version you want to install:"
 		echo ""
-		[[ -f "/opt/Gooby/scripts/${PROXYVERSION}/${APPLOC}.yaml" ]] && echo " ${LYELLOW}S${STD} - $TASK Stable"
-		[[ -f "/opt/Gooby/scripts/${PROXYVERSION}/${APPLOC}-beta.yaml" ]] && echo " ${LYELLOW}B${STD} - $TASK Beta"
+		[[ -f "/opt/Gooby/scripts/${PROXYVERSION}/${APPLOC}.yaml" ]] && echo " ${LYELLOW}S${STD} - ${TASK} Stable"
+		[[ -f "/opt/Gooby/scripts/${PROXYVERSION}/${APPLOC}-beta.yaml" ]] && echo " ${LYELLOW}B${STD} - ${TASK} Beta"
 		echo "--------------------------------------------------"
 		echo ""
 		read -n 1 -s -r -p " ---> "
@@ -53,12 +53,12 @@ else
 
 		fi
 
-		if [[ $TASK = "Plex" && ! -d ${OLDLOC} && ! -d ${CONFIGS}/${TASK} ]]; then
+		if [[ ${TASK} = "Plex" && ! -d ${OLDLOC} && ! -d ${CONFIGS}/${TASK} ]]; then
 
 			clear
 			echo "${YELLOW}"
 			echo "--------------------------------------------------"
-			echo " It seems you are new to $TASK"
+			echo " It seems you are new to ${TASK}"
 			echo " In order to proceed, you will need to visit"
 			echo " https://www.${LYELLOW}plex.tv/claim${YELLOW}"
 			echo " and copy the token to clipboard"
