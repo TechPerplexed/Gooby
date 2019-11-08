@@ -59,7 +59,7 @@ TIMEZONE=$(cat /etc/timezone)
 UNSYNCED=/mnt/local
 UPLOADS=/mnt/uploads
 USERID=$(id -u)
-USERNAME=$USER
+USERNAME=${USER}
 VERSION=$(cat ${CONFIGVARS}/version)
 EOF
 
