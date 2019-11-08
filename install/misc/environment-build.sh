@@ -24,7 +24,7 @@ cat > ${ENV} << EOF
 
 ###########################
 #  Environment variables  #
-#     for Gooby v$VERSION    #
+#     for Gooby v${VERSION}    #
 ###########################
 
 APILOG=${LOGS}/api.log
