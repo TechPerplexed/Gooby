@@ -33,7 +33,7 @@ if [[ -s ${TEMPFILE} ]]
 then
 	while IFS= read -r FILE
 	do
-		rclone rc core/stats --user $RCLONEUSERNAME --pass $RCLONEPASSWORD | jq '.transferring' | grep "${UPLOADS}${FILE}" > /dev/null
+		rclone rc core/stats --user ${RCLONEUSERNAME} --pass ${RCLONEPASSWORD} | jq '.transferring' | grep "${UPLOADS}${FILE}" > /dev/null
 		RUNCHECK=${?}
 		if [[ ${RUNCHECK} -gt 0 ]]; then
 			BYTES=$(du "${UPLOADS}${FILE}" | cut -f1)
@@ -45,7 +45,7 @@ then
 			if [[ ! -d "${TESTDIR}" ]]; then
 				mkdir -p "${TESTDIR}"
 			fi
-			rclone rc operations/movefile _async=true srcFs=Local: srcRemote="${UPLOADS}${FILE}" dstFs=${RCLONESERVICE}:${RCLONEFOLDER} dstRemote="${FILE}" --user $RCLONEUSERNAME --pass $RCLONEPASSWORD > /dev/null
+			rclone rc operations/movefile _async=true srcFs=Local: srcRemote="${UPLOADS}${FILE}" dstFs=${RCLONESERVICE}:${RCLONEFOLDER} dstRemote="${FILE}" --user ${RCLONEUSERNAME} --pass ${RCLONEPASSWORD} > /dev/null
 			# echo "Sleeping 1 second - temp fix for duplicate folders" ; sleep 1
 		else
 			echo Skipping ${FILE}:  Already in queue
