@@ -41,7 +41,7 @@ show_menus() {
 read_options(){
 	local CHOICE
 	read -n 1 -s -r -p "Choose option: " CHOICE
-	case $CHOICE in
+	case ${CHOICE} in
 		[Zz]) QUIT ;;
 		*) echo "${LRED}Please select a valid option${STD}" && sleep 1
 	esac
