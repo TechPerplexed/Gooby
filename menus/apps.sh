@@ -11,11 +11,6 @@ INSTALL(){
 	source /opt/Gooby/install/apps/${PERFORM}-${APPTYPE}.sh
 }
 
-UPDATE(){
-	PERFORM="update"
-	source /opt/Gooby/install/apps/${PERFORM}-${APPTYPE}E.sh
-}
-
 REMOVE(){
 	PERFORM="remove"
 	source /opt/Gooby/install/apps/${PERFORM}-${APPTYPE}.sh
@@ -37,7 +32,6 @@ show_menus() {
 	echo " ${LPURPLE}"
 	MENUSTART
 	echo " ${LPURPLE}I${STD} - Install ${TASK}"
-	echo " ${LPURPLE}U${STD} - Update ${TASK}"
 	echo " ${LPURPLE}R${STD} - Remove ${TASK}"
 	echo " ${LPURPLE}S${STD} - Secure ${TASK}"
 	echo " ${WHITE}Z${STD} - EXIT to Main Menu"
@@ -52,7 +46,6 @@ read_options(){
 	read -n 1 -s -r -p "Choose option: " CHOICE
 	case ${CHOICE} in
 		[Ii]) INSTALL ;;
-		[Uu]) UPDATE ;;
 		[Rr]) REMOVE ;;
 		[Ss]) SECURE ;;
 		[Zz]) QUIT ;;
