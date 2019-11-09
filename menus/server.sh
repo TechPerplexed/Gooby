@@ -41,17 +41,17 @@ QUIT(){
 
 # Display menu
 
+COLOUR=${YELLOW}
+
 show_menus() {
-	clear
-	echo " ${YELLOW}"
 	MENUSTART
-	echo " ${YELLOW}A${STD} - Manage Domain Name"
-	echo " ${YELLOW}B${STD} - Manage Email Address"
-	echo " ${YELLOW}C${STD} - Set Timezone"
-	echo " ${YELLOW}D${STD} - Server Upgrade - Danger zone!"
-	echo " ${YELLOW}E${STD} - Switch Proxy"
+	echo " ${COLOUR}A${STD} - Manage Domain Name"
+	echo " ${COLOUR}B${STD} - Manage Email Address"
+	echo " ${COLOUR}C${STD} - Set Timezone"
+	echo " ${COLOUR}D${STD} - Server Upgrade - Danger zone!"
+	echo " ${COLOUR}E${STD} - Switch Proxy"
 	echo " ${WHITE}Z${STD} - EXIT to Main Menu"
-	echo " ${YELLOW}"
+	echo " ${COLOUR}"
 	MENUEND
 }
 
