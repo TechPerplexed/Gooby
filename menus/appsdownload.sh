@@ -59,7 +59,6 @@ QUIT(){
 COLOUR=${LPURPLE}
 
 show_menus() {
-	clear
 	MENUSTART
 	echo " ${COLOUR}A${STD} - Sonarr"
 	echo " ${COLOUR}B${STD} - Radarr"
