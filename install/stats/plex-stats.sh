@@ -15,14 +15,14 @@ QUIT(){
 
 # Display menu
 
+COLOUR=${LBLUE}
+
 show_menus() {
-	clear
-	echo " ${LBLUE}"
 	MENUSTART
 	source /opt/Gooby/scripts/bin/plexstats
 	echo
 	echo " ${WHITE}Z${STD} - EXIT to Main Menu"
-	echo " ${LBLUE}"
+	echo " ${COLOUR}"
 	MENUEND
 }
 
