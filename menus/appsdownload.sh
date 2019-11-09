@@ -56,17 +56,18 @@ QUIT(){
 
 # Display menu
 
+COLOUR={LPURPLE}
+
 show_menus() {
 	clear
-	echo " ${LPURPLE}"
 	MENUSTART
-	echo " ${LPURPLE}A${STD} - Sonarr"
-	echo " ${LPURPLE}B${STD} - Radarr"
-	echo " ${LPURPLE}C${STD} - Deluge"
-	echo " ${LPURPLE}D${STD} - NZBGet"
-	echo " ${LPURPLE}E${STD} - Jackett"
+	echo " ${COLOUR}A${STD} - Sonarr"
+	echo " ${COLOUR}B${STD} - Radarr"
+	echo " ${COLOUR}C${STD} - Deluge"
+	echo " ${COLOUR}D${STD} - NZBGet"
+	echo " ${COLOUR}E${STD} - Jackett"
 	echo " ${WHITE}Z${STD} - EXIT to Main Menu"
-	echo " ${LPURPLE}"
+	echo " ${COLOUR}"
 	MENUEND
 }
 
