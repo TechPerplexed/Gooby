@@ -36,9 +36,10 @@ quit(){
 
 # Display menu
 
+COLOUR=${GREEN}
+
 show_menus() {
 	clear
-	echo " ${GREEN}"
 	MENUSTART
 	echo " ${GREEN}A${STD} - Maintain Server"
 	echo " ${GREEN}B${STD} - Media Applications"
