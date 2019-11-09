@@ -30,7 +30,6 @@ QUIT(){
 COLOUR=${LPURPLE}
 
 show_menus() {
-	clear
 	MENUSTART
 	echo " ${COLOUR}I${STD} - Install ${TASK}"
 	echo " ${COLOUR}R${STD} - Remove ${TASK}"
