@@ -45,16 +45,17 @@ QUIT(){
 
 # Display menu
 
+COLOUR=${LPURPLE}
+
 show_menus() {
 	clear
-	echo " ${LPURPLE}"
 	MENUSTART
-	echo " ${LPURPLE}A${STD} - Rclone"
-	echo " ${LPURPLE}B${STD} - Plex"
-	echo " ${LPURPLE}C${STD} - Tautulli"
-	echo " ${LPURPLE}D${STD} - Emby"
+	echo " ${COLOUR}A${STD} - Rclone"
+	echo " ${COLOUR}B${STD} - Plex"
+	echo " ${COLOUR}C${STD} - Tautulli"
+	echo " ${COLOUR}D${STD} - Emby"
 	echo " ${WHITE}Z${STD} - EXIT to Main Menu"
-	echo " ${LPURPLE}"
+	echo " ${COLOUR}"
 	MENUEND
 }
 
