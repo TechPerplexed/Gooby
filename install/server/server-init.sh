@@ -4,9 +4,9 @@ source /opt/Gooby/menus/variables.sh
 
 clear
 echo
-echo "${YELLOW}Welcome to GOOBY!"
+echo "${YELLOW}Welcome to ${GOOBY}${YELLOW}!"
 echo
-echo "${YELLOW}Please answer the following two questions:${STD}"
+echo "Please answer the following two questions:${STD}"
 echo
 echo "What domain will you be using to access your server?"
 read -e -p '(ex: mydomain.com)  ' -i "${MYDOMAIN}" MYDOMAIN
