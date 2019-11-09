@@ -48,7 +48,6 @@ QUIT(){
 COLOUR=${LPURPLE}
 
 show_menus() {
-	clear
 	MENUSTART
 	echo " ${COLOUR}A${STD} - Rclone"
 	echo " ${COLOUR}B${STD} - Plex"
