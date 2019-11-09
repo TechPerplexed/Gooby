@@ -23,23 +23,24 @@ while true; do
 	FILES=$(echo ${RAW} | jq '[ .transferring[] | {name: .name, percent: .percentage} ]')
 	#QSIZE=$(echo ${JRAW} | jq .jobids | jq length)
 
-	clear
+	# Display menu
 
-	echo " ${LBLUE}"
+	COLOUR=${LBLUE}
+
 	MENUSTART
 	echo " Transfers Since Reboot/Cleanup"
 	echo -----------------------------------------
-	echo -n " Data transferred  : ${LBLUE}"; printf "%'.2f" ${GIG}; echo " GB${STD}"
-	echo -n " Files transferred : ${LBLUE}"; printf "%'d\n" ${FT}; echo -n "${STD}"
-	echo -n " Checks completed  : ${LBLUE}"; printf "%'d\n" ${CHECK}; echo -n "${STD}"
-	echo -n " Deletes performed : ${LBLUE}"; printf "%'d\n" ${DEL}; echo -n "${STD}"
-	echo -n " Errors occurred   : ${LBLUE}"; printf "%'d\n" ${ERR}; echo -n "${STD}"
+	echo -n " Data transferred  : ${COLOUR}"; printf "%'.2f" ${GIG}; echo " GB${STD}"
+	echo -n " Files transferred : ${COLOUR}"; printf "%'d\n" ${FT}; echo -n "${STD}"
+	echo -n " Checks completed  : ${COLOUR}"; printf "%'d\n" ${CHECK}; echo -n "${STD}"
+	echo -n " Deletes performed : ${COLOUR}"; printf "%'d\n" ${DEL}; echo -n "${STD}"
+	echo -n " Errors occurred   : ${COLOUR}"; printf "%'d\n" ${ERR}; echo -n "${STD}"
 	echo
 	echo " Transfers Real Time"
 	echo -----------------------------------------
-	echo -n " Files in motion   : ${LBLUE}"; printf "%'d\n" ${TRANSFERS}; echo -n "${STD}"
-	echo -n " Size of files     : ${LBLUE}"; printf "%'.2f" ${SIZE}; echo " GB${STD}"
-	echo -n " Current speed     : ${LBLUE}"; printf "%'.2f" ${SPEED}; echo " MB/sec${STD}"
+	echo -n " Files in motion   : ${COLOUR}"; printf "%'d\n" ${TRANSFERS}; echo -n "${STD}"
+	echo -n " Size of files     : ${COLOUR}"; printf "%'.2f" ${SIZE}; echo " GB${STD}"
+	echo -n " Current speed     : ${COLOUR}"; printf "%'.2f" ${SPEED}; echo " MB/sec${STD}"
 	echo
 
 	if [[ ${OPTION,,} != "short" && ${TRANSFERS} != 0 ]]; then
@@ -62,7 +63,7 @@ while true; do
 
 	echo
 	echo " ${WHITE}Z${STD} - EXIT to Main Menu"
-	echo " ${LBLUE}"
+	echo " ${COLOUR}"
 	MENUEND
 
 	sleep 1
