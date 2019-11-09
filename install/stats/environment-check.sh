@@ -15,24 +15,24 @@ QUIT(){
 
 # Display menu
 
+COLOUR=${LBLUE}
+
 show_menus() {
-	clear
-	echo " ${LBLUE}"
 	MENUSTART
-	echo -n " OS Version        : ${LBLUE}" ; lsb_release -ds 2>/dev/null || cat /etc/*release 2>/dev/null | head -n1 || uname -om ; echo -n "${STD}" ; echo -n "${STD}"
-	echo " Server Name       : ${LBLUE}${SERVER}${STD}"
-	echo " Timezone          : ${LBLUE}${TIMEZONE}${STD}"
-	echo " Domain            : ${LBLUE}${MYDOMAIN}${STD}"
-	echo " Email Address     : ${LBLUE}${MYEMAIL}${STD}"
-	echo " IP Address        : ${LBLUE}${IP}${STD}"
-	echo " Proxy Version     : ${LBLUE}${PROXYVERSION^^}${STD}"
-	echo " Gooby Version     : ${LBLUE}${VERSION}${STD}"
+	echo -n " OS Version        : ${COLOUR}" ; lsb_release -ds 2>/dev/null || cat /etc/*release 2>/dev/null | head -n1 || uname -om ; echo -n "${STD}" ; echo -n "${STD}"
+	echo " Server Name       : ${COLOUR}${SERVER}${STD}"
+	echo " Timezone          : ${COLOUR}${TIMEZONE}${STD}"
+	echo " Domain            : ${COLOUR}${MYDOMAIN}${STD}"
+	echo " Email Address     : ${COLOUR}${MYEMAIL}${STD}"
+	echo " IP Address        : ${COLOUR}${IP}${STD}"
+	echo " Proxy Version     : ${COLOUR}${PROXYVERSION^^}${STD}"
+	echo " Gooby Version     : ${COLOUR}${VERSION}${STD}"
 	echo
-	echo " Media Location    : ${LBLUE}/Media${STD}"
-	echo " Download Location : ${LBLUE}/Media/Downloads${STD}"
+	echo " Media Location    : ${COLOUR}/Media${STD}"
+	echo " Download Location : ${COLOUR}/Media/Downloads${STD}"
 	echo
 	echo " ${WHITE}Z${STD} - EXIT to Main Menu"
-	echo " ${LBLUE}"
+	echo " ${COLOUR}"
 	MENUEND
 }
 
