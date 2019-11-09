@@ -35,16 +35,16 @@ QUIT(){
 
 # Display menu
 
+COLOUR=${LBLUE}
+
 show_menus() {
-	clear
-	echo " ${LBLUE}"
 	MENUSTART
-	echo " ${LBLUE}A${STD} - Check Environment"
-	echo " ${LBLUE}B${STD} - Installed Apps (Containers)"
-	echo " ${LBLUE}C${STD} - View Rclone Activity"
-	echo " ${LBLUE}D${STD} - Plex Statistics"
+	echo " ${COLOUR}A${STD} - Check Environment"
+	echo " ${COLOUR}B${STD} - Installed Apps (Containers)"
+	echo " ${COLOUR}C${STD} - View Rclone Activity"
+	echo " ${COLOUR}D${STD} - Plex Statistics"
 	echo " ${WHITE}Z${STD} - EXIT to Main Menu"
-	echo " ${LBLUE}"
+	echo " ${COLOUR}"
 	MENUEND
 }
 
