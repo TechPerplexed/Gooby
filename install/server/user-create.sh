@@ -23,12 +23,12 @@ if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 	sudo -s echo -e "${PU}\tALL=(ALL)\tNOPASSWD:ALL" > /etc/sudoers.d/${PU}
 	sudo -s chmod 0440 /etc/sudoers.d/${PU}
 
-	clear
-	echo " ${GREEN}"
+	COLOUR=${YELLOW}
+
 	MENUSTART
-	echo " You should now be switched to ${YELLOW}${PU}${STD}"
-	echo " Type ${YELLOW}gooby${STD} to access the menu."
-	echo " ${GREEN}"
+	echo " You should now be switched to ${COLOUR}${PU}${STD}"
+	echo " Type ${COLOUR}gooby${STD} to access the menu."
+	echo " ${COLOUR}"
 	MENUEND
 	su ${PU}
 
