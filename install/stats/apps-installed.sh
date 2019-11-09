@@ -15,14 +15,14 @@ QUIT(){
 
 # Display menu
 
+COLOUR=${LBLUE}
+
 show_menus() {
-	clear
-	echo " ${LBLUE}"
 	MENUSTART
-	docker ps -a --format "table {{.Status}}\t: ${LBLUE}{{.Names}}${STD}" | sort
+	docker ps -a --format "table {{.Status}}\t: ${COLOUR}{{.Names}}${STD}" | sort
 	echo
 	echo " ${WHITE}Z${STD} - EXIT to Main Menu"
-	echo " ${LBLUE}"
+	echo " ${COLOUR}"
 	MENUEND
 }
 
