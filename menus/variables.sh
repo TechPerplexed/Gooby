@@ -29,6 +29,7 @@ GOOBY=${RED}G${BLUE}O${GREEN}O${YELLOW}B${LPURPLE}Y${STD}
 # Define choices
 
 MENUSTART(){
+	clear
 	echo " ${COLOUR}"
 	echo "--------------------------------------------------"
 	echo " ${GOOBY}${COLOUR} instructions at techperplexed.blogspot.com"
