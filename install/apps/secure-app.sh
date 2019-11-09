@@ -76,9 +76,9 @@ else
 
 	# Display menu
 
+	COLOUR=${CYAN}
+
 	show_menus() {
-		clear
-		echo " ${CYAN}"
 		MENUSTART
 
 		if [ -f ${FILENAME} ]; then
@@ -94,10 +94,10 @@ else
 		fi
 
 		echo
-		echo " ${CYAN}A${STD} - Add user to access ${FILENAME}"
-		if [ -f ${FILENAME} ]; then echo " ${CYAN}R${STD} - Reset access to default (remove users)"; fi
+		echo " ${COLOUR}A${STD} - Add user to access ${FILENAME}"
+		if [ -f ${FILENAME} ]; then echo " ${COLOUR}R${STD} - Reset access to default (remove users)"; fi
 		echo " ${WHITE}Z${STD} - EXIT to Main Menu"
-		echo " ${CYAN}"
+		echo " ${COLOUR}"
 		MENUEND
 	}
 
