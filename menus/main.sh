@@ -41,14 +41,14 @@ COLOUR=${GREEN}
 show_menus() {
 	clear
 	MENUSTART
-	echo " ${GREEN}A${STD} - Maintain Server"
-	echo " ${GREEN}B${STD} - Media Applications"
-	echo " ${GREEN}C${STD} - Download Applications"
-	echo " ${GREEN}D${STD} - Other Applications"
-	echo " ${GREEN}E${STD} - Additional Tasks"
-	echo " ${GREEN}F${STD} - Various Statistics"
+	echo " ${COLOUR}A${STD} - Maintain Server"
+	echo " ${COLOUR}B${STD} - Media Applications"
+	echo " ${COLOUR}C${STD} - Download Applications"
+	echo " ${COLOUR}D${STD} - Other Applications"
+	echo " ${COLOUR}E${STD} - Additional Tasks"
+	echo " ${COLOUR}F${STD} - Various Statistics"
 	echo " ${LRED}Q${STD} - QUIT ${FUNCTION}"
-	echo " ${GREEN}"
+	echo " ${COLOUR}"
 	MENUEND
 }
 
