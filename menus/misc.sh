@@ -41,17 +41,17 @@ QUIT(){
 
 # Display menu
 
+COLOUR=${CYAN}
+
 show_menus() {
-	clear
-	echo " ${CYAN}"
 	MENUSTART
-	echo " ${CYAN}A${STD} - Update Gooby"
-	echo " ${CYAN}B${STD} - Trigger Uploading"
-	echo " ${CYAN}C${STD} - System Cleanup"
-	echo " ${CYAN}D${STD} - Create Backup"
-	echo " ${CYAN}E${STD} - Restore Backup"
+	echo " ${COLOUR}A${STD} - Update Gooby"
+	echo " ${COLOUR}B${STD} - Trigger Uploading"
+	echo " ${COLOUR}C${STD} - System Cleanup"
+	echo " ${COLOUR}D${STD} - Create Backup"
+	echo " ${COLOUR}E${STD} - Restore Backup"
 	echo " ${WHITE}Z${STD} - EXIT to Main Menu"
-	echo " ${CYAN}"
+	echo " ${COLOUR}"
 	MENUEND
 }
 
