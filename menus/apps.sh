@@ -27,15 +27,16 @@ QUIT(){
 
 # Display menu
 
+COLOUR={LPURPLE}
+
 show_menus() {
 	clear
-	echo " ${LPURPLE}"
 	MENUSTART
-	echo " ${LPURPLE}I${STD} - Install ${TASK}"
-	echo " ${LPURPLE}R${STD} - Remove ${TASK}"
-	echo " ${LPURPLE}S${STD} - Secure ${TASK}"
+	echo " ${COLOUR}I${STD} - Install ${TASK}"
+	echo " ${COLOUR}R${STD} - Remove ${TASK}"
+	echo " ${COLOUR}S${STD} - Secure ${TASK}"
 	echo " ${WHITE}Z${STD} - EXIT to Main Menu"
-	echo " ${LPURPLE}"
+	echo " ${COLOUR}"
 	MENUEND
 }
 
