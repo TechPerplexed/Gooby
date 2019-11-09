@@ -56,7 +56,7 @@ QUIT(){
 
 # Display menu
 
-COLOUR={LPURPLE}
+COLOUR=${LPURPLE}
 
 show_menus() {
 	clear
