@@ -56,17 +56,17 @@ QUIT(){
 
 # Display menu
 
+COLOUR=${LPURPLE}
+
 show_menus() {
-	clear
-	echo " ${LPURPLE}"
 	MENUSTART
-	echo " ${LPURPLE}A${STD} - Netdata"
-	echo " ${LPURPLE}B${STD} - Organizr"
-	echo " ${LPURPLE}C${STD} - Ombi"
-	echo " ${LPURPLE}D${STD} - Portainer"
-	echo " ${LPURPLE}E${STD} - Watchtower"
+	echo " ${COLOUR}A${STD} - Netdata"
+	echo " ${COLOUR}B${STD} - Organizr"
+	echo " ${COLOUR}C${STD} - Ombi"
+	echo " ${COLOUR}D${STD} - Portainer"
+	echo " ${COLOUR}E${STD} - Watchtower"
 	echo " ${WHITE}Z${STD} - EXIT to Main Menu"
-	echo " ${LPURPLE}"
+	echo " ${COLOUR}"
 	MENUEND
 }
 
