@@ -64,6 +64,7 @@ else
 				/usr/bin/rclone --stats-one-line -P copy ${RCLONESERVICE}:/Backup/${SERVER}/Gooby ${RESTOREFOLDER} --checksum --drive-chunk-size=64M
 				[ -f ${RESTOREFOLDER}/Docker-full.tar.gz ] || { echo; echo " ${LRED}Sorry, backup not found on ${RCLONESERVICE}!${STD} - please try again"; PAUSE; exit ;}
 				sudo mv ${CONFIGS}/[^.]* ${OLDFILES}
+				sudo rm "${CONFIGVARS}/snapshots/*.snar" > /dev/null 2>&1
 
 			else
 
@@ -73,6 +74,7 @@ else
 				rm ${CONFIGVARS}/checkapp.txt
 				[ -f ${RESTOREFOLDER}/${APPNAME}-full.tar.gz ] || { echo; echo " ${LRED}Sorry, backup not found on ${RCLONESERVICE}!${STD}, please try again"; PAUSE; exit ;}
 				sudo mv ${CONFIGS}/${APPNAME}/ ${OLDFILES}
+				sudo rm "${CONFIGVARS}/snapshots/${APPNAME}.snar" /dev/null 2>&1
 
 			fi
 
