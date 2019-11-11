@@ -11,6 +11,15 @@ source ${CONFIGS}/Docker/.env
 mkdir -p ${CONFIGVARS}/snapshots
 SNAPSHOTS=${CONFIGVARS}/snapshots
 
+# Edit the file "fullbackup" in Docker/.config to create a list of files you never
+# want an incremental backup of. Format of file e.g.: Docker Radarr Sonarr Tautulli
+
+FULLBAK=${CONFIGVARS}/fullbackup
+if [ ! -e ${CONFIGVARS}/fullbackup ]; then
+	echo "Docker" > ${CONFIGVARS}/fullbackup
+	rm "${SNAPSHOTS}/Docker.snar" > /dev/null 2>&1
+fi
+
 rmove() {
 	# This function handles moving a file from the local storage to Google.  It will display
 	# the original path as well as the target and file size upon completion.
@@ -85,9 +94,18 @@ do
 			/usr/bin/rclone rc operations/deletefile _async=true fs=${RCLONESERVICE}: remote="/Backup/${SERVER}/Gooby/${FILENAME}-diff.tar.gz"  --user ${RCLONEUSERNAME} --pass ${RCLONEPASSWORD} > /dev/null
 
 		fi
-		rmove "/tmp/${FILENAME2}.tar.gz" "/Backup/${SERVER}/Gooby/${FILENAME2}.tar.gz"
-		# cp "${SNAPSHOTS}/${FILENAME}.snar" /tmp/
-		# rmove "/tmp/${FILENAME}.snar" "/Backup/${SERVER}/Gooby/snapshots/${FILENAME}.snar"
+		if [[ ${FULLBAK} =~ (^|[[:space:]])${FILENAME}($|[[:space:]]) ]]
+		then
+			# Don't keep the SNAR so that this is always a full backup
+			echo "Disposing SNAR for ${FILENAME}"
+			rm "${SNAPSHOTS}/${FILENAME}.snar"
+		else
+			rmove "/tmp/${FILENAME2}.tar.gz" "/Backup/${SERVER}/Gooby/${FILENAME2}.tar.gz"
+			# cp "${SNAPSHOTS}/${FILENAME}.snar" /tmp/
+			# rmove "/tmp/${FILENAME}.snar" "/Backup/${SERVER}/Gooby/snapshots/${FILENAME}.snar"
+
+		fi
+
 	fi
 done
 
