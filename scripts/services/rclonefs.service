@@ -11,7 +11,7 @@ Group=GOOBYUSER
 ExecStartPre=/bin/mkdir -p ${RCLONEMOUNT}
 ExecStart=/usr/bin/rclone mount \
 	--allow-other \
-	--buffer-size 1G \
+	--buffer-size 0M \
 	--dir-cache-time 96h \
 	--gid ${USERID} \
 	--log-level INFO \
