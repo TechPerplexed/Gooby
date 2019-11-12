@@ -1,4 +1,6 @@
-![Gooby](https://1.bp.blogspot.com/-DaNp0497qkU/XcssrpQC_FI/AAAAAAAIZPA/_JfF-KX71M0yyK6ommMRQ0VgGz7INZ5uQCEwYBhgL/s1600/gooby.png "Gooby") # Gooby - Infinite Media Cloud Server
+![Gooby](https://1.bp.blogspot.com/-DaNp0497qkU/XcssrpQC_FI/AAAAAAAIZPA/_JfF-KX71M0yyK6ommMRQ0VgGz7INZ5uQCEwYBhgL/s1600/gooby.png "Gooby") 
+
+# Gooby - Infinite Media Cloud Server
 
 Create an infinite Plex or Emby media cloud server with Google Drive on a VPS. It has full docker integration for all apps, NginX with reverse proxy and Letsencrypt, one step (automatic) backup and restore, several additional apps.
 
