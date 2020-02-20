@@ -1,0 +1,33 @@
+#
+# EmbyStat - Reports on Emby stats
+#
+  embystat:
+    restart: unless-stopped
+    image: uping/embystat:beta
+    container_name: embystat
+    hostname: embystat
+    cpu_shares: 1024
+    depends_on:
+      nginx-proxy:
+        condition: service_healthy
+      letsencrypt-nginx-proxy-companion:
+        condition: service_started
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /bin/netstat:/bin/netstat:ro
+      - ${CONFIGS}/EmbyStat:/app/config
+    environment:
+      - PUID=${USERID}
+      - PGID=${GROUPID}
+      - TZ=${TIMEZONE}
+      - UMASK_SET=022
+      - VIRTUAL_HOST=embystat.${MYDOMAIN}
+      - VIRTUAL_PORT=6555
+      - VIRTUAL_NETWORK=nginx-proxy
+      - LETSENCRYPT_HOST=embystat.${MYDOMAIN}
+      - LETSENCRYPT_EMAIL=${MYEMAIL}
+    healthcheck:
+      test: ["CMD-SHELL", "netstat -ntlp | grep :6555"]
+      interval: 10s
+      timeout: 2s
+      retries: 3
