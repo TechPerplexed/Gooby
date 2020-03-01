@@ -50,6 +50,25 @@ WATCHTOWER(){
 	source /opt/Gooby/menus/apps.sh
 }
 
+WATCHTOWER(){
+	TASK=Watchtower
+	APP=watchtower
+	APPTYPE=app
+	APPLOC=98-watchtower
+	OLDLOC=/noupgradepathprovided
+	source /opt/Gooby/menus/apps.sh
+}
+
+OUROBOROS(){
+	TASK=Ouroboros
+	APP=ouroboros
+	APPTYPE=app
+	APPLOC=98-ouroboros
+	OLDLOC=/noupgradepathprovided
+	source /opt/Gooby/menus/apps.sh
+}
+
+
 QUIT(){
 	exit
 }

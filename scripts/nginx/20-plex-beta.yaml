@@ -1,14 +1,21 @@
 #
-# Plex - Media streaming server beta
+# Plex - Media streaming server stable
 #
   plex:
     restart: unless-stopped
-    image: plexinc/pms-docker:beta
+    image: linuxserver/plex:latest
     container_name: plex
     hostname: plex
-    cpu_shares: 8192
     ports:
       - 8443:32400
+      - 8443:32400/tcp
+      - 3005:3005/tcp
+      - 8324:8324/tcp
+      - 32469:32469/tcp
+      - 32410:32410/udp
+      - 32412:32412/udp
+      - 32413:32413/udp
+      - 32414:32414/udp
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - ${CONFIGS}/Plex:/config
@@ -16,6 +23,7 @@
       - /bin/netstat:/bin/netstat:ro
       - ${MEDIA}:/Media
     environment:
+      - VERSION=latest
       - ADVERTISE_IP=https://plex.${MYDOMAIN}:8443
       - PUID=${USERID}
       - PGID=${GROUPID}

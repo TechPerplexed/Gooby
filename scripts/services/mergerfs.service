@@ -10,11 +10,15 @@ EnvironmentFile=/var/local/Gooby/Docker/.env
 
 ExecStartPre=/bin/mkdir -p ${UPLOADS} ${MOUNTTO} ${UNSYNCED}
 ExecStart=/usr/bin/mergerfs \
-	-o use_ino,hard_remove,auto_cache,sync_read,allow_other,category.action=all,category.create=ff \
+	-o sync_read,auto_cache,dropcacheonclose=true,use_ino,allow_other,func.getattr=newest,category.create=ff,minfreespace=0 \
 	${UPLOADS}:${UNSYNCED}:${RCLONEMOUNT} ${MOUNTTO}
 ExecStop=/bin/fusermount -uz ${MOUNTTO}
 ExecStop=/bin/rmdir ${MOUNTTO}
-Restart=always
+TimeoutStopSec=60
+KillMode=process
+RemainAfterExit=yes
+Restart=on-failure
+RestartSec=60s
 
 [Install]
 WantedBy=default.target

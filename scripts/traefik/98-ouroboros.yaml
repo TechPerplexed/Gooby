@@ -1,0 +1,20 @@
+#
+# Watchtower - Cloud Monitoring Service
+#
+  ouroboros:
+    image: pyouroboros/ouroboros
+    container_name: ouroboros
+    hostname: ouroboros
+    domainname: ${MYDOMAIN}
+    restart: unless-stopped
+    environment:
+      - LATEST=true
+      - CRON="*/5 * * * *"
+      - LOG_LEVEL=info
+      - SELF_UPDATE=true
+      - CLEANUP=true
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      - gooby
+
