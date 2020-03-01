@@ -29,11 +29,54 @@ else
 		# Install MergerFS
 
 		which mergerfs > ${CONFIGVARS}/mergerfs
+		
 		if [ ! -s ${CONFIGVARS}/mergerfs ]; then
-			sudo wget https://github.com/trapexit/mergerfs/releases/download/2.28.1/mergerfs_2.28.1.ubuntu-xenial_amd64.deb -O /tmp/mergerfs.deb
-			sudo dpkg -i /tmp/mergerfs.deb
+			mgversion="$(curl -s https://api.github.com/repos/trapexit/mergerfs/releases/latest | grep -oP '"tag_name": "\K(.*)(?=")')"
+			mgos=$(lsb_release -cs)
+			if [[ "$(lsb_release -si)" == "Ubuntu" ]]; then
+			    sudo wget https://github.com/trapexit/mergerfs/releases/download/${mgversion}/mergerfs_${mgversion}.ubuntu-${mgos}_amd64.deb -O /tmp/mergerfs.deb
+			    sudo dpkg -i /tmp/mergerfs.deb
+			elif [[ "$(lsb_release -si)" == "Debian" ]]; then
+			   sudo wget https://github.com/trapexit/mergerfs/releases/download/${mgversion}/mergerfs_${mgversion}.debian-${mgos}_amd64.deb -O /tmp/mergerfs.deb
+			   sudo dpkg -i /tmp/mergerfs.deb
+			fi
 		fi
-		rm ${CONFIGVARS}/mergerfs
+
+		checkmergerfs=$(sudo systemctl status mergerfs | grep "Active:" | awk '{print $2}')
+
+		if [[ ${checkmergerfs} == "active" ]]; then
+		   rm ${CONFIGVARS}/mergerfs
+		else 
+			mgversion="$(curl -s https://api.github.com/repos/trapexit/mergerfs/releases/latest | grep -oP '"tag_name": "\K(.*)(?=")')"
+			mgos=$(lsb_release -cs)
+			echo "Retry to install mergefs ${mgversion} for ${mgos}"
+			if [[ "$(lsb_release -si)" == "Ubuntu" ]]; then
+		        sudo wget https://github.com/trapexit/mergerfs/releases/download/${mgversion}/mergerfs_${mgversion}.ubuntu-${mgos}_amd64.deb -O /tmp/mergerfs.deb
+		        sudo dpkg -i /tmp/mergerfs.deb
+		        rm ${CONFIGVARS}/mergerfs
+			elif [[ "$(lsb_release -si)" == "Debian" ]]; then
+		        sudo wget https://github.com/trapexit/mergerfs/releases/download/${mgversion}/mergerfs_${mgversion}.debian-${mgos}_amd64.deb -O /tmp/mergerfs.deb
+		        sudo dpkg -i /tmp/mergerfs.deb
+		        rm ${CONFIGVARS}/mergerfs
+			fi
+		fi
+
+        #checkversion megerfs lower as installed 
+        mgversion="$(curl -s https://api.github.com/repos/trapexit/mergerfs/releases/latest | grep -oP '"tag_name": "\K(.*)(?=")')"
+        mgstored="$(mergerfs -v | grep 'mergerfs version:' | awk '{print $3}')"
+		mgos=$(lsb_release -cs)
+        if [[ "$(mgstored)" != "$(mgversion)" ]]; then 
+			echo "Updated installed mergefs ${mgstored} for ${mgos} to ${mgversion}"
+			if [[ "$(lsb_release -si)" == "Ubuntu" ]]; then
+			    sudo wget https://github.com/trapexit/mergerfs/releases/download/${mgversion}/mergerfs_${mgversion}.ubuntu-${mgos}_amd64.deb -O /tmp/mergerfs.deb
+			    sudo dpkg -i /tmp/mergerfs.deb
+		        rm ${CONFIGVARS}/mergerfs
+			elif [[ "$(lsb_release -si)" == "Debian" ]]; then
+		        sudo wget https://github.com/trapexit/mergerfs/releases/download/${mgversion}/mergerfs_${mgversion}.debian-${mgos}_amd64.deb -O /tmp/mergerfs.deb
+		        sudo dpkg -i /tmp/mergerfs.deb
+		        rm ${CONFIGVARS}/mergerfs
+			fi
+		fi
 
 		# Main script
 
