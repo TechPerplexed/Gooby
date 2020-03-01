@@ -23,7 +23,7 @@ else
 		echo ""
 		[[ -f "/opt/Gooby/scripts/${PROXYVERSION}/${APPLOC}.yaml" ]] && echo " ${LYELLOW}S${STD} - ${TASK} Stable"
 		[[ -f "/opt/Gooby/scripts/${PROXYVERSION}/${APPLOC}-beta.yaml" ]] && echo " ${LYELLOW}B${STD} - ${TASK} Beta"
-        [[ -d "/dev/dri" "/opt/Gooby/scripts/${PROXYVERSION}/${APPLOC}-hwdecode.yaml" ]] && echo " ${LYELLOW}S${STD} - ${TASK} Hardware decode"
+                [[ -d "/dev/dri" "/opt/Gooby/scripts/${PROXYVERSION}/${APPLOC}-hwdecode.yaml" ]] && echo " ${LYELLOW}S${STD} - ${TASK} Hardware decode"
 		echo "--------------------------------------------------"
 		echo ""
 		read -n 1 -s -r -p " ---> "
@@ -32,7 +32,7 @@ else
 		case "${REPLY}" in
 			s|S ) APPLOC=${APPLOC} ;;
 			b|B ) [[ -f "/opt/Gooby/scripts/${PROXYVERSION}/${APPLOC}-beta.yaml" ]] && APPLOC=${APPLOC}-beta ;;
-			h|H ) [[ [[ -d "/dev/dri" "/opt/Gooby/scripts/${PROXYVERSION}/${APPLOC}-hwdecode.yaml" ]] && APPLOC=${APPLOC}-hwdecode ;;
+			h|H ) [[ -d "/dev/dri" "/opt/Gooby/scripts/${PROXYVERSION}/${APPLOC}-hwdecode.yaml" ]] && APPLOC=${APPLOC}-hwdecode ;;
 			* ) APPLOC=${APPLOC} ;;
 		esac
 
