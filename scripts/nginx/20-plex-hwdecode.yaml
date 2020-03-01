@@ -36,6 +36,8 @@
       - VIRTUAL_NETWORK=nginx-proxy
       - LETSENCRYPT_HOST=plex.${MYDOMAIN}
       - LETSENCRYPT_EMAIL=${MYEMAIL}
+    devices:
+      - /dev/dri:/dev/dri
     healthcheck:
       test: ["CMD-SHELL", "netstat -ntlp | grep :32400 && mountpoint /Media"]
       interval: 10s

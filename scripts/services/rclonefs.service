@@ -11,15 +11,23 @@ Group=GOOBYUSER
 ExecStartPre=/bin/mkdir -p ${RCLONEMOUNT}
 ExecStart=/usr/bin/rclone mount \
 	--allow-other \
-	--buffer-size 0M \
 	--dir-cache-time 96h \
 	--gid ${USERID} \
 	--log-level INFO \
 	--log-file ${HOMEDIR}/logs/rclone.log \
-	--timeout 1h \
 	--uid ${GROUPID} \
 	--umask 002 \
-	--user-agent GOOBYUSER \
+    --timeout=1h \
+    --tpslimit=8 \
+    --drive-skip-gdocs \
+    --user-agent="${USERAGENT}" \
+    --dir-cache-time="${DIR_CACHE}" \
+    --vfs-cache-mode="${CACHE-MODE}" \
+    --vfs-cache-max-age="${CACHE_MAX_AGE}" \
+    --vfs-cache-max-size="${CACHE_MAX_SIZE}" \
+    --vfs-read-chunk-size-limit="${CHUNK_SIZE_LIMIT}" \
+    --vfs-read-chunk-size="${READ_CHUNK_SIZE}" \
+    --buffer-size="${BUFFER_SIZE}" \
 	--rc \
 	--rc-pass ${RCLONEPASSWORD} \
 	--rc-user ${RCLONEUSERNAME} \
@@ -28,6 +36,10 @@ ExecStart=/usr/bin/rclone mount \
 ExecStop=/bin/fusermount -uz ${RCLONEMOUNT}
 ExecStop=/bin/rmdir ${RCLONEMOUNT}
 Restart=always
+RestartSec=5
+StartLimitInterval=60s
+StartLimitBurst=3
+
 
 [Install]
 WantedBy=default.target unionfs.service mergerfs.service

@@ -1,0 +1,17 @@
+#
+# ouroboros - Cloud Monitoring Service
+#
+  ouroboros:
+    restart: unless-stopped
+    image: pyouroboros/ouroboros
+    container_name: ouroboros
+    hostname: ouroboros
+    domainname: ${MYDOMAIN}
+    environment:
+      - LATEST=true
+      - CRON="*/5 * * * *"
+      - LOG_LEVEL=info
+      - SELF_UPDATE=true
+      - CLEANUP=true
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
