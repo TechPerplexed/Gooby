@@ -1,5 +1,5 @@
 #
-# Plex - Media streaming server
+# Plex - Media streaming server with Intel hardware GPU
 #
   plex:
     image: plexinc/pms-docker
