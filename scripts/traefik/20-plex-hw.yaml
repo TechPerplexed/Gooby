@@ -2,6 +2,7 @@
 # Plex - Media streaming server with Intel hardware GPU
 #
   plex:
+    privileged: true
     image: plexinc/pms-docker
     #image: linuxserver/plex
     container_name: plex
