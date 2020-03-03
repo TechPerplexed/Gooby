@@ -1,0 +1,42 @@
+#
+# Emby - Media streaming server with Intel hardware GPU
+#
+  emby:
+    restart: unless-stopped
+    image: emby/embyserver:beta
+    container_name: emby
+    hostname: emby
+    cpu_shares: 8192
+    ports:
+      - 2096:8920
+    volumes:
+      - ${CONFIGS}/Emby:/config
+      - ${MEDIA}:/Media
+      - /tmp:/transcode
+    environment:
+      - ADVERTISE_IP=https://emby.${MYDOMAIN}
+      - UID=${USERID}
+      - GID=${GROUPID}
+      - GIDLIST=44
+      - TZ=${TIMEZONE}
+      - VIRTUAL_HOST=emby.${MYDOMAIN}
+      - VIRTUAL_PORT=8096
+      - VIRTUAL_PROTO=http
+      - VIRTUAL_NETWORK=nginx-proxy
+      - LETSENCRYPT_HOST=emby.${MYDOMAIN}
+      - LETSENCRYPT_EMAIL=${MYEMAIL}
+    devices:
+      - /dev/dri:/dev/dri
+    healthcheck:
+      test: ["CMD-SHELL", "netstat -ntlp | grep :8920"]
+      interval: 10s
+      timeout: 2s
+      retries: 3
+    blkio_config:
+      weight: 600
+      #device_read_bps:
+      #- path: /dev/md1
+      #rate: '200mb'
+      #device_write_bps:
+      #- path: /dev/md1
+      #rate: '200mb'
