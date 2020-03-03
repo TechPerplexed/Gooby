@@ -1,0 +1,54 @@
+#
+# Plex - Media streaming server
+#
+  plex:
+    image: plexinc/pms-docker
+    #image: linuxserver/plex
+    container_name: plex
+    hostname: plex
+    domainname: ${MYDOMAIN}
+    restart: unless-stopped
+    depends_on:
+      traefik:
+        condition: service_healthy
+    environment:
+      - ADVERTISE_IP=https://plex.${MYDOMAIN}
+      - PUID=${USERID}
+      - PGID=${GROUPID}
+      - TZ=${TIMEZONE}
+      - VERSION=latest
+      - UMASK_SET=022
+    labels:
+      - "traefik.enable=true"
+      - "traefik.backend=plex"
+      - "traefik.frontend.rule=Host:plex.${MYDOMAIN}"
+      - "traefik.port=32400"
+      - "traefik.protocol=https"
+      - "traefik.docker.network=gooby"
+      - "traefik.frontend.headers.SSLRedirect=true"
+      - "traefik.frontend.headers.STSSeconds=315360000"
+      - "traefik.frontend.headers.browserXSSFilter=true"
+      - "traefik.frontend.headers.contentTypeNosniff=true"
+      - "traefik.frontend.headers.forceSTSHeader=true"
+      - "traefik.frontend.headers.SSLHost=${MYDOMAIN}"
+      - "traefik.frontend.headers.STSIncludeSubdomains=true"
+      - "traefik.frontend.headers.STSPreload=true"
+      - "traefik.frontend.headers.frameDeny=true"
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ${CONFIGS}/Plex:/config
+      - /tmp:/transcode
+      - /bin/netstat:/bin/netstat:ro
+      - ${MEDIA}:/Media
+    devices:
+      - /dev/dri:/dev/dri
+    networks:
+      - gooby
+    cpu_shares: 8192
+    blkio_config:
+      weight: 600
+    healthcheck:
+      test: ["CMD-SHELL", "netstat -ntlp | grep :32400 && mountpoint /Media"]
+      interval: 10s
+      timeout: 2s
+      retries: 3
