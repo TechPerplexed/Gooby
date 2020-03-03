@@ -1,5 +1,5 @@
 #
-# Plex - Media streaming server stable
+# Plex - Media streaming server
 #
   plex:
     restart: unless-stopped
