@@ -3,7 +3,7 @@
 #
   emby:
     restart: unless-stopped
-    image: emby/embyserver:beta
+    image: emby/embyserver:latest
     container_name: emby
     hostname: emby
     cpu_shares: 8192
