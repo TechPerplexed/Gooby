@@ -1,0 +1,37 @@
+#
+# Plex - Media streaming server with Intel hardware GPU
+#
+  plex:
+    privileged: true
+    restart: unless-stopped
+    image: plexinc/pms-docker
+    container_name: plex
+    hostname: plex
+    cpu_shares: 8192
+    ports:
+      - 8443:32400
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ${CONFIGS}/Plex:/config
+      - /tmp:/transcode
+      - /bin/netstat:/bin/netstat:ro
+      - ${MEDIA}:/Media
+    environment:
+      - ADVERTISE_IP=https://plex.${MYDOMAIN}:8443
+      - PUID=${USERID}
+      - PGID=${GROUPID}
+      - PLEX_CLAIM=${PLEXCLAIM}
+      - TZ=${TIMEZONE}
+      - VIRTUAL_HOST=plex.${MYDOMAIN}
+      - VIRTUAL_PORT=32400
+      - VIRTUAL_PROTO=https
+      - VIRTUAL_NETWORK=nginx-proxy
+      - LETSENCRYPT_HOST=plex.${MYDOMAIN}
+      - LETSENCRYPT_EMAIL=${MYEMAIL}
+    devices:
+      - /dev/dri:/dev/dri
+    healthcheck:
+      test: ["CMD-SHELL", "netstat -ntlp | grep :32400 && mountpoint /Media"]
+      interval: 10s
+      timeout: 2s
+      retries: 3
