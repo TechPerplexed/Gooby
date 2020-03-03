@@ -1,5 +1,5 @@
 #
-# Emby - Media streaming server
+# Emby - Media streaming server beta version
 #
   emby:
     restart: unless-stopped
