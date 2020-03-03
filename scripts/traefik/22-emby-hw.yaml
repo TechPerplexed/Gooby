@@ -1,5 +1,5 @@
 #
-# Emby - Media streaming server
+# Emby - Media streaming server with Intel hardware GPU
 #
   emby:
     image: emby/embyserver
