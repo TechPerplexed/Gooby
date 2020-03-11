@@ -33,7 +33,7 @@
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - /bin/netstat:/bin/netstat:ro
-      - ${CONFIGS}/EmbyStat:/app/config
+      - ${CONFIGS}/EmbyStat:/config
     networks:
       - gooby
     cpu_shares: 1024
