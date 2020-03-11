@@ -3,7 +3,7 @@
 #
   embystat:
     restart: unless-stopped
-    image: uping/embystat:beta
+    image: linuxserver/embystat
     container_name: embystat
     hostname: embystat
     cpu_shares: 1024
