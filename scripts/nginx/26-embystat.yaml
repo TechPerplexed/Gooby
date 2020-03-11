@@ -15,7 +15,7 @@
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - /bin/netstat:/bin/netstat:ro
-      - ${CONFIGS}/EmbyStat:/app/config
+      - ${CONFIGS}/EmbyStat:/config
     environment:
       - PUID=${USERID}
       - PGID=${GROUPID}
