@@ -2,7 +2,7 @@
 # EmbyStat - Reports on Emby stats
 #
   embystat:
-    image: uping/embystat:beta
+    image: linuxserver/embystat
     container_name: embystat
     hostname: embystat
     domainname: ${MYDOMAIN}
