@@ -8,7 +8,7 @@
     hostname: jellyfin
     cpu_shares: 8192
     ports:
-      - 8096:8920
+      - 2053:8920
     volumes:
       - ${CONFIGS}/Jellyfin:/config
       - ${MEDIA}:/Media
