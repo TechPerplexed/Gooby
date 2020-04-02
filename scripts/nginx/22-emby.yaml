@@ -8,7 +8,7 @@
     hostname: emby
     cpu_shares: 8192
     ports:
-      - 2053:8920
+      - 2096:8920
     volumes:
       - ${CONFIGS}/Emby:/config
       - ${MEDIA}:/Media
