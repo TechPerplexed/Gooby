@@ -12,7 +12,7 @@
     volumes:
       - ${CONFIGS}/Jellyfin:/config
       - ${MEDIA}:/Media
-      - /tmp:/transcode
+      - /tmp:/cache
     environment:
       - ADVERTISE_IP=https://jellyfin.${MYDOMAIN}
       - UID=${USERID}
