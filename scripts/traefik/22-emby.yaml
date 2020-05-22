@@ -35,7 +35,7 @@
       - ${CONFIGS}/Emby:/config
       - ${MEDIA}:/Media
       - /etc/localtime:/etc/localtime:ro
-      - /tmp:/transcode
+      - ${CONFIGS}/Emby/transcode:/transcode
 #    devices:
 #      - /dev/dri:/dev/dri
     networks:
