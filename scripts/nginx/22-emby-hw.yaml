@@ -12,7 +12,8 @@
     volumes:
       - ${CONFIGS}/Emby:/config
       - ${MEDIA}:/Media
-      - /tmp:/transcode
+      - /etc/localtime:/etc/localtime:ro
+      - ${CONFIGS}/Emby/transcode:/transcode
     environment:
       - ADVERTISE_IP=https://emby.${MYDOMAIN}
       - UID=${USERID}
