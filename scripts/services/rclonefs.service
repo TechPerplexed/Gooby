@@ -17,6 +17,8 @@ ExecStart=/usr/bin/rclone mount \
 	--log-level INFO \
 	--log-file ${HOMEDIR}/logs/rclone.log \
 	--timeout 1h \
+	--tpslimit 10 \
+	--tpslimit-burst 10 \
 	--uid ${GROUPID} \
 	--umask 002 \
 	--user-agent GOOBYUSER \
