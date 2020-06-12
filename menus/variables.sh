@@ -142,10 +142,11 @@ CONFIRMDELETE(){
 	echo "${LRED}"
 	echo "--------------------------------------------------"
 	echo " DANGER ZONE - EXTREME CAUTION!!!"
-	echo " Do you want to delete all user settings as well?"
+	echo " Do you want to delete all user data as well?"
 	echo " This cannot be undone"
 	echo " Make sure you have a backup!"
-	echo " Delete user settings for ${TASK}? (y/N)?"
+	echo
+	echo " Delete user data for ${TASK}? (y/N)?"
 	echo "--------------------------------------------------"
 	echo "${STD}"
 	read -n 1 -s -r -p " ---> "
