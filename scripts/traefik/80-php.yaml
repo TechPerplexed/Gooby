@@ -1,10 +1,10 @@
 #
-# httpd - Apache HTTPd (web server)
+# PHP - Apache web server
 #
-  httpd:
+  php:
     restart: always
     image: php:apache
-    container_name: httpd
+    container_name: php
     hostname: web
     depends_on:
       traefik:
