@@ -45,7 +45,7 @@ WATCHTOWER(){
 	TASK=Watchtower
 	APP=watchtower
 	APPTYPE=app
-	APPLOC=98-watchtower
+	APPLOC=04-watchtower
 	OLDLOC=/noupgradepathprovided
 	source /opt/Gooby/menus/apps.sh
 }
