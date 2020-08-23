@@ -1,0 +1,12 @@
+  autoheal:
+    image: willfarrell/autoheal
+    container_name: autoheal
+    hostname: autoheal
+    domainname: ${MYDOMAIN}
+    restart: unless-stopped
+    environment:
+      - AUTOHEAL_CONTAINER_LABEL=all
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      - Gooby
