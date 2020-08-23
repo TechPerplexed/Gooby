@@ -13,7 +13,7 @@ Run on Ubuntu or Debian with this command:
 
 One click installation of **Rclone**, **Plex**, **Tautulli**, **Emby**, **Jellyfin**, **Sonarr**, **Radarr**, **Deluge**, **NZBGet**, **Jackett**, **Netdata**, **Organizr**, **Ombi**, **Portainer** and **Apache web server**.
 
-**Lidarr**, **RuTorrent**, **SABnzbd**, **Radarr4k**, **Monitorr**, **NextCloud**, **MySQL**, **MariaDB** and **PostgreSQL** are available through self installation.
+**Lidarr**, **RuTorrent**, **SABnzbd**, **Radarr4k**, **Monitorr**, **NextCloud**, **MySQL**, **MariaDB**, **PostgreSQL** and numerous other Docker images are available through self installation.
 
 ## Disclaimer:
 
