@@ -1,0 +1,6 @@
+networks:
+  Gooby:
+    external:
+      name: Gooby
+  default:
+    driver: bridge
