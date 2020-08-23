@@ -5,6 +5,15 @@ source /opt/Gooby/menus/variables.sh
 
 # Menu Options
 
+RADARR(){
+	TASK=Radarr
+	APP=radarr
+	APPTYPE=app
+	APPLOC=51-radarr
+	OLDLOC=${USER}/.config/Radarr/
+	source /opt/Gooby/menus/apps.sh
+}
+
 SONARR(){
 	TASK=Sonarr
 	APP=sonarr
@@ -14,20 +23,11 @@ SONARR(){
 	source /opt/Gooby/menus/apps.sh
 }
 
-RADARR(){
-	TASK=Radarr
-	APP=radarr
-	APPTYPE=app
-	APPLOC=50-radarr
-	OLDLOC=${USER}/.config/Radarr/
-	source /opt/Gooby/menus/apps.sh
-}
-
 DELUGE(){
 	TASK=Deluge
 	APP=deluge
 	APPTYPE=app
-	APPLOC=40-deluge
+	APPLOC=41-deluge
 	OLDLOC=${USER}/.config/deluge/
 	source /opt/Gooby/menus/apps.sh
 }
@@ -36,7 +36,7 @@ NZBGET(){
 	TASK=NZBGet
 	APP=nzbget
 	APPTYPE=app
-	APPLOC=30-nzbget
+	APPLOC=31-nzbget
 	OLDLOC=/noupgradepathprovided
 	source /opt/Gooby/menus/apps.sh
 }
@@ -45,7 +45,7 @@ JACKETT(){
 	TASK=Jackett
 	APP=jackett
 	APPTYPE=app
-	APPLOC=44-jackett
+	APPLOC=56-jackett
 	OLDLOC=/noupgradepathprovided
 	source /opt/Gooby/menus/apps.sh
 }
@@ -60,8 +60,8 @@ COLOUR=${LPURPLE}
 
 show_menus() {
 	MENUSTART
-	echo " ${COLOUR}A${STD} - Sonarr"
-	echo " ${COLOUR}B${STD} - Radarr"
+	echo " ${COLOUR}A${STD} - Radarr"
+	echo " ${COLOUR}B${STD} - Sonarr"
 	echo " ${COLOUR}C${STD} - Deluge"
 	echo " ${COLOUR}D${STD} - NZBGet"
 	echo " ${COLOUR}E${STD} - Jackett"
@@ -76,8 +76,8 @@ read_options(){
 	local CHOICE
 	read -n 1 -s -r -p "Choose option: " CHOICE
 	case ${CHOICE} in
-		[Aa]) SONARR ;;
-		[Bb]) RADARR ;;
+		[Aa]) RADARR ;;
+		[Bb]) SONARR ;;
 		[Cc]) DELUGE ;;
 		[Dd]) NZBGET ;;
 		[Ee]) JACKETT ;;
