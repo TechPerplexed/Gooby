@@ -1,0 +1,11 @@
+#
+# Autoheal - Repear corrupt containers automatically
+#
+  autoheal:
+    restart: unless-stopped
+    image: willfarrell/autoheal
+    container_name: autoheal
+    hostname: autoheal
+    domainname: ${MYDOMAIN}
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
