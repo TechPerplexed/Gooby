@@ -1,0 +1,42 @@
+#
+# NextCloud - Cloud File Server
+#
+  nextcloud:
+    image: nextcloud:latest
+    container_name: ${NEXTCLOUDNAME}
+    hostname: ${NEXTCLOUDNAME}
+    domainname: ${MYDOMAIN}
+    restart: unless-stopped
+    depends_on:
+      - traefik
+      - mariadb
+      - redis
+    environment:
+      - PGID=${GROUPID}
+      - PUID=${USERID}
+      - TZ=${TIMEZONE}
+      - NEXTCLOUD_TRUSTED_DOMAINS=nextcloud.${MYDOMAIN}
+      - REDIS_HOST=redis
+    labels:
+      - "omni=nextcloud,${MYDOMAIN},yes,yes,yes"
+      - "traefik.enable=true"
+      ## HTTP Routers
+      - "traefik.http.routers.nextcloud-rtr.entrypoints=https"
+      - "traefik.http.routers.nextcloud-rtr.rule=Host(`nextcloud.${MYDOMAIN}`)"
+      ## Middlewares
+      - "traefik.http.routers.nextcloud-rtr.middlewares=chain-no-auth@file"
+      ## HTTP Services
+      - "traefik.http.routers.nextcloud-rtr.service=nextcloud-svc"
+      - "traefik.http.services.nextcloud-svc.loadbalancer.server.port=80"
+    volumes:
+      - ${CONFIGS}/NextCloud:/var/www/html
+      - ${MEDIA}:/Media
+      - /etc/localtime:/etc/localtime:ro
+      - /bin/netstat:/bin/netstat:ro
+    networks:
+      - Gooby
+    healthcheck:
+      test: ["CMD-SHELL", "netstat -ntlp | grep :80"]
+      interval: 10s
+      timeout: 2s
+      retries: 3
