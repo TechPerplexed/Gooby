@@ -16,7 +16,7 @@ PLEX(){
 	TASK=Plex
 	APP=plex
 	APPTYPE=app
-	APPLOC=20-plex
+	APPLOC=21-plex
 	OLDLOC=/var/lib/plexmediaserver/
 	source /opt/Gooby/menus/apps.sh
 }
@@ -39,6 +39,15 @@ EMBY(){
 	source /opt/Gooby/menus/apps.sh
 }
 
+JELLYFIN(){
+	TASK=Jellyfin
+	APP=jellyfin
+	APPTYPE=app
+	APPLOC=23-jellyfin
+	OLDLOC=/var/lib/jellyfin/
+	source /opt/Gooby/menus/apps.sh
+}
+
 QUIT(){
 	exit
 }
@@ -53,6 +62,7 @@ show_menus() {
 	echo " ${COLOUR}B${STD} - Plex"
 	echo " ${COLOUR}C${STD} - Tautulli"
 	echo " ${COLOUR}D${STD} - Emby"
+	echo " ${COLOUR}E${STD} - Jellyfin"
 	echo " ${WHITE}Z${STD} - EXIT to Main Menu"
 	echo " ${COLOUR}"
 	MENUEND
@@ -67,7 +77,8 @@ read_options(){
 		[Aa]) RCLONE ;;
 		[Bb]) PLEX ;;
 		[Cc]) TAUTULLI ;;
-		[Dd]) EMBY ;;      
+		[Dd]) EMBY ;;
+		[Ee]) JELLYFIN ;;
 		[Zz]) QUIT ;;
 		*) echo "${LRED}Please select a valid option${STD}" && sleep 1
 	esac
