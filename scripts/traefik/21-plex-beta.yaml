@@ -43,7 +43,7 @@
 #    devices:
 #      - /dev/dri:/dev/dri
     networks:
-      - gooby
+      - Gooby
     cpu_shares: 8192
     blkio_config:
       weight: 600
