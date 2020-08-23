@@ -13,7 +13,7 @@
       - ${CONFIGS}/Web:/var/www/html
       - /bin/netstat:/bin/netstat:ro
     networks:
-      - gooby
+      - Gooby
     labels:
       - "traefik.enable=true"
       - "traefik.backend=web"
