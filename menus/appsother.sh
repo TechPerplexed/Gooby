@@ -45,7 +45,7 @@ APACHE(){
 	TASK=Apache
 	APP=apache
 	APPTYPE=app
-	APPLOC=81-apache
+	APPLOC=81-phpapache
 	OLDLOC=/noupgradepathprovided
 	source /opt/Gooby/menus/apps.sh
 }
@@ -64,7 +64,7 @@ show_menus() {
 	echo " ${COLOUR}B${STD} - Organizr"
 	echo " ${COLOUR}C${STD} - Ombi"
 	echo " ${COLOUR}D${STD} - Portainer"
-	echo " ${COLOUR}E${STD} - Apache PHP"
+	echo " ${COLOUR}E${STD} - PHP Apache"
 	echo " ${WHITE}Z${STD} - EXIT to Main Menu"
 	echo " ${COLOUR}"
 	MENUEND
