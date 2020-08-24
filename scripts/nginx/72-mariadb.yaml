@@ -1,0 +1,27 @@
+#
+# MariaDB - MariaDB database server
+#
+  mariadb:
+    restart: always
+    image: linuxserver/mariadb
+    container_name: mariadb
+    depends_on:
+      nginx-proxy:
+        condition: service_healthy
+      letsencrypt-nginx-proxy-companion:
+        condition: service_started
+    hostname: mariadb
+    volumes:
+      - ${CONFIGS}/MariaDB:/config
+      - /etc/localtime:/etc/localtime:ro
+      - /bin/netstat:/bin/netstat:ro
+    environment:
+      - MYSQL_ROOT_PASSWORD=<setyourownpassword>
+      - PUID=${USERID}
+      - PGID=${GROUPID}
+      - TZ=${TIMEZONE}
+    healthcheck:
+      test: ["CMD-SHELL", "netstat -ntlp | grep :3306]
+      interval: 10s
+      timeout: 2s
+      retries: 3
