@@ -1,0 +1,31 @@
+  mariadb:
+    image: linuxserver/mariadb
+    container_name: mariadb
+    hostname: mariadb
+    domainname: ${MYDOMAIN}
+    restart: always
+    depends_on:
+      - traefik
+    volumes:
+      - ${CONFIGS}/Mariadb:/config
+      - /etc/localtime:/etc/localtime:ro
+      - /bin/netstat:/bin/netstat:ro
+    networks:
+      - Gooby
+    ports:
+      - target: 3306
+        published: 3306
+        protocol: tcp
+        mode: host
+    environment:
+      - MYSQL_ROOT_PASSWORD=[yourpasswordhere]
+      - PUID=${USERID}
+      - PGID=${GROUPID}
+      - TZ=${TIMEZONE}
+    labels:
+      - "omni=mariadb,${MYDOMAIN},yes,yes,no"
+    healthcheck:
+      test: ["CMD-SHELL", "netstat -ntlp | grep :3306"]
+      interval: 10s
+      timeout: 2s
+      retries: 3
