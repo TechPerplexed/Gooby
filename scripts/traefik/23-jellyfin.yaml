@@ -1,29 +1,26 @@
 #
-# Plex - Media streaming server
+# Jellyfin - The Free Software Media System
 #
-  plex:
-    image: plexinc/pms-docker
-    #image: linuxserver/plex
-    container_name: plex
-    hostname: plex
+  jellyfin:
+    image: jellyfin/jellyfin
+    container_name: jellyfin
+    hostname: jellyfin
     domainname: ${MYDOMAIN}
     restart: unless-stopped
     depends_on:
       traefik:
         condition: service_healthy
     environment:
-      - ADVERTISE_IP=https://plex.${MYDOMAIN}
-      - PUID=${USERID}
-      - PGID=${GROUPID}
-      - TZ=${TIMEZONE}
-      - VERSION=latest
-      - UMASK_SET=022
+      - ADVERTISE_IP=https://jellyfin.${MYDOMAIN}
+      - UID=${USERID}
+      - GID=${GROUPID}
+      - GIDLIST=${GPUGIDS}
     labels:
       - "traefik.enable=true"
-      - "traefik.backend=plex"
-      - "traefik.frontend.rule=Host:plex.${MYDOMAIN}"
-      - "traefik.port=32400"
-      - "traefik.protocol=https"
+      - "traefik.backend=jellyfin"
+      - "traefik.frontend.rule=Host:jellyfin.${MYDOMAIN}"
+      - "traefik.port=8096"
+      - "traefik.protocol=http"
       - "traefik.docker.network=gooby"
       - "traefik.frontend.headers.SSLRedirect=true"
       - "traefik.frontend.headers.STSSeconds=315360000"
@@ -35,20 +32,19 @@
       - "traefik.frontend.headers.STSPreload=true"
       - "traefik.frontend.headers.frameDeny=true"
     volumes:
-      - /etc/localtime:/etc/localtime:ro
-      - ${CONFIGS}/Plex:/config
-      - /tmp:/transcode
-      - /bin/netstat:/bin/netstat:ro
+      - ${CONFIGS}/Jellyfin:/config
       - ${MEDIA}:/Media
+      - /etc/localtime:/etc/localtime:ro
+      - /tmp:/cache
 #    devices:
 #      - /dev/dri:/dev/dri
     networks:
-      - gooby
+      - Gooby
     cpu_shares: 8192
     blkio_config:
       weight: 600
     healthcheck:
-      test: ["CMD-SHELL", "netstat -ntlp | grep :32400 && mountpoint /Media"]
+      test: ["CMD-SHELL", "netstat -ntlp | grep :8920"]
       interval: 10s
       timeout: 2s
       retries: 3

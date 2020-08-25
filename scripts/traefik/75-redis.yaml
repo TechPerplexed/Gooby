@@ -1,0 +1,52 @@
+  redis:
+    image: redis:latest
+    container_name: redis
+    hostname: redis
+    domainname: ${MYDOMAIN}
+    restart: always
+    depends_on:
+      - traefik
+    networks:
+      - Gooby
+    ports:
+      - "6379:6379"
+    volumes:
+      - ${CONFIGS}/Redis:/data
+      - /etc/localtime:/etc/localtime:ro
+      - /bin/netstat:/bin/netstat:ro
+    labels:
+      - "omni=redis,${MYDOMAIN},no,no,no"
+    healthcheck:
+      test: ["CMD-SHELL", "netstat -ntlp | grep :6379"]
+      interval: 10s
+      timeout: 2s
+      retries: 3
+
+  redis-commander:
+    image: rediscommander/redis-commander:latest
+    container_name: redis-commander
+    hostname: redis-commander
+    domainname: ${MYDOMAIN}
+    restart: always
+    depends_on:
+      - traefik
+    networks:
+      - Gooby
+    environment:
+    - REDIS_HOSTS=local:redis:6379
+    labels:
+      - "omni=redis-commander,${MYDOMAIN},yes,yes,yes"
+      - "traefik.enable=true"
+      ## HTTP Routers
+      - "traefik.http.routers.redis-rtr.entrypoints=https"
+      - "traefik.http.routers.redis-rtr.rule=Host(`redis-commander.${MYDOMAIN}`)"
+      ## Middlewares
+      - "traefik.http.routers.redis-rtr.middlewares=chain-oauth@file"
+      ## HTTP Services
+      - "traefik.http.routers.redis-rtr.service=redis-svc"
+      - "traefik.http.services.redis-svc.loadbalancer.server.port=8081"
+    healthcheck:
+      test: ["CMD-SHELL", "netstat -ntlp | grep :8081"]
+      interval: 10s
+      timeout: 2s
+      retries: 3

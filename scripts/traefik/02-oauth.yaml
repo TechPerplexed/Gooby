@@ -1,0 +1,37 @@
+#
+# OAuth - Forward Authentication
+#
+  oauth:
+    image: thomseddon/traefik-forward-auth:latest
+    container_name: oauth
+    hostname: oauth
+    domainname: ${MYDOMAIN}
+    restart: unless-stopped
+    networks:
+      - Gooby
+    security_opt:
+      - no-new-privileges:true
+    environment:
+      PROVIDERS_GOOGLE_CLIENT_ID: "<googleclientidhere>"
+      PROVIDERS_GOOGLE_CLIENT_SECRET: "<googleclientsecrethere>"
+      SECRET: <insertsecret>
+      COOKIE_DOMAIN: ${MYDOMAIN}
+      INSECURE_COOKIE: "false"
+      AUTH_HOST: oauth.${MYDOMAIN}
+      URL_PATH: /_oauth
+      WHITELIST: "<youremail>"
+      LOG_LEVEL: info
+      LIFETIME: 2592000 # 30 days
+      DEFAULT_ACTION: auth
+      DEFAULT_PROVIDER: google
+    labels:
+      - "omni=oauth,${MYDOMAIN},yes,yes,yes"
+      - "traefik.enable=true"
+      ## HTTP Routers
+      - "traefik.http.routers.oauth-rtr.entrypoints=https"
+      - "traefik.http.routers.oauth-rtr.rule=Host(`oauth.${MYDOMAIN}`)"
+      ## Middlewares
+      - "traefik.http.routers.oauth-rtr.middlewares=chain-oauth@file" 
+      ## HTTP Services
+      - "traefik.http.routers.oauth-rtr.service=oauth-svc"
+      - "traefik.http.services.oauth-svc.loadbalancer.server.port=4181"

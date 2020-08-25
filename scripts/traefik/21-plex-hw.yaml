@@ -1,8 +1,9 @@
 #
-# Plex - Media streaming server beta
+# Plex - Media streaming server with Intel hardware GPU
 #
   plex:
-    image: plexinc/pms-docker:beta
+    privileged: true
+    image: plexinc/pms-docker
     #image: linuxserver/plex
     container_name: plex
     hostname: plex
@@ -40,10 +41,10 @@
       - /tmp:/transcode
       - /bin/netstat:/bin/netstat:ro
       - ${MEDIA}:/Media
-#    devices:
-#      - /dev/dri:/dev/dri
+    devices:
+      - /dev/dri:/dev/dri
     networks:
-      - gooby
+      - Gooby
     cpu_shares: 8192
     blkio_config:
       weight: 600

@@ -54,7 +54,7 @@ postgres:
       - PHP_PG_ADMIN_HELP_BASE=http://www.postgresql.org/docs/%s/interactive/
       - PHP_PG_ADMIN_AJAX_REFRESH=3
     networks:
-      - gooby
+      - Gooby
     labels:
       - "traefik.enable=true"
       - "traefik.backend=pgadmin"

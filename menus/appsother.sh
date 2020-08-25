@@ -9,7 +9,7 @@ NETDATA(){
 	TASK=Netdata
 	APP=netdata
 	APPTYPE=app
-	APPLOC=02-netdata
+	APPLOC=62-netdata
 	OLDLOC=/noupgradepathprovided
 	source /opt/Gooby/menus/apps.sh
 }
@@ -18,7 +18,7 @@ ORGANIZR(){
 	TASK=Organizr
 	APP=organizr
 	APPTYPE=app
-	APPLOC=03-organizr
+	APPLOC=11-organizr
 	OLDLOC=/noupgradepathprovided
 	source /opt/Gooby/menus/apps.sh
 }
@@ -27,7 +27,7 @@ OMBI(){
 	TASK=Ombi
 	APP=ombi
 	APPTYPE=app
-	APPLOC=60-ombi
+	APPLOC=12-ombi
 	OLDLOC=/opt/Ombi/
 	source /opt/Gooby/menus/apps.sh
 }
@@ -36,16 +36,16 @@ PORTAINER(){
 	TASK=Portainer
 	APP=portainer
 	APPTYPE=app
-	APPLOC=10-portainer
+	APPLOC=64-portainer
 	OLDLOC=/noupgradepathprovided
 	source /opt/Gooby/menus/apps.sh
 }
 
-WATCHTOWER(){
-	TASK=Watchtower
-	APP=watchtower
+APACHE(){
+	TASK=Apache
+	APP=apache
 	APPTYPE=app
-	APPLOC=04-watchtower
+	APPLOC=81-phpapache
 	OLDLOC=/noupgradepathprovided
 	source /opt/Gooby/menus/apps.sh
 }
@@ -64,7 +64,7 @@ show_menus() {
 	echo " ${COLOUR}B${STD} - Organizr"
 	echo " ${COLOUR}C${STD} - Ombi"
 	echo " ${COLOUR}D${STD} - Portainer"
-	echo " ${COLOUR}E${STD} - Watchtower"
+	echo " ${COLOUR}E${STD} - PHP Apache"
 	echo " ${WHITE}Z${STD} - EXIT to Main Menu"
 	echo " ${COLOUR}"
 	MENUEND
@@ -80,7 +80,7 @@ read_options(){
 		[Bb]) ORGANIZR ;;
 		[Cc]) OMBI ;;
 		[Dd]) PORTAINER ;;
-		[Ee]) WATCHTOWER ;;
+		[Ee]) APACHE ;;
 		[Zz]) QUIT ;;
 		*) echo "${LRED}Please select a valid option${STD}" && sleep 1
 	esac

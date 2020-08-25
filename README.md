@@ -11,9 +11,9 @@ Run on Ubuntu or Debian with this command:
 
 ## Supported Apps:
 
-One click installation of **Rclone**, **Plex**, **Tautulli**, **Emby**, **Sonarr**, **Radarr**, **Deluge**, **NZBGet**, **Jackett**, **Netdata**, **Organizr**, **Ombi** and **Portainer**.
+One click installation of **Rclone**, **Plex**, **Tautulli**, **Emby**, **Jellyfin**, **Sonarr**, **Radarr**, **Deluge**, **NZBGet**, **Jackett**, **Netdata**, **Organizr**, **Ombi**, **Portainer** and **Apache web server**.
 
-**Lidarr**, **Jellyfin**, **RuTorrent**, **SABnzbd**, **Radarr4k**, **Monitorr**, **PostgreSQL**, **Apache web server** and **Watchtower** are available through self installation.
+**Lidarr**, **RuTorrent**, **SABnzbd**, **Radarr4k**, **Monitorr**, **NextCloud**, **MySQL**, **MariaDB**, **PostgreSQL** and numerous other Docker images are available through self installation.
 
 ## Disclaimer:
 
