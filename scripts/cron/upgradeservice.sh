@@ -28,7 +28,6 @@ else
 	[[ -f ${CONFIGS}/Docker/components/20-plex-hw.yaml ]] && sudo mv ${CONFIGS}/Docker/components/20-plex-hw.yaml ${CONFIGS}/Docker/components/21-plex-hw.yaml
 	[[ -f ${CONFIGS}/Docker/components/20-plex.yaml ]] && sudo mv ${CONFIGS}/Docker/components/20-plex.yaml ${CONFIGS}/Docker/components/21-plex.yaml
 	[[ -f ${CONFIGS}/Docker/components/24-jellyfin.yaml ]] && sudo mv ${CONFIGS}/Docker/components/24-jellyfin.yaml ${CONFIGS}/Docker/components/23-jellyfin.yaml
-	[[ -f ${CONFIGS}/Docker/components/25-tautulli.yaml ]] && sudo mv ${CONFIGS}/Docker/components/25-tautulli.yaml ${CONFIGS}/Docker/components/25-tautulli.yaml
 	[[ -f ${CONFIGS}/Docker/components/30-nzbget.yaml ]] && sudo mv ${CONFIGS}/Docker/components/30-nzbget.yaml ${CONFIGS}/Docker/components/31-nzbget.yaml
 	[[ -f ${CONFIGS}/Docker/components/33-sabnzbd.yaml ]] && sudo mv ${CONFIGS}/Docker/components/33-sabnzbd.yaml ${CONFIGS}/Docker/components/32-sabnzbd.yaml
 	[[ -f ${CONFIGS}/Docker/components/40-deluge.yaml ]] && sudo mv ${CONFIGS}/Docker/components/40-deluge.yaml ${CONFIGS}/Docker/components/41-deluge.yaml
