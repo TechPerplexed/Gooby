@@ -27,12 +27,8 @@ else
 	[[ -f ${CONFIGS}/Docker/components/20-plex-beta.yaml ]] && sudo mv ${CONFIGS}/Docker/components/20-plex-beta.yaml ${CONFIGS}/Docker/components/21-plex-beta.yaml
 	[[ -f ${CONFIGS}/Docker/components/20-plex-hw.yaml ]] && sudo mv ${CONFIGS}/Docker/components/20-plex-hw.yaml ${CONFIGS}/Docker/components/21-plex-hw.yaml
 	[[ -f ${CONFIGS}/Docker/components/20-plex.yaml ]] && sudo mv ${CONFIGS}/Docker/components/20-plex.yaml ${CONFIGS}/Docker/components/21-plex.yaml
-	[[ -f ${CONFIGS}/Docker/components/22-emby-beta.yaml ]] && sudo mv ${CONFIGS}/Docker/components/22-emby-beta.yaml ${CONFIGS}/Docker/components/22-emby-beta.yaml
-	[[ -f ${CONFIGS}/Docker/components/22-emby-hw.yaml ]] && sudo mv ${CONFIGS}/Docker/components/22-emby-hw.yaml ${CONFIGS}/Docker/components/22-emby-hw.yaml
-	[[ -f ${CONFIGS}/Docker/components/22-emby.yaml ]] && sudo mv ${CONFIGS}/Docker/components/22-emby.yaml ${CONFIGS}/Docker/components/22-emby.yaml
 	[[ -f ${CONFIGS}/Docker/components/24-jellyfin.yaml ]] && sudo mv ${CONFIGS}/Docker/components/24-jellyfin.yaml ${CONFIGS}/Docker/components/23-jellyfin.yaml
 	[[ -f ${CONFIGS}/Docker/components/25-tautulli.yaml ]] && sudo mv ${CONFIGS}/Docker/components/25-tautulli.yaml ${CONFIGS}/Docker/components/25-tautulli.yaml
-	[[ -f ${CONFIGS}/Docker/components/26-embystat.yaml ]] && sudo mv ${CONFIGS}/Docker/components/26-embystat.yaml ${CONFIGS}/Docker/components/26-embystat.yaml
 	[[ -f ${CONFIGS}/Docker/components/30-nzbget.yaml ]] && sudo mv ${CONFIGS}/Docker/components/30-nzbget.yaml ${CONFIGS}/Docker/components/31-nzbget.yaml
 	[[ -f ${CONFIGS}/Docker/components/33-sabnzbd.yaml ]] && sudo mv ${CONFIGS}/Docker/components/33-sabnzbd.yaml ${CONFIGS}/Docker/components/32-sabnzbd.yaml
 	[[ -f ${CONFIGS}/Docker/components/40-deluge.yaml ]] && sudo mv ${CONFIGS}/Docker/components/40-deluge.yaml ${CONFIGS}/Docker/components/41-deluge.yaml
@@ -42,7 +38,6 @@ else
 	[[ -f ${CONFIGS}/Docker/components/50-radarr.yaml ]] && sudo mv ${CONFIGS}/Docker/components/50-radarr.yaml ${CONFIGS}/Docker/components/51-radarr.yaml
 	[[ -f ${CONFIGS}/Docker/components/51-radarr4k-beta.yaml ]] && sudo mv ${CONFIGS}/Docker/components/51-radarr4k-beta.yaml ${CONFIGS}/Docker/components/59-radarr4k-beta.yaml
 	[[ -f ${CONFIGS}/Docker/components/51-radarr4k.yaml ]] && sudo mv ${CONFIGS}/Docker/components/51-radarr4k.yaml ${CONFIGS}/Docker/components/59-radarr4k.yaml
-	[[ -f ${CONFIGS}/Docker/components/52-sonarr.yaml ]] && sudo mv ${CONFIGS}/Docker/components/52-sonarr.yaml ${CONFIGS}/Docker/components/52-sonarr.yaml
 	[[ -f ${CONFIGS}/Docker/components/54-lidarr.yaml ]] && sudo mv ${CONFIGS}/Docker/components/54-lidarr.yaml ${CONFIGS}/Docker/components/53-lidarr.yaml
 	[[ -f ${CONFIGS}/Docker/components/60-ombi.yaml ]] && sudo mv ${CONFIGS}/Docker/components/60-ombi.yaml ${CONFIGS}/Docker/components/12-ombi.yaml
 	[[ -f ${CONFIGS}/Docker/components/65-monitorr.yaml ]] && sudo mv ${CONFIGS}/Docker/components/65-monitorr.yaml ${CONFIGS}/Docker/components/13-monitorr.yaml
