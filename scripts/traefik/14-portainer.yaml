@@ -17,8 +17,8 @@
       - /var/run/docker.sock:/var/run/docker.sock
       - ${CONFIGS}/Portainer:/data
     environment:
-      - VIRTUAL_HOST=portainer2.${MYDOMAIN}
+      - VIRTUAL_HOST=portainer.${MYDOMAIN}
       - VIRTUAL_NETWORK=nginx-proxy
       - VIRTUAL_PORT=9000
-      - LETSENCRYPT_HOST=portainer2.${MYDOMAIN}
+      - LETSENCRYPT_HOST=portainer.${MYDOMAIN}
       - LETSENCRYPT_EMAIL=${MYEMAIL}
