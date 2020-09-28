@@ -3,7 +3,7 @@
 #
   radarr:
     restart: unless-stopped
-    image: linuxserver/radarr:preview
+    image: linuxserver/radarr:nightly
     container_name: radarr
     hostname: radarr
     cpu_shares: 2048
