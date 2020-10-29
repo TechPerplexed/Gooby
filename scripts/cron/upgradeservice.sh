@@ -48,7 +48,7 @@ else
 
 	# Finalizing upgrade
 
-	echo; echo "${GREEN}Upgrade to v${VERSION} complete... prodeeding${STD}"; echo
+	echo; echo "${GREEN}Upgrade to v${VERSION} complete... proceeding${STD}"; echo
 
 fi
 
