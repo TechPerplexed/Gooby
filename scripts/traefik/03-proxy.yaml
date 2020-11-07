@@ -18,7 +18,7 @@
       - "traefik.backend=traefik"
       - "traefik.frontend.rule=Host:traefik.${MYDOMAIN}"
       - "traefik.port=8080"
-      - "traefik.docker.network=gooby"
+      - "traefik.docker.network=Gooby"
       - "traefik.frontend.headers.SSLRedirect=true"
       - "traefik.frontend.headers.STSSeconds=315360000"
       - "traefik.frontend.headers.browserXSSFilter=true"
@@ -33,7 +33,7 @@
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - ${CONFIGS}/Docker/traefik:/etc/traefik
     networks:
-      - gooby
+      - Gooby
     healthcheck:
       test: ["CMD-SHELL", "netstat -ntlp | grep :443"]
       interval: 10s
