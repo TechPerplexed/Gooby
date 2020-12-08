@@ -32,6 +32,7 @@
       - ACME_CA_URI=https://acme-v02.api.letsencrypt.org/directory
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ${CONFIGS}/Docker/acme.sh:/etc/acme.sh
     volumes_from:
       - nginx-proxy
     healthcheck:
