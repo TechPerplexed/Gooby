@@ -3,7 +3,7 @@
 #
   Organizr:
     restart: always
-    image: lsiocommunity/organizr:latest
+    image: organizr/organizr:latest
     container_name: organizr
     hostname: ${ORGMENU}
     depends_on:
