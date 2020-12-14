@@ -1,5 +1,5 @@
 #
-# Autoheal - Repear corrupt containers automatically
+# Autoheal - Repair corrupt containers automatically
 #
   autoheal:
     restart: unless-stopped
