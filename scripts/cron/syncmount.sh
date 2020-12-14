@@ -7,6 +7,19 @@ fi
 source /opt/Gooby/menus/variables.sh
 source ${CONFIGS}/Docker/.env
 
+# Are mounts truly up?
+mountpoint ${RCLONEMOUNT} > /dev/null
+CODE=${?}
+mountpoint ${MOUNTTO} > /dev/null
+CODE=$[${CODE}+${?}]
+
+if [ ${CODE} -ne 0 ]
+then
+	# Not every mount is up. Don't continue.
+	echo Not everything mounted. Exiting.
+	exit 1
+fi
+
 # Check to see if anything needs to be cached locally.  Doing this before the sync allows new files to be copied locally first.
 
 [ -f ${HOME}/bin/localcache ] && ${HOME}/bin/localcache
