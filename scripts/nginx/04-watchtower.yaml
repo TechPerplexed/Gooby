@@ -9,3 +9,5 @@
     domainname: ${MYDOMAIN}
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - WATCHTOWER_SCHEDULE="0 0 1 * * *"
