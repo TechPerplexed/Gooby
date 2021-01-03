@@ -16,7 +16,7 @@
       redis:
         condition: service_started
     volumes:
-      - ${CONFIGS}/NextCloud:/var/www/html
+      - ${CONFIGS}/Nextcloud:/var/www/html
       - ${MEDIA}:/Media
       - /etc/localtime:/etc/localtime:ro
       - /bin/netstat:/bin/netstat:ro
