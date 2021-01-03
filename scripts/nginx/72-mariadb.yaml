@@ -1,4 +1,22 @@
+
 #
 # MariaDB - MariaDB database server
 #
-# Coming soon
+  mariadb:
+    restart: unless-stopped
+    image: linuxserver/mariadb
+    container_name: mariadb
+    hostname: mariadb
+    volumes:
+      - ${CONFIGS}/MariaDB:/config
+      - /etc/localtime:/etc/localtime:ro
+      - /bin/netstat:/bin/netstat:ro
+    environment:
+      - MYSQL_ROOT_PASSWORD=<setyourownpassword>
+    ports:
+      - 3306:3306
+    healthcheck:
+      test: ["CMD-SHELL", "netstat -ntlp | grep :3306"]
+      interval: 10s
+      timeout: 2s
+      retries: 3
