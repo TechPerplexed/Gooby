@@ -1,4 +1,37 @@
 #
 # NextCloud - Self hosted cloud
 #
-# Coming soon
+  nextcloud:
+    restart: unless-stopped
+    image: nextcloud:latest
+    container_name: nextcloud
+    hostname: nextcloud
+    depends_on:
+      nginx-proxy:
+        condition: service_healthy
+      letsencrypt-nginx-proxy-companion:
+        condition: service_started
+      mariadb:
+        condition: service_started
+      redis:
+        condition: service_started
+    volumes:
+      - ${CONFIGS}/NextCloud:/var/www/html
+      - ${MEDIA}:/Media
+      - /etc/localtime:/etc/localtime:ro
+      - /bin/netstat:/bin/netstat:ro
+    environment:
+      - PGID=${GROUPID}
+      - PUID=${USERID}
+      - TZ=${TIMEZONE}
+      - REDIS_HOST=redis
+      - VIRTUAL_HOST=nextcloud.${MYDOMAIN}
+      - VIRTUAL_PORT=80
+      - VIRTUAL_NETWORK=nginx-proxy
+      - LETSENCRYPT_HOST=nextcloud.${MYDOMAIN}
+      - LETSENCRYPT_EMAIL=${MYEMAIL}
+    healthcheck:
+      test: ["CMD-SHELL", "netstat -ntlp | grep :80"]
+      interval: 10s
+      timeout: 2s
+      retries: 3
