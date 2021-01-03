@@ -1,16 +1,10 @@
-
 #
 # Redis - Redis database server
 #
   redis:
-    restart: always
+    restart: unless-stopped
     image: redis:latest
     container_name: redis
-    depends_on:
-      nginx-proxy:
-        condition: service_healthy
-      letsencrypt-nginx-proxy-companion:
-        condition: service_started
     hostname: redis
     volumes:
       - ${CONFIGS}/Redis:/data
@@ -21,22 +15,17 @@
       - PGID=${GROUPID}
       - TZ=${TIMEZONE}
     ports:
-      - "6379:6379"
+      - 6379:6379
     healthcheck:
-      test: ["CMD-SHELL", "netstat -ntlp | grep :6379]
+      test: ["CMD-SHELL", "netstat -ntlp | grep :6379"]
       interval: 10s
       timeout: 2s
       retries: 3
 
   redis-commander:
-    restart: always
+    restart: unless-stopped
     image: rediscommander/redis-commander:latest
     container_name: redis-commander
-    depends_on:
-      nginx-proxy:
-        condition: service_healthy
-      letsencrypt-nginx-proxy-companion:
-        condition: service_started
     hostname: redis
     volumes:
       - ${CONFIGS}/Redis:/data
@@ -45,9 +34,9 @@
     environment:
       - REDIS_HOSTS=local:redis:6379
     ports:
-      - "6379:6379"
+      - 6379:6379
     healthcheck:
-      test: ["CMD-SHELL", "netstat -ntlp | grep :8081]
+      test: ["CMD-SHELL", "netstat -ntlp | grep :8081"]
       interval: 10s
       timeout: 2s
       retries: 3
