@@ -6,7 +6,7 @@ The main [Tutorial](http://bit.ly/Tech_Perplexed "How to create an infinite medi
 
 ## Installation:
 
-Run on Ubuntu or Debian with this command:  
+Run on Debian (our preferred distro) with this command:  
 `sudo wget http://bit.ly/GetGooby -O /tmp/install.sh && sudo bash /tmp/install.sh`
 
 ## Supported Apps:
