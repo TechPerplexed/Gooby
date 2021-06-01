@@ -29,7 +29,7 @@
       - PUID=${USERID}
       - TZ=${TIMEZONE}
       - VIRTUAL_HOST=radarr4k.${MYDOMAIN}
-      - VIRTUAL_PORT=7879
+#      - VIRTUAL_PORT=7879
       - VIRTUAL_NETWORK=nginx-proxy
       - LETSENCRYPT_HOST=radarr4k.${MYDOMAIN}
       - LETSENCRYPT_EMAIL=${MYEMAIL}
