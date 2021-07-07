@@ -3,7 +3,7 @@
 #
   portainer:
     restart: always
-    image: portainer/portainer
+    image: portainer/portainer-ce
     container_name: portainer
     hostname: portainer
     cpu_shares: 1024
