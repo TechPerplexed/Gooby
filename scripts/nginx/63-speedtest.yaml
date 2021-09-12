@@ -1,1 +1,23 @@
-
+#
+# Speed test server (web based) for testing server to client speeds
+#
+  speedtest:
+    restart: always
+    image: openspeedtest/latest
+    container_name: speedtest
+    hostname: speedtest.${MYDOMAIN}
+    depends_on:
+      nginx-proxy:
+        condition: service_healthy
+    environment:
+      - TZ=${TIMEZONE}
+      - VIRTUAL_HOST=speedtest.${MYDOMAIN}
+      - VIRTUAL_PORT=3000
+      - VIRTUAL_NETWORK=nginx-proxy
+      - LETSENCRYPT_HOST=speedtest.${MYDOMAIN}
+      - LETSENCRYPT_EMAIL=${MYEMAIL}
+    healthcheck:
+      test: ["CMD-SHELL", "netstat -ntlp | grep :3000"]
+      interval: 10s
+      timeout: 2s
+      retries: 3
