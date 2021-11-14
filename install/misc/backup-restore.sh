@@ -64,17 +64,17 @@ else
 				/usr/bin/rclone --stats-one-line -P copy ${RCLONESERVICE}:/Backup/${SERVER}/Gooby ${RESTOREFOLDER} --checksum --drive-chunk-size=64M
 				[ -f ${RESTOREFOLDER}/Docker-full.tar.gz ] || { echo; echo " ${LRED}Sorry, backup not found on ${RCLONESERVICE}!${STD} - please try again"; PAUSE; exit ;}
 				sudo mv ${CONFIGS}/[^.]* ${OLDFILES}
-				sudo rm "${CONFIGVARS}/snapshots/*.snar" > /dev/null 2>&1
+				sudo rm -r "${CONFIGVARS}/snapshots/*.snar"
 
 			else
 
 				echo "+ ${APPNAME}*" > ${CONFIGVARS}/checkapp.txt
 				echo "- *" >> ${CONFIGVARS}/checkapp.txt
 				/usr/bin/rclone --stats-one-line -P copy ${RCLONESERVICE}:/Backup/${SERVER}/Gooby --filter-from ${CONFIGVARS}/checkapp.txt ${RESTOREFOLDER} --checksum --drive-chunk-size=64M
-				rm ${CONFIGVARS}/checkapp.txt
+				rm -r ${CONFIGVARS}/checkapp.txt
 				[ -f ${RESTOREFOLDER}/${APPNAME}-full.tar.gz ] || { echo; echo " ${LRED}Sorry, backup not found on ${RCLONESERVICE}!${STD}, please try again"; PAUSE; exit ;}
 				sudo mv ${CONFIGS}/${APPNAME}/ ${OLDFILES}
-				sudo rm "${CONFIGVARS}/snapshots/${APPNAME}.snar" /dev/null 2>&1
+				sudo rm -r "${CONFIGVARS}/snapshots/${APPNAME}.snar"
 
 			fi
 
@@ -123,11 +123,6 @@ else
 			mkdir -p ${CONFIGVARS}/snapshots
 			source /bin/resetbackup
 
-			cd ${CONFIGS}/Docker
-			source /opt/Gooby/install/misc/environment-build.sh rebuild
-			/usr/local/bin/docker-compose up -d --remove-orphans ${@:2}
-			cd ${CURDIR}
-
 			echo " ${GREEN}Restoring permissions, please wait...${STD}"
 			echo
 			sudo chown ${USER}:${USER} ${CONFIGS}
@@ -140,6 +135,7 @@ else
 			echo " ${WHITE}Make sure${STD} you check if your services are"
 			echo " running properly before you remove the old installation!"
 			echo
+			echo " Run ${WHITE}rclean${STD} to bring up all containers again"
 			read -n 1 -r -p " Remove old installation files (Y/n)? " -i "" CHOICE
 			echo
 
@@ -162,6 +158,6 @@ else
 
 fi
 
-rm ${CONFIGVARS}/checkapp.txt 2>/dev/null;
+rm -r ${CONFIGVARS}/checkapp.txt
 
 PAUSE
