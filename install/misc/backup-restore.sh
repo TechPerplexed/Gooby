@@ -136,17 +136,17 @@ else
 			echo " running properly before you remove the old installation!"
 			echo
 			echo " Run ${WHITE}rclean${STD} to bring up all containers again"
-			read -n 1 -r -p " Remove old installation files (Y/n)? " -i "" CHOICE
+			read -n 1 -r -p " Remove old installation files (y/N)? " -i "" CHOICE
 			echo
 
 			case "${CHOICE}" in
-				y|Y ) sudo rm -r ${OLDFILES} ;;
+				y|Y ) sudo rm -f ${OLDFILES} ;;
 				* ) echo " Your old installation files are available"; echo " at ${OLDFILES} until you reboot"; echo ;;
 			esac
 
 		fi
 
-			sudo rm -r ${RESTOREFOLDER}
+			sudo rm -f ${RESTOREFOLDER}
 
 		TASKCOMPLETE
 
@@ -158,6 +158,6 @@ else
 
 fi
 
-rm -r ${CONFIGVARS}/checkapp.txt
+rm -f ${CONFIGVARS}/checkapp.txt
 
 PAUSE
