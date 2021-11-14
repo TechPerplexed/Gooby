@@ -64,17 +64,17 @@ else
 				/usr/bin/rclone --stats-one-line -P copy ${RCLONESERVICE}:/Backup/${SERVER}/Gooby ${RESTOREFOLDER} --checksum --drive-chunk-size=64M
 				[ -f ${RESTOREFOLDER}/Docker-full.tar.gz ] || { echo; echo " ${LRED}Sorry, backup not found on ${RCLONESERVICE}!${STD} - please try again"; PAUSE; exit ;}
 				sudo mv ${CONFIGS}/[^.]* ${OLDFILES}
-				sudo rm -r "${CONFIGVARS}/snapshots/*.snar"
+				sudo rm -f "${CONFIGVARS}/snapshots/*.snar"
 
 			else
 
 				echo "+ ${APPNAME}*" > ${CONFIGVARS}/checkapp.txt
 				echo "- *" >> ${CONFIGVARS}/checkapp.txt
 				/usr/bin/rclone --stats-one-line -P copy ${RCLONESERVICE}:/Backup/${SERVER}/Gooby --filter-from ${CONFIGVARS}/checkapp.txt ${RESTOREFOLDER} --checksum --drive-chunk-size=64M
-				rm -r ${CONFIGVARS}/checkapp.txt
+				rm -f ${CONFIGVARS}/checkapp.txt
 				[ -f ${RESTOREFOLDER}/${APPNAME}-full.tar.gz ] || { echo; echo " ${LRED}Sorry, backup not found on ${RCLONESERVICE}!${STD}, please try again"; PAUSE; exit ;}
 				sudo mv ${CONFIGS}/${APPNAME}/ ${OLDFILES}
-				sudo rm -r "${CONFIGVARS}/snapshots/${APPNAME}.snar"
+				sudo rm -f "${CONFIGVARS}/snapshots/${APPNAME}.snar"
 
 			fi
 
