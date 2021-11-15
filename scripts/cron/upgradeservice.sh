@@ -1,6 +1,6 @@
 #!/bin/bash
 
-VERSION=2.2.2
+VERSION=2.2.3
 
 CONFIGVARS=${CONFIGS}/Docker/.config
 sudo mkdir -p ${CONFIGVARS}
@@ -17,6 +17,7 @@ else
 
 	# Pull latest Docker Compose
 
+	COMPOSE_VERSION=$(curl -s https://api.github.com/repos/docker/compose/releases/latest | grep 'tag_name' | cut -d\" -f4)
 	sudo sh -c "curl -L https://github.com/docker/compose/releases/download/${COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose"
 	sudo chmod +x /usr/local/bin/docker-compose
 
