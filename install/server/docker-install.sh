@@ -23,6 +23,8 @@ sudo sh -c "curl -L https://github.com/docker/compose/releases/download/${COMPOS
 sudo chmod +x /usr/local/bin/docker-compose
 # sudo sh -c "curl -L https://raw.githubusercontent.com/docker/compose/${COMPOSE_VERSION}/contrib/completion/bash/docker-compose > /etc/bash_completion.d/docker-compose"
 
+# Set permissions
+
 sudo usermod -aG docker ${USER}
 sudo gpasswd -a ${USER} docker 
 sudo setfacl -m user:${USER}:rw /var/run/docker.sock
