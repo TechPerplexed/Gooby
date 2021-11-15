@@ -6,14 +6,14 @@ The main [Tutorial](http://bit.ly/Tech_Perplexed "How to create an infinite medi
 
 ## Installation:
 
-Run on Debian 10 (our preferred distro) with this command:  
+Run a 'root' on Debian 10 (our preferred distro) with this command:
 `sudo wget http://bit.ly/GetGooby -O /tmp/install.sh && sudo bash /tmp/install.sh`
 
 ## Supported Apps:
 
 One click installation of **Rclone**, **Plex**, **Tautulli**, **Emby**, **Jellyfin**, **Sonarr**, **Radarr**, **Deluge**, **NZBGet**, **Jackett**, **Netdata**, **Organizr**, **Ombi**, **Portainer** and **Apache web server**.
 
-**Lidarr**, **RuTorrent**, **SABnzbd**, **Radarr4k**, **Monitorr**, **NextCloud**, **MySQL**, **MariaDB**, **PostgreSQL** and numerous other Docker images are available through self installation.
+**Lidarr**, **RuTorrent**, **SABnzbd**, **Monitorr**, **NextCloud**, **MySQL**, **MariaDB**, **PostgreSQL** and numerous other Docker images are available through self installation.
 
 ## Disclaimer:
 
