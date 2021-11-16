@@ -31,7 +31,6 @@ else
 	echo "/mnt/local" > ${CONFIGVARS}/unsynced
 	echo "/mnt/uploads" > ${CONFIGVARS}/uploads
 
-
 	# Finalizing upgrade
 
 	echo; echo "${GREEN}Upgrade to v${VERSION} complete... proceeding${STD}"; echo
