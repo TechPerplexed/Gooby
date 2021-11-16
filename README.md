@@ -6,7 +6,7 @@ The main [Tutorial](http://bit.ly/Tech_Perplexed "How to create an infinite medi
 
 ## Installation:
 
-Run a 'root' on Debian 10 (our preferred distro) with this command:
+Run as 'root' on Debian 10 (our preferred distro) with this command:
 `sudo wget http://bit.ly/GetGooby -O /tmp/install.sh && sudo bash /tmp/install.sh`
 
 ## Supported Apps:
