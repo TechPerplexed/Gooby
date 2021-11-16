@@ -21,7 +21,7 @@ else
 	sudo sh -c "curl -L https://github.com/docker/compose/releases/download/${COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose"
 	sudo chmod +x /usr/local/bin/docker-compose
 	
-	# Everything will be a variable soon
+	# Parameterize everything
 	
 	[[ ! -f ${CONFIGVARS}/media ]] && echo "/mnt/google" > ${CONFIGVARS}/media
 	[[ ! -f ${CONFIGVARS}/mediadata ]] && echo "Media" > ${CONFIGVARS}/mediadata
