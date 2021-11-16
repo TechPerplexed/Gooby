@@ -23,13 +23,13 @@ else
 	
 	# Everything will be a variable soon
 	
-	echo "/mnt/google" > ${CONFIGVARS}/media
-	echo "Media" > ${CONFIGVARS}/mediadata
-	echo "/mnt/rclone" > ${CONFIGVARS}/rclonemount
-	echo "Go0by" > ${CONFIGVARS}/rclonepassword
-	echo "gooby" > ${CONFIGVARS}/rcloneusername
-	echo "/mnt/local" > ${CONFIGVARS}/unsynced
-	echo "/mnt/uploads" > ${CONFIGVARS}/uploads
+	[[ ! -f ${CONFIGVARS}/media ]] && echo "/mnt/google" > ${CONFIGVARS}/media
+	[[ ! -f ${CONFIGVARS}/mediadata ]] && echo "Media" > ${CONFIGVARS}/mediadata
+	[[ ! -f ${CONFIGVARS}/rclonemount ]] && echo "/mnt/rclone" > ${CONFIGVARS}/rclonemount
+	[[ ! -f ${CONFIGVARS}/rclonepassword ]] && echo "Go0by" > ${CONFIGVARS}/rclonepassword
+	[[ ! -f ${CONFIGVARS}/rcloneusername ]] && echo "gooby" > ${CONFIGVARS}/rcloneusername
+	[[ ! -f ${CONFIGVARS}/unsynced ]] && echo "/mnt/local" > ${CONFIGVARS}/unsynced
+	[[ ! -f ${CONFIGVARS}/uploads ]] && echo "/mnt/uploads" > ${CONFIGVARS}/uploads
 
 	# Finalizing upgrade
 
