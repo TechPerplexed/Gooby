@@ -1,5 +1,5 @@
 version: "3.9"
   #
-  # Gooby - Based on OmniStream by Kelinger
+  # Gooby - Based on Kelinger's OmniStream
   #
 services:
