@@ -81,8 +81,6 @@ else
 		/usr/local/bin/docker-compose up -d --remove-orphans
 		cd "${CURDIR}"
 
-		if [ ${APP} == organizr ]; then APP=${ORGMENU}; fi
-
 		APPINSTALLED
 
 		TASKCOMPLETE
