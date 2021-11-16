@@ -41,6 +41,7 @@ HOMEDIR=${HOME}
 IP=$(curl ifconfig.me)
 LOGS=${HOME}/logs
 MEDIA=/mnt/google
+MEDIADATA=$(cat ${CONFIGVARS}/mediadata)
 MOUNTTO=/mnt/google
 MYDOMAIN=$(cat ${CONFIGVARS}/mydomain)
 MYEMAIL=$(cat ${CONFIGVARS}/myemail)
