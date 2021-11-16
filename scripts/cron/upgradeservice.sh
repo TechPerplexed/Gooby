@@ -20,6 +20,17 @@ else
 	COMPOSE_VERSION=$(curl -s https://api.github.com/repos/docker/compose/releases/latest | grep 'tag_name' | cut -d\" -f4)
 	sudo sh -c "curl -L https://github.com/docker/compose/releases/download/${COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose"
 	sudo chmod +x /usr/local/bin/docker-compose
+	
+	# Everything will be a variable soon
+	
+	echo "/mnt/google" > ${CONFIGVARS}/media
+	echo "Media" > ${CONFIGVARS}/mediadata
+	echo "/mnt/rclone" > ${CONFIGVARS}/rclonemount
+	echo "Go0by" > ${CONFIGVARS}/rclonepassword
+	echo "gooby" > ${CONFIGVARS}/rcloneusername
+	echo "/mnt/local" > ${CONFIGVARS}/unsynced
+	echo "/mnt/uploads" > ${CONFIGVARS}/uploads
+
 
 	# Finalizing upgrade
 
