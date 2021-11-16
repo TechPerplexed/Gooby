@@ -62,7 +62,7 @@ echo
 
 mountpoint ${RCLONEMOUNT} > /dev/null
 CODE=${?}
-mountpoint ${MOUNTTO} > /dev/null
+mountpoint ${MEDIA} > /dev/null
 CODE=$[${CODE}+${?}]
 
 while [ ${CODE} -lt 2 ]
@@ -71,12 +71,12 @@ do
 	sleep 5
 	mountpoint ${RCLONEMOUNT} > /dev/null
 	CODE=${?}
-	mountpoint ${MOUNTTO} > /dev/null
+	mountpoint ${MEDIA} > /dev/null
 	CODE=$[${CODE}+${?}]
 done
 
 sudo rmdir ${RCLONEMOUNT} > /dev/null 2>&1
-sudo rmdir ${MOUNTTO} > /dev/null 2>&1
+sudo rmdir ${MEDIA} > /dev/null 2>&1
 echo -n > ${LOGS}/rclone.log
 
 sudo chown -R ${USER}:${USER} /mnt
@@ -99,7 +99,7 @@ sudo systemctl start mergerfs
 
 mountpoint ${RCLONEMOUNT} > /dev/null
 CODE=${?}
-mountpoint ${MOUNTTO} > /dev/null
+mountpoint ${MEDIA} > /dev/null
 CODE=$[${CODE}+${?}]
 
 while [ ${CODE} -ne 0 ]
@@ -108,7 +108,7 @@ do
         sleep 5
         mountpoint ${RCLONEMOUNT} > /dev/null
         CODE=${?}
-        mountpoint ${MOUNTTO} > /dev/null
+        mountpoint ${MEDIA} > /dev/null
         CODE=$[${CODE}+${?}]
 done
 
