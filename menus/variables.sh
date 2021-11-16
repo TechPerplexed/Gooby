@@ -56,7 +56,7 @@ MENUVISIT(){
 	clear
 	echo
 	echo "--------------------------------------------------"
-	echo " Visit the menu any time by typing '${WHITE}gooby${STD}'"
+	echo " Open the menu any time by typing '${WHITE}gooby${STD}'"
 	echo "--------------------------------------------------"
 	echo
 }
