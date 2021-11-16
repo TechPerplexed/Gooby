@@ -84,6 +84,18 @@ else
 			sudo ln -s ${UPLOADS}/Downloads ${HOME}/Downloads
 		fi
 
+		# Add needed variables
+
+		[[ ! -f ${CONFIGVARS}/media ]] && echo "/mnt/google" > ${CONFIGVARS}/media
+		[[ ! -f ${CONFIGVARS}/mediadata ]] && echo "Media" > ${CONFIGVARS}/mediadata
+		[[ ! -f ${CONFIGVARS}/rclonemount ]] && echo "/mnt/rclone" > ${CONFIGVARS}/rclonemount
+		[[ ! -f ${CONFIGVARS}/rclonepassword ]] && echo "Go0by" > ${CONFIGVARS}/rclonepassword
+		[[ ! -f ${CONFIGVARS}/rcloneusername ]] && echo "gooby" > ${CONFIGVARS}/rcloneusername
+		[[ ! -f ${CONFIGVARS}/unsynced ]] && echo "/mnt/local" > ${CONFIGVARS}/unsynced
+		[[ ! -f ${CONFIGVARS}/uploads ]] && echo "/mnt/uploads" > ${CONFIGVARS}/uploads
+
+		# Create and start services
+
 		sudo rsync -a /opt/Gooby/scripts/services/rclonefs* /etc/systemd/system/
 		sudo rsync -a /opt/Gooby/scripts/services/mergerfs* /etc/systemd/system/
 		sudo sed -i "s/GOOBYUSER/${USER}/g" /etc/systemd/system/rclonefs.service
