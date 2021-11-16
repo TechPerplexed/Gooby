@@ -21,7 +21,7 @@
       - PUID=${USERID}
       - PGID=${GROUPID}
       - TZ=${TIMEZONE}
-      - UMASK_SET=022
+      - UMASK=022
       - VIRTUAL_HOST=deluge.${MYDOMAIN}
       - VIRTUAL_PORT=8112
       - VIRTUAL_NETWORK=nginx-proxy
