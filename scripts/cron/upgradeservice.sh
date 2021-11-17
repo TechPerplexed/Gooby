@@ -24,6 +24,7 @@ else
 	# Parameterize everything
 	
 	[[ ! -f ${CONFIGVARS}/media ]] && echo "/mnt/google" > ${CONFIGVARS}/media
+	[[ ! -f ${CONFIGVARS}/medialocation ]] && echo "/Media" > ${CONFIGVARS}/medialocation
 	[[ ! -f ${CONFIGVARS}/rclonemount ]] && echo "/mnt/rclone" > ${CONFIGVARS}/rclonemount
 	[[ ! -f ${CONFIGVARS}/rclonepassword ]] && echo "Go0by" > ${CONFIGVARS}/rclonepassword
 	[[ ! -f ${CONFIGVARS}/rcloneusername ]] && echo "gooby" > ${CONFIGVARS}/rcloneusername
