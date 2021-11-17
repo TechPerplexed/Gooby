@@ -10,6 +10,7 @@ echo " Do you wish to install Gooby now? (y/N)? "
 echo "--------------------------------------------------"
 echo
 read -n 1 -s -r -p " ---> "
+echo
 
 if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 
@@ -79,7 +80,6 @@ if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 
 else
 
-	echo
 	echo "--------------------------------------------------"
 	echo " No worries. You can install Gooby at any time"
 	echo "--------------------------------------------------"
