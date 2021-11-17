@@ -9,13 +9,12 @@ echo " For best results, run as user 'root'"
 echo "--------------------------------------------------"
 echo; sleep 5
 
-echo Installing server updates...
-echo
+# Installing needed apps
+
 sudo apt-get update -y
 sudo apt-get upgrade -y
-echo
 
-APPLIST="acl apt-transport-https ca-certificates curl fail2ban fuse git gpg-agent grsync jq mergerfs nano rsync sqlite3 ufw socat unzip wget"
+APPLIST="acl apt-transport-https ca-certificates curl fail2ban fuse git gpg-agent grsync jq mergerfs nano rsync sqlite3 screen socat ufw unzip wget"
 
 for i in ${APPLIST}; do
 	echo Installing $i...
@@ -23,6 +22,8 @@ for i in ${APPLIST}; do
 	sudo apt-get -y install $i
 	echo; sleep 2
 done
+
+# Setting up firewall
 
 echo Setting UFW firewall...
 echo
@@ -32,7 +33,7 @@ sudo ufw allow ssh
 sudo ufw --force enable
 echo
 
-# Finalizing
+# Cloning Gooby from Github
 
 sudo rm -r /opt/.Gooby > /dev/null 2>&1
 sudo git clone -b master https://github.com/TechPerplexed/Gooby /opt/.Gooby > /dev/null 2>&1
@@ -54,6 +55,8 @@ if [ -d /opt/.Gooby ]; then
 	sudo chmod 755 /bin/sizer
 	sudo chmod 755 /bin/syncmount
 fi
+
+# Finalizing
 
 source /opt/Gooby/menus/variables.sh
 
