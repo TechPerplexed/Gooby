@@ -10,7 +10,7 @@ source ${CONFIGS}/Docker/.env
 # Are mounts truly up?
 mountpoint ${RCLONEMOUNT} > /dev/null
 CODE=${?}
-mountpoint ${MOUNTTO} > /dev/null
+mountpoint ${MEDIA} > /dev/null
 CODE=$[${CODE}+${?}]
 
 if [ ${CODE} -ne 0 ]
