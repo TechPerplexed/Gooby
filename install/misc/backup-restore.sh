@@ -154,5 +154,4 @@ else
 fi
 
 rm -f ${CONFIGVARS}/checkrc.txt
-
 PAUSE
