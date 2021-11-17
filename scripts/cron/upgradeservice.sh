@@ -1,6 +1,6 @@
 #!/bin/bash
 
-VERSION=2.2.2
+VERSION=2.2.2a
 
 CONFIGVARS=${CONFIGS}/Docker/.config
 sudo mkdir -p ${CONFIGVARS}
