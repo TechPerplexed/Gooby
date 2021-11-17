@@ -6,12 +6,7 @@ clear
 
 if [ ! -s ${CONFIGVARS}/checkapp.txt ]; then
 
-	echo "${YELLOW}"
-	echo "--------------------------------------------------"
-	echo " You will need to install and configure"
-	echo " Rclone before you can restore the backup!"
-	echo "--------------------------------------------------"
-	echo "${STD}"
+	RCLONECHECK
 
 else
 
