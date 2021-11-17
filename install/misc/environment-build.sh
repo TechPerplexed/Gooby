@@ -27,39 +27,52 @@ cat > ${ENV} << EOF
 #     for Gooby v${VERSION}    #
 ###########################
 
-APILOG=${LOGS}/api.log
-CF_EMAIL=$(cat ${CONFIGVARS}/cf_email)
-CF_KEY=$(cat ${CONFIGVARS}/cf_key)
+# Config
 CONFIGS=/var/local/Gooby
 CONFIGVARS=${CONFIGS}/Docker/.config
-CURDIR=$(pwd)
-DOWNLOADS=${HOMEDIR}/Downloads
-GOOBYBRANCH=$(cat ${CONFIGVARS}/goobybranch)
+
+# Server
+MYDOMAIN=$(cat ${CONFIGVARS}/mydomain) 
+MYEMAIL=$(cat ${CONFIGVARS}/myemail)
+IP=$(curl ifconfig.me)
+SERVER=$(hostname)
+TIMEZONE=$(cat /etc/timezone)
+
+# User
 GROUPID=$(id -g)
 GROUPNAME=${USER}
-HOMEDIR=${HOME}
-IP=$(curl ifconfig.me)
+USERID=$(id -u)
+USERNAME=${USER}
+
+# App settings
+CF_EMAIL=$(cat ${CONFIGVARS}/cf_email)
+CF_KEY=$(cat ${CONFIGVARS}/cf_key)
+PLEXCLAIM=$(cat ${CONFIGVARS}/plexclaim)
+
+# Gooby settings
+APILOG=${LOGS}/api.log
+CURDIR=$(pwd)
+GOOBYBRANCH=$(cat ${CONFIGVARS}/goobybranch)
 LOGS=${HOME}/logs
+PROXYVERSION=$(cat ${CONFIGVARS}/proxyversion)
+VERSION=$(cat ${CONFIGVARS}/version)
+
+# Mounts
+DOWNLOADS=${HOMEDIR}/Downloads
+HOMEDIR=${HOME}
+LOCALFILES=$(cat ${CONFIGVARS}/localfiles)
 MEDIA=$(cat ${CONFIGVARS}/media)
 MEDIALOCATION=$(cat ${CONFIGVARS}/medialocation)
-MOUNTTO=$(cat ${CONFIGVARS}/media)
-MYDOMAIN=$(cat ${CONFIGVARS}/mydomain)
-MYEMAIL=$(cat ${CONFIGVARS}/myemail)
-PLEXCLAIM=$(cat ${CONFIGVARS}/plexclaim)
-PROXYVERSION=$(cat ${CONFIGVARS}/proxyversion)
+UPLOADS=$(cat ${CONFIGVARS}/uploads)
+
+# Rclone
 RCLONEFOLDER=$(cat ${CONFIGVARS}/rclonefolder)
 RCLONEHOME=${HOMEDIR}/.config/rclone
 RCLONEMOUNT=$(cat ${CONFIGVARS}/rclonemount)
 RCLONEPASSWORD=$(cat ${CONFIGVARS}/rclonepassword)
 RCLONESERVICE=$(cat ${CONFIGVARS}/rcloneservice)
 RCLONEUSERNAME=$(cat ${CONFIGVARS}/rcloneusername)
-SERVER=$(hostname)
-TIMEZONE=$(cat /etc/timezone)
-UNSYNCED=$(cat ${CONFIGVARS}/unsynced)
-UPLOADS=$(cat ${CONFIGVARS}/uploads)
-USERID=$(id -u)
-USERNAME=${USER}
-VERSION=$(cat ${CONFIGVARS}/version)
+
 EOF
 
 cat ${CONFIGS}/Docker/components/??-* > ${CONFIGS}/Docker/docker-compose.yaml
