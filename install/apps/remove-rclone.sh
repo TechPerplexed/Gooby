@@ -45,7 +45,7 @@ else
 		fi
 
 		sudo rmdir ${RCLONEMOUNT} > /dev/null 2>&1
-		sudo rmdir ${MOUNTTO} > /dev/null 2>&1
+		sudo rmdir ${MEDIA} > /dev/null 2>&1
 
 		sudo systemctl daemon-reload
 
