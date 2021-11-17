@@ -30,6 +30,13 @@ else
 	[[ ! -f ${CONFIGVARS}/unsynced ]] && echo "/mnt/local" > ${CONFIGVARS}/unsynced
 	[[ ! -f ${CONFIGVARS}/uploads ]] && echo "/mnt/uploads" > ${CONFIGVARS}/uploads
 
+	# Replace MOUNTTO with MEDIA in MergerFS service
+
+	cat /etc/systemd/system/mergerfs.service | grep "MEDIA" > /dev/null
+	if ! [[ ${?} -eq 0 ]]; then
+		sudo sed -i "s/MOUNTTO/MEDIA/g" /etc/systemd/system/mergerfs.service
+	fi
+
 	# Finalizing upgrade
 
 	echo; echo "${GREEN}Upgrade to v${VERSION} complete... proceeding${STD}"; echo
