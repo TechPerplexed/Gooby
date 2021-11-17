@@ -1,6 +1,6 @@
 #!/bin/bash
 
-VERSION=2.2.2a
+VERSION=2.2.2b
 
 CONFIGVARS=${CONFIGS}/Docker/.config
 sudo mkdir -p ${CONFIGVARS}
@@ -28,7 +28,7 @@ else
 	[[ ! -f ${CONFIGVARS}/rclonemount ]] && echo "/mnt/rclone" > ${CONFIGVARS}/rclonemount
 	[[ ! -f ${CONFIGVARS}/rclonepassword ]] && echo "Go0by" > ${CONFIGVARS}/rclonepassword
 	[[ ! -f ${CONFIGVARS}/rcloneusername ]] && echo "gooby" > ${CONFIGVARS}/rcloneusername
-	[[ ! -f ${CONFIGVARS}/unsynced ]] && echo "/mnt/local" > ${CONFIGVARS}/unsynced
+	[[ ! -f ${CONFIGVARS}/localfiles ]] && echo "/mnt/local" > ${CONFIGVARS}/localfiles
 	[[ ! -f ${CONFIGVARS}/uploads ]] && echo "/mnt/uploads" > ${CONFIGVARS}/uploads
 
 	# Replace MOUNTTO with MEDIA in MergerFS service
@@ -37,6 +37,19 @@ else
 	if ! [[ ${?} -eq 0 ]]; then
 		sudo sed -i "s/MOUNTTO/MEDIA/g" /etc/systemd/system/mergerfs.service
 	fi
+
+	# Replace UNSYNCED with LOCALFILES in MergerFS and Rclone service
+
+	cat /etc/systemd/system/mergerfs.service | grep "UNSYNCED" > /dev/null
+	if ! [[ ${?} -eq 0 ]]; then
+		sudo sed -i "s/UNSYNCED/LOCALFILES/g" /etc/systemd/system/mergerfs.service
+	fi
+
+	cat /etc/systemd/system/rclonefs.service | grep "UNSYNCED" > /dev/null
+	if ! [[ ${?} -eq 0 ]]; then
+		sudo sed -i "s/UNSYNCED/LOCALFILES/g" /etc/systemd/system/mergerfs.service
+	fi
+
 
 	# Finalizing upgrade
 
