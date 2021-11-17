@@ -1,6 +1,7 @@
 #!/bin/bash
 
-# clear
+sleep 10
+clear
 echo
 echo "--------------------------------------------------"
 echo " This will install Gooby"
