@@ -4,7 +4,7 @@ clear
 echo
 echo "--------------------------------------------------"
 echo " This will install Gooby"
-echo " Please sit back while we intialize dependencies"
+echo " Please sit back while we initialize dependencies"
 echo " For best results, run as user 'root'"
 echo "--------------------------------------------------"
 echo; sleep 5
