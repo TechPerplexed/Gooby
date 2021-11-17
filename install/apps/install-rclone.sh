@@ -10,7 +10,7 @@ if [ -s ${CONFIGVARS}/checkapp ]; then
 
 	echo "Here is a list of the root folders in your mount:"
 	echo
-	ls -1 ${MOUNTTO}
+	ls -1 ${MEDIA}
 	echo
 	echo "If you're getting an error here, please"
 	echo "check your Rclone config settings."
@@ -69,8 +69,8 @@ else
 		source /opt/Gooby/install/misc/environment-build.sh rebuild
 
 		mkdir -p ${HOME}/logs ${HOME}/Downloads
-		sudo mkdir -p ${RCLONEMOUNT} ${MOUNTTO} ${UPLOADS} ${UNSYNCED}
-		sudo chown -R ${USER}:${USER} ${HOME} ${CONFIGVARS} ${CONFIGS}/Docker ${RCLONEMOUNT} ${MOUNTTO} ${UPLOADS} ${UNSYNCED}
+		sudo mkdir -p ${MEDIA} ${RCLONEMOUNT} ${UPLOADS} ${UNSYNCED}
+		sudo chown -R ${USER}:${USER} ${HOME} ${CONFIGVARS} ${CONFIGS}/Docker ${MEDIA} ${RCLONEMOUNT} ${UPLOADS} ${UNSYNCED}
 
 		cat ${HOME}/.config/rclone/rclone.conf | grep "Local" > /dev/null
 		if ! [[ ${?} -eq 0 ]]; then
