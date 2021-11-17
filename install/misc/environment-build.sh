@@ -62,7 +62,6 @@ DOWNLOADS=${HOMEDIR}/Downloads
 HOMEDIR=${HOME}
 LOCALFILES=$(cat ${CONFIGVARS}/localfiles)
 MEDIA=$(cat ${CONFIGVARS}/media)
-MEDIALOCATION=$(cat ${CONFIGVARS}/medialocation)
 UPLOADS=$(cat ${CONFIGVARS}/uploads)
 
 # Rclone
