@@ -1,10 +1,10 @@
 #!/bin/bash
 
 source ${CONFIGS}/Docker/.env
-which rclone > ${CONFIGVARS}/checkapp.txt
+which rclone > ${CONFIGVARS}/checkrcl.txt
 clear
 
-if [ ! -s ${CONFIGVARS}/checkapp.txt ]; then
+if [ ! -s ${CONFIGVARS}/checkrcl.txt ]; then
 
 	RCLONECHECK
 
@@ -153,6 +153,6 @@ else
 
 fi
 
-rm -f ${CONFIGVARS}/checkapp.txt
+rm -f ${CONFIGVARS}/checkrc.txt
 
 PAUSE
