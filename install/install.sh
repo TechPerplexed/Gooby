@@ -21,8 +21,9 @@ if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 
 	# Installing needed apps
 
-	sudo apt-get update -y
-	sudo apt-get upgrade -y
+	echo; sleep 2; sudo apt-get update -y
+	echo; sleep 2; sudo apt-get upgrade -y
+	echo; sleep 2
 
 	APPLIST="acl apt-transport-https ca-certificates curl fail2ban fuse git gpg-agent grsync jq mergerfs nano rsync sqlite3 screen socat ufw unzip wget"
 
@@ -33,7 +34,7 @@ if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 		echo; sleep 2
 	done
 
-	# Setting up firewall
+	echo; sleep 2; echo " Setting up firewall..."
 
 	echo Setting UFW firewall...
 	echo
@@ -43,7 +44,7 @@ if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 	sudo ufw --force enable
 	echo
 
-	# Cloning Gooby from Github
+	echo; sleep 2; echo " Cloning Gooby from Github..."
 
 	sudo rm -r /opt/.Gooby > /dev/null 2>&1
 	sudo git clone -b master https://github.com/TechPerplexed/Gooby /opt/.Gooby > /dev/null 2>&1
