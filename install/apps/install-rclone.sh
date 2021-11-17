@@ -69,8 +69,8 @@ else
 		source /opt/Gooby/install/misc/environment-build.sh rebuild
 
 		mkdir -p ${HOME}/logs ${HOME}/Downloads
-		sudo mkdir -p ${MEDIA} ${RCLONEMOUNT} ${UPLOADS} ${UNSYNCED}
-		sudo chown -R ${USER}:${USER} ${HOME} ${CONFIGVARS} ${CONFIGS}/Docker ${MEDIA} ${RCLONEMOUNT} ${UPLOADS} ${UNSYNCED}
+		sudo mkdir -p ${MEDIA} ${RCLONEMOUNT} ${UPLOADS} ${LOCALFILES}
+		sudo chown -R ${USER}:${USER} ${HOME} ${CONFIGVARS} ${CONFIGS}/Docker ${MEDIA} ${RCLONEMOUNT} ${UPLOADS} ${LOCALFILES}
 
 		cat ${HOME}/.config/rclone/rclone.conf | grep "Local" > /dev/null
 		if ! [[ ${?} -eq 0 ]]; then
