@@ -61,6 +61,15 @@ MENUVISIT(){
 	echo
 }
 
+RCLONECHECK(){
+	echo "${LPURPLE}"
+	echo "--------------------------------------------------"
+	echo " You will need to install and configure Rclone"
+	echo " before you can perform this function"
+	echo "--------------------------------------------------"
+	echo "${STD}"
+}
+
 ALREADYINSTALLED(){
 	echo "${YELLOW}"
 	echo "--------------------------------------------------"
@@ -92,7 +101,7 @@ APPINSTALLED(){
 }
 
 NOAPPUPDATE(){
-	echo "${LRED}"
+	echo "${LGREEN}"
 	echo "--------------------------------------------------"
 	echo " ${TASK} cannot be updated through this menu"
 	echo " You can update it from the web interface itself"
