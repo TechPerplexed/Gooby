@@ -153,5 +153,5 @@ else
 
 fi
 
-rm -f ${CONFIGVARS}/checkrc.txt
+rm -f ${CONFIGVARS}/checkrcl.txt
 PAUSE
