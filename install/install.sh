@@ -34,8 +34,9 @@ if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 		echo; sleep 2
 	done
 
-	# Setting up UFW firewall
+	# Enable UFW firewall
 
+	echo Enabling UFW firewall...
 	echo
 	sudo ufw default deny incoming
 	sudo ufw default allow outgoing
