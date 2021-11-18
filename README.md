@@ -4,7 +4,7 @@ Create an infinite Plex or Emby media cloud server with Google Drive on a VPS. I
 
 ## Installation:
 
-Run as user 'root' on Debian 10 (our preferred distro) with this command:
+Run as user `root` on Debian 10 (our preferred distro) with this command:
 
 `sudo wget https://bit.ly/GetGooby -O /tmp/install.sh && sudo bash /tmp/install.sh`
 
