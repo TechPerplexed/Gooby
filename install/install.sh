@@ -71,10 +71,11 @@ if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 
 	source /opt/Gooby/menus/variables.sh
 
+	clear
 	echo "${GREEN}"
 	echo "--------------------------------------------------"
 	echo " Server initialization and dependencies complete!"
-	echo " Type ${WHITE}gooby${GREEN} to continue installation."
+	echo " Type ${WHITE}gooby${GREEN} to continue installation"
 	echo " Visit ${LGREEN}techperplexed.blogspot.com${GREEN} for instructions"
 	echo "--------------------------------------------------"
 	echo "${STD}"
