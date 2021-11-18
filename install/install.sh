@@ -81,8 +81,10 @@ if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 
 else
 
+	echo
 	echo "--------------------------------------------------"
 	echo " No worries. You can install Gooby at any time"
 	echo "--------------------------------------------------"
+	echo
 
 fi
