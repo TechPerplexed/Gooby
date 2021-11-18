@@ -21,9 +21,9 @@ if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 
 	# Installing needed apps
 
-	echo; sleep 2; sudo apt-get update -y
-	echo; sleep 2; sudo apt-get upgrade -y
 	echo; sleep 2
+	sudo apt-get update -y; echo; sleep 2
+	sudo apt-get upgrade -y; echo; sleep 2
 
 	APPLIST="acl apt-transport-https ca-certificates curl fail2ban fuse git gpg-agent grsync jq mergerfs nano rsync sqlite3 screen socat ufw unzip wget"
 
