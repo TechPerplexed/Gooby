@@ -26,14 +26,17 @@ sudo chown -R ${USER}:${USER} ${CONFIGS}
 echo "${MYDOMAIN}" > ${CONFIGVARS}/mydomain
 echo "${MYEMAIL}" > ${CONFIGVARS}/myemail
 
-if [ ! -e ${CONFIGVARS}/goobybranch ]; then
-  echo "master" > ${CONFIGVARS}/goobybranch
-fi
+[[ ! -f ${CONFIGVARS}/media ]] && echo "/mnt/google" > ${CONFIGVARS}/media
+[[ ! -f ${CONFIGVARS}/rclonemount ]] && echo "/mnt/rclone" > ${CONFIGVARS}/rclonemount
+[[ ! -f ${CONFIGVARS}/rclonepassword ]] && echo "Go0by" > ${CONFIGVARS}/rclonepassword
+[[ ! -f ${CONFIGVARS}/rcloneusername ]] && echo "gooby" > ${CONFIGVARS}/rcloneusername
+[[ ! -f ${CONFIGVARS}/localfiles ]] && echo "/mnt/local" > ${CONFIGVARS}/localfiles
+[[ ! -f ${CONFIGVARS}/uploads ]] && echo "/mnt/uploads" > ${CONFIGVARS}/uploads
 
-if [ ! -e ${CONFIGVARS}/proxyversion ]; then
-  echo "nginx" > ${CONFIGVARS}/proxyversion
-  PROXYVERSION=$(cat ${CONFIGVARS}/proxyversion)
-fi
+[[ ! -f ${CONFIGVARS}/goobybranch ]] && echo "master" > ${CONFIGVARS}/goobybranch
+[[ ! -f ${CONFIGVARS}/proxyversion ]] && echo "nginx" > ${CONFIGVARS}/proxyversion
+
+PROXYVERSION=$(cat ${CONFIGVARS}/proxyversion)
 
 sudo rsync -a /opt/Gooby/scripts/${PROXYVERSION}/{01-header.yaml,02-oauth.yaml,03-proxy.yaml,04-watchtower.yaml,05-autoheal.yaml,99-footer.yaml} ${CONFIGS}/Docker/components
 touch ${CONFIGVARS}/cf_email ${CONFIGVARS}/cf_key ${CONFIGVARS}/plexclaim ${CONFIGVARS}/rclonefolder ${CONFIGVARS}/rcloneservice ${CONFIGVARS}/rcloneversion ${CONFIGVARS}/version
