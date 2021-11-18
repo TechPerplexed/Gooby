@@ -34,9 +34,7 @@ if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 		echo; sleep 2
 	done
 
-	echo; sleep 2; echo " Setting up firewall..."
-
-	# Setting up UFW firewall...
+	# Setting up UFW firewall
 
 	echo
 	sudo ufw default deny incoming
@@ -45,7 +43,7 @@ if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 	sudo ufw --force enable
 	echo
 
-	echo; sleep 2; echo " Cloning Gooby from Github..."
+	# Cloning Gooby from Github
 
 	sudo rm -r /opt/.Gooby > /dev/null 2>&1
 	sudo git clone -b master https://github.com/TechPerplexed/Gooby /opt/.Gooby > /dev/null 2>&1
