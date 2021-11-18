@@ -84,6 +84,7 @@ else
 	echo
 	echo "--------------------------------------------------"
 	echo " No worries. You can install Gooby at any time"
+	echo " Visit techperplexed.blogspot.com for instructions"
 	echo "--------------------------------------------------"
 	echo
 
