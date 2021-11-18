@@ -35,6 +35,15 @@ else
 		fi
 		rm ${CONFIGVARS}/mergerfs
 
+		# Add needed variables
+
+		[[ ! -f ${CONFIGVARS}/media ]] && echo "/mnt/google" > ${CONFIGVARS}/media
+		[[ ! -f ${CONFIGVARS}/rclonemount ]] && echo "/mnt/rclone" > ${CONFIGVARS}/rclonemount
+		[[ ! -f ${CONFIGVARS}/rclonepassword ]] && echo "Go0by" > ${CONFIGVARS}/rclonepassword
+		[[ ! -f ${CONFIGVARS}/rcloneusername ]] && echo "gooby" > ${CONFIGVARS}/rcloneusername
+		[[ ! -f ${CONFIGVARS}/localfiles ]] && echo "/mnt/local" > ${CONFIGVARS}/localfiles
+		[[ ! -f ${CONFIGVARS}/uploads ]] && echo "/mnt/uploads" > ${CONFIGVARS}/uploads
+
 		# Main script
 
 		cd /tmp
@@ -83,15 +92,6 @@ else
 			sudo mv ${HOME}/Downloads ${UPLOADS}
 			sudo ln -s ${UPLOADS}/Downloads ${HOME}/Downloads
 		fi
-
-		# Add needed variables
-
-		[[ ! -f ${CONFIGVARS}/media ]] && echo "/mnt/google" > ${CONFIGVARS}/media
-		[[ ! -f ${CONFIGVARS}/rclonemount ]] && echo "/mnt/rclone" > ${CONFIGVARS}/rclonemount
-		[[ ! -f ${CONFIGVARS}/rclonepassword ]] && echo "Go0by" > ${CONFIGVARS}/rclonepassword
-		[[ ! -f ${CONFIGVARS}/rcloneusername ]] && echo "gooby" > ${CONFIGVARS}/rcloneusername
-		[[ ! -f ${CONFIGVARS}/localfiles ]] && echo "/mnt/local" > ${CONFIGVARS}/localfiles
-		[[ ! -f ${CONFIGVARS}/uploads ]] && echo "/mnt/uploads" > ${CONFIGVARS}/uploads
 
 		# Create and start services
 
