@@ -72,6 +72,9 @@ RCLONEPASSWORD=$(cat ${CONFIGVARS}/rclonepassword)
 RCLONESERVICE=$(cat ${CONFIGVARS}/rcloneservice)
 RCLONEUSERNAME=$(cat ${CONFIGVARS}/rcloneusername)
 
+# Should be obsolete
+GOOGLE=/mnt/google
+
 EOF
 
 cat ${CONFIGS}/Docker/components/??-* > ${CONFIGS}/Docker/docker-compose.yaml
