@@ -27,18 +27,18 @@ cat > ${ENV} << EOF
 #     for Gooby v${VERSION}    #
 ###########################
 
-# Config
+# Config variables
 CONFIGS=/var/local/Gooby
 CONFIGVARS=${CONFIGS}/Docker/.config
 
-# Server
+# Server settings
 MYDOMAIN=$(cat ${CONFIGVARS}/mydomain) 
 MYEMAIL=$(cat ${CONFIGVARS}/myemail)
 IP=$(curl ifconfig.me)
 SERVER=$(hostname)
 TIMEZONE=$(cat /etc/timezone)
 
-# User
+# User settings
 GROUPID=$(id -g)
 GROUPNAME=${USER}
 USERID=$(id -u)
@@ -57,14 +57,14 @@ LOGS=${HOME}/logs
 PROXYVERSION=$(cat ${CONFIGVARS}/proxyversion)
 VERSION=$(cat ${CONFIGVARS}/version)
 
-# Mounts
+# Mounts and locations
 DOWNLOADS=${HOMEDIR}/Downloads
 HOMEDIR=${HOME}
 LOCALFILES=$(cat ${CONFIGVARS}/localfiles)
 MEDIA=$(cat ${CONFIGVARS}/media)
 UPLOADS=$(cat ${CONFIGVARS}/uploads)
 
-# Rclone
+# Rclone settings
 RCLONEFOLDER=$(cat ${CONFIGVARS}/rclonefolder)
 RCLONEHOME=${HOMEDIR}/.config/rclone
 RCLONEMOUNT=$(cat ${CONFIGVARS}/rclonemount)
@@ -72,8 +72,8 @@ RCLONEPASSWORD=$(cat ${CONFIGVARS}/rclonepassword)
 RCLONESERVICE=$(cat ${CONFIGVARS}/rcloneservice)
 RCLONEUSERNAME=$(cat ${CONFIGVARS}/rcloneusername)
 
-# Should be obsolete
-GOOGLE=/mnt/google
+# Legacy variables
+GOOGLE=$(cat ${CONFIGVARS}/media)
 
 EOF
 
