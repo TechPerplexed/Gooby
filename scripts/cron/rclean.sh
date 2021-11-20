@@ -145,4 +145,4 @@ echo
 echo "${LYELLOW}Restoring permissions... this could take a few minutes${STD}"
 echo
 
-sudo chown -R ${USER}:${USER} ${HOME} ${CONFIGS}/Docker /tmp
+sudo chown -R ${USER}:${USER} ${CONFIGS}/Docker /tmp
