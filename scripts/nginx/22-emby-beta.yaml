@@ -7,8 +7,6 @@
     container_name: emby
     hostname: emby
     cpu_shares: 8192
-    ports:
-      - 2096:8920
     volumes:
       - ${CONFIGS}/Emby:/config
       - ${MEDIA}:/Media
