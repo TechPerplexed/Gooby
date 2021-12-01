@@ -27,7 +27,7 @@
     devices:
       - /dev/dri:/dev/dri
     healthcheck:
-      test: ["CMD-SHELL", "netstat -ntlp | grep :8920"]
+      test: ["CMD-SHELL", "netstat -ntlp | grep :8096"]
       interval: 10s
       timeout: 2s
       retries: 3
