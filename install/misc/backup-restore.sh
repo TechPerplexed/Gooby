@@ -135,7 +135,7 @@ else
 			echo
 
 			case "${CHOICE}" in
-				y|Y ) sudo rm -f ${OLDFILES} ;;
+				y|Y ) sudo rm -r ${OLDFILES} ;;
 				* ) echo " Your old installation files are available"; echo " at ${OLDFILES} until you reboot"; echo ;;
 			esac
 
