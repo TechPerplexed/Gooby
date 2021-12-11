@@ -141,7 +141,7 @@ else
 
 		fi
 
-			sudo rm -f ${RESTOREFOLDER}
+			sudo rm -r ${RESTOREFOLDER}
 
 		TASKCOMPLETE
 
