@@ -3,7 +3,7 @@
 source /opt/Gooby/menus/variables.sh
 source ${CONFIGS}/Docker/.env
 
-sudo rm ${CONFIGVARS}/snapshots/*
+sudo rm -f ${CONFIGVARS}/snapshots/*
 
 echo
 echo "Incremental backups reset to full backup"
