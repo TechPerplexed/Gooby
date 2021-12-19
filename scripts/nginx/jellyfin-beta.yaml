@@ -1,0 +1,26 @@
+#
+# Jellyfin - The Free Software Media System
+#
+  jellyfin:
+    restart: unless-stopped
+    image: jellyfin/jellyfin:unstable
+    container_name: jellyfin
+    hostname: jellyfin
+    cpu_shares: 8192
+    volumes:
+      - ${CONFIGS}/Jellyfin:/config
+      - ${MEDIA}:/Media
+      - /tmp:/cache
+    environment:
+      - UID=${USERID}
+      - GID=${GROUPID}
+      - GIDLIST=44
+      - TZ=${TIMEZONE}
+      - VIRTUAL_HOST=jellyfin.${MYDOMAIN}
+      - VIRTUAL_PORT=8096
+      - VIRTUAL_PROTO=http
+      - VIRTUAL_NETWORK=nginx-proxy
+      - LETSENCRYPT_HOST=jellyfin.${MYDOMAIN}
+      - LETSENCRYPT_EMAIL=${MYEMAIL}
+#    devices:
+#      - /dev/dri:/dev/dri
