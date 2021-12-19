@@ -1,5 +1,5 @@
 #
-# Jellyfin - The Free Software Media System (beta)
+# Jellyfin - The Free Software Media System beta version
 #
   jellyfin:
     restart: unless-stopped
