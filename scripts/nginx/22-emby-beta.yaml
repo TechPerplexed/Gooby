@@ -13,7 +13,6 @@
       - /etc/localtime:/etc/localtime:ro
       - /tmp:/transcode
     environment:
-      - ADVERTISE_IP=https://emby.${MYDOMAIN}
       - UID=${USERID}
       - GID=${GROUPID}
       - GIDLIST=44
