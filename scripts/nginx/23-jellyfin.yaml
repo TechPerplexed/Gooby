@@ -3,7 +3,7 @@
 #
   jellyfin:
     restart: unless-stopped
-    image: jellyfin/jellyfin
+    image: jellyfin/jellyfin:latest
     container_name: jellyfin
     hostname: jellyfin
     cpu_shares: 8192
