@@ -12,7 +12,6 @@
       - ${MEDIA}:/Media
       - /tmp:/cache
     environment:
-      - ADVERTISE_IP=https://jellyfin.${MYDOMAIN}
       - UID=${USERID}
       - GID=${GROUPID}
       - GIDLIST=44
