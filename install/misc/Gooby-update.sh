@@ -10,6 +10,10 @@ CONFIRMATION
 
 if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 
+	read -t 3 -p "What Gooby branch? (just wait for default): " GOOBYBRANCH
+	[[ ${GOOBYBRANCH} != "v3" ]] && GOOBYBRANCH="master"
+	echo
+	echo
 	echo Updating Gooby to ${GOOBYBRANCH}; echo
 
 	sudo rm -r /opt/.Gooby > /dev/null 2>&1
