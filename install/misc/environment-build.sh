@@ -62,12 +62,12 @@ DOWNLOADS=${HOMEDIR}/Downloads
 HOMEDIR=${HOME}
 LOCALFILES=$(cat ${CONFIGVARS}/localfiles)
 MEDIA=$(cat ${CONFIGVARS}/media)
+RCLONEMOUNT=$(cat ${CONFIGVARS}/rclonemount)
 UPLOADS=$(cat ${CONFIGVARS}/uploads)
 
 # Rclone settings
 RCLONEFOLDER=$(cat ${CONFIGVARS}/rclonefolder)
 RCLONEHOME=${HOMEDIR}/.config/rclone
-RCLONEMOUNT=$(cat ${CONFIGVARS}/rclonemount)
 RCLONEPASSWORD=$(cat ${CONFIGVARS}/rclonepassword)
 RCLONESERVICE=$(cat ${CONFIGVARS}/rcloneservice)
 RCLONEUSERNAME=$(cat ${CONFIGVARS}/rcloneusername)
