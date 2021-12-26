@@ -2,6 +2,8 @@
 
 source /opt/Gooby/menus/variables.sh
 
+# Make it yours
+
 clear
 echo
 echo "${YELLOW}Welcome to ${GOOBY}${YELLOW}!"
@@ -18,12 +20,15 @@ read -t 3 -p "What Gooby branch? (just wait for default): " GOOBYBRANCH
 [[ ${GOOBYBRANCH} != "v3" ]] && GOOBYBRANCH="master"
 echo
 echo
-
 echo "${YELLOW}Thank you! Please hang tight while we get some things ready...${STD}"
 echo
 sleep 10
 
+# Install Docker
+
 source /opt/Gooby/install/server/docker-install.sh
+
+# Save parameters
 
 sudo mkdir -p ${CONFIGVARS} ${CONFIGS}/Docker/components 
 sudo chown -R ${USER}:${USER} ${CONFIGS}
@@ -40,10 +45,14 @@ echo "${GOOBYBRANCH}" > ${CONFIGVARS}/goobybranch
 [[ ! -f ${CONFIGVARS}/uploads ]] && echo "/mnt/uploads" > ${CONFIGVARS}/uploads
 [[ ! -f ${CONFIGVARS}/proxyversion ]] && echo "nginx" > ${CONFIGVARS}/proxyversion
 
+# Copy necessary containers
+
 PROXYVERSION=$(cat ${CONFIGVARS}/proxyversion)
 
 sudo rsync -a /opt/Gooby/scripts/${PROXYVERSION}/{01-header.yaml,02-oauth.yaml,03-proxy.yaml,04-watchtower.yaml,05-autoheal.yaml,99-footer.yaml} ${CONFIGS}/Docker/components
 touch ${CONFIGVARS}/cf_email ${CONFIGVARS}/cf_key ${CONFIGVARS}/plexclaim ${CONFIGVARS}/rclonefolder ${CONFIGVARS}/rcloneservice ${CONFIGVARS}/rcloneversion ${CONFIGVARS}/version
+
+# Build server
 
 source /opt/Gooby/install/misc/environment-build.sh
 
@@ -55,9 +64,14 @@ sudo rsync -a /opt/Gooby/scripts/services/traefik.toml ${CONFIGS}/Docker/traefik
 sudo sed -i "s/GOOBYDOMAIN/${MYDOMAIN}/g" ${CONFIGS}/Docker/traefik/traefik.toml
 sudo sed -i "s/GOOBYEMAIL/${MYEMAIL}/g" ${CONFIGS}/Docker/traefik/traefik.toml
 
-sudo chown -R ${USER}:${USER} ${CONFIGS} ${HOME}
+# Set permissions
+
+sudo chown -R ${USER}:${USER} ${CONFIGS}
 
 echo "client_max_body_size 30m;" > ${CONFIGS}/Docker/nginx/my_custom_proxy_settings.conf
+
+# Bring containers up
+
 /usr/local/bin/docker-compose up --remove-orphans --build -d
 
 cd "${CURDIR}"
