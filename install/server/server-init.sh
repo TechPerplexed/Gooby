@@ -17,6 +17,7 @@ echo
 read -t 3 -p "What Gooby branch? (just wait for default): " GOOBYBRANCH
 [[ ${GOOBYBRANCH} != "v3" ]] && GOOBYBRANCH="master"
 echo
+echo
 
 echo "${YELLOW}Thank you! Please hang tight while we get some things ready...${STD}"
 echo
