@@ -14,6 +14,10 @@ echo
 echo "What is your email address for certificate registration?"
 read -e -p '(ex: myname@mydomain.com)  ' -i "${MYEMAIL}" MYEMAIL
 echo
+read -t 3 -p "What Gooby branch? (just wait for default): " GOOBYBRANCH
+[[ ${GOOBYBRANCH} != "v3" ]] && GOOBYBRANCH="master"
+echo
+
 echo "${YELLOW}Thank you! Please hang tight while we get some things ready...${STD}"
 echo
 sleep 10
@@ -25,6 +29,7 @@ sudo chown -R ${USER}:${USER} ${CONFIGS}
 
 echo "${MYDOMAIN}" > ${CONFIGVARS}/mydomain
 echo "${MYEMAIL}" > ${CONFIGVARS}/myemail
+echo "${GOOBYBRANCH}" > ${CONFIGVARS}/goobybranch
 
 [[ ! -f ${CONFIGVARS}/media ]] && echo "/mnt/google" > ${CONFIGVARS}/media
 [[ ! -f ${CONFIGVARS}/rclonemount ]] && echo "/mnt/rclone" > ${CONFIGVARS}/rclonemount
@@ -32,8 +37,6 @@ echo "${MYEMAIL}" > ${CONFIGVARS}/myemail
 [[ ! -f ${CONFIGVARS}/rcloneusername ]] && echo "gooby" > ${CONFIGVARS}/rcloneusername
 [[ ! -f ${CONFIGVARS}/localfiles ]] && echo "/mnt/local" > ${CONFIGVARS}/localfiles
 [[ ! -f ${CONFIGVARS}/uploads ]] && echo "/mnt/uploads" > ${CONFIGVARS}/uploads
-
-[[ ! -f ${CONFIGVARS}/goobybranch ]] && echo "master" > ${CONFIGVARS}/goobybranch
 [[ ! -f ${CONFIGVARS}/proxyversion ]] && echo "nginx" > ${CONFIGVARS}/proxyversion
 
 PROXYVERSION=$(cat ${CONFIGVARS}/proxyversion)
