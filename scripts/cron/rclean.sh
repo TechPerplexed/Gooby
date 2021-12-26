@@ -116,6 +116,12 @@ echo
 echo "${LYELLOW}Updating and starting containers${STD}"
 echo
 
+# Future upgrade to v3
+
+source /opt/Gooby/scripts/cron/upgradev3.sh
+
+# Bring up containers
+
 /usr/local/bin/docker-compose pull
 /usr/local/bin/docker-compose up --remove-orphans --build -d
 
