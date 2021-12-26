@@ -50,7 +50,7 @@ if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 	[[ ${GOOBYBRANCH} != "v3" ]] && GOOBYBRANCH="master"
 
 	sudo rm -r /opt/.Gooby > /dev/null 2>&1
-	sudo git clone -b ${GOOBYBRANCH} https://github.com/TechPerplexed/Gooby /opt/.Gooby > /dev/null 2>&1
+	sudo git clone -b ${GOOBYBRANCH} https://github.com/TechPerplexed/Gooby /opt/.Gooby
 
 	if [ -d /opt/.Gooby ]; then
 		sudo rm -r /opt/Gooby > /dev/null 2>&1
