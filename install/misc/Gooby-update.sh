@@ -12,10 +12,11 @@ if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 
 	read -t 3 -p "What Gooby branch? (just wait for default): " GOOBYBRANCH
 	[[ ${GOOBYBRANCH} != "v3" ]] && GOOBYBRANCH="master"
+	echo "${GOOBYBRANCH}" > ${CONFIGVARS}/goobybranch
 	echo
 	echo
-	echo Updating Gooby to ${GOOBYBRANCH}; echo
-
+	echo Updating Gooby to ${GOOBYBRANCH}
+	echo
 	sudo rm -r /opt/.Gooby > /dev/null 2>&1
 	sudo git clone -b ${GOOBYBRANCH} https://github.com/TechPerplexed/Gooby /opt/.Gooby
 
