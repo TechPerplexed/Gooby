@@ -63,6 +63,7 @@ HOMEDIR=${HOME}
 LOCALFILES=$(cat ${CONFIGVARS}/localfiles)
 MEDIA=$(cat ${CONFIGVARS}/media)
 RCLONEMOUNT=$(cat ${CONFIGVARS}/rclonemount)
+ROOTMOUNT=$(cat ${CONFIGVARS}/rootmount)
 UPLOADS=$(cat ${CONFIGVARS}/uploads)
 
 # Rclone settings
