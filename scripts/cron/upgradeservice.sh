@@ -9,6 +9,9 @@ touch ${CONFIGVARS}/version
 
 if [ "$(cat ${CONFIGVARS}/version)" == ${VERSION} ]; then
 
+	# Let's sneak in a new parameter
+	[[ ! -f ${CONFIGVARS}/rootmount ]] && echo "/mnt" > ${CONFIGVARS}/rootmount
+
 	echo "${GREEN}Your system has already been upgraded to v${VERSION}... skipping upgrade${STD}"; echo
 
 else
