@@ -47,6 +47,7 @@ USERNAME=${USER}
 # App settings
 CF_EMAIL=$(cat ${CONFIGVARS}/cf_email)
 CF_KEY=$(cat ${CONFIGVARS}/cf_key)
+GIDLIST=$(getent group video | cut -d: -f3)
 PLEXCLAIM=$(cat ${CONFIGVARS}/plexclaim)
 
 # Gooby settings
