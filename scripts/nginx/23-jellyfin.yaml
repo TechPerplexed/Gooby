@@ -14,7 +14,7 @@
     environment:
       - UID=${USERID}
       - GID=${GROUPID}
-      - GIDLIST=44
+      - GIDLIST=${GPUGIDS}
       - TZ=${TIMEZONE}
       - VIRTUAL_HOST=jellyfin.${MYDOMAIN}
       - VIRTUAL_PORT=8096
