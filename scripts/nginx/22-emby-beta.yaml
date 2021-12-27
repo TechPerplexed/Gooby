@@ -7,15 +7,10 @@
     container_name: emby
     hostname: emby
     cpu_shares: 8192
-    volumes:
-      - ${CONFIGS}/Emby:/config
-      - ${MEDIA}:/Media
-      - /etc/localtime:/etc/localtime:ro
-      - /tmp:/transcode
     environment:
       - UID=${USERID}
       - GID=${GROUPID}
-      - GIDLIST=44
+      - GIDLIST=${GPUGIDS}
       - TZ=${TIMEZONE}
       - VIRTUAL_HOST=emby.${MYDOMAIN}
       - VIRTUAL_PORT=8096
@@ -23,6 +18,11 @@
       - VIRTUAL_NETWORK=nginx-proxy
       - LETSENCRYPT_HOST=emby.${MYDOMAIN}
       - LETSENCRYPT_EMAIL=${MYEMAIL}
+    volumes:
+      - ${CONFIGS}/Emby:/config
+      - ${MEDIA}:/Media
+      - /etc/localtime:/etc/localtime:ro
+      - /tmp:/transcode
 #    devices:
 #      - /dev/dri:/dev/dri
     healthcheck:
