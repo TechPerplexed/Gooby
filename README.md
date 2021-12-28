@@ -6,7 +6,7 @@ Create an infinite Plex, Emby or Jellyfin media cloud server with Google Drive o
 
 Run as user `root` on Debian 10 (our preferred distro) with this command:
 
-`sudo wget https://bit.ly/GetGooby -O /tmp/install.sh && sudo bash /tmp/install.sh`
+`sudo wget https://bit.ly/GetGooby2 -O /tmp/install.sh && sudo bash /tmp/install.sh`
 
 You can follow this [Tutorial](http://bit.ly/Tech_Perplexed "How to create an infinite media server using a VPS and Cloud service") for step by step instructions. Additional information and tips are provided in the [Wiki](https://github.com/TechPerplexed/Gooby/wiki "Gooby Wiki").
 
