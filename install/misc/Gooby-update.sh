@@ -11,7 +11,7 @@ CONFIRMATION
 if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 
 	read -t 3 -p "What Gooby branch? (just wait for default): " GOOBYBRANCH
-	[[ -z ${GOOBYBRANCH} ]] && GOOBYBRANCH=${GOOBYBRANCH}
+	[[ -z ${GOOBYBRANCH} ]] && GOOBYBRANCH=v2
 	echo "${GOOBYBRANCH}" > ${CONFIGVARS}/goobybranch
 	echo
 	echo
