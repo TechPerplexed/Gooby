@@ -58,21 +58,21 @@ LOGS=${HOME}/logs
 PROXYVERSION=$(cat ${CONFIGVARS}/proxyversion)
 VERSION=$(cat ${CONFIGVARS}/version)
 
+# Rclone settings
+RCLONEHOME=${HOMEDIR}/.config/rclone
+RCLONESERVICE=$(cat ${CONFIGVARS}/rcloneservice)
+RCLONEFOLDER=$(cat ${CONFIGVARS}/rclonefolder)
+RCLONEUSERNAME=$(cat ${CONFIGVARS}/rcloneusername)
+RCLONEPASSWORD=$(cat ${CONFIGVARS}/rclonepassword)
+
 # Mounts and locations
-DOWNLOADS=${HOMEDIR}/Downloads
 HOMEDIR=${HOME}
 LOCALFILES=$(cat ${CONFIGVARS}/localfiles)
 MEDIA=$(cat ${CONFIGVARS}/media)
 RCLONEMOUNT=$(cat ${CONFIGVARS}/rclonemount)
 ROOTMOUNT=$(cat ${CONFIGVARS}/rootmount)
 UPLOADS=$(cat ${CONFIGVARS}/uploads)
-
-# Rclone settings
-RCLONEFOLDER=$(cat ${CONFIGVARS}/rclonefolder)
-RCLONEHOME=${HOMEDIR}/.config/rclone
-RCLONEPASSWORD=$(cat ${CONFIGVARS}/rclonepassword)
-RCLONESERVICE=$(cat ${CONFIGVARS}/rcloneservice)
-RCLONEUSERNAME=$(cat ${CONFIGVARS}/rcloneusername)
+DOWNLOADS=${HOMEDIR}/Downloads
 
 # Legacy variables
 GOOGLE=$(cat ${CONFIGVARS}/media)
