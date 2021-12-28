@@ -17,7 +17,7 @@ echo "What is your email address for certificate registration?"
 read -e -p '(ex: myname@mydomain.com)  ' -i "${MYEMAIL}" MYEMAIL
 echo
 read -t 3 -p "What Gooby branch? (just wait for default): " GOOBYBRANCH
-[[ ${GOOBYBRANCH} != "v3" ]] && GOOBYBRANCH="master"
+[[ -z ${GOOBYBRANCH} ]] && GOOBYBRANCH="master"
 echo
 echo
 echo "${YELLOW}Thank you! Please hang tight while we get some things ready...${STD}"
