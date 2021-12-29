@@ -16,7 +16,7 @@
       - /bin/netstat:/bin/netstat:ro
       - ${MEDIA}:/Media
     environment:
-      - ADVERTISE_IP=https://plex.${MYDOMAIN}:8443
+      - ADVERTISE_IP=https://plex.${MYDOMAIN}
       - PUID=${USERID}
       - PGID=${GROUPID}
       - PLEX_CLAIM=${PLEXCLAIM}
