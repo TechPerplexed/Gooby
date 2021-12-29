@@ -8,8 +8,8 @@
     container_name: plex
     hostname: plex
     cpu_shares: 8192
-    ports:
-      - 8443:32400
+#    ports:
+#      - 8443:32400
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - ${CONFIGS}/Plex:/config
