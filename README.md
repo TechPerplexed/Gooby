@@ -24,4 +24,4 @@ This software is supplied "AS IS" without any warranties and support. You are so
 
 By popular request, at long last here is a donate button. Thank you SO MUCH for your generosity - I promise I will think of you when I sip that coffee!
 
-[![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=2YZQCA4GA2RSG)
+[![](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/donate/?hosted_button_id=VRNLSU6P65FNJ)
