@@ -113,10 +113,6 @@ do
         CODE=$[${CODE}+${?}]
 done
 
-# Future upgrade to v3
-
-source /opt/Gooby/scripts/cron/upgradev3.sh
-
 echo
 echo "${LYELLOW}Updating and starting containers${STD}"
 echo
