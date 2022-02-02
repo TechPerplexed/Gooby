@@ -30,6 +30,7 @@ if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 		sudo rsync -a /opt/Gooby/scripts/bin/* /bin
 		sudo chmod 755 /bin/gooby
 		sudo chmod 755 /bin/gbackup
+		sudo chmod 755 /bin/omni-upgrade
 		sudo chmod 755 /bin/plexstats
 		sudo chmod 755 /bin/rclean
 		sudo chmod 755 /bin/resetbackup
