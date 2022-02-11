@@ -2,7 +2,7 @@
 
 # OmniStream
 
-What is OmniStream? It's next iteration of Gooby - entirely rebuilt from the ground up. It has many exciting new features such as
+What is OmniStream? It's next iteration of Gooby - entirely rebuilt from the ground up. It has many exciting new features such as:
 
 * Multi user support: everything is in the user home folder - including the mounts.
 * Full support of Traefik, with all its advantages such as a single domain certificate if used in conjunction with CloudFlare - no more Let’s Encrypt bans.
@@ -10,11 +10,11 @@ What is OmniStream? It's next iteration of Gooby - entirely rebuilt from the gro
 * More customizations than ever, plus a vastly improved menu system - it couldn't be easier.
 * Last but not least, OmniStream is 100% dockerized now, including Rclone and MergerFS - you will never be “waiting on mounts” again!
 
-**WARNING:** OmniStream is still a work in progress. Although it is fully functional, it may still be a little rough around the edges. The documentation is not complete either, so proceed with caution for now!
+**WARNING:** OmniStream is still a work in progress. Although it is fully functional, it may still be a little rough around the edges. The documentation is not yet complete either, so proceed with caution for now!
 
 ## What will change?
 
-There are a few things that will change, mainly with your mount locations. We have made sure impact is minimal, so you won't have to rescan your Plex, Emby or Jellyfin libraries again. However you will have to make some changes within your catalogue apps (Radarr, Sonarr, etc) and downloaders (Torrent, Usenet apps).
+There are a few things that will change, mainly with your mount locations. We have made sure impact is minimal, so you won't have to rescan your Plex, Emby or Jellyfin libraries again. However you will have to make some changes within your catalogue apps (Radarr, Sonarr, etc) and downloaders (Torrent, Usenet apps). If you created any custom yaml files, those will not port over automatically. You will need to manually keep a copy and adapt them to Omni.
 
 ## How to upgrade?
 
