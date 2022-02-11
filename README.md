@@ -22,7 +22,7 @@ There are a few things that will change, mainly with your mount locations. We ha
 
 ## Who are behind OmniStream?
 
-The same two people ([kelinger](https://github.com/kelinger) and [TechPerplexed](https://github.com/TechPerplexed)) that created Gooby will be maintaining OmniStream, so you can still expect the same level of support and care. [OmniStream has its own location on GitHub](https://github.com/kelinger/OmniStream). Once you are ready to upgrade, meet us over there for questions and suggestions.
+The same two people (kelinger and TechPerplexed) that created Gooby will be maintaining OmniStream, so you can still expect the same level of support and care. [OmniStream has its own location on GitHub](https://github.com/kelinger/OmniStream). Once you are ready to upgrade, meet us over there for questions and suggestions.
 
 ## Is Gooby going away?
 
