@@ -5,8 +5,8 @@
 What is OmniStream? It's next iteration of Gooby - entirely rebuilt from the ground up. It has many exciting new features such as
 
 * Multi user support: everything is in the user home folder - including the mounts.
-* Full support of Traefik, with all its advantages such as a single domain certificate - no more Let’s Encrypt bans.
-* Omni can create and remove subdomains if used in conjunction with CloudFlare - you won't need to manually create your A records.
+* Full support of Traefik, with all its advantages such as a single domain certificate if used in conjunction with CloudFlare - no more Let’s Encrypt bans.
+* Omni can create and remove subdomains on the fly - you won't need to manually create your A records.
 * More customizations than ever, plus a vastly improved menu system - it couldn't be easier.
 * Last but not least, OmniStream is 100% dockerized now, including Rclone and MergerFS - you will never be “waiting on mounts” again!
 
@@ -22,7 +22,7 @@ There are a few things that will change, mainly with your mount locations. We ha
 
 ## Who are behind OmniStream?
 
-The same two people (@kelinger and @TechPerplexed) that created Gooby will be maintaining OmniStream, so you can still expect the same level of support and care. [OmniStream has its own location on GitHub](https://github.com/kelinger/OmniStream). Once you are ready to upgrade, meet us over there for questions and suggestions.
+The same two people ([kelinger](https://github.com/kelinger) and [TechPerplexed](https://github.com/TechPerplexed)) that created Gooby will be maintaining OmniStream, so you can still expect the same level of support and care. [OmniStream has its own location on GitHub](https://github.com/kelinger/OmniStream). Once you are ready to upgrade, meet us over there for questions and suggestions.
 
 ## Is Gooby going away?
 
