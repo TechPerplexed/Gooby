@@ -37,6 +37,6 @@ This software is supplied "AS IS" without any warranties and support. You are so
 
 ## Donate:
 
-By popular request, at long last here is a donate button. Thank you SO MUCH for your generosity - I promise I will think of you when I sip that coffee!
+Thank you SO MUCH for your generosity - we promise we'll will think of you when we sip that coffee!
 
 [![](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/donate/?hosted_button_id=VRNLSU6P65FNJ)
