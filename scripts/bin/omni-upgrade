@@ -135,6 +135,7 @@ if [[ ${REPLY} =~ ^[Yy]$ ]] ; then
 
 	echo
 	[[ ! -d /var/local/Gooby ]] && echo "${LGREEN}Gooby has finished upgrading to OmniStream.${STD}" || echo "${LRED}Gooby has upgraded with some errors... please try again.${STD}"
+	[[ -d /tmp/components ]] && echo "${LGREEN}If you had any custom yaml files, then you can find those in" ; echo "/tmp/components. Make sure you adapt and copy them!${STD}"
 
 	echo
 	echo "Important! Visit ${LCYAN}omnistream.cloud${STD} and follow the"
