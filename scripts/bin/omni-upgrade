@@ -98,7 +98,7 @@ if [[ ${REPLY} =~ ^[Yy]$ ]] ; then
 	echo; echo -n "${YELLOW}Moving containers from Gooby to OmniStream... ${STD}"
 
 	[[ -d ${HOME}/OmniStream/configs ]] && sudo mv /var/local/Gooby/* ${HOME}/OmniStream/configs/ ; echo "${LGREEN}Done${STD}" || echo "${LRED}Failed!${STD} (no such folder)"
-	[[ -d ${HOME}/OmniStream/configs/Docker ]] && sudo rm -r ${HOME}/OmniStream/configs/Docker ; echo "${LGREEN}Done${STD}" || echo "${LRED}Failed!${STD} (no such folder)"
+	[[ -d ${HOME}/OmniStream/configs/Docker ]] && sudo mv ${HOME}/OmniStream/configs/Docker/* /tmp/ ; echo "${LGREEN}Done${STD}" || echo "${LRED}Failed!${STD} (no such folder)"
 
 	# Set permissions
 
