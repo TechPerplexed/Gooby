@@ -9,7 +9,7 @@ touch ${CONFIGVARS}/version
 
 if [ "$(cat ${CONFIGVARS}/version)" == ${VERSION} ]; then
 
-	echo "${GREEN}Your system is on version v${VERSION}${STD}"; echo
+	echo "${GREEN}Your system is on v${VERSION} (final version)${STD}"; echo
 
 else
 
