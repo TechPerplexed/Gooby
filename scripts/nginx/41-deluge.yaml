@@ -3,7 +3,7 @@
 #
   deluge:
     restart: unless-stopped
-    image: linuxserver/deluge:latest
+    image: lscr.io/linuxserver/deluge
     container_name: deluge
     hostname: deluge
     cpu_shares: 1024
@@ -27,8 +27,8 @@
       - VIRTUAL_NETWORK=nginx-proxy
       - LETSENCRYPT_HOST=deluge.${MYDOMAIN}
       - LETSENCRYPT_EMAIL=${MYEMAIL}
-    healthcheck:
-      test: ["CMD-SHELL", "netstat -ntlp | grep :8112"]
-      interval: 10s
-      timeout: 2s
-      retries: 3
+#    healthcheck:
+#      test: ["CMD-SHELL", "netstat -ntlp | grep :8112"]
+#      interval: 10s
+#      timeout: 2s
+#      retries: 3
