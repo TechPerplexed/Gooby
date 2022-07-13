@@ -20,8 +20,6 @@
       - ${HOME}/logs:/config/logs
       - ${MEDIA}:/Media
       - ${DOWNLOADS}:/Downloads
-      - /bin/netstat:/bin/netstat:ro
-      - /usr/bin/killall:/usr/bin/killall:ro
     environment:
       - PGID=${GROUPID}
       - PUID=${USERID}
