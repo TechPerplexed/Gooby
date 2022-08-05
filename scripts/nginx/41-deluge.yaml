@@ -13,7 +13,6 @@
       - 58846:58846/tcp
     volumes:
       - /etc/localtime:/etc/localtime:ro
-      - /bin/netstat:/bin/netstat:ro
       - ${CONFIGS}/Deluge:/config
       - ${DOWNLOADS}:/Downloads
       - ${MEDIA}:/Media
@@ -27,8 +26,3 @@
       - VIRTUAL_NETWORK=nginx-proxy
       - LETSENCRYPT_HOST=deluge.${MYDOMAIN}
       - LETSENCRYPT_EMAIL=${MYEMAIL}
-#    healthcheck:
-#      test: ["CMD-SHELL", "netstat -ntlp | grep :8112"]
-#      interval: 10s
-#      timeout: 2s
-#      retries: 3
