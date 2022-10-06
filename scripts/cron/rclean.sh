@@ -12,7 +12,7 @@ echo "${LYELLOW}Updating Gooby${STD}"
 echo
 
 sudo rm -r /opt/.Gooby > /dev/null 2>&1
-sudo git clone -b ${GOOBYBRANCH} https://github.com/TechPerplexed/Gooby /opt/.Gooby
+sudo git clone -b v2 https://github.com/TechPerplexed/Gooby /opt/.Gooby
 
 if [ -d /opt/.Gooby ]; then
 	sudo rm -r /opt/Gooby
@@ -24,6 +24,7 @@ if [ -d /opt/.Gooby ]; then
 	sudo rsync -a /opt/Gooby/scripts/bin/* /bin
 	sudo chmod 755 /bin/gooby
 	sudo chmod 755 /bin/gbackup
+	sudo chmod 755 /bin/omni-upgrade
 	sudo chmod 755 /bin/plexstats
 	sudo chmod 755 /bin/rclean
 	sudo chmod 755 /bin/resetbackup
@@ -111,10 +112,6 @@ do
         mountpoint ${MEDIA} > /dev/null
         CODE=$[${CODE}+${?}]
 done
-
-# Future upgrade to v3
-
-source /opt/Gooby/scripts/cron/upgradev3.sh
 
 echo
 echo "${LYELLOW}Updating and starting containers${STD}"

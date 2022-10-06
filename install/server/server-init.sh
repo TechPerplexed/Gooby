@@ -16,10 +16,6 @@ echo
 echo "What is your email address for certificate registration?"
 read -e -p '(ex: myname@mydomain.com)  ' -i "${MYEMAIL}" MYEMAIL
 echo
-read -t 3 -p "What Gooby branch? (just wait for default): " GOOBYBRANCH
-[[ -z ${GOOBYBRANCH} ]] && GOOBYBRANCH="v2"
-echo
-echo
 echo "${YELLOW}Thank you! Please hang tight while we get some things ready...${STD}"
 echo
 sleep 10
@@ -35,7 +31,7 @@ sudo chown -R ${USER}:${USER} ${CONFIGS}
 
 echo "${MYDOMAIN}" > ${CONFIGVARS}/mydomain
 echo "${MYEMAIL}" > ${CONFIGVARS}/myemail
-echo "${GOOBYBRANCH}" > ${CONFIGVARS}/goobybranch
+echo "v2" > ${CONFIGVARS}/goobybranch
 
 [[ ! -f ${CONFIGVARS}/rootmount ]] && echo "/mnt" > ${CONFIGVARS}/rootmount
 [[ ! -f ${CONFIGVARS}/media ]] && echo "/mnt/google" > ${CONFIGVARS}/media

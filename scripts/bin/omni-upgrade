@@ -1,0 +1,148 @@
+#!/bin/bash
+
+# Upgrade from Gooby to Omni
+
+source /opt/Gooby/menus/variables.sh
+source ${CONFIGS}/Docker/.env
+clear
+
+echo "This will install OmniStream."
+echo "You WILL have to make some adjustments"
+echo "to your existing apps afterwards."
+echo
+echo "See ${LCYAN}omnistream.cloud${STD} for detailed information."
+echo
+echo "${LRED}MAKE A BACKUP BEFORE YOU START!!!${STD}"
+echo
+echo "Would you like to start the upgrade now?"
+echo
+read -p "${LGREEN}Y${STD} for YES or ${LRED}Q${STD} to QUIT: " -n1 REPLY
+echo
+echo
+
+if [[ ${REPLY} =~ ^[Yy]$ ]] ; then
+
+	# Downloading OmniStream
+
+	echo; echo -n "${YELLOW}Downloading OmniStream... ${STD}"
+
+	wget tinyurl.com/omniSetup -O /tmp/setup
+	chmod 700 /tmp/setup
+
+	echo "${LGREEN}Done${STD}"
+
+	# Shutting Gooby down
+
+	echo; echo -n "${YELLOW}Shutting down Gooby...${STD}"
+
+	cd ${CONFIGS}/Docker
+	/usr/local/bin/docker-compose down
+
+	echo "${LGREEN}Done${STD}"
+
+	# Remove cron jobs
+
+	echo; echo -n "${YELLOW}Removing Gooby specific cron jobs... ${STD}"
+
+	crontab -l | grep -v '\/opt\/Gooby\/scripts\/cron\/rclean.sh' | crontab -
+	crontab -l | grep -v '\/opt\/Gooby\/scripts\/cron\/syncmount' | crontab -
+	crontab -l | grep -v '\/opt\/Gooby\/scripts\/cron\/backup' | crontab -
+	crontab -l | grep -v '\/bin\/resetbackup' | crontab -
+
+	echo "${LGREEN}Done${STD}"
+
+	# Remove services
+
+	echo; echo -n "${YELLOW}Removing mounts and services... ${STD}"
+
+	if [ -f /etc/systemd/system/rclonefs.service ]; then
+		sudo systemctl stop mergerfs rclonefs
+		/bin/fusermount -uz ${MEDIA}
+		/bin/fusermount -uz ${RCLONEMOUNT}
+		sudo systemctl disable mergerfs.service rclonefs.service
+		sudo rm /etc/systemd/system/mergerfs* /etc/systemd/system/rclonefs*
+		echo "${LGREEN}Done${STD}"
+
+	fi
+
+	# Remove bin files
+
+	echo; echo -n "${YELLOW}Cleaning up bin files... ${STD}"
+
+	[[ -f /bin/gooby ]] && sudo rm /bin/gooby
+	[[ -f /bin/gbackup ]] && sudo rm /bin/gbackup
+	[[ -f /bin/plexstats ]] && sudo rm /bin/plexstats
+	[[ -f /bin/rclean ]] && sudo rm /bin/rclean
+	[[ -f /bin/resetbackup ]] && sudo rm /bin/resetbackup
+	[[ -f /bin/rstats ]] && sudo rm /bin/rstats
+	[[ -f /bin/sizer ]] && sudo rm /bin/sizer
+	[[ -f /bin/syncmount ]] && sudo rm /bin/syncmount
+
+	# Install OmniStream
+
+	clear
+	echo
+	echo "The OmniStream installation will start now."
+	echo "Make sure you follow along with the instructions."
+	echo "These can be found at ${LCYAN}omnistream.cloud${STD}."
+	echo "Follow the tutorial ${YELLOW}Installing Omnistream${STD}."
+	echo
+	read -n 1 -s -r -p "Press ENTER to continue"
+
+	source /tmp/setup
+
+	echo "${LGREEN}Done${STD}"
+
+	# Move all containers, delete Docker
+
+	echo; echo -n "${YELLOW}Moving containers from Gooby to OmniStream... ${STD}"
+
+	[[ -d ${HOME}/OmniStream/configs ]] && sudo mv /var/local/Gooby/* ${HOME}/OmniStream/configs/ ; echo "${LGREEN}Done${STD}" || echo "${LRED}Failed!${STD} (no such folder)"
+	[[ -d ${HOME}/OmniStream/configs/Docker ]] && sudo mv ${HOME}/OmniStream/configs/Docker/* /tmp/ ; echo "${LGREEN}Done${STD}" || echo "${LRED}Failed!${STD} (no such folder)"
+
+	# Set permissions
+
+	echo; echo -n "${YELLOW}Setting permissions... ${STD}"
+
+	sudo chown -R ${USER}:${USER} ${HOME}/OmniStream/configs
+
+	echo "${LGREEN}Done${STD}"
+
+	# Rename folders
+
+	echo; echo "${YELLOW}Renaming folders...${STD}"
+
+	cd /home/${USER}/OmniStream/configs
+	for f in *; do
+		test -d "$f" && sudo mv "${f}" "${f,,}" > /dev/null 2>&1
+		echo "Renamed $f to ${f,,}..."
+	done
+
+	echo "${LGREEN}Done${STD}"
+
+	# Remove Gooby specific folders
+
+	echo; echo -n "${YELLOW}Removing Gooby folders... ${STD}"
+
+	[[  ! -d /var/local/Gooby/Docker ]] && sudo rm -r /opt/Gooby
+	[[  ! -d /var/local/Gooby/Docker ]] && sudo rm -r /var/local/Gooby
+	[[  ! -d /var/local/Gooby/Docker ]] && sudo rm /bin/omni-upgrade
+	rm ${HOME}/Downloads
+
+	echo "${LGREEN}Done${STD}"
+
+	# Finalizing upgrade
+
+	echo
+	[[ ! -d /var/local/Gooby ]] && echo "${LGREEN}Gooby has finished upgrading to OmniStream.${STD}" || echo "${LRED}Gooby has upgraded with some errors... please try again.${STD}"
+	[[ -d /tmp/components ]] && echo "${LGREEN}If you had any custom yaml files, then you can find those in" ; echo "/tmp/components. Make sure you adapt and copy them!${STD}"
+
+	echo
+	echo "Important! Visit ${LCYAN}omnistream.cloud${STD} and follow the"
+	echo "tutorial ${YELLOW}Omni Finalization${STD} to run OmniStream."
+	echo
+else
+
+	echo; echo "${YELLOW}No changes to your system were made.${STD}"
+
+ fi
