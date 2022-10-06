@@ -10,8 +10,6 @@ What is OmniStream? It's next iteration of Gooby - entirely rebuilt from the gro
 * More customizations than ever, plus a vastly improved menu system - maintaining your media server couldn't be easier.
 * Last but not least, OmniStream is 100% dockerized now, including Rclone and MergerFS - you will never be “waiting on mounts” again!
 
-**WARNING:** OmniStream is still a work in progress. Although it is fully functional, it may still be a little rough around the edges. We welcome your feedback!
-
 ## How to upgrade?
 
 **MAKE A BACKUP BEFORE YOU START!** Read the information on [OmniStream.cloud](https://omnistream.cloud) first. You can start the upgrade by typing `omni-upgrade`.
