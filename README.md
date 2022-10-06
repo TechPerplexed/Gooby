@@ -29,6 +29,7 @@ The same two people (kelinger and TechPerplexed) that created Gooby will be main
 No, you can keep using Gooby indefinitely. We won't be actively maintaining it any longer, but you'll never be forced to upgrade. Gooby is here to stay!
 
 If for some reason you still want to install Gooby from scratch, run this command:
+
 `sudo wget https://bit.ly/GetGooby2 -O /tmp/install.sh && sudo bash /tmp/install.sh`
 
 ## Disclaimer:
