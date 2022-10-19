@@ -37,6 +37,7 @@ if [[ ${REPLY} =~ ^[Yy]$ ]] ; then
 
 	cd ${CONFIGS}/Docker
 	/usr/local/bin/docker-compose down
+	docker system prune -a -f --volumes
 
 	echo "${LGREEN}Done${STD}"
 
